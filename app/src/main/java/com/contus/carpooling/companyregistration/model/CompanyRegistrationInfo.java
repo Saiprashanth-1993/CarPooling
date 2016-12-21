@@ -17,8 +17,8 @@ import com.contus.carpooling.BR;
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
-
 public class CompanyRegistrationInfo extends BaseObservable {
+
     /**
      * Company name of the user.
      */

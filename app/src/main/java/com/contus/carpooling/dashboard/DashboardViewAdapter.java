@@ -22,37 +22,37 @@ import java.util.List;
 public class DashboardViewAdapter extends FragmentPagerAdapter {
 
     /**
-     * Title of the fragment list
+     * Title of the fragment list.
      */
     private String[] mTitle;
 
     /**
-     * Fragment list Which contains the fragments on the adapter
+     * Fragment list Which contains the fragments on the adapter.
      */
     private List<Fragment> fragmentList;
 
     /**
      * Instantiates a new adapter dashboard view.
      *
-     * @param fm the Instance of the FragmentManager
+     * @param fm the Instance of the FragmentManager.
      */
     public DashboardViewAdapter(FragmentManager fm) {
         super(fm);
     }
 
     /**
-     * Set the list of title from the activity
+     * Set the list of title from the activity.
      *
-     * @param titles Title list
+     * @param titles Title list.
      */
     public void setTitle(String[] titles) {
         this.mTitle = titles;
     }
 
     /**
-     * Set the fragment list for the particular view pager using FragmentStatePagerAdapter
+     * Set the fragment list for the particular view pager using FragmentStatePagerAdapter.
      *
-     * @param fragmentList List of fragment
+     * @param fragmentList List of fragment.
      */
     public void setFragmentList(List<Fragment> fragmentList) {
         this.fragmentList = fragmentList;

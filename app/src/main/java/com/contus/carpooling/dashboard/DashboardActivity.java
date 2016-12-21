@@ -42,15 +42,6 @@ public class DashboardActivity extends AppCompatActivity
      */
     private ActivityDashboardBinding activityDashboardBinding;
 
-    /**
-     * The fragment contacts. Which contains the ride offer list
-     */
-    private RidesOfferedFragment ridesOfferedFragment;
-    /**
-     * The fragment contacts. Which contains the ride offer list
-     */
-    private MyRidesFragment myRidesFragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,10 +109,15 @@ public class DashboardActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_rides) {
+            // Yet to implement
         } else if (id == R.id.nav_profile) {
+            // Yet to implement
         } else if (id == R.id.nav_emergency_contacts) {
+            // Yet to implement
         } else if (id == R.id.nav_settings) {
+            // Yet to implement
         } else if (id == R.id.nav_logout) {
+            // Yet to implement
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -148,9 +144,21 @@ public class DashboardActivity extends AppCompatActivity
      * @return List of the fragments for the viewpager
      */
     private List<Fragment> getFragmentList() {
+
+        /**
+         * Add the fragment as a list.
+         */
         List<Fragment> fragmentList = new ArrayList<>();
-        ridesOfferedFragment = new RidesOfferedFragment();
-        myRidesFragment = new MyRidesFragment();
+
+        /**
+         The fragment contacts which contains the ride offer list.
+         */
+        RidesOfferedFragment ridesOfferedFragment = new RidesOfferedFragment();
+
+        /**
+         The fragment contacts which contains the ride offer list.
+         */
+        MyRidesFragment myRidesFragment = new MyRidesFragment();
         fragmentList.add(ridesOfferedFragment);
         fragmentList.add(myRidesFragment);
         return fragmentList;

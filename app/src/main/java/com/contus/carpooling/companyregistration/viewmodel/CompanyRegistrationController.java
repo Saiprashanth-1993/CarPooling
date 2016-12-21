@@ -22,17 +22,19 @@ import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivit
 import com.contus.carpooling.login.view.LoginActivity;
 
 /**
- * Controller of the CompanyRegistrationActivity class
+ * Controller of the CompanyRegistrationActivity class.
  * XML view controller
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
-
 public class CompanyRegistrationController {
+
     /**
-     * @param getEditTextValue Used to get the company registration details
-     * @return OnClickListener of the company registration button
+     * OnClick handler of the Company registration button.
+     *
+     * @param getEditTextValue Used to get the company registration details.
+     * @return OnClickListener of the company registration button.
      */
     public View.OnClickListener btnCompanyRegistrationClick(final CompanyRegistrationInfo getEditTextValue) {
         return new View.OnClickListener() {
@@ -46,8 +48,10 @@ public class CompanyRegistrationController {
     }
 
     /**
-     * @param companyCategory store the company category from dialog
-     * @return OnClickListener of the category edit text
+     * OnClick handler to show the category dialog list.
+     *
+     * @param companyCategory store the company category from dialog.
+     * @return OnClickListener of the category edit text.
      */
     public View.OnClickListener categoryListOnClick(final CompanyRegistrationInfo companyCategory) {
         return new View.OnClickListener() {
@@ -59,15 +63,14 @@ public class CompanyRegistrationController {
     }
 
     /**
-     * Method used to validate the username and password
+     * Method used to validate the company registration details.
      *
-     * @param context  Used to show the toast message
-     * @param userName Validate the username
-     * @param password Validate the password
-     * @param location Validate the location
-     * @return true when the given field is not empty
+     * @param context  Used to show the toast message.
+     * @param userName Validate the username.
+     * @param password Validate the password.
+     * @param location Validate the location.
+     * @return true when the given field is not empty.
      */
-
     private boolean checkValidation(Context context, String userName, String password, String location) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password) || TextUtils.isEmpty(location)) {
@@ -78,11 +81,11 @@ public class CompanyRegistrationController {
     }
 
     /**
-     * Method used to show the alert dialog with category list
-     * And to store the value in model class
+     * Method used to show the alert dialog with category list.
+     * And to store the value in model class.
      *
-     * @param view            To get the instance of the source activity
-     * @param companyCategory To set the category details in model
+     * @param view            To get the instance of the source activity.
+     * @param companyCategory To set the category details in model.
      */
     private void categoryList(View view, final CompanyRegistrationInfo companyCategory) {
         final String[] countryList = {"Malaysia", "United States", "Indonesia",
@@ -105,5 +108,4 @@ public class CompanyRegistrationController {
         AlertDialog alert = builder.create();
         alert.show();
     }
-
 }

@@ -24,14 +24,13 @@ import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
-
 public class LoginController {
 
     /**
-     * OnClick listener of login button
+     * OnClick listener of login button.
      *
-     * @param getEditTextValue Used to get the login details
-     * @return OnClickListener of the login button
+     * @param getEditTextValue Used to get the login details.
+     * @return OnClickListener of the login button.
      */
     public View.OnClickListener btnLoginClick(final UserLoginInfo getEditTextValue) {
         return new View.OnClickListener() {
@@ -45,9 +44,9 @@ public class LoginController {
     }
 
     /**
-     * OnClick listener of category edit text
+     * OnClick listener of category edit text.
      *
-     * @return OnClickListener of the login button
+     * @return OnClickListener of the login button.
      */
     public View.OnClickListener btnSignInOnClick() {
         return new View.OnClickListener() {
@@ -59,12 +58,12 @@ public class LoginController {
     }
 
     /**
-     * Method used to validate the username and password
+     * Method used to validate the username and password.
      *
-     * @param context  Used to show the toast message
-     * @param userName Validate the username
-     * @param password Validate the password
-     * @return true when the given field is not empty
+     * @param context  Used to show the toast message.
+     * @param userName Validate the username.
+     * @param password Validate the password.
+     * @return true when the given field is not empty.
      */
 
     private boolean checkValidation(Context context, String userName, String password) {

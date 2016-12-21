@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.activity
+ * @package com.contus.carpooling
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -29,7 +29,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     private Handler threadHandler;
 
     /**
-     * Used as a thread
+     * Runnable thread.
      */
     private Runnable mRunnable;
 
@@ -37,9 +37,6 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         threadHandler = new Handler();
-        /**
-         * Initializing the thread.
-         */
         mRunnable = new Runnable() {
             @Override
             public void run() {
@@ -54,7 +51,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         /**
-         *Splash screen timer
+         *Splash screen timer.
          */
         int splashTimeOut = 2000;
         /**

@@ -12,12 +12,11 @@ import android.databinding.Bindable;
 import com.contus.carpooling.BR;
 
 /**
- * Model class is used to get and store the username and password details
+ * Model class is used to get and store the username and password details.
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
-
 public class UserLoginInfo extends BaseObservable {
 
     /**
