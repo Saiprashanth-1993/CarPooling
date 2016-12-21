@@ -6,4 +6,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="validation_failure_message">Please make sure that all fields are not empty</string>
+    <string name="validation_failure_email">Please make sure email id is valid</string>
+    <string name="validation_failure_mobile_length">Please make sure password should have max of 6 character</string>
 </resources>
