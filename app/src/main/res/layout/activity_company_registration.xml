@@ -1,173 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
+    <data>
+
+        <variable
+            name="ViewController"
+            type="com.contus.carpooling.companyregistration.viewmodel.CompanyRegistrationController" />
+
+        <variable
+            name="CompanyDetails"
+            type="com.contus.carpooling.companyregistration.model.CompanyRegistrationInfo" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="20dp">
-
-        <ImageView
-            android:layout_width="170dp"
-            android:layout_height="160dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:contentDescription="logo icon"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_logo" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:text="Company Name"
-            android:textColor="@color/colorPrimary"
-            android:textSize="14sp" />
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="48dp"
-            android:layout_marginRight="50dp"
-            android:background="@drawable/edit_text_line_border"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp">
+            android:orientation="vertical"
+            android:paddingTop="20dp">
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_company" />
+                android:layout_width="170dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="logo icon"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_logo" />
 
-            <android.support.v7.widget.AppCompatAutoCompleteTextView
-                android:id="@+id/companyName"
-                android:layout_width="match_parent"
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:hint="Enter your company name"
-                android:paddingLeft="5dp"
-                android:singleLine="true"
-                android:textColorHint="@color/colorEditTextHint"
-                android:textSize="14sp"
-                android:imeOptions="actionDone"/>
-
-        </LinearLayout>
-
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="20dp"
-            android:text="Category"
-            android:textColor="@color/colorPrimary"
-            android:textSize="14sp" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="48dp"
-            android:layout_marginRight="50dp"
-            android:background="@drawable/edit_text_line_border"
-            android:paddingBottom="5dp">
-
-            <ImageView
-                android:id="@+id/image_category"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_department" />
-
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/category"
-                android:focusable="false"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/image_category"
-                android:layout_toLeftOf="@+id/ic_drop_down"
-                android:layout_toRightOf="@+id/image_category"
-                android:background="@android:color/transparent"
-                android:hint="Select category"
-                android:paddingLeft="5dp"
-                android:textColorHint="@color/colorEditTextHint"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:text="Company Name"
+                android:textColor="@color/colorPrimary"
                 android:textSize="14sp" />
 
-            <ImageView
-                android:id="@+id/ic_drop_down"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:src="@drawable/ic_dropdown" />
-
-
-        </RelativeLayout>
-
-
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="20dp"
-            android:text="Location"
-            android:textColor="@color/colorPrimary"
-            android:textSize="14sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="48dp"
-            android:layout_marginRight="50dp"
-            android:background="@drawable/edit_text_line_border"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_location" />
-
-            <android.support.v7.widget.AppCompatEditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:hint="Enter your location"
-                android:paddingLeft="5dp"
-                android:singleLine="true"
-                android:textColorHint="@color/colorEditTextHint"
+                android:layout_marginLeft="48dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/edit_text_line_border"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_company" />
+
+                <android.support.v7.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/companyName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:hint="Enter your company name"
+                    android:imeOptions="actionDone"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true"
+                    android:text="@={CompanyDetails.companyName}"
+                    android:textColorHint="@color/colorEditTextHint"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="20dp"
+                android:text="Category"
+                android:textColor="@color/colorPrimary"
                 android:textSize="14sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="48dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/edit_text_line_border"
+                android:paddingBottom="5dp">
+
+                <ImageView
+                    android:id="@+id/image_category"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_department" />
+
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/image_category"
+                    android:layout_toLeftOf="@+id/ic_drop_down"
+                    android:layout_toRightOf="@+id/image_category"
+                    android:background="@android:color/transparent"
+                    android:focusable="false"
+                    android:hint="Select category"
+                    android:onClick="@{ViewController.categoryListOnClick(CompanyDetails)}"
+                    android:paddingLeft="5dp"
+                    android:text="@={CompanyDetails.category}"
+                    android:textColorHint="@color/colorEditTextHint"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/ic_drop_down"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_dropdown" />
+
+
+            </RelativeLayout>
+
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="20dp"
+                android:text="Location"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="48dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/edit_text_line_border"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_location" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:hint="Enter your location"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true"
+                    android:text="@={CompanyDetails.location}"
+                    android:textColorHint="@color/colorEditTextHint"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_rounded_corner_border"
+                android:onClick="@{ViewController.btnCompanyRegistrationClick(CompanyDetails)}"
+                android:text="Submit"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="2dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_footer" />
         </LinearLayout>
-
-
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/button_rounded_corner_border"
-            android:text="Submit"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="3dp"
-            android:layout_marginTop="2dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/ic_footer" />
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</layout>
