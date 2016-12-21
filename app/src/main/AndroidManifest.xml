@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.SplashScreenActivity"
+            android:name=".SplashScreenActivity"
             android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,16 +18,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".login.view.LoginActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".activity.CompanyRegistrationActivity"
+            android:name=".companyregistration.view.CompanyRegistrationActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".activity.UserRegistrationActivity"
+            android:name=".userregistration.view.UserRegistrationActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".activity.DashboardActivity"
+            android:name=".dashboard.DashboardActivity"
             android:label="@string/title_activity_dashboard"/>
     </application>
 
