@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.dashboard.DashboardActivity;
+import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.userregistration.model.UserRegistrationInfo;
 
 /**
@@ -45,6 +46,23 @@ public class UserRegistrationController {
                         getEditTextValue.getEmailID(), getEditTextValue.getFromLocation(),
                         getEditTextValue.getToLocation(), getEditTextValue.getPassword(), getEditTextValue.getGender()))
                     context.startActivity(new Intent(context, DashboardActivity.class));
+            }
+        };
+    }
+
+    /**
+     * OnClick listener of redirect to login page.
+     *
+     * @return OnClickListener of the sign in button.
+     */
+    public View.OnClickListener btnSignInOnClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context = view.getContext();
+                Intent intentLoginActivity = new Intent(context, LoginActivity.class);
+                intentLoginActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                context.startActivity(intentLoginActivity);
             }
         };
     }

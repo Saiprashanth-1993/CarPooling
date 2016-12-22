@@ -20,6 +20,7 @@ import com.contus.carpooling.R;
 import com.contus.carpooling.companyregistration.model.CompanyRegistrationInfo;
 import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
 import com.contus.carpooling.login.view.LoginActivity;
+import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
 
 /**
  * Controller of the CompanyRegistrationActivity class.
@@ -42,7 +43,7 @@ public class CompanyRegistrationController {
             public void onClick(View view) {
                 Context context = view.getContext();
                 if (checkValidation(context, getEditTextValue.getCompanyName(), getEditTextValue.getCategory(), getEditTextValue.getLocation()))
-                    context.startActivity(new Intent(context, LoginActivity.class));
+                    context.startActivity(new Intent(context, UserRegistrationActivity.class));
             }
         };
     }

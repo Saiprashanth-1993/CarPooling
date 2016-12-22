@@ -37,7 +37,7 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
         companyRegistrationBinding.setCompanyDetails(new CompanyRegistrationInfo());
         companyRegistrationBinding.setViewController(new CompanyRegistrationController());
         ArrayAdapter<String> companyNameAdapter = new ArrayAdapter<>
-                (this, android.R.layout.select_dialog_item, companyNameList);
+                (this, R.layout.adapter_company_existing, R.id.existing_company_list, companyNameList);
         companyRegistrationBinding.companyName.setThreshold(1);
         companyRegistrationBinding.companyName.setAdapter(companyNameAdapter);
     }

@@ -312,18 +312,6 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginTop="20dp"
-                android:gravity="end"
-                android:text="Forget password?"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16sp" />
-
             <android.support.v7.widget.AppCompatButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -356,6 +344,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="end"
+                    android:onClick="@{ViewController.btnSignInOnClick()}"
                     android:text=" Sign in"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />

@@ -8,6 +8,7 @@ package com.contus.carpooling.dashboard;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -22,7 +23,7 @@ import android.widget.Toast;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.dashboard.myrides.MyRidesFragment;
-import com.contus.carpooling.dashboard.ridesoffered.RidesOfferedFragment;
+import com.contus.carpooling.dashboard.ridesoffered.view.RidesOfferedFragment;
 import com.contus.carpooling.databinding.ActivityDashboardBinding;
 
 import java.util.ArrayList;
@@ -104,7 +105,7 @@ public class DashboardActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 

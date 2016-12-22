@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.contus.carpooling.R;
+import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
 import com.contus.carpooling.dashboard.DashboardActivity;
 import com.contus.carpooling.login.model.UserLoginInfo;
 import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
@@ -52,7 +53,7 @@ public class LoginController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.getContext().startActivity(new Intent(view.getContext(), UserRegistrationActivity.class));
+                view.getContext().startActivity(new Intent(view.getContext(), CompanyRegistrationActivity.class));
             }
         };
     }

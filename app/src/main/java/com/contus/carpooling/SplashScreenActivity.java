@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
+import com.contus.carpooling.login.view.LoginActivity;
 
 /**
  * Show the splash image of the app and  if user not logged then they will be redirected to
@@ -40,7 +41,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         mRunnable = new Runnable() {
             @Override
             public void run() {
-                Intent loginActivity = new Intent(SplashScreenActivity.this, CompanyRegistrationActivity.class);
+                Intent loginActivity = new Intent(SplashScreenActivity.this, LoginActivity.class);
                 startActivity(loginActivity);
                 finish();
             }
