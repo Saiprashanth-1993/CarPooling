@@ -30,8 +30,8 @@ public class RidesOfferedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentRidesOfferedBinding ridesOfferedBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_rides_offered, container, false);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-//        ridesOfferedBinding.offeredRides.setLayoutManager(layoutManager);
+        RidesOfferedAdapter offeredAdapter = new RidesOfferedAdapter();
+        ridesOfferedBinding.offeredRides.setAdapter(offeredAdapter);
         return ridesOfferedBinding.getRoot();
     }
 }
