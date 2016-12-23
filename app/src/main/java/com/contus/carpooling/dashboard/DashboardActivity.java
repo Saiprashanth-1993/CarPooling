@@ -22,7 +22,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.contus.carpooling.R;
-import com.contus.carpooling.dashboard.myrides.MyRidesFragment;
+import com.contus.carpooling.dashboard.myrides.view.MyRidesFragment;
 import com.contus.carpooling.dashboard.ridesoffered.view.RidesOfferedFragment;
 import com.contus.carpooling.databinding.ActivityDashboardBinding;
 
