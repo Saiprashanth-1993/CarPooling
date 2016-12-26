@@ -11,14 +11,6 @@
             android:icon="@drawable/ic_navigation_profile"
             android:title="MY PROFILE" />
         <item
-            android:id="@+id/nav_emergency_contacts"
-            android:icon="@drawable/ic_navigation_emergency"
-            android:title="EMERGENCY CONTACTS" />
-        <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_navigation_settings"
-            android:title="SETTINGS" />
-        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_navigation_logout"
             android:title="LOGOUT" />

@@ -113,10 +113,6 @@ public class DashboardActivity extends AppCompatActivity
             // Yet to implement
         } else if (id == R.id.nav_profile) {
             // Yet to implement
-        } else if (id == R.id.nav_emergency_contacts) {
-            // Yet to implement
-        } else if (id == R.id.nav_settings) {
-            // Yet to implement
         } else if (id == R.id.nav_logout) {
             // Yet to implement
         }

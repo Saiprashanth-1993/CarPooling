@@ -19,8 +19,12 @@ import android.widget.Toast;
 import com.contus.carpooling.R;
 import com.contus.carpooling.companyregistration.model.CompanyRegistrationInfo;
 import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
-import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+
+import static com.contus.carpooling.utils.Constants.REQUEST_CODE_COMPANY_LOCATION;
 
 /**
  * Controller of the CompanyRegistrationActivity class.
@@ -59,6 +63,27 @@ public class CompanyRegistrationController {
             @Override
             public void onClick(View view) {
                 categoryList(view, companyCategory);
+            }
+        };
+    }
+
+    /**
+     * OnClick handler to show the google place api.
+     *
+     * @return OnClickListener of the location edit text.
+     */
+    public View.OnClickListener getLocationOnClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                            .build((CompanyRegistrationActivity) view.getContext());
+                    ((CompanyRegistrationActivity) view.getContext()).startActivityForResult(intent, REQUEST_CODE_COMPANY_LOCATION);
+
+                } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+                    e.printStackTrace();
+                }
             }
         };
     }

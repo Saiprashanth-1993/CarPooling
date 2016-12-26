@@ -14,9 +14,16 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.contus.carpooling.R;
+import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
 import com.contus.carpooling.dashboard.DashboardActivity;
 import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.userregistration.model.UserRegistrationInfo;
+import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+
+import static com.contus.carpooling.utils.Constants.REQUEST_CODE_COMPANY_LOCATION;
 
 /**
  * OnClick listener of the view.
@@ -46,6 +53,28 @@ public class UserRegistrationController {
                         getEditTextValue.getEmailID(), getEditTextValue.getFromLocation(),
                         getEditTextValue.getToLocation(), getEditTextValue.getPassword(), getEditTextValue.getGender()))
                     context.startActivity(new Intent(context, DashboardActivity.class));
+            }
+        };
+    }
+
+    /**
+     * OnClick listener to get the location from google place api.
+     *
+     * @param requestCode Request code of the google place api intent
+     * @return OnClickListener of the registration button.
+     */
+    public View.OnClickListener getLocationOnClick(final int requestCode) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                            .build((UserRegistrationActivity) view.getContext());
+                    ((UserRegistrationActivity) view.getContext()).startActivityForResult(intent, requestCode);
+
+                } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+                    e.printStackTrace();
+                }
             }
         };
     }

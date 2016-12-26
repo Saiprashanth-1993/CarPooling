@@ -15,9 +15,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_place_api_key" />
 
-        <activity
-            android:name=".SplashScreenActivity"
-            android:theme="@style/SplashScreen">
+        <activity android:name=".addnewride.view.RegisterNewRidesActivity">
+            <!--android:theme="@style/SplashScreen"-->
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
