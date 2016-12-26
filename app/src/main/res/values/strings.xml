@@ -9,4 +9,6 @@
     <string name="validation_failure_message">Please make sure that all fields are not empty</string>
     <string name="validation_failure_email">Please make sure email id is valid</string>
     <string name="validation_failure_mobile_length">Please make sure password should have max of 6 character</string>
+    <string name="google_place_api_key">AIzaSyDXmb6C3WoD2KvgnJTnFKEI-YFSakbxlsY</string>
 </resources>
+

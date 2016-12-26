@@ -175,7 +175,9 @@
                     android:singleLine="true"
                     android:text="@={CompanyDetails.location}"
                     android:textColorHint="@color/colorEditTextHint"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:focusable="false"
+                    android:onClick="@{ViewController.goolePlaceIntent}"/>
             </LinearLayout>
 
 
