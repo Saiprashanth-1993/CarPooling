@@ -16,7 +16,6 @@
             android:background="@color/colorBackground"
             android:orientation="vertical"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
-
     </FrameLayout>
 </layout>
 

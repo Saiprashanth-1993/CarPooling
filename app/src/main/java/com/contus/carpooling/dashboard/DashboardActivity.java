@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.dashboard.myrides.view.MyRidesFragment;
+import com.contus.carpooling.dashboard.myrides.viewmodel.MyRidesController;
 import com.contus.carpooling.dashboard.ridesoffered.view.RidesOfferedFragment;
 import com.contus.carpooling.databinding.ActivityDashboardBinding;
 
@@ -47,6 +48,7 @@ public class DashboardActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityDashboardBinding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard);
+        activityDashboardBinding.setOnClickController(new MyRidesController());
         setSupportActionBar(activityDashboardBinding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -112,6 +114,8 @@ public class DashboardActivity extends AppCompatActivity
         if (id == R.id.nav_rides) {
             // Yet to implement
         } else if (id == R.id.nav_profile) {
+            // Yet to implement
+        } else if (id == R.id.nav_settings) {
             // Yet to implement
         } else if (id == R.id.nav_logout) {
             // Yet to implement

@@ -42,8 +42,9 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:text="Company Name"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
+                android:textAllCaps="true"
+                android:textColor="@color/colorHighLightBlue"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:id="@+id/ll_parent_company_name"
@@ -87,8 +88,9 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:text="Category"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
+                android:textAllCaps="true"
+                android:textColor="@color/colorHighLightBlue"
+                android:textSize="12sp" />
 
             <RelativeLayout
                 android:id="@+id/rl_category_parent"
@@ -131,10 +133,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:src="@drawable/ic_dropdown" />
-
-
             </RelativeLayout>
-
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/tv_location"
@@ -146,8 +145,9 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:text="Location"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
+                android:textAllCaps="true"
+                android:textColor="@color/colorHighLightBlue"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:id="@+id/ll_location_parent"
@@ -183,7 +183,6 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
-
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btn_submit"
                 android:layout_width="match_parent"
@@ -195,7 +194,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@drawable/button_rounded_corner_border"
                 android:onClick="@{ViewController.btnCompanyRegistrationClick(CompanyDetails)}"
-                android:text="Submit"
+                android:text="Next"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 

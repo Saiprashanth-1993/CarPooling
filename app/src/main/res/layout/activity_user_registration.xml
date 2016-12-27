@@ -39,8 +39,9 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:text="Name"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
+                android:textAllCaps="true"
+                android:textColor="@color/colorHighLightBlue"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -78,8 +79,9 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:text="Mobile"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
+                android:textAllCaps="true"
+                android:textColor="@color/colorHighLightBlue"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -117,8 +119,9 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:text="Email"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
+                android:textAllCaps="true"
+                android:textColor="@color/colorHighLightBlue"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -155,20 +158,19 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center">
+                android:orientation="vertical">
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="Gender"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="14sp" />
+                    android:text="Gender Preference"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorHighLightBlue"
+                    android:textSize="12sp" />
 
                 <RadioGroup
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
                     android:orientation="horizontal">
 
                     <RadioButton
@@ -184,6 +186,7 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
                         android:layout_weight="1"
                         android:onClick='@{ViewController.radioBtnOnClick(UserDetails,"Female")}'
                         android:text="Female"
@@ -202,8 +205,9 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="10dp"
                 android:text="From"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
+                android:textAllCaps="true"
+                android:textColor="@color/colorHighLightBlue"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -243,8 +247,9 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:text="To"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
+                android:textAllCaps="true"
+                android:textColor="@color/colorHighLightBlue"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -284,8 +289,9 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:text="Password"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
+                android:textAllCaps="true"
+                android:textColor="@color/colorHighLightBlue"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -324,7 +330,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button_rounded_corner_border"
                 android:onClick="@{ViewController.btnRegistrationOnClick(UserDetails)}"
-                android:text="register"
+                android:text="next"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
@@ -332,8 +338,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center">
 
@@ -350,7 +354,7 @@
                     android:gravity="end"
                     android:onClick="@{ViewController.btnSignInOnClick()}"
                     android:text=" Sign in"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorHighLightBlue"
                     android:textSize="16sp" />
             </LinearLayout>
 

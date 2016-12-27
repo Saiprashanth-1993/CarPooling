@@ -43,8 +43,9 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:text="Username"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
+                android:textAllCaps="true"
+                android:textColor="@color/colorHighLightBlue"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:id="@+id/ll_user_name_parent"
@@ -86,8 +87,9 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:text="Password"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
+                android:textAllCaps="true"
+                android:textColor="@color/colorHighLightBlue"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:id="@+id/ll_password_parent"
@@ -131,7 +133,7 @@
                 android:layout_marginTop="20dp"
                 android:gravity="end"
                 android:text="Forgot password ?"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorHighLightBlue"
                 android:textSize="16sp" />
 
             <android.support.v7.widget.AppCompatButton
@@ -154,8 +156,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/btn_login"
                 android:layout_marginBottom="100dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center">
 
@@ -170,10 +170,9 @@
                     android:id="@+id/btn_sign_up"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="end"
                     android:onClick="@{ViewController.btnSignInOnClick}"
                     android:text=" Sign up"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorHighLightBlue"
                     android:textSize="16sp" />
             </LinearLayout>
 
