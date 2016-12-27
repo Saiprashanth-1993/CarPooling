@@ -39,7 +39,7 @@ public class MyRidesAdapter extends RecyclerView.Adapter<MyRidesAdapter.MyRidesV
 
     @Override
     public int getItemCount() {
-        return 50;
+        return 10;
     }
 
     /**
