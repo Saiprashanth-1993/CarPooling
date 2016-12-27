@@ -17,10 +17,12 @@ public class Constants {
      * The result of google place on activity result to get company location.
      */
     public static final int REQUEST_CODE_COMPANY_LOCATION = 1;
+
     /**
      * The result of google place on activity result to get user from location.
      */
     public static final int REQUEST_CODE_USER_FROM_LOCATION = 2;
+
     /**
      * The result of google place on activity result to get user to location.
      */

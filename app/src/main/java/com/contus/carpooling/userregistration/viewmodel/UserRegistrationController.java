@@ -129,7 +129,7 @@ public class UserRegistrationController {
             Toast.makeText(context, R.string.validation_failure_message, Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(gender)) {
             validationStatus = false;
-            Toast.makeText(context, "Please make sure to select gender", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Please make sure to ic_drop_down_background gender", Toast.LENGTH_SHORT).show();
         } else if (!checkEmptyTextValidation(fromLocation, toLocation, password)) {
             validationStatus = false;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(emailId).matches()) {

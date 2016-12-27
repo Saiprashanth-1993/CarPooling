@@ -10,5 +10,17 @@
     <string name="validation_failure_email">Please make sure email id is valid</string>
     <string name="validation_failure_mobile_length">Please make sure password should have max of 6 character</string>
     <string name="google_place_api_key">AIzaSyDXmb6C3WoD2KvgnJTnFKEI-YFSakbxlsY</string>
+    <string-array name="list_seat_available">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
 </resources>
 
