@@ -8,7 +8,6 @@ package com.contus.carpooling.employeedetails.viewmodel;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.design.widget.BottomSheetDialogFragment;
 import android.view.View;
 
 import com.contus.carpooling.employeedetails.view.BottomDialogFragment;
@@ -36,7 +35,9 @@ public class EmployeeDetailController {
 
     /**
      * Instance of the container activity
-     **/
+     *
+     * @param employeeDetailActivity instance of the activity
+     */
     public EmployeeDetailController(Activity employeeDetailActivity) {
         this.employeeDetailActivity = employeeDetailActivity;
     }
@@ -45,7 +46,7 @@ public class EmployeeDetailController {
     /**
      * OnClick listener of image view.
      *
-     * @return OnClickListener of the login button.
+     * @return OnClickListener of the image view for show the bottom sheet dialog.
      */
     public View.OnClickListener imageViewOnClick() {
         return new View.OnClickListener() {
@@ -58,7 +59,9 @@ public class EmployeeDetailController {
     }
 
     /**
-     * OnClickListner of the bottom sheet dialog.
+     * OnClick listner of the image view.
+     *
+     * @return OnClickListner of the image view to call the camera intent or gallery intent.
      */
     public View.OnClickListener imageCameraSelectionOnclick() {
         return new View.OnClickListener() {

@@ -47,10 +47,10 @@ public class UserRegistrationController {
             @Override
             public void onClick(View view) {
                 context = view.getContext();
-              /*  if (isValid(getEditTextValue.getUserName(), getEditTextValue.getMobileNumber(),
+                if (isValid(getEditTextValue.getUserName(), getEditTextValue.getMobileNumber(),
                         getEditTextValue.getEmailID(), getEditTextValue.getFromLocation(),
                         getEditTextValue.getToLocation(), getEditTextValue.getPassword(), getEditTextValue.getGender()))
-*/                    context.startActivity(new Intent(context, EmployeeDetailActivity.class));
+                    context.startActivity(new Intent(context, EmployeeDetailActivity.class));
             }
         };
     }
