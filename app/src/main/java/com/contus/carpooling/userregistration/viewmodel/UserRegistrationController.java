@@ -9,21 +9,19 @@ package com.contus.carpooling.userregistration.viewmodel;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
 import com.contus.carpooling.R;
-import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
-import com.contus.carpooling.dashboard.DashboardActivity;
+import com.contus.carpooling.employeedetails.view.EmployeeDetailActivity;
 import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.userregistration.model.UserRegistrationInfo;
 import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
-
-import static com.contus.carpooling.utils.Constants.REQUEST_CODE_COMPANY_LOCATION;
 
 /**
  * OnClick listener of the view.
@@ -49,10 +47,10 @@ public class UserRegistrationController {
             @Override
             public void onClick(View view) {
                 context = view.getContext();
-                if (checkValidation(getEditTextValue.getUserName(), getEditTextValue.getMobileNumber(),
+              /*  if (isValid(getEditTextValue.getUserName(), getEditTextValue.getMobileNumber(),
                         getEditTextValue.getEmailID(), getEditTextValue.getFromLocation(),
                         getEditTextValue.getToLocation(), getEditTextValue.getPassword(), getEditTextValue.getGender()))
-                    context.startActivity(new Intent(context, DashboardActivity.class));
+*/                    context.startActivity(new Intent(context, EmployeeDetailActivity.class));
             }
         };
     }
@@ -73,7 +71,7 @@ public class UserRegistrationController {
                     ((UserRegistrationActivity) view.getContext()).startActivityForResult(intent, requestCode);
 
                 } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
-                    e.printStackTrace();
+                    Log.d("Google place exception", e.getMessage());
                 }
             }
         };
@@ -122,7 +120,7 @@ public class UserRegistrationController {
      * @param password     Validate the password.
      * @return true when the given field is not empty.
      */
-    private boolean checkValidation(String userName, String mobileNumber, String emailId, String fromLocation, String toLocation, String password, String gender) {
+    private boolean isValid(String userName, String mobileNumber, String emailId, String fromLocation, String toLocation, String password, String gender) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password) || TextUtils.isEmpty(mobileNumber)) {
             validationStatus = false;
@@ -130,7 +128,7 @@ public class UserRegistrationController {
         } else if (TextUtils.isEmpty(gender)) {
             validationStatus = false;
             Toast.makeText(context, "Please make sure to ic_drop_down_background gender", Toast.LENGTH_SHORT).show();
-        } else if (!checkEmptyTextValidation(fromLocation, toLocation, password)) {
+        } else if (!isTextValid(fromLocation, toLocation, password)) {
             validationStatus = false;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(emailId).matches()) {
             validationStatus = false;
@@ -150,7 +148,7 @@ public class UserRegistrationController {
      * @param password     Validate the password.
      * @return true when the given field is not empty.
      */
-    private boolean checkEmptyTextValidation(String fromLocation, String toLocation, String password) {
+    private boolean isTextValid(String fromLocation, String toLocation, String password) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(fromLocation) || TextUtils.isEmpty(toLocation) || TextUtils.isEmpty(password)) {
             Toast.makeText(context, R.string.validation_failure_message, Toast.LENGTH_SHORT).show();

@@ -34,7 +34,9 @@ public class MyRidesAdapter extends RecyclerView.Adapter<MyRidesAdapter.MyRidesV
 
     @Override
     public void onBindViewHolder(MyRidesAdapter.MyRidesViewHolder holder, int position) {
-
+        /**
+         * Need to implement
+         */
     }
 
     @Override

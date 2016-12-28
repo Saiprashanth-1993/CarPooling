@@ -1,3 +1,9 @@
+/**
+ * @category CarPooling
+ * @package com.contus.carpooling.dashboard.myrides.view
+ * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @license http://www.apache.org/licenses/LICENSE-2.0
+ */
 package com.contus.carpooling.dashboard.myrides.view;
 
 import android.databinding.DataBindingUtil;
@@ -8,9 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.contus.carpooling.R;
-import com.contus.carpooling.dashboard.ridesoffered.view.RidesOfferedAdapter;
 import com.contus.carpooling.databinding.FragmentMyRidesBinding;
 
+/**
+ * Fragment to display the my rides details in the dashboard.
+ *
+ * @author ContusTeam <developers@contus.in>
+ * @version 1.1
+ */
 public class MyRidesFragment extends Fragment {
 
     @Override

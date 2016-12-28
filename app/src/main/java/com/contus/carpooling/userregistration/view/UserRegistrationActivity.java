@@ -11,6 +11,7 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.databinding.ActivityUserRegistrationBinding;
@@ -42,6 +43,10 @@ public class UserRegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityUserRegistrationBinding userRegistrationBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_registration);
+        setSupportActionBar(userRegistrationBinding.toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         registrationInfo = new UserRegistrationInfo();
         userRegistrationBinding.setUserDetails(registrationInfo);
         userRegistrationBinding.setViewController(new UserRegistrationController());
@@ -78,5 +83,15 @@ public class UserRegistrationActivity extends AppCompatActivity {
                 // the user pressed the back button.
             }
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle toolbar arrow click action
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

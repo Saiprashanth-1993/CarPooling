@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
@@ -46,7 +47,7 @@ public class CompanyRegistrationController {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                if (checkValidation(context, getEditTextValue.getCompanyName(), getEditTextValue.getCategory(), getEditTextValue.getLocation()))
+                if (isValid(context, getEditTextValue.getCompanyName(), getEditTextValue.getCategory(), getEditTextValue.getLocation()))
                     context.startActivity(new Intent(context, UserRegistrationActivity.class));
             }
         };
@@ -82,7 +83,7 @@ public class CompanyRegistrationController {
                     ((CompanyRegistrationActivity) view.getContext()).startActivityForResult(intent, REQUEST_CODE_COMPANY_LOCATION);
 
                 } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
-                    e.printStackTrace();
+                    Log.d("exception_handling", e.getMessage());
                 }
             }
         };
@@ -97,7 +98,7 @@ public class CompanyRegistrationController {
      * @param location Validate the location.
      * @return true when the given field is not empty.
      */
-    private boolean checkValidation(Context context, String userName, String password, String location) {
+    private boolean isValid(Context context, String userName, String password, String location) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password) || TextUtils.isEmpty(location)) {
             validationStatus = false;

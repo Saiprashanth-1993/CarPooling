@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -12,200 +13,229 @@
             type="com.contus.carpooling.companyregistration.model.CompanyRegistrationInfo" />
     </data>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:orientation="vertical">
 
-        <RelativeLayout
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="20dp">
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-            <ImageView
-                android:id="@+id/iv_logo_icon"
-                android:layout_width="170dp"
-                android:layout_height="160dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10dp"
-                android:contentDescription="logo icon"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_logo" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/tv_company_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_logo_icon"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:text="Company Name"
-                android:textAllCaps="true"
-                android:textColor="@color/colorHighLightBlue"
-                android:textSize="12sp" />
-
-            <LinearLayout
-                android:id="@+id/ll_parent_company_name"
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_company_name"
-                android:layout_marginLeft="48dp"
-                android:layout_marginRight="50dp"
-                android:background="@drawable/edit_text_line_border"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingBottom="5dp">
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_company" />
-
-                <android.support.v7.widget.AppCompatAutoCompleteTextView
-                    android:id="@+id/companyName"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:hint="Enter your company name"
-                    android:imeOptions="actionDone"
-                    android:paddingLeft="5dp"
-                    android:singleLine="true"
-                    android:text="@={CompanyDetails.companyName}"
-                    android:textColorHint="@color/colorEditTextHint"
-                    android:textSize="14sp" />
+                    android:layout_gravity="center"
+                    android:text="Company Registration"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
 
-            </LinearLayout>
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/tv_category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ll_parent_company_name"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginTop="20dp"
-                android:text="Category"
-                android:textAllCaps="true"
-                android:textColor="@color/colorHighLightBlue"
-                android:textSize="12sp" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
             <RelativeLayout
-                android:id="@+id/rl_category_parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_category"
-                android:layout_gravity="center"
-                android:layout_marginLeft="48dp"
-                android:layout_marginRight="50dp"
-                android:background="@drawable/edit_text_line_border"
-                android:paddingBottom="5dp">
+                android:orientation="vertical"
+                android:paddingTop="20dp">
 
                 <ImageView
-                    android:id="@+id/image_category"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_department" />
+                    android:id="@+id/iv_logo_icon"
+                    android:layout_width="170dp"
+                    android:layout_height="160dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="logo icon"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_logo" />
 
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_company_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_logo_icon"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:text="Company Name"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorHighLightBlue"
+                    android:textSize="12sp" />
 
-                <android.support.v7.widget.AppCompatEditText
+                <LinearLayout
+                    android:id="@+id/ll_parent_company_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/image_category"
-                    android:layout_toLeftOf="@+id/ic_drop_down"
-                    android:layout_toRightOf="@+id/image_category"
-                    android:background="@android:color/transparent"
-                    android:focusable="false"
-                    android:hint="Select category"
-                    android:onClick="@{ViewController.categoryListOnClick(CompanyDetails)}"
-                    android:paddingLeft="5dp"
-                    android:text="@={CompanyDetails.category}"
-                    android:textColorHint="@color/colorEditTextHint"
-                    android:textSize="14sp" />
+                    android:layout_below="@+id/tv_company_name"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/edit_text_line_border"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_company" />
+
+                    <android.support.v7.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/companyName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:hint="Enter your company name"
+                        android:imeOptions="actionDone"
+                        android:paddingLeft="5dp"
+                        android:singleLine="true"
+                        android:text="@={CompanyDetails.companyName}"
+                        android:textColorHint="@color/colorEditTextHint"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ll_parent_company_name"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Category"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorHighLightBlue"
+                    android:textSize="12sp" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_category_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_category"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/edit_text_line_border"
+                    android:paddingBottom="5dp">
+
+                    <ImageView
+                        android:id="@+id/image_category"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_department" />
+
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/image_category"
+                        android:layout_toLeftOf="@+id/ic_drop_down"
+                        android:layout_toRightOf="@+id/image_category"
+                        android:background="@android:color/transparent"
+                        android:focusable="false"
+                        android:hint="Select category"
+                        android:onClick="@{ViewController.categoryListOnClick(CompanyDetails)}"
+                        android:paddingLeft="5dp"
+                        android:text="@={CompanyDetails.category}"
+                        android:textColorHint="@color/colorEditTextHint"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/ic_drop_down"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:src="@drawable/ic_dropdown" />
+                </RelativeLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rl_category_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Location"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorHighLightBlue"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:id="@+id/ll_location_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_location"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/edit_text_line_border"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:src="@drawable/ic_location" />
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:filterTouchesWhenObscured="false"
+                        android:focusable="false"
+                        android:hint="Enter your location"
+                        android:onClick="@{ViewController.getLocationOnClick}"
+                        android:paddingLeft="5dp"
+                        android:singleLine="true"
+                        android:text="@={CompanyDetails.location}"
+                        android:textColorHint="@color/colorEditTextHint"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ll_location_parent"
+                    android:layout_marginBottom="100dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/button_rounded_corner_border"
+                    android:onClick="@{ViewController.btnCompanyRegistrationClick(CompanyDetails)}"
+                    android:text="Next"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
 
                 <ImageView
-                    android:id="@+id/ic_drop_down"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:src="@drawable/ic_dropdown" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="2dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_footer" />
             </RelativeLayout>
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/tv_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/rl_category_parent"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginTop="20dp"
-                android:text="Location"
-                android:textAllCaps="true"
-                android:textColor="@color/colorHighLightBlue"
-                android:textSize="12sp" />
-
-            <LinearLayout
-                android:id="@+id/ll_location_parent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_location"
-                android:layout_marginLeft="48dp"
-                android:layout_marginRight="50dp"
-                android:background="@drawable/edit_text_line_border"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingBottom="5dp">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:src="@drawable/ic_location" />
-
-                <android.support.v7.widget.AppCompatEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:filterTouchesWhenObscured="false"
-                    android:focusable="false"
-                    android:hint="Enter your location"
-                    android:onClick="@{ViewController.getLocationOnClick}"
-                    android:paddingLeft="5dp"
-                    android:singleLine="true"
-                    android:text="@={CompanyDetails.location}"
-                    android:textColorHint="@color/colorEditTextHint"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btn_submit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ll_location_parent"
-                android:layout_marginBottom="100dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/button_rounded_corner_border"
-                android:onClick="@{ViewController.btnCompanyRegistrationClick(CompanyDetails)}"
-                android:text="Next"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="2dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/ic_footer" />
-        </RelativeLayout>
-    </ScrollView>
+        </ScrollView>
+    </LinearLayout>
 </layout>

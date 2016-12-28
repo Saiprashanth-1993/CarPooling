@@ -6,6 +6,7 @@
  */
 package com.contus.carpooling.dashboard;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -26,6 +27,7 @@ import com.contus.carpooling.dashboard.myrides.view.MyRidesFragment;
 import com.contus.carpooling.dashboard.myrides.viewmodel.MyRidesController;
 import com.contus.carpooling.dashboard.ridesoffered.view.RidesOfferedFragment;
 import com.contus.carpooling.databinding.ActivityDashboardBinding;
+import com.contus.carpooling.notification.view.NotificationActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,9 +98,8 @@ public class DashboardActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_notification) {
-            Toast.makeText(getApplicationContext(), "Notification icon clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, NotificationActivity.class));
             return true;
         }
 

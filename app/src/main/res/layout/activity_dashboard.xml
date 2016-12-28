@@ -76,9 +76,9 @@
                 android:clickable="true"
                 android:onClick="@{onClickController.fabBtnOnClick()}"
                 android:src="@drawable/ic_action_add"
-                app:backgroundTint="@color/colorPrimary"
+                app:backgroundTint="@color/colorSecondaryColor"
                 app:fabSize="normal"
-                app:layout_behavior="com.contus.carpooling.views.ScrollAwareFABBehavior" />
+                app:layout_behavior="com.contus.carpooling.view.ScrollAwareFABBehavior" />
 
         </android.support.design.widget.CoordinatorLayout>
 

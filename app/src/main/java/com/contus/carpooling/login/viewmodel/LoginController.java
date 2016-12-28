@@ -16,7 +16,6 @@ import com.contus.carpooling.R;
 import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
 import com.contus.carpooling.dashboard.DashboardActivity;
 import com.contus.carpooling.login.model.UserLoginInfo;
-import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
 
 /**
  * Controller of the LoginActivity class
@@ -38,7 +37,7 @@ public class LoginController {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                if (checkValidation(context, getEditTextValue.getUserName(), getEditTextValue.getPassword()))
+                if (isValid(context, getEditTextValue.getUserName(), getEditTextValue.getPassword()))
                     context.startActivity(new Intent(context, DashboardActivity.class));
             }
         };
@@ -67,7 +66,7 @@ public class LoginController {
      * @return true when the given field is not empty.
      */
 
-    private boolean checkValidation(Context context, String userName, String password) {
+    private boolean isValid(Context context, String userName, String password) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password)) {
             validationStatus = false;

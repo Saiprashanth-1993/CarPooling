@@ -33,7 +33,9 @@ public class RidesOfferedAdapter extends RecyclerView.Adapter<RidesOfferedAdapte
 
     @Override
     public void onBindViewHolder(RidesOfferedAdapter.RidesOfferedViewHolder holder, int position) {
-
+        /**
+         * Need to implement.
+         */
     }
 
     @Override
