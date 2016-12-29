@@ -15,4 +15,7 @@ package com.contus.carpooling.dashboard.myrides.model;
 
 public class MyRidesInfo {
 
+    /**
+     * Implement it later
+     */
 }

@@ -28,6 +28,7 @@ import com.contus.carpooling.dashboard.ridesoffered.view.RidesOfferedFragment;
 import com.contus.carpooling.databinding.ActivityDashboardBinding;
 import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.notification.view.NotificationActivity;
+import com.contus.carpooling.profile.view.UserProfileActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -115,7 +116,7 @@ public class DashboardActivity extends AppCompatActivity
         if (id == R.id.nav_rides) {
             // Yet to implement
         } else if (id == R.id.nav_profile) {
-            // Yet to implement
+            startActivity(new Intent(this, UserProfileActivity.class));
         } else if (id == R.id.nav_settings) {
             // Yet to implement
         } else if (id == R.id.nav_logout) {

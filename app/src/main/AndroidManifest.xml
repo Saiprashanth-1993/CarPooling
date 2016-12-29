@@ -38,6 +38,10 @@
         <activity
             android:name=".dashboard.homepage.view.DashboardActivity"
             android:label="@string/title_activity_dashboard" />
+
+        <activity
+            android:name=".profile.view.UserProfileActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".employeedetails.view.EmployeeDetailActivity"
             android:windowSoftInputMode="stateHidden" />
