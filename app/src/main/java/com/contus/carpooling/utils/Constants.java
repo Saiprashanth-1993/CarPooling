@@ -53,6 +53,10 @@ public class Constants {
      * Gallery intent request code.
      */
     public static final int GALLERY_SELECTION = 1001;
+    /**
+     * Catch error message.
+     */
+    public static final String EXCEPTION_MESSAGE = "exception";
 
     /**
      * Instantiates a new constants.

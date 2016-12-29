@@ -63,11 +63,8 @@ public class UserRegistrationActivity extends AppCompatActivity {
                 Log.i("place_details", "Place Selected: " + place.getName());
                 registrationInfo.setFromLocation(place.getName().toString());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
-                Status status = PlaceAutocomplete.getStatus(this, data);
-                Log.e("error", "Error: Status = " + status.toString());
-            } else if (resultCode == RESULT_CANCELED) {
-                // Indicates that the activity closed before a selection was made. For example if
-                // the user pressed the back button.
+                Status result = PlaceAutocomplete.getStatus(this, data);
+                Log.e("error", "Error: Status = " + result.toString());
             }
         } else if (requestCode == REQUEST_CODE_USER_TO_LOCATION) {
             if (resultCode == RESULT_OK) {
@@ -78,9 +75,6 @@ public class UserRegistrationActivity extends AppCompatActivity {
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(this, data);
                 Log.e("error", "Error: Status = " + status.toString());
-            } else if (resultCode == RESULT_CANCELED) {
-                // Indicates that the activity closed before a selection was made. For example if
-                // the user pressed the back button.
             }
         }
     }

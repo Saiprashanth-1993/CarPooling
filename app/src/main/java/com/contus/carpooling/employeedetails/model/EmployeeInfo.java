@@ -31,7 +31,7 @@ public class EmployeeInfo {
     /**
      * Sets {@link #imageSelectedType}.
      */
-    public void getImageSelectedType(String imageSelectedFront) {
-        this.imageSelectedType = imageSelectedFront;
+    public void getImageSelectedType(String imageSelectedType) {
+        this.imageSelectedType = imageSelectedType;
     }
 }

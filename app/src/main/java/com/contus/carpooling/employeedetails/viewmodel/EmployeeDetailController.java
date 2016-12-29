@@ -38,7 +38,7 @@ public class EmployeeDetailController {
                 } else {
                     employeeInfo.getImageSelectedType(Constants.CLICK_BACK_IMAGE_VIEW);
                 }
-                BottomDialogFragment bottomDialogFragment = BottomDialogFragment.newInstance(getSelectedImageType);
+                BottomDialogFragment bottomDialogFragment = new BottomDialogFragment();
                 bottomDialogFragment.show(((EmployeeDetailActivity) view.getContext()).getSupportFragmentManager(), "121");
             }
         };

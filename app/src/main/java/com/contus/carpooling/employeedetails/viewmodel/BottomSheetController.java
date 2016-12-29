@@ -34,21 +34,14 @@ public class BottomSheetController {
     private BottomDialogFragment bottomDialogFragment;
 
     /**
-     * Used to identify the id card image front or back side.
-     */
-    private String imageSelectedType;
-
-    /**
      * Instance of the container activity
      *
      * @param employeeDetailActivity instance of the activity.
      * @param bottomDialogFragment   instance of the fragment.
-     * @param imageSelectedType      instance of the selected image type.
      */
-    public BottomSheetController(Activity employeeDetailActivity, BottomDialogFragment bottomDialogFragment, String imageSelectedType) {
+    public BottomSheetController(Activity employeeDetailActivity, BottomDialogFragment bottomDialogFragment) {
         this.employeeDetailActivity = employeeDetailActivity;
         this.bottomDialogFragment = bottomDialogFragment;
-        this.imageSelectedType = imageSelectedType;
     }
 
     /**

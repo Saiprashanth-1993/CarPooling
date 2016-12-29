@@ -9,7 +9,6 @@ package com.contus.carpooling.userregistration.viewmodel;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
@@ -19,9 +18,11 @@ import com.contus.carpooling.employeedetails.view.EmployeeDetailActivity;
 import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.userregistration.model.UserRegistrationInfo;
 import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
+import com.contus.carpooling.utils.Constants;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.contus.carpooling.utils.Logger;
 
 /**
  * OnClick listener of the view.
@@ -47,10 +48,10 @@ public class UserRegistrationController {
             @Override
             public void onClick(View view) {
                 context = view.getContext();
-             /*   if (isValid(getEditTextValue.getUserName(), getEditTextValue.getMobileNumber(),
+                if (isValid(getEditTextValue.getUserName(), getEditTextValue.getMobileNumber(),
                         getEditTextValue.getEmailID(), getEditTextValue.getFromLocation(),
                         getEditTextValue.getToLocation(), getEditTextValue.getPassword(), getEditTextValue.getGender()))
-*/                    context.startActivity(new Intent(context, EmployeeDetailActivity.class));
+                    context.startActivity(new Intent(context, EmployeeDetailActivity.class));
             }
         };
     }
@@ -71,7 +72,7 @@ public class UserRegistrationController {
                     ((UserRegistrationActivity) view.getContext()).startActivityForResult(intent, requestCode);
 
                 } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
-                    Log.d("Google place exception", e.getMessage());
+                    Logger.logErrorThrowable(Constants.EXCEPTION_MESSAGE, e);
                 }
             }
         };
