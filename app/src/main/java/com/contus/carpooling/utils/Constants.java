@@ -13,12 +13,6 @@ package com.contus.carpooling.utils;
  * @version 1.1
  */
 public class Constants {
-    /**
-     * Instantiates a new constants.
-     */
-    private Constants() {
-        //Private constructor for prevent instance.
-    }
 
     /**
      * The result of google place on activity result to get company location.
@@ -49,8 +43,22 @@ public class Constants {
      * OnClick on gallery or camera type.
      */
     public static final String SELECTION_TYPE = "selected_image_type";
+
     /**
      * Camera intent request code.
      */
     public static final int CAMERA_SELECTION = 1000;
+
+    /**
+     * Gallery intent request code.
+     */
+    public static final int GALLERY_SELECTION = 1001;
+
+    /**
+     * Instantiates a new constants.
+     */
+    private Constants() {
+        //Private constructor for prevent instance.
+    }
+
 }

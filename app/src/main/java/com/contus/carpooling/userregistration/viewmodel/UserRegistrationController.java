@@ -98,6 +98,7 @@ public class UserRegistrationController {
      * OnClick listener of user radio button.
      *
      * @param getEditTextValue Used to get the registration details.
+     * @param gender           Used to get gender type.
      * @return OnClickListener of the radio button.
      */
     public View.OnClickListener radioBtnOnClick(final UserRegistrationInfo getEditTextValue, final String gender) {
