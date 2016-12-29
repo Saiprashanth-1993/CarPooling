@@ -41,5 +41,4 @@ public class UserProfileActivity extends AppCompatActivity {
         activityMyProfileBinding.setUserProfile(profileInfo);
         activityMyProfileBinding.setViewController(new UserProfileController());
     }
-
 }

@@ -92,6 +92,7 @@
             app:headerLayout="@layout/navigation_header"
             app:itemIconTint="@color/colorPrimary"
             app:itemTextColor="#4b4b4b"
-            app:menu="@menu/activity_dashboard_drawer" />
+            app:menu="@menu/activity_dashboard_drawer"
+            app:theme="@style/NavigationDrawerSelected" />
     </android.support.v4.widget.DrawerLayout>
 </layout>

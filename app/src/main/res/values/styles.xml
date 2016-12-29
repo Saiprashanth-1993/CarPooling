@@ -49,5 +49,8 @@
         <item name="colorControlNormal">@color/colorPrimaryDark</item>
     </style>
 
+    <style name="NavigationDrawerSelected" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorControlHighlight">@android:color/transparent</item>
+    </style>
 
 </resources>
