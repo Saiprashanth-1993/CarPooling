@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/tools"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="rideOfferedDetails"
-            type="com.contus.carpooling.dashboard.ridesoffered.model.RidesOfferedDetails" />
+            name="UserProfile"
+            type="com.contus.carpooling.profile.model.UserProfileInfo" />
+
+        <variable
+            name="ViewController"
+            type="com.contus.carpooling.profile.viewmodel.UserProfileController" />
+
     </data>
 
     <LinearLayout
@@ -53,6 +58,7 @@
                     android:id="@+id/ll_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:orientation="vertical"
                     android:padding="10dp">
 
@@ -66,25 +72,28 @@
                         android:layout_gravity="center"
                         android:src="@drawable/ic_person" />
 
-                    <android.support.v7.widget.AppCompatTextView
+                    <android.support.v7.widget.AppCompatEditText
                         android:id="@+id/tv_profile_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="5dp"
-                        android:text="Bhuvan Nesan"
+                        android:background="@color/colorBackground"
+                        android:enabled="@{UserProfile.isToEditOrSave? true: false}"
+                        android:padding="5dp"
+                        android:text="@={UserProfile.userName}"
+                        android:textAlignment="center"
                         android:textColor="@color/colorHighLightBlue"
                         android:textSize="@dimen/text_extra_large" />
 
-                    <android.support.v7.widget.AppCompatTextView
+                    <android.support.v7.widget.AppCompatEditText
                         android:id="@+id/tv_profile_team_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="5dp"
-                        android:text="Web Team"
-                        android:textColor="@android:color/background_dark"
-                        android:textSize="@dimen/text_small" />
+                        android:background="@color/colorBackground"
+                        android:enabled="@{UserProfile.isToEditOrSave? true: false}"
+                        android:text="@={UserProfile.userTeamName}"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/text_medium" />
                 </LinearLayout>
 
                 <android.support.design.widget.FloatingActionButton
@@ -95,23 +104,26 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginBottom="-20dp"
                     android:layout_marginRight="20dp"
-                    android:backgroundTint="@color/colorSecondaryColor"
-                    android:src="@drawable/ic_action_edit" />
+                    android:onClick="@{ViewController.btnProfileEditClick(UserProfile)}"
+                    android:src="@{UserProfile.toEditOrSave ? @drawable/ic_action_tick : @drawable/ic_action_edit}"
+                    app:backgroundTint="@color/colorSecondaryColor" />
 
                 <android.support.v7.widget.CardView
                     android:id="@+id/cv_profile_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ll_profile"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
                     card_view:cardBackgroundColor="@android:color/white"
                     card_view:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
                         <android.support.v7.widget.AppCompatTextView
                             android:layout_width="wrap_content"
@@ -124,7 +136,7 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="5dp">
+                            android:layout_marginTop="10dp">
 
                             <ImageView
                                 android:id="@+id/iv_mail_icon"
@@ -132,22 +144,23 @@
                                 android:layout_height="20dp"
                                 android:src="@drawable/ic_profile_mail" />
 
-                            <android.support.v7.widget.AppCompatTextView
+                            <android.support.v7.widget.AppCompatEditText
                                 android:id="@+id/tv_mail"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
+                                android:layout_marginLeft="10dp"
                                 android:layout_toRightOf="@+id/iv_mail_icon"
+                                android:background="@android:drawable/screen_background_light_transparent"
+                                android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                 android:maxLines="2"
-                                android:text="Bhuvan Nesan"
-                                android:textColor="@android:color/background_dark"
+                                android:text="@={UserProfile.userMail}"
                                 android:textSize="@dimen/text_medium" />
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="5dp">
+                            android:layout_marginTop="15dp">
 
                             <ImageView
                                 android:id="@+id/iv_ph_icon"
@@ -155,23 +168,24 @@
                                 android:layout_height="20dp"
                                 android:src="@drawable/ic_profile_mobile" />
 
-                            <android.support.v7.widget.AppCompatTextView
+                            <android.support.v7.widget.AppCompatEditText
                                 android:id="@+id/tv_phone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
+                                android:layout_marginLeft="10dp"
                                 android:layout_toRightOf="@+id/iv_ph_icon"
+                                android:background="@android:drawable/screen_background_light_transparent"
                                 android:ellipsize="end"
+                                android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                 android:maxLines="2"
-                                android:text="Bhuvan NesaBhuvan NesannBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan NesanBhuvan Nesan"
-                                android:textColor="@android:color/background_dark"
+                                android:text="@={UserProfile.userPhone}"
                                 android:textSize="@dimen/text_medium" />
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="5dp">
+                            android:layout_marginTop="15dp">
 
                             <ImageView
                                 android:id="@+id/iv_addr_icon"
@@ -179,22 +193,23 @@
                                 android:layout_height="20dp"
                                 android:src="@drawable/ic_profile_office" />
 
-                            <android.support.v7.widget.AppCompatTextView
+                            <android.support.v7.widget.AppCompatEditText
                                 android:id="@+id/tv_addr"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
+                                android:layout_marginLeft="10dp"
                                 android:layout_toRightOf="@+id/iv_addr_icon"
+                                android:background="@android:drawable/screen_background_light_transparent"
+                                android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                 android:maxLines="2"
-                                android:text="Bhuvan Nesan"
-                                android:textColor="@android:color/background_dark"
+                                android:text="@={UserProfile.userAddress}"
                                 android:textSize="@dimen/text_medium" />
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="5dp">
+                            android:layout_marginTop="15dp">
 
                             <ImageView
                                 android:id="@+id/iv_loc_icon"
@@ -202,15 +217,16 @@
                                 android:layout_height="20dp"
                                 android:src="@drawable/ic_profile_map" />
 
-                            <android.support.v7.widget.AppCompatTextView
+                            <android.support.v7.widget.AppCompatEditText
                                 android:id="@+id/tv_location"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
+                                android:layout_marginLeft="10dp"
                                 android:layout_toRightOf="@+id/iv_loc_icon"
+                                android:background="@android:drawable/screen_background_light_transparent"
+                                android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                 android:maxLines="2"
-                                android:text="Bhuvan Nesan"
-                                android:textColor="@android:color/background_dark"
+                                android:text="@={UserProfile.userLocation}"
                                 android:textSize="@dimen/text_medium" />
                         </RelativeLayout>
                     </LinearLayout>
@@ -220,16 +236,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/cv_profile_info"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
                     card_view:cardBackgroundColor="@android:color/white"
                     card_view:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
                         <android.support.v7.widget.AppCompatTextView
                             android:layout_width="wrap_content"
@@ -255,14 +271,16 @@
                                 android:textColor="@android:color/background_dark"
                                 android:textSize="@dimen/text_medium" />
 
-                            <android.support.v7.widget.AppCompatTextView
+                            <android.support.v7.widget.AppCompatEditText
                                 android:id="@+id/tv_vehicle_type_val"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="25dp"
                                 android:layout_toRightOf="@+id/tv_vehicle_type_txt"
+                                android:background="@android:drawable/screen_background_light_transparent"
+                                android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                 android:maxLines="1"
-                                android:text="4 wheeler"
+                                android:text="@={UserProfile.userVehicleType}"
                                 android:textSize="@dimen/text_small" />
                         </RelativeLayout>
 
@@ -284,15 +302,17 @@
                                 android:textColor="@android:color/background_dark"
                                 android:textSize="@dimen/text_medium" />
 
-                            <android.support.v7.widget.AppCompatTextView
+                            <android.support.v7.widget.AppCompatEditText
                                 android:id="@+id/tv_vehicle_name_val"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="25dp"
                                 android:layout_toRightOf="@+id/tv_vehicle_name_txt"
+                                android:background="@android:drawable/screen_background_light_transparent"
                                 android:ellipsize="end"
+                                android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                 android:maxLines="1"
-                                android:text="BMW A7"
+                                android:text="@={UserProfile.userVehicleName}"
                                 android:textSize="@dimen/text_small" />
                         </RelativeLayout>
 
@@ -312,14 +332,16 @@
                                 android:textColor="@android:color/background_dark"
                                 android:textSize="@dimen/text_medium" />
 
-                            <android.support.v7.widget.AppCompatTextView
+                            <android.support.v7.widget.AppCompatEditText
                                 android:id="@+id/tv_vehicle_num_val"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="25dp"
                                 android:layout_toRightOf="@+id/tv_vehicle_num_txt"
+                                android:background="@android:drawable/screen_background_light_transparent"
+                                android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                 android:maxLines="1"
-                                android:text="TN09 J866"
+                                android:text="@={UserProfile.userVehicleNum}"
                                 android:textSize="@dimen/text_small" />
                         </RelativeLayout>
 
