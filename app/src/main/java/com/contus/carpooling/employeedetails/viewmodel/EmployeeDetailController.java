@@ -34,9 +34,9 @@ public class EmployeeDetailController {
             @Override
             public void onClick(View view) {
                 if (getSelectedImageType.equals(Constants.CLICK_FRONT_IMAGE_VIEW)) {
-                    employeeInfo.getImageSelectedType(Constants.CLICK_FRONT_IMAGE_VIEW);
+                    employeeInfo.setImageSelectedType(Constants.CLICK_FRONT_IMAGE_VIEW);
                 } else {
-                    employeeInfo.getImageSelectedType(Constants.CLICK_BACK_IMAGE_VIEW);
+                    employeeInfo.setImageSelectedType(Constants.CLICK_BACK_IMAGE_VIEW);
                 }
                 BottomDialogFragment bottomDialogFragment = new BottomDialogFragment();
                 bottomDialogFragment.show(((EmployeeDetailActivity) view.getContext()).getSupportFragmentManager(), "121");

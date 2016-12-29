@@ -12,7 +12,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
@@ -21,6 +20,8 @@ import com.contus.carpooling.R;
 import com.contus.carpooling.companyregistration.model.CompanyRegistrationInfo;
 import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
 import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
+import com.contus.carpooling.utils.Constants;
+import com.contus.carpooling.utils.Logger;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
@@ -83,7 +84,7 @@ public class CompanyRegistrationController {
                     ((CompanyRegistrationActivity) view.getContext()).startActivityForResult(intent, REQUEST_CODE_COMPANY_LOCATION);
 
                 } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
-                    Log.d("exception_handling", e.getMessage());
+                    Logger.logErrorThrowable(Constants.EXCEPTION_MESSAGE, e);
                 }
             }
         };
