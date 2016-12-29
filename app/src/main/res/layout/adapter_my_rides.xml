@@ -7,7 +7,7 @@
 
         <variable
             name="editRideOnClick"
-            type="com.contus.carpooling.dashboard.myrides.viewmodel.MyRidesController" />
+            type="com.contus.carpooling.dashboard.homepage.viewmodel.DashboardController" />
     </data>
 
     <LinearLayout

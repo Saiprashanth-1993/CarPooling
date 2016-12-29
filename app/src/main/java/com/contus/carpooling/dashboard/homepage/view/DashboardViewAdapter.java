@@ -1,10 +1,10 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.dashboard
+ * @package com.contus.carpooling.dashboard.homepage.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
-package com.contus.carpooling.dashboard;
+package com.contus.carpooling.dashboard.homepage.view;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

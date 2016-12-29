@@ -12,7 +12,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.contus.carpooling.R;
-import com.contus.carpooling.databinding.RidesOfferedAdapterBinding;
+import com.contus.carpooling.dashboard.homepage.viewmodel.DashboardController;
+import com.contus.carpooling.databinding.AdapterRidesOfferedBinding;
 
 /**
  * Adapter class to display the offered rides details.
@@ -25,9 +26,9 @@ public class RidesOfferedAdapter extends RecyclerView.Adapter<RidesOfferedAdapte
 
     @Override
     public RidesOfferedAdapter.RidesOfferedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RidesOfferedAdapterBinding ridesOfferedAdapterBinding = DataBindingUtil.inflate(
+        AdapterRidesOfferedBinding ridesOfferedAdapterBinding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
-                R.layout.rides_offered_adapter, parent, false);
+                R.layout.adapter_rides_offered, parent, false);
         return new RidesOfferedViewHolder(ridesOfferedAdapterBinding);
     }
 
@@ -47,8 +48,9 @@ public class RidesOfferedAdapter extends RecyclerView.Adapter<RidesOfferedAdapte
      * The rides offered list PackageViewHolder for reusable view.
      */
     public class RidesOfferedViewHolder extends RecyclerView.ViewHolder {
-        private RidesOfferedViewHolder(RidesOfferedAdapterBinding itemView) {
+        private RidesOfferedViewHolder(AdapterRidesOfferedBinding itemView) {
             super(itemView.getRoot());
+            itemView.setItemClick(new DashboardController());
         }
     }
 }

@@ -36,12 +36,13 @@
             android:name=".addnewride.view.RegisterNewRidesActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".dashboard.DashboardActivity"
+            android:name=".dashboard.homepage.view.DashboardActivity"
             android:label="@string/title_activity_dashboard" />
         <activity
             android:name=".employeedetails.view.EmployeeDetailActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".notification.view.NotificationActivity" />
+        <activity android:name=".offeredrideinfo.view.OfferedRidesInformationActivity" />
     </application>
 
 </manifest>

@@ -1,10 +1,10 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.dashboard
+ * @package com.contus.carpooling.dashboard.homepage.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
-package com.contus.carpooling.dashboard;
+package com.contus.carpooling.dashboard.homepage.view;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -23,9 +23,10 @@ import android.view.View;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.dashboard.myrides.view.MyRidesFragment;
-import com.contus.carpooling.dashboard.myrides.viewmodel.MyRidesController;
+import com.contus.carpooling.dashboard.homepage.viewmodel.DashboardController;
 import com.contus.carpooling.dashboard.ridesoffered.view.RidesOfferedFragment;
 import com.contus.carpooling.databinding.ActivityDashboardBinding;
+import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.notification.view.NotificationActivity;
 
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class DashboardActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityDashboardBinding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard);
-        activityDashboardBinding.setOnClickController(new MyRidesController());
+        activityDashboardBinding.setOnClickController(new DashboardController());
         setSupportActionBar(activityDashboardBinding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -118,7 +119,9 @@ public class DashboardActivity extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
             // Yet to implement
         } else if (id == R.id.nav_logout) {
-            // Yet to implement
+            Intent logoutIntent = new Intent(getApplicationContext(), LoginActivity.class);
+            logoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(logoutIntent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
