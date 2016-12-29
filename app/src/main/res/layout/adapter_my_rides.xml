@@ -3,7 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
-    <data />
+    <data>
+
+        <variable
+            name="editRideOnClick"
+            type="com.contus.carpooling.dashboard.myrides.viewmodel.MyRidesController" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,7 +75,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="7dp"
                         android:src="@drawable/ic_arrow"
-                        android:tint="@color/colorHighLightBlue"/>
+                        android:tint="@color/colorHighLightBlue" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -122,6 +127,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/rounded_corner_my_ride_edit"
+                        android:onClick="@{editRideOnClick.rideEditOnClick()}"
                         android:paddingBottom="10dp"
                         android:paddingLeft="25dp"
                         android:paddingRight="25dp"

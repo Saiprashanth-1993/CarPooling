@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.contus.carpooling.R;
+import com.contus.carpooling.dashboard.myrides.viewmodel.MyRidesController;
 import com.contus.carpooling.databinding.AdapterMyRidesBinding;
 
 /**
@@ -50,6 +51,7 @@ public class MyRidesAdapter extends RecyclerView.Adapter<MyRidesAdapter.MyRidesV
     public class MyRidesViewHolder extends RecyclerView.ViewHolder {
         private MyRidesViewHolder(AdapterMyRidesBinding itemView) {
             super(itemView.getRoot());
+            itemView.setEditRideOnClick(new MyRidesController());
         }
     }
 }

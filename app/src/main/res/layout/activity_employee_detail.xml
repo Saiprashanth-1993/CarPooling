@@ -73,6 +73,7 @@
                 android:hint="Enter your id number"
                 android:paddingTop="5dp"
                 android:singleLine="true"
+                android:text="@={employeeInfo.idCardNumber}"
                 android:textColorHint="@color/colorEditTextHint"
                 android:textSize="14sp" />
 
@@ -88,6 +89,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:onClick='@{onClickController.imageViewOnClick(constants.CLICK_FRONT_IMAGE_VIEW,employeeInfo)}'
+                    android:scaleType="fitXY"
                     android:src="@drawable/ic_image_upload_front" />
 
                 <android.support.v7.widget.AppCompatTextView
@@ -98,6 +100,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/upload_image_front"
+                    android:paddingLeft="5dp"
                     android:text="Upload Your Identity Card Front Picture"
                     android:textColor="@color/colorHighLightBlue"
                     android:textSize="14sp" />
@@ -116,6 +119,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:onClick='@{onClickController.imageViewOnClick(constants.CLICK_BACK_IMAGE_VIEW,employeeInfo)}'
+                    android:scaleType="fitXY"
                     android:src="@drawable/ic_image_upload_back" />
 
                 <android.support.v7.widget.AppCompatTextView
@@ -126,6 +130,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/upload_image_back"
+                    android:paddingLeft="5dp"
                     android:text="Upload Your Identity Card Front Picture"
                     android:textColor="@color/colorHighLightBlue"
                     android:textSize="14sp" />
@@ -138,6 +143,7 @@
                 android:layout_below="@+id/parent_upload_back"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button_rounded_corner_border"
+                android:onClick="@{onClickController.saveEmployeeDetails(employeeInfo)}"
                 android:text="Submit"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />

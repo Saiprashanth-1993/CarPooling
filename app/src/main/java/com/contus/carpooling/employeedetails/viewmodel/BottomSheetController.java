@@ -47,7 +47,7 @@ public class BottomSheetController {
     /**
      * OnClick listner of the image view.
      *
-     * @return OnClickListner of the image view to call the camera intent or gallery intent.
+     * @return OnClickListner of the image view to call the camera intent.
      */
     public View.OnClickListener imageCameraSelectionOnclick() {
         return new View.OnClickListener() {
@@ -55,6 +55,24 @@ public class BottomSheetController {
             public void onClick(View view) {
                 Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 employeeDetailActivity.startActivityForResult(intent, Constants.CAMERA_SELECTION);
+                bottomDialogFragment.dismiss();
+            }
+        };
+    }
+
+    /**
+     * OnClick listner of the image view.
+     *
+     * @return OnClickListner of the image view to call the gallery intent.
+     */
+    public View.OnClickListener imageGalleryelectionOnclick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);//
+                employeeDetailActivity.startActivityForResult(Intent.createChooser(intent, "Select Picture"), Constants.GALLERY_SELECTION);
                 bottomDialogFragment.dismiss();
             }
         };

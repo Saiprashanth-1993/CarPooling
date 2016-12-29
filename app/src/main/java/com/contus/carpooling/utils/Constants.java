@@ -53,10 +53,16 @@ public class Constants {
      * Gallery intent request code.
      */
     public static final int GALLERY_SELECTION = 1001;
+
     /**
      * Catch error message.
      */
     public static final String EXCEPTION_MESSAGE = "exception";
+
+    /**
+     * Check whether click on edit ride or create ride.
+     */
+    public static final String CLICK_RIDE = "intent_ride";
 
     /**
      * Instantiates a new constants.

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
@@ -18,6 +19,9 @@ import com.contus.carpooling.databinding.ActivityEmployeeDetailBinding;
 import com.contus.carpooling.employeedetails.model.EmployeeInfo;
 import com.contus.carpooling.employeedetails.viewmodel.EmployeeDetailController;
 import com.contus.carpooling.utils.Constants;
+import com.contus.carpooling.utils.Logger;
+
+import java.io.IOException;
 
 /**
  * Activity to upload the employee details.
@@ -64,10 +68,29 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Constants.CAMERA_SELECTION && data != null) {
             Bitmap capturedImage = (Bitmap) data.getExtras().get("data");
+            int nh = (int) ( capturedImage.getHeight() * (512.0 / capturedImage.getWidth()) );
+            Bitmap scaled = Bitmap.createScaledBitmap(capturedImage, 512, nh, true);
             if (employeeInfo.getImageSelectedType().equals(Constants.CLICK_FRONT_IMAGE_VIEW)) {
-                employeeDetailBinding.uploadImageFront.setImageBitmap(capturedImage);
+                employeeInfo.setFrontSideSelected(true);
+                employeeDetailBinding.uploadImageFront.setImageBitmap(scaled);
             } else {
-                employeeDetailBinding.uploadImageBack.setImageBitmap(capturedImage);
+                employeeInfo.setBackSideSelected(true);
+                employeeDetailBinding.uploadImageBack.setImageBitmap(scaled);
+            }
+        } else if (requestCode == Constants.GALLERY_SELECTION && data != null) {
+            try {
+                Bitmap selectImage = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
+                int nh = (int) ( selectImage.getHeight() * (512.0 / selectImage.getWidth()) );
+                Bitmap scaled = Bitmap.createScaledBitmap(selectImage, 512, nh, true);
+                if (employeeInfo.getImageSelectedType().equals(Constants.CLICK_FRONT_IMAGE_VIEW)) {
+                    employeeInfo.setFrontSideSelected(true);
+                    employeeDetailBinding.uploadImageFront.setImageBitmap(scaled);
+                } else {
+                    employeeInfo.setBackSideSelected(true);
+                    employeeDetailBinding.uploadImageBack.setImageBitmap(scaled);
+                }
+            } catch (IOException e) {
+                Logger.logErrorThrowable(Constants.EXCEPTION_MESSAGE, e);
             }
         }
     }

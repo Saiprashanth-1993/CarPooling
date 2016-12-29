@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.view.View;
 
 import com.contus.carpooling.addnewride.view.RegisterNewRidesActivity;
+import com.contus.carpooling.utils.Constants;
 
 /**
  * Controller of the dashboard activity and my rides fragment class
@@ -30,7 +31,26 @@ public class MyRidesController {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                context.startActivity(new Intent(context, RegisterNewRidesActivity.class));
+                Intent createRide = new Intent(context, RegisterNewRidesActivity.class);
+                createRide.putExtra(Constants.CLICK_RIDE, false);
+                context.startActivity(createRide);
+            }
+        };
+    }
+
+    /**
+     * OnClick listener in list items.
+     *
+     * @return OnClickListener of the recycler view on item.
+     */
+    public View.OnClickListener rideEditOnClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = view.getContext();
+                Intent editRideIntent = new Intent(context, RegisterNewRidesActivity.class);
+                editRideIntent.putExtra(Constants.CLICK_RIDE, true);
+                context.startActivity(editRideIntent);
             }
         };
     }
