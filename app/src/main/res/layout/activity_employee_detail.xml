@@ -4,6 +4,10 @@
 
     <data>
 
+        <variable
+            name="employeeInfo"
+            type="com.contus.carpooling.employeedetails.model.EmployeeInfo" />
+
         <import
             alias="constants"
             type="com.contus.carpooling.utils.Constants" />
@@ -59,7 +63,6 @@
                 android:textColor="@color/colorHighLightBlue"
                 android:textSize="14sp" />
 
-
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/et_employee_code"
                 android:layout_width="match_parent"
@@ -82,9 +85,9 @@
 
                 <ImageView
                     android:id="@+id/upload_image_front"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:onClick='@{onClickController.imageViewOnClick()}'
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:onClick='@{onClickController.imageViewOnClick(constants.CLICK_FRONT_IMAGE_VIEW,employeeInfo)}'
                     android:src="@drawable/ic_image_upload_front" />
 
                 <android.support.v7.widget.AppCompatTextView
@@ -110,9 +113,9 @@
 
                 <ImageView
                     android:id="@+id/upload_image_back"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:onClick='@{onClickController.imageViewOnClick()}'
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:onClick='@{onClickController.imageViewOnClick(constants.CLICK_BACK_IMAGE_VIEW,employeeInfo)}'
                     android:src="@drawable/ic_image_upload_back" />
 
                 <android.support.v7.widget.AppCompatTextView

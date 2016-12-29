@@ -6,7 +6,7 @@
 
         <variable
             name="selectionCameraOption"
-            type="com.contus.carpooling.employeedetails.viewmodel.EmployeeDetailController" />
+            type="com.contus.carpooling.employeedetails.viewmodel.BottomSheetController" />
     </data>
 
     <android.support.v7.widget.CardView

@@ -47,7 +47,7 @@ public class CompanyRegistrationController {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                if (isValid(context, getEditTextValue.getCompanyName(), getEditTextValue.getCategory(), getEditTextValue.getLocation()))
+//                if (isValid(context, getEditTextValue.getCompanyName(), getEditTextValue.getCategory(), getEditTextValue.getLocation()))
                     context.startActivity(new Intent(context, UserRegistrationActivity.class));
             }
         };

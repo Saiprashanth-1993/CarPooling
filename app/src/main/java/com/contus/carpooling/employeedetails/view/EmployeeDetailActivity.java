@@ -15,6 +15,7 @@ import android.view.MenuItem;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.databinding.ActivityEmployeeDetailBinding;
+import com.contus.carpooling.employeedetails.model.EmployeeInfo;
 import com.contus.carpooling.employeedetails.viewmodel.EmployeeDetailController;
 import com.contus.carpooling.utils.Constants;
 
@@ -25,20 +26,28 @@ import com.contus.carpooling.utils.Constants;
  * @version 1.1
  */
 public class EmployeeDetailActivity extends AppCompatActivity {
+
     /**
      * Binding the activity.
      */
-    ActivityEmployeeDetailBinding employeeDetailBinding;
+    private ActivityEmployeeDetailBinding employeeDetailBinding;
+
+    /**
+     * Model class to get the employee details.
+     */
+    private EmployeeInfo employeeInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         employeeDetailBinding = DataBindingUtil.setContentView(EmployeeDetailActivity.this, R.layout.activity_employee_detail);
         setSupportActionBar(employeeDetailBinding.toolbar);
+        employeeInfo = new EmployeeInfo();
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        employeeDetailBinding.setOnClickController(new EmployeeDetailController(this));
+        employeeDetailBinding.setEmployeeInfo(employeeInfo);
+        employeeDetailBinding.setOnClickController(new EmployeeDetailController());
     }
 
     @Override
@@ -53,10 +62,13 @@ public class EmployeeDetailActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        String imageResult = data.getStringExtra(Constants.SELECTION_TYPE)
-        if (requestCode == Constants.CAMERA_SELECTION) {
+        if (requestCode == Constants.CAMERA_SELECTION && data != null) {
             Bitmap capturedImage = (Bitmap) data.getExtras().get("data");
-            employeeDetailBinding.uploadImageFront.setImageBitmap(capturedImage);
+            if (employeeInfo.getImageSelectedType().equals(Constants.CLICK_FRONT_IMAGE_VIEW)) {
+                employeeDetailBinding.uploadImageFront.setImageBitmap(capturedImage);
+            } else {
+                employeeDetailBinding.uploadImageBack.setImageBitmap(capturedImage);
+            }
         }
     }
 }
