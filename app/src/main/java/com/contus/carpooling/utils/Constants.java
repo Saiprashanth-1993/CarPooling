@@ -10,7 +10,7 @@ package com.contus.carpooling.utils;
  * Constants variables used for the application.
  *
  * @author ContusTeam <developers@contus.in>
- * @version 1.1
+ * @version 1.0
  */
 public class Constants {
 

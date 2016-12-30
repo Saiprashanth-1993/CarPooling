@@ -21,8 +21,6 @@ import com.contus.carpooling.databinding.AdapterMyRidesBinding;
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
-
-
 public class MyRidesAdapter extends RecyclerView.Adapter<MyRidesAdapter.MyRidesViewHolder> {
 
     @Override

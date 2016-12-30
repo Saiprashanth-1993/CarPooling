@@ -11,7 +11,6 @@ import android.databinding.Bindable;
 
 import com.contus.carpooling.BR;
 
-
 /**
  * Model class is used to get and store the user profile details.
  *
@@ -62,7 +61,6 @@ public class UserProfileInfo extends BaseObservable {
      * Get the vehicle number of the user.
      */
     private boolean isToEditOrSave;
-
 
     /**
      * Gets {@see #userName}.

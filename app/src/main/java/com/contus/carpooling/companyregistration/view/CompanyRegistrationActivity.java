@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling..companyregistration.view
+ * @package com.contus.carpooling.companyregistration.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -28,12 +28,12 @@ import static com.contus.carpooling.utils.Constants.REQUEST_CODE_COMPANY_LOCATIO
  * Activity to register as a new company for the application.
  *
  * @author ContusTeam <developers@contus.in>
- * @version 1.1
+ * @version 1.0
  */
 public class CompanyRegistrationActivity extends AppCompatActivity {
 
     /**
-     * List of company details.
+     * List of static company details.
      */
     private String[] companyNameList = {"Contus", "Contoon", "Con", "Cont", "Contus pvt", "Contus lmt", "HCL", "Infosis",
             "TCS", "IBM", "Google", "CTS", "Wipro"};

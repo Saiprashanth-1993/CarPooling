@@ -20,7 +20,7 @@ import com.contus.carpooling.databinding.FragmentMyRidesBinding;
  * Fragment to display the my rides details in the dashboard.
  *
  * @author ContusTeam <developers@contus.in>
- * @version 1.1
+ * @version 1.0
  */
 public class MyRidesFragment extends Fragment {
 

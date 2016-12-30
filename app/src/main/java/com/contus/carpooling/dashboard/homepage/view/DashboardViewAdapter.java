@@ -17,7 +17,7 @@ import java.util.List;
  * view pager from here.
  *
  * @author ContusTeam <developers@contus.in>
- * @version 2.0
+ * @version 1.0
  */
 public class DashboardViewAdapter extends FragmentPagerAdapter {
 

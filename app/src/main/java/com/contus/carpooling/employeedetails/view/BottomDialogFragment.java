@@ -23,7 +23,6 @@ import com.contus.carpooling.employeedetails.viewmodel.BottomSheetController;
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
-
 public class BottomDialogFragment extends BottomSheetDialogFragment {
 
     @Override

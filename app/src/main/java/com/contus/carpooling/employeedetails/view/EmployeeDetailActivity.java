@@ -27,7 +27,7 @@ import java.io.IOException;
  * Activity to upload the employee details.
  *
  * @author ContusTeam <developers@contus.in>
- * @version 1.1
+ * @version 1.0
  */
 public class EmployeeDetailActivity extends AppCompatActivity {
 

@@ -41,6 +41,12 @@ public class UserProfileController {
         };
     }
 
+    /**
+     * Check whether the edit button is clicked or not.
+     * when it true, the user can edit the profile details.
+     *
+     * @param getEditTextValue values from the edit text.
+     */
     public void enableOrDisableEditText(UserProfileInfo getEditTextValue) {
         if (getEditTextValue.isToEditOrSave()) {
             getEditTextValue.setToEditOrSave(false);
@@ -55,7 +61,6 @@ public class UserProfileController {
      * @param context Used to show the toast message.
      * @return true when the given field is not empty.
      */
-
     private boolean isValid(Context context, UserProfileInfo profileInfo) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(profileInfo.getUserName())) {

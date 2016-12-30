@@ -20,7 +20,7 @@ import com.contus.carpooling.databinding.FragmentRidesOfferedBinding;
  * Fragment to display the ride offer details in the dashboard.
  *
  * @author ContusTeam <developers@contus.in>
- * @version 1.1
+ * @version 1.0
  */
 public class RidesOfferedFragment extends Fragment {
 

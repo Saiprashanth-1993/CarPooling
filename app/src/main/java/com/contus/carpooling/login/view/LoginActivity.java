@@ -19,7 +19,7 @@ import com.contus.carpooling.login.viewmodel.LoginController;
  * Activity to login the user to the application with username and password authentication.
  *
  * @author ContusTeam <developers@contus.in>
- * @version 1.1
+ * @version 1.0
  */
 public class LoginActivity extends AppCompatActivity {
 

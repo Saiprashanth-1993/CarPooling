@@ -20,7 +20,6 @@ import com.contus.carpooling.utils.Constants;
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
-
 public class BottomSheetController {
 
     /**

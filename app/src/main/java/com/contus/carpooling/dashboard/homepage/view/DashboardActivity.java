@@ -29,6 +29,7 @@ import com.contus.carpooling.databinding.ActivityDashboardBinding;
 import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.notification.view.NotificationActivity;
 import com.contus.carpooling.profile.view.UserProfileActivity;
+import com.contus.carpooling.settings.view.SettingsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,7 @@ import java.util.List;
  * Activity to display the ride offer details, my rides and navigation controller.
  *
  * @author ContusTeam <developers@contus.in>
- * @version 1.1
+ * @version 1.0
  */
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
@@ -118,7 +119,7 @@ public class DashboardActivity extends AppCompatActivity
         } else if (id == R.id.nav_profile) {
             startActivity(new Intent(this, UserProfileActivity.class));
         } else if (id == R.id.nav_settings) {
-            // Yet to implement
+            startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
         } else if (id == R.id.nav_logout) {
             Intent logoutIntent = new Intent(getApplicationContext(), LoginActivity.class);
             logoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

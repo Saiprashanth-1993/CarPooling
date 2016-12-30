@@ -39,538 +39,544 @@
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
 
-        <ScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorBackground">
+            android:layout_marginBottom="5dp">
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp">
+                android:layout_height="match_parent"
+                android:background="@color/colorBackground">
 
-                <android.support.v7.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    card_view:cardBackgroundColor="@android:color/white"
-                    card_view:cardCornerRadius="4dp"
-                    card_view:cardElevation="0dp">
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp">
 
-                    <RelativeLayout
+                    <android.support.v7.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <LinearLayout
-                            android:id="@+id/ll_ride_from"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="15dp"
-                            android:orientation="vertical">
-
-                            <android.support.v7.widget.AppCompatTextView
-                                android:id="@+id/tv_ride_from"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:text="From"
-                                android:textAllCaps="true"
-                                android:textColor="@color/colorHighLightBlue"
-                                android:textSize="12sp" />
-
-                            <LinearLayout
-                                android:id="@+id/ll_ride_from_parent"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tv_from"
-                                android:background="@drawable/edit_text_line_border"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:paddingBottom="5dp">
-
-                                <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:src="@drawable/ic_location"
-                                    android:tint="@color/colorHighLightBlue" />
-
-                                <android.support.v7.widget.AppCompatEditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:background="@android:color/transparent"
-                                    android:hint="Enter your from ride"
-                                    android:maxLines="1"
-                                    android:paddingLeft="5dp"
-                                    android:textColorHint="@color/colorEditTextHint"
-                                    android:textSize="14sp" />
-
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/ll_to"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/ll_ride_from"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:orientation="vertical"
-                            android:paddingTop="15dp">
-
-                            <android.support.v7.widget.AppCompatTextView
-                                android:id="@+id/tv_ride_to"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:text="To"
-                                android:textAllCaps="true"
-                                android:textColor="@color/colorHighLightBlue"
-                                android:textSize="12sp" />
-
-                            <LinearLayout
-                                android:id="@+id/ll_ride_to_parent"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tv_from"
-                                android:background="@drawable/edit_text_line_border"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:paddingBottom="5dp">
-
-                                <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:src="@drawable/ic_location" />
-
-                                <android.support.v7.widget.AppCompatEditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:background="@android:color/transparent"
-                                    android:hint="Enter your to ride"
-                                    android:maxLines="1"
-                                    android:paddingLeft="5dp"
-                                    android:textColorHint="@color/colorEditTextHint"
-                                    android:textSize="14sp" />
-
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/ll_start_time"
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/ll_to"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:orientation="horizontal"
-                            android:paddingTop="15dp"
-                            android:weightSum="2">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/ll_to"
-                                android:layout_marginRight="5dp"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <android.support.v7.widget.AppCompatTextView
-                                    android:id="@+id/tv_start_time"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5dp"
-                                    android:text="Start Time"
-                                    android:textAllCaps="true"
-                                    android:textColor="@color/colorHighLightBlue"
-                                    android:textSize="12sp" />
-
-                                <LinearLayout
-                                    android:id="@+id/ll_start_time_parent"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/tv_from"
-                                    android:layout_marginRight="5dp"
-                                    android:background="@drawable/edit_text_line_border"
-                                    android:gravity="center"
-                                    android:orientation="horizontal"
-                                    android:paddingBottom="5dp">
-
-                                    <ImageView
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        android:src="@drawable/ic_time" />
-
-                                    <android.support.v7.widget.AppCompatEditText
-                                        android:id="@+id/get_date"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@android:color/transparent"
-                                        android:focusable="false"
-                                        android:hint="Enter start time"
-                                        android:maxLines="1"
-                                        android:onClick='@{clickController.btnTimeDialog("start_time")}'
-                                        android:paddingLeft="5dp"
-                                        android:textColorHint="@color/colorEditTextHint"
-                                        android:textSize="14sp" />
-
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/ll_to"
-                                android:layout_marginLeft="5dp"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <android.support.v7.widget.AppCompatTextView
-                                    android:id="@+id/tv_end_time"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5dp"
-                                    android:text="End Time"
-                                    android:textAllCaps="true"
-                                    android:textColor="@color/colorHighLightBlue"
-                                    android:textSize="12sp" />
-
-                                <LinearLayout
-                                    android:id="@+id/ll_end_time_parent"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/tv_from"
-                                    android:layout_marginRight="5dp"
-                                    android:background="@drawable/edit_text_line_border"
-                                    android:gravity="center"
-                                    android:orientation="horizontal"
-                                    android:paddingBottom="5dp">
-
-                                    <ImageView
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        android:src="@drawable/ic_time" />
-
-                                    <android.support.v7.widget.AppCompatEditText
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@android:color/transparent"
-                                        android:focusable="false"
-                                        android:hint="Enter end time"
-                                        android:maxLines="1"
-                                        android:onClick='@{clickController.btnTimeDialog("end_time")}'
-                                        android:paddingLeft="5dp"
-                                        android:textColorHint="@color/colorEditTextHint"
-                                        android:textSize="14sp" />
-
-                                </LinearLayout>
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/rl_gender"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/ll_start_time"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="15dp"
-                            android:orientation="vertical">
-
-                            <android.support.v7.widget.AppCompatTextView
-                                android:id="@+id/tv_gender"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:text="Gender Preference"
-                                android:textAllCaps="true"
-                                android:textColor="@color/colorHighLightBlue"
-                                android:textSize="12sp" />
-
-                            <RadioGroup
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Male"
-                                    android:textColor="@android:color/darker_gray"
-                                    android:textSize="14sp"
-                                    android:theme="@style/RadioButton" />
-
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="20dp"
-                                    android:text="Female"
-                                    android:textColor="@android:color/darker_gray"
-                                    android:textSize="14sp"
-                                    android:theme="@style/RadioButton" />
-                            </RadioGroup>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/ll_days"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/rl_gender"
-                            android:orientation="vertical"
-                            android:paddingLeft="5dp"
-                            android:paddingRight="5dp"
-                            android:paddingTop="15dp">
-
-                            <android.support.v7.widget.AppCompatTextView
-                                android:id="@+id/tv_days"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:layout_marginLeft="5dp"
-                                android:text="Days Preference"
-                                android:textAllCaps="true"
-                                android:textColor="@color/colorHighLightBlue"
-                                android:textSize="12sp" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <Button
-                                    android:layout_width="0dp"
-                                    android:layout_height="35dp"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/circle_text_view"
-                                    android:paddingLeft="5dp"
-                                    android:paddingRight="5dp"
-                                    android:text="SUN"
-                                    android:textSize="10sp" />
-
-                                <Button
-                                    android:layout_width="0dp"
-                                    android:layout_height="35dp"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/circle_text_view_selected"
-                                    android:paddingLeft="5dp"
-                                    android:paddingRight="5dp"
-                                    android:text="MON"
-                                    android:textColor="@android:color/white"
-                                    android:textSize="10sp" />
-
-                                <Button
-                                    android:layout_width="0dp"
-                                    android:layout_height="35dp"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/circle_text_view_selected"
-                                    android:paddingLeft="5dp"
-                                    android:paddingRight="5dp"
-                                    android:text="TUE"
-                                    android:textColor="@android:color/white"
-                                    android:textSize="10sp" />
-
-                                <Button
-                                    android:layout_width="0dp"
-                                    android:layout_height="35dp"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/circle_text_view"
-                                    android:paddingLeft="5dp"
-                                    android:paddingRight="5dp"
-                                    android:text="WED"
-                                    android:textSize="10sp" />
-
-                                <Button
-                                    android:layout_width="0dp"
-                                    android:layout_height="35dp"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/circle_text_view"
-                                    android:paddingLeft="5dp"
-                                    android:paddingRight="5dp"
-                                    android:text="THU"
-                                    android:textSize="10sp" />
-
-                                <Button
-                                    android:layout_width="0dp"
-                                    android:layout_height="35dp"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/circle_text_view_selected"
-                                    android:paddingLeft="5dp"
-                                    android:paddingRight="5dp"
-                                    android:text="FRI"
-                                    android:textColor="@android:color/white"
-                                    android:textSize="10sp" />
-
-                                <Button
-                                    android:layout_width="0dp"
-                                    android:layout_height="35dp"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/circle_text_view"
-                                    android:paddingLeft="5dp"
-                                    android:paddingRight="5dp"
-                                    android:text="SAT"
-                                    android:textSize="10sp" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/ll_seats"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/ll_days"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:orientation="horizontal"
-                            android:paddingTop="15dp">
-
-                            <android.support.v7.widget.AppCompatTextView
-                                android:id="@+id/tv_seats"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:gravity="center|right"
-                                android:text="Seats"
-                                android:textSize="14sp" />
-
-                            <android.support.v7.widget.AppCompatSpinner
-                                android:id="@+id/sp_seats"
-                                android:layout_width="80dp"
-                                android:layout_height="35dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_toRightOf="@+id/tv_seats"
-                                android:background="@drawable/ic_drop_down_background"
-                                android:spinnerMode="dropdown" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center|right">
-
-                                <android.support.v7.widget.AppCompatTextView
-                                    android:id="@+id/tv_every_week"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center_vertical"
-                                    android:text="Every week"
-                                    android:textSize="14sp" />
-
-                                <android.support.v7.widget.AppCompatCheckBox
-                                    android:id="@+id/every_week"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:buttonTint="@color/colorPrimary" />
-                            </LinearLayout>
-                        </LinearLayout>
+                        android:layout_height="wrap_content"
+                        card_view:cardBackgroundColor="@android:color/white"
+                        card_view:cardCornerRadius="4dp"
+                        card_view:cardElevation="0dp">
 
                         <RelativeLayout
-                            android:id="@+id/rl_cost"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/ll_seats"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:paddingTop="15dp">
-
-                            <android.support.v7.widget.AppCompatTextView
-                                android:id="@+id/tv_cost"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:text="Cost"
-                                android:textAllCaps="true"
-                                android:textColor="@color/colorHighLightBlue"
-                                android:textSize="12sp" />
+                            android:layout_height="wrap_content">
 
                             <LinearLayout
+                                android:id="@+id/ll_ride_from"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/tv_cost"
-                                android:orientation="horizontal">
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="15dp"
+                                android:orientation="vertical">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/tv_ride_from"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="From"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorHighLightBlue"
+                                    android:textSize="12sp" />
+
+                                <LinearLayout
+                                    android:id="@+id/ll_ride_from_parent"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_from"
+                                    android:background="@drawable/edit_text_line_border"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:paddingBottom="5dp">
+
+                                    <ImageView
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:src="@drawable/ic_location"
+                                        android:tint="@color/colorHighLightBlue" />
+
+                                    <android.support.v7.widget.AppCompatEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@android:color/transparent"
+                                        android:hint="Enter your from ride"
+                                        android:maxLines="1"
+                                        android:paddingLeft="5dp"
+                                        android:textColorHint="@color/colorEditTextHint"
+                                        android:textSize="14sp" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ll_to"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ll_ride_from"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:orientation="vertical"
+                                android:paddingTop="15dp">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/tv_ride_to"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="To"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorHighLightBlue"
+                                    android:textSize="12sp" />
+
+                                <LinearLayout
+                                    android:id="@+id/ll_ride_to_parent"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_from"
+                                    android:background="@drawable/edit_text_line_border"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:paddingBottom="5dp">
+
+                                    <ImageView
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:src="@drawable/ic_location" />
+
+                                    <android.support.v7.widget.AppCompatEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@android:color/transparent"
+                                        android:hint="Enter your to ride"
+                                        android:maxLines="1"
+                                        android:paddingLeft="5dp"
+                                        android:textColorHint="@color/colorEditTextHint"
+                                        android:textSize="14sp" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ll_start_time"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ll_to"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:orientation="horizontal"
+                                android:paddingTop="15dp"
+                                android:weightSum="2">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/ll_to"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <android.support.v7.widget.AppCompatTextView
+                                        android:id="@+id/tv_start_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
+                                        android:text="Start Time"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/colorHighLightBlue"
+                                        android:textSize="12sp" />
+
+                                    <LinearLayout
+                                        android:id="@+id/ll_start_time_parent"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/tv_from"
+                                        android:layout_marginRight="5dp"
+                                        android:background="@drawable/edit_text_line_border"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:paddingBottom="5dp">
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:src="@drawable/ic_time" />
+
+                                        <android.support.v7.widget.AppCompatEditText
+                                            android:id="@+id/get_date"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:background="@android:color/transparent"
+                                            android:focusable="false"
+                                            android:hint="Enter start time"
+                                            android:maxLines="1"
+                                            android:onClick='@{clickController.btnTimeDialog("start_time")}'
+                                            android:paddingLeft="5dp"
+                                            android:textColorHint="@color/colorEditTextHint"
+                                            android:textSize="14sp" />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/ll_to"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <android.support.v7.widget.AppCompatTextView
+                                        android:id="@+id/tv_end_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
+                                        android:text="End Time"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/colorHighLightBlue"
+                                        android:textSize="12sp" />
+
+                                    <LinearLayout
+                                        android:id="@+id/ll_end_time_parent"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/tv_from"
+                                        android:layout_marginRight="5dp"
+                                        android:background="@drawable/edit_text_line_border"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:paddingBottom="5dp">
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:src="@drawable/ic_time" />
+
+                                        <android.support.v7.widget.AppCompatEditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:background="@android:color/transparent"
+                                            android:focusable="false"
+                                            android:hint="Enter end time"
+                                            android:maxLines="1"
+                                            android:onClick='@{clickController.btnTimeDialog("end_time")}'
+                                            android:paddingLeft="5dp"
+                                            android:textColorHint="@color/colorEditTextHint"
+                                            android:textSize="14sp" />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/rl_gender"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ll_start_time"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="15dp"
+                                android:orientation="vertical">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/tv_gender"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Gender Preference"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorHighLightBlue"
+                                    android:textSize="12sp" />
 
                                 <RadioGroup
-                                    android:layout_width="0dp"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
                                     android:orientation="horizontal">
 
                                     <RadioButton
-                                        android:id="@+id/rd_free"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:buttonTint="@color/colorPrimary"
-                                        android:text="Free" />
+                                        android:text="Male"
+                                        android:textColor="@android:color/darker_gray"
+                                        android:textSize="14sp"
+                                        android:theme="@style/RadioButton" />
 
                                     <RadioButton
-                                        android:id="@+id/rd_cost"
                                         android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="20dp"
+                                        android:text="Female"
+                                        android:textColor="@android:color/darker_gray"
+                                        android:textSize="14sp"
+                                        android:theme="@style/RadioButton" />
+                                </RadioGroup>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ll_days"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rl_gender"
+                                android:orientation="vertical"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:paddingTop="15dp">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/tv_days"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Days Preference"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorHighLightBlue"
+                                    android:textSize="12sp" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <Button
+                                        android:layout_width="0dp"
+                                        android:layout_height="35dp"
+                                        android:layout_margin="2dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/circle_text_view"
+                                        android:paddingLeft="5dp"
+                                        android:paddingRight="5dp"
+                                        android:text="SUN"
+                                        android:textSize="10sp" />
+
+                                    <Button
+                                        android:layout_width="0dp"
+                                        android:layout_height="35dp"
+                                        android:layout_margin="2dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/circle_text_view_selected"
+                                        android:paddingLeft="5dp"
+                                        android:paddingRight="5dp"
+                                        android:text="MON"
+                                        android:textColor="@android:color/white"
+                                        android:textSize="10sp" />
+
+                                    <Button
+                                        android:layout_width="0dp"
+                                        android:layout_height="35dp"
+                                        android:layout_margin="2dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/circle_text_view_selected"
+                                        android:paddingLeft="5dp"
+                                        android:paddingRight="5dp"
+                                        android:text="TUE"
+                                        android:textColor="@android:color/white"
+                                        android:textSize="10sp" />
+
+                                    <Button
+                                        android:layout_width="0dp"
+                                        android:layout_height="35dp"
+                                        android:layout_margin="2dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/circle_text_view"
+                                        android:paddingLeft="5dp"
+                                        android:paddingRight="5dp"
+                                        android:text="WED"
+                                        android:textSize="10sp" />
+
+                                    <Button
+                                        android:layout_width="0dp"
+                                        android:layout_height="35dp"
+                                        android:layout_margin="2dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/circle_text_view"
+                                        android:paddingLeft="5dp"
+                                        android:paddingRight="5dp"
+                                        android:text="THU"
+                                        android:textSize="10sp" />
+
+                                    <Button
+                                        android:layout_width="0dp"
+                                        android:layout_height="35dp"
+                                        android:layout_margin="2dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/circle_text_view_selected"
+                                        android:paddingLeft="5dp"
+                                        android:paddingRight="5dp"
+                                        android:text="FRI"
+                                        android:textColor="@android:color/white"
+                                        android:textSize="10sp" />
+
+                                    <Button
+                                        android:layout_width="0dp"
+                                        android:layout_height="35dp"
+                                        android:layout_margin="2dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/circle_text_view"
+                                        android:paddingLeft="5dp"
+                                        android:paddingRight="5dp"
+                                        android:text="SAT"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ll_seats"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ll_days"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:orientation="horizontal"
+                                android:paddingTop="15dp">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/tv_seats"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center|right"
+                                    android:text="Seats"
+                                    android:textSize="14sp" />
+
+                                <android.support.v7.widget.AppCompatSpinner
+                                    android:id="@+id/sp_seats"
+                                    android:layout_width="80dp"
+                                    android:layout_height="35dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_toRightOf="@+id/tv_seats"
+                                    android:background="@drawable/ic_drop_down_background"
+                                    android:spinnerMode="dropdown" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center|right">
+
+                                    <android.support.v7.widget.AppCompatTextView
+                                        android:id="@+id/tv_every_week"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center_vertical"
+                                        android:text="Every week"
+                                        android:textSize="14sp" />
+
+                                    <android.support.v7.widget.AppCompatCheckBox
+                                        android:id="@+id/every_week"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:buttonTint="@color/colorPrimary" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rl_cost"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ll_seats"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:paddingTop="15dp">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/tv_cost"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Cost"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorHighLightBlue"
+                                    android:textSize="12sp" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_cost"
+                                    android:orientation="horizontal">
+
+                                    <RadioGroup
+                                        android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:buttonTint="@color/colorPrimary"
-                                        android:text="Cost" />
+                                        android:orientation="horizontal">
 
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:layout_weight="1">
-
-                                        <android.support.v7.widget.AppCompatTextView
+                                        <RadioButton
+                                            android:id="@+id/rd_free"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:padding="5dp"
-                                            android:text="$"
-                                            android:textAllCaps="true"
-                                            android:textSize="19sp" />
+                                            android:layout_weight="1"
+                                            android:buttonTint="@color/colorPrimary"
+                                            android:text="Free" />
 
-                                        <android.support.v7.widget.AppCompatEditText
+                                        <RadioButton
+                                            android:id="@+id/rd_cost"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:buttonTint="@color/colorPrimary"
+                                            android:text="Cost" />
+
+                                        <LinearLayout
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
-                                            android:background="@drawable/button_rounded_corner_primary"
-                                            android:gravity="center_vertical"
-                                            android:hint="price"
-                                            android:inputType="number"
-                                            android:paddingBottom="5dp"
-                                            android:paddingLeft="15dp"
-                                            android:paddingRight="15dp"
-                                            android:paddingTop="5dp"
-                                            android:textColorHint="@color/colorEditTextHint"
-                                            android:textSize="15sp" />
-                                    </LinearLayout>
+                                            android:layout_weight="1">
 
-                                </RadioGroup>
+                                            <android.support.v7.widget.AppCompatTextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:padding="5dp"
+                                                android:text="$"
+                                                android:textAllCaps="true"
+                                                android:textSize="19sp" />
+
+                                            <android.support.v7.widget.AppCompatEditText
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:background="@drawable/button_rounded_corner_primary"
+                                                android:gravity="center_vertical"
+                                                android:hint="price"
+                                                android:inputType="number"
+                                                android:paddingBottom="5dp"
+                                                android:paddingLeft="15dp"
+                                                android:paddingRight="15dp"
+                                                android:paddingTop="5dp"
+                                                android:textColorHint="@color/colorEditTextHint"
+                                                android:textSize="15sp" />
+                                        </LinearLayout>
+
+                                    </RadioGroup>
 
 
-                            </LinearLayout>
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <android.support.v7.widget.AppCompatButton
+                                android:id="@+id/btn_add_ride"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rl_cost"
+                                android:layout_marginBottom="20dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="15dp"
+                                android:background="@drawable/button_rounded_corner_border"
+                                android:text="Add Ride"
+                                android:textColor="@android:color/white"
+                                android:textSize="16sp" />
                         </RelativeLayout>
+                    </android.support.v7.widget.CardView>
 
-                        <android.support.v7.widget.AppCompatButton
-                            android:id="@+id/btn_add_ride"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/rl_cost"
-                            android:layout_marginBottom="20dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="15dp"
-                            android:background="@drawable/button_rounded_corner_border"
-                            android:text="Add Ride"
-                            android:textColor="@android:color/white"
-                            android:textSize="16sp" />
-                    </RelativeLayout>
-                </android.support.v7.widget.CardView>
-
-            </LinearLayout>
-        </ScrollView>
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
     </LinearLayout>
 </layout>

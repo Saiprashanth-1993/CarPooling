@@ -30,7 +30,7 @@ import static com.contus.carpooling.utils.Constants.REQUEST_CODE_USER_TO_LOCATIO
  * User have to pass this screen else they will be moved here after splash if not registered already.
  *
  * @author ContusTeam <developers@contus.in>
- * @version 1.1
+ * @version 1.0
  */
 public class UserRegistrationActivity extends AppCompatActivity {
 

@@ -1,12 +1,19 @@
+/**
+ * @category CarPooling
+ * @package com.contus.carpooling.dashboard.ridesoffered.model
+ * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @license http://www.apache.org/licenses/LICENSE-2.0
+ */
 package com.contus.carpooling.dashboard.ridesoffered.model;
 
 /**
  * Model class to display and store the rides offered details.
  *
  * @author ContusTeam <developers@contus.in>
- * @version 1.1
+ * @version 1.0
  */
 public class RidesOfferedDetails {
+
     /**
      * User name of the offered rides.
      */

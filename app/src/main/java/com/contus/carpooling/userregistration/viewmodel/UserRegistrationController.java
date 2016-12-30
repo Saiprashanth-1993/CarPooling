@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.userregistration.viewmodel
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -26,6 +25,7 @@ import com.contus.carpooling.utils.Logger;
 
 /**
  * OnClick listener of the view.
+ * XML view controller
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
