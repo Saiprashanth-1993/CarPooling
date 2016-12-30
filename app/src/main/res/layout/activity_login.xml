@@ -132,7 +132,7 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:gravity="end"
-                android:text="Forgot password ?"
+                android:text="Forgot password?"
                 android:textColor="@color/colorHighLightBlue"
                 android:textSize="16sp" />
 
@@ -163,7 +163,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Don't have an account ?"
+                    android:text="Don't have an account?"
                     android:textSize="16sp" />
 
                 <android.support.v7.widget.AppCompatTextView

@@ -39,6 +39,15 @@ public class ChangePasswordController {
         };
     }
 
+    /**
+     * Method used to validate the change password details.
+     *
+     * @param context         Used to show the toast message.
+     * @param currentPassword Validate the current password edit text.
+     * @param newPassword     Validate the new password edit text.
+     * @param confirmPassword Validate the confirm password edit text.
+     * @return true if the validation success.
+     */
     private boolean isValid(Context context, String currentPassword, String newPassword, String confirmPassword) {
         boolean validStatus;
         if (TextUtils.isEmpty(currentPassword)) {

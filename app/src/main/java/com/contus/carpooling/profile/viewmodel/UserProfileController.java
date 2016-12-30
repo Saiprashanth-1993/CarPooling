@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.contus.carpooling.profile.model.UserProfileInfo;
 
 /**
- * Controller of the UserProfileActivity class
+ * Controller of the UserProfileFragment class
  * XML view controller
  *
  * @author Contus Team <developers@contus.in>

@@ -12,6 +12,9 @@
     <string name="google_place_api_key">AIzaSyDXmb6C3WoD2KvgnJTnFKEI-YFSakbxlsY</string>
     <string name="title_edit_ride">Edit Ride</string>
     <string name="add_new_ride">New Ride</string>
+    <string name="toolbar_name_dashboard">Dashboard</string>
+    <string name="toolbar_name_my_profile">My Profile</string>
+    <string name="toolbar_name_settings">Settings</string>
     <string-array name="list_seat_available">
         <item>0</item>
         <item>1</item>

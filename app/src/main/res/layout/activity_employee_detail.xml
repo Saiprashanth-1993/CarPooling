@@ -79,14 +79,17 @@
 
             <RelativeLayout
                 android:id="@+id/parent_upload_front"
+
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/et_employee_code"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:paddingLeft="10dp">
 
                 <ImageView
                     android:id="@+id/upload_image_front"
-                    android:layout_width="80dp"
+                    android:layout_width="65dp"
                     android:layout_height="80dp"
                     android:onClick='@{onClickController.imageViewOnClick(constants.CLICK_FRONT_IMAGE_VIEW,employeeInfo)}'
                     android:scaleType="fitXY"
@@ -100,7 +103,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/upload_image_front"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="10dp"
                     android:text="Upload Your Identity Card Front Picture"
                     android:textColor="@color/colorHighLightBlue"
                     android:textSize="14sp" />
@@ -109,14 +112,16 @@
 
             <RelativeLayout
                 android:id="@+id/parent_upload_back"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/parent_upload_front"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:paddingLeft="10dp">
 
                 <ImageView
                     android:id="@+id/upload_image_back"
-                    android:layout_width="80dp"
+                    android:layout_width="65dp"
                     android:layout_height="80dp"
                     android:onClick='@{onClickController.imageViewOnClick(constants.CLICK_BACK_IMAGE_VIEW,employeeInfo)}'
                     android:scaleType="fitXY"
@@ -130,7 +135,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/upload_image_back"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="10dp"
                     android:text="Upload Your Identity Card Front Picture"
                     android:textColor="@color/colorHighLightBlue"
                     android:textSize="14sp" />
@@ -141,10 +146,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/parent_upload_back"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button_rounded_corner_border"
                 android:onClick="@{onClickController.saveEmployeeDetails(employeeInfo)}"
                 android:text="Submit"
+
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
         </RelativeLayout>

@@ -206,6 +206,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:checked="true"
                             android:onClick='@{ViewController.radioBtnOnClick(UserDetails,"Male")}'
                             android:text="Male"
                             android:textColor="@android:color/darker_gray"

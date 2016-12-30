@@ -21,28 +21,6 @@
         android:background="@color/colorBackground"
         android:orientation="vertical">
 
-        <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="My Profile"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_head" />
-            </android.support.v7.widget.Toolbar>
-        </android.support.design.widget.AppBarLayout>
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -184,6 +162,7 @@
                                     android:background="@android:drawable/screen_background_light_transparent"
                                     android:ellipsize="end"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
+
                                     android:inputType="number"
                                     android:maxLines="2"
                                     android:text="@={UserProfile.userPhone}"
@@ -209,8 +188,6 @@
                                     android:layout_toRightOf="@+id/iv_addr_icon"
                                     android:background="@android:drawable/screen_background_light_transparent"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
-                                    android:inputType=""
-                                    android:maxLines="2"
                                     android:text="@={UserProfile.userAddress}"
                                     android:textSize="14sp" />
                             </RelativeLayout>
@@ -232,7 +209,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
                                     android:layout_toRightOf="@+id/iv_loc_icon"
-                                    android:background="@android:drawable/screen_background_light_transparent"
+                                    android:background="@android:color/transparent"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                     android:singleLine="true"
                                     android:text="@={UserProfile.userLocation}"

@@ -9,6 +9,7 @@ package com.contus.carpooling.dashboard.homepage.view;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ import java.util.List;
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
  */
-public class DashboardViewAdapter extends FragmentPagerAdapter {
+public class DashboardViewAdapter extends FragmentStatePagerAdapter {
 
     /**
      * Title of the fragment list.

@@ -12,8 +12,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,17 +22,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.contus.carpooling.R;
-import com.contus.carpooling.dashboard.myrides.view.MyRidesFragment;
 import com.contus.carpooling.dashboard.homepage.viewmodel.DashboardController;
-import com.contus.carpooling.dashboard.ridesoffered.view.RidesOfferedFragment;
 import com.contus.carpooling.databinding.ActivityDashboardBinding;
 import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.notification.view.NotificationActivity;
-import com.contus.carpooling.profile.view.UserProfileActivity;
-import com.contus.carpooling.settings.view.SettingsActivity;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.contus.carpooling.profile.view.UserProfileFragment;
+import com.contus.carpooling.settings.view.SettingsFragment;
+import com.contus.carpooling.utils.Constants;
 
 /**
  * Activity to display the ride offer details, my rides and navigation controller.
@@ -41,12 +37,13 @@ import java.util.List;
  * @version 1.0
  */
 public class DashboardActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
 
     /**
      * Used as initializing the layout as data binding.
      */
     private ActivityDashboardBinding activityDashboardBinding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,16 +71,7 @@ public class DashboardActivity extends AppCompatActivity
                 }
             }
         });
-        setTabs();
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (activityDashboardBinding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            activityDashboardBinding.drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        displaySelectedScreen(R.id.nav_rides);
     }
 
     @Override
@@ -104,7 +92,6 @@ public class DashboardActivity extends AppCompatActivity
             startActivity(new Intent(this, NotificationActivity.class));
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -112,76 +99,76 @@ public class DashboardActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_rides) {
-            // Yet to implement
-        } else if (id == R.id.nav_profile) {
-            startActivity(new Intent(this, UserProfileActivity.class));
-        } else if (id == R.id.nav_settings) {
-            startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
-        } else if (id == R.id.nav_logout) {
-            Intent logoutIntent = new Intent(getApplicationContext(), LoginActivity.class);
-            logoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(logoutIntent);
-        }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        displaySelectedScreen(item.getItemId());
         return true;
     }
 
     /**
-     * Set up the Ride offers and My rides fragments in the tab
+     * Method used as navigation selection option.
+     *
+     * @param itemId Selected  id.
      */
-    private void setTabs() {
-        String[] mTitle = new String[]{"Rides offered", "My Rides"};
-        DashboardViewAdapter mAdapter = new DashboardViewAdapter(getSupportFragmentManager());
-        mAdapter.setTitle(mTitle);
-        mAdapter.setFragmentList(getFragmentList());
-        activityDashboardBinding.viewPager.setAdapter(mAdapter);
-        activityDashboardBinding.tabLayout.setupWithViewPager(activityDashboardBinding.viewPager);
-        activityDashboardBinding.viewPager.addOnPageChangeListener(this);
+    private void displaySelectedScreen(int itemId) {
+        Fragment fragment = null;
+        String fragmentName = null;
+        if (itemId == R.id.nav_rides) {
+            activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_dashboard);
+            fragment = new HomePageFragment();
+            fragmentName = Constants.NAME_NAVIGATION_DASHBOARD;
+        } else if (itemId == R.id.nav_profile) {
+            activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_my_profile);
+            fragment = new UserProfileFragment();
+            fragmentName = Constants.NAME_NAVIGATION_MY_PROFILE;
+        } else if (itemId == R.id.nav_settings) {
+            activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_settings);
+            fragment = new SettingsFragment();
+            fragmentName = Constants.NAME_NAVIGATION_SETTINGS;
+        } else if (itemId == R.id.nav_logout) {
+            Intent logoutIntent = new Intent(getApplicationContext(), LoginActivity.class);
+            logoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(logoutIntent);
+        }
+
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.addOnBackStackChangedListener(this);
+            fragmentManager.beginTransaction().add(R.id.container, fragment)
+                    .addToBackStack(fragmentName).commit();
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (activityDashboardBinding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            activityDashboardBinding.drawerLayout.closeDrawer(GravityCompat.START);
+        } else if (getFragmentName().equals(Constants.NAME_NAVIGATION_DASHBOARD)) {
+            finish();
+        } else {
+            // Let super handle the back press
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        if (getFragmentName().equals(Constants.NAME_NAVIGATION_DASHBOARD)) {
+            activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_dashboard);
+        } else if (getFragmentName().equals(Constants.NAME_NAVIGATION_MY_PROFILE)) {
+            activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_my_profile);
+        } else {
+            activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_settings);
+        }
     }
 
     /**
-     * Get the fragment list to display the view pager tabs. Recent chat and contacts fragment will
-     * be return from this.
+     * Method used to get the fragment transaction name to identify the fragment.
      *
-     * @return List of the fragments for the viewpager
+     * @return the fragment name.
      */
-    private List<Fragment> getFragmentList() {
-
-        /**
-         * Add the fragment as a list.
-         */
-        List<Fragment> fragmentList = new ArrayList<>();
-
-        /**
-         The fragment contacts which contains the ride offer list.
-         */
-        RidesOfferedFragment ridesOfferedFragment = new RidesOfferedFragment();
-
-        /**
-         The fragment contacts which contains the ride offer list.
-         */
-        MyRidesFragment myRidesFragment = new MyRidesFragment();
-        fragmentList.add(ridesOfferedFragment);
-        fragmentList.add(myRidesFragment);
-        return fragmentList;
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        //Overridden Method
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-        //Overridden Method
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-        //Overridden Method
+    private String getFragmentName() {
+        FragmentManager fm = getSupportFragmentManager();
+        return fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 1).getName();
     }
 }

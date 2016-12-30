@@ -65,7 +65,6 @@ public class LoginController {
      * @param password Validate the password.
      * @return true when the given field is not empty.
      */
-
     private boolean isValid(Context context, String userName, String password) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password)) {

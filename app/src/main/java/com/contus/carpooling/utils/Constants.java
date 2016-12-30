@@ -65,6 +65,22 @@ public class Constants {
     public static final String CLICK_RIDE = "intent_ride";
 
     /**
+     * Check whether click on edit ride or create ride.
+     */
+    public static final String NAME_NAVIGATION_DASHBOARD = "dashboard";
+
+    /**
+     * Check whether click on edit ride or create ride.
+     */
+
+    public static final String NAME_NAVIGATION_MY_PROFILE = "my_profile";
+
+    /**
+     * Check whether click on edit ride or create ride.
+     */
+    public static final String NAME_NAVIGATION_SETTINGS = "settings";
+
+    /**
      * Instantiates a new constants.
      */
     private Constants() {

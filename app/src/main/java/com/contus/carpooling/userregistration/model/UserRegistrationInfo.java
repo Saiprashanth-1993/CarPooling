@@ -52,7 +52,7 @@ public class UserRegistrationInfo extends BaseObservable {
     /**
      * Gender details of the user.
      */
-    private String gender;
+    private String gender = "Male";
 
     /**
      * Gets {@see #userName}.
