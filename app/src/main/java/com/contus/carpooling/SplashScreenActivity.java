@@ -19,7 +19,7 @@ import com.contus.carpooling.login.view.LoginActivity;
  * company registration screen else they will be redirected to menu_dashboard.
  *
  * @author ContusTeam <developers@contus.in>
- * @version 1.1
+ * @version 1.0
  */
 
 public class SplashScreenActivity extends AppCompatActivity {
