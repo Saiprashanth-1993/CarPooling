@@ -28,37 +28,44 @@ public class UserProfileInfo extends BaseObservable {
      * Team name of the user.
      */
     private String userTeamName;
+
     /**
-     * Get the mail of the user.
+     * Mail id of the user.
      */
     private String userMail;
+
     /**
      * Get the phone number of the user.
      */
     private String userPhone;
+
     /**
-     * Get the address of the user.
+     * Address of the user.
      */
     private String userAddress;
+
     /**
-     * Get the location of the user.
+     * Location of the user.
      */
     private String userLocation;
+
     /**
-     * Get the vehicle type of the user.
+     * Vehicle type of the user.
      */
     private String userVehicleType;
+
     /**
-     * Get the vehicle name of the user.
+     * Vehicle name of the user.
      */
     private String userVehicleName;
+
     /**
-     * Get the vehicle number of the user.
+     * Vehicle number of the user.
      */
     private String userVehicleNum;
 
     /**
-     * Get the vehicle number of the user.
+     * Check to edit or save the user details.
      */
     private boolean isToEditOrSave;
 
