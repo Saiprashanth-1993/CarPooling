@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
 import com.contus.carpooling.R;
+import com.contus.carpooling.addnewride.model.NewRide;
 import com.contus.carpooling.addnewride.viewmodel.NewRideController;
 import com.contus.carpooling.databinding.ActivityAddNewRideBinding;
 import com.contus.carpooling.utils.Constants;
@@ -42,6 +43,8 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
         ArrayAdapter<String> seatAvailableAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.list_seat_available));
         addNewRideBinding.spSeats.setAdapter(seatAvailableAdapter);
+        addNewRideBinding.spSeats.setSelection(0);
+        addNewRideBinding.setNewRideData(new NewRide());
         addNewRideBinding.setClickController(new NewRideController());
     }
 
