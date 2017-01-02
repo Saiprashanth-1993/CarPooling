@@ -7,4 +7,5 @@
     <color name="colorEditTextHint">#d4d4d4</color>
     <color name="colorLine">#dfdfdf</color>
     <color name="colorBackground">#e4e4e4</color>
+    <color name="textViewColor">#333333</color>
 </resources>

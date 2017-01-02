@@ -20,9 +20,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.dashboard.homepage.viewmodel.DashboardController;
+import com.contus.carpooling.dashboard.homepage.viewmodel.ViewPageListener;
 import com.contus.carpooling.databinding.ActivityDashboardBinding;
 import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.notification.view.NotificationActivity;
@@ -37,13 +39,13 @@ import com.contus.carpooling.utils.Constants;
  * @version 1.0
  */
 public class DashboardActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener,
+        ViewPageListener {
 
     /**
      * Used as initializing the layout as data binding.
      */
     private ActivityDashboardBinding activityDashboardBinding;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +89,6 @@ public class DashboardActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         if (id == R.id.action_notification) {
             startActivity(new Intent(this, NotificationActivity.class));
             return true;
@@ -113,15 +114,18 @@ public class DashboardActivity extends AppCompatActivity
         String fragmentName = null;
         if (itemId == R.id.nav_rides) {
             activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_dashboard);
+            activityDashboardBinding.addNewRide.show();
             fragment = new HomePageFragment();
             fragmentName = Constants.NAME_NAVIGATION_DASHBOARD;
         } else if (itemId == R.id.nav_profile) {
             activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_my_profile);
+            activityDashboardBinding.addNewRide.hide();
             fragment = new UserProfileFragment();
             fragmentName = Constants.NAME_NAVIGATION_MY_PROFILE;
         } else if (itemId == R.id.nav_settings) {
             activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_settings);
             fragment = new SettingsFragment();
+            activityDashboardBinding.addNewRide.hide();
             fragmentName = Constants.NAME_NAVIGATION_SETTINGS;
         } else if (itemId == R.id.nav_logout) {
             Intent logoutIntent = new Intent(getApplicationContext(), LoginActivity.class);
@@ -155,10 +159,13 @@ public class DashboardActivity extends AppCompatActivity
     public void onBackStackChanged() {
         if (getFragmentName().equals(Constants.NAME_NAVIGATION_DASHBOARD)) {
             activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_dashboard);
+            activityDashboardBinding.addNewRide.show();
         } else if (getFragmentName().equals(Constants.NAME_NAVIGATION_MY_PROFILE)) {
             activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_my_profile);
+            activityDashboardBinding.addNewRide.hide();
         } else {
             activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_settings);
+            activityDashboardBinding.addNewRide.hide();
         }
     }
 
@@ -170,5 +177,10 @@ public class DashboardActivity extends AppCompatActivity
     private String getFragmentName() {
         FragmentManager fm = getSupportFragmentManager();
         return fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 1).getName();
+    }
+
+    @Override
+    public void onViewPageListener() {
+        activityDashboardBinding.addNewRide.animate().translationY(0).setInterpolator(new LinearInterpolator()).start();
     }
 }

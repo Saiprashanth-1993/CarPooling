@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="clickControl"
+            type="com.contus.carpooling.dashboard.homepage.viewmodel.DashboardController" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/custom_dialog_header_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="DELAY"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick='@{clickControl.delaySelectedItemOnClick("15 mins")}'
+                android:text="15 MINS"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                android:theme="@style/RadioButton" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:onClick='@{clickControl.delaySelectedItemOnClick("30 mins")}'
+                android:text="30 MINS"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                android:theme="@style/RadioButton" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:onClick='@{clickControl.delaySelectedItemOnClick("45 mins")}'
+                android:text="45 MINS"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                android:theme="@style/RadioButton" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:onClick='@{clickControl.delaySelectedItemOnClick("1 hours")}'
+                android:text="1 HOURS"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                android:theme="@style/RadioButton" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBackground"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:text="Apply"
+                android:onClick="@{clickControl.delayDialogApplyOnClick()}"
+                android:textColor="@color/colorHighLightBlue" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:onClick="@{clickControl.delayDialogCancelOnClick()}"
+                android:text="Cancel"
+                android:textColor="#666666" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

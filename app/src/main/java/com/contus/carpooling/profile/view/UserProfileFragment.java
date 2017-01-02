@@ -10,6 +10,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -42,6 +43,13 @@ public class UserProfileFragment extends Fragment {
         profileInfo.setUserVehicleName("Car");
         myProfileBinding.setUserProfile(profileInfo);
         myProfileBinding.setViewController(new UserProfileController());
+        setHasOptionsMenu(true);
         return myProfileBinding.getRoot();
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.action_notification).setVisible(false);
+        super.onPrepareOptionsMenu(menu);
     }
 }

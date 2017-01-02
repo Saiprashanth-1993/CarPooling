@@ -72,7 +72,7 @@
                     android:layout_marginRight="50dp"
                     android:text="Company Name"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorHighLightBlue"
+                    android:textColor="@color/textViewColor"
                     android:textSize="12sp" />
 
                 <LinearLayout
@@ -118,7 +118,7 @@
                     android:layout_marginTop="20dp"
                     android:text="Category"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorHighLightBlue"
+                    android:textColor="@color/textViewColor"
                     android:textSize="12sp" />
 
                 <RelativeLayout
@@ -175,7 +175,7 @@
                     android:layout_marginTop="20dp"
                     android:text="Location"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorHighLightBlue"
+                    android:textColor="@color/textViewColor"
                     android:textSize="12sp" />
 
                 <LinearLayout

@@ -69,7 +69,7 @@
                     android:layout_marginRight="50dp"
                     android:text="Name"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorHighLightBlue"
+                    android:textColor="@color/textViewColor"
                     android:textSize="12sp" />
 
                 <LinearLayout
@@ -109,7 +109,7 @@
                     android:layout_marginTop="20dp"
                     android:text="Mobile"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorHighLightBlue"
+                    android:textColor="@color/textViewColor"
                     android:textSize="12sp" />
 
                 <LinearLayout
@@ -149,7 +149,7 @@
                     android:layout_marginTop="20dp"
                     android:text="Email"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorHighLightBlue"
+                    android:textColor="@color/textViewColor"
                     android:textSize="12sp" />
 
                 <LinearLayout
@@ -194,7 +194,7 @@
                         android:layout_height="wrap_content"
                         android:text="Gender Preference"
                         android:textAllCaps="true"
-                        android:textColor="@color/colorHighLightBlue"
+                        android:textColor="@color/textViewColor"
                         android:textSize="12sp" />
 
                     <RadioGroup
@@ -236,7 +236,7 @@
                     android:layout_marginTop="10dp"
                     android:text="From"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorHighLightBlue"
+                    android:textColor="@color/textViewColor"
                     android:textSize="12sp" />
 
                 <LinearLayout
@@ -278,7 +278,7 @@
                     android:layout_marginTop="20dp"
                     android:text="To"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorHighLightBlue"
+                    android:textColor="@color/textViewColor"
                     android:textSize="12sp" />
 
                 <LinearLayout
@@ -320,7 +320,7 @@
                     android:layout_marginTop="20dp"
                     android:text="Password"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorHighLightBlue"
+                    android:textColor="@color/textViewColor"
                     android:textSize="12sp" />
 
                 <LinearLayout

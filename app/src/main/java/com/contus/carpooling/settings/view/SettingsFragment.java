@@ -10,6 +10,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -30,6 +31,13 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         FragmentSettingsBinding settingsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_settings, container, false);
         settingsBinding.setOnClickController(new SettingsController());
+        setHasOptionsMenu(true);
         return settingsBinding.getRoot();
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.action_notification).setVisible(false);
+        super.onPrepareOptionsMenu(menu);
     }
 }

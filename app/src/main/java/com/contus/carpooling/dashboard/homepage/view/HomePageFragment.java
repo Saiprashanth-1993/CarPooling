@@ -1,3 +1,9 @@
+/**
+ * @category CarPooling
+ * @package com.contus.dashboard.homepage.view
+ * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @license http://www.apache.org/licenses/LICENSE-2.0
+ */
 package com.contus.carpooling.dashboard.homepage.view;
 
 import android.databinding.DataBindingUtil;
@@ -6,10 +12,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.contus.carpooling.R;
+import com.contus.carpooling.dashboard.homepage.viewmodel.ViewPageListener;
 import com.contus.carpooling.dashboard.myrides.view.MyRidesFragment;
 import com.contus.carpooling.dashboard.ridesoffered.view.RidesOfferedFragment;
 import com.contus.carpooling.databinding.FragmentHomePageBinding;
@@ -18,10 +26,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * to handle interaction events.
- * create an instance of this fragment.
+ * Fragment used as home page to display the ride offered and my rides details.
+ *
+ * @author Contus Team <developers@contus.in>
+ * @version 1.0
  */
 public class HomePageFragment extends Fragment implements ViewPager.OnPageChangeListener {
 
@@ -30,11 +38,18 @@ public class HomePageFragment extends Fragment implements ViewPager.OnPageChange
      */
     private FragmentHomePageBinding homePageBinding;
 
+    /**
+     * Interface to listen the view pager changes.
+     */
+    private ViewPageListener viewPageListener;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         homePageBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_page, container, false);
         setTabs();
+        setHasOptionsMenu(true);
+        viewPageListener = (ViewPageListener) getActivity();
         return homePageBinding.getRoot();
     }
 
@@ -81,7 +96,7 @@ public class HomePageFragment extends Fragment implements ViewPager.OnPageChange
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        //Overridden Method
+        viewPageListener.onViewPageListener();
     }
 
     @Override
@@ -92,5 +107,11 @@ public class HomePageFragment extends Fragment implements ViewPager.OnPageChange
     @Override
     public void onPageScrollStateChanged(int state) {
         //Overridden Method
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.action_notification).setVisible(true);
+        super.onPrepareOptionsMenu(menu);
     }
 }
