@@ -539,7 +539,6 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
-
                                             android:buttonTint="@color/colorPrimary"
                                             android:onClick='@{clickController.radioCostBtnOnClick(NewRideData,"Free")}'
                                             android:text="Free" />
@@ -600,7 +599,7 @@
                                 android:layout_marginRight="10dp"
                                 android:layout_marginTop="15dp"
                                 android:background="@drawable/button_rounded_corner_border"
-                                android:onClick="@{clickController.btnAddNewRide(NewRideData)}"
+                                android:onClick="@{clickController.btnAddNewRideOnClick(NewRideData)}"
                                 android:text="Add Ride"
                                 android:textColor="@android:color/white"
                                 android:textSize="16sp" />

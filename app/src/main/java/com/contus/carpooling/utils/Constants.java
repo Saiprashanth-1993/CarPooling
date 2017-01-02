@@ -81,6 +81,11 @@ public class Constants {
     public static final String NAME_NAVIGATION_SETTINGS = "settings";
 
     /**
+     * New ride empty seat validation.
+     */
+    public static final String EMPTY_SEAT = "0";
+
+    /**
      * Instantiates a new constants.
      */
     private Constants() {

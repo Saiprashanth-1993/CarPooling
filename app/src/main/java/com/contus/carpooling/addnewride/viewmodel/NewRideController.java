@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.addnewride.model.NewRide;
+import com.contus.carpooling.utils.Constants;
 
 import java.util.Calendar;
 
@@ -26,13 +27,17 @@ import java.util.Calendar;
  * @version 1.0
  */
 public class NewRideController {
-    String daySelection = "";
+
+    /**
+     * Selected day from the week list.
+     */
+    private String daySelection;
 
     /**
      * OnClick listener of time edit box.
      *
      * @param clickMode Used to get end time click or start time click option.
-     * @param newRide Used to get the new ride details.
+     * @param newRide   Used to get the new ride details.
      * @return OnClickListener of the edit text.
      */
     public View.OnClickListener btnTimeDialog(final String clickMode, final NewRide newRide) {
@@ -46,9 +51,9 @@ public class NewRideController {
                 mTimePicker = new TimePickerDialog(view.getContext(), R.style.DialogTheme, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        if (clickMode.equals("start_time")) {
+                        if (clickMode.equals(R.string.start_time)) {
                             newRide.setStartTime(selectedHour + ":" + selectedMinute);
-                        } else if (clickMode.equals("end_time")) {
+                        } else if (clickMode.equals(R.string.end_time)) {
                             newRide.setEndTime(selectedHour + ":" + selectedMinute);
                         }
                     }
@@ -69,7 +74,6 @@ public class NewRideController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (newRide.getDaySelected() != null && newRide.getDaySelected().contains(daySelected)) {
                     daySelection = daySelection.replace(daySelected, "");
                     newRide.setDaySelected(daySelection);
@@ -88,7 +92,7 @@ public class NewRideController {
      * @param newRide Used to get the new ride details.
      * @return OnClickListener of the edit text.
      */
-    public View.OnClickListener btnAddNewRide(final NewRide newRide) {
+    public View.OnClickListener btnAddNewRideOnClick(final NewRide newRide) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -182,7 +186,7 @@ public class NewRideController {
         } else if (TextUtils.isEmpty(profileInfo.getDaySelected())) {
             validationStatus = false;
             Toast.makeText(context, "Please select day", Toast.LENGTH_SHORT).show();
-        } else if (profileInfo.getSeats().equals("0")) {
+        } else if (profileInfo.getSeats().equals(Constants.EMPTY_SEAT)) {
             validationStatus = false;
             Toast.makeText(context, "Please select seat", Toast.LENGTH_SHORT).show();
         }
