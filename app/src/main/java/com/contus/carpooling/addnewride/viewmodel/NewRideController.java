@@ -31,7 +31,7 @@ public class NewRideController {
     /**
      * Selected day from the week list.
      */
-    private String daySelection;
+    private String daySelection = "";
 
     /**
      * OnClick listener of time edit box.

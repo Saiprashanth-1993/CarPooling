@@ -55,14 +55,14 @@ public class Ride extends BaseObservable {
     private String seats = "0";
 
     /**
-     * Check whether the ride available for weak.
+     * Check whether the ride available for week.
      */
     private Boolean isEveryWeek = false;
 
     /**
      * Cost of the ride.
      */
-    private String cost = "Cost";
+    private String cost = "Free";
 
     /**
      * Gets {@see #fromRide}
