@@ -14,7 +14,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.contus.carpooling.R;
-import com.contus.carpooling.addnewride.model.NewRide;
+import com.contus.carpooling.addnewride.model.Ride;
 import com.contus.carpooling.utils.Constants;
 
 import java.util.Calendar;
@@ -40,7 +40,7 @@ public class NewRideController {
      * @param newRide   Used to get the new ride details.
      * @return OnClickListener of the edit text.
      */
-    public View.OnClickListener btnTimeDialog(final String clickMode, final NewRide newRide) {
+    public View.OnClickListener btnTimeDialog(final String clickMode, final Ride newRide) {
         return new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
@@ -70,7 +70,7 @@ public class NewRideController {
      * @param newRide     Used to get the new ride details.
      * @return OnClickListener of the edit text.
      */
-    public View.OnClickListener btnDayOnClick(final String daySelected, final NewRide newRide) {
+    public View.OnClickListener btnDayOnClick(final String daySelected, final Ride newRide) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,7 +92,7 @@ public class NewRideController {
      * @param newRide Used to get the new ride details.
      * @return OnClickListener of the edit text.
      */
-    public View.OnClickListener btnAddNewRideOnClick(final NewRide newRide) {
+    public View.OnClickListener btnAddNewRideOnClick(final Ride newRide) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,7 +113,7 @@ public class NewRideController {
      * @param gender Used to get gender type.
      * @return OnClickListener of the radio button.
      */
-    public View.OnClickListener radioBtnOnClick(final NewRide ride, final String gender) {
+    public View.OnClickListener radioBtnOnClick(final Ride ride, final String gender) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,7 +129,7 @@ public class NewRideController {
      * @param costType Used to get gender type.
      * @return OnClickListener of the radio button.
      */
-    public View.OnClickListener radioCostBtnOnClick(final NewRide newRide, final String costType) {
+    public View.OnClickListener radioCostBtnOnClick(final Ride newRide, final String costType) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,7 +144,7 @@ public class NewRideController {
      * @param rideObj Used to get the new ride details.
      * @return OnClickListener of the checkbox.
      */
-    public View.OnClickListener cbBtnOnClick(final NewRide rideObj) {
+    public View.OnClickListener cbBtnOnClick(final Ride rideObj) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,12 +159,12 @@ public class NewRideController {
     }
 
     /**
-     * Method used to validate the edit text fields.
+     * Method used to validate the ride information fields.
      *
      * @param context Used to show the toast message.
      * @return true when the given field is not empty.
      */
-    private boolean isValid(Context context, NewRide profileInfo) {
+    private boolean isValid(Context context, Ride profileInfo) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(profileInfo.getFromRide())) {
             validationStatus = false;

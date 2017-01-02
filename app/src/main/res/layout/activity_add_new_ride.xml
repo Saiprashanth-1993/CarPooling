@@ -8,7 +8,7 @@
         <import type="android.view.View" />
         <variable
             name="NewRideData"
-            type="com.contus.carpooling.addnewride.model.NewRide" />
+            type="com.contus.carpooling.addnewride.model.Ride" />
 
         <variable
             name="clickController"

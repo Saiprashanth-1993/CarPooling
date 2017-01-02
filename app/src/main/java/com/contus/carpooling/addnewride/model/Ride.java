@@ -12,53 +12,55 @@ import android.databinding.Bindable;
 import com.contus.carpooling.BR;
 
 /**
- * Model class is used to get and store the new ride details.
+ * Model class is used to get and store the ride details.
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
-public class NewRide extends BaseObservable {
+public class Ride extends BaseObservable {
 
     /**
-     * Get the From ride.
+     * Source place of the ride.
      */
     private String fromRide;
 
     /**
-     * Get the To ride.
+     * Destination place of the ride.
      */
     private String toRide;
 
     /**
-     * Get the start time.
+     * Starting time of the ride.
      */
     private String startTime;
 
     /**
-     * Get the end time.
+     * End time of the ride.
      */
     private String endTime;
 
     /**
-     * Gender of the user
+     * Gender details of the user.
      */
     private String gender = "Male";
 
     /**
-     * Get the day selected.
+     * Selected day from the week to ride.
      */
     private String daySelected;
+
     /**
-     * Get the number of seats.
+     * No of seats available for the ride.
      */
     private String seats = "0";
+
     /**
-     * Get the every week.
+     * Check whether the ride available for weak.
      */
     private Boolean isEveryWeek = false;
 
     /**
-     * Get the cost.
+     * Cost of the ride.
      */
     private String cost = "Cost";
 
