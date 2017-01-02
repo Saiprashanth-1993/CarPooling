@@ -69,8 +69,8 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:hint="Enter your name"
+                    android:maxLines="1"
                     android:paddingLeft="5dp"
-                    android:singleLine="true"
                     android:text="@={UserDetails.userName}"
                     android:textColorHint="@color/colorEditTextHint"
                     android:textSize="14sp" />

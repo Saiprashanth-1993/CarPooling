@@ -45,13 +45,13 @@ public class UserProfileController {
      * Check whether the edit button is clicked or not.
      * when it true, the user can edit the profile details.
      *
-     * @param getEditTextValue values from the edit text.
+     * @param profileInfo values from the edit text.
      */
-    public void enableOrDisableEditText(UserProfileInfo getEditTextValue) {
-        if (getEditTextValue.isToEditOrSave()) {
-            getEditTextValue.setToEditOrSave(false);
+    public void enableOrDisableEditText(UserProfileInfo profileInfo) {
+        if (profileInfo.isToEditOrSave()) {
+            profileInfo.setToEditOrSave(false);
         } else {
-            getEditTextValue.setToEditOrSave(true);
+            profileInfo.setToEditOrSave(true);
         }
     }
 

@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="NewRideData"
+            type="com.contus.carpooling.addnewride.model.NewRide" />
+
+        <variable
             name="clickController"
             type="com.contus.carpooling.addnewride.viewmodel.NewRideController" />
     </data>
@@ -110,6 +114,7 @@
                                         android:hint="Enter your from ride"
                                         android:maxLines="1"
                                         android:paddingLeft="5dp"
+                                        android:text="@={NewRideData.fromRide}"
                                         android:textColorHint="@color/colorEditTextHint"
                                         android:textSize="14sp" />
 
@@ -158,6 +163,7 @@
                                         android:hint="Enter your to ride"
                                         android:maxLines="1"
                                         android:paddingLeft="5dp"
+                                        android:text="@={NewRideData.toRide}"
                                         android:textColorHint="@color/colorEditTextHint"
                                         android:textSize="14sp" />
 
@@ -219,8 +225,9 @@
                                             android:focusable="false"
                                             android:hint="Enter start time"
                                             android:maxLines="1"
-                                            android:onClick='@{clickController.btnTimeDialog("start_time")}'
+                                            android:onClick='@{clickController.btnTimeDialog("start_time",NewRideData)}'
                                             android:paddingLeft="5dp"
+                                            android:text="@={NewRideData.startTime}"
                                             android:textColorHint="@color/colorEditTextHint"
                                             android:textSize="14sp" />
 
@@ -268,8 +275,9 @@
                                             android:focusable="false"
                                             android:hint="Enter end time"
                                             android:maxLines="1"
-                                            android:onClick='@{clickController.btnTimeDialog("end_time")}'
+                                            android:onClick='@{clickController.btnTimeDialog("end_time",NewRideData)}'
                                             android:paddingLeft="5dp"
+                                            android:text="@={NewRideData.endTime}"
                                             android:textColorHint="@color/colorEditTextHint"
                                             android:textSize="14sp" />
 
@@ -305,18 +313,23 @@
                                     <RadioButton
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:checked="true"
+                                        android:onClick='@{clickController.radioBtnOnClick(NewRideData,"Male")}'
                                         android:text="Male"
                                         android:textColor="@android:color/darker_gray"
                                         android:textSize="14sp"
+
                                         android:theme="@style/RadioButton" />
 
                                     <RadioButton
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="20dp"
+                                        android:onClick='@{clickController.radioBtnOnClick(NewRideData,"Female")}'
                                         android:text="Female"
                                         android:textColor="@android:color/darker_gray"
                                         android:textSize="14sp"
+
                                         android:theme="@style/RadioButton" />
                                 </RadioGroup>
                             </LinearLayout>
@@ -351,10 +364,12 @@
                                         android:layout_height="35dp"
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
-                                        android:background="@drawable/circle_text_view"
+                                        android:background='@{NewRideData.daySelected.contains("0")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
+                                        android:onClick='@{clickController.btnDayClick("0",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="SUN"
+                                        android:textColor='@{NewRideData.daySelected.contains("0")? @android:color/white: @android:color/black}'
                                         android:textSize="10sp" />
 
                                     <Button
@@ -362,11 +377,12 @@
                                         android:layout_height="35dp"
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
-                                        android:background="@drawable/circle_text_view_selected"
+                                        android:background='@{NewRideData.daySelected.contains("1")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
+                                        android:onClick='@{clickController.btnDayClick("1",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="MON"
-                                        android:textColor="@android:color/white"
+                                        android:textColor='@{NewRideData.daySelected.contains("1")? @android:color/white: @android:color/black}'
                                         android:textSize="10sp" />
 
                                     <Button
@@ -374,11 +390,12 @@
                                         android:layout_height="35dp"
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
-                                        android:background="@drawable/circle_text_view_selected"
+                                        android:background='@{NewRideData.daySelected.contains("2")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
+                                        android:onClick='@{clickController.btnDayClick("2",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="TUE"
-                                        android:textColor="@android:color/white"
+                                        android:textColor='@{NewRideData.daySelected.contains("2")? @android:color/white: @android:color/black}'
                                         android:textSize="10sp" />
 
                                     <Button
@@ -386,10 +403,13 @@
                                         android:layout_height="35dp"
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
-                                        android:background="@drawable/circle_text_view"
+                                        android:background='@{NewRideData.daySelected.contains("3")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
+                                        android:onClick='@{clickController.btnDayClick("3",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="WED"
+
+                                        android:textColor='@{NewRideData.daySelected.contains("3")? @android:color/white: @android:color/black}'
                                         android:textSize="10sp" />
 
                                     <Button
@@ -397,10 +417,13 @@
                                         android:layout_height="35dp"
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
-                                        android:background="@drawable/circle_text_view"
+                                        android:background='@{NewRideData.daySelected.contains("4")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
+                                        android:onClick='@{clickController.btnDayClick("4",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="THU"
+
+                                        android:textColor='@{NewRideData.daySelected.contains("4")? @android:color/white: @android:color/black}'
                                         android:textSize="10sp" />
 
                                     <Button
@@ -408,11 +431,12 @@
                                         android:layout_height="35dp"
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
-                                        android:background="@drawable/circle_text_view_selected"
+                                        android:background='@{NewRideData.daySelected.contains("5")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
+                                        android:onClick='@{clickController.btnDayClick("5",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="FRI"
-                                        android:textColor="@android:color/white"
+                                        android:textColor='@{NewRideData.daySelected.contains("5")? @android:color/white: @android:color/black}'
                                         android:textSize="10sp" />
 
                                     <Button
@@ -420,10 +444,12 @@
                                         android:layout_height="35dp"
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
-                                        android:background="@drawable/circle_text_view"
+                                        android:background='@{NewRideData.daySelected.contains("6")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
+                                        android:onClick='@{clickController.btnDayClick("6",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="SAT"
+                                        android:textColor='@{NewRideData.daySelected.contains("6")? @android:color/white: @android:color/black}'
                                         android:textSize="10sp" />
                                 </LinearLayout>
                             </LinearLayout>
@@ -472,7 +498,8 @@
                                         android:id="@+id/every_week"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:buttonTint="@color/colorPrimary" />
+                                        android:buttonTint="@color/colorPrimary"
+                                        android:onClick='@{clickController.cbBtnOnClick(NewRideData)}' />
                                 </LinearLayout>
                             </LinearLayout>
 
@@ -512,7 +539,9 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
+
                                             android:buttonTint="@color/colorPrimary"
+                                            android:onClick='@{clickController.radioCostBtnOnClick(NewRideData,"Free")}'
                                             android:text="Free" />
 
                                         <RadioButton
@@ -521,6 +550,8 @@
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
                                             android:buttonTint="@color/colorPrimary"
+
+                                            android:onClick='@{clickController.radioCostBtnOnClick(NewRideData,"Cost")}'
                                             android:text="Cost" />
 
                                         <LinearLayout
@@ -569,6 +600,7 @@
                                 android:layout_marginRight="10dp"
                                 android:layout_marginTop="15dp"
                                 android:background="@drawable/button_rounded_corner_border"
+                                android:onClick="@{clickController.btnAddNewRide(NewRideData)}"
                                 android:text="Add Ride"
                                 android:textColor="@android:color/white"
                                 android:textSize="16sp" />
