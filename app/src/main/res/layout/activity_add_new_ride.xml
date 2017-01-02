@@ -365,7 +365,7 @@
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
                                         android:background='@{NewRideData.daySelected.contains("0")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
-                                        android:onClick='@{clickController.btnDayClick("0",NewRideData)}'
+                                        android:onClick='@{clickController.btnDayOnClick("0",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="SUN"
@@ -378,7 +378,7 @@
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
                                         android:background='@{NewRideData.daySelected.contains("1")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
-                                        android:onClick='@{clickController.btnDayClick("1",NewRideData)}'
+                                        android:onClick='@{clickController.btnDayOnClick("1",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="MON"
@@ -391,7 +391,7 @@
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
                                         android:background='@{NewRideData.daySelected.contains("2")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
-                                        android:onClick='@{clickController.btnDayClick("2",NewRideData)}'
+                                        android:onClick='@{clickController.btnDayOnClick("2",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="TUE"
@@ -404,7 +404,7 @@
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
                                         android:background='@{NewRideData.daySelected.contains("3")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
-                                        android:onClick='@{clickController.btnDayClick("3",NewRideData)}'
+                                        android:onClick='@{clickController.btnDayOnClick("3",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="WED"
@@ -418,7 +418,7 @@
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
                                         android:background='@{NewRideData.daySelected.contains("4")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
-                                        android:onClick='@{clickController.btnDayClick("4",NewRideData)}'
+                                        android:onClick='@{clickController.btnDayOnClick("4",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="THU"
@@ -432,7 +432,7 @@
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
                                         android:background='@{NewRideData.daySelected.contains("5")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
-                                        android:onClick='@{clickController.btnDayClick("5",NewRideData)}'
+                                        android:onClick='@{clickController.btnDayOnClick("5",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="FRI"
@@ -445,7 +445,7 @@
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
                                         android:background='@{NewRideData.daySelected.contains("6")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
-                                        android:onClick='@{clickController.btnDayClick("6",NewRideData)}'
+                                        android:onClick='@{clickController.btnDayOnClick("6",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="SAT"

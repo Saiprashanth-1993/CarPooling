@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
@@ -135,7 +136,7 @@ public class DashboardController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!selectedDeleyTime.isEmpty()) {
+                if (!TextUtils.isEmpty(selectedDeleyTime)) {
                     Toast.makeText(view.getContext(), selectedDeleyTime + " has been set", Toast.LENGTH_SHORT).show();
                     alert.cancel();
                 } else {

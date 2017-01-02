@@ -44,17 +44,16 @@ public class NewRideController {
         return new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                final Context context = view.getContext();
                 Calendar mCurrentTime = Calendar.getInstance();
                 int hour = mCurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mCurrentTime.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(context, R.style.DialogTheme, new TimePickerDialog.OnTimeSetListener() {
+                mTimePicker = new TimePickerDialog(view.getContext(), R.style.DialogTheme, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        if (clickMode.equals(context.getString(R.string.start_time))) {
+                        if (clickMode.equals(view.getContext().getString(R.string.start_time))) {
                             newRide.setStartTime(selectedHour + ":" + selectedMinute);
-                        } else if (clickMode.equals(context.getString(R.string.end_time))) {
+                        } else if (clickMode.equals(view.getContext().getString(R.string.end_time))) {
                             newRide.setEndTime(selectedHour + ":" + selectedMinute);
                         }
                     }
@@ -71,7 +70,7 @@ public class NewRideController {
      * @param newRide     Used to get the new ride details.
      * @return OnClickListener of the edit text.
      */
-    public View.OnClickListener btnDayClick(final String daySelected, final NewRide newRide) {
+    public View.OnClickListener btnDayOnClick(final String daySelected, final NewRide newRide) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
