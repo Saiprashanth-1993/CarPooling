@@ -29,15 +29,15 @@ public class LoginController {
     /**
      * OnClick listener of login button.
      *
-     * @param getEditTextValue Used to get the login details.
+     * @param userLoginInfo Used to get the login details.
      * @return OnClickListener of the login button.
      */
-    public View.OnClickListener btnLoginClick(final UserLoginInfo getEditTextValue) {
+    public View.OnClickListener btnLoginClick(final UserLoginInfo userLoginInfo) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                if (isValid(context, getEditTextValue.getUserName(), getEditTextValue.getPassword()))
+                if (isValid(context, userLoginInfo.getUserName(), userLoginInfo.getPassword()))
                     context.startActivity(new Intent(context, DashboardActivity.class));
             }
         };

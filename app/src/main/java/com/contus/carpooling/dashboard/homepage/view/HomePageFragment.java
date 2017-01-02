@@ -18,10 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * to handle interaction events.
- * create an instance of this fragment.
+ * Fragment used to display Rides offered and my rides in tab view at home page.
  */
 public class HomePageFragment extends Fragment implements ViewPager.OnPageChangeListener {
 

@@ -25,16 +25,16 @@ public class UserProfileController {
     /**
      * OnClick listener of profile edit button.
      *
-     * @param getEditTextValue Used to get the login details.
-     * @return OnClickListener of the login button.
+     * @param userProfileInfo Used to edit the profile details.
+     * @return OnClickListener of the profile edit button.
      */
-    public View.OnClickListener btnProfileEditClick(final UserProfileInfo getEditTextValue) {
+    public View.OnClickListener btnProfileEditClick(final UserProfileInfo userProfileInfo) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                if (isValid(context, getEditTextValue)) {
-                    enableOrDisableEditText(getEditTextValue);
+                if (isValid(context, userProfileInfo)) {
+                    enableOrDisableEditText(userProfileInfo);
                 }
 
             }
