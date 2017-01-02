@@ -5,6 +5,7 @@
 
     <data>
 
+        <import type="android.view.View" />
         <variable
             name="NewRideData"
             type="com.contus.carpooling.addnewride.model.NewRide" />
@@ -318,7 +319,6 @@
                                         android:text="Male"
                                         android:textColor="@android:color/darker_gray"
                                         android:textSize="14sp"
-
                                         android:theme="@style/RadioButton" />
 
                                     <RadioButton
@@ -540,6 +540,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
                                             android:buttonTint="@color/colorPrimary"
+                                            android:checked="true"
                                             android:onClick='@{clickController.radioCostBtnOnClick(NewRideData,"Free")}'
                                             android:text="Free" />
 
@@ -549,7 +550,6 @@
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
                                             android:buttonTint="@color/colorPrimary"
-
                                             android:onClick='@{clickController.radioCostBtnOnClick(NewRideData,"Cost")}'
                                             android:text="Cost" />
 
@@ -557,7 +557,8 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
-                                            android:layout_weight="1">
+                                            android:layout_weight="1"
+                                            android:visibility='@{NewRideData.cost.equals("Cost")? View.VISIBLE : View.GONE}'>
 
                                             <android.support.v7.widget.AppCompatTextView
                                                 android:layout_width="wrap_content"

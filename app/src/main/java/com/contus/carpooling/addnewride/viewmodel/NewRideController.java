@@ -43,17 +43,18 @@ public class NewRideController {
     public View.OnClickListener btnTimeDialog(final String clickMode, final NewRide newRide) {
         return new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
+                final Context context = view.getContext();
                 Calendar mCurrentTime = Calendar.getInstance();
                 int hour = mCurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mCurrentTime.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(view.getContext(), R.style.DialogTheme, new TimePickerDialog.OnTimeSetListener() {
+                mTimePicker = new TimePickerDialog(context, R.style.DialogTheme, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        if (clickMode.equals(R.string.start_time)) {
+                        if (clickMode.equals(context.getString(R.string.start_time))) {
                             newRide.setStartTime(selectedHour + ":" + selectedMinute);
-                        } else if (clickMode.equals(R.string.end_time)) {
+                        } else if (clickMode.equals(context.getString(R.string.end_time))) {
                             newRide.setEndTime(selectedHour + ":" + selectedMinute);
                         }
                     }
@@ -150,10 +151,8 @@ public class NewRideController {
             public void onClick(View view) {
                 if (rideObj.getIsEveryWeek()) {
                     rideObj.setIsEveryWeek(false);
-                    rideObj.setDaySelected("");
                 } else {
                     rideObj.setIsEveryWeek(true);
-                    rideObj.setDaySelected("0123456");
                 }
 
             }

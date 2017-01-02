@@ -51,7 +51,7 @@ public class NewRide extends BaseObservable {
     /**
      * Get the number of seats.
      */
-    private String seats;
+    private String seats = "0";
     /**
      * Get the every week.
      */
@@ -60,7 +60,7 @@ public class NewRide extends BaseObservable {
     /**
      * Get the cost.
      */
-    private String cost;
+    private String cost = "Cost";
 
     /**
      * Gets {@see #fromRide}
