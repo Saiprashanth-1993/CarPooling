@@ -58,7 +58,7 @@ public class UserRegistrationController {
     /**
      * OnClick listener to get the location from google place api.
      *
-     * @param requestCode Request code of the google place api intent
+     * @param requestCode ApiRequest code of the google place api intent
      * @return OnClickListener of the registration button.
      */
     public View.OnClickListener getLocationOnClick(final int requestCode) {

@@ -8,6 +8,7 @@ package com.contus.carpooling.login.viewmodel;
 
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.repacked.google.common.eventbus.Subscribe;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
@@ -16,6 +17,13 @@ import com.contus.carpooling.R;
 import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
 import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
 import com.contus.carpooling.login.model.UserLoginInfo;
+import com.contus.carpooling.login.model.UserLoginResponse;
+import com.contus.carpooling.server.BusProvider;
+import com.contus.carpooling.server.RestCallback;
+import com.contus.carpooling.server.RestClient;
+import com.contus.carpooling.utils.Constants;
+
+import java.util.HashMap;
 
 /**
  * Controller of the LoginActivity class
@@ -25,6 +33,7 @@ import com.contus.carpooling.login.model.UserLoginInfo;
  * @version 1.0
  */
 public class LoginController {
+    Context context;
 
     /**
      * OnClick listener of login button.
@@ -36,11 +45,60 @@ public class LoginController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Context context = view.getContext();
+                context = view.getContext();
                 if (isValid(context, userLoginInfo.getUserName(), userLoginInfo.getPassword()))
-                    context.startActivity(new Intent(context, DashboardActivity.class));
+                    loginRequest(context, userLoginInfo);
+
             }
         };
+    }
+
+    /**
+     * ApiRequest for user login details to the server
+     */
+    private void loginRequest(Context mContext, UserLoginInfo userLoginInfo) {
+
+        BusProvider.getInstance().register(this);
+        HashMap<String, String> loginParams = new HashMap<>();
+        try {
+            loginParams.put(Constants.Login.USER_EMAIL_ID, userLoginInfo.getUserName());
+            loginParams.put(Constants.Login.USER_PD, userLoginInfo.getPassword());
+
+            //new RestClient(mContext).getInstance().get().doLogin(loginParams).enqueue(new RestCallback<UserLoginResponse>());
+            //new RestClient(mContext).getInstance().get().getProfile("1").enqueue(new RestCallback<UserLoginResponse>());
+            new RestClient(mContext).getInstance().get().getRideList().enqueue(new RestCallback<UserLoginResponse>());
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+
+    /**
+     * This method will be called once the error response is received from the server
+     *
+     * @param errorMessage The error message
+     */
+    @Subscribe
+    public void onErrorResponseReceived(String errorMessage) {
+
+        BusProvider.getInstance().unregister(this);
+    }
+
+    /**
+     * Gets the login response from server
+     *
+     * @param result @see(#UserLoginResponse)- It contain the user first name, last name
+     *               email id, customer id, favourite address count
+     */
+    @Subscribe
+    public void onLoginResponseReceived(UserLoginResponse result) {
+        BusProvider.getInstance().unregister(this);
+
+        if (!result.getError()) {
+            context.startActivity(new Intent(context, DashboardActivity.class));
+        }
     }
 
     /**
