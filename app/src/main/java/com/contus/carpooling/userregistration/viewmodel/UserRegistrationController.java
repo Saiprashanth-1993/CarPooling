@@ -14,14 +14,13 @@ import android.widget.Toast;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.employeedetails.view.EmployeeDetailActivity;
-import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.userregistration.model.UserRegistrationInfo;
 import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
 import com.contus.carpooling.utils.Constants;
+import com.contus.carpooling.utils.Logger;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
-import com.contus.carpooling.utils.Logger;
 
 /**
  * OnClick listener of the view.
@@ -78,22 +77,6 @@ public class UserRegistrationController {
         };
     }
 
-    /**
-     * OnClick listener of redirect to login page.
-     *
-     * @return OnClickListener of the sign in button.
-     */
-    public View.OnClickListener btnSignInOnClick() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                context = view.getContext();
-                Intent intentLoginActivity = new Intent(context, LoginActivity.class);
-                intentLoginActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                context.startActivity(intentLoginActivity);
-            }
-        };
-    }
 
     /**
      * OnClick listener of user radio button.

@@ -47,10 +47,6 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityCompanyRegistrationBinding companyRegistrationBinding = DataBindingUtil.setContentView(this, R.layout.activity_company_registration);
-        setSupportActionBar(companyRegistrationBinding.toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
         registrationInfo = new CompanyRegistrationInfo();
         companyRegistrationBinding.setCompanyDetails(registrationInfo);
         companyRegistrationBinding.setViewController(new CompanyRegistrationController());

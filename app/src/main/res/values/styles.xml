@@ -52,4 +52,9 @@
     <style name="NavigationDrawerSelected" parent="ThemeOverlay.AppCompat.Light">
         <item name="colorControlHighlight">@android:color/transparent</item>
     </style>
+
+    <style name="SwitchStyle">
+        <item name="colorControlActivated">@color/colorPrimary</item>
+    </style>
+
 </resources>

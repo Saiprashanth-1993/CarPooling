@@ -75,18 +75,15 @@
                     android:text="Notification"
                     android:textSize="@dimen/text_extra_large" />
 
-                <com.zcw.togglebutton.ToggleButton
-                    android:layout_width="40dp"
-                    android:layout_height="20dp"
+                <android.support.v7.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
-                    app:tbAsDefaultOn="true"
-                    app:tbBorderWidth="2dp"
-                    app:tbOffBorderColor="@android:color/darker_gray"
-                    app:tbOffColor="@android:color/darker_gray"
-                    app:tbOnColor="@color/colorPrimary"
-                    app:tbSpotColor="@android:color/white" />
+                    android:checked="true"
+                    app:theme="@style/SwitchStyle" />
+
             </RelativeLayout>
 
             <View
