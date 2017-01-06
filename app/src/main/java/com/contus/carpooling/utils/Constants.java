@@ -13,10 +13,7 @@ package com.contus.carpooling.utils;
  * @version 1.0
  */
 public class Constants {
-    /**
-     * The constant Base URL
-     */
-    public static final String BASE_URL = "http://192.168.1.43/carpool_old/public/api/";
+
     /**
      * The result of google place on activity result to get company location.
      */
@@ -95,6 +92,9 @@ public class Constants {
         //Private constructor for prevent instance.
     }
 
+    /**
+     * Constants for Login class
+     */
     public static final class Login {
         /**
          * Constant value set for error
@@ -104,10 +104,17 @@ public class Constants {
          * Constant value set for error
          */
         public static final String USER_PD = "password";
+
+        /**
+         * Instantiates a new constants.
+         */
+        private Login() {
+            //Private constructor for prevent instance.
+        }
     }
 
     /**
-     * Constants for my Vitals
+     * Constants for api request
      */
     public static final class ApiRequest {
 
@@ -128,5 +135,11 @@ public class Constants {
          */
         public static final String MESSAGE = "message";
 
+        /**
+         * Instantiates a new constants.
+         */
+        private ApiRequest() {
+            //Private constructor for prevent instance.
+        }
     }
 }

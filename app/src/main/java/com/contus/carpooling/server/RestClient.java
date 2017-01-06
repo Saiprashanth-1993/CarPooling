@@ -9,7 +9,7 @@ package com.contus.carpooling.server;
 import android.content.Context;
 import android.support.design.BuildConfig;
 
-import com.contus.carpooling.utils.Constants;
+import com.contus.carpooling.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -77,7 +77,7 @@ public class RestClient {
          * The rest adapter which is used to build the base url
          */
         Retrofit restAdapter = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
+                .baseUrl(mContext.getString(R.string.base_url))
                 .client(httpClient.build())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();

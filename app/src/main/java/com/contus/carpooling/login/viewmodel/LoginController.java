@@ -60,17 +60,9 @@ public class LoginController {
 
         BusProvider.getInstance().register(this);
         HashMap<String, String> loginParams = new HashMap<>();
-        try {
-            loginParams.put(Constants.Login.USER_EMAIL_ID, userLoginInfo.getUserName());
-            loginParams.put(Constants.Login.USER_PD, userLoginInfo.getPassword());
-
-            //new RestClient(mContext).getInstance().get().doLogin(loginParams).enqueue(new RestCallback<UserLoginResponse>());
-            //new RestClient(mContext).getInstance().get().getProfile("1").enqueue(new RestCallback<UserLoginResponse>());
-            new RestClient(mContext).getInstance().get().getRideList().enqueue(new RestCallback<UserLoginResponse>());
-
-        } catch (Exception e) {
-
-        }
+        loginParams.put(Constants.Login.USER_EMAIL_ID, userLoginInfo.getUserName());
+        loginParams.put(Constants.Login.USER_PD, userLoginInfo.getPassword());
+        new RestClient(mContext).getInstance().get().getRideList().enqueue(new RestCallback<UserLoginResponse>());
 
     }
 
