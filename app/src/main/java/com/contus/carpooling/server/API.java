@@ -36,6 +36,7 @@ public interface API {
     /**
      * Authenticate the user with their login credentials
      *
+     * @param customerId The user id
      * @return {@link UserLoginResponse}
      */
     @GET("profile/{user_id}")
