@@ -10,6 +10,8 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.contus.carpooling.BR;
+import com.contus.carpooling.utils.Constants;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Model class is used to get and store the username and password details.
@@ -22,11 +24,13 @@ public class UserLoginInfo extends BaseObservable {
     /**
      * Username of the user.
      */
+    @SerializedName(Constants.Login.USER_EMAIL_ID)
     private String userName;
 
     /**
      * Password of the user.
      */
+    @SerializedName(Constants.Login.USER_PD)
     private String password;
 
     /**

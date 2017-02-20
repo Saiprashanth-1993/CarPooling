@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.employeedetails.view.EmployeeDetailActivity;
+import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.userregistration.model.UserRegistrationInfo;
 import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
 import com.contus.carpooling.utils.Constants;
@@ -140,5 +141,21 @@ public class UserRegistrationController {
             validationStatus = false;
         }
         return validationStatus;
+    }
+
+    /**
+     * OnClick listener of redirect to login page.
+     *
+     * @return OnClickListener of the sign in button.
+     */
+    public View.OnClickListener btnSignInOnClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentLoginActivity = new Intent(view.getContext(), LoginActivity.class);
+                intentLoginActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                view.getContext().startActivity(intentLoginActivity);
+            }
+        };
     }
 }

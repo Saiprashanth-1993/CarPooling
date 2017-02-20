@@ -86,6 +86,28 @@ public class Constants {
     public static final String EMPTY_SEAT = "0";
 
     /**
+     * The Constant used to check the internet.
+     */
+    public static final int CHECK_INTERNET = 2000;
+    /**
+     * The Constant used to check the internet while the user logged in.
+     */
+    public static final int CHECK_INTERNET_LOGIN = 2001;
+    /**
+     * The Constant used to check internet and redirect to login page
+     */
+    public static final int CHECK_INTERNET_LOGIN_REDIRECT = 2002;
+    /**
+     * The Constant used to check the user logged in.
+     */
+    public static final int CHECK_USER_LOGIN = 2003;
+
+    /**
+     * The Constant success value.
+     */
+    public static final int SUCCESS_VALUE = 200;
+
+    /**
      * Instantiates a new constants.
      */
     private Constants() {
@@ -118,6 +140,11 @@ public class Constants {
      */
     public static final class ApiRequest {
 
+
+        /**
+         * Constant value set for response
+         */
+        public static final String RESPONSE = "error";
 
         /**
          * Constant value set for error

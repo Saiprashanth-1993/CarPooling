@@ -21,7 +21,7 @@ public class Logger {
     /**
      * Tag to be presented in the log
      */
-    private static String tag = "Learning Space:::";
+    private static String tag = "Car Pooling:::";
 
     /**
      * Default Constructor
@@ -34,7 +34,7 @@ public class Logger {
      *
      * @param e Exception raised by the logger
      */
-    static void logError(Exception e) {
+    public static void logError(Exception e) {
         Log.e(tag, e.getMessage());
     }
 

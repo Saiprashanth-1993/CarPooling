@@ -93,7 +93,7 @@
                         android:background="@android:color/transparent"
                         android:hint="Enter your name"
                         android:paddingLeft="5dp"
-                        android:singleLine="true"
+                        android:maxLines="1"
                         android:text="@={UserDetails.userName}"
                         android:textColorHint="@color/colorEditTextHint"
                         android:textSize="14sp" />
@@ -134,7 +134,7 @@
                         android:hint="Enter your mobile number"
                         android:inputType="number"
                         android:paddingLeft="5dp"
-                        android:singleLine="true"
+                        android:maxLines="1"
                         android:text="@={UserDetails.mobileNumber}"
                         android:textColorHint="@color/colorEditTextHint"
                         android:textSize="14sp" />
@@ -174,7 +174,7 @@
                         android:hint="Enter your email id"
                         android:inputType="textEmailAddress"
                         android:paddingLeft="5dp"
-                        android:singleLine="true"
+                        android:maxLines="1"
                         android:text="@={UserDetails.emailID}"
                         android:textColorHint="@color/colorEditTextHint"
                         android:textSize="14sp" />
@@ -206,7 +206,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:checked="true"
                             android:onClick='@{ViewController.radioBtnOnClick(UserDetails,"Male")}'
                             android:text="Male"
                             android:textColor="@android:color/darker_gray"
@@ -220,6 +219,16 @@
                             android:layout_weight="1"
                             android:onClick='@{ViewController.radioBtnOnClick(UserDetails,"Female")}'
                             android:text="Female"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="14sp"
+                            android:theme="@style/RadioButton" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_weight="1"
+                            android:onClick='@{ViewController.radioBtnOnClick(UserDetails,"Any")}'
+                            android:text="Any"
                             android:textColor="@android:color/darker_gray"
                             android:textSize="14sp"
                             android:theme="@style/RadioButton" />
@@ -263,7 +272,7 @@
                         android:inputType="text"
                         android:onClick="@{ViewController.getLocationOnClick(2)}"
                         android:paddingLeft="5dp"
-                        android:singleLine="true"
+                        android:maxLines="1"
                         android:text="@={UserDetails.fromLocation}"
                         android:textColorHint="@color/colorEditTextHint"
                         android:textSize="14sp" />
@@ -305,7 +314,7 @@
                         android:inputType="text"
                         android:onClick="@{ViewController.getLocationOnClick(3)}"
                         android:paddingLeft="5dp"
-                        android:singleLine="true"
+                        android:maxLines="1"
                         android:text="@={UserDetails.toLocation}"
                         android:textColorHint="@color/colorEditTextHint"
                         android:textSize="14sp" />
@@ -346,7 +355,7 @@
                         android:hint="Enter your password"
                         android:inputType="textPassword"
                         android:paddingLeft="5dp"
-                        android:singleLine="true"
+                        android:maxLines="1"
                         android:text="@={UserDetails.password}"
                         android:textColorHint="@color/colorEditTextHint"
                         android:textSize="14sp" />
@@ -360,9 +369,34 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/button_rounded_corner_border"
                     android:onClick="@{ViewController.btnRegistrationOnClick(UserDetails)}"
-                    android:text="next"
+                    android:text="Submit"
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
+                <LinearLayout
+                    android:id="@+id/ll_sign_up_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_login"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Don't have an account?"
+                        android:textSize="16sp" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/btn_sign_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{ViewController.btnSignInOnClick()}"
+                        android:text=" Sign in"
+                        android:textColor="@color/colorHighLightBlue"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
                 <ImageView
                     android:layout_width="match_parent"

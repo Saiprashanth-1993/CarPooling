@@ -6,6 +6,9 @@
  */
 package com.contus.carpooling.login.model;
 
+import com.contus.carpooling.utils.Constants;
+import com.google.gson.annotations.SerializedName;
+
 /**
  * The model class to get the user profile information from the response
  *
@@ -14,5 +17,10 @@ package com.contus.carpooling.login.model;
  */
 public class UserLoginResponse extends ErrorResponse {
 
+    /**
+     * The Login.
+     */
+    @SerializedName(Constants.ApiRequest.RESPONSE)
+    public UserLoginInfo login;
 
 }

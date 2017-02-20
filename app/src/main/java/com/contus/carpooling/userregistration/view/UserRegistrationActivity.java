@@ -45,7 +45,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         ActivityUserRegistrationBinding userRegistrationBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_registration);
         setSupportActionBar(userRegistrationBinding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         registrationInfo = new UserRegistrationInfo();
         userRegistrationBinding.setUserDetails(registrationInfo);

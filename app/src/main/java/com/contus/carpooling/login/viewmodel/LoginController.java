@@ -6,22 +6,30 @@
  */
 package com.contus.carpooling.login.viewmodel;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.databinding.repacked.google.common.eventbus.Subscribe;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
-import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
 import com.contus.carpooling.login.model.UserLoginInfo;
 import com.contus.carpooling.login.model.UserLoginResponse;
 import com.contus.carpooling.server.BusProvider;
-import com.contus.carpooling.server.RestCallback;
-import com.contus.carpooling.server.RestClient;
+import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
+import com.contus.carpooling.utils.ApiService;
+import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
+import com.contus.carpooling.utils.CustomUtils;
+import com.contus.carpooling.utils.Logger;
+import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.otto.Subscribe;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -32,7 +40,7 @@ import java.util.HashMap;
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
-public class LoginController {
+public class LoginController implements ApiService.OnTaskCompleted {
     Context context;
 
     /**
@@ -62,35 +70,12 @@ public class LoginController {
         HashMap<String, String> loginParams = new HashMap<>();
         loginParams.put(Constants.Login.USER_EMAIL_ID, userLoginInfo.getUserName());
         loginParams.put(Constants.Login.USER_PD, userLoginInfo.getPassword());
-        new RestClient(mContext).getInstance().get().getRideList().enqueue(new RestCallback<UserLoginResponse>());
-
-    }
-
-
-    /**
-     * This method will be called once the error response is received from the server
-     *
-     * @param errorMessage The error message
-     */
-    @Subscribe
-    public void onErrorResponseReceived(String errorMessage) {
-
-        BusProvider.getInstance().unregister(this);
-    }
-
-    /**
-     * Gets the login response from server
-     *
-     * @param result @see(#UserLoginResponse)- It contain the user first name, last name
-     *               email id, customer id, favourite address count
-     */
-    @Subscribe
-    public void onLoginResponseReceived(UserLoginResponse result) {
-        BusProvider.getInstance().unregister(this);
-
-        if (!result.getError()) {
-            context.startActivity(new Intent(context, DashboardActivity.class));
-        }
+        RequestBody postBody = new FormEncodingBuilder().add(Constants.Login.USER_EMAIL_ID, userLoginInfo.getUserName
+                ()).add(Constants.Login.USER_PD, userLoginInfo.getPassword()).build();
+        ApiService apiService = new ApiService(mContext, false);
+        apiService.setOnTaskCompletionListener(this);
+        apiService.setRequestBody(postBody);
+        apiService.execute(context.getString(R.string.base_url));
     }
 
     /**
@@ -102,7 +87,7 @@ public class LoginController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.getContext().startActivity(new Intent(view.getContext(), CompanyRegistrationActivity.class));
+                view.getContext().startActivity(new Intent(view.getContext(), UserRegistrationActivity.class));
             }
         };
     }
@@ -125,5 +110,56 @@ public class LoginController {
             Toast.makeText(context, R.string.validation_failure_mobile_length, Toast.LENGTH_SHORT).show();
         }
         return validationStatus;
+    }
+
+    /**
+     * Handle the api error response
+     *
+     * @param errorMessage the error message
+     */
+    @Subscribe
+    public void dataReceived(String errorMessage) {
+        BusProvider.getInstance().unregister(this);
+        CustomUtils.showToast(context, errorMessage);
+    }
+
+    /**
+     * Handle the api response details
+     *
+     * @param result Api response
+     */
+    @Subscribe
+    public void dataReceived(UserLoginResponse result) {
+        BusProvider.getInstance().unregister(this);
+        if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
+            if (CommonUtils.isSuccess(result.getSuccess())) {
+                UserLoginInfo userResult = result.login;
+                LoginUtils.storeUserDetails(context, userResult);
+                CustomUtils.showToast(context, result.message);
+                context.startActivity(new Intent(context,   CompanyRegistrationActivity.class));
+                ((Activity) context).finish();
+            } else {
+                CustomUtils.showToast(context, result.getMessage());
+            }
+
+        }
+
+    }
+
+    @Override
+    public void onApiResponse(String response) {
+        try {
+            if (response != null) {
+                String result = CommonUtils.returnEmptyStringIfNull(response);
+                JSONObject jsonObject = new JSONObject(result);
+                if (!jsonObject.getBoolean(Constants.ApiRequest.ERROR)) {
+                    JSONObject resultObj = jsonObject.getJSONObject(Constants.ApiRequest.RESPONSE);
+                    CustomUtils.showToast(context,resultObj.getString("message"));
+                }
+            }
+
+        } catch (Exception e) {
+            Logger.logError(e);
+        }
     }
 }
