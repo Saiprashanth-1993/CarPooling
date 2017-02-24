@@ -20,7 +20,6 @@ public class UserLoginResponse extends ErrorResponse {
     /**
      * The Login.
      */
-    @SerializedName(Constants.ApiRequest.RESPONSE)
     public UserLoginInfo login;
 
 }

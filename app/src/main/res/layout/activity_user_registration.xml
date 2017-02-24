@@ -222,16 +222,6 @@
                             android:textColor="@android:color/darker_gray"
                             android:textSize="14sp"
                             android:theme="@style/RadioButton" />
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_weight="1"
-                            android:onClick='@{ViewController.radioBtnOnClick(UserDetails,"Any")}'
-                            android:text="Any"
-                            android:textColor="@android:color/darker_gray"
-                            android:textSize="14sp"
-                            android:theme="@style/RadioButton" />
                     </RadioGroup>
 
                 </LinearLayout>

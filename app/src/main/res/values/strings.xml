@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">Carpooling</string>
-    <string name="base_url">192.168.1.43/carpool_old/public/api/</string>
+    <string name="base_url">192.168.3.42:8000/api/</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

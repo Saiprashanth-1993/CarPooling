@@ -10,7 +10,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -19,14 +18,14 @@ import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivit
 import com.contus.carpooling.login.model.UserLoginInfo;
 import com.contus.carpooling.login.model.UserLoginResponse;
 import com.contus.carpooling.server.BusProvider;
+import com.contus.carpooling.server.RestCallback;
+import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
 import com.contus.carpooling.utils.ApiService;
 import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.CustomUtils;
 import com.contus.carpooling.utils.Logger;
-import com.squareup.okhttp.FormEncodingBuilder;
-import com.squareup.okhttp.RequestBody;
 import com.squareup.otto.Subscribe;
 
 import org.json.JSONObject;
@@ -70,12 +69,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
         HashMap<String, String> loginParams = new HashMap<>();
         loginParams.put(Constants.Login.USER_EMAIL_ID, userLoginInfo.getUserName());
         loginParams.put(Constants.Login.USER_PD, userLoginInfo.getPassword());
-        RequestBody postBody = new FormEncodingBuilder().add(Constants.Login.USER_EMAIL_ID, userLoginInfo.getUserName
-                ()).add(Constants.Login.USER_PD, userLoginInfo.getPassword()).build();
-        ApiService apiService = new ApiService(mContext, false);
-        apiService.setOnTaskCompletionListener(this);
-        apiService.setRequestBody(postBody);
-        apiService.execute(context.getString(R.string.base_url));
+        new RestClient(mContext).getInstance().get().doLogin(loginParams).enqueue(new RestCallback<UserLoginResponse>());
     }
 
     /**
