@@ -10,6 +10,8 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.contus.carpooling.BR;
+import com.contus.carpooling.utils.Constants;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Model class is used to get and store the user registration details.
@@ -22,37 +24,45 @@ public class UserRegistrationInfo extends BaseObservable {
     /**
      * Name of the user.
      */
+
+    @SerializedName(Constants.Register.USER_NAME)
     private String userName;
 
     /**
      * Mobile number of the user.
      */
+    @SerializedName(Constants.Register.USER_MOBILE_NUMBER)
     private String mobileNumber;
 
     /**
      * Email id number of the user.
      */
+    @SerializedName(Constants.Register.USER_EMAIL)
     private String emailID;
 
     /**
      * From location of the user.
      */
+    @SerializedName(Constants.Register.USER_FROM_LOCATION)
     private String fromLocation;
 
     /**
      * To location of the user.
      */
+    @SerializedName(Constants.Register.USER_TO_LOCATION)
     private String toLocation;
 
     /**
      * Password of the user.
      */
+    @SerializedName(Constants.Register.USER_REG_PD)
     private String password;
 
     /**
      * Gender details of the user.
      */
-    private String gender = "Male";
+    @SerializedName(Constants.Register.USER_GENDER)
+    private String gender;
 
     /**
      * Gets {@see #userName}.

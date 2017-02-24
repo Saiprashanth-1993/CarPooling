@@ -136,6 +136,50 @@ public class Constants {
     }
 
     /**
+     * Constants fro Register class
+     */
+    public static final class Register {
+        /**
+         * Constant value for post the name and set the error
+         */
+        public static final String USER_NAME = "name";
+
+        /**
+         * constant value for post the email and set the error
+         */
+        public static final String USER_EMAIL = "email";
+        /**
+         * constant value for register the userMobileNumber
+         */
+        public static final String USER_MOBILE_NUMBER = "mobile";
+        /**
+         * constant value for register the userGender and set the error
+         */
+        public static final String USER_GENDER = "gender";
+
+        /**
+         * Constant value for register the userFromLocation and set the error
+         */
+        public static final String USER_FROM_LOCATION = "from_location";
+        /**
+         * constant value for register the userToLocation and set the error
+         */
+        public static final String USER_TO_LOCATION = "to_location";
+        /**
+         * constant value for register the userPassword and set the error
+         */
+        public static final String USER_REG_PD = "password";
+
+    }
+
+
+    public static final class registerAPIResponse
+    {
+       public static final String MESSAGE="message";
+        public static final String EMAIL="email";
+    }
+
+    /**
      * Constants for api request
      */
     public static final class ApiRequest {

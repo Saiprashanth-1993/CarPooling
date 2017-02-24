@@ -37,6 +37,8 @@ public class ErrorResponse {
     public String message;
 
 
+
+
     /**
      * Gets {@see #error}
      * Returns the error {@link #error}

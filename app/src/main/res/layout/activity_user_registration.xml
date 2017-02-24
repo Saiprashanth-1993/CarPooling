@@ -93,6 +93,7 @@
                         android:background="@android:color/transparent"
                         android:hint="Enter your name"
                         android:paddingLeft="5dp"
+                        android:inputType="textCapWords|textCapSentences"
                         android:maxLines="1"
                         android:text="@={UserDetails.userName}"
                         android:textColorHint="@color/colorEditTextHint"
@@ -359,7 +360,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/button_rounded_corner_border"
                     android:onClick="@{ViewController.btnRegistrationOnClick(UserDetails)}"
-                    android:text="Submit"
+                    android:text="Next"
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
                 <LinearLayout

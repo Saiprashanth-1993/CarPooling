@@ -7,6 +7,7 @@
 package com.contus.carpooling.server;
 
 import com.contus.carpooling.login.model.UserLoginResponse;
+import com.contus.carpooling.userregistration.model.UserRegistrationResponse;
 
 import java.util.Map;
 
@@ -32,6 +33,12 @@ public interface API {
      */
     @POST("login/")
     Call<UserLoginResponse> doLogin(@Body Map<String, String> parameters);
+
+    /**
+     * Authenticate the user with their register Credentials
+     */
+    @POST("registration/")
+    Call<UserRegistrationResponse> doRegister(@Body Map<String,String> paramerters);
 
     /**
      * Authenticate the user with their login credentials

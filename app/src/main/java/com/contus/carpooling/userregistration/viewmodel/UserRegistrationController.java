@@ -8,20 +8,30 @@ package com.contus.carpooling.userregistration.viewmodel;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
 import com.contus.carpooling.R;
-import com.contus.carpooling.employeedetails.view.EmployeeDetailActivity;
+import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
 import com.contus.carpooling.login.view.LoginActivity;
+import com.contus.carpooling.server.BusProvider;
+import com.contus.carpooling.server.RestCallback;
+import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.userregistration.model.UserRegistrationInfo;
+import com.contus.carpooling.userregistration.model.UserRegistrationResponse;
 import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
+import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
+import com.contus.carpooling.utils.CustomUtils;
 import com.contus.carpooling.utils.Logger;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.squareup.otto.Subscribe;
+
+import java.util.HashMap;
 
 /**
  * OnClick listener of the view.
@@ -51,9 +61,26 @@ public class UserRegistrationController {
                 if (isValid(getEditTextValue.getUserName(), getEditTextValue.getMobileNumber(),
                         getEditTextValue.getEmailID(), getEditTextValue.getFromLocation(),
                         getEditTextValue.getToLocation(), getEditTextValue.getPassword(), getEditTextValue.getGender()))
-                    context.startActivity(new Intent(context, EmployeeDetailActivity.class));
+                    registerRequest(context,getEditTextValue);
+
             }
         };
+    }
+
+    private void registerRequest(Context mContext,UserRegistrationInfo userRegistrationInfo)
+    {
+        Context ctx=mContext;
+        Log.e("ctx",ctx+"");
+        BusProvider.getInstance().register(this);
+        HashMap<String, String> registerParams = new HashMap<>();
+        registerParams.put(Constants.Register.USER_NAME, userRegistrationInfo.getUserName());
+        registerParams.put(Constants.Register.USER_EMAIL,userRegistrationInfo.getEmailID());
+        registerParams.put(Constants.Register.USER_MOBILE_NUMBER,userRegistrationInfo.getMobileNumber());
+        registerParams.put(Constants.Register.USER_GENDER,userRegistrationInfo.getGender());
+        registerParams.put(Constants.Register.USER_FROM_LOCATION,userRegistrationInfo.getFromLocation());
+        registerParams.put(Constants.Register.USER_TO_LOCATION,userRegistrationInfo.getToLocation());
+        registerParams.put(Constants.Register.USER_REG_PD, userRegistrationInfo.getPassword());
+        new RestClient(ctx).getInstance().get().doRegister(registerParams).enqueue(new RestCallback<UserRegistrationResponse>());
     }
 
     /**
@@ -111,9 +138,15 @@ public class UserRegistrationController {
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password) || TextUtils.isEmpty(mobileNumber)) {
             validationStatus = false;
             Toast.makeText(context, R.string.validation_failure_message, Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(gender)) {
+        }
+        else if(mobileNumber.length() < 10 || mobileNumber.length() > 10)
+        {
             validationStatus = false;
-            Toast.makeText(context, "Please make sure to ic_drop_down_background gender", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.phone_number_failure_message, Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(gender)) {
+            validationStatus = false;
+            Toast.makeText(context, "Please select Gender", Toast.LENGTH_SHORT).show();
         } else if (!isTextValid(fromLocation, toLocation, password)) {
             validationStatus = false;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(emailId).matches()) {
@@ -157,5 +190,39 @@ public class UserRegistrationController {
                 view.getContext().startActivity(intentLoginActivity);
             }
         };
+    }
+
+    /**
+     * Handle the api error response
+     *
+     * @param errorMessage the error message
+     */
+    @Subscribe
+    public void dataReceived(String errorMessage) {
+        BusProvider.getInstance().unregister(this);
+        CustomUtils.showToast(context, errorMessage);
+    }
+
+    /**
+     * Handle the api response details
+     *
+     * @param result Api response
+     */
+    @Subscribe
+    public void dataReceived(UserRegistrationResponse result) {
+        BusProvider.getInstance().unregister(this);
+        if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
+            if (CommonUtils.isSuccess(result.getSuccess())) {
+                CustomUtils.showToast(context,result.getMessage());
+                //context.startActivity(new Intent(context, EmployeeDetailActivity.class));
+                context.startActivity(new Intent(context,CompanyRegistrationActivity.class));
+            } else {
+                CustomUtils.showToast(context, result.getMessage());
+                context.startActivity(new Intent(context,CompanyRegistrationActivity.class));
+
+            }
+
+        }
+
     }
 }
