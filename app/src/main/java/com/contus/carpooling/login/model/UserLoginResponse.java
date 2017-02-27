@@ -20,6 +20,8 @@ public class UserLoginResponse extends ErrorResponse {
     /**
      * The Login.
      */
+
+    @SerializedName(Constants.Login.ADMIN_USER)
     public UserLoginInfo login;
 
 }

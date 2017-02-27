@@ -5,6 +5,7 @@
  */
 package com.contus.carpooling.userregistration.viewmodel;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
@@ -67,6 +68,11 @@ public class UserRegistrationController {
         };
     }
 
+    /**
+     * Handle the Registration API of user
+     * @param mContext Context of an activity
+     * @param userRegistrationInfo Get the model of UserRegistration
+     */
     private void registerRequest(Context mContext,UserRegistrationInfo userRegistrationInfo)
     {
         Context ctx=mContext;
@@ -214,15 +220,14 @@ public class UserRegistrationController {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 CustomUtils.showToast(context,result.getMessage());
-                //context.startActivity(new Intent(context, EmployeeDetailActivity.class));
+                UserRegistrationInfo regResponse=result.registerAPIResponse;
+                RegisterUtil.savePreferences(context,Constants.REG_EMAIL,regResponse.getEmailID());
+                RegisterUtil.savePreferences(context,Constants.REG_USER_ID,regResponse.getId());
                 context.startActivity(new Intent(context,CompanyRegistrationActivity.class));
+                ((Activity) context).finish();
             } else {
                 CustomUtils.showToast(context, result.getMessage());
-                context.startActivity(new Intent(context,CompanyRegistrationActivity.class));
-
             }
-
         }
-
     }
 }

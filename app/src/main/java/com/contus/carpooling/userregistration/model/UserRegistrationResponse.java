@@ -7,6 +7,8 @@
 package com.contus.carpooling.userregistration.model;
 
 import com.contus.carpooling.login.model.ErrorResponse;
+import com.contus.carpooling.utils.Constants;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * The model class to get the user register information from the response
@@ -16,8 +18,6 @@ import com.contus.carpooling.login.model.ErrorResponse;
  */
 public class UserRegistrationResponse extends ErrorResponse {
 
-    RegisterAPIResponse registerAPIResponse;
-//will implement later
-
-
+   @SerializedName(Constants.Register.USER_DETAILS)
+   public UserRegistrationInfo registerAPIResponse;
 }

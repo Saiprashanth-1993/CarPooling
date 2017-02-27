@@ -14,6 +14,12 @@ package com.contus.carpooling.utils;
  */
 public class Constants {
 
+
+    /**
+     * Constants API base URL
+     */
+    public static final String BASE_URL = "http://192.168.3.42:8000/api/";
+
     /**
      * The result of google place on activity result to get company location.
      */
@@ -108,6 +114,16 @@ public class Constants {
     public static final int SUCCESS_VALUE = 200;
 
     /**
+     * The Constant for Email Id
+     */
+    public static final String REG_EMAIL="email";
+
+    /**
+     * The Constant UserId
+     */
+    public static final String REG_USER_ID="id";
+
+    /**
      * Instantiates a new constants.
      */
     private Constants() {
@@ -118,14 +134,90 @@ public class Constants {
      * Constants for Login class
      */
     public static final class Login {
+
+
         /**
-         * Constant value set for error
+         * Constant for get the Login API response and store intp adminUser model
          */
-        public static final String USER_EMAIL_ID = "email";
+        public static final String ADMIN_USER="adminusers";
         /**
-         * Constant value set for error
+         * Constant value set from response
          */
         public static final String USER_PD = "password";
+
+        /**
+         * Constant value set from response
+         */
+        public static final String LOGIN_ID="id";
+        /**
+         *Constant value set from response
+         */
+        public static final String USER_ROLE_ID="userRoleId";
+        /**
+         *Constant value set from response
+         */
+        public static final String LOGIN_NAME="name";
+        /**
+         * Constant value set from response
+         */
+        public static final String USER_EMAIL_ID="email";
+        /**
+         * Constant value set from response
+         */
+        public static final String USERNAME="username";
+        /**
+         * Constant value set from response
+         */
+        public static final String MOBILE="mobile";
+        /***
+         * Constant value set from response
+         */
+        public static final String GENDER="gender";
+        /***
+         * Constant value set from response
+         */
+        public static final String FROM_LOCATION="from_location";
+        /***
+         * Constant value set from response
+         */
+        public static final String To_LOCATION="to_location";
+        /***
+         * Constant value set from response
+         */
+        public static final String AGE="age";
+        /***
+         * Constant value set from response
+         */
+        public static final String PROFILE_IMAGE="profile_image";
+        /***
+         * Constant value set from response
+         */
+        public static final String COMPANY_ID="company_id";
+        /***
+         * Constant value set from response
+         */
+        public static final String COMPANY_CATEGORY_ID="company_category_id";
+        /***
+         * Constant value set from response
+         */
+        public static final String COMPANY_LOCATION="company_location";
+        /***
+         * Constant value set from response
+         */
+        public static final String DEVICE_TYPE="deviceType";
+        /***
+         * Constant value set from response
+         */
+        public static final String DEVICE_TOKEN="deviceToken";
+        /***
+         * Constant value set from response
+         */
+        public static final String EMPLOYEE_ID="employeeId";
+        /***
+         * Constant value set from response
+         */
+        public static final String IS_ACTIVE="isActive";
+
 
         /**
          * Instantiates a new constants.
@@ -139,6 +231,20 @@ public class Constants {
      * Constants fro Register class
      */
     public static final class Register {
+
+
+
+
+        /**
+         * Get the response from API after register the user details
+         */
+        public static final String USER_DETAILS="UserDetails";
+
+        /**
+         * Get the id from API response  after register the user details
+         */
+        public static final String ID="id";
+
         /**
          * Constant value for post the name and set the error
          */
@@ -173,11 +279,6 @@ public class Constants {
     }
 
 
-    public static final class registerAPIResponse
-    {
-       public static final String MESSAGE="message";
-        public static final String EMAIL="email";
-    }
 
     /**
      * Constants for api request
@@ -198,7 +299,7 @@ public class Constants {
         /**
          * Constant value for status code
          */
-        public static final String STATUS_CODE = "statusCode";
+        public static final String STATUS_CODE = "statuscode";
 
 
         /**

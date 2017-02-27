@@ -8,8 +8,8 @@ package com.contus.carpooling.userregistration.view;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -21,7 +21,6 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
-import static com.contus.carpooling.utils.Constants.REQUEST_CODE_COMPANY_LOCATION;
 import static com.contus.carpooling.utils.Constants.REQUEST_CODE_USER_FROM_LOCATION;
 import static com.contus.carpooling.utils.Constants.REQUEST_CODE_USER_TO_LOCATION;
 
@@ -85,7 +84,6 @@ public class UserRegistrationActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

@@ -71,7 +71,7 @@
                     android:hint="Enter your name"
                     android:maxLines="1"
                     android:paddingLeft="5dp"
-                    android:text="@={UserDetails.userName}"
+                    android:text="@={UserDetails.email}"
                     android:textColorHint="@color/colorEditTextHint"
                     android:textSize="14sp" />
 

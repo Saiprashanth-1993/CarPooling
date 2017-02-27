@@ -53,7 +53,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
             @Override
             public void onClick(View view) {
                 context = view.getContext();
-                if (isValid(context, userLoginInfo.getUserName(), userLoginInfo.getPassword()))
+                if (isValid(context, userLoginInfo.getEmail(), userLoginInfo.getPassword()))
                     loginRequest(context, userLoginInfo);
 
             }
@@ -67,7 +67,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
 
         BusProvider.getInstance().register(this);
         HashMap<String, String> loginParams = new HashMap<>();
-        loginParams.put(Constants.Login.USER_EMAIL_ID, userLoginInfo.getUserName());
+        loginParams.put(Constants.Login.USER_EMAIL_ID, userLoginInfo.getEmail());
         loginParams.put(Constants.Login.USER_PD, userLoginInfo.getPassword());
         new RestClient(mContext).getInstance().get().doLogin(loginParams).enqueue(new RestCallback<UserLoginResponse>());
     }
@@ -135,9 +135,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
             } else {
                 CustomUtils.showToast(context, result.getMessage());
             }
-
         }
-
     }
 
     @Override

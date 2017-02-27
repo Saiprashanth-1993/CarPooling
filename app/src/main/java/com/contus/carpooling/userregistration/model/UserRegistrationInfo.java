@@ -21,10 +21,16 @@ import com.google.gson.annotations.SerializedName;
  */
 public class UserRegistrationInfo extends BaseObservable {
 
+
+    /**
+     * Unique user ID
+     */
+    @SerializedName(Constants.Register.ID)
+    private String id;
+
     /**
      * Name of the user.
      */
-
     @SerializedName(Constants.Register.USER_NAME)
     private String userName;
 
@@ -131,6 +137,23 @@ public class UserRegistrationInfo extends BaseObservable {
      */
     public String getGender() {
         return gender;
+    }
+
+    /**
+     * Gets {@see #id}.
+     *
+     * @return {@link #id}
+     */
+    @Bindable
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Sets {@link #id}.
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
