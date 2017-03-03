@@ -11,6 +11,8 @@ import android.databinding.Bindable;
 
 import com.contus.carpooling.BR;
 
+import java.io.File;
+
 /**
  * Model class is used to get and store the employee details
  *
@@ -23,6 +25,15 @@ public class EmployeeInfo extends BaseObservable {
      * Image selected type as front.
      */
     private String imageSelectedType;
+
+
+
+    private File frontImage;
+
+
+
+
+    private File backImage;
 
     /**
      * Validate the image selected on front side.
@@ -38,6 +49,40 @@ public class EmployeeInfo extends BaseObservable {
      * Validate the edit text of id card no details.
      */
     private String idCardNumber;
+
+
+    /**
+     * Gets {@see #frontImage}.
+     *
+     * @return {@link #frontImage}
+     */
+    public File getFrontImage() {
+        return frontImage;
+    }
+
+    /**
+     * Sets {@link #frontImage}.
+     */
+    public void setFrontImage(File frontImage) {
+        this.frontImage = frontImage;
+    }
+
+    /**
+     * Gets {@see #frontImage}.
+     *
+     * @return {@link #frontImage}
+     */
+    public File getBackImage() {
+        return backImage;
+    }
+
+    /**
+     * Sets {@link #frontImage}.
+     */
+    public void setBackImage(File backImage) {
+        this.backImage = backImage;
+    }
+
 
     /**
      * Gets {@see #idCardNumber}.

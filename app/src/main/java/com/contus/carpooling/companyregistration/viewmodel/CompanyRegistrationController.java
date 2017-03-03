@@ -12,20 +12,32 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.contus.carpooling.R;
+import com.contus.carpooling.companyregistration.model.CompanyDetails;
+import com.contus.carpooling.companyregistration.model.CompanyList;
 import com.contus.carpooling.companyregistration.model.CompanyRegistrationInfo;
+import com.contus.carpooling.companyregistration.model.CompanyRegistrationResponse;
 import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
+import com.contus.carpooling.employeedetails.view.EmployeeDetailActivity;
 import com.contus.carpooling.login.view.LoginActivity;
-import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
+import com.contus.carpooling.server.BusProvider;
+import com.contus.carpooling.server.RestCallback;
+import com.contus.carpooling.server.RestClient;
+import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
+import com.contus.carpooling.utils.CustomUtils;
 import com.contus.carpooling.utils.Logger;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.squareup.otto.Subscribe;
+
+import java.util.HashMap;
 
 import static com.contus.carpooling.utils.Constants.REQUEST_CODE_COMPANY_LOCATION;
 
@@ -39,6 +51,21 @@ import static com.contus.carpooling.utils.Constants.REQUEST_CODE_COMPANY_LOCATIO
 public class CompanyRegistrationController {
 
     /**
+     * To get the all the company name and category name
+     */
+    private CompanyList list;
+
+    /**
+     * To get the category id
+     */
+    private String categoryId;
+
+    /**
+     * Get the context of an activity
+     */
+    private Context context;
+
+    /**
      * OnClick handler of the Company registration button.
      *
      * @param getEditTextValue Used to get the company registration details.
@@ -48,11 +75,61 @@ public class CompanyRegistrationController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Context context = view.getContext();
+                context = view.getContext();
                 if (isValid(context, getEditTextValue.getCompanyName(), getEditTextValue.getCategory(), getEditTextValue.getLocation()))
-                    context.startActivity(new Intent(context, UserRegistrationActivity.class));
+                    //context.startActivity(new Intent(context,EmployeeDetailActivity.class));
+                 companyRegistrationRequest(context,getEditTextValue);
             }
         };
+    }
+
+
+    /**
+     * Handle the CompanyRegistration API of user
+     * @param mContext Context of an activity
+     * @param companyRegistrationInfo Get the model of CompanyRegistrationInfo
+     */
+    private void companyRegistrationRequest(Context mContext,CompanyRegistrationInfo companyRegistrationInfo)
+    {
+        Context ctx=mContext;
+        Log.e("ctx",ctx+"");
+        BusProvider.getInstance().register(this);
+        HashMap<String, String> companyRegistrationParams = new HashMap<>();
+        companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_REGISTRATION_NAME, companyRegistrationInfo.getCompanyName());
+        companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_CATEGORY_ID,categoryId);
+        companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_LOCATION,companyRegistrationInfo.getLocation());
+        new RestClient(ctx).getInstance().get().doCompanyRegistration(companyRegistrationParams).enqueue(new RestCallback<CompanyRegistrationResponse>());
+    }
+
+    /**
+     * Handle the api error response
+     *
+     * @param errorMessage the error message
+     */
+    @Subscribe
+    public void CompanyResponseReceived(String errorMessage) {
+        BusProvider.getInstance().unregister(this);
+        CustomUtils.showToast(context, errorMessage);
+    }
+
+    /**
+     * Handle the api response details
+     *
+     * @param result Api response
+     */
+    @Subscribe
+    public void CompanyResponseReceived(CompanyRegistrationResponse result) {
+        BusProvider.getInstance().unregister(this);
+        if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
+            if (CommonUtils.isSuccess(result.getSuccess())) {
+                CustomUtils.showToast(context,result.getMessage());
+                CompanyDetails ComRegResponse=result.ComRegResponse;
+                context.startActivity(new Intent(context,EmployeeDetailActivity.class));
+                ((Activity) context).finish();
+            } else {
+                CustomUtils.showToast(context, result.getMessage());
+            }
+        }
     }
 
     /**
@@ -117,26 +194,37 @@ public class CompanyRegistrationController {
      * @param companyCategory To set the category details in model.
      */
     private void categoryList(View view, final CompanyRegistrationInfo companyCategory) {
-        final String[] countryList = {"Malaysia", "United States", "Indonesia",
-                "France", "Italy", "Singapore", "New Zealand", "India"};
-        Activity activity = (CompanyRegistrationActivity) view.getContext();
-        // InputMethodManager used to disable the soft keyboard when the category is clicked.
-        View visibleView = activity.getCurrentFocus();
-        if (visibleView != null) {
-            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(visibleView.getWindowToken(), 0);
-        }
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        View customTitleView = activity.getLayoutInflater().inflate(R.layout.category_custom_dialog_title, null);
-        builder.setCustomTitle(customTitleView);
-        builder.setItems(countryList, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int item) {
-                companyCategory.setCategory(countryList[item]);
+        if (list != null) {
+            final String[] countryList = new String[list.getSector().size()];
+            final int[] id = new int[list.getSector().size()];
+            for (int i = 0; i < list.getSector().size(); i++) {
+                countryList[i] = list.getSector().get(i).getName();
+                id[i] = list.getSector().get(i).getId();
             }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
+            Activity activity = (CompanyRegistrationActivity) view.getContext();
+            // InputMethodManager used to disable the soft keyboard when the category is clicked.
+            View visibleView = activity.getCurrentFocus();
+            if (visibleView != null) {
+                InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(visibleView.getWindowToken(), 0);
+            }
+            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+            View customTitleView = activity.getLayoutInflater().inflate(R.layout.category_custom_dialog_title, null);
+            builder.setCustomTitle(customTitleView);
+            builder.setItems(countryList, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int item) {
+                    companyCategory.setCategory(countryList[item]);
+                    Log.d("selected_id", id[item] + "");
+                    categoryId= String.valueOf(id[item]);
+                }
+            });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
     }
+
+
+
 
     /**
      * OnClick listener of redirect to login page.
@@ -152,5 +240,9 @@ public class CompanyRegistrationController {
                 view.getContext().startActivity(intentLoginActivity);
             }
         };
+    }
+
+    public void CompanyRegistrationController(CompanyList list) {
+        this.list = list;
     }
 }

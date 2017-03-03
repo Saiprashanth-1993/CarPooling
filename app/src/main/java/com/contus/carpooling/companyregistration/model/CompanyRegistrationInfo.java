@@ -10,6 +10,8 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.contus.carpooling.BR;
+import com.contus.carpooling.utils.Constants;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Model class is used to get and store the company name, category and location details.
@@ -22,16 +24,19 @@ public class CompanyRegistrationInfo extends BaseObservable {
     /**
      * Company name of the user.
      */
+    @SerializedName(Constants.CompanyRegistration.COMPANY_REGISTRATION_NAME)
     private String companyName;
 
     /**
      * Category details of the company.
      */
+    @SerializedName(Constants.CompanyRegistration.COMPANY_CATEGORY_ID)
     private String category;
 
     /**
      * Location details of the company.
      */
+    @SerializedName(Constants.CompanyRegistration.COMPANY_LOCATION)
     private String location;
 
     /**

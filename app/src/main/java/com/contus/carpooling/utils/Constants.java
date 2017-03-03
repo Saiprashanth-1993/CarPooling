@@ -21,6 +21,55 @@ public class Constants {
     public static final String BASE_URL = "http://192.168.3.42:8000/api/";
 
     /**
+     * To get the device token from device by using fireBase
+     */
+    public static final String DEVICE_TOKEN="device_token";
+
+    /**
+     * Header type need to use that
+     */
+    public static final String REQUEST_TYPE_HEADER="X-REQUEST-TYPE";
+
+    /**
+     * Constants for device token header
+     */
+    public static final String ACCESS_TOKEN_HEADER="X-ACCESS-TOKEN";
+
+    /**
+     * Constants for access token header
+     */
+    public static final String DEVICE_TOKEN_HEADER="X-DEVICE-TOKEN";
+
+    /**
+     *
+     */
+    public static final String DEVICE_TOKEN_HEADER_VALUE="deviceToken";
+
+    /**
+     *
+     */
+    public static final String ACCESS_TOKEN_HEADER_VALUE="acesssToken"; /**
+     *
+     */
+    public static  String REG_TOKEN_PREF="";
+
+    /**
+     *
+     */
+    public static  String REG_ACCESS_TOKEN_PREF="";
+
+    /**
+     * The constats for Shared Preference
+     */
+    public static final String DEVICE_TOKEN_PREF="deviceTokenPref";
+
+
+    /**
+     * Get the request type value
+     */
+    public static final String REQUEST_TYPE_VALUE="mobile";
+
+    /**
      * The result of google place on activity result to get company location.
      */
     public static final int REQUEST_CODE_COMPANY_LOCATION = 1;
@@ -114,6 +163,11 @@ public class Constants {
     public static final int SUCCESS_VALUE = 200;
 
     /**
+     * The constant for get the API response Error status value
+     */
+    public static final int ERROR_STATUS_VALUE = 200;
+
+    /**
      * The Constant for Email Id
      */
     public static final String REG_EMAIL="email";
@@ -204,15 +258,15 @@ public class Constants {
         /***
          * Constant value set from response
          */
-        public static final String DEVICE_TYPE="deviceType";
+        public static final String DEVICE_TYPE="device_type";
         /***
          * Constant value set from response
          */
-        public static final String DEVICE_TOKEN="deviceToken";
+        public static final String DEVICE_TOKEN="device_token";
         /***
          * Constant value set from response
          */
-        public static final String EMPLOYEE_ID="employeeId";
+        public static final String EMPLOYEE_ID="employee_id";
         /***
          * Constant value set from response
          */
@@ -231,9 +285,6 @@ public class Constants {
      * Constants fro Register class
      */
     public static final class Register {
-
-
-
 
         /**
          * Get the response from API after register the user details
@@ -276,10 +327,58 @@ public class Constants {
          */
         public static final String USER_REG_PD = "password";
 
+
+
+        /**
+         * constant value for register token
+         */
+        public static final String  REGISTER_DEVICE_TOKEN="device_token";
+
+
+    }
+
+    /**
+     * Constants for company name and company category
+     */
+  public static final class CompanyList{
+      public static final String COMPANY_DATA="data";
+      public static final String COMPANY="company";
+      public static final String CATEGORY ="sector";
+      public static final String  COMPANY_NAME_ID="id";
+      public static final String  COMPANY_NAME="name";
+      public static final String  CATEGORY_ID="id";
+      public static final String  CATEGORY_NAME="name";
+    }
+
+    /**
+     * Constatn for company company registration
+      */
+  public static final class CompanyRegistration
+    {
+       public static final String COMPANY_REGISTRATION_NAME="name";
+       public static final String COMPANY_CATEGORY_ID = "company_category_id";
+       public static final String COMPANY_LOCATION="company_location";
+        /**
+         * After complete the Company Registration get the response form server
+         */
+        public static final String COMPANY_DETAILS="response";
+        public static final String COMPANY_DETAILS_ID="id";
+        public static final String COMPANY_NAME="name";
+        public static final String SLUG="slug";
     }
 
 
-
+    /**
+     * Constant for Employee Response
+     */
+    public static final class EmployeeResponse{
+        public static final String EMPLOYEE_DETAILS_RESPONSE="Employee Details";
+        public static final String EMPLOYEE_ID="id";
+        public static final String USER_ID="user_id";
+        public static final String ADAHAR_CARD="aadhar_card";
+        public static final String PAN_CARD="pan_card";
+        public static final String REMEMBER_TOKEN="rememberToken";
+    }
     /**
      * Constants for api request
      */
@@ -306,6 +405,12 @@ public class Constants {
          * Constant value set for message
          */
         public static final String MESSAGE = "message";
+
+        /**
+         * Constants for user token
+         */
+        public static final String  USER_TOKEN="UserToken";
+
 
         /**
          * Instantiates a new constants.

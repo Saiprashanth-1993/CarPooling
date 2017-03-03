@@ -6,6 +6,12 @@
  */
 package com.contus.carpooling.server;
 
+import com.contus.carpooling.login.model.ErrorResponse;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,10 +32,18 @@ public class RestCallback<T> implements Callback<T> {
         if (response.code() == 200) {
             BusProvider.getInstance().post(response.body());
         } else {
-            if (response.code() == 401) {
-                BusProvider.getInstance().post(response.message());
-            } else {
-                BusProvider.getInstance().post("Something went wrong.");
+            if (response.code() == 422) {
+                Gson gson = new GsonBuilder().create();
+                ErrorResponse error = new ErrorResponse();
+                try { error = gson.fromJson(response.errorBody().string(), ErrorResponse.class);
+                    BusProvider.getInstance().post(error.getMessage());
+                }
+                catch (IOException e) {
+
+                }
+            }
+            else {
+                BusProvider.getInstance().post("Something went wrong");
             }
         }
     }

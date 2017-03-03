@@ -6,6 +6,7 @@
  */
 package com.contus.carpooling.dashboard.myrides.view;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +14,10 @@ import android.view.ViewGroup;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.dashboard.homepage.viewmodel.DashboardController;
+import com.contus.carpooling.dashboard.myrides.model.MyRides;
 import com.contus.carpooling.databinding.AdapterMyRidesBinding;
+
+import java.util.List;
 
 /**
  * Adapter class to display the my rides details.
@@ -22,6 +26,34 @@ import com.contus.carpooling.databinding.AdapterMyRidesBinding;
  * @version 1.0
  */
 public class MyRidesAdapter extends RecyclerView.Adapter<MyRidesAdapter.MyRidesViewHolder> {
+
+    /**
+     * Get the list of rides
+     */
+    List<MyRides> rideList;
+
+    /**
+     * Get the context of an activity
+     */
+    Context context;
+
+
+
+    public MyRidesAdapter(Context context, List<MyRides> rideList) {
+        this.rideList = rideList;
+        this.context = context;
+    }
+
+    @Override
+    public int getItemCount() {
+        return rideList.size();
+    }
+
+
+    public MyRides getItem(int position)
+    {
+        return rideList.get(position);
+    }
 
     @Override
     public MyRidesAdapter.MyRidesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -33,15 +65,11 @@ public class MyRidesAdapter extends RecyclerView.Adapter<MyRidesAdapter.MyRidesV
 
     @Override
     public void onBindViewHolder(MyRidesAdapter.MyRidesViewHolder holder, int position) {
-        /**
-         * Need to implement
-         */
+        MyRides rideLists = rideList.get(position);
+
+
     }
 
-    @Override
-    public int getItemCount() {
-        return 10;
-    }
 
     /**
      * The my ride list PackageViewHolder for reusable view.

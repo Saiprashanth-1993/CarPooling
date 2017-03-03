@@ -1,26 +1,25 @@
-/*
- * @category ContusFly
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
- */
+package com.contus.carpooling.utils;
 
-package com.contus.carpooling.login.viewmodel;
-
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
 
 /**
- * Utils class for login
+ * The PreferenceUtils class manage the preference key and values.
+ * This class used to get, set and clear the preference values.
  *
  * @author Contus Team <developers@contus.in>
- * @version 2.3
+ * @version 3.5
  */
+public class SharedDataUtils {
 
-public class LoginUtils {
+    /**
+     * Shared Data default constructor
+     */
+    private SharedDataUtils() {
 
-    private LoginUtils() {
-        //Default Constructor
     }
 
     /**
@@ -30,7 +29,7 @@ public class LoginUtils {
      * @param key     The key to store in the preference
      * @param value   The value to store for the key
      */
-    public static void storeUserDetails(Context context, String key, String value) {
+    public static void savePreferences(Context context, String key, String value) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString(key, value);
@@ -115,6 +114,18 @@ public class LoginUtils {
         SharedPreferences.Editor editor = sp.edit();
         editor.remove(key);
         editor.apply();
+    }
+
+
+    /**
+     * Request the permission for higher version
+     *
+     * @param activity    Get the Activity from the class
+     * @param permission  Permission get from the manifest
+     * @param requestCode To handle the call back function by using this code
+     */
+    public static void requestPermission(Activity activity, String permission, Integer requestCode) {
+        ActivityCompat.requestPermissions(activity, new String[]{permission}, requestCode);
     }
 
 }

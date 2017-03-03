@@ -9,23 +9,28 @@ package com.contus.carpooling.login.viewmodel;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
 import com.contus.carpooling.R;
-import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
+import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
 import com.contus.carpooling.login.model.UserLoginInfo;
 import com.contus.carpooling.login.model.UserLoginResponse;
 import com.contus.carpooling.server.BusProvider;
 import com.contus.carpooling.server.RestCallback;
 import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
+import com.contus.carpooling.userregistration.viewmodel.RegisterUtil;
 import com.contus.carpooling.utils.ApiService;
 import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.CustomUtils;
 import com.contus.carpooling.utils.Logger;
+import com.contus.carpooling.utils.SharedDataUtils;
 import com.squareup.otto.Subscribe;
 
 import org.json.JSONObject;
@@ -54,8 +59,9 @@ public class LoginController implements ApiService.OnTaskCompleted {
             public void onClick(View view) {
                 context = view.getContext();
                 if (isValid(context, userLoginInfo.getEmail(), userLoginInfo.getPassword()))
-                    loginRequest(context, userLoginInfo);
-
+                    Constants.REG_ACCESS_TOKEN_PREF="";
+                    Constants.REG_TOKEN_PREF="";
+                loginRequest(context, userLoginInfo);
             }
         };
     }
@@ -67,8 +73,12 @@ public class LoginController implements ApiService.OnTaskCompleted {
 
         BusProvider.getInstance().register(this);
         HashMap<String, String> loginParams = new HashMap<>();
+        SharedPreferences pref = mContext.getSharedPreferences(Constants.DEVICE_TOKEN_PREF, 0);
+
+        String loginDeviceToken=pref.getString(Constants.DEVICE_TOKEN,"");
         loginParams.put(Constants.Login.USER_EMAIL_ID, userLoginInfo.getEmail());
         loginParams.put(Constants.Login.USER_PD, userLoginInfo.getPassword());
+        loginParams.put(Constants.DEVICE_TOKEN, loginDeviceToken);
         new RestClient(mContext).getInstance().get().doLogin(loginParams).enqueue(new RestCallback<UserLoginResponse>());
     }
 
@@ -90,16 +100,19 @@ public class LoginController implements ApiService.OnTaskCompleted {
      * Method used to validate the username and password.
      *
      * @param context  Used to show the toast message.
-     * @param userName Validate the username.
+     * @param userEmail Validate the userEmail.
      * @param password Validate the password.
      * @return true when the given field is not empty.
      */
-    private boolean isValid(Context context, String userName, String password) {
+    private boolean isValid(Context context, String userEmail, String password) {
         boolean validationStatus = true;
-        if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password)) {
+        if (TextUtils.isEmpty(userEmail) || TextUtils.isEmpty(password)) {
             validationStatus = false;
             Toast.makeText(context, "Please make sure username and password field should not be empty", Toast.LENGTH_SHORT).show();
-        } else if (password.length() < 6) {
+        }  else if (!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
+            validationStatus = false;
+            Toast.makeText(context, R.string.validation_failure_email, Toast.LENGTH_SHORT).show();
+        }else if (password.length() < 6) {
             validationStatus = false;
             Toast.makeText(context, R.string.validation_failure_mobile_length, Toast.LENGTH_SHORT).show();
         }
@@ -128,14 +141,26 @@ public class LoginController implements ApiService.OnTaskCompleted {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 UserLoginInfo userResult = result.login;
-                LoginUtils.storeUserDetails(context, userResult);
+                LoginUtils.storeUserDetails(context,Constants.Login.LOGIN_ID, userResult.getId());
+                LoginUtils.storeUserDetails(context,Constants.Login.USER_EMAIL_ID, userResult.getEmail());
+                RegisterUtil.savePreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,userResult.getDeviceToken());
+                RegisterUtil.savePreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,result.getUserToken());
+
+                /**
+                 * Get the access token and device token from shared preference
+                 */
+                Constants.REG_ACCESS_TOKEN_PREF= SharedDataUtils.getPreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,null);
+                Constants.REG_TOKEN_PREF= SharedDataUtils.getPreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,null);
                 CustomUtils.showToast(context, result.message);
-                context.startActivity(new Intent(context,   CompanyRegistrationActivity.class));
+                context.startActivity(new Intent(context,   DashboardActivity.class));
                 ((Activity) context).finish();
             } else {
-                CustomUtils.showToast(context, result.getMessage());
+                CustomUtils.showToast(context,"Invalid login");
+                //CustomUtils.showToast(context, result.getMessage());
+                Log.e("Error Message",result.getMessage());
             }
         }
+
     }
 
     @Override
@@ -149,7 +174,6 @@ public class LoginController implements ApiService.OnTaskCompleted {
                     CustomUtils.showToast(context,resultObj.getString("message"));
                 }
             }
-
         } catch (Exception e) {
             Logger.logError(e);
         }

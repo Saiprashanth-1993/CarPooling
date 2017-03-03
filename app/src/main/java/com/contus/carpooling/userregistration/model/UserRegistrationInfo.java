@@ -70,6 +70,16 @@ public class UserRegistrationInfo extends BaseObservable {
     @SerializedName(Constants.Register.USER_GENDER)
     private String gender;
 
+
+
+    /**
+     * Gender details of the user.
+     */
+    @SerializedName(Constants.Register.REGISTER_DEVICE_TOKEN)
+    private String deviceToken;
+
+
+
     /**
      * Gets {@see #userName}.
      *
@@ -150,6 +160,16 @@ public class UserRegistrationInfo extends BaseObservable {
     }
 
     /**
+     * Gets {@see #deviceToken}.
+     *
+     * @return {@link #deviceToken}
+     */
+    public String getDeviceToken() {
+        return deviceToken;
+    }
+
+
+    /**
      * Sets {@link #id}.
      */
     public void setId(String id) {
@@ -209,5 +229,10 @@ public class UserRegistrationInfo extends BaseObservable {
      */
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
     }
 }

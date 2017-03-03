@@ -8,6 +8,7 @@ package com.contus.carpooling.userregistration.viewmodel;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
@@ -27,6 +28,7 @@ import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.CustomUtils;
 import com.contus.carpooling.utils.Logger;
+import com.contus.carpooling.utils.SharedDataUtils;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
@@ -62,7 +64,7 @@ public class UserRegistrationController {
                 if (isValid(getEditTextValue.getUserName(), getEditTextValue.getMobileNumber(),
                         getEditTextValue.getEmailID(), getEditTextValue.getFromLocation(),
                         getEditTextValue.getToLocation(), getEditTextValue.getPassword(), getEditTextValue.getGender()))
-                    registerRequest(context,getEditTextValue);
+                   registerRequest(context,getEditTextValue);
 
             }
         };
@@ -77,6 +79,9 @@ public class UserRegistrationController {
     {
         Context ctx=mContext;
         Log.e("ctx",ctx+"");
+        SharedPreferences pref = ctx.getSharedPreferences(Constants.DEVICE_TOKEN_PREF, 0);
+
+        String deviceToken=pref.getString(Constants.DEVICE_TOKEN,"");
         BusProvider.getInstance().register(this);
         HashMap<String, String> registerParams = new HashMap<>();
         registerParams.put(Constants.Register.USER_NAME, userRegistrationInfo.getUserName());
@@ -86,6 +91,7 @@ public class UserRegistrationController {
         registerParams.put(Constants.Register.USER_FROM_LOCATION,userRegistrationInfo.getFromLocation());
         registerParams.put(Constants.Register.USER_TO_LOCATION,userRegistrationInfo.getToLocation());
         registerParams.put(Constants.Register.USER_REG_PD, userRegistrationInfo.getPassword());
+        registerParams.put(Constants.DEVICE_TOKEN, deviceToken);
         new RestClient(ctx).getInstance().get().doRegister(registerParams).enqueue(new RestCallback<UserRegistrationResponse>());
     }
 
@@ -220,9 +226,18 @@ public class UserRegistrationController {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 CustomUtils.showToast(context,result.getMessage());
+                Log.i("device_token",result.getUserToken());
                 UserRegistrationInfo regResponse=result.registerAPIResponse;
                 RegisterUtil.savePreferences(context,Constants.REG_EMAIL,regResponse.getEmailID());
                 RegisterUtil.savePreferences(context,Constants.REG_USER_ID,regResponse.getId());
+                RegisterUtil.savePreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,regResponse.getDeviceToken());
+                RegisterUtil.savePreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,result.getUserToken());
+
+                /**
+                 * Get the token from shared preference
+                 */
+                Constants.REG_ACCESS_TOKEN_PREF= SharedDataUtils.getPreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,null);
+               Constants.REG_TOKEN_PREF= SharedDataUtils.getPreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,null);
                 context.startActivity(new Intent(context,CompanyRegistrationActivity.class));
                 ((Activity) context).finish();
             } else {

@@ -6,6 +6,7 @@
  */
 package com.contus.carpooling.companyregistration.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -15,12 +16,22 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
 import com.contus.carpooling.R;
+import com.contus.carpooling.companyregistration.model.CompanyList;
+import com.contus.carpooling.companyregistration.model.CompanyListResponse;
 import com.contus.carpooling.companyregistration.model.CompanyRegistrationInfo;
 import com.contus.carpooling.companyregistration.viewmodel.CompanyRegistrationController;
 import com.contus.carpooling.databinding.ActivityCompanyRegistrationBinding;
+import com.contus.carpooling.server.BusProvider;
+import com.contus.carpooling.server.RestCallback;
+import com.contus.carpooling.server.RestClient;
+import com.contus.carpooling.utils.CommonUtils;
+import com.contus.carpooling.utils.CustomUtils;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.squareup.otto.Subscribe;
+
+import java.util.ArrayList;
 
 import static com.contus.carpooling.utils.Constants.REQUEST_CODE_COMPANY_LOCATION;
 
@@ -33,27 +44,31 @@ import static com.contus.carpooling.utils.Constants.REQUEST_CODE_COMPANY_LOCATIO
 public class CompanyRegistrationActivity extends AppCompatActivity {
 
     /**
+     * Context of an activity
+     */
+    ActivityCompanyRegistrationBinding companyRegistrationBinding;
+    /**
      * List of static company details.
      */
-    private String[] companyNameList = {"Contus", "Contoon", "Con", "Cont", "Contus pvt", "Contus lmt", "HCL", "Infosis",
-            "TCS", "IBM", "Google", "CTS", "Wipro"};
-
+    Context context;
+    ArrayList<String> companyList;
     /**
      * Model class of company registration details.
      */
     private CompanyRegistrationInfo registrationInfo;
+    private  CompanyRegistrationController companyRegistrationController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityCompanyRegistrationBinding companyRegistrationBinding = DataBindingUtil.setContentView(this, R.layout.activity_company_registration);
+        companyRegistrationBinding = DataBindingUtil.setContentView(this, R.layout.activity_company_registration);
         registrationInfo = new CompanyRegistrationInfo();
         companyRegistrationBinding.setCompanyDetails(registrationInfo);
-        companyRegistrationBinding.setViewController(new CompanyRegistrationController());
-        ArrayAdapter<String> companyNameAdapter = new ArrayAdapter<>
-                (this, R.layout.adapter_company_existing, R.id.existing_company_list, companyNameList);
-        companyRegistrationBinding.companyName.setThreshold(1);
-        companyRegistrationBinding.companyName.setAdapter(companyNameAdapter);
+        companyRegistrationController = new CompanyRegistrationController();
+        companyRegistrationBinding.setViewController(companyRegistrationController);
+        context = CompanyRegistrationActivity.this;
+        companyListRequest(context);
+
     }
 
     @Override
@@ -73,6 +88,57 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * ApiRequest for user login details to the server
+     */
+    private void companyListRequest(Context mContext) {
+        BusProvider.getInstance().register(this);
+        new RestClient(mContext).getInstance().get().getCompanyList().enqueue(new RestCallback<CompanyListResponse>());
+
+    }
+
+    /**
+     * Handle the api error response
+     *
+     * @param errorMessage the error message
+     */
+    @Subscribe
+    public void CompanyDataReceived(String errorMessage) {
+        BusProvider.getInstance().unregister(context);
+        CustomUtils.showToast(this, errorMessage);
+    }
+
+    /**
+     * Handle the api response details
+     *
+     * @param result Api response
+     */
+    @Subscribe
+    public void CompanyDataReceived(CompanyListResponse result) {
+        BusProvider.getInstance().unregister(context);
+        if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
+            if (CommonUtils.isSuccess(result.getSuccess())) {
+                CompanyList list = result.companyList;
+                companyRegistrationController.CompanyRegistrationController(result.companyList);
+                String[] companyNameList = new String[list.getCompany().size()];
+                for (int i = 0; i < list.getCompany().size(); i++) {
+                    companyNameList[i] = list.getCompany().get(i).getName();
+                }
+                ArrayAdapter<String> companyNameAdapter = new ArrayAdapter<>
+                        (this, R.layout.adapter_company_existing, R.id.existing_company_list, companyNameList);
+                companyRegistrationBinding.companyName.setThreshold(1);
+                companyRegistrationBinding.companyName.setAdapter(companyNameAdapter);
+
+            } else {
+                CustomUtils.showToast(context, "Invalid login");
+                //CustomUtils.showToast(context, result.getMessage());
+                Log.e("Error Message", result.getMessage());
+            }
+        }
+
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle toolbar arrow click action
@@ -82,4 +148,6 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

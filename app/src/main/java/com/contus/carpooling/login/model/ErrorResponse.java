@@ -37,6 +37,10 @@ public class ErrorResponse {
     public String message;
 
 
+    @SerializedName(Constants.ApiRequest.USER_TOKEN)
+    public String UserToken;
+
+
 
 
     /**
@@ -88,6 +92,21 @@ public class ErrorResponse {
      */
     public void setMessage(String message) {
         this.message = message;
+    }
+    /**
+     * Gets {@see #UserToken}
+     * Returns the UserToken {@link #UserToken}
+     */
+    public String getUserToken() {
+        return UserToken;
+    }
+    /**
+     * Sets {@see #userToken}
+     *
+     * @param userToken (@link #userToken}
+     */
+    public void setUserToken(String userToken) {
+        UserToken = userToken;
     }
 
 

@@ -6,12 +6,19 @@
  */
 package com.contus.carpooling.employeedetails.viewmodel;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 
 import com.contus.carpooling.employeedetails.view.BottomDialogFragment;
 import com.contus.carpooling.utils.Constants;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Controller of the Bottom sheet fragment
@@ -33,6 +40,15 @@ public class BottomSheetController {
     private BottomDialogFragment bottomDialogFragment;
 
     /**
+     * set the permission access
+     */
+    private String[] permissions= new String[]
+            { Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
+
+
+
+
+    /**
      * Instance of the container activity
      *
      * @param employeeDetailActivity instance of the activity.
@@ -52,12 +68,36 @@ public class BottomSheetController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                employeeDetailActivity.startActivityForResult(intent, Constants.CAMERA_SELECTION);
-                bottomDialogFragment.dismiss();
+                if(checkPermissions(employeeDetailActivity,3000)) {
+                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    employeeDetailActivity.startActivityForResult(intent, Constants.CAMERA_SELECTION);
+                    bottomDialogFragment.dismiss();
+                }
             }
         };
     }
+
+
+    private boolean checkPermissions(Activity employeeDetailActivity,int code)
+    {
+        int result;
+        List<String> listPermissionsNeeded = new ArrayList<>();
+        for (String p:permissions)
+        {
+            result = ContextCompat.checkSelfPermission(employeeDetailActivity,p);
+            if (result != PackageManager.PERMISSION_GRANTED)
+            {
+                listPermissionsNeeded.add(p);
+            }
+            bottomDialogFragment.dismiss();
+        }
+        if (!listPermissionsNeeded.isEmpty())
+        { ActivityCompat.requestPermissions(employeeDetailActivity, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),code );
+            return false;
+        }
+        return true;
+    }
+
 
     /**
      * OnClick listner of the image view.
@@ -68,11 +108,19 @@ public class BottomSheetController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                intent.setType("image/*");
-                employeeDetailActivity.startActivityForResult(Intent.createChooser(intent, "Select Picture"), Constants.GALLERY_SELECTION);
-                bottomDialogFragment.dismiss();
+                if(checkPermissions(employeeDetailActivity,2000)) {
+                    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    intent.setType("image/*");
+                    employeeDetailActivity.startActivityForResult(Intent.createChooser(intent, "Select Picture"), Constants.GALLERY_SELECTION);
+                    bottomDialogFragment.dismiss();
+                }
             }
         };
     }
+
+
+    public static final int MULTIPLE_PERMISSIONS = 10;
+    // code you want.
+
+
 }

@@ -1,22 +1,13 @@
-/**
- * @category CarPooling
- * @package com.contus.carpooling.dashboard.ridesoffered.model
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
- */
-package com.contus.carpooling.dashboard.ridesoffered.model;
+package com.contus.carpooling.dashboard.myrides.model;
+
+
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Model class to display and store the rides offered details.
- *
- * @author ContusTeam <developers@contus.in>
- * @version 1.0
- */
-public class RidesOfferedDetails {
-
+public class MyRides extends BaseObservable {
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -49,7 +40,7 @@ public class RidesOfferedDetails {
     private String type;
     @SerializedName("cost")
     @Expose
-    private Integer cost;
+    private String cost;
 
     public Integer getId() {
         return id;
@@ -59,6 +50,7 @@ public class RidesOfferedDetails {
         this.id = id;
     }
 
+    @Bindable
     public String getDeparturePoint() {
         return departurePoint;
     }
@@ -67,6 +59,7 @@ public class RidesOfferedDetails {
         this.departurePoint = departurePoint;
     }
 
+    @Bindable
     public String getArrivalPoint() {
         return arrivalPoint;
     }
@@ -75,6 +68,7 @@ public class RidesOfferedDetails {
         this.arrivalPoint = arrivalPoint;
     }
 
+    @Bindable
     public String getDepartureTime() {
         return departureTime;
     }
@@ -83,6 +77,7 @@ public class RidesOfferedDetails {
         this.departureTime = departureTime;
     }
 
+    @Bindable
     public String getArrivalTime() {
         return arrivalTime;
     }
@@ -91,6 +86,7 @@ public class RidesOfferedDetails {
         this.arrivalTime = arrivalTime;
     }
 
+    @Bindable
     public String getGender() {
         return gender;
     }
@@ -99,6 +95,7 @@ public class RidesOfferedDetails {
         this.gender = gender;
     }
 
+    @Bindable
     public String getSeats() {
         return seats;
     }
@@ -107,6 +104,7 @@ public class RidesOfferedDetails {
         this.seats = seats;
     }
 
+    @Bindable
     public String getVehicleType() {
         return vehicleType;
     }
@@ -115,6 +113,7 @@ public class RidesOfferedDetails {
         this.vehicleType = vehicleType;
     }
 
+    @Bindable
     public Integer getIsEveryWeeks() {
         return isEveryWeeks;
     }
@@ -123,6 +122,7 @@ public class RidesOfferedDetails {
         this.isEveryWeeks = isEveryWeeks;
     }
 
+    @Bindable
     public String getType() {
         return type;
     }
@@ -131,11 +131,12 @@ public class RidesOfferedDetails {
         this.type = type;
     }
 
-    public Integer getCost() {
+    @Bindable
+    public String getCost() {
         return cost;
     }
 
-    public void setCost(Integer cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 

@@ -24,6 +24,8 @@ import com.contus.carpooling.databinding.AdapterRidesOfferedBinding;
 
 public class RidesOfferedAdapter extends RecyclerView.Adapter<RidesOfferedAdapter.RidesOfferedViewHolder> {
 
+
+
     @Override
     public RidesOfferedAdapter.RidesOfferedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         AdapterRidesOfferedBinding ridesOfferedAdapterBinding = DataBindingUtil.inflate(
@@ -53,4 +55,6 @@ public class RidesOfferedAdapter extends RecyclerView.Adapter<RidesOfferedAdapte
             itemView.setItemClick(new DashboardController());
         }
     }
+
+
 }

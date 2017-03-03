@@ -6,15 +6,22 @@
  */
 package com.contus.carpooling.server;
 
+import com.contus.carpooling.companyregistration.model.CompanyListResponse;
+import com.contus.carpooling.companyregistration.model.CompanyRegistrationResponse;
+import com.contus.carpooling.dashboard.myrides.model.MyRidesResponse;
+import com.contus.carpooling.employeedetails.model.EmployeeDetailsResponse;
 import com.contus.carpooling.login.model.UserLoginResponse;
 import com.contus.carpooling.userregistration.model.UserRegistrationResponse;
 
 import java.util.Map;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 /**
@@ -41,6 +48,23 @@ public interface API {
     Call<UserRegistrationResponse> doRegister(@Body Map<String,String> paramerters);
 
     /**
+     * Authenticate the Company Registration with their register credentials
+     */
+    @POST("companyregistration/")
+    Call<CompanyRegistrationResponse> doCompanyRegistration(@Body Map<String,String> paramerters);
+
+
+    /**
+     * Method used to register the employee details
+     *
+     * @return Updated profile response
+     */
+    @Multipart
+    @POST("employeedetails/")
+    Call<EmployeeDetailsResponse> doEmployeeRegistration(@Part MultipartBody.Part frontImage,@Part MultipartBody.Part backImage);
+
+
+    /**
      * Authenticate the user with their login credentials
      *
      * @param customerId The user id
@@ -56,6 +80,25 @@ public interface API {
      */
     @POST("ridelist/")
     Call<UserLoginResponse> getRideList();
+
+    /**
+     * Get the company list
+     *
+     * @return {@link UserLoginResponse}
+     */
+    @GET("companysectorlist/")
+    Call<CompanyListResponse> getCompanyList();
+
+
+   /**
+     * Get the ride list
+     *
+     * @return {@link UserLoginResponse}
+     */
+    @GET("ridelist/")
+    Call<MyRidesResponse> getMyRideList();
+
+
 
 
 }

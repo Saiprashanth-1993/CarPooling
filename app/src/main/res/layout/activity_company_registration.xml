@@ -126,8 +126,8 @@
                         android:background="@android:color/transparent"
                         android:focusable="false"
                         android:hint="Select category"
-                        android:onClick="@{ViewController.categoryListOnClick(CompanyDetails)}"
                         android:paddingLeft="5dp"
+                        android:onClick="@{ViewController.categoryListOnClick(CompanyDetails)}"
                         android:text="@={CompanyDetails.category}"
                         android:textColorHint="@color/colorEditTextHint"
                         android:textSize="14sp" />
