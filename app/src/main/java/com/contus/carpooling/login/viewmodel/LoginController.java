@@ -70,11 +70,9 @@ public class LoginController implements ApiService.OnTaskCompleted {
      * ApiRequest for user login details to the server
      */
     private void loginRequest(Context mContext, UserLoginInfo userLoginInfo) {
-
         BusProvider.getInstance().register(this);
         HashMap<String, String> loginParams = new HashMap<>();
         SharedPreferences pref = mContext.getSharedPreferences(Constants.DEVICE_TOKEN_PREF, 0);
-
         String loginDeviceToken=pref.getString(Constants.DEVICE_TOKEN,"");
         loginParams.put(Constants.Login.USER_EMAIL_ID, userLoginInfo.getEmail());
         loginParams.put(Constants.Login.USER_PD, userLoginInfo.getPassword());
@@ -145,6 +143,12 @@ public class LoginController implements ApiService.OnTaskCompleted {
                 LoginUtils.storeUserDetails(context,Constants.Login.USER_EMAIL_ID, userResult.getEmail());
                 RegisterUtil.savePreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,userResult.getDeviceToken());
                 RegisterUtil.savePreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,result.getUserToken());
+
+                /**
+                 * store the from location and to location to shared preference
+                 */
+            SharedDataUtils.savePreferences(context,Constants.Login.FROM_LOCATION,userResult.getFromLocation());
+                SharedDataUtils.savePreferences(context,Constants.Login.To_LOCATION,userResult.getToLocation());
 
                 /**
                  * Get the access token and device token from shared preference

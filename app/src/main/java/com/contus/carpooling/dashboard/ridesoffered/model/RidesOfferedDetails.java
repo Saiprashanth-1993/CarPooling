@@ -6,6 +6,9 @@
  */
 package com.contus.carpooling.dashboard.ridesoffered.model;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -15,11 +18,14 @@ import com.google.gson.annotations.SerializedName;
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
  */
-public class RidesOfferedDetails {
+public class RidesOfferedDetails extends BaseObservable {
 
     @SerializedName("id")
     @Expose
     private Integer id;
+    @SerializedName("creator_id")
+    @Expose
+    private Integer creatorId;
     @SerializedName("departure_point")
     @Expose
     private String departurePoint;
@@ -32,9 +38,9 @@ public class RidesOfferedDetails {
     @SerializedName("arrival_time")
     @Expose
     private String arrivalTime;
-    @SerializedName("gender")
+    @SerializedName("gender_preference")
     @Expose
-    private String gender;
+    private String genderPreference;
     @SerializedName("seats")
     @Expose
     private String seats;
@@ -49,7 +55,7 @@ public class RidesOfferedDetails {
     private String type;
     @SerializedName("cost")
     @Expose
-    private Integer cost;
+    private String cost;
 
     public Integer getId() {
         return id;
@@ -59,6 +65,15 @@ public class RidesOfferedDetails {
         this.id = id;
     }
 
+    public Integer getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(Integer creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    @Bindable
     public String getDeparturePoint() {
         return departurePoint;
     }
@@ -67,6 +82,7 @@ public class RidesOfferedDetails {
         this.departurePoint = departurePoint;
     }
 
+    @Bindable
     public String getArrivalPoint() {
         return arrivalPoint;
     }
@@ -75,6 +91,7 @@ public class RidesOfferedDetails {
         this.arrivalPoint = arrivalPoint;
     }
 
+    @Bindable
     public String getDepartureTime() {
         return departureTime;
     }
@@ -83,6 +100,7 @@ public class RidesOfferedDetails {
         this.departureTime = departureTime;
     }
 
+    @Bindable
     public String getArrivalTime() {
         return arrivalTime;
     }
@@ -91,14 +109,16 @@ public class RidesOfferedDetails {
         this.arrivalTime = arrivalTime;
     }
 
-    public String getGender() {
-        return gender;
+    @Bindable
+    public String getGenderPreference() {
+        return genderPreference;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGenderPreference(String genderPreference) {
+        this.genderPreference = genderPreference;
     }
 
+    @Bindable
     public String getSeats() {
         return seats;
     }
@@ -107,6 +127,7 @@ public class RidesOfferedDetails {
         this.seats = seats;
     }
 
+    @Bindable
     public String getVehicleType() {
         return vehicleType;
     }
@@ -131,12 +152,16 @@ public class RidesOfferedDetails {
         this.type = type;
     }
 
-    public Integer getCost() {
+    @Bindable
+    public String getCost() {
         return cost;
     }
 
-    public void setCost(Integer cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
+
+
+
 
 }

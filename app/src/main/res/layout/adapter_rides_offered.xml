@@ -115,7 +115,7 @@
                                 android:background="@drawable/rounded_corner_blue_boarder"
                                 android:gravity="center"
                                 android:padding="5dp"
-                                android:text="$ 200"
+                                android:text="@={rideOfferedDetails.cost}"
                                 android:textColor="@android:color/white"
                                 android:textSize="12sp" />
 
@@ -146,7 +146,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="3 seats available"
+                                android:text="@={rideOfferedDetails.cost}"
                                 android:textSize="12sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -173,7 +173,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="16 DEC"
+                            android:text="@={rideOfferedDetails.arrivalTime}"
                             android:textSize="12sp" />
 
                         <TextView
@@ -182,15 +182,15 @@
                             android:ellipsize="end"
                             android:gravity="center"
                             android:maxLines="2"
-                            android:text="Thambaram"
+                            android:text="@={rideOfferedDetails.arrivalPoint}"
                             android:textColor="@color/colorHighLightBlue"
                             android:textSize="18sp" />
 
-                        <TextView
+                        <!--<TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="10: 30 AM"
-                            android:textSize="12sp" />
+                            android:textSize="12sp" />-->
                     </LinearLayout>
 
                     <ImageView
@@ -211,7 +211,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="16 DEC"
+                            android:text="@={rideOfferedDetails.departureTime}"
                             android:textSize="12sp" />
 
                         <TextView
@@ -220,15 +220,15 @@
                             android:ellipsize="end"
                             android:gravity="center"
                             android:maxLines="2"
-                            android:text="Guindy"
+                            android:text="@={rideOfferedDetails.departurePoint}"
                             android:textColor="@color/colorHighLightBlue"
                             android:textSize="18sp" />
 
-                        <TextView
+                        <!--<TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="10: 30 AM"
-                            android:textSize="12sp" />
+                            android:textSize="12sp" />-->
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

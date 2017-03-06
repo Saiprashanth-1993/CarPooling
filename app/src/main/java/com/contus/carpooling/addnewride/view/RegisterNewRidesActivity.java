@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.contus.carpooling.R;
@@ -26,6 +28,11 @@ import com.contus.carpooling.utils.Constants;
  * @version 1.0
  */
 public class RegisterNewRidesActivity extends AppCompatActivity {
+
+    /**
+     * Get the model class
+     */
+    Ride ride;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +42,9 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+         ride = new Ride();
+        addNewRideBinding.setNewRideData(ride);
+        addNewRideBinding.setClickController(new NewRideController());
         if (bundle.getBoolean(Constants.CLICK_RIDE)) {
             addNewRideBinding.toolbarTitle.setText(R.string.title_edit_ride);
         } else {
@@ -43,10 +53,22 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
         ArrayAdapter<String> seatAvailableAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.list_seat_available));
         addNewRideBinding.spSeats.setAdapter(seatAvailableAdapter);
-        addNewRideBinding.setNewRideData(new Ride());
-        addNewRideBinding.setClickController(new NewRideController());
+        addNewRideBinding.spSeats.setOnItemSelectedListener(new dayItemSpinner());
+
     }
 
+
+    public class dayItemSpinner implements AdapterView.OnItemSelectedListener {
+
+        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            String selected = parent.getItemAtPosition(pos).toString();
+            ride.setSeats(selected);
+        }
+
+        public void onNothingSelected(AdapterView parent) {
+            // Do nothing.
+        }
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle toolbar arrow click action

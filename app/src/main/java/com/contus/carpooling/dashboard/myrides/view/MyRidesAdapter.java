@@ -38,7 +38,6 @@ public class MyRidesAdapter extends RecyclerView.Adapter<MyRidesAdapter.MyRidesV
     Context context;
 
 
-
     public MyRidesAdapter(Context context, List<MyRides> rideList) {
         this.rideList = rideList;
         this.context = context;
@@ -50,8 +49,7 @@ public class MyRidesAdapter extends RecyclerView.Adapter<MyRidesAdapter.MyRidesV
     }
 
 
-    public MyRides getItem(int position)
-    {
+    public MyRides getItem(int position) {
         return rideList.get(position);
     }
 
@@ -66,8 +64,8 @@ public class MyRidesAdapter extends RecyclerView.Adapter<MyRidesAdapter.MyRidesV
     @Override
     public void onBindViewHolder(MyRidesAdapter.MyRidesViewHolder holder, int position) {
         MyRides rideLists = rideList.get(position);
-
-
+        holder.myRidesBinding.setMyRides(rideLists);
+        holder.myRidesBinding.executePendingBindings();
     }
 
 
@@ -75,8 +73,12 @@ public class MyRidesAdapter extends RecyclerView.Adapter<MyRidesAdapter.MyRidesV
      * The my ride list PackageViewHolder for reusable view.
      */
     public class MyRidesViewHolder extends RecyclerView.ViewHolder {
+
+        private AdapterMyRidesBinding myRidesBinding;
+
         private MyRidesViewHolder(AdapterMyRidesBinding itemView) {
             super(itemView.getRoot());
+            this.myRidesBinding = itemView;
             itemView.setEditRideOnClick(new DashboardController());
         }
     }

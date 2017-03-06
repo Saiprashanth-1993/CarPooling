@@ -4,6 +4,7 @@ package com.contus.carpooling.dashboard.myrides.model;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
+import com.contus.carpooling.BR;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -57,6 +58,7 @@ public class MyRides extends BaseObservable {
 
     public void setDeparturePoint(String departurePoint) {
         this.departurePoint = departurePoint;
+        notifyPropertyChanged(BR.departurePoint);
     }
 
     @Bindable
@@ -66,6 +68,7 @@ public class MyRides extends BaseObservable {
 
     public void setArrivalPoint(String arrivalPoint) {
         this.arrivalPoint = arrivalPoint;
+        notifyPropertyChanged(BR.arrivalPoint);
     }
 
     @Bindable
@@ -75,6 +78,7 @@ public class MyRides extends BaseObservable {
 
     public void setDepartureTime(String departureTime) {
         this.departureTime = departureTime;
+        notifyPropertyChanged(BR.departureTime);
     }
 
     @Bindable
@@ -84,6 +88,7 @@ public class MyRides extends BaseObservable {
 
     public void setArrivalTime(String arrivalTime) {
         this.arrivalTime = arrivalTime;
+        notifyPropertyChanged(BR.arrivalTime);
     }
 
     @Bindable
@@ -93,6 +98,7 @@ public class MyRides extends BaseObservable {
 
     public void setGender(String gender) {
         this.gender = gender;
+        notifyPropertyChanged(BR.gender);
     }
 
     @Bindable
@@ -102,6 +108,7 @@ public class MyRides extends BaseObservable {
 
     public void setSeats(String seats) {
         this.seats = seats;
+        notifyPropertyChanged(BR.seats);
     }
 
     @Bindable
@@ -111,6 +118,7 @@ public class MyRides extends BaseObservable {
 
     public void setVehicleType(String vehicleType) {
         this.vehicleType = vehicleType;
+        notifyPropertyChanged(BR.vehicleType);
     }
 
     @Bindable
@@ -120,6 +128,7 @@ public class MyRides extends BaseObservable {
 
     public void setIsEveryWeeks(Integer isEveryWeeks) {
         this.isEveryWeeks = isEveryWeeks;
+        notifyPropertyChanged(BR.isEveryWeek);
     }
 
     @Bindable
@@ -129,6 +138,8 @@ public class MyRides extends BaseObservable {
 
     public void setType(String type) {
         this.type = type;
+        notifyPropertyChanged(BR.type);
+
     }
 
     @Bindable
@@ -138,6 +149,7 @@ public class MyRides extends BaseObservable {
 
     public void setCost(String cost) {
         this.cost = cost;
+        notifyPropertyChanged(BR.cost);
     }
 
 }

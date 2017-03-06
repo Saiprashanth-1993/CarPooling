@@ -6,9 +6,11 @@
  */
 package com.contus.carpooling.server;
 
+import com.contus.carpooling.addnewride.model.CreateRideResponse;
 import com.contus.carpooling.companyregistration.model.CompanyListResponse;
 import com.contus.carpooling.companyregistration.model.CompanyRegistrationResponse;
 import com.contus.carpooling.dashboard.myrides.model.MyRidesResponse;
+import com.contus.carpooling.dashboard.ridesoffered.model.RideOfferedResponse;
 import com.contus.carpooling.employeedetails.model.EmployeeDetailsResponse;
 import com.contus.carpooling.login.model.UserLoginResponse;
 import com.contus.carpooling.userregistration.model.UserRegistrationResponse;
@@ -55,6 +57,13 @@ public interface API {
 
 
     /**
+     * Authenticate the Create Ride  with their register credentials
+     */
+    @POST("rides/")
+    Call<CreateRideResponse> doCreateRide(@Body Map<String,String> paramerters);
+
+
+    /**
      * Method used to register the employee details
      *
      * @return Updated profile response
@@ -97,6 +106,14 @@ public interface API {
      */
     @GET("ridelist/")
     Call<MyRidesResponse> getMyRideList();
+
+    /**
+     * Get the ride  offered list
+     *
+     * @return {@link UserLoginResponse}
+     */
+    @GET("displayrides/")
+    Call<RideOfferedResponse> getRidesOfferedList(@Body Map<String,String> paramerters);
 
 
 

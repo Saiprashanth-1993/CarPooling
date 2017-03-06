@@ -379,6 +379,40 @@ public class Constants {
         public static final String PAN_CARD="pan_card";
         public static final String REMEMBER_TOKEN="rememberToken";
     }
+
+
+    /**
+     * Create the ride
+     */
+    public static final class CreateRide{
+        /**
+         * After create the ride get the response
+         */
+        public static final String CREATE_RIDE_RESPONSE="RideDetails";
+
+        public static final String  DEPARTURE_POINT="departure_point";
+        public static final String  ARRIVAL_POINT="arrival_point";
+        public static final String  DEPARTURE_TIME="departure_time";
+        public static final String  ARRIVAL_TIME="arrival_time";
+        public static final String  GENDER_PREFERENCE="gender_preference";
+        public static final String  DAYS_PREFERENCE="days_preference";
+        public static final String  SEATS="seats";
+        public static final String  VEHICLE_TYPE="vehicle_type";
+        public static final String  IS_EVERY_WEEEKS="is_every_weeks";
+        public static final String  TYPE="type";
+        public static final String  COST="cost";
+        public static final String  IS_ACTIVE="is_active";
+
+    }
+
+    /**
+     * Display the rides offered list
+     */
+    public static final class RidesOffered{
+        public static final String DEPARTURE_POINT="departure_point";
+        public static final String  ARRIVAL_POINT="arrival_point";
+    }
+
     /**
      * Constants for api request
      */

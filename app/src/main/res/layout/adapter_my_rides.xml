@@ -52,7 +52,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Dec05"
+                            android:text="@={myRides.arrivalTime}"
                             android:textSize="12sp" />
 
                         <TextView
@@ -65,11 +65,11 @@
                             android:textColor="@color/colorHighLightBlue"
                             android:textSize="18sp" />
 
-                        <TextView
+                       <!-- <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@={myRides.arrivalTime}"
-                            android:textSize="12sp" />
+                            android:textSize="12sp" />-->
                     </LinearLayout>
 
                     <ImageView
@@ -93,7 +93,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="16 DEC"
+                            android:text="@={myRides.departureTime}"
                             android:textSize="12sp" />
 
                         <TextView
@@ -106,11 +106,11 @@
                             android:textColor="@color/colorHighLightBlue"
                             android:textSize="18sp" />
 
-                        <TextView
+                       <!-- <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@={myRides.departureTime}"
-                            android:textSize="12sp" />
+                            android:textSize="12sp" />-->
                     </LinearLayout>
 
                 </LinearLayout>

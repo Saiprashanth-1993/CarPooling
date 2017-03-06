@@ -10,6 +10,10 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.contus.carpooling.BR;
+import com.contus.carpooling.utils.Constants;
+import com.google.gson.annotations.SerializedName;
+
+
 
 /**
  * Model class is used to get and store the ride details.
@@ -22,47 +26,67 @@ public class Ride extends BaseObservable {
     /**
      * Source place of the ride.
      */
+    @SerializedName(Constants.CreateRide.ARRIVAL_POINT)
     private String fromRide;
 
     /**
      * Destination place of the ride.
      */
+    @SerializedName(Constants.CreateRide.DEPARTURE_POINT)
     private String toRide;
 
     /**
      * Starting time of the ride.
      */
+    @SerializedName(Constants.CreateRide.ARRIVAL_TIME)
     private String startTime;
 
     /**
      * End time of the ride.
      */
+    @SerializedName(Constants.CreateRide.DEPARTURE_TIME)
     private String endTime;
 
     /**
      * Gender details of the user.
      */
-    private String gender = "Male";
+    @SerializedName(Constants.CreateRide.GENDER_PREFERENCE)
+    private String gender;
 
     /**
      * Selected day from the week to ride.
      */
+    @SerializedName(Constants.CreateRide.DAYS_PREFERENCE)
     private String daySelected;
 
     /**
      * No of seats available for the ride.
      */
-    private String seats = "0";
+    @SerializedName(Constants.CreateRide.SEATS)
+    private String seats;
 
     /**
      * Check whether the ride available for week.
      */
     private Boolean isEveryWeek = false;
 
+
+
+    /**
+     * set the weak 1 or 0
+     */
+    @SerializedName(Constants.CreateRide.IS_EVERY_WEEEKS)
+    private String everyWeeks;
     /**
      * Cost of the ride.
      */
-    private String cost = "Free";
+    @SerializedName(Constants.CreateRide.COST)
+    private String cost="0";
+
+
+
+    @SerializedName(Constants.CreateRide.TYPE)
+    private String type;
 
     /**
      * Gets {@see #fromRide}
@@ -135,6 +159,17 @@ public class Ride extends BaseObservable {
     public void setIsEveryWeek(Boolean isEveryWeek) {
         this.isEveryWeek = isEveryWeek;
         notifyPropertyChanged(BR.isEveryWeek);
+    }
+
+    /**
+     *
+     */
+    public String getEveryWeeks() {
+        return everyWeeks;
+    }
+
+    public void setEveryWeeks(String everyWeeks) {
+        this.everyWeeks = everyWeeks;
     }
 
     /**
@@ -225,5 +260,23 @@ public class Ride extends BaseObservable {
     public void setCost(String cost) {
         this.cost = cost;
         notifyPropertyChanged(BR.cost);
+    }
+
+    /**
+     * Gets {@see #type}
+     *
+     * @return {@link #type}
+     */
+    @Bindable
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Sets {@link #type}
+     */
+    public void setType(String type) {
+        this.type = type;
+        notifyPropertyChanged(BR.type);
     }
 }
