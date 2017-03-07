@@ -87,20 +87,6 @@ public class NewRideController {
                 dateAndTimeMode = clickMode;
                 context = view.getContext();
                 showDateTimePicker(newRide);
-              /*  TimePickerDialog mTimePicker;
-
-
-                mTimePicker = new TimePickerDialog(view.getContext(), R.style.DialogTheme, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        if (clickMode.equals(view.getContext().getString(R.string.start_time))) {
-                            newRide.setStartTime(selectedHour + ":" + selectedMinute);
-                        } else if (clickMode.equals(view.getContext().getString(R.string.end_time))) {
-                            newRide.setEndTime(selectedHour + ":" + selectedMinute);
-                        }
-                    }
-                }, hour, minute, true);
-                mTimePicker.show();*/
             }
         };
     }
