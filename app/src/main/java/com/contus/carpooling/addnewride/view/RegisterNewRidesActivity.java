@@ -33,6 +33,7 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
      * Get the model class
      */
     Ride ride;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,7 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-         ride = new Ride();
+        ride = new Ride();
         addNewRideBinding.setNewRideData(ride);
         addNewRideBinding.setClickController(new NewRideController());
         if (bundle.getBoolean(Constants.CLICK_RIDE)) {
@@ -57,7 +58,19 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle toolbar arrow click action
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
 
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Get the position of selected item spinner
+     */
     public class dayItemSpinner implements AdapterView.OnItemSelectedListener {
 
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -68,14 +81,5 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
         public void onNothingSelected(AdapterView parent) {
             // Do nothing.
         }
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // handle toolbar arrow click action
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

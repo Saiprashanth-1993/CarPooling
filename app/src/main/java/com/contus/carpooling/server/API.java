@@ -112,7 +112,7 @@ public interface API {
      *
      * @return {@link UserLoginResponse}
      */
-    @GET("displayrides/")
+    @POST("displayrides/")
     Call<RideOfferedResponse> getRidesOfferedList(@Body Map<String,String> paramerters);
 
 

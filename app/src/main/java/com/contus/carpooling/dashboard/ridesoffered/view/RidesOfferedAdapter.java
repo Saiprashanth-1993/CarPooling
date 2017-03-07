@@ -48,7 +48,12 @@ public class RidesOfferedAdapter extends RecyclerView.Adapter<RidesOfferedAdapte
         return rideOfferedList.size();
     }
 
-
+    /**
+     * Get the list of ride details
+     *
+     * @param position Get the position of an item
+     * @return The position of item
+     */
     public RidesOfferedDetails getItem(int position) {
         return rideOfferedList.get(position);
     }
@@ -68,8 +73,6 @@ public class RidesOfferedAdapter extends RecyclerView.Adapter<RidesOfferedAdapte
         holder.myRidesBinding.executePendingBindings();
     }
 
-
-
     /**
      * The rides offered list PackageViewHolder for reusable view.
      */
@@ -82,6 +85,4 @@ public class RidesOfferedAdapter extends RecyclerView.Adapter<RidesOfferedAdapte
             itemView.setItemClick(new DashboardController());
         }
     }
-
-
 }

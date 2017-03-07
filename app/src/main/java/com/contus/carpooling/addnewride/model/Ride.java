@@ -76,7 +76,7 @@ public class Ride extends BaseObservable {
      * set the weak 1 or 0
      */
     @SerializedName(Constants.CreateRide.IS_EVERY_WEEEKS)
-    private String everyWeeks;
+    private String everyWeeks="0";
     /**
      * Cost of the ride.
      */

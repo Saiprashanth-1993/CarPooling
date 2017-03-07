@@ -136,8 +136,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
                 }
                 return;
             }
-            case 3000:
-            {
+            case 3000: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -157,6 +156,12 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Convert the data image url to file path
+     *
+     * @param contentURI Get the URI path
+     * @return The cursor
+     */
     private String getRealPathFromURI(Uri contentURI) {
         Cursor cursor = getContentResolver().query(contentURI, null, null, null, null);
         if (cursor == null) { // Source is Dropbox or other similar local file path
@@ -168,6 +173,13 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Convert the bitmap image  to URI path
+     *
+     * @param inContext Get the context of an activity
+     * @param inImage   Get the bitmap image
+     * @return The URI path
+     */
     public Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);

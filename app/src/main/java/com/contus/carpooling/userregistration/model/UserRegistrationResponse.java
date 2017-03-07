@@ -18,6 +18,9 @@ import com.google.gson.annotations.SerializedName;
  */
 public class UserRegistrationResponse extends ErrorResponse {
 
+   /**
+    * Get the response from the API set into model
+    */
    @SerializedName(Constants.Register.USER_DETAILS)
    public UserRegistrationInfo registerAPIResponse;
 }

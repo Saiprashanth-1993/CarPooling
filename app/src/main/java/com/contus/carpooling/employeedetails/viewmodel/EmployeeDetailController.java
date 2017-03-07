@@ -31,6 +31,7 @@ import com.squareup.otto.Subscribe;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+
 /**
  * Controller of the employee details class
  * XML view controller
@@ -45,6 +46,7 @@ public class EmployeeDetailController {
      * Context of an activity
      */
     private Context context;
+
     /**
      * OnClick listener of image view.
      *
@@ -78,7 +80,7 @@ public class EmployeeDetailController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context=view.getContext();
+                context = view.getContext();
                 if (TextUtils.isEmpty(employeeInfo.getIdCardNumber())) {
                     Logger.showShortMessage(view.getContext(), "Please enter your id card number");
                 } else if (!employeeInfo.isFrontSideSelected()) {
@@ -86,7 +88,7 @@ public class EmployeeDetailController {
                 } else if (!employeeInfo.isBackSideSelected()) {
                     Logger.showShortMessage(view.getContext(), "Please select the back side image of id card");
                 } else {
-                    registerRequest(context,employeeInfo);
+                    registerRequest(context, employeeInfo);
 
                 }
             }
@@ -95,22 +97,22 @@ public class EmployeeDetailController {
 
     /**
      * Handle the Employee Registration API of user
-     * @param mContext Context of an activity
+     *
+     * @param mContext     Context of an activity
      * @param employeeInfo Get the model of UserRegistration
      */
-    private void registerRequest(Context mContext, EmployeeInfo employeeInfo)
-    {
-        Context ctx=mContext;
-        Log.e("ctx",ctx+"");
+    private void registerRequest(Context mContext, EmployeeInfo employeeInfo) {
+        Context ctx = mContext;
+        Log.e("ctx", ctx + "");
         BusProvider.getInstance().register(this);
-       // RequestBody name = RequestBody.create(MediaType.parse(Constants.TEXT_TYPE), employeeInfo.getFrontImage());
+        // RequestBody name = RequestBody.create(MediaType.parse(Constants.TEXT_TYPE), employeeInfo.getFrontImage());
         RequestBody frontImage = RequestBody.create(MediaType.parse("image/*"), employeeInfo.getFrontImage());
         MultipartBody.Part frontImageMultipart = MultipartBody.Part.createFormData
-                (Constants.EmployeeResponse.ADAHAR_CARD,employeeInfo.getFrontImage().getName(), frontImage);
+                (Constants.EmployeeResponse.ADAHAR_CARD, employeeInfo.getFrontImage().getName(), frontImage);
         RequestBody backImage = RequestBody.create(MediaType.parse("image/*"), employeeInfo.getBackImage());
         MultipartBody.Part backImageMultipart = MultipartBody.Part.createFormData
-                (Constants.EmployeeResponse.PAN_CARD,employeeInfo.getBackImage().getName(), backImage);
-        new RestClient(ctx).getInstance().get().doEmployeeRegistration(frontImageMultipart,backImageMultipart).enqueue(new RestCallback<EmployeeDetailsResponse>());
+                (Constants.EmployeeResponse.PAN_CARD, employeeInfo.getBackImage().getName(), backImage);
+        new RestClient(ctx).getInstance().get().doEmployeeRegistration(frontImageMultipart, backImageMultipart).enqueue(new RestCallback<EmployeeDetailsResponse>());
     }
 
     /**
@@ -134,8 +136,8 @@ public class EmployeeDetailController {
         BusProvider.getInstance().unregister(this);
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
-                CustomUtils.showToast(context,result.getMessage());
-                EmployeeDetails regResponse=result.employeeDetails;
+                CustomUtils.showToast(context, result.getMessage());
+                EmployeeDetails regResponse = result.employeeDetails;
                 context.startActivity(new Intent(context, DashboardActivity.class));
                 ((Activity) context).finish();
             } else {

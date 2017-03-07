@@ -41,10 +41,9 @@ public class ErrorResponse {
     public String UserToken;
 
 
-
-
     /**
      * Gets {@see #error}
+     * 
      * Returns the error {@link #error}
      */
     public boolean getError() {
@@ -79,6 +78,7 @@ public class ErrorResponse {
 
     /**
      * Gets {@see #message}
+     *
      * Returns the message {@link #message}
      */
     public String getMessage() {
@@ -93,13 +93,16 @@ public class ErrorResponse {
     public void setMessage(String message) {
         this.message = message;
     }
+
     /**
      * Gets {@see #UserToken}
+     *
      * Returns the UserToken {@link #UserToken}
      */
     public String getUserToken() {
         return UserToken;
     }
+
     /**
      * Sets {@see #userToken}
      *
@@ -108,7 +111,5 @@ public class ErrorResponse {
     public void setUserToken(String userToken) {
         UserToken = userToken;
     }
-
-
 }
 

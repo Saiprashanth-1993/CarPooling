@@ -20,6 +20,7 @@ import com.contus.carpooling.R;
 import com.contus.carpooling.dashboard.ridesoffered.model.RideOfferedResponse;
 import com.contus.carpooling.dashboard.ridesoffered.model.RidesOfferedDetails;
 import com.contus.carpooling.databinding.FragmentRidesOfferedBinding;
+import com.contus.carpooling.emptyviewmodel.EmptyView;
 import com.contus.carpooling.server.BusProvider;
 import com.contus.carpooling.server.RestCallback;
 import com.contus.carpooling.server.RestClient;
@@ -44,20 +45,34 @@ public class RidesOfferedFragment extends Fragment {
      */
     Activity context;
 
-   /**
-    *  Get the UI layout
-*/
+    /**
+     * Get the UI layout
+     */
     FragmentRidesOfferedBinding ridesOfferedBinding;
 
-   String fromLocation;
+    /**
+     * send the param by using fromLocation
+     */
+    String fromLocation;
+
+    /**
+     * send the param by using toLocatin
+     */
     String toLocation;
+
+    /**
+     * set the emptyView if there is not item from the data
+     */
+    EmptyView emptyView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        context=getActivity();
+        context = getActivity();
         ridesOfferedBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_rides_offered, container, false);
         myRideOfferedRequest(context);
+        emptyView = new EmptyView();
+        ridesOfferedBinding.setEmptyCheck(emptyView);
         return ridesOfferedBinding.getRoot();
     }
 
@@ -67,10 +82,10 @@ public class RidesOfferedFragment extends Fragment {
     private void myRideOfferedRequest(Context mContext) {
         BusProvider.getInstance().register(this);
         HashMap<String, String> ridesOfferedParams = new HashMap<>();
-        fromLocation= SharedDataUtils.getPreferences(mContext, Constants.Login.FROM_LOCATION,null);
-        toLocation= SharedDataUtils.getPreferences(mContext, Constants.Login.To_LOCATION,null);
-        ridesOfferedParams.put(Constants.RidesOffered.DEPARTURE_POINT,toLocation);
-        ridesOfferedParams.put(Constants.RidesOffered.ARRIVAL_POINT,fromLocation);
+        fromLocation = SharedDataUtils.getPreferences(mContext, Constants.Login.FROM_LOCATION, null);
+        toLocation = SharedDataUtils.getPreferences(mContext, Constants.Login.To_LOCATION, null);
+        ridesOfferedParams.put(Constants.RidesOffered.DEPARTURE_POINT, toLocation);
+        ridesOfferedParams.put(Constants.RidesOffered.ARRIVAL_POINT, fromLocation);
         new RestClient(mContext).getInstance().get().getRidesOfferedList(ridesOfferedParams).enqueue(new RestCallback<RideOfferedResponse>());
 
     }
@@ -97,15 +112,17 @@ public class RidesOfferedFragment extends Fragment {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 List<RidesOfferedDetails> myRides = result.getRideDetails();
-                RidesOfferedAdapter ridesOfferedAdapter = new RidesOfferedAdapter(context,myRides);
+                RidesOfferedAdapter ridesOfferedAdapter = new RidesOfferedAdapter(context, myRides);
+                if (myRides.isEmpty()) {
+                    emptyView.setIsemptyview(true);
+                } else {
+                    emptyView.setIsemptyview(false);
+                }
                 ridesOfferedBinding.offeredRides.setAdapter(ridesOfferedAdapter);
             } else {
                 CustomUtils.showToast(context, "Invalid login");
                 Log.e("Error Message", result.getMessage());
             }
         }
-
     }
-
-
 }

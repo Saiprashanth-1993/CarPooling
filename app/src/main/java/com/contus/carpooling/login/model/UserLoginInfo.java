@@ -151,18 +151,7 @@ public class UserLoginInfo extends BaseObservable {
     /**
      * The isActive
      */
-    @SerializedName(Constants.Login.IS_ACTIVE)
-    @Expose
-    private Integer isActive;
-    @SerializedName("created_at")
-    @Expose
-    private String createdAt;
-    @SerializedName("updated_at")
-    @Expose
-    private String updatedAt;
-    @SerializedName("deleted_at")
-    @Expose
-    private String deletedAt;
+
 
     /**
      * Gets {@see #password}.
@@ -399,57 +388,5 @@ public class UserLoginInfo extends BaseObservable {
 
     public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
-    }
-
-    /**
-     * Gets {@see #password}.
-     *
-     * @return {@link #password}
-     */
-    public Integer getIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(Integer isActive) {
-        this.isActive = isActive;
-    }
-
-    /**
-     * Gets {@see #password}.
-     *
-     * @return {@link #password}
-     */
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    /**
-     * Gets {@see #password}.
-     *
-     * @return {@link #password}
-     */
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    /**
-     * Gets {@see #password}.
-     *
-     * @return {@link #password}
-     */
-    public Object getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(String deletedAt) {
-        this.deletedAt = deletedAt;
     }
 }

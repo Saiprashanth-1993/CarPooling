@@ -18,7 +18,7 @@ public class Constants {
     /**
      * Constants API base URL
      */
-    public static final String BASE_URL = "http://192.168.3.42:8000/api/";
+    public static final String BASE_URL = "http://192.168.1.84:8000/api/";
 
     /**
      * To get the device token from device by using fireBase

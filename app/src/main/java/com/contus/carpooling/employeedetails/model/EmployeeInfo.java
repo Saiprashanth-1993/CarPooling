@@ -26,13 +26,14 @@ public class EmployeeInfo extends BaseObservable {
      */
     private String imageSelectedType;
 
-
-
+    /**
+     * Set the image path to file type for front image
+     */
     private File frontImage;
 
-
-
-
+    /**
+     * Set the image path to file type for back image
+     */
     private File backImage;
 
     /**
@@ -68,16 +69,16 @@ public class EmployeeInfo extends BaseObservable {
     }
 
     /**
-     * Gets {@see #frontImage}.
+     * Gets {@see #backImage}.
      *
-     * @return {@link #frontImage}
+     * @return {@link #backImage}
      */
     public File getBackImage() {
         return backImage;
     }
 
     /**
-     * Sets {@link #frontImage}.
+     * Sets {@link #backImage}.
      */
     public void setBackImage(File backImage) {
         this.backImage = backImage;
@@ -95,12 +96,27 @@ public class EmployeeInfo extends BaseObservable {
     }
 
     /**
+     * Sets {@link #idCardNumber}.
+     */
+    public void setIdCardNumber(String idCardNumber) {
+        this.idCardNumber = idCardNumber;
+        notifyPropertyChanged(BR.idCardNumber);
+    }
+
+    /**
      * Gets {@see #imageSelectedType}.
      *
      * @return {@link #imageSelectedType}
      */
     public String getImageSelectedType() {
         return imageSelectedType;
+    }
+
+    /**
+     * Sets {@link #imageSelectedType}.
+     */
+    public void setImageSelectedType(String imageSelectedType) {
+        this.imageSelectedType = imageSelectedType;
     }
 
     /**
@@ -113,6 +129,13 @@ public class EmployeeInfo extends BaseObservable {
     }
 
     /**
+     * Sets {@link #isFrontSideSelected}.
+     */
+    public void setFrontSideSelected(boolean isFrontSideSelected) {
+        this.isFrontSideSelected = isFrontSideSelected;
+    }
+
+    /**
      * Gets {@see #isBackSideSelected}.
      *
      * @return {@link #isBackSideSelected}
@@ -122,31 +145,9 @@ public class EmployeeInfo extends BaseObservable {
     }
 
     /**
-     * Sets {@link #imageSelectedType}.
-     */
-    public void setImageSelectedType(String imageSelectedType) {
-        this.imageSelectedType = imageSelectedType;
-    }
-
-    /**
-     * Sets {@link #isFrontSideSelected}.
-     */
-    public void setFrontSideSelected(boolean isFrontSideSelected) {
-        this.isFrontSideSelected = isFrontSideSelected;
-    }
-
-    /**
      * Sets {@link #isBackSideSelected}.
      */
     public void setBackSideSelected(boolean isBackSideSelected) {
         this.isBackSideSelected = isBackSideSelected;
-    }
-
-    /**
-     * Sets {@link #idCardNumber}.
-     */
-    public void setIdCardNumber(String idCardNumber) {
-        this.idCardNumber = idCardNumber;
-        notifyPropertyChanged(BR.idCardNumber);
     }
 }

@@ -1,3 +1,9 @@
+/**
+ * @category Car Pooling
+ * @package com.contus.carpooling.login.model
+ * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @license http://www.apache.org/licenses/LICENSE-2.0
+ */
 package com.contus.carpooling.firebase;
 
 
@@ -15,8 +21,7 @@ import com.google.firebase.iid.FirebaseInstanceIdService;
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
  */
-
-public class MyFirebaseInstanceIDService   extends FirebaseInstanceIdService {
+public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
     private static final String TAG = "MyFirebaseIIDService";
     private Context context;
@@ -30,6 +35,11 @@ public class MyFirebaseInstanceIDService   extends FirebaseInstanceIdService {
         sendRegistrationToServer(refreshedToken);
     }
 
+    /**
+     * Get the token id from FireBase instance while installing the app
+     *
+     * @param token Get the device token
+     */
     private void sendRegistrationToServer(String token) {
         // TODO: Send any registration to your app's servers.
         Log.d("Registration id", token);

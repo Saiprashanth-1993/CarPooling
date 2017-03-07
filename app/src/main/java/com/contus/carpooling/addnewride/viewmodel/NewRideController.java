@@ -131,7 +131,7 @@ public class NewRideController {
 
                     }
                 }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
-                dateAndTime = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+                dateAndTime = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
             }
         }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
         ctx = context;
@@ -288,7 +288,6 @@ public class NewRideController {
                 } else {
                     rideObj.setEveryWeeks("1");
                 }
-
             }
         };
     }

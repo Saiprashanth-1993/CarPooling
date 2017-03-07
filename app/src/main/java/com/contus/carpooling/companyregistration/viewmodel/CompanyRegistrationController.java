@@ -77,8 +77,7 @@ public class CompanyRegistrationController {
             public void onClick(View view) {
                 context = view.getContext();
                 if (isValid(context, getEditTextValue.getCompanyName(), getEditTextValue.getCategory(), getEditTextValue.getLocation()))
-                    //context.startActivity(new Intent(context,EmployeeDetailActivity.class));
-                 companyRegistrationRequest(context,getEditTextValue);
+                    companyRegistrationRequest(context, getEditTextValue);
             }
         };
     }
@@ -86,18 +85,18 @@ public class CompanyRegistrationController {
 
     /**
      * Handle the CompanyRegistration API of user
-     * @param mContext Context of an activity
+     *
+     * @param mContext                Context of an activity
      * @param companyRegistrationInfo Get the model of CompanyRegistrationInfo
      */
-    private void companyRegistrationRequest(Context mContext,CompanyRegistrationInfo companyRegistrationInfo)
-    {
-        Context ctx=mContext;
-        Log.e("ctx",ctx+"");
+    private void companyRegistrationRequest(Context mContext, CompanyRegistrationInfo companyRegistrationInfo) {
+        Context ctx = mContext;
+        Log.e("ctx", ctx + "");
         BusProvider.getInstance().register(this);
         HashMap<String, String> companyRegistrationParams = new HashMap<>();
         companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_REGISTRATION_NAME, companyRegistrationInfo.getCompanyName());
-        companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_CATEGORY_ID,categoryId);
-        companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_LOCATION,companyRegistrationInfo.getLocation());
+        companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_CATEGORY_ID, categoryId);
+        companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_LOCATION, companyRegistrationInfo.getLocation());
         new RestClient(ctx).getInstance().get().doCompanyRegistration(companyRegistrationParams).enqueue(new RestCallback<CompanyRegistrationResponse>());
     }
 
@@ -122,9 +121,9 @@ public class CompanyRegistrationController {
         BusProvider.getInstance().unregister(this);
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
-                CustomUtils.showToast(context,result.getMessage());
-                CompanyDetails ComRegResponse=result.ComRegResponse;
-                context.startActivity(new Intent(context,EmployeeDetailActivity.class));
+                CustomUtils.showToast(context, result.getMessage());
+                CompanyDetails ComRegResponse = result.ComRegResponse;
+                context.startActivity(new Intent(context, EmployeeDetailActivity.class));
                 ((Activity) context).finish();
             } else {
                 CustomUtils.showToast(context, result.getMessage());
@@ -215,15 +214,13 @@ public class CompanyRegistrationController {
                 public void onClick(DialogInterface dialog, int item) {
                     companyCategory.setCategory(countryList[item]);
                     Log.d("selected_id", id[item] + "");
-                    categoryId= String.valueOf(id[item]);
+                    categoryId = String.valueOf(id[item]);
                 }
             });
             AlertDialog alert = builder.create();
             alert.show();
         }
     }
-
-
 
 
     /**

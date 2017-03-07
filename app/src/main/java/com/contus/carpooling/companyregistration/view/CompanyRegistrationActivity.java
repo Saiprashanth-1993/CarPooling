@@ -31,8 +31,6 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.squareup.otto.Subscribe;
 
-import java.util.ArrayList;
-
 import static com.contus.carpooling.utils.Constants.REQUEST_CODE_COMPANY_LOCATION;
 
 /**
@@ -47,16 +45,21 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
      * Context of an activity
      */
     ActivityCompanyRegistrationBinding companyRegistrationBinding;
+
     /**
      * List of static company details.
      */
     Context context;
-    ArrayList<String> companyList;
+
     /**
      * Model class of company registration details.
      */
     private CompanyRegistrationInfo registrationInfo;
-    private  CompanyRegistrationController companyRegistrationController;
+
+    /**
+     * Declare the company registration controller for implement the function
+     */
+    private CompanyRegistrationController companyRegistrationController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

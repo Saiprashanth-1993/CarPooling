@@ -48,7 +48,12 @@ public class MyRidesAdapter extends RecyclerView.Adapter<MyRidesAdapter.MyRidesV
         return rideList.size();
     }
 
-
+    /**
+     * Get the position of an item
+     *
+     * @param position Get the position of an item
+     * @return The position
+     */
     public MyRides getItem(int position) {
         return rideList.get(position);
     }

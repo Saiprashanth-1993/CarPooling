@@ -129,7 +129,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
     }
 
     /**
-     * Handle the api response details
+     * Handle the api response details for login
      *
      * @param result Api response
      */

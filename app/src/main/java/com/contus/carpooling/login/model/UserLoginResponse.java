@@ -18,10 +18,9 @@ import com.google.gson.annotations.SerializedName;
 public class UserLoginResponse extends ErrorResponse {
 
     /**
-     * The Login.
+     * The Login response set into model
      */
 
     @SerializedName(Constants.Login.ADMIN_USER)
     public UserLoginInfo login;
-
 }

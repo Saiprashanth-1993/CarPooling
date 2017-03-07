@@ -43,8 +43,7 @@ public class MyRidesFragment extends Fragment {
     Activity activity;
 
     /**
-     *
-   Declare the UI layout
+     * Declare the UI layout
      */
     FragmentMyRidesBinding ridesOfferedBinding;
 
@@ -52,13 +51,13 @@ public class MyRidesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ridesOfferedBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_rides, container, false);
-        activity=getActivity();
+        activity = getActivity();
         myRideListRequest(activity);
         return ridesOfferedBinding.getRoot();
     }
 
     /**
-     * ApiRequest for user login details to the server
+     * ApiRequest for list the ride List by using getRideList API
      */
     private void myRideListRequest(Context mContext) {
         BusProvider.getInstance().register(this);
@@ -87,8 +86,8 @@ public class MyRidesFragment extends Fragment {
         BusProvider.getInstance().unregister(activity);
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
-               List<MyRides> myRides = result.getData();
-                MyRidesAdapter myRidesAdapter = new MyRidesAdapter(activity,myRides);
+                List<MyRides> myRides = result.getData();
+                MyRidesAdapter myRidesAdapter = new MyRidesAdapter(activity, myRides);
                 ridesOfferedBinding.myRides.setAdapter(myRidesAdapter);
             } else {
                 CustomUtils.showToast(activity, "Invalid login");
@@ -97,6 +96,4 @@ public class MyRidesFragment extends Fragment {
         }
 
     }
-
-
 }
