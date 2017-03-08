@@ -23,93 +23,123 @@ public class Constants {
     /**
      * To get the device token from device by using fireBase
      */
-    public static final String DEVICE_TOKEN = "device_token";
+    public static final String DEVICE_TOKEN="device_token";
 
     /**
      * Header type need to use that
      */
-    public static final String REQUEST_TYPE_HEADER = "X-REQUEST-TYPE";
+    public static final String REQUEST_TYPE_HEADER="X-REQUEST-TYPE";
 
     /**
      * Constants for device token header
      */
-    public static final String ACCESS_TOKEN_HEADER = "X-ACCESS-TOKEN";
+    public static final String ACCESS_TOKEN_HEADER="X-ACCESS-TOKEN";
 
     /**
      * Constants for access token header
      */
-    public static final String DEVICE_TOKEN_HEADER = "X-DEVICE-TOKEN";
+    public static final String DEVICE_TOKEN_HEADER="X-DEVICE-TOKEN";
 
     /**
      *
      */
-    public static final String DEVICE_TOKEN_HEADER_VALUE = "deviceToken";
+    public static final String DEVICE_TOKEN_HEADER_VALUE="deviceToken";
 
     /**
      *
      */
-    public static final String ACCESS_TOKEN_HEADER_VALUE = "acesssToken";
+    public static final String ACCESS_TOKEN_HEADER_VALUE="acesssToken"; /**
+     *
+     */
+    public static  String REG_TOKEN_PREF="";
+
+    /**
+     *
+     */
+    public static  String REG_ACCESS_TOKEN_PREF="";
+
     /**
      * The constats for Shared Preference
      */
-    public static final String DEVICE_TOKEN_PREF = "deviceTokenPref";
+    public static final String DEVICE_TOKEN_PREF="deviceTokenPref";
+
+
+    /**
+     * Get the request type value
+     */
+    public static final String REQUEST_TYPE_VALUE="mobile";
+
     /**
      * The result of google place on activity result to get company location.
      */
     public static final int REQUEST_CODE_COMPANY_LOCATION = 1;
+
     /**
      * The result of google place on activity result to get user from location.
      */
     public static final int REQUEST_CODE_USER_FROM_LOCATION = 2;
+
     /**
      * The result of google place on activity result to get user to location.
      */
     public static final int REQUEST_CODE_USER_TO_LOCATION = 3;
+
     /**
      * OnClick item selection type of image view.
      */
     public static final String CLICK_FRONT_IMAGE_VIEW = "front_image";
+
     /**
      * OnClick item selection type of image view.
      */
     public static final String CLICK_BACK_IMAGE_VIEW = "back_image";
+
     /**
      * OnClick on gallery or camera type.
      */
     public static final String SELECTION_TYPE = "selected_image_type";
+
     /**
      * Camera intent request code.
      */
     public static final int CAMERA_SELECTION = 1000;
+
     /**
      * Gallery intent request code.
      */
     public static final int GALLERY_SELECTION = 1001;
+
     /**
      * Catch error message.
      */
     public static final String EXCEPTION_MESSAGE = "exception";
+
     /**
      * Check whether click on edit ride or create ride.
      */
     public static final String CLICK_RIDE = "intent_ride";
+
     /**
      * Check whether click on edit ride or create ride.
      */
     public static final String NAME_NAVIGATION_DASHBOARD = "dashboard";
+
     /**
      * Check whether click on edit ride or create ride.
      */
 
     public static final String NAME_NAVIGATION_MY_PROFILE = "my_profile";
+
     /**
      * Check whether click on edit ride or create ride.
      */
     public static final String NAME_NAVIGATION_SETTINGS = "settings";
+
     /**
      * New ride empty seat validation.
      */
     public static final String EMPTY_SEAT = "0";
+
     /**
      * The Constant used to check the internet.
      */
@@ -126,34 +156,26 @@ public class Constants {
      * The Constant used to check the user logged in.
      */
     public static final int CHECK_USER_LOGIN = 2003;
+
     /**
      * The Constant success value.
      */
     public static final int SUCCESS_VALUE = 200;
+
     /**
      * The constant for get the API response Error status value
      */
     public static final int ERROR_STATUS_VALUE = 200;
+
     /**
      * The Constant for Email Id
      */
-    public static final String USER_REG_EMAIL = "userEmail";
+    public static final String REG_EMAIL="email";
+
     /**
      * The Constant UserId
      */
-    public static final String REG_USER_ID = "id";
-    /**
-     * Constant USER_EMAIL_ID value set from response
-     */
-    public static final String USER_EMAIL_ID = "email";
-    /**
-     *
-     */
-    public static String regTokenPref = "";
-    /**
-     *
-     */
-    public static String regAccessTokenPref = "";
+    public static final String REG_USER_ID="id";
 
     /**
      * Instantiates a new constants.
@@ -169,83 +191,87 @@ public class Constants {
 
 
         /**
-         * Constant  ADMIN_USER for get the Login API response and store intp adminUser model
+         * Constant for get the Login API response and store intp adminUser model
          */
-        public static final String ADMIN_USER = "adminusers";
+        public static final String ADMIN_USER="adminusers";
         /**
-         * Constant USER_PD value set from response
+         * Constant value set from response
          */
         public static final String USER_PD = "password";
 
         /**
-         * Constant LOGIN_ID value set from response
+         * Constant value set from response
          */
-        public static final String LOGIN_ID = "id";
+        public static final String LOGIN_ID="id";
         /**
-         * Constant  USER_ROLE_ID value set from response
+         *Constant value set from response
          */
-        public static final String USER_ROLE_ID = "userRoleId";
+        public static final String USER_ROLE_ID="userRoleId";
         /**
-         * Constant LOGIN_NAME value set from response
+         *Constant value set from response
          */
-        public static final String LOGIN_NAME = "name";
-
+        public static final String LOGIN_NAME="name";
         /**
-         * Constant USERNAME value set from response
+         * Constant value set from response
          */
-        public static final String USERNAME = "username";
+        public static final String USER_EMAIL_ID="email";
         /**
-         * Constant MOBILE value set from response
+         * Constant value set from response
          */
-        public static final String MOBILE = "mobile";
-
-        /***
-         * Constant GENDER value set from response
-         */
-        public static final String GENDER = "gender";
-
-        /***
-         * Constant FROM_LOCATION value set from response
-         */
-        public static final String FROM_LOCATION = "from_location";
-        /***
-         * Constant TO_LOCATION value set from response
-         */
-        public static final String TO_LOCATION = "to_location";
-        /***
-         * Constant AGE value set from response
-         */
-        public static final String AGE = "age";
-        /***
-         * Constant PROFILE_IMAGE value set from response
-         */
-        public static final String PROFILE_IMAGE = "profile_image";
-        /***
-         * Constant COMPANY_ID value set from response
-         */
-        public static final String COMPANY_ID = "company_id";
-        /***
-         * Constant COMPANY_CATEGORY_ID value set from response
-         */
-        public static final String COMPANY_CATEGORY_ID = "company_category_id";
-        /***
-         * Constant COMPANY_LOCATION value set from response
-         */
-        public static final String COMPANY_LOCATION = "company_location";
-        /***
-         * Constant DEVICE_TYPE value set from response
-         */
-        public static final String DEVICE_TYPE = "device_type";
-
-        /***
-         * Constant EMPLOYEE_ID value set from response
-         */
-        public static final String EMPLOYEE_ID = "employee_id";
-
+        public static final String USERNAME="username";
         /**
-         * Store the emailId for preference
+         * Constant value set from response
          */
-        public static final String USER_EMAIL_ID = "userEmailId";
+        public static final String MOBILE="mobile";
+        /***
+         * Constant value set from response
+         */
+        public static final String GENDER="gender";
+        /***
+         * Constant value set from response
+         */
+        public static final String FROM_LOCATION="from_location";
+        /***
+         * Constant value set from response
+         */
+        public static final String To_LOCATION="to_location";
+        /***
+         * Constant value set from response
+         */
+        public static final String AGE="age";
+        /***
+         * Constant value set from response
+         */
+        public static final String PROFILE_IMAGE="profile_image";
+        /***
+         * Constant value set from response
+         */
+        public static final String COMPANY_ID="company_id";
+        /***
+         * Constant value set from response
+         */
+        public static final String COMPANY_CATEGORY_ID="company_category_id";
+        /***
+         * Constant value set from response
+         */
+        public static final String COMPANY_LOCATION="company_location";
+        /***
+         * Constant value set from response
+         */
+        public static final String DEVICE_TYPE="device_type";
+        /***
+         * Constant value set from response
+         */
+        public static final String DEVICE_TOKEN="device_token";
+        /***
+         * Constant value set from response
+         */
+        public static final String EMPLOYEE_ID="employee_id";
+        /***
+         * Constant value set from response
+         */
+        public static final String IS_ACTIVE="isActive";
+
 
         /**
          * Instantiates a new constants.
@@ -261,269 +287,137 @@ public class Constants {
     public static final class Register {
 
         /**
-         * Get the USER_DETAILS response from API after register the user details
+         * Get the response from API after register the user details
          */
-        public static final String USER_DETAILS = "UserDetails";
+        public static final String USER_DETAILS="UserDetails";
 
         /**
          * Get the id from API response  after register the user details
          */
-        public static final String ID = "id";
+        public static final String ID="id";
 
         /**
-         * Constant value USER_NAME for post the name and set the error
+         * Constant value for post the name and set the error
          */
         public static final String USER_NAME = "name";
 
         /**
-         * constant value USER_EMAIL for post the email and set the error
+         * constant value for post the email and set the error
          */
         public static final String USER_EMAIL = "email";
         /**
-         * constant value USER_MOBILE_NUMBER for register the userMobileNumber
+         * constant value for register the userMobileNumber
          */
         public static final String USER_MOBILE_NUMBER = "mobile";
         /**
-         * constant value USER_GENDER for register the userGender and set the error
+         * constant value for register the userGender and set the error
          */
         public static final String USER_GENDER = "gender";
 
         /**
-         * Constant value USER_FROM_LOCATION for register the userFromLocation and set the error
+         * Constant value for register the userFromLocation and set the error
          */
         public static final String USER_FROM_LOCATION = "from_location";
         /**
-         * constant value USER_TO_LOCATION for register the userToLocation and set the error
+         * constant value for register the userToLocation and set the error
          */
         public static final String USER_TO_LOCATION = "to_location";
         /**
-         * constant value  USER_REG_PD for register the userPassword and set the error
+         * constant value for register the userPassword and set the error
          */
         public static final String USER_REG_PD = "password";
 
 
+
         /**
-         * Instantiates a new constants.
+         * constant value for register token
          */
-        private Register() {
-            //Private constructor for prevent instance.
-        }
+        public static final String  REGISTER_DEVICE_TOKEN="device_token";
+
+
     }
 
     /**
      * Constants for company name and company category
      */
-    public static final class CompanyList {
-
-        /**
-         * Constant value for CompanyList the COMPANY_DATA and set the error
-         */
-        public static final String COMPANY_DATA = "data";
-
-        /**
-         * Constant value for CompanyList the COMPANY and set the error
-         */
-        public static final String COMPANY = "company";
-        /**
-         * Constant value for CompanyList the CATEGORY and set the error
-         */
-        public static final String CATEGORY = "sector";
-        /**
-         * Constant value for CompanyList the COMPANY_NAME_ID and set the error
-         */
-        public static final String COMPANY_NAME_ID = "id";
-        /**
-         * Constant value for CompanyList the COMPANY_NAME and set the error
-         */
-        public static final String COMPANY_NAME = "name";
-        /**
-         * Constant value for CompanyList the CATEGORY_ID and set the error
-         */
-        public static final String CATEGORY_ID = "id";
-        /**
-         * Constant value for CompanyList the CATEGORY_NAME and set the error
-         */
-        public static final String CATEGORY_NAME = "name";
-
-        /**
-         * Instantiates a new constants.
-         */
-        private CompanyList() {
-            //Private constructor for prevent instance.
-        }
+  public static final class CompanyList{
+      public static final String COMPANY_DATA="data";
+      public static final String COMPANY="company";
+      public static final String CATEGORY ="sector";
+      public static final String  COMPANY_NAME_ID="id";
+      public static final String  COMPANY_NAME="name";
+      public static final String  CATEGORY_ID="id";
+      public static final String  CATEGORY_NAME="name";
     }
 
     /**
      * Constatn for company company registration
-     */
-    public static final class CompanyRegistration {
+      */
+  public static final class CompanyRegistration
+    {
+       public static final String COMPANY_REGISTRATION_NAME="name";
+       public static final String COMPANY_CATEGORY_ID = "company_category_id";
+       public static final String COMPANY_LOCATION="company_location";
         /**
-         * Constant value for CompanyRegistration the COMPANY_REGISTRATION_NAME
+         * After complete the Company Registration get the response form server
          */
-        public static final String COMPANY_REGISTRATION_NAME = "name";
-        /**
-         * Constant value for COMPANY_CATEGORY_ID the CATEGORY_NAME
-         */
-        public static final String COMPANY_CATEGORY_ID = "company_category_id";
-        /**
-         * Constant value for COMPANY_LOCATION the CATEGORY_NAME
-         */
-        public static final String COMPANY_LOCATION = "company_location";
-        /**
-         * After complete for COMPANY_DETAILS get the response form server
-         */
-        public static final String COMPANY_DETAILS = "response";
-        /**
-         * Constant value for CompanyRegistration the COMPANY_DETAILS_ID
-         */
-        public static final String COMPANY_DETAILS_ID = "id";
-        /**
-         * Constant value for CompanyRegistration the COMPANY_NAME
-         */
-        public static final String COMPANY_NAME = "name";
-        /**
-         * Constant value for CompanyRegistration the SLUG
-         */
-        public static final String SLUG = "slug";
-
-        /**
-         * Instantiates a new constants.
-         */
-        private CompanyRegistration() {
-            //Private constructor for prevent instance.
-        }
+        public static final String COMPANY_DETAILS="response";
+        public static final String COMPANY_DETAILS_ID="id";
+        public static final String COMPANY_NAME="name";
+        public static final String SLUG="slug";
     }
 
 
     /**
      * Constant for Employee Response
      */
-    public static final class EmployeeResponse {
-
-        /**
-         * Constant value set for response
-         */
-        public static final String EMPLOYEE_DETAILS_RESPONSE = "Employee Details";
-        /**
-         * Constant value set for response
-         */
-        public static final String EMPLOYEE_ID = "id";
-        /**
-         * Constant value set for response
-         */
-        public static final String USER_ID = "user_id";
-        /**
-         * Constant value set for response
-         */
-        public static final String ADAHAR_CARD = "aadhar_card";
-        /**
-         * Constant value set for response
-         */
-        public static final String PAN_CARD = "pan_card";
-        /**
-         * Constant value set for response
-         */
-        public static final String REMEMBER_TOKEN = "rememberToken";
-
-        /**
-         * Instantiates a new constants.
-         */
-        private EmployeeResponse() {
-            //Private constructor for prevent instance.
-        }
+    public static final class EmployeeResponse{
+        public static final String EMPLOYEE_DETAILS_RESPONSE="Employee Details";
+        public static final String EMPLOYEE_ID="id";
+        public static final String USER_ID="user_id";
+        public static final String ADAHAR_CARD="aadhar_card";
+        public static final String PAN_CARD="pan_card";
+        public static final String REMEMBER_TOKEN="rememberToken";
     }
 
 
     /**
      * Create the ride
      */
-    public static final class CreateRide {
+    public static final class CreateRide{
         /**
          * After create the ride get the response
          */
-        public static final String CREATE_RIDE_RESPONSE = "RideDetails";
-        /**
-         * Constant value set for response
-         */
-        public static final String DEPARTURE_POINT = "departure_point";
-        /**
-         * Constant value set for response
-         */
-        public static final String ARRIVAL_POINT = "arrival_point";
-        /**
-         * Constant value set for response
-         */
-        public static final String DEPARTURE_TIME = "departure_time";
-        /**
-         * Constant value set for response
-         */
-        public static final String ARRIVAL_TIME = "arrival_time";
-        /**
-         * Constant value set for response
-         */
-        public static final String GENDER_PREFERENCE = "gender_preference";
-        /**
-         * Constant value set for response
-         */
-        public static final String DAYS_PREFERENCE = "days_preference";
-        /**
-         * Constant value set for response
-         */
-        public static final String SEATS = "seats";
-        /**
-         * Constant value set for response
-         */
-        public static final String VEHICLE_TYPE = "vehicle_type";
-        /**
-         * Constant value set for response
-         */
-        public static final String IS_EVERY_WEEEKS = "is_every_weeks";
-        /**
-         * Constant value set for response
-         */
-        public static final String TYPE = "type";
-        /**
-         * Constant value set for response
-         */
-        public static final String COST = "cost";
-        /**
-         * Constant value set for response
-         */
-        public static final String IS_ACTIVE = "is_active";
+        public static final String CREATE_RIDE_RESPONSE="RideDetails";
 
-        /**
-         * Instantiates a new constants.
-         */
-        private CreateRide() {
-            //Private constructor for prevent instance.
-        }
+        public static final String  DEPARTURE_POINT="departure_point";
+        public static final String  ARRIVAL_POINT="arrival_point";
+        public static final String  DEPARTURE_TIME="departure_time";
+        public static final String  ARRIVAL_TIME="arrival_time";
+        public static final String  GENDER_PREFERENCE="gender_preference";
+        public static final String  DAYS_PREFERENCE="days_preference";
+        public static final String  SEATS="seats";
+        public static final String  VEHICLE_TYPE="vehicle_type";
+        public static final String  IS_EVERY_WEEEKS="is_every_weeks";
+        public static final String  TYPE="type";
+        public static final String  COST="cost";
+        public static final String  IS_ACTIVE="is_active";
+
     }
 
     /**
      * Display the rides offered list
      */
-    public static final class RidesOffered {
-        /**
-         * Constant value set for response
-         */
-        public static final String DEPARTURE_POINT = "departure_point";
-        /**
-         * Constant value set for response
-         */
-        public static final String ARRIVAL_POINT = "arrival_point";
-
-        /**
-         * Instantiates a new constants.
-         */
-        private RidesOffered() {
-            //Private constructor for prevent instance.
-        }
+    public static final class RidesOffered{
+        public static final String DEPARTURE_POINT="departure_point";
+        public static final String  ARRIVAL_POINT="arrival_point";
     }
 
     /**
      * Constants for api request
      */
     public static final class ApiRequest {
+
 
         /**
          * Constant value set for response
@@ -549,7 +443,7 @@ public class Constants {
         /**
          * Constants for user token
          */
-        public static final String USER_TOKEN = "UserToken";
+        public static final String  USER_TOKEN="UserToken";
 
 
         /**
@@ -559,4 +453,12 @@ public class Constants {
             //Private constructor for prevent instance.
         }
     }
+
+    public static final class ChangePassword {
+        public static final String PASSWORD="password";
+        public static final String CHANGE_PASSWORD="changepassword";
+        public static final String CONFORM_PASSWORD="conformppassword";
+
+    }
 }
+

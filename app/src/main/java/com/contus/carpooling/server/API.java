@@ -7,6 +7,7 @@
 package com.contus.carpooling.server;
 
 import com.contus.carpooling.addnewride.model.CreateRideResponse;
+import com.contus.carpooling.changepassword.model.ChangePasswordResponse;
 import com.contus.carpooling.companyregistration.model.CompanyListResponse;
 import com.contus.carpooling.companyregistration.model.CompanyRegistrationResponse;
 import com.contus.carpooling.dashboard.myrides.model.MyRidesResponse;
@@ -43,47 +44,34 @@ public interface API {
     @POST("login/")
     Call<UserLoginResponse> doLogin(@Body Map<String, String> parameters);
 
-
     /**
      * Authenticate the user with their register Credentials
-     *
-     * @param parameters Parameter required for user registration
-     * @return {@link UserRegistrationResponse}
      */
     @POST("registration/")
-    Call<UserRegistrationResponse> doRegister(@Body Map<String, String> parameters);
-
+    Call<UserRegistrationResponse> doRegister(@Body Map<String,String> paramerters);
 
     /**
-     * Authenticate the Company Registration with their register of company credentials
-     *
-     * @param parameters Parameter required for Company registration
-     * @return {@link CompanyRegistrationResponse}
+     * Authenticate the Company Registration with their register credentials
      */
     @POST("companyregistration/")
-    Call<CompanyRegistrationResponse> doCompanyRegistration(@Body Map<String, String> parameters);
+    Call<CompanyRegistrationResponse> doCompanyRegistration(@Body Map<String,String> paramerters);
 
 
     /**
-     * Authenticate the Create Ride  with their ride credentials
-     *
-     * @param parameters Parameter required for ride creation
-     * @return {@link CreateRideResponse}
+     * Authenticate the Create Ride  with their register credentials
      */
     @POST("rides/")
-    Call<CreateRideResponse> doCreateRide(@Body Map<String, String> parameters);
+    Call<CreateRideResponse> doCreateRide(@Body Map<String,String> paramerters);
 
 
     /**
      * Method used to register the employee details
      *
-     * @param frontImage Get the image path for frontImage
-     * @param backImage  Get the image path for backImage
-     * @return {@link EmployeeDetailsResponse}
+     * @return Updated profile response
      */
     @Multipart
     @POST("employeedetails/")
-    Call<EmployeeDetailsResponse> doEmployeeRegistration(@Part MultipartBody.Part frontImage, @Part MultipartBody.Part backImage);
+    Call<EmployeeDetailsResponse> doEmployeeRegistration(@Part MultipartBody.Part frontImage,@Part MultipartBody.Part backImage);
 
 
     /**
@@ -106,27 +94,34 @@ public interface API {
     /**
      * Get the company list
      *
-     * @return {@link CompanyListResponse}
+     * @return {@link UserLoginResponse}
      */
     @GET("companysectorlist/")
     Call<CompanyListResponse> getCompanyList();
 
 
-    /**
+   /**
      * Get the ride list
      *
-     * @return {@link MyRidesResponse}
+     * @return {@link UserLoginResponse}
      */
     @GET("ridelist/")
     Call<MyRidesResponse> getMyRideList();
 
-
     /**
-     * Get the display rides by using departure and arrival point
+     * Get the ride  offered list
      *
-     * @param parameters Required for departure and arrival point
-     * @return {@link RideOfferedResponse}
+     * @return {@link UserLoginResponse}
      */
     @POST("displayrides/")
-    Call<RideOfferedResponse> getRidesOfferedList(@Body Map<String, String> parameters);
+    Call<RideOfferedResponse> getRidesOfferedList(@Body Map<String,String> paramerters);
+
+    /**
+     *  Changes user password
+     * @param paramerters Map of old password, new password and confirm password
+     * @return {@link ChangePasswordResponse}
+     */
+    @POST("changepassword/")
+    Call<ChangePasswordResponse> changePassword(@Body Map<String,String> paramerters );
+
 }
