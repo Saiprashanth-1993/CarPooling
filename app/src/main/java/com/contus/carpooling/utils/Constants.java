@@ -413,6 +413,11 @@ public class Constants {
         public static final String  ARRIVAL_POINT="arrival_point";
     }
 
+    public static final class profile{
+        public static final String USER_NAME="name";
+        public static final String  USER_EMAIL="email";
+    }
+
     /**
      * Constants for api request
      */
