@@ -18,6 +18,7 @@ import com.google.gson.annotations.SerializedName;
  * @version 1.0
  */
 public class CompanyDetails {
+
     /**
      * The id
      */

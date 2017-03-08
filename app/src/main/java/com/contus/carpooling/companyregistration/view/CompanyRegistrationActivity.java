@@ -124,17 +124,14 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
                 CompanyList list = result.companyList;
                 companyRegistrationController.CompanyRegistrationController(result.companyList);
                 String[] companyNameList = new String[list.getCompany().size()];
-                for (int i = 0; i < list.getCompany().size(); i++) {
+                for (int i = 0; i < list.getCompany().size(); i++)
                     companyNameList[i] = list.getCompany().get(i).getName();
-                }
                 ArrayAdapter<String> companyNameAdapter = new ArrayAdapter<>
                         (this, R.layout.adapter_company_existing, R.id.existing_company_list, companyNameList);
                 companyRegistrationBinding.companyName.setThreshold(1);
                 companyRegistrationBinding.companyName.setAdapter(companyNameAdapter);
-
             } else {
                 CustomUtils.showToast(context, "Invalid login");
-                //CustomUtils.showToast(context, result.getMessage());
                 Log.e("Error Message", result.getMessage());
             }
         }
