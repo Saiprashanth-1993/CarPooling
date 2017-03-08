@@ -43,34 +43,47 @@ public interface API {
     @POST("login/")
     Call<UserLoginResponse> doLogin(@Body Map<String, String> parameters);
 
+
     /**
      * Authenticate the user with their register Credentials
+     *
+     * @param parameters Parameter required for user registration
+     * @return {@link UserRegistrationResponse}
      */
     @POST("registration/")
-    Call<UserRegistrationResponse> doRegister(@Body Map<String,String> paramerters);
+    Call<UserRegistrationResponse> doRegister(@Body Map<String, String> parameters);
+
 
     /**
-     * Authenticate the Company Registration with their register credentials
+     * Authenticate the Company Registration with their register of company credentials
+     *
+     * @param parameters Parameter required for Company registration
+     * @return {@link CompanyRegistrationResponse}
      */
     @POST("companyregistration/")
-    Call<CompanyRegistrationResponse> doCompanyRegistration(@Body Map<String,String> paramerters);
+    Call<CompanyRegistrationResponse> doCompanyRegistration(@Body Map<String, String> parameters);
 
 
     /**
-     * Authenticate the Create Ride  with their register credentials
+     * Authenticate the Create Ride  with their ride credentials
+     *
+     * @param parameters Parameter required for ride creation
+     * @return {@link CreateRideResponse}
      */
     @POST("rides/")
-    Call<CreateRideResponse> doCreateRide(@Body Map<String,String> paramerters);
+    Call<CreateRideResponse> doCreateRide(@Body Map<String, String> parameters);
 
 
     /**
      * Method used to register the employee details
      *
-     * @return Updated profile response
+     * @param frontImage Get the image path for frontImage
+     * @param backImage  Get the image path for backImage
+     * @return {@link EmployeeDetailsResponse}
      */
     @Multipart
     @POST("employeedetails/")
-    Call<EmployeeDetailsResponse> doEmployeeRegistration(@Part MultipartBody.Part frontImage,@Part MultipartBody.Part backImage);
+    Call<EmployeeDetailsResponse> doEmployeeRegistration(@Part MultipartBody.Part frontImage, @Part MultipartBody.Part backImage);
 
 
     /**
@@ -93,29 +106,27 @@ public interface API {
     /**
      * Get the company list
      *
-     * @return {@link UserLoginResponse}
+     * @return {@link CompanyListResponse}
      */
     @GET("companysectorlist/")
     Call<CompanyListResponse> getCompanyList();
 
 
-   /**
+    /**
      * Get the ride list
      *
-     * @return {@link UserLoginResponse}
+     * @return {@link MyRidesResponse}
      */
     @GET("ridelist/")
     Call<MyRidesResponse> getMyRideList();
 
+
     /**
-     * Get the ride  offered list
+     * Get the display rides by using departure and arrival point
      *
-     * @return {@link UserLoginResponse}
+     * @param parameters Required for departure and arrival point
+     * @return {@link RideOfferedResponse}
      */
     @POST("displayrides/")
-    Call<RideOfferedResponse> getRidesOfferedList(@Body Map<String,String> paramerters);
-
-
-
-
+    Call<RideOfferedResponse> getRidesOfferedList(@Body Map<String, String> parameters);
 }

@@ -228,7 +228,7 @@ public class UserRegistrationController {
                 CustomUtils.showToast(context,result.getMessage());
                 Log.i("device_token",result.getUserToken());
                 UserRegistrationInfo regResponse=result.registerAPIResponse;
-                RegisterUtil.savePreferences(context,Constants.REG_EMAIL,regResponse.getEmailID());
+                RegisterUtil.savePreferences(context,Constants.USER_REG_EMAIL,regResponse.getEmailID());
                 RegisterUtil.savePreferences(context,Constants.REG_USER_ID,regResponse.getId());
                 RegisterUtil.savePreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,regResponse.getDeviceToken());
                 RegisterUtil.savePreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,result.getUserToken());
@@ -236,8 +236,8 @@ public class UserRegistrationController {
                 /**
                  * Get the token from shared preference
                  */
-                Constants.REG_ACCESS_TOKEN_PREF= SharedDataUtils.getPreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,null);
-                Constants.REG_TOKEN_PREF= SharedDataUtils.getPreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,null);
+                Constants.regAccessTokenPref = SharedDataUtils.getPreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,null);
+                Constants.regTokenPref = SharedDataUtils.getPreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,null);
                 context.startActivity(new Intent(context,CompanyRegistrationActivity.class));
                 ((Activity) context).finish();
             } else {

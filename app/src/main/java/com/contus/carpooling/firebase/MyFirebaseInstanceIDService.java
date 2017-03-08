@@ -7,7 +7,6 @@
 package com.contus.carpooling.firebase;
 
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
@@ -24,8 +23,6 @@ import com.google.firebase.iid.FirebaseInstanceIdService;
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
     private static final String TAG = "MyFirebaseIIDService";
-    private Context context;
-
 
     @Override
     public void onTokenRefresh() {
@@ -41,7 +38,6 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
      * @param token Get the device token
      */
     private void sendRegistrationToServer(String token) {
-        // TODO: Send any registration to your app's servers.
         Log.d("Registration id", token);
         SharedPreferences pref = getApplicationContext().getSharedPreferences(Constants.DEVICE_TOKEN_PREF, 0);
         SharedPreferences.Editor editor = pref.edit();

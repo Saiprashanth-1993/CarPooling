@@ -38,6 +38,12 @@ public class RidesOfferedAdapter extends RecyclerView.Adapter<RidesOfferedAdapte
      */
     Context context;
 
+    /**
+     * RidesOfferedAdapter constructor for which can invoke the method directly to activity for store the list into model
+     *
+     * @param context         Context of an activity
+     * @param rideOfferedList Get the list from response store into rideOfferedList
+     */
     public RidesOfferedAdapter(Context context, List<RidesOfferedDetails> rideOfferedList) {
         this.rideOfferedList = rideOfferedList;
         this.context = context;

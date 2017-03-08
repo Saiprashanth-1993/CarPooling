@@ -48,7 +48,7 @@ import static com.contus.carpooling.utils.Constants.REQUEST_CODE_COMPANY_LOCATIO
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
-public class CompanyRegistrationController {
+public class CompanyRegisterController {
 
     /**
      * To get the all the company name and category name
@@ -106,7 +106,7 @@ public class CompanyRegistrationController {
      * @param errorMessage the error message
      */
     @Subscribe
-    public void CompanyResponseReceived(String errorMessage) {
+    public void companyResponseReceived(String errorMessage) {
         BusProvider.getInstance().unregister(this);
         CustomUtils.showToast(context, errorMessage);
     }
@@ -117,12 +117,13 @@ public class CompanyRegistrationController {
      * @param result Api response
      */
     @Subscribe
-    public void CompanyResponseReceived(CompanyRegistrationResponse result) {
+    public void companyResponseReceived(CompanyRegistrationResponse result) {
         BusProvider.getInstance().unregister(this);
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 CustomUtils.showToast(context, result.getMessage());
-                CompanyDetails ComRegResponse = result.ComRegResponse;
+                CompanyDetails companyResponse = result.comRegResponse;
+                Log.e("ComRegResponse", String.valueOf(companyResponse));
                 context.startActivity(new Intent(context, EmployeeDetailActivity.class));
                 ((Activity) context).finish();
             } else {
@@ -176,7 +177,7 @@ public class CompanyRegistrationController {
      * @param location Validate the location.
      * @return true when the given field is not empty.
      */
-    private boolean isValid(Context context, String userName, String password, String location) {
+    public boolean isValid(Context context, String userName, String password, String location) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password) || TextUtils.isEmpty(location)) {
             validationStatus = false;
@@ -213,7 +214,6 @@ public class CompanyRegistrationController {
             builder.setItems(countryList, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int item) {
                     companyCategory.setCategory(countryList[item]);
-                    Log.d("selected_id", id[item] + "");
                     categoryId = String.valueOf(id[item]);
                 }
             });
@@ -239,7 +239,12 @@ public class CompanyRegistrationController {
         };
     }
 
-    public void CompanyRegistrationController(CompanyList list) {
+    /**
+     * companyRegistrationController which can invoke the method directly to activity for get the Sector list
+     *
+     * @param list
+     */
+    public void companyRegistrationController(CompanyList list) {
         this.list = list;
     }
 }

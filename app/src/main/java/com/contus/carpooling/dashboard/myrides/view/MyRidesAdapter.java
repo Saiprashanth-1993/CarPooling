@@ -37,7 +37,12 @@ public class MyRidesAdapter extends RecyclerView.Adapter<MyRidesAdapter.MyRidesV
      */
     Context context;
 
-
+    /**
+     * MyRidesAdapter for get the rideList items from the model MyRides
+     *
+     * @param context  Context of an activity
+     * @param rideList Get the rideList from the Rides API store into the model
+     */
     public MyRidesAdapter(Context context, List<MyRides> rideList) {
         this.rideList = rideList;
         this.context = context;

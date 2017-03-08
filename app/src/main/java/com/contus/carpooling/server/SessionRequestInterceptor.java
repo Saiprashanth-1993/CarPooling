@@ -22,9 +22,9 @@ public class SessionRequestInterceptor implements okhttp3.Interceptor {
     @Override
     public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
         Request.Builder builder = chain.request().newBuilder();
-        builder.addHeader(Constants.REQUEST_TYPE_HEADER, Constants.REQUEST_TYPE_VALUE);
-        builder.addHeader(Constants.ACCESS_TOKEN_HEADER,  Constants.REG_ACCESS_TOKEN_PREF);
-        builder.addHeader(Constants.DEVICE_TOKEN_HEADER,  Constants.REG_TOKEN_PREF);
+        builder.addHeader(Constants.REQUEST_TYPE_HEADER, "mobile");
+        builder.addHeader(Constants.ACCESS_TOKEN_HEADER,  Constants.regAccessTokenPref);
+        builder.addHeader(Constants.DEVICE_TOKEN_HEADER,  Constants.regTokenPref);
         return chain.proceed(builder.build());
     }
 }

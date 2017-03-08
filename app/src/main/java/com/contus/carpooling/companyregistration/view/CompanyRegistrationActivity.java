@@ -19,7 +19,7 @@ import com.contus.carpooling.R;
 import com.contus.carpooling.companyregistration.model.CompanyList;
 import com.contus.carpooling.companyregistration.model.CompanyListResponse;
 import com.contus.carpooling.companyregistration.model.CompanyRegistrationInfo;
-import com.contus.carpooling.companyregistration.viewmodel.CompanyRegistrationController;
+import com.contus.carpooling.companyregistration.viewmodel.CompanyRegisterController;
 import com.contus.carpooling.databinding.ActivityCompanyRegistrationBinding;
 import com.contus.carpooling.server.BusProvider;
 import com.contus.carpooling.server.RestCallback;
@@ -59,7 +59,7 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
     /**
      * Declare the company registration controller for implement the function
      */
-    private CompanyRegistrationController companyRegistrationController;
+    private CompanyRegisterController companyRegistrationController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,7 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
         companyRegistrationBinding = DataBindingUtil.setContentView(this, R.layout.activity_company_registration);
         registrationInfo = new CompanyRegistrationInfo();
         companyRegistrationBinding.setCompanyDetails(registrationInfo);
-        companyRegistrationController = new CompanyRegistrationController();
+        companyRegistrationController = new CompanyRegisterController();
         companyRegistrationBinding.setViewController(companyRegistrationController);
         context = CompanyRegistrationActivity.this;
         companyListRequest(context);
@@ -122,7 +122,7 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 CompanyList list = result.companyList;
-                companyRegistrationController.CompanyRegistrationController(result.companyList);
+                companyRegistrationController.companyRegistrationController(result.companyList);
                 String[] companyNameList = new String[list.getCompany().size()];
                 for (int i = 0; i < list.getCompany().size(); i++) {
                     companyNameList[i] = list.getCompany().get(i).getName();
@@ -133,8 +133,7 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
                 companyRegistrationBinding.companyName.setAdapter(companyNameAdapter);
 
             } else {
-                CustomUtils.showToast(context, "Invalid login");
-                //CustomUtils.showToast(context, result.getMessage());
+                CustomUtils.showToast(context, result.getMessage());
                 Log.e("Error Message", result.getMessage());
             }
         }

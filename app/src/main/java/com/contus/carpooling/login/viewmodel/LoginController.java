@@ -58,10 +58,11 @@ public class LoginController implements ApiService.OnTaskCompleted {
             @Override
             public void onClick(View view) {
                 context = view.getContext();
-                if (isValid(context, userLoginInfo.getEmail(), userLoginInfo.getPassword()))
-                    Constants.REG_ACCESS_TOKEN_PREF="";
-                    Constants.REG_TOKEN_PREF="";
-                loginRequest(context, userLoginInfo);
+                if (isValid(context, userLoginInfo.getEmail(), userLoginInfo.getPassword())) {
+                    Constants.regAccessTokenPref = "";
+                    Constants.regTokenPref = "";
+                    loginRequest(context, userLoginInfo);
+                }
             }
         };
     }
@@ -74,7 +75,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
         HashMap<String, String> loginParams = new HashMap<>();
         SharedPreferences pref = mContext.getSharedPreferences(Constants.DEVICE_TOKEN_PREF, 0);
         String loginDeviceToken=pref.getString(Constants.DEVICE_TOKEN,"");
-        loginParams.put(Constants.Login.USER_EMAIL_ID, userLoginInfo.getEmail());
+        loginParams.put(Constants.USER_EMAIL_ID, userLoginInfo.getEmail());
         loginParams.put(Constants.Login.USER_PD, userLoginInfo.getPassword());
         loginParams.put(Constants.DEVICE_TOKEN, loginDeviceToken);
         new RestClient(mContext).getInstance().get().doLogin(loginParams).enqueue(new RestCallback<UserLoginResponse>());
@@ -102,7 +103,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
      * @param password Validate the password.
      * @return true when the given field is not empty.
      */
-    private boolean isValid(Context context, String userEmail, String password) {
+    public boolean isValid(Context context, String userEmail, String password) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(userEmail) || TextUtils.isEmpty(password)) {
             validationStatus = false;
@@ -148,19 +149,18 @@ public class LoginController implements ApiService.OnTaskCompleted {
                  * store the from location and to location to shared preference
                  */
             SharedDataUtils.savePreferences(context,Constants.Login.FROM_LOCATION,userResult.getFromLocation());
-                SharedDataUtils.savePreferences(context,Constants.Login.To_LOCATION,userResult.getToLocation());
+                SharedDataUtils.savePreferences(context,Constants.Login.TO_LOCATION,userResult.getToLocation());
 
                 /**
                  * Get the access token and device token from shared preference
                  */
-                Constants.REG_ACCESS_TOKEN_PREF= SharedDataUtils.getPreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,null);
-                Constants.REG_TOKEN_PREF= SharedDataUtils.getPreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,null);
+                Constants.regAccessTokenPref = SharedDataUtils.getPreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,null);
+                Constants.regTokenPref = SharedDataUtils.getPreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,null);
                 CustomUtils.showToast(context, result.message);
                 context.startActivity(new Intent(context,   DashboardActivity.class));
                 ((Activity) context).finish();
             } else {
-                CustomUtils.showToast(context,"Invalid login");
-                //CustomUtils.showToast(context, result.getMessage());
+                CustomUtils.showToast(context, result.getMessage());
                 Log.e("Error Message",result.getMessage());
             }
         }

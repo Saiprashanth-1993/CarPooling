@@ -106,24 +106,6 @@ public class RidesOfferedDetails extends BaseObservable {
 
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #id}
-     */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * Sets {@see #id}
-     *
-     * @param id (@link #id}
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    /**
      * Gets {@see #creatorId}
      * <p>
      * Returns the creatorId {@link #creatorId}
@@ -322,5 +304,24 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     public void setCost(String cost) {
         this.cost = cost;
+    }
+
+
+    /**
+     * Gets {@see #id}
+     * <p>
+     * Returns the id {@link #id}
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * Sets {@see #id}
+     *
+     * @param id (@link #id}
+     */
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

@@ -22,7 +22,7 @@ public class EmptyView extends BaseObservable {
     /**
      * isEmptyView list check if it true or false by using get Ride Offered list
      */
-    public boolean isemptyview = false;
+    boolean isemptyview = false;
 
     /**
      * Gets {@see #isemptyview}

@@ -1,9 +1,9 @@
-/*
- * @category ContusFly
+/**
+ * @category CarPooling
+ * @package com.contus.carpooling.login.viewmodel
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
-
 package com.contus.carpooling.utils;
 
 import android.content.Context;
@@ -19,30 +19,29 @@ import com.squareup.okhttp.Response;
  * execute Listener will used for the call back
  *
  * @author ContusTeam <developers@contus.in>
- * @version 1.0
+ * @version 2.3
  */
-
 public class ApiService extends AsyncTask<String, Void, String> {
 
     /**
      * ApiService context
      */
-    private Context context;
+    Context context;
 
     /**
      * Listener to notify about api request completion and send response back
      */
-    private OnTaskCompleted taskCompletedListner;
+    OnTaskCompleted taskCompletedListner;
 
     /**
      * Request body which contains the params and other values to request the API.
      */
-    private RequestBody requestBody;
+    RequestBody requestBody;
 
     /**
      * Indicates whether to show progressbar or not
      */
-    private boolean showProgress;
+    boolean showProgress;
 
     /**
      * Instantiates a new api service.
@@ -89,13 +88,6 @@ public class ApiService extends AsyncTask<String, Void, String> {
         return null;
     }
 
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-        /**
-         * Need to implement the code
-         */
-    }
 
     @Override
     protected void onPostExecute(String s) {

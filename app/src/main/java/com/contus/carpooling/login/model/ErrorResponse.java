@@ -37,8 +37,11 @@ public class ErrorResponse {
     public String message;
 
 
+    /**
+     * Get the token from login and registration response store into UerToken
+     */
     @SerializedName(Constants.ApiRequest.USER_TOKEN)
-    public String UserToken;
+    public String userToken;
 
 
     /**
@@ -95,12 +98,12 @@ public class ErrorResponse {
     }
 
     /**
-     * Gets {@see #UserToken}
+     * Gets {@see #userToken}
      *
-     * Returns the UserToken {@link #UserToken}
+     * Returns the userToken {@link #userToken}
      */
     public String getUserToken() {
-        return UserToken;
+        return userToken;
     }
 
     /**
@@ -109,7 +112,7 @@ public class ErrorResponse {
      * @param userToken (@link #userToken}
      */
     public void setUserToken(String userToken) {
-        UserToken = userToken;
+        this.userToken = userToken;
     }
 }
 

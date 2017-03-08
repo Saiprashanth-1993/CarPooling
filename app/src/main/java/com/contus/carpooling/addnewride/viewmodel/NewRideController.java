@@ -47,43 +47,39 @@ public class NewRideController {
     /**
      * set the date and time to model
      */
-    String dateAndTime;
-    /**
-     * model class
-     */
-    Ride newRide;
+    private String dateAndTime;
+
     /**
      * Context of an activity
      */
-    Context context;
-    ;
+    private Context context;
+
     /**
      * create the date
      */
-    Calendar date;
+    private Calendar date;
+
     /**
      * Selected day from the week list.
      */
     private String daySelection = "";
+
     /**
      * click mode to get the time and date
      */
     private String dateAndTimeMode;
 
+
     /**
      * OnClick listener of time edit box.
-     *
-     * @param clickMode Used to get end time click or start time click option.
-     * @param clickMode Used to get the new ride details.
+     * @param clickMode  Used to get end time click or start time click option.
+     * @param newRide Used to get the new ride details.
      * @return OnClickListener of the edit text.
      */
     public View.OnClickListener btnTimeDialog(final String clickMode, final Ride newRide) {
         return new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                Calendar mCurrentTime = Calendar.getInstance();
-                int hour = mCurrentTime.get(Calendar.HOUR_OF_DAY);
-                int minute = mCurrentTime.get(Calendar.MINUTE);
                 dateAndTimeMode = clickMode;
                 context = view.getContext();
                 showDateTimePicker(newRide);
@@ -91,38 +87,44 @@ public class NewRideController {
         };
     }
 
-
-    public void showDateTimePicker(final Ride ride) {
+    /**
+     * Display the time and date by using native picker
+     * @param ride Used to get the model name
+     */
+    private void showDateTimePicker(final Ride ride) {
         final Calendar currentDate = Calendar.getInstance();
-        Context ctx;
         date = Calendar.getInstance();
         new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
-
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 date.set(year, monthOfYear, dayOfMonth);
-                new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        date.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                        date.set(Calendar.MINUTE, minute);
-                        Log.v(TAG, "The choosen one " + date.getTime());
-
-                        dateAndTime = dateAndTime + " " + hourOfDay + ":" + minute;
-                        if (dateAndTimeMode.equals(context.getString(R.string.start_time))) {
-                            ride.setStartTime(dateAndTime);
-                        } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
-                            ride.setEndTime(dateAndTime);
-                        }
-
-                    }
-                }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
+                timePicker(ride,currentDate);
                 dateAndTime = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
             }
         }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
-        ctx = context;
+    }
 
+    /**
+     * Set the time to model by using time picker
+     */
+    private void timePicker(final Ride ride, Calendar currentDate)
+    {
+        new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                date.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                date.set(Calendar.MINUTE, minute);
+                Log.v(TAG, "The choosen one " + date.getTime());
 
+                dateAndTime = dateAndTime + " " + hourOfDay + ":" + minute;
+                if (dateAndTimeMode.equals(context.getString(R.string.start_time))) {
+                    ride.setStartTime(dateAndTime);
+                } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
+                    ride.setEndTime(dateAndTime);
+                }
+
+            }
+        }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
     }
 
 
@@ -146,7 +148,6 @@ public class NewRideController {
                 }
                 newRide.setDaySelected(daySelection);
             }
-
         };
     }
 
@@ -218,7 +219,8 @@ public class NewRideController {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 CustomUtils.showToast(context, result.getMessage());
-                Ride regResponse = result.rideResponse;
+                Ride rideResponse = result.rideResponse;
+                Log.e("RideResponse", String.valueOf(rideResponse));
                 context.startActivity(new Intent(context, DashboardActivity.class));
                 ((Activity) context).finish();
             } else {

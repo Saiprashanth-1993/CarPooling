@@ -75,7 +75,7 @@ public class UserRegistrationInfo extends BaseObservable {
     /**
      * Gender details of the user.
      */
-    @SerializedName(Constants.Register.REGISTER_DEVICE_TOKEN)
+    @SerializedName(Constants.DEVICE_TOKEN)
     private String deviceToken;
 
 

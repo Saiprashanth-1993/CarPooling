@@ -117,43 +117,66 @@ public class EmployeeDetailActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
+                                           String[] permissions, int[] grantResults) {
         switch (requestCode) {
-            case 2000: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    intent.setType("image/*");
-                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), Constants.GALLERY_SELECTION);
-
-
-                } else {
-
-                    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    intent.setType("image/*");
-                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), Constants.GALLERY_SELECTION);
-                }
+            case 2000:
+                callBackGallery(grantResults);
                 return;
-            }
-            case 3000: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(intent, Constants.CAMERA_SELECTION);
-
-                } else {
-
-                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(intent, Constants.CAMERA_SELECTION);
-                }
+            case 3000:
+                callBackCamera(grantResults);
                 return;
-            }
-
-            // other 'case' lines to check for other
-            // permissions this app might request
+            default:
+              break;
         }
+    }
+
+
+    /**
+     * Call back method for camera selction
+     */
+    public void callBackGallery(int[] grantResults)
+    {
+        if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            gallerySelection();
+
+        } else {
+            Log.e("Already permitted1","gallery");
+            gallerySelection();
+        }
+    }
+
+    /**
+     * Call back method for gallery selection
+     */
+    public void callBackCamera(int[] grantResults)
+    {
+        if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            cameraSelection();
+
+        } else {
+            Log.e("Already permitted2","camera");
+            cameraSelection();
+        }
+    }
+    /**
+     * Pick the image from gallery set into imageView
+     */
+    public void gallerySelection()
+    {
+        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), Constants.GALLERY_SELECTION);
+    }
+
+    /**
+     * Capture the image from camera set into imageView
+     */
+    public void cameraSelection()
+    {
+        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, Constants.CAMERA_SELECTION);
     }
 
     /**

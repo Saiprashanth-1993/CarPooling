@@ -16,14 +16,7 @@ import com.google.gson.annotations.SerializedName;
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
  */
-public class Category {
-
-    /**
-     * The id
-     */
-    @SerializedName(Constants.CompanyList.CATEGORY_ID)
-    @Expose
-    private Integer id;
+public  class Category {
 
     /**
      * Name of the category
@@ -33,22 +26,11 @@ public class Category {
     private String name;
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #id}
+     * The id
      */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * Sets {@see #id}
-     *
-     * @param id (@link #id}
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    @SerializedName(Constants.CompanyList.CATEGORY_ID)
+    @Expose
+    private Integer id;
 
     /**
      * Gets {@see #name}
@@ -66,5 +48,23 @@ public class Category {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * Gets {@see #id}
+     * <p>
+     * Returns the id {@link #id}
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * Sets {@see #id}
+     *
+     * @param id (@link #id}
+     */
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

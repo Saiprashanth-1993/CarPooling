@@ -105,7 +105,6 @@ public class EmployeeDetailController {
         Context ctx = mContext;
         Log.e("ctx", ctx + "");
         BusProvider.getInstance().register(this);
-        // RequestBody name = RequestBody.create(MediaType.parse(Constants.TEXT_TYPE), employeeInfo.getFrontImage());
         RequestBody frontImage = RequestBody.create(MediaType.parse("image/*"), employeeInfo.getFrontImage());
         MultipartBody.Part frontImageMultipart = MultipartBody.Part.createFormData
                 (Constants.EmployeeResponse.ADAHAR_CARD, employeeInfo.getFrontImage().getName(), frontImage);
@@ -137,7 +136,8 @@ public class EmployeeDetailController {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 CustomUtils.showToast(context, result.getMessage());
-                EmployeeDetails regResponse = result.employeeDetails;
+                EmployeeDetails employeeResponse = result.employeeDetails;
+                Log.i("Employee Response", String.valueOf(employeeResponse));
                 context.startActivity(new Intent(context, DashboardActivity.class));
                 ((Activity) context).finish();
             } else {

@@ -30,18 +30,12 @@ public class MyRides extends BaseObservable {
     private Integer id;
 
     /**
-     * Get the departurePoint
-     */
-    @SerializedName("departure_point")
-    @Expose
-    private String departurePoint;
-
-    /**
      * The arrivalPoint
      */
     @SerializedName("arrival_point")
     @Expose
     private String arrivalPoint;
+
 
     /**
      * The departureTime
@@ -51,11 +45,12 @@ public class MyRides extends BaseObservable {
     private String departureTime;
 
     /**
-     * The arrivalTime
+     * Get the departurePoint
      */
-    @SerializedName("arrival_time")
+    @SerializedName("departure_point")
     @Expose
-    private String arrivalTime;
+    private String departurePoint;
+
 
     /**
      * The gender
@@ -64,12 +59,13 @@ public class MyRides extends BaseObservable {
     @Expose
     private String gender;
 
+
     /**
-     * The seats
+     * The arrivalTime
      */
-    @SerializedName("seats")
+    @SerializedName("arrival_time")
     @Expose
-    private String seats;
+    private String arrivalTime;
 
     /**
      * The vehicleType
@@ -77,6 +73,15 @@ public class MyRides extends BaseObservable {
     @SerializedName("vehicle_type")
     @Expose
     private String vehicleType;
+
+
+    /**
+     * The seats
+     */
+    @SerializedName("seats")
+    @Expose
+    private String seats;
+
 
     /**
      * The deapture time

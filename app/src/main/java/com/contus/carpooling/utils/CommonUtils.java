@@ -1,9 +1,9 @@
-/*
- * @category ContusFly
+/**
+ * @category CarPooling
+ * @package com.contus.carpooling.login.viewmodel
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
-
 package com.contus.carpooling.utils;
 
 import android.content.Context;
@@ -28,23 +28,22 @@ public class CommonUtils {
      * Method that is used to check whether internet is connected during login
      *
      * @param context       Instance of the activity
-     * @param option        Option to check the method
      * @return Boolean      Return true/false based on option method result
      */
-    public static boolean isNetAndLogin(Context context, int option) {
-        switch (option) {
-            case Constants.CHECK_INTERNET:
-                return checkInternet(context);
-            default:
-                return true;
+    public static boolean isNetAndLogin(Context context) {
+
+        if(Constants.CHECK_INTERNET==2000)
+        {
+            return checkInternet(context);
         }
+        return true;
     }
 
 
     /**
      * Method that is used to check internet
      *
-     * @param context
+     * @param context Context of an activity
      */
     private static boolean checkInternet(Context context) {
         if (isNetConnected(context)) {

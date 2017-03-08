@@ -5,7 +5,7 @@
 
         <variable
             name="ViewController"
-            type="com.contus.carpooling.companyregistration.viewmodel.CompanyRegistrationController" />
+            type="com.contus.carpooling.companyregistration.viewmodel.CompanyRegisterController" />
 
         <variable
             name="CompanyDetails"

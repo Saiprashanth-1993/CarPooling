@@ -53,7 +53,7 @@ public class UserLoginInfo extends BaseObservable {
     /**
      * Email  of the user
      */
-    @SerializedName(Constants.Login.USER_EMAIL_ID)
+    @SerializedName(Constants.USER_EMAIL_ID)
     @Expose
     private String email;
 
@@ -88,7 +88,7 @@ public class UserLoginInfo extends BaseObservable {
     /**
      * To location of the user
      */
-    @SerializedName(Constants.Login.To_LOCATION)
+    @SerializedName(Constants.Login.TO_LOCATION)
     @Expose
     private String toLocation;
 
@@ -137,7 +137,7 @@ public class UserLoginInfo extends BaseObservable {
     /**
      * The toke of device
      */
-    @SerializedName(Constants.Login.DEVICE_TOKEN)
+    @SerializedName(Constants.DEVICE_TOKEN)
     @Expose
     private String deviceToken;
 
