@@ -9,6 +9,7 @@ package com.contus.carpooling.dashboard.myrides.view;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -71,6 +72,7 @@ public class MyRidesAdapter extends RecyclerView.Adapter<MyRidesAdapter.MyRidesV
         MyRides rideLists = rideList.get(position);
         holder.myRidesBinding.setMyRides(rideLists);
         holder.myRidesBinding.executePendingBindings();
+        Log.i("TAG", "onBindViewHolder: position" + position);
     }
 
 

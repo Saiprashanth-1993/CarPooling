@@ -298,7 +298,12 @@ public class NewRideController {
         } else if (TextUtils.isEmpty(profileInfo.getEndTime())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter end time", Toast.LENGTH_SHORT).show();
+        } else if (isValidDates(profileInfo)) {
+            validationStatus = false;
+            Toast.makeText(context, "End time should be bigger than start time", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(profileInfo.getGender())) {
+            Log.i(TAG, "isValid: End time " + profileInfo.getEndTime() +
+                    " Start time " + profileInfo.getStartTime());
             validationStatus = false;
             Toast.makeText(context, "Please select gender", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(profileInfo.getDaySelected())) {
@@ -309,5 +314,10 @@ public class NewRideController {
             Toast.makeText(context, "Please select seat", Toast.LENGTH_SHORT).show();
         }
         return validationStatus;
+    }
+
+    private boolean isValidDates(Ride profileInfo) {
+//        String startDate = profileInfo.getStartTime().
+        return true;
     }
 }

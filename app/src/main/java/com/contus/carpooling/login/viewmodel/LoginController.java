@@ -37,6 +37,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import retrofit2.Call;
+import retrofit2.Response;
+
 /**
  * Controller of the LoginActivity class
  * XML view controller
@@ -62,7 +65,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
                     Constants.REG_ACCESS_TOKEN_PREF="";
                     Constants.REG_TOKEN_PREF="";
                 loginRequest(context, userLoginInfo);
-            }
+        }
         };
     }
 

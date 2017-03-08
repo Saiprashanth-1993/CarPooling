@@ -115,7 +115,7 @@ public interface API {
     @POST("displayrides/")
     Call<RideOfferedResponse> getRidesOfferedList(@Body Map<String,String> paramerters);
 
-
+//    Call<>
 
 
 }
