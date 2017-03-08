@@ -37,6 +37,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import retrofit2.Call;
+import retrofit2.Response;
+
 /**
  * Controller of the LoginActivity class
  * XML view controller
@@ -77,7 +80,21 @@ public class LoginController implements ApiService.OnTaskCompleted {
         loginParams.put(Constants.Login.USER_EMAIL_ID, userLoginInfo.getEmail());
         loginParams.put(Constants.Login.USER_PD, userLoginInfo.getPassword());
         loginParams.put(Constants.DEVICE_TOKEN, loginDeviceToken);
-        new RestClient(mContext).getInstance().get().doLogin(loginParams).enqueue(new RestCallback<UserLoginResponse>());
+        new RestClient(mContext).getInstance().get().doLogin(loginParams).enqueue(new RestCallback<UserLoginResponse>(){
+            @Override
+            public void onResponse(Call<UserLoginResponse> call, Response<UserLoginResponse> response) {
+                super.onResponse(call, response);
+
+                Log.e("test",response.body().getUserToken());
+
+            }
+
+            @Override
+            public void onFailure(Call<UserLoginResponse> call, Throwable t) {
+                super.onFailure(call, t);
+            }
+        });
+
     }
 
     /**

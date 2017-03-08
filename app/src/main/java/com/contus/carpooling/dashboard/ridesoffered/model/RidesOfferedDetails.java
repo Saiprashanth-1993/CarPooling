@@ -8,6 +8,7 @@ package com.contus.carpooling.dashboard.ridesoffered.model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.util.Log;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -148,6 +149,8 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     @Bindable
     public String getDeparturePoint() {
+        Log.e("Test",departurePoint);
+
         return departurePoint;
     }
 

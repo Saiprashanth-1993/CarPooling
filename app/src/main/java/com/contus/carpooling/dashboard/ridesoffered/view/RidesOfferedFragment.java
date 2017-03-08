@@ -88,6 +88,7 @@ public class RidesOfferedFragment extends Fragment {
         ridesOfferedParams.put(Constants.RidesOffered.ARRIVAL_POINT, fromLocation);
         new RestClient(mContext).getInstance().get().getRidesOfferedList(ridesOfferedParams).enqueue(new RestCallback<RideOfferedResponse>());
 
+
     }
 
     /**
