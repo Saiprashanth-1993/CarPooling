@@ -36,5 +36,11 @@
     <string name="start_time">start_time</string>
     <string name="end_time">end_time</string>
     <string name="phone_number_failure_message">Please enter valid 10 digit phone number</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="login">Login</string>
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign up</string>
 </resources>
 
