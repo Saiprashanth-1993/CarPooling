@@ -29,9 +29,6 @@ import com.squareup.otto.Subscribe;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Response;
-
 /**
  * Fragment to display the my rides details in the dashboard.
  *
@@ -64,18 +61,7 @@ public class MyRidesFragment extends Fragment {
      */
     private void myRideListRequest(Context mContext) {
         BusProvider.getInstance().register(this);
-        new RestClient(mContext).getInstance().get().getMyRideList().enqueue(new RestCallback<MyRidesResponse>(){
-            @Override
-            public void onResponse(Call<MyRidesResponse> call, Response<MyRidesResponse> response) {
-                super.onResponse(call, response);
-            }
-
-            @Override
-            public void onFailure(Call<MyRidesResponse> call, Throwable t) {
-                super.onFailure(call, t);
-            }
-        });
-
+        new RestClient(mContext).getInstance().get().getMyRideList().enqueue(new RestCallback<MyRidesResponse>());
     }
 
     /**
@@ -99,6 +85,7 @@ public class MyRidesFragment extends Fragment {
         BusProvider.getInstance().unregister(activity);
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
+                Log.i("TAG", "myListDataReceived: ListDataSize " + result.getData().size());
                 List<MyRides> myRides = result.getData();
                 MyRidesAdapter myRidesAdapter = new MyRidesAdapter(activity, myRides);
                 ridesOfferedBinding.myRides.setAdapter(myRidesAdapter);

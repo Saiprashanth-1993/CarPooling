@@ -6,12 +6,28 @@
  */
 package com.contus.carpooling.changepassword.viewmodel;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.contus.carpooling.changepassword.model.ChangePasswordModel;
+import com.contus.carpooling.changepassword.model.ChangePasswordResponse;
+import com.contus.carpooling.server.BusProvider;
+import com.contus.carpooling.server.RestCallback;
+import com.contus.carpooling.server.RestClient;
+import com.contus.carpooling.utils.CommonUtils;
+import com.contus.carpooling.utils.Constants;
+import com.contus.carpooling.utils.CustomUtils;
+import com.squareup.otto.Subscribe;
+
+import java.util.HashMap;
+
+import retrofit2.Call;
+import retrofit2.Response;
+import retrofit2.http.PUT;
 
 /**
  * Controller of the ChangePassword class.
@@ -21,6 +37,13 @@ import com.contus.carpooling.changepassword.model.ChangePasswordModel;
  * @version 1.0
  */
 public class ChangePasswordController {
+
+    private Context context;
+    private Activity activity;
+
+    public ChangePasswordController(Activity activity) {
+        this.activity = activity;
+    }
 
     /**
      * OnClick handler of the change password button.
@@ -32,9 +55,9 @@ public class ChangePasswordController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Context context = view.getContext();
+                context = view.getContext();
                 if (isValid(context, getchangePasswordValues.getCurrentPassword(), getchangePasswordValues.getNewPassword(), getchangePasswordValues.getConfirmPassword()))
-                    Toast.makeText(context, "Password has been changed successfully", Toast.LENGTH_SHORT).show();
+                    changePasswordRequest(getchangePasswordValues, context);
             }
         };
     }
@@ -66,5 +89,37 @@ public class ChangePasswordController {
             validStatus = true;
         }
         return validStatus;
+    }
+
+    /**
+     *
+     * @param getchangePasswordValues
+     */
+    private void changePasswordRequest(ChangePasswordModel getchangePasswordValues, Context mContext) {
+        HashMap<String, String> params = new HashMap<>();
+        params.put("password", getchangePasswordValues.getCurrentPassword());
+        params.put("new_password", getchangePasswordValues.getNewPassword());
+        params.put("confirm_password", getchangePasswordValues.getConfirmPassword());
+        new RestClient(mContext).getInstance().get().changePassword(params).enqueue(new RestCallback<ChangePasswordResponse>());
+    }
+
+    @Subscribe
+    public void onBusCallBack(ChangePasswordResponse result) {
+        BusProvider.getInstance().unregister(context);
+        if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
+            if (CommonUtils.isSuccess(result.getSuccess())) {
+                Toast.makeText(context, result.getMessage(), Toast.LENGTH_SHORT).show();
+                activity.onBackPressed();
+            } else {
+                CustomUtils.showToast(context, result.getMessage());
+                Log.e("Error Message",result.getMessage());
+            }
+        }
+    }
+
+    @Subscribe
+    public void onBusCallBack(String errorMessage) {
+        BusProvider.getInstance().unregister(context);
+        CustomUtils.showToast(context, errorMessage);
     }
 }

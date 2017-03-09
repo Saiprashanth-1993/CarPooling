@@ -64,6 +64,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
                 if (isValid(context, userLoginInfo.getEmail(), userLoginInfo.getPassword()))
                     Constants.REG_ACCESS_TOKEN_PREF="";
                     Constants.REG_TOKEN_PREF="";
+
                 loginRequest(context, userLoginInfo);
         }
         };

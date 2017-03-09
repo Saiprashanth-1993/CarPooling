@@ -21,17 +21,27 @@ import android.widget.Toast;
 import com.contus.carpooling.R;
 import com.contus.carpooling.addnewride.model.CreateRideResponse;
 import com.contus.carpooling.addnewride.model.Ride;
+import com.contus.carpooling.addnewride.view.RegisterNewRidesActivity;
 import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
 import com.contus.carpooling.server.BusProvider;
 import com.contus.carpooling.server.RestCallback;
 import com.contus.carpooling.server.RestClient;
+import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
 import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.CustomUtils;
+import com.contus.carpooling.utils.Logger;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.squareup.otto.Subscribe;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import static android.content.ContentValues.TAG;
 
@@ -48,23 +58,27 @@ public class NewRideController {
      * set the date and time to model
      */
     String dateAndTime;
+
     /**
      * model class
      */
     Ride newRide;
+
     /**
      * Context of an activity
      */
     Context context;
-    ;
+
     /**
      * create the date
      */
     Calendar date;
+
     /**
      * Selected day from the week list.
      */
     private String daySelection = "";
+
     /**
      * click mode to get the time and date
      */
@@ -90,7 +104,6 @@ public class NewRideController {
             }
         };
     }
-
 
     public void showDateTimePicker(final Ride ride) {
         final Calendar currentDate = Calendar.getInstance();
@@ -121,10 +134,7 @@ public class NewRideController {
             }
         }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
         ctx = context;
-
-
     }
-
 
     /**
      * OnClick listener of button day click.
@@ -150,7 +160,6 @@ public class NewRideController {
         };
     }
 
-
     /**
      * OnClick listener of add new ride button click.
      *
@@ -168,7 +177,6 @@ public class NewRideController {
             }
         };
     }
-
 
     /**
      * Handle the CreateRide API of user
@@ -300,10 +308,8 @@ public class NewRideController {
             Toast.makeText(context, "Please enter end time", Toast.LENGTH_SHORT).show();
         } else if (isValidDates(profileInfo)) {
             validationStatus = false;
-            Toast.makeText(context, "End time should be bigger than start time", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "End time should be greater than start time", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(profileInfo.getGender())) {
-            Log.i(TAG, "isValid: End time " + profileInfo.getEndTime() +
-                    " Start time " + profileInfo.getStartTime());
             validationStatus = false;
             Toast.makeText(context, "Please select gender", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(profileInfo.getDaySelected())) {
@@ -316,8 +322,53 @@ public class NewRideController {
         return validationStatus;
     }
 
+    /**
+     * checks validity of given start and end time dates
+     * @param profileInfo obeject containing dates
+     * @return true if given dates doesnot valid otherwise returns true
+     */
     private boolean isValidDates(Ride profileInfo) {
-//        String startDate = profileInfo.getStartTime().
-        return true;
+        try {
+            Date startDate = new SimpleDateFormat("yyyy-mm-dd HH:mm").parse(profileInfo.getStartTime());
+            Date endDate = new SimpleDateFormat("yyyy-mm-dd HH:mm").parse(profileInfo.getEndTime());
+            return getDateDiff(startDate, endDate, TimeUnit.MINUTES) < 10;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+    /**
+     * Get a diff between two dates
+     * @param date1 the ride start date
+     * @param date2 the ride end date
+     * @param timeUnit the unit in which you want the diff
+     * @return the diff value, in the provided unit
+     */
+    public static long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
+        long diffInMillies = date2.getTime() - date1.getTime();
+        return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
+    }
+
+    /**
+     * OnClick listener to get the location from google place api.
+     *
+     * @param requestCode ApiRequest code of the google place api intent
+     * @return OnClickListener of the registration button.
+     */
+    public View.OnClickListener getLocationOnClick(final int requestCode) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                            .build((RegisterNewRidesActivity) view.getContext());
+                    ((RegisterNewRidesActivity) view.getContext()).startActivityForResult(intent, requestCode);
+
+                } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+                    Logger.logErrorThrowable(Constants.EXCEPTION_MESSAGE, e);
+                }
+            }
+        };
     }
 }

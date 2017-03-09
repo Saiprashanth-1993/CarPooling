@@ -13,8 +13,6 @@ import com.contus.carpooling.BR;
 import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.SerializedName;
 
-
-
 /**
  * Model class is used to get and store the ride details.
  *
@@ -70,8 +68,6 @@ public class Ride extends BaseObservable {
      */
     private Boolean isEveryWeek = false;
 
-
-
     /**
      * set the weak 1 or 0
      */
@@ -82,8 +78,6 @@ public class Ride extends BaseObservable {
      */
     @SerializedName(Constants.CreateRide.COST)
     private String cost="0";
-
-
 
     @SerializedName(Constants.CreateRide.TYPE)
     private String type;
@@ -142,7 +136,6 @@ public class Ride extends BaseObservable {
         notifyPropertyChanged(BR.startTime);
     }
 
-
     /**
      * Gets {@see #isEveryWeek}
      *
@@ -162,7 +155,7 @@ public class Ride extends BaseObservable {
     }
 
     /**
-     *
+     * returns string representing everyWeeks
      */
     public String getEveryWeeks() {
         return everyWeeks;

@@ -6,10 +6,12 @@
  */
 package com.contus.carpooling.addnewride.view;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,6 +22,12 @@ import com.contus.carpooling.addnewride.model.Ride;
 import com.contus.carpooling.addnewride.viewmodel.NewRideController;
 import com.contus.carpooling.databinding.ActivityAddNewRideBinding;
 import com.contus.carpooling.utils.Constants;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+
+import static com.contus.carpooling.utils.Constants.REQUEST_CODE_USER_FROM_LOCATION;
+import static com.contus.carpooling.utils.Constants.REQUEST_CODE_USER_TO_LOCATION;
 
 /**
  * Activity used to register the new ride or edit ride details.
@@ -64,7 +72,6 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -80,6 +87,38 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
 
         public void onNothingSelected(AdapterView parent) {
             // Do nothing.
+        }
+    }
+
+    /**
+     * gets user entred location data from another activity
+     * @param requestCode request code to identify different requests
+     * @param resultCode result code to identify different results
+     * @param data intent data sent from started activity to provide more information
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check that the result was from the autocomplete widget.
+        if (requestCode == REQUEST_CODE_USER_FROM_LOCATION) {
+            if (resultCode == RESULT_OK) {
+                // Get the user's selected place from the Intent.
+                Place place = PlaceAutocomplete.getPlace(this, data);
+                Log.i("place_details", "Place Selected: " + place.getName());
+                ride.setFromRide(place.getName().toString());
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status result = PlaceAutocomplete.getStatus(this, data);
+                Log.e("error", "Error: Status = " + result.toString());
+            }
+        } else if (requestCode == REQUEST_CODE_USER_TO_LOCATION) {
+            if (resultCode == RESULT_OK) {
+                // Get the user's selected place from the Intent.
+                Place place = PlaceAutocomplete.getPlace(this, data);
+                Log.i("place_details", "Place Selected: " + place.getName());
+                ride.setToRide(place.getName().toString());
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status status = PlaceAutocomplete.getStatus(this, data);
+                Log.e("error", "Error: Status = " + status.toString());
+            }
         }
     }
 }

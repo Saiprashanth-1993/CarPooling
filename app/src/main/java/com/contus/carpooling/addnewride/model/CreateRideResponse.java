@@ -10,7 +10,6 @@ import com.contus.carpooling.login.model.ErrorResponse;
 import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.SerializedName;
 
-
 /**
  * Get the response after create the ride
  *

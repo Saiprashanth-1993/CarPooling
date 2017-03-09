@@ -7,6 +7,7 @@
 package com.contus.carpooling.server;
 
 import com.contus.carpooling.addnewride.model.CreateRideResponse;
+import com.contus.carpooling.changepassword.model.ChangePasswordResponse;
 import com.contus.carpooling.companyregistration.model.CompanyListResponse;
 import com.contus.carpooling.companyregistration.model.CompanyRegistrationResponse;
 import com.contus.carpooling.dashboard.myrides.model.MyRidesResponse;
@@ -115,7 +116,13 @@ public interface API {
     @POST("displayrides/")
     Call<RideOfferedResponse> getRidesOfferedList(@Body Map<String,String> paramerters);
 
-//    Call<>
+    /**
+     * Changes user password
+     *
+     * @return {@link UserLoginResponse}
+     */
+    @POST("changepassword/")
+    Call<ChangePasswordResponse> changePassword(@Body Map<String,String> paramerters);
 
 
 }

@@ -33,7 +33,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         changePasswordBinding.setChangePasswordModel(new ChangePasswordModel());
-        changePasswordBinding.setOnClickController(new ChangePasswordController());
+        changePasswordBinding.setOnClickController(new ChangePasswordController(this));
     }
 
     @Override

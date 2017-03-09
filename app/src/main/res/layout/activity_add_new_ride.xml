@@ -116,6 +116,7 @@
                                         android:maxLines="1"
                                         android:paddingLeft="5dp"
                                         android:text="@={NewRideData.fromRide}"
+                                        android:onClick="@{clickController.getLocationOnClick(2)}"
                                         android:textColorHint="@color/colorEditTextHint"
                                         android:textSize="14sp" />
 
@@ -165,6 +166,7 @@
                                         android:maxLines="1"
                                         android:paddingLeft="5dp"
                                         android:text="@={NewRideData.toRide}"
+                                        android:onClick="@{clickController.getLocationOnClick(3)}"
                                         android:textColorHint="@color/colorEditTextHint"
                                         android:textSize="14sp" />
 

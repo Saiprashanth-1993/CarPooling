@@ -6,6 +6,8 @@
  */
 package com.contus.carpooling.server;
 
+import android.util.Log;
+
 import com.contus.carpooling.login.model.ErrorResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -44,6 +46,7 @@ public class RestCallback<T> implements Callback<T> {
             }
             else {
                 BusProvider.getInstance().post("Something went wrong");
+                Log.e("TAG", "onResponse: res" + response.code());
             }
         }
     }
@@ -51,6 +54,6 @@ public class RestCallback<T> implements Callback<T> {
     @Override
     public void onFailure(Call<T> call, Throwable t) {
         BusProvider.getInstance().post("Something went wrong.");
+        Log.e("TAG", "onFailure: " + t.getMessage());
     }
 }
-
