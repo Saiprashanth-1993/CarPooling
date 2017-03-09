@@ -75,10 +75,11 @@
                         android:background="@android:color/transparent"
                         android:completionThreshold="1"
                         android:ems="10"
-                        android:hint="Enter your company name"
+                        android:hint="@string/enter_your_company_name"
+                        android:popupBackground="@drawable/custom_autocomplete_background"
                         android:imeOptions="actionDone"
                         android:paddingLeft="5dp"
-                        android:singleLine="true"
+                        android:maxLines="1"
                         android:text="@={CompanyDetails.companyName}"
                         android:textColorHint="@color/colorEditTextHint"
                         android:textSize="14sp" />
@@ -218,7 +219,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Already have an account ?"
+                        android:text="@string/already_have_an_account"
                         android:textSize="16sp" />
 
                     <android.support.v7.widget.AppCompatTextView

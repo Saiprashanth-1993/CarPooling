@@ -67,7 +67,7 @@
                     android:layout_marginBottom="5dp"
                     android:layout_marginLeft="50dp"
                     android:layout_marginRight="50dp"
-                    android:text="Name"
+                    android:text="@string/name"
                     android:textAllCaps="true"
                     android:textColor="@color/textViewColor"
                     android:textSize="12sp" />
@@ -91,7 +91,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
-                        android:hint="Enter your name"
+                        android:hint="@string/enter_your_name"
                         android:paddingLeft="5dp"
                         android:inputType="textCapWords|textCapSentences"
                         android:maxLines="1"
@@ -108,7 +108,7 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginRight="50dp"
                     android:layout_marginTop="20dp"
-                    android:text="Mobile"
+                    android:text="@string/mobile"
                     android:textAllCaps="true"
                     android:textColor="@color/textViewColor"
                     android:textSize="12sp" />
@@ -132,7 +132,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
-                        android:hint="Enter your mobile number"
+                        android:hint="@string/enter_your_mobile_number"
                         android:inputType="number"
                         android:paddingLeft="5dp"
                         android:maxLength="10"
@@ -149,7 +149,7 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginRight="50dp"
                     android:layout_marginTop="20dp"
-                    android:text="Email"
+                    android:text="@string/email"
                     android:textAllCaps="true"
                     android:textColor="@color/textViewColor"
                     android:textSize="12sp" />
@@ -173,7 +173,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
-                        android:hint="Enter your email id"
+                        android:hint="@string/enter_your_email_id"
                         android:inputType="textEmailAddress"
                         android:paddingLeft="5dp"
                         android:maxLines="1"
@@ -194,7 +194,7 @@
                     <android.support.v7.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gender Preference"
+                        android:text="@string/gender_preference"
                         android:textAllCaps="true"
                         android:textColor="@color/textViewColor"
                         android:textSize="12sp" />
@@ -209,7 +209,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:onClick='@{ViewController.radioBtnOnClick(UserDetails,"Male")}'
-                            android:text="Male"
+                            android:text="@string/male"
                             android:textColor="@android:color/darker_gray"
                             android:textSize="14sp"
                             android:theme="@style/RadioButton" />
@@ -220,7 +220,7 @@
                             android:layout_marginLeft="20dp"
                             android:layout_weight="1"
                             android:onClick='@{ViewController.radioBtnOnClick(UserDetails,"Female")}'
-                            android:text="Female"
+                            android:text="@string/female"
                             android:textColor="@android:color/darker_gray"
                             android:textSize="14sp"
                             android:theme="@style/RadioButton" />
@@ -235,7 +235,7 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginRight="50dp"
                     android:layout_marginTop="10dp"
-                    android:text="From"
+                    android:text="@string/from"
                     android:textAllCaps="true"
                     android:textColor="@color/textViewColor"
                     android:textSize="12sp" />
@@ -260,7 +260,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:focusable="false"
-                        android:hint="From location"
+                        android:hint="@string/from_location"
                         android:inputType="text"
                         android:onClick="@{ViewController.getLocationOnClick(2)}"
                         android:paddingLeft="5dp"
@@ -277,7 +277,7 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginRight="50dp"
                     android:layout_marginTop="20dp"
-                    android:text="To"
+                    android:text="@string/to"
                     android:textAllCaps="true"
                     android:textColor="@color/textViewColor"
                     android:textSize="12sp" />
@@ -302,7 +302,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:focusable="false"
-                        android:hint="To location"
+                        android:hint="@string/to_location"
                         android:inputType="text"
                         android:onClick="@{ViewController.getLocationOnClick(3)}"
                         android:paddingLeft="5dp"
@@ -319,7 +319,7 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginRight="50dp"
                     android:layout_marginTop="20dp"
-                    android:text="Password"
+                    android:text="@string/password"
                     android:textAllCaps="true"
                     android:textColor="@color/textViewColor"
                     android:textSize="12sp" />
@@ -344,7 +344,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:fontFamily="sans-serif"
-                        android:hint="Enter your password"
+                        android:hint="@string/enter_your_password"
                         android:inputType="textPassword"
                         android:paddingLeft="5dp"
                         android:maxLines="1"
@@ -361,7 +361,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/button_rounded_corner_border"
                     android:onClick="@{ViewController.btnRegistrationOnClick(UserDetails)}"
-                    android:text="Next"
+                    android:text="@string/next"
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
                 <LinearLayout
@@ -377,7 +377,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Don't have an account?"
+                        android:text="@string/dont_have_an_account"
                         android:textSize="16sp" />
 
                     <android.support.v7.widget.AppCompatTextView
@@ -385,7 +385,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onClick="@{ViewController.btnSignInOnClick()}"
-                        android:text=" Sign in"
+                        android:text="@string/sign_in"
                         android:textColor="@color/colorHighLightBlue"
                         android:textSize="16sp" />
                 </LinearLayout>
