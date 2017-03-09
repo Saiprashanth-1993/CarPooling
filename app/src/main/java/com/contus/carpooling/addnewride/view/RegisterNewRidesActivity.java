@@ -70,6 +70,9 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Seat Ride for select the item from spinner
+     */
     public class SeatRide implements AdapterView.OnItemSelectedListener {
         /**
          * Selected item in spinner to get position of an item
