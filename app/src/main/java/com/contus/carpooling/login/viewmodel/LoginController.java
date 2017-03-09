@@ -58,10 +58,11 @@ public class LoginController implements ApiService.OnTaskCompleted {
             @Override
             public void onClick(View view) {
                 context = view.getContext();
-                if (isValid(context, userLoginInfo.getEmail(), userLoginInfo.getPassword()))
-                    Constants.REG_ACCESS_TOKEN_PREF="";
-                    Constants.REG_TOKEN_PREF="";
-                loginRequest(context, userLoginInfo);
+                if (isValid(context, userLoginInfo.getEmail(), userLoginInfo.getPassword())) {
+                    Constants.REG_ACCESS_TOKEN_PREF = "";
+                    Constants.REG_TOKEN_PREF = "";
+                    loginRequest(context, userLoginInfo);
+                }
             }
         };
     }
@@ -139,6 +140,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 UserLoginInfo userResult = result.login;
+                LoginUtils.savePreferences(context,"isLogged",true);
                 LoginUtils.storeUserDetails(context,Constants.Login.LOGIN_ID, userResult.getId());
                 LoginUtils.storeUserDetails(context,Constants.Login.USER_EMAIL_ID, userResult.getEmail());
                 RegisterUtil.savePreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,userResult.getDeviceToken());

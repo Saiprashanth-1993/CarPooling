@@ -1,10 +1,12 @@
 package com.contus.carpooling.profile.model;
 
 
+import android.databinding.BaseObservable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class UserProfileDetails {
+public class UserProfileDetails extends BaseObservable {
 
         @SerializedName("id")
         @Expose

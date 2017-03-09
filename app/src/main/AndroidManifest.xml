@@ -29,11 +29,7 @@
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/SplashScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".login.view.LoginActivity"
@@ -49,7 +45,13 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".dashboard.homepage.view.DashboardActivity"
-            android:label="@string/title_activity_dashboard" />
+            android:label="@string/title_activity_dashboard" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".profile.view.UserProfileFragment"
             android:windowSoftInputMode="stateHidden" />

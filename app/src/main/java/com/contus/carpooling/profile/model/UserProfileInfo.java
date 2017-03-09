@@ -10,6 +10,8 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.contus.carpooling.BR;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Model class is used to get and store the user profile details.
@@ -22,6 +24,8 @@ public class UserProfileInfo extends BaseObservable {
     /**
      * Username of the user.
      */
+    @SerializedName("username")
+    @Expose
     private String userName;
 
     /**
@@ -32,6 +36,8 @@ public class UserProfileInfo extends BaseObservable {
     /**
      * Mail id of the user.
      */
+    @SerializedName("email")
+    @Expose
     private String userMail;
 
     /**
@@ -52,16 +58,22 @@ public class UserProfileInfo extends BaseObservable {
     /**
      * Vehicle type of the user.
      */
+    @SerializedName("vehicle_type")
+    @Expose
     private String userVehicleType;
 
     /**
      * Vehicle name of the user.
      */
+    @SerializedName("vehicle_name")
+    @Expose
     private String userVehicleName;
 
     /**
      * Vehicle number of the user.
      */
+    @SerializedName("vehicle_no")
+    @Expose
     private String userVehicleNum;
 
     /**
