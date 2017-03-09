@@ -8,7 +8,6 @@ package com.contus.carpooling.userregistration.viewmodel;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
@@ -65,7 +64,6 @@ public class UserRegistrationController {
                         getEditTextValue.getEmailID(), getEditTextValue.getFromLocation(),
                         getEditTextValue.getToLocation(), getEditTextValue.getPassword(), getEditTextValue.getGender()))
                    registerRequest(context,getEditTextValue);
-
             }
         };
     }
@@ -79,9 +77,13 @@ public class UserRegistrationController {
     {
         Context ctx=mContext;
         Log.e("ctx",ctx+"");
-        SharedPreferences pref = ctx.getSharedPreferences(Constants.DEVICE_TOKEN_PREF, 0);
+        SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,"");
+        SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE,"");
+        /**
+         * Get the device token from the share preference
+         */
 
-        String deviceToken=pref.getString(Constants.DEVICE_TOKEN,"");
+        String deviceToken= SharedDataUtils.getStringPreference(Constants.DEVICE_TOKEN,"");
         BusProvider.getInstance().register(this);
         HashMap<String, String> registerParams = new HashMap<>();
         registerParams.put(Constants.Register.USER_NAME, userRegistrationInfo.getUserName());
@@ -228,16 +230,18 @@ public class UserRegistrationController {
                 CustomUtils.showToast(context,result.getMessage());
                 Log.i("device_token",result.getUserToken());
                 UserRegistrationInfo regResponse=result.registerAPIResponse;
-                RegisterUtil.savePreferences(context,Constants.USER_REG_EMAIL,regResponse.getEmailID());
-                RegisterUtil.savePreferences(context,Constants.REG_USER_ID,regResponse.getId());
-                RegisterUtil.savePreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,regResponse.getDeviceToken());
-                RegisterUtil.savePreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,result.getUserToken());
+                SharedDataUtils.storeStringPreferences(Constants.USER_REG_EMAIL,regResponse.getEmailID());
+                SharedDataUtils.storeStringPreferences(Constants.REG_USER_ID,regResponse.getId());
 
                 /**
-                 * Get the token from shared preference
+                 * Store the Access token and device token to shared preference
                  */
-                Constants.regAccessTokenPref = SharedDataUtils.getPreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,null);
-                Constants.regTokenPref = SharedDataUtils.getPreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,null);
+                SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,regResponse.getDeviceToken());
+                SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE,result.getUserToken());
+
+                /**
+                 * It will navigate to the company registration activity
+                 */
                 context.startActivity(new Intent(context,CompanyRegistrationActivity.class));
                 ((Activity) context).finish();
             } else {

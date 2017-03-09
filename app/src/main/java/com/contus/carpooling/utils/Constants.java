@@ -41,12 +41,13 @@ public class Constants {
     public static final String DEVICE_TOKEN_HEADER = "X-DEVICE-TOKEN";
 
     /**
-     *
+     *Constants for DEVICE_TOKEN_HEADER_VALUE
      */
+
     public static final String DEVICE_TOKEN_HEADER_VALUE = "deviceToken";
 
     /**
-     *
+     *Constants for ACCESS_TOKEN_HEADER_VALUE
      */
     public static final String ACCESS_TOKEN_HEADER_VALUE = "acesssToken";
     /**
@@ -146,14 +147,6 @@ public class Constants {
      * Constant USER_EMAIL_ID value set from response
      */
     public static final String USER_EMAIL_ID = "email";
-    /**
-     *
-     */
-    public static String regTokenPref = "";
-    /**
-     *
-     */
-    public static String regAccessTokenPref = "";
 
     /**
      * Instantiates a new constants.

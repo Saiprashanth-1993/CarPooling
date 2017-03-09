@@ -9,7 +9,6 @@ package com.contus.carpooling.login.viewmodel;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
@@ -24,7 +23,6 @@ import com.contus.carpooling.server.BusProvider;
 import com.contus.carpooling.server.RestCallback;
 import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
-import com.contus.carpooling.userregistration.viewmodel.RegisterUtil;
 import com.contus.carpooling.utils.ApiService;
 import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
@@ -59,8 +57,6 @@ public class LoginController implements ApiService.OnTaskCompleted {
             public void onClick(View view) {
                 context = view.getContext();
                 if (isValid(context, userLoginInfo.getEmail(), userLoginInfo.getPassword())) {
-                    Constants.regAccessTokenPref = "";
-                    Constants.regTokenPref = "";
                     loginRequest(context, userLoginInfo);
                 }
             }
@@ -72,9 +68,14 @@ public class LoginController implements ApiService.OnTaskCompleted {
      */
     private void loginRequest(Context mContext, UserLoginInfo userLoginInfo) {
         BusProvider.getInstance().register(this);
+        /**
+         * Store the empty value to shared prefer for devicetoken and access token
+         */
+        SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,"");
+        SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE,"");
+
         HashMap<String, String> loginParams = new HashMap<>();
-        SharedPreferences pref = mContext.getSharedPreferences(Constants.DEVICE_TOKEN_PREF, 0);
-        String loginDeviceToken=pref.getString(Constants.DEVICE_TOKEN,"");
+        String loginDeviceToken=SharedDataUtils.getStringPreference(Constants.DEVICE_TOKEN,null);
         loginParams.put(Constants.USER_EMAIL_ID, userLoginInfo.getEmail());
         loginParams.put(Constants.Login.USER_PD, userLoginInfo.getPassword());
         loginParams.put(Constants.DEVICE_TOKEN, loginDeviceToken);
@@ -140,22 +141,28 @@ public class LoginController implements ApiService.OnTaskCompleted {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 UserLoginInfo userResult = result.login;
-                LoginUtils.storeUserDetails(context,Constants.Login.LOGIN_ID, userResult.getId());
-                LoginUtils.storeUserDetails(context,Constants.Login.USER_EMAIL_ID, userResult.getEmail());
-                RegisterUtil.savePreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,userResult.getDeviceToken());
-                RegisterUtil.savePreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,result.getUserToken());
+
+                /**
+                 * Login id and email id stored into share preference
+                 */
+                SharedDataUtils.storeStringPreferences(Constants.Login.LOGIN_ID, userResult.getId());
+                SharedDataUtils.storeStringPreferences(Constants.Login.USER_EMAIL_ID, userResult.getEmail());
+
+                /**
+                 * Store the device and access token to shared preference
+                 */
+                SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,userResult.getDeviceToken());
+                SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE,result.getUserToken());
 
                 /**
                  * store the from location and to location to shared preference
                  */
-            SharedDataUtils.savePreferences(context,Constants.Login.FROM_LOCATION,userResult.getFromLocation());
-                SharedDataUtils.savePreferences(context,Constants.Login.TO_LOCATION,userResult.getToLocation());
+                SharedDataUtils.storeStringPreferences(Constants.Login.FROM_LOCATION,userResult.getFromLocation());
+                SharedDataUtils.storeStringPreferences(Constants.Login.TO_LOCATION,userResult.getToLocation());
 
                 /**
-                 * Get the access token and device token from shared preference
+                 * It will navigate to dashboard Activity
                  */
-                Constants.regAccessTokenPref = SharedDataUtils.getPreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,null);
-                Constants.regTokenPref = SharedDataUtils.getPreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,null);
                 CustomUtils.showToast(context, result.message);
                 context.startActivity(new Intent(context,   DashboardActivity.class));
                 ((Activity) context).finish();
@@ -164,8 +171,8 @@ public class LoginController implements ApiService.OnTaskCompleted {
                 Log.e("Error Message",result.getMessage());
             }
         }
-
     }
+
 
     @Override
     public void onApiResponse(String response) {

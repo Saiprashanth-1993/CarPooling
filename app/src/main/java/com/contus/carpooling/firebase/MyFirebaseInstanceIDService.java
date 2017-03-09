@@ -7,10 +7,10 @@
 package com.contus.carpooling.firebase;
 
 
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.contus.carpooling.utils.Constants;
+import com.contus.carpooling.utils.SharedDataUtils;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
@@ -39,9 +39,10 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
      */
     private void sendRegistrationToServer(String token) {
         Log.d("Registration id", token);
-        SharedPreferences pref = getApplicationContext().getSharedPreferences(Constants.DEVICE_TOKEN_PREF, 0);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString(Constants.DEVICE_TOKEN, token);
-        editor.apply();
+
+        /**
+         * Store the device token into shared preference
+         */
+        SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN,token);
     }
 }

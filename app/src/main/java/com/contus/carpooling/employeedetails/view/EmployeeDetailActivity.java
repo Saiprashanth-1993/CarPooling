@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -73,7 +74,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Constants.CAMERA_SELECTION && data != null) {
+        if (requestCode == Constants.CAMERA_SELECTION && !TextUtils.isEmpty(String.valueOf(data))) {
             Bitmap capturedImage = (Bitmap) data.getExtras().get("data");
             Uri tempUri = getImageUri(getApplicationContext(), capturedImage);
 
@@ -91,7 +92,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
                 employeeInfo.setBackImage(finalFile);
                 employeeDetailBinding.uploadImageBack.setImageBitmap(scaled);
             }
-        } else if (requestCode == Constants.GALLERY_SELECTION && data != null) {
+        } else if (requestCode == Constants.GALLERY_SELECTION && data.getExtras().get("data") != null) {
             try {
                 Bitmap selectImage = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
                 int nh = (int) (selectImage.getHeight() * (512.0 / selectImage.getWidth()));
@@ -126,45 +127,47 @@ public class EmployeeDetailActivity extends AppCompatActivity {
                 callBackCamera(grantResults);
                 return;
             default:
-              break;
+                break;
         }
     }
 
-
-    /**
-     * Call back method for camera selction
-     */
-    public void callBackGallery(int[] grantResults)
-    {
-        if (grantResults.length > 0
-                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            gallerySelection();
-
-        } else {
-            Log.e("Already permitted1","gallery");
-            gallerySelection();
-        }
-    }
 
     /**
      * Call back method for gallery selection
+     *
+     * @param grantResults Get the permission from higher version
      */
-    public void callBackCamera(int[] grantResults)
-    {
+    public void callBackGallery(int[] grantResults) {
+        if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            gallerySelection();
+
+        } else {
+            Log.e("Already permitted1", "gallery");
+            gallerySelection();
+        }
+    }
+
+
+    /**
+     * Call back method for camera selection
+     *
+     * @param grantResults Get the permission from higher version
+     */
+    public void callBackCamera(int[] grantResults) {
         if (grantResults.length > 0
                 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             cameraSelection();
-
         } else {
-            Log.e("Already permitted2","camera");
+            Log.e("Already permitted2", "camera");
             cameraSelection();
         }
     }
+
     /**
      * Pick the image from gallery set into imageView
      */
-    public void gallerySelection()
-    {
+    public void gallerySelection() {
         Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), Constants.GALLERY_SELECTION);
@@ -173,8 +176,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
     /**
      * Capture the image from camera set into imageView
      */
-    public void cameraSelection()
-    {
+    public void cameraSelection() {
         Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, Constants.CAMERA_SELECTION);
     }
@@ -195,6 +197,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             return cursor.getString(idx);
         }
     }
+
 
     /**
      * Convert the bitmap image  to URI path

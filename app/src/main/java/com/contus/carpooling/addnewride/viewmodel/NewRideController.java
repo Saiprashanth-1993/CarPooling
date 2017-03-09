@@ -144,9 +144,8 @@ public class NewRideController {
                     newRide.setDaySelected(String.valueOf(daySelection));
                 } else {
                     daySelection = daySelection + daySelected;
-                    daySelection.substring(0, daySelection.length() - 1);
+                    newRide.setDaySelected(daySelection.substring(0, daySelection.length() - 1));
                 }
-                newRide.setDaySelected(daySelection);
             }
         };
     }

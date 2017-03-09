@@ -82,8 +82,8 @@ public class RidesOfferedFragment extends Fragment {
     private void myRideOfferedRequest(Context mContext) {
         BusProvider.getInstance().register(this);
         HashMap<String, String> ridesOfferedParams = new HashMap<>();
-        fromLocation = SharedDataUtils.getPreferences(mContext, Constants.Login.FROM_LOCATION, null);
-        toLocation = SharedDataUtils.getPreferences(mContext, Constants.Login.TO_LOCATION, null);
+        fromLocation = SharedDataUtils.getStringPreference(Constants.Login.FROM_LOCATION, null);
+        toLocation = SharedDataUtils.getStringPreference(Constants.Login.TO_LOCATION, null);
         ridesOfferedParams.put(Constants.RidesOffered.DEPARTURE_POINT, toLocation);
         ridesOfferedParams.put(Constants.RidesOffered.ARRIVAL_POINT, fromLocation);
         new RestClient(mContext).getInstance().get().getRidesOfferedList(ridesOfferedParams).enqueue(new RestCallback<RideOfferedResponse>());

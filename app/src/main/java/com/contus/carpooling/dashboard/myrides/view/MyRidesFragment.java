@@ -43,6 +43,11 @@ public class MyRidesFragment extends Fragment {
     Activity activity;
 
     /**
+     * Converted to data format
+     */
+    String date;
+
+    /**
      * Declare the UI layout
      */
     FragmentMyRidesBinding ridesOfferedBinding;
@@ -94,6 +99,5 @@ public class MyRidesFragment extends Fragment {
                 Log.e("Error Message", result.getMessage());
             }
         }
-
     }
 }
