@@ -8,10 +8,15 @@ package com.contus.carpooling.dashboard.ridesoffered.model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Model class to display and store the rides offered details.
@@ -56,12 +61,19 @@ public class RidesOfferedDetails extends BaseObservable {
     @Expose
     private String departureTime;
 
+    private String departureDate;
+
     /**
      * The arrivalTime
      */
     @SerializedName("arrival_time")
     @Expose
     private String arrivalTime;
+
+    /**
+     * The arrivaldate from arrivaltime
+     */
+    private String arrivalDate;
 
     /**
      * The genderPreference
@@ -149,8 +161,6 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     @Bindable
     public String getDeparturePoint() {
-        Log.e("Test",departurePoint);
-
         return departurePoint;
     }
 
@@ -189,7 +199,8 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     @Bindable
     public String getDepartureTime() {
-        return departureTime;
+        String[] splited = departureTime.split("\\s+");
+        return splited[1];
     }
 
     /**
@@ -203,7 +214,9 @@ public class RidesOfferedDetails extends BaseObservable {
 
     @Bindable
     public String getArrivalTime() {
-        return arrivalTime;
+
+        String[] splited = arrivalTime.split("\\s+");
+        return splited[1];
     }
 
     /**
@@ -241,6 +254,7 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     @Bindable
     public String getSeats() {
+        seats=seats+" Seats Available";
         return seats;
     }
 
@@ -315,6 +329,8 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     @Bindable
     public String getCost() {
+        cost="₹ "+cost;
+
         return cost;
     }
 
@@ -326,4 +342,44 @@ public class RidesOfferedDetails extends BaseObservable {
     public void setCost(String cost) {
         this.cost = cost;
     }
+
+
+    /**
+     * Gets {@see #arrivalDate} from arrivalTime
+     * <p>
+     * Returns the arrivalDate
+     */
+    public String getArrivalDate() {
+        String[] splited = arrivalTime.split("\\s+");
+
+        return splited[0];
+    }
+
+    /**
+     * Sets {@see #arrivalDate}
+     *
+     * @param arrivalDate(@link #arrivalDate}
+     */
+    public void setArrivalDate(String arrivalDate) {
+        this.arrivalDate = arrivalDate;
+    }
+
+    /**
+     * Gets {@see #departureDate}  from departureTime
+     * <p>
+     * Returns the departureDate
+     */
+    public String getDepartureDate() {
+        String[] splited = departureTime.split("\\s+");
+        return splited[0]; }
+
+    /**
+     * Sets {@see #arrivalDate}
+     *
+     * @param departureDate(@link #arrivalDate}
+     */
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = departureDate;
+    }
+
 }

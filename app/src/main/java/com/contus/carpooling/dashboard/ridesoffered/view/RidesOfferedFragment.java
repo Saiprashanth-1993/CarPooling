@@ -109,6 +109,7 @@ public class RidesOfferedFragment extends Fragment {
      */
     @Subscribe
     public void myListDataReceived(RideOfferedResponse result) {
+
         BusProvider.getInstance().unregister(context);
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {

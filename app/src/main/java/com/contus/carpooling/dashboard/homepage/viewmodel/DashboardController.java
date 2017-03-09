@@ -159,4 +159,9 @@ public class DashboardController {
             }
         };
     }
+
+    public boolean type(String type){
+
+        return true;
+    }
 }
