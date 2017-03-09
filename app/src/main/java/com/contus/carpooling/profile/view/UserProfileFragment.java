@@ -52,6 +52,7 @@ public class UserProfileFragment extends Fragment {
 
     Context mContext;
     private UserProfileInfo userProfileDetails;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
