@@ -18,7 +18,8 @@ public class Constants {
     /**
      * Constants API base URL
      */
-    public static final String BASE_URL = "http://192.168.1.84:8000/api/";
+//    public static final String BASE_URL = "http://p105.dev.contus.us/p105-carpooling-web/public/api/";
+    public static final String BASE_URL = "http://192.168.1.152:8000/api/";
 
     /**
      * To get the device token from device by using fireBase
@@ -48,98 +49,71 @@ public class Constants {
     /**
      *
      */
-    public static final String ACCESS_TOKEN_HEADER_VALUE="acesssToken"; /**
-     *
-     */
-    public static  String REG_TOKEN_PREF="";
-
-    /**
-     *
-     */
-    public static  String REG_ACCESS_TOKEN_PREF="";
-
-    /**
+    public static final String ACCESS_TOKEN_HEADER_VALUE="acesssToken";     /**
      * The constats for Shared Preference
      */
     public static final String DEVICE_TOKEN_PREF="deviceTokenPref";
-
-
     /**
      * Get the request type value
      */
     public static final String REQUEST_TYPE_VALUE="mobile";
-
     /**
      * The result of google place on activity result to get company location.
      */
     public static final int REQUEST_CODE_COMPANY_LOCATION = 1;
-
     /**
      * The result of google place on activity result to get user from location.
      */
     public static final int REQUEST_CODE_USER_FROM_LOCATION = 2;
-
     /**
      * The result of google place on activity result to get user to location.
      */
     public static final int REQUEST_CODE_USER_TO_LOCATION = 3;
-
     /**
      * OnClick item selection type of image view.
      */
     public static final String CLICK_FRONT_IMAGE_VIEW = "front_image";
-
     /**
      * OnClick item selection type of image view.
      */
     public static final String CLICK_BACK_IMAGE_VIEW = "back_image";
-
     /**
      * OnClick on gallery or camera type.
      */
     public static final String SELECTION_TYPE = "selected_image_type";
-
     /**
      * Camera intent request code.
      */
     public static final int CAMERA_SELECTION = 1000;
-
     /**
      * Gallery intent request code.
      */
     public static final int GALLERY_SELECTION = 1001;
-
     /**
      * Catch error message.
      */
     public static final String EXCEPTION_MESSAGE = "exception";
-
     /**
      * Check whether click on edit ride or create ride.
      */
     public static final String CLICK_RIDE = "intent_ride";
-
     /**
      * Check whether click on edit ride or create ride.
      */
     public static final String NAME_NAVIGATION_DASHBOARD = "dashboard";
-
     /**
      * Check whether click on edit ride or create ride.
      */
 
     public static final String NAME_NAVIGATION_MY_PROFILE = "my_profile";
-
     /**
      * Check whether click on edit ride or create ride.
      */
     public static final String NAME_NAVIGATION_SETTINGS = "settings";
-
     /**
      * New ride empty seat validation.
      */
     public static final String EMPTY_SEAT = "0";
-
     /**
      * The Constant used to check the internet.
      */
@@ -156,26 +130,30 @@ public class Constants {
      * The Constant used to check the user logged in.
      */
     public static final int CHECK_USER_LOGIN = 2003;
-
     /**
      * The Constant success value.
      */
     public static final int SUCCESS_VALUE = 200;
-
     /**
      * The constant for get the API response Error status value
      */
     public static final int ERROR_STATUS_VALUE = 200;
-
     /**
      * The Constant for Email Id
      */
     public static final String REG_EMAIL="email";
-
     /**
      * The Constant UserId
      */
     public static final String REG_USER_ID="id";
+/**
+     *
+     */
+    public static  String REG_TOKEN_PREF="";
+    /**
+     *
+     */
+    public static  String REG_ACCESS_TOKEN_PREF="";
 
     /**
      * Instantiates a new constants.

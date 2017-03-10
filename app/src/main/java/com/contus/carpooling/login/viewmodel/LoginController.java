@@ -15,7 +15,6 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
-
 import com.contus.carpooling.R;
 import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
 import com.contus.carpooling.login.model.UserLoginInfo;
@@ -32,9 +31,7 @@ import com.contus.carpooling.utils.CustomUtils;
 import com.contus.carpooling.utils.Logger;
 import com.contus.carpooling.utils.SharedDataUtils;
 import com.squareup.otto.Subscribe;
-
 import org.json.JSONObject;
-
 import java.util.HashMap;
 
 /**

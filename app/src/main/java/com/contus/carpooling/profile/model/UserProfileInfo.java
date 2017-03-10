@@ -31,6 +31,8 @@ public class UserProfileInfo extends BaseObservable {
     /**
      * Team name of the user.
      */
+    @SerializedName("company_category_id")
+    @Expose
     private String userTeamName;
 
     /**
@@ -43,16 +45,22 @@ public class UserProfileInfo extends BaseObservable {
     /**
      * Get the phone number of the user.
      */
+    @SerializedName("mobile")
+    @Expose
     private String userPhone;
 
     /**
      * Address of the user.
      */
+    @SerializedName("from_location")
+    @Expose
     private String userAddress;
 
     /**
      * Location of the user.
      */
+    @SerializedName("to_location")
+    @Expose
     private String userLocation;
 
     /**
@@ -106,7 +114,7 @@ public class UserProfileInfo extends BaseObservable {
      */
     @Bindable
     public String getUserTeamName() {
-        return userTeamName;
+        return String.valueOf(userTeamName);
     }
 
     /**
@@ -160,7 +168,7 @@ public class UserProfileInfo extends BaseObservable {
      */
     @Bindable
     public String getUserPhone() {
-        return userPhone;
+        return String.valueOf(userPhone);
     }
 
     /**

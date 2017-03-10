@@ -93,6 +93,13 @@ public interface API {
     @GET("getprofile/")
     Call<UserProfileResponse> getProfile();
 
+    /**
+     * Authenticate the user with their login credentials
+     *
+     * @return {@link UserProfileInfo}
+     */
+    @GET("updateprofile")
+    Call<UserProfileResponse> setProfile(@Body Map<String,String> paramerters);
 
 
     /**

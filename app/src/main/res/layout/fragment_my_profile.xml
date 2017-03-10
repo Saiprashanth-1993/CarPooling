@@ -188,7 +188,7 @@
                                     android:layout_toRightOf="@+id/iv_addr_icon"
                                     android:background="@android:drawable/screen_background_light_transparent"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
-                                    android:text="@={UserProfile.userAddress}"
+                                    android:text="@={UserProfile.userLocation}"
                                     android:textSize="14sp" />
                             </RelativeLayout>
 
@@ -212,7 +212,7 @@
                                     android:background="@android:color/transparent"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                     android:singleLine="true"
-                                    android:text="@={UserProfile.userLocation}"
+                                    android:text="@={UserProfile.userAddress}"
                                     android:textSize="14sp" />
                             </RelativeLayout>
                         </LinearLayout>

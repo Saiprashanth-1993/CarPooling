@@ -56,7 +56,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         /**
          *Splash screen timer.
          */
-        int splashTimeOut = 2000;
+        int splashTimeOut = 1000;
         /**
          * Resume the handler to run the thread when application reopen.
          */

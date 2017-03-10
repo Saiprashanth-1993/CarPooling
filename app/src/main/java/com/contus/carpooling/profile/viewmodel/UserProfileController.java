@@ -6,28 +6,12 @@
  */
 package com.contus.carpooling.profile.viewmodel;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
-import com.contus.carpooling.login.model.UserLoginInfo;
-import com.contus.carpooling.login.model.UserLoginResponse;
-import com.contus.carpooling.login.viewmodel.LoginUtils;
-import com.contus.carpooling.profile.model.UserProfileDetails;
 import com.contus.carpooling.profile.model.UserProfileInfo;
-import com.contus.carpooling.profile.model.UserProfileResponse;
-import com.contus.carpooling.server.BusProvider;
-import com.contus.carpooling.userregistration.viewmodel.RegisterUtil;
-import com.contus.carpooling.utils.CommonUtils;
-import com.contus.carpooling.utils.Constants;
-import com.contus.carpooling.utils.CustomUtils;
-import com.contus.carpooling.utils.SharedDataUtils;
-import com.squareup.otto.Subscribe;
 
 /**
  * Controller of the UserProfileFragment class
@@ -37,8 +21,6 @@ import com.squareup.otto.Subscribe;
  * @version 1.0
  */
 public class UserProfileController {
-
-    Context context;
 
     /**
      * OnClick listener of profile edit button.
@@ -72,6 +54,8 @@ public class UserProfileController {
             profileInfo.setToEditOrSave(true);
         }
     }
+
+
 
     /**
      * Method used to validate the edit text fields.
@@ -111,5 +95,4 @@ public class UserProfileController {
         }
         return validationStatus;
     }
-
 }
