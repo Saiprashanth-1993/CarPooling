@@ -341,9 +341,6 @@ public class NewRideController {
         } else if (TextUtils.isEmpty(profileInfo.getEndTime())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter end time", Toast.LENGTH_SHORT).show();
-        } else if (isValidDates(profileInfo)) {
-            validationStatus = false;
-            Toast.makeText(context, "End time should be greater than start time", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(profileInfo.getGender())) {
             validationStatus = false;
             Toast.makeText(context, "Please select gender", Toast.LENGTH_SHORT).show();
@@ -355,29 +352,6 @@ public class NewRideController {
             Toast.makeText(context, "Please select seat", Toast.LENGTH_SHORT).show();
         }
         return validationStatus;
-    }
-
-    /**
-     * checks validity of given start and end time dates
-     * @param profileInfo obeject containing dates
-     * @return true if given dates doesnot valid otherwise returns true
-     */
-    private boolean isValidDates(Ride profileInfo) {
-        long startTime = Long.parseLong(profileInfo.getStartTime());
-        long endTime = Long.parseLong(profileInfo.getEndTime());
-        return startTime >= endTime;
-    }
-
-    /**
-     * Get a diff between two dates
-     * @param date1 the ride start date
-     * @param date2 the ride end date
-     * @param timeUnit the unit in which you want the diff
-     * @return the diff value, in the provided unit
-     */
-    public static long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
-        long diffInMillies = date2.getTime() - date1.getTime();
-        return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
     }
 
     /**
@@ -400,22 +374,5 @@ public class NewRideController {
                 }
             }
         };
-    }
-
-    public String showTime(int hour, int min) {
-        String format;
-        if (hour == 0) {
-            hour += 12;
-            format = "AM";
-        } else if (hour == 12) {
-            format = "PM";
-        } else if (hour > 12) {
-            hour -= 12;
-            format = "PM";
-        } else {
-            format = "AM";
-        }
-        return new StringBuilder().append(hour).append(":").append(min)
-                .append(" ").append(format).toString();
     }
 }
