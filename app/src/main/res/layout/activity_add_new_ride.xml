@@ -59,6 +59,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:layout_marginLeft="5dp"
+                    android:orientation="vertical"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp">
 
@@ -108,7 +109,7 @@
                                         android:src="@drawable/ic_location"
                                         android:tint="@color/colorHighLightBlue" />
 
-                                    <android.support.v7.widget.AppCompatEditText
+                                    <android.support.v7.widget.AppCompatTextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:background="@android:color/transparent"
@@ -158,7 +159,7 @@
                                         android:layout_height="20dp"
                                         android:src="@drawable/ic_location" />
 
-                                    <android.support.v7.widget.AppCompatEditText
+                                    <android.support.v7.widget.AppCompatTextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:background="@android:color/transparent"
@@ -175,7 +176,6 @@
 
                             <LinearLayout
                                 android:id="@+id/ll_start_time"
-
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/ll_to"
@@ -199,7 +199,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="5dp"
-                                        android:text="Start Time"
+                                        android:text="Start time"
                                         android:textAllCaps="true"
                                         android:textColor="@color/colorHighLightBlue"
                                         android:textSize="12sp" />
@@ -232,7 +232,7 @@
                                             android:paddingLeft="5dp"
                                             android:text="@={NewRideData.startTime}"
                                             android:textColorHint="@color/colorEditTextHint"
-                                            android:textSize="14sp" />
+                                            android:textSize="16sp" />
 
                                     </LinearLayout>
                                 </LinearLayout>
@@ -250,7 +250,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="5dp"
-                                        android:text="End Time"
+                                        android:text="End time"
                                         android:textAllCaps="true"
                                         android:textColor="@color/colorHighLightBlue"
                                         android:textSize="12sp" />
@@ -282,7 +282,7 @@
                                             android:paddingLeft="5dp"
                                             android:text="@={NewRideData.endTime}"
                                             android:textColorHint="@color/colorEditTextHint"
-                                            android:textSize="14sp" />
+                                            android:textSize="16sp" />
 
                                     </LinearLayout>
                                 </LinearLayout>
@@ -606,7 +606,6 @@
                                 android:textSize="16sp" />
                         </RelativeLayout>
                     </android.support.v7.widget.CardView>
-
                 </LinearLayout>
             </ScrollView>
         </RelativeLayout>

@@ -9,6 +9,8 @@ package com.contus.carpooling.dashboard.myrides.model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.text.TextUtils;
+import android.util.Log;
 
 import com.contus.carpooling.BR;
 import com.google.gson.annotations.Expose;
@@ -275,7 +277,7 @@ public class MyRides extends BaseObservable {
      */
     @Bindable
     public String getType() {
-        return cost;
+        return type;
     }
 
     /**
@@ -294,9 +296,10 @@ public class MyRides extends BaseObservable {
      * <p>
      * Returns the error {@link #cost}
      */
-    @Bindable
+//    @Bindable
     public String getCost() {
-        return cost;
+        if (TextUtils.equals("0", cost)) return "Free";
+        return "$ " + cost;
     }
 
     /**

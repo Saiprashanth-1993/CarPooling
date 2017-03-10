@@ -10,9 +10,11 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -26,7 +28,6 @@ import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
 import com.contus.carpooling.server.BusProvider;
 import com.contus.carpooling.server.RestCallback;
 import com.contus.carpooling.server.RestClient;
-import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
 import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.CustomUtils;
@@ -58,6 +59,11 @@ public class NewRideController {
      * set the date and time to model
      */
     String dateAndTime;
+
+    /**
+     * Date in linux time
+     */
+    long linuxTime;
 
     /**
      * model class
@@ -105,15 +111,20 @@ public class NewRideController {
         };
     }
 
+    /**
+     *
+     * @param ride
+     */
     public void showDateTimePicker(final Ride ride) {
         final Calendar currentDate = Calendar.getInstance();
-        Context ctx;
         date = Calendar.getInstance();
-        new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
 
+        DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            public void onDateSet(DatePicker view, int year, int monthOfYear, final int dayOfMonth) {
                 date.set(year, monthOfYear, dayOfMonth);
+                linuxTime = date.getTimeInMillis();
+
                 new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -124,16 +135,42 @@ public class NewRideController {
                         dateAndTime = dateAndTime + " " + hourOfDay + ":" + minute;
                         if (dateAndTimeMode.equals(context.getString(R.string.start_time))) {
                             ride.setStartTime(dateAndTime);
+                            Log.i("TAG", "onTimeSet: " + dateAndTime);
                         } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
                             ride.setEndTime(dateAndTime);
                         }
 
                     }
                 }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
+
+                if (ride.getStartTime() != null) {
+                    linuxTime = convertToLong(ride.getStartTime());
+                }
+
                 dateAndTime = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
             }
-        }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
-        ctx = context;
+        }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE));
+
+        if (dateAndTimeMode.equals(context.getString(R.string.start_time))) {
+            datePickerDialog.getDatePicker().setMinDate(Calendar.getInstance().getTime().getTime());
+
+        } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
+            Log.i("TAG", "showDateTimePicker: end time" +ride.getStartTime());
+            datePickerDialog.getDatePicker().setMinDate(linuxTime);
+        }
+
+        datePickerDialog.show();
+    }
+
+    private long convertToLong(String date) {
+        Date startDate = null;
+        try {
+            startDate = new SimpleDateFormat("yyyy-mm-dd HH:mm").parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        assert startDate != null;
+        return startDate.getTime();
     }
 
     /**
@@ -185,8 +222,6 @@ public class NewRideController {
      * @param rideInfo Get the model of rideInfo
      */
     private void rideRequest(Context mContext, Ride rideInfo) {
-        Context ctx = mContext;
-        Log.e("ctx", ctx + "");
         BusProvider.getInstance().register(this);
         HashMap<String, String> createRideParams = new HashMap<>();
         createRideParams.put(Constants.CreateRide.ARRIVAL_POINT, rideInfo.getFromRide());
@@ -201,7 +236,7 @@ public class NewRideController {
         createRideParams.put(Constants.CreateRide.TYPE, rideInfo.getType());
         createRideParams.put(Constants.CreateRide.COST, rideInfo.getCost());
         createRideParams.put(Constants.CreateRide.IS_ACTIVE, "1");
-        new RestClient(ctx).getInstance().get().doCreateRide(createRideParams).enqueue(new RestCallback<CreateRideResponse>());
+        new RestClient(mContext).getInstance().get().doCreateRide(createRideParams).enqueue(new RestCallback<CreateRideResponse>());
     }
 
     /**
@@ -328,14 +363,9 @@ public class NewRideController {
      * @return true if given dates doesnot valid otherwise returns true
      */
     private boolean isValidDates(Ride profileInfo) {
-        try {
-            Date startDate = new SimpleDateFormat("yyyy-mm-dd HH:mm").parse(profileInfo.getStartTime());
-            Date endDate = new SimpleDateFormat("yyyy-mm-dd HH:mm").parse(profileInfo.getEndTime());
-            return getDateDiff(startDate, endDate, TimeUnit.MINUTES) < 10;
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return true;
-        }
+        long startTime = Long.parseLong(profileInfo.getStartTime());
+        long endTime = Long.parseLong(profileInfo.getEndTime());
+        return startTime >= endTime;
     }
 
     /**
@@ -370,5 +400,22 @@ public class NewRideController {
                 }
             }
         };
+    }
+
+    public String showTime(int hour, int min) {
+        String format;
+        if (hour == 0) {
+            hour += 12;
+            format = "AM";
+        } else if (hour == 12) {
+            format = "PM";
+        } else if (hour > 12) {
+            hour -= 12;
+            format = "PM";
+        } else {
+            format = "AM";
+        }
+        return new StringBuilder().append(hour).append(":").append(min)
+                .append(" ").append(format).toString();
     }
 }
