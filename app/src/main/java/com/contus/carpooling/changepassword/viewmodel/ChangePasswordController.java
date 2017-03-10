@@ -84,6 +84,12 @@ public class ChangePasswordController {
         } else if (TextUtils.isEmpty(confirmPassword)) {
             validStatus = false;
             Toast.makeText(context, "Please enter the confirm password", Toast.LENGTH_SHORT).show();
+        } else if(newPassword.length()<6){
+            validStatus=false;
+            Toast.makeText(context, "New password should be minimum of 6 character!", Toast.LENGTH_SHORT).show();
+        }else if(confirmPassword.length()<6){
+            validStatus=false;
+            Toast.makeText(context, "Confirm password should be minimum of 6 character!", Toast.LENGTH_SHORT).show();
         } else if (!newPassword.equals(confirmPassword)) {
             validStatus = false;
             Toast.makeText(context, "Password does not match", Toast.LENGTH_SHORT).show();
