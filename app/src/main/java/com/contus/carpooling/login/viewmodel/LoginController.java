@@ -24,7 +24,6 @@ import com.contus.carpooling.server.BusProvider;
 import com.contus.carpooling.server.RestCallback;
 import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
-import com.contus.carpooling.userregistration.viewmodel.RegisterUtil;
 import com.contus.carpooling.utils.ApiService;
 import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
@@ -59,12 +58,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
             public void onClick(View view) {
                 context = view.getContext();
                 if (isValid(context, userLoginInfo.getEmail(), userLoginInfo.getPassword()))
-                {
-                    Constants.REG_ACCESS_TOKEN_PREF="";
-                    Constants.REG_TOKEN_PREF="";
                     loginRequest(context, userLoginInfo);
-                }
-
             }
         };
     }
@@ -142,24 +136,45 @@ public class LoginController implements ApiService.OnTaskCompleted {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 UserLoginInfo userResult = result.login;
-                LoginUtils.storeUserDetails(context,Constants.Login.LOGIN_ID, userResult.getId());
-                LoginUtils.storeUserDetails(context,Constants.Login.USER_EMAIL_ID, userResult.getEmail());
-                RegisterUtil.savePreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,userResult.getDeviceToken());
-                RegisterUtil.savePreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,result.getUserToken());
+                /*
+                 * object for sharedDateUtils to store and retrieve
+                 **/
+                SharedDataUtils sharedPref = new SharedDataUtils(context);
+
+                /**
+                 * saving user logged_in state in shared preference
+                 */
+                sharedPref.saveBooleanPreferences(Constants.IS_Logged,true);
+
+                /**
+                 *Saving user id and user email in shared preference
+                 */
+                sharedPref.saveStringPreferences(Constants.Login.LOGIN_ID, userResult.getId());
+                sharedPref.saveStringPreferences(Constants.Login.USER_EMAIL_ID, userResult.getEmail());
+                sharedPref.saveStringPreferences(Constants.Login.USERNAME,userResult.getUsername());
+                sharedPref.saveStringPreferences(Constants.Login.COMPANY_CATEGORY_ID,userResult.getCompanyCategoryId());
+                sharedPref.saveStringPreferences(Constants.Login.COMPANY_LOCATION,userResult.getCompanyLocation());
+
+                /**
+                 *Saving Device Token and user token in shared preference
+                 */
+                sharedPref.saveStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,userResult.getDeviceToken());
+                sharedPref.saveStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE,result.getUserToken());
 
                 /**
                  * store the from location and to location to shared preference
                  */
-
-                SharedDataUtils.savePreferences(context,Constants.Login.FROM_LOCATION,userResult.getFromLocation());
-                SharedDataUtils.savePreferences(context,Constants.Login.To_LOCATION,userResult.getToLocation());
+                sharedPref.saveStringPreferences(Constants.Login.FROM_LOCATION,userResult.getFromLocation());
+                sharedPref.saveStringPreferences(Constants.Login.To_LOCATION,userResult.getToLocation());
 
                 /**
                  * Get the access token and device token from shared preference
                  */
+                Constants.REG_ACCESS_TOKEN_PREF= sharedPref.getStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE,null);
+                Constants.REG_TOKEN_PREF= sharedPref.getStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,null);
 
-                Constants.REG_ACCESS_TOKEN_PREF= SharedDataUtils.getPreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,null);
-                Constants.REG_TOKEN_PREF= SharedDataUtils.getPreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,null);
+
+
                 CustomUtils.showToast(context, result.message);
                 context.startActivity(new Intent(context,   DashboardActivity.class));
                 ((Activity) context).finish();

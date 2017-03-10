@@ -11,25 +11,39 @@ import android.support.v4.app.ActivityCompat;
  * This class used to get, set and clear the preference values.
  *
  * @author Contus Team <developers@contus.in>
- * @version 3.5
+ * @version 1
  */
 public class SharedDataUtils {
 
     /**
+     * Context of an activity
+     */
+
+    static Context context;
+
+    /**
      * Shared Data default constructor
      */
-    private SharedDataUtils() {
+    public SharedDataUtils() {
 
     }
 
     /**
+     * Shared Date Argument Constructor
+     * @param context refers calling activity
+     */
+    public SharedDataUtils(Context context) {
+        this.context = context;
+    }
+
+
+    /**
      * Save preferences by using string value
      *
-     * @param context The context of calling an getActivity
      * @param key     The key to store in the preference
      * @param value   The value to store for the key
      */
-    public static void savePreferences(Context context, String key, String value) {
+    public static void saveStringPreferences( String key, String value) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString(key, value);
@@ -39,11 +53,11 @@ public class SharedDataUtils {
     /**
      * Save the preferences by using int value
      *
-     * @param context The context of calling an getActivity
      * @param key     The key is used for to store the value to preference
      * @param value   The value used to store for key value
      */
-    public static void savePreferences(Context context, String key, int value) {
+
+    public static void saveIntPreferences( String key, int value) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sp.edit();
         editor.putInt(key, value);
@@ -53,11 +67,10 @@ public class SharedDataUtils {
     /**
      * Save preferences using the boolean value
      *
-     * @param context The context of calling activity
      * @param key     The key to be stored from the preference
      * @param value   The value to be stored for the key.
      */
-    public static void savePreferences(Context context, String key, boolean value) {
+    public static void saveBooleanPreferences(String key, boolean value) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean(key, value);
@@ -65,51 +78,46 @@ public class SharedDataUtils {
     }
 
     /**
-     * Read preferences.
+     * Read String preferences.
      *
-     * @param context      The context of calling an activity
      * @param key          The key to be read from the preference
      * @param defaultValue The default value if it is nil.
      * @return the string
      */
-    public static String getPreferences(Context context, String key, String defaultValue) {
+    public static String getStringPreferences( String key, String defaultValue) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         return sp.getString(key, defaultValue);
     }
 
     /**
-     * Read preferences value.
+     * Read Int preferences value.
      *
-     * @param context      The context of calling an activity
      * @param key          The key to be read from the preference
      * @param defaultValue The default value if it is nil.
      * @return the string
      */
-    public static int getPreferences(Context context, String key, int defaultValue) {
+    public static int getIntPreferences( String key, int defaultValue) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         return sp.getInt(key, defaultValue);
     }
 
     /**
-     * Gets the preferences.
+     * Gets the Boolean preferences.
      *
-     * @param context      The context of calling an activity
-     * @param key          The key to get the string value from the preference
+     * @param key The key to get the string value from the preference
      * @param defaultValue The default value if it  is nil
      * @return the preferences
      */
-    public static boolean getPreferences(Context context, String key, boolean defaultValue) {
+    public static boolean getBooleanPreferences(String key, boolean defaultValue) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         return sp.getBoolean(key, defaultValue);
     }
 
     /**
      * Clear preferences value.
-     *
-     * @param context The context of calling activity
      * @param key     The key to be read in the preference
      */
-    public static void clearPreferences(Context context, String key) {
+    public static void clearPreferences(String key) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sp.edit();
         editor.remove(key);

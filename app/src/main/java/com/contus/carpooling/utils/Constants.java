@@ -18,7 +18,7 @@ public class Constants {
     /**
      * Constants API base URL
      */
-    public static final String BASE_URL = "http://192.168.1.84:8000/api/";
+    public static final String BASE_URL = "http://192.168.1.152:8000/api/";
 
     /**
      * To get the device token from device by using fireBase
@@ -176,6 +176,11 @@ public class Constants {
      * The Constant UserId
      */
     public static final String REG_USER_ID="id";
+
+    /**
+     * The Constant isLogged, to check user loged or not
+     */
+    public static final String IS_Logged="islogged";
 
     /**
      * Instantiates a new constants.

@@ -228,16 +228,25 @@ public class UserRegistrationController {
                 CustomUtils.showToast(context,result.getMessage());
                 Log.i("device_token",result.getUserToken());
                 UserRegistrationInfo regResponse=result.registerAPIResponse;
-                RegisterUtil.savePreferences(context,Constants.REG_EMAIL,regResponse.getEmailID());
-                RegisterUtil.savePreferences(context,Constants.REG_USER_ID,regResponse.getId());
-                RegisterUtil.savePreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,regResponse.getDeviceToken());
-                RegisterUtil.savePreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,result.getUserToken());
+
+                /*
+                 * object for sharedDateUtils to store and retrieve
+                 **/
+                SharedDataUtils sharedPref = new SharedDataUtils(context);
+                /**
+                 * store the user details in shared preference
+                 */
+
+                sharedPref.saveStringPreferences(Constants.REG_EMAIL,regResponse.getEmailID());
+                sharedPref.saveStringPreferences(Constants.REG_USER_ID,regResponse.getId());
+                sharedPref.saveStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,regResponse.getDeviceToken());
+                sharedPref.saveStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE,result.getUserToken());
 
                 /**
-                 * Get the token from shared preference
+                 * Get the device token from shared preference
                  */
-                Constants.REG_ACCESS_TOKEN_PREF= SharedDataUtils.getPreferences(context,Constants.ACCESS_TOKEN_HEADER_VALUE,null);
-                Constants.REG_TOKEN_PREF= SharedDataUtils.getPreferences(context,Constants.DEVICE_TOKEN_HEADER_VALUE,null);
+                Constants.REG_ACCESS_TOKEN_PREF= sharedPref.getStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE,null);
+                Constants.REG_TOKEN_PREF= sharedPref.getStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,null);
                 context.startActivity(new Intent(context,CompanyRegistrationActivity.class));
                 ((Activity) context).finish();
             } else {
