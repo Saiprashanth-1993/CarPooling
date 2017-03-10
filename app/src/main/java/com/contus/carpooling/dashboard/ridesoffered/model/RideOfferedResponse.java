@@ -28,7 +28,6 @@ public class RideOfferedResponse extends ErrorResponse {
     @Expose
     private List<RidesOfferedDetails> rideDetails = null;
 
-
     /**
      * Gets {@see #rideDetails}
      * <p>
