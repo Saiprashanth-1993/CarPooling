@@ -113,8 +113,10 @@ public class ChangePasswordController {
             @Override
             public void onResponse(Call<ChangePasswordResponse> call, Response<ChangePasswordResponse> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(mContext, "Password has been changed successfully", Toast.LENGTH_SHORT).show();
-                    activity.onBackPressed();
+                    Toast.makeText(mContext, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    if (!TextUtils.equals("Password is invalid", response.body().getMessage())) {
+                        activity.onBackPressed();
+                    }
                 }
             }
 
