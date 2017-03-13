@@ -17,10 +17,10 @@ public class UserProfileResponse extends ErrorResponse {
 
     @SerializedName("response")
     @Expose
-    public List<UserProfileDetails> userDetails;
+    public List<UserProfileDetailsPOJO> userDetails;
 
 
-    public List<UserProfileDetails> getResponse() {
+    public List<UserProfileDetailsPOJO> getResponse() {
         return userDetails;
     }
 

@@ -6,8 +6,7 @@ import com.contus.carpooling.BR;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class UserProfileDetails {
-
+public class UserProfileDetailsPOJO {
 
     @SerializedName("name")
     @Expose
@@ -37,7 +36,7 @@ public class UserProfileDetails {
     @Expose
     private Integer companyCategoryId;
 
-    @SerializedName("company_location")
+    @SerializedName("to_location")
     @Expose
     private String companyLocation;
 
@@ -66,8 +65,8 @@ public class UserProfileDetails {
 
 
 
-    public Object getUsername() {
-        return username;
+    public String getUsername() {
+        return (String) username;
     }
 
 
@@ -89,8 +88,8 @@ public class UserProfileDetails {
 
 
 
-    public Integer getCompanyCategoryId() {
-        return companyCategoryId;
+    public String getCompanyCategoryId() {
+        return String.valueOf(companyCategoryId);
     }
 
 

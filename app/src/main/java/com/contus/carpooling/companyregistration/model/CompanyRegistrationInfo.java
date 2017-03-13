@@ -45,8 +45,16 @@ public class CompanyRegistrationInfo extends BaseObservable {
      * @return {@link #companyName}
      */
     @Bindable
-    public String getCompanyName() {
+    public String  getCompanyName() {
         return companyName;
+    }
+
+    /**
+     * Sets {@link #companyName}.
+     */
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+        notifyPropertyChanged(BR.companyName);
     }
 
     /**
@@ -60,6 +68,14 @@ public class CompanyRegistrationInfo extends BaseObservable {
     }
 
     /**
+     * Sets {@link #category}.
+     */
+    public void setCategory(String category) {
+        this.category = category;
+        notifyPropertyChanged(BR.category);
+    }
+
+    /**
      * Gets {@see #location}.
      *
      * @return {@link #location}
@@ -67,22 +83,6 @@ public class CompanyRegistrationInfo extends BaseObservable {
     @Bindable
     public String getLocation() {
         return location;
-    }
-
-    /**
-     * Sets {@link #companyName}.
-     */
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-        notifyPropertyChanged(BR.companyName);
-    }
-
-    /**
-     * Sets {@link #category}.
-     */
-    public void setCategory(String category) {
-        this.category = category;
-        notifyPropertyChanged(BR.category);
     }
 
     /**

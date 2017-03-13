@@ -21,6 +21,20 @@ import com.google.gson.annotations.SerializedName;
  */
 public class UserProfileInfo extends BaseObservable {
 
+
+
+    /**
+     * Username of the user.
+     */
+    @SerializedName("profile_image")
+    @Expose
+    private String profileImage;
+
+    /**
+     * Image selected type as front.
+     */
+    private String imageSelectedType;
+
     /**
      * Username of the user.
      */
@@ -38,8 +52,8 @@ public class UserProfileInfo extends BaseObservable {
     /**
      * Mail id of the user.
      */
-    @SerializedName("email")
-    @Expose
+//    @SerializedName("email")
+//    @Expose
     private String userMail;
 
     /**
@@ -90,6 +104,23 @@ public class UserProfileInfo extends BaseObservable {
     private boolean isToEditOrSave;
 
     /**
+     * Gets {@see #imageSelectedType}.
+     *
+     * @return {@link #imageSelectedType}
+     */
+    public String getImageSelectedType() {
+        return imageSelectedType;
+    }
+
+    /**
+     * Sets {@link #imageSelectedType}.
+     */
+    public void setImageSelectedType(String imageSelectedType) {
+        this.imageSelectedType = imageSelectedType;
+    }
+
+
+    /**
      * Gets {@see #userName}.
      *
      * @return {@link #userName}
@@ -123,6 +154,16 @@ public class UserProfileInfo extends BaseObservable {
     public void setUserTeamName(String userTeamName) {
         this.userTeamName = userTeamName;
         notifyPropertyChanged(BR.userTeamName);
+    }
+
+    @Bindable
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+        notifyPropertyChanged(BR.profileImage);
     }
 
     /**
