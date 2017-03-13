@@ -25,6 +25,7 @@ public class OfferedRidesInformationController {
             return new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
                     Context context = view.getContext();
                     Toast.makeText(context,"Booked",Toast.LENGTH_SHORT).show();
 
