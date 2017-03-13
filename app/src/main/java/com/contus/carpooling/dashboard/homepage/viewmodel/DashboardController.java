@@ -20,7 +20,7 @@ import com.contus.carpooling.R;
 import com.contus.carpooling.addnewride.view.RegisterNewRidesActivity;
 import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
 import com.contus.carpooling.databinding.CustomDelayDialogBinding;
-import com.contus.carpooling.offeredrideinfo.view.OfferedRidesInformationActivity;
+import com.contus.carpooling.offeredrideinfo.view.view.OfferedRidesInformationActivity;
 import com.contus.carpooling.utils.Constants;
 
 /**
@@ -92,6 +92,25 @@ public class DashboardController {
         };
     }
 
+    /**
+     * OnClick listener in list items.
+     *
+     * @return OnClickListener of the recycler view on item.
+     */
+    public View.OnClickListener bookOnclick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = view.getContext();
+
+                Toast.makeText(context,"Booked",Toast.LENGTH_SHORT).show();
+                /**
+                 * implement book method from rides offered items
+                 */
+
+            }
+        };
+    }
     /**
      * OnClick listener in Text view to show the delay dialog.
      *

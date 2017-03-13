@@ -70,7 +70,6 @@ public class RidesOfferedAdapter extends RecyclerView.Adapter<RidesOfferedAdapte
     @Override
     public void onBindViewHolder(RidesOfferedAdapter.RidesOfferedViewHolder holder, int position) {
         RidesOfferedDetails rideOfferedLists = rideOfferedList.get(position);
-        Log.e("Test",rideOfferedLists.getArrivalPoint());
         holder.myRidesBinding.setRideOfferedDetails(rideOfferedLists);
         holder.myRidesBinding.executePendingBindings();
     }

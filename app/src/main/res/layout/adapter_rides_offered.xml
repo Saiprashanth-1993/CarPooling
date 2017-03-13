@@ -67,7 +67,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:text="@{rideOfferedDetails.email}"
+                            android:text="name"
                             android:textSize="14sp" />
 
                         <LinearLayout
@@ -139,6 +139,7 @@
                                 android:gravity="center"
                                 android:padding="5dp"
                                 android:text="Book"
+                                android:onClick="@{itemClick.bookOnclick()}"
                                 android:textColor="@android:color/white"
                                 android:textSize="12sp" />
 
@@ -201,19 +202,6 @@
                             android:textColor="@color/colorHighLightBlue"
                             android:textSize="18sp" />
 
-                        <!--<TextView-->
-                            <!--android:id="@+id/tv_arrival_time"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:textAlignment="center"-->
-                            <!--android:text="@={rideOfferedDetails.arrivalTime}"-->
-                            <!--android:textSize="12sp" />-->
-
-                        <!--<TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10: 30 AM"
-                            android:textSize="12sp" />-->
                     </LinearLayout>
 
                     <ImageView
@@ -249,19 +237,6 @@
                             android:textColor="@color/colorHighLightBlue"
                             android:textSize="18sp" />
 
-                        <!--<TextView-->
-                            <!--android:id="@+id/tv_departure_time"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:text="@={rideOfferedDetails.departureTime}"-->
-                            <!--android:textAlignment="center"-->
-                            <!--android:textSize="12sp" />-->
-
-                        <!--<TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10: 30 AM"
-                            android:textSize="12sp" />-->
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

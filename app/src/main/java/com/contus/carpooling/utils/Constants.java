@@ -18,7 +18,7 @@ public class Constants {
     /**
      * Constants API base URL
      */
-    public static final String BASE_URL = "http://192.168.1.152:8000/api/";
+    public static final String BASE_URL = "http://p105.dev.contus.us/p105-carpooling-web/public/api/";
 
     /**
      * To get the device token from device by using fireBase
@@ -299,7 +299,7 @@ public class Constants {
         /**
          * Constant value for post the name and set the error
          */
-        public static final String USER_NAME = "name";
+        public static final String USER_NAME = "username";
 
         /**
          * constant value for post the email and set the error

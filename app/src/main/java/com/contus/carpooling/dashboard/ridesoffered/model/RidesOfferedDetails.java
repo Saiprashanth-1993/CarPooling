@@ -49,12 +49,6 @@ public class RidesOfferedDetails extends BaseObservable {
     private String name;
 
     /**
-     * The name
-     */
-    @SerializedName("password")
-    @Expose
-    private String email;
-    /**
      * The creatorId
      */
     @SerializedName("creator_id")
@@ -138,9 +132,6 @@ public class RidesOfferedDetails extends BaseObservable {
     @Expose
     private String cost;
 
-    @SerializedName("user")
-    @Expose
-    private List<UserDetails> userDetailse = null;
     /**
      * The costVisibility
      */
@@ -150,6 +141,14 @@ public class RidesOfferedDetails extends BaseObservable {
      * The cost in ₹
      */
     private String rupeeFormat;
+
+    @SerializedName("user")
+    @Expose
+    private List<User> user = null;
+
+    @SerializedName("ride_preference")
+    @Expose
+    private List<RidePreference> ridePreference = null;
 
     /**
      * Gets {@see #id}
@@ -292,8 +291,8 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     @Bindable
     public String getSeats() {
-        seats=seats+" Seats Available";
-        return seats;
+        String seat=seats+" Seats Available";
+        return seat;
     }
 
     /**
@@ -401,7 +400,12 @@ public class RidesOfferedDetails extends BaseObservable {
                     Integer.parseInt(dateSpliter[2]),
                     Integer.parseInt(timeSpliter[0]),
                     Integer.parseInt(timeSpliter[1]));
-            return ""+fmt.format("%td %tB %tr", cal, cal ,cal);
+            String dateWithsec=""+fmt.format("%td %tB %tr", cal, cal ,cal);
+            StringBuilder dateForm = new StringBuilder();
+            dateForm.append(dateWithsec.substring(0, dateWithsec.length()-6));
+            dateForm.append(dateWithsec.substring(dateWithsec.length()-3,dateWithsec.length()));
+            return dateForm.toString();
+
         }
 
     }
@@ -433,7 +437,11 @@ public class RidesOfferedDetails extends BaseObservable {
                     Integer.parseInt(timeSpliter[0]),
                     Integer.parseInt(timeSpliter[1]));
 
-            return String.valueOf(fmt.format("%td %tB %tr", cal, cal ,cal));
+            String dateWithsec=""+fmt.format("%td %tB %tr", cal, cal ,cal);
+            StringBuilder dateForm = new StringBuilder();
+            dateForm.append(dateWithsec.substring(0, dateWithsec.length()-6));
+            dateForm.append(dateWithsec.substring(dateWithsec.length()-3,dateWithsec.length()));
+            return dateForm.toString();
         } }
 
     /**
@@ -512,19 +520,21 @@ public class RidesOfferedDetails extends BaseObservable {
         this.rupeeFormat = rupeeFormat;
     }
 
-    public String getEmail() {
-        return email;
+
+    public List<User> getUser() {
+        return user;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUser(List<User> user) {
+        this.user = user;
     }
 
-    public List<UserDetails> getUserDetailses() {
-        return userDetailse;
+    public List<RidePreference> getRidePreference() {
+        return ridePreference;
     }
 
-    public void setUserDetailses(List<UserDetails> userDetailses) {
-        this.userDetailse = userDetailses;
+    public void setRidePreference(List<RidePreference> ridePreference) {
+        this.ridePreference = ridePreference;
     }
+
 }

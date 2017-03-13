@@ -4,7 +4,7 @@
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
-package com.contus.carpooling.offeredrideinfo.view;
+package com.contus.carpooling.offeredrideinfo.view.view;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import android.view.MenuItem;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.databinding.ActivityRideInfoBinding;
+import com.contus.carpooling.emptyviewmodel.EmptyView;
+import com.contus.carpooling.offeredrideinfo.view.viewmodel.OfferedRidesInformationController;
 
 /**
  * Activity used to show the rides information.
@@ -21,15 +23,19 @@ import com.contus.carpooling.databinding.ActivityRideInfoBinding;
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
+
 public class OfferedRidesInformationActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityRideInfoBinding rideInfoBinding = DataBindingUtil.setContentView(this, R.layout.activity_ride_info);
+        rideInfoBinding.setItemClick(new OfferedRidesInformationController());
         setSupportActionBar(rideInfoBinding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
     }
 
     @Override

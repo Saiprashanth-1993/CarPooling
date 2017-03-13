@@ -87,6 +87,7 @@ public class MyRidesFragment extends Fragment {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 List<MyRides> myRides = result.getData();
+
                 MyRidesAdapter myRidesAdapter = new MyRidesAdapter(activity, myRides);
                 ridesOfferedBinding.myRides.setAdapter(myRidesAdapter);
             } else {

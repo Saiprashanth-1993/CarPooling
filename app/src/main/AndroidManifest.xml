@@ -57,7 +57,7 @@
             android:name=".employeedetails.view.EmployeeDetailActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".notification.view.NotificationActivity" />
-        <activity android:name=".offeredrideinfo.view.OfferedRidesInformationActivity" />
+        <activity android:name=".offeredrideinfo.view.view.OfferedRidesInformationActivity" />
         <activity android:name=".settings.view.SettingsFragment" />
         <activity android:name=".changepassword.view.ChangePasswordActivity" />
 
