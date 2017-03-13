@@ -61,5 +61,6 @@
     <string name="to_location">To location</string>
     <string name="next">Next</string>
     <string name="sign_in">Sign in</string>
+    <string name="no_rides_available">No Rides Available</string>
 </resources>
 

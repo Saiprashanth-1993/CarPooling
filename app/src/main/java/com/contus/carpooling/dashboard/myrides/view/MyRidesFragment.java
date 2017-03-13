@@ -20,6 +20,7 @@ import com.contus.carpooling.R;
 import com.contus.carpooling.dashboard.myrides.model.MyRides;
 import com.contus.carpooling.dashboard.myrides.model.MyRidesResponse;
 import com.contus.carpooling.databinding.FragmentMyRidesBinding;
+import com.contus.carpooling.emptyviewmodel.EmptyView;
 import com.contus.carpooling.server.BusProvider;
 import com.contus.carpooling.server.RestCallback;
 import com.contus.carpooling.server.RestClient;
@@ -47,11 +48,17 @@ public class MyRidesFragment extends Fragment {
      */
     FragmentMyRidesBinding ridesOfferedBinding;
 
+    /**
+     * set the emptyView if there is not item from the data
+     */
+    EmptyView emptyView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ridesOfferedBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_rides, container, false);
         activity = getActivity();
+        emptyView = new EmptyView();
         myRideListRequest(activity);
         return ridesOfferedBinding.getRoot();
     }
@@ -88,6 +95,11 @@ public class MyRidesFragment extends Fragment {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 List<MyRides> myRides = result.getData();
                 MyRidesAdapter myRidesAdapter = new MyRidesAdapter(activity, myRides);
+                if (myRides.isEmpty()) {
+                    emptyView.setIsemptyview(true);
+                } else {
+                    emptyView.setIsemptyview(false);
+                }
                 ridesOfferedBinding.myRides.setAdapter(myRidesAdapter);
             } else {
                 CustomUtils.showToast(activity, "Invalid login");

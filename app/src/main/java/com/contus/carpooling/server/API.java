@@ -40,26 +40,26 @@ public interface API {
      * @param parameters Parameter required for user login
      * @return {@link UserLoginResponse}
      */
-    @POST("login/")
+    @POST("login")
     Call<UserLoginResponse> doLogin(@Body Map<String, String> parameters);
 
     /**
      * Authenticate the user with their register Credentials
      */
-    @POST("registration/")
+    @POST("registration")
     Call<UserRegistrationResponse> doRegister(@Body Map<String,String> paramerters);
 
     /**
      * Authenticate the Company Registration with their register credentials
      */
-    @POST("companyregistration/")
+    @POST("companyregistration")
     Call<CompanyRegistrationResponse> doCompanyRegistration(@Body Map<String,String> paramerters);
 
 
     /**
      * Authenticate the Create Ride  with their register credentials
      */
-    @POST("rides/")
+    @POST("rides")
     Call<CreateRideResponse> doCreateRide(@Body Map<String,String> paramerters);
 
 
@@ -69,7 +69,7 @@ public interface API {
      * @return Updated profile response
      */
     @Multipart
-    @POST("employeedetails/")
+    @POST("employeedetails")
     Call<EmployeeDetailsResponse> doEmployeeRegistration(@Part MultipartBody.Part frontImage,@Part MultipartBody.Part backImage);
 
 
@@ -79,7 +79,7 @@ public interface API {
      * @param customerId The user id
      * @return {@link UserLoginResponse}
      */
-    @GET("profile/{user_id}")
+    @GET("profile{user_id}")
     Call<UserLoginResponse> getProfile(@Path("user_id") String customerId);
 
     /**
@@ -87,7 +87,7 @@ public interface API {
      *
      * @return {@link UserLoginResponse}
      */
-    @POST("ridelist/")
+    @POST("ridelist")
     Call<UserLoginResponse> getRideList();
 
     /**
@@ -95,7 +95,7 @@ public interface API {
      *
      * @return {@link UserLoginResponse}
      */
-    @GET("companysectorlist/")
+    @GET("companysectorlist")
     Call<CompanyListResponse> getCompanyList();
 
 
@@ -104,7 +104,7 @@ public interface API {
      *
      * @return {@link UserLoginResponse}
      */
-    @GET("ridelist/")
+    @GET("ridelist")
     Call<MyRidesResponse> getMyRideList();
 
     /**
@@ -112,7 +112,7 @@ public interface API {
      *
      * @return {@link UserLoginResponse}
      */
-    @POST("displayrides/")
+    @POST("displayrides")
     Call<RideOfferedResponse> getRidesOfferedList(@Body Map<String,String> paramerters);
 
 

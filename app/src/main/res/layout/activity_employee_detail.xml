@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/iv_logo_icon"
                 android:paddingLeft="10dp"
-                android:text="Company Name"
+                android:text="ID CARD NUMBER"
                 android:textAllCaps="true"
                 android:textColor="@color/colorHighLightBlue"
                 android:textSize="14sp" />
@@ -136,7 +136,7 @@
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/upload_image_back"
                     android:paddingLeft="10dp"
-                    android:text="Upload Your Identity Card Front Picture"
+                    android:text="Upload Your Identity Card Back Picture"
                     android:textColor="@color/colorHighLightBlue"
                     android:textSize="14sp" />
             </RelativeLayout>
