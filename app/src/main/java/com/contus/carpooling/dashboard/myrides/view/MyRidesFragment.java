@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.dashboard.myrides.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -38,7 +37,7 @@ import java.util.List;
 public class MyRidesFragment extends Fragment {
 
     /**
-     * context of an activity
+     * Context of an activity
      */
     Activity activity;
 

@@ -1,6 +1,5 @@
 /**
  * @category Car Pooling
- * @package com.contus.carpooling.server
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -24,13 +23,12 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
-import retrofit2.http.Path;
 
 /**
  * Handle the request api with annotations, methods and parameter.
  *
  * @author Contus Team <developers@contus.in>
- * @version 2.3
+ * @version 1.0
  */
 public interface API {
 
@@ -84,24 +82,6 @@ public interface API {
     @Multipart
     @POST("employeedetails/")
     Call<EmployeeDetailsResponse> doEmployeeRegistration(@Part MultipartBody.Part frontImage, @Part MultipartBody.Part backImage);
-
-
-    /**
-     * Authenticate the user with their login credentials
-     *
-     * @param customerId The user id
-     * @return {@link UserLoginResponse}
-     */
-    @GET("profile/{user_id}")
-    Call<UserLoginResponse> getProfile(@Path("user_id") String customerId);
-
-    /**
-     * Authenticate the user with their login credentials
-     *
-     * @return {@link UserLoginResponse}
-     */
-    @POST("ridelist/")
-    Call<UserLoginResponse> getRideList();
 
     /**
      * Get the company list

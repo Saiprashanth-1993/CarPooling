@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.companyregistration.viewmodel
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -195,6 +194,9 @@ public class CompanyRegisterController {
      */
     private void categoryList(View view, final CompanyRegistrationInfo companyCategory) {
         if (list != null) {
+            /**
+             * Get the country list from the model
+             */
             final String[] countryList = new String[list.getSector().size()];
             final int[] id = new int[list.getSector().size()];
             for (int i = 0; i < list.getSector().size(); i++) {
@@ -202,12 +204,16 @@ public class CompanyRegisterController {
                 id[i] = list.getSector().get(i).getId();
             }
             Activity activity = (CompanyRegistrationActivity) view.getContext();
-            // InputMethodManager used to disable the soft keyboard when the category is clicked.
+
+            /**
+             *  InputMethodManager used to disable the soft keyboard when the category is clicked
+             */
             View visibleView = activity.getCurrentFocus();
             if (visibleView != null) {
                 InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(visibleView.getWindowToken(), 0);
             }
+
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             View customTitleView = activity.getLayoutInflater().inflate(R.layout.category_custom_dialog_title, null);
             builder.setCustomTitle(customTitleView);
@@ -242,7 +248,7 @@ public class CompanyRegisterController {
     /**
      * companyRegistrationController which can invoke the method directly to activity for get the Sector list
      *
-     * @param list
+     * @param list Get the list items from CompanyList model
      */
     public void companyRegistrationController(CompanyList list) {
         this.list = list;

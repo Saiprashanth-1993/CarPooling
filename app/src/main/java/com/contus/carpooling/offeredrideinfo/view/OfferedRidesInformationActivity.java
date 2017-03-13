@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.offeredrideinfo.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -34,7 +33,9 @@ public class OfferedRidesInformationActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // handle toolbar arrow click action
+        /**
+         *  handle toolbar arrow click action
+         */
         if (item.getItemId() == android.R.id.home) {
             finish();
         }

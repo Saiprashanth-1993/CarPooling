@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.dashboard.ridesoffered.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -102,7 +101,7 @@ public class RidesOfferedFragment extends Fragment {
     }
 
     /**
-     * Handle the api response details
+     * Handle the api response details for rides offered
      *
      * @param result Api response
      */

@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.login.viewmodel
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -43,6 +42,9 @@ import java.util.HashMap;
  * @version 1.0
  */
 public class LoginController implements ApiService.OnTaskCompleted {
+    /**
+     * Instance of an activity
+     */
     Context context;
 
     /**
@@ -69,13 +71,13 @@ public class LoginController implements ApiService.OnTaskCompleted {
     private void loginRequest(Context mContext, UserLoginInfo userLoginInfo) {
         BusProvider.getInstance().register(this);
         /**
-         * Store the empty value to shared prefer for devicetoken and access token
+         * Store the empty value to shared preference for device token and access token
          */
-        SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,"");
-        SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE,"");
+        SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE, "");
+        SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE, "");
 
         HashMap<String, String> loginParams = new HashMap<>();
-        String loginDeviceToken=SharedDataUtils.getStringPreference(Constants.DEVICE_TOKEN,null);
+        String loginDeviceToken = SharedDataUtils.getStringPreference(Constants.DEVICE_TOKEN, null);
         loginParams.put(Constants.USER_EMAIL_ID, userLoginInfo.getEmail());
         loginParams.put(Constants.Login.USER_PD, userLoginInfo.getPassword());
         loginParams.put(Constants.DEVICE_TOKEN, loginDeviceToken);
@@ -99,9 +101,9 @@ public class LoginController implements ApiService.OnTaskCompleted {
     /**
      * Method used to validate the username and password.
      *
-     * @param context  Used to show the toast message.
+     * @param context   Used to show the toast message.
      * @param userEmail Validate the userEmail.
-     * @param password Validate the password.
+     * @param password  Validate the password.
      * @return true when the given field is not empty.
      */
     public boolean isValid(Context context, String userEmail, String password) {
@@ -109,10 +111,10 @@ public class LoginController implements ApiService.OnTaskCompleted {
         if (TextUtils.isEmpty(userEmail) || TextUtils.isEmpty(password)) {
             validationStatus = false;
             Toast.makeText(context, "Please make sure username and password field should not be empty", Toast.LENGTH_SHORT).show();
-        }  else if (!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
             validationStatus = false;
             Toast.makeText(context, R.string.validation_failure_email, Toast.LENGTH_SHORT).show();
-        }else if (password.length() < 6) {
+        } else if (password.length() < 6) {
             validationStatus = false;
             Toast.makeText(context, R.string.validation_failure_mobile_length, Toast.LENGTH_SHORT).show();
         }
@@ -151,24 +153,24 @@ public class LoginController implements ApiService.OnTaskCompleted {
                 /**
                  * Store the device and access token to shared preference
                  */
-                SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,userResult.getDeviceToken());
-                SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE,result.getUserToken());
+                SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE, userResult.getDeviceToken());
+                SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE, result.getUserToken());
 
                 /**
                  * store the from location and to location to shared preference
                  */
-                SharedDataUtils.storeStringPreferences(Constants.Login.FROM_LOCATION,userResult.getFromLocation());
-                SharedDataUtils.storeStringPreferences(Constants.Login.TO_LOCATION,userResult.getToLocation());
+                SharedDataUtils.storeStringPreferences(Constants.Login.FROM_LOCATION, userResult.getFromLocation());
+                SharedDataUtils.storeStringPreferences(Constants.Login.TO_LOCATION, userResult.getToLocation());
 
                 /**
                  * It will navigate to dashboard Activity
                  */
                 CustomUtils.showToast(context, result.message);
-                context.startActivity(new Intent(context,   DashboardActivity.class));
+                context.startActivity(new Intent(context, DashboardActivity.class));
                 ((Activity) context).finish();
             } else {
                 CustomUtils.showToast(context, result.getMessage());
-                Log.e("Error Message",result.getMessage());
+                Log.e("Error Message", result.getMessage());
             }
         }
     }
@@ -182,7 +184,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
                 JSONObject jsonObject = new JSONObject(result);
                 if (!jsonObject.getBoolean(Constants.ApiRequest.ERROR)) {
                     JSONObject resultObj = jsonObject.getJSONObject(Constants.ApiRequest.RESPONSE);
-                    CustomUtils.showToast(context,resultObj.getString("message"));
+                    CustomUtils.showToast(context, resultObj.getString("message"));
                 }
             }
         } catch (Exception e) {

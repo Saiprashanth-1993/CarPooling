@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.employeedetails.model
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -20,35 +19,35 @@ import com.google.gson.annotations.SerializedName;
 public class EmployeeDetails {
 
     /**
-     * The id.
+     * The id of employee
      */
     @SerializedName(Constants.EmployeeResponse.EMPLOYEE_ID)
     @Expose
     private Integer id;
 
     /**
-     * The userId.
+     * The userId
      */
     @SerializedName(Constants.EmployeeResponse.USER_ID)
     @Expose
     private Integer userId;
 
     /**
-     * The aadharCard.
+     * The adahar Card of the user
      */
     @SerializedName(Constants.EmployeeResponse.ADAHAR_CARD)
     @Expose
     private String aadharCard;
 
     /**
-     * The panCard.
+     * The panCard of the user
      */
     @SerializedName(Constants.EmployeeResponse.PAN_CARD)
     @Expose
     private String panCard;
 
     /**
-     * The rememberToken.
+     * The rememberToken
      */
     @SerializedName(Constants.EmployeeResponse.REMEMBER_TOKEN)
     @Expose

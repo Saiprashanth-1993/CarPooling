@@ -1,6 +1,5 @@
 /**
  * @category contus
- * @package com.contus.carpooling.server
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -24,7 +23,7 @@ import retrofit2.Response;
  *
  * @param <T> Successful response body type.
  * @author Contus Team<developers@contus.in>
- * @version 2.3
+ * @version 1.0
  */
 public class RestCallback<T> implements Callback<T> {
 
@@ -34,19 +33,19 @@ public class RestCallback<T> implements Callback<T> {
         if (response.code() == 200) {
             BusProvider.getInstance().post(response.body());
         } else {
+            /**
+             * Get the error response message by using this code
+             */
             if (response.code() == 422) {
                 Gson gson = new GsonBuilder().create();
                 ErrorResponse error = new ErrorResponse();
-                try
-                {
+                try {
                     error = gson.fromJson(response.errorBody().string(), ErrorResponse.class);
                     BusProvider.getInstance().post(error.getMessage());
-                }
-                catch (IOException e) {
+                } catch (IOException e) {
                     Log.e("Exception", String.valueOf(e));
                 }
-            }
-            else {
+            } else {
                 BusProvider.getInstance().post("Something went wrong");
             }
         }

@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.employeedetails.viewmodel
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -41,7 +40,6 @@ import okhttp3.RequestBody;
  */
 public class EmployeeDetailController {
 
-
     /**
      * Context of an activity
      */
@@ -71,7 +69,7 @@ public class EmployeeDetailController {
     }
 
     /**
-     * OnClick listner of submit button to save employee details.
+     * OnClick listener of submit button to save employee details.
      *
      * @param employeeInfo model class to store and fetch the value.
      * @return OnClickListener of button.
@@ -99,7 +97,7 @@ public class EmployeeDetailController {
      * Handle the Employee Registration API of user
      *
      * @param mContext     Context of an activity
-     * @param employeeInfo Get the model of UserRegistration
+     * @param employeeInfo Get the model of Employee Details
      */
     private void registerRequest(Context mContext, EmployeeInfo employeeInfo) {
         Context ctx = mContext;
@@ -126,7 +124,7 @@ public class EmployeeDetailController {
     }
 
     /**
-     * Handle the api response details
+     * Handle the api response details for employee registration
      *
      * @param result Api response
      */

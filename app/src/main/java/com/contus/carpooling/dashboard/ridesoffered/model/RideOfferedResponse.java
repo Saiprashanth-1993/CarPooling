@@ -1,6 +1,5 @@
 /**
- * @category Car Pooling
- * @package com.contus.carpooling.login.model
+ * @category CarPooling
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -17,7 +16,7 @@ import java.util.List;
  * This class will maintain and retrieve the status of corresponding response, success code and message.
  *
  * @author Contus Team <developers@contus.in>
- * @version 2.3
+ * @version 1.0
  */
 public class RideOfferedResponse extends ErrorResponse {
 

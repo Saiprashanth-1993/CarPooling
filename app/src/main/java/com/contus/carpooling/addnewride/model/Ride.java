@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.addnewride.model
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -12,8 +11,6 @@ import android.databinding.Bindable;
 import com.contus.carpooling.BR;
 import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.SerializedName;
-
-
 
 /**
  * Model class is used to get and store the ride details.
@@ -70,13 +67,12 @@ public class Ride extends BaseObservable {
      */
     private Boolean isEveryWeek = false;
 
-
-
     /**
      * set the weak 1 or 0
      */
     @SerializedName(Constants.CreateRide.IS_EVERY_WEEEKS)
     private String everyWeeks="0";
+
     /**
      * Cost of the ride.
      */
@@ -84,7 +80,9 @@ public class Ride extends BaseObservable {
     private String cost="0";
 
 
-
+    /**
+     * Type of cost
+     */
     @SerializedName(Constants.CreateRide.TYPE)
     private String type;
 
@@ -162,12 +160,17 @@ public class Ride extends BaseObservable {
     }
 
     /**
+     * Gets {@see #everyWeeks}
      *
+     * @return {@link #everyWeeks}
      */
     public String getEveryWeeks() {
         return everyWeeks;
     }
 
+    /**
+     * Sets {@link #everyWeeks}
+     */
     public void setEveryWeeks(String everyWeeks) {
         this.everyWeeks = everyWeeks;
     }

@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.employeedetails.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -64,7 +63,9 @@ public class EmployeeDetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // handle toolbar arrow click action
+        /**
+         * handle toolbar arrow click action
+         */
         if (item.getItemId() == android.R.id.home) {
             finish();
         }
@@ -77,43 +78,50 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         if (requestCode == Constants.CAMERA_SELECTION && !TextUtils.isEmpty(String.valueOf(data))) {
             Bitmap capturedImage = (Bitmap) data.getExtras().get("data");
             Uri tempUri = getImageUri(getApplicationContext(), capturedImage);
-
-            // CALL THIS METHOD TO GET THE ACTUAL PATH
+            /**
+             * CALL this method to get the actual path from the camera set into image view
+             */
             File finalFile = new File(getRealPathFromURI(tempUri));
             int nh = (int) (capturedImage.getHeight() * (512.0 / capturedImage.getWidth()));
-            if (employeeInfo.getImageSelectedType().equals(Constants.CLICK_FRONT_IMAGE_VIEW)) {
-                Bitmap scaled = Bitmap.createScaledBitmap(capturedImage, 512, nh, true);
-                employeeInfo.setFrontSideSelected(true);
-                employeeInfo.setFrontImage(finalFile);
-                employeeDetailBinding.uploadImageFront.setImageBitmap(scaled);
-            } else {
-                Bitmap scaled = Bitmap.createScaledBitmap(capturedImage, 512, nh, true);
-                employeeInfo.setBackSideSelected(true);
-                employeeInfo.setBackImage(finalFile);
-                employeeDetailBinding.uploadImageBack.setImageBitmap(scaled);
-            }
+            imageUploadCallBack(finalFile, nh, capturedImage);
+
         } else if (requestCode == Constants.GALLERY_SELECTION && data.getExtras().get("data") != null) {
             try {
+                /**
+                 *  CALL this method to get the actual path from the gallery set into image view
+                 */
                 Bitmap selectImage = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
                 int nh = (int) (selectImage.getHeight() * (512.0 / selectImage.getWidth()));
                 Uri selectedImageURI = data.getData();
                 File imageFile = new File(getRealPathFromURI(selectedImageURI));
-                if (employeeInfo.getImageSelectedType().equals(Constants.CLICK_FRONT_IMAGE_VIEW)) {
-                    Bitmap scaled = Bitmap.createScaledBitmap(selectImage, 512, nh, true);
-                    employeeInfo.setFrontSideSelected(true);
-                    Log.d("file_path", imageFile + "");
-                    employeeInfo.setFrontImage(imageFile);
-                    employeeDetailBinding.uploadImageFront.setImageBitmap(scaled);
-                } else {
-                    Bitmap scaled = Bitmap.createScaledBitmap(selectImage, 512, nh, true);
-                    employeeInfo.setBackSideSelected(true);
-                    employeeInfo.setBackImage(imageFile);
-                    employeeDetailBinding.uploadImageBack.setImageBitmap(scaled);
-                }
+                imageUploadCallBack(imageFile, nh, selectImage);
             } catch (IOException e) {
                 Logger.logErrorThrowable(Constants.EXCEPTION_MESSAGE, e);
             }
         }
+    }
+
+    /**
+     * Call back function for upload and display the image in image view by using bitmap and file
+     *
+     * @param imageFile   Get the path of image file
+     * @param nh          Get the height and width
+     * @param selectImage Get the image from bitmap
+     */
+    public void imageUploadCallBack(File imageFile, int nh, Bitmap selectImage) {
+        if (employeeInfo.getImageSelectedType().equals(Constants.CLICK_FRONT_IMAGE_VIEW)) {
+            Bitmap scaled = Bitmap.createScaledBitmap(selectImage, 512, nh, true);
+            employeeInfo.setFrontSideSelected(true);
+            Log.d("file_path", imageFile + "");
+            employeeInfo.setFrontImage(imageFile);
+            employeeDetailBinding.uploadImageFront.setImageBitmap(scaled);
+        } else {
+            Bitmap scaled = Bitmap.createScaledBitmap(selectImage, 512, nh, true);
+            employeeInfo.setBackSideSelected(true);
+            employeeInfo.setBackImage(imageFile);
+            employeeDetailBinding.uploadImageBack.setImageBitmap(scaled);
+        }
+
     }
 
     @Override
@@ -141,7 +149,6 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         if (grantResults.length > 0
                 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             gallerySelection();
-
         } else {
             Log.e("Already permitted1", "gallery");
             gallerySelection();

@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.userregistration.model
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -73,11 +72,10 @@ public class UserRegistrationInfo extends BaseObservable {
 
 
     /**
-     * Gender details of the user.
+     *Device token of the device.
      */
     @SerializedName(Constants.DEVICE_TOKEN)
     private String deviceToken;
-
 
 
     /**
@@ -231,7 +229,9 @@ public class UserRegistrationInfo extends BaseObservable {
         this.gender = gender;
     }
 
-
+    /**
+     * Sets {@link #deviceToken}.
+     */
     public void setDeviceToken(String deviceToken) {
         this.deviceToken = deviceToken;
     }

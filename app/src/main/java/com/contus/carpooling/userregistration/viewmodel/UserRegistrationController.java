@@ -63,35 +63,38 @@ public class UserRegistrationController {
                 if (isValid(getEditTextValue.getUserName(), getEditTextValue.getMobileNumber(),
                         getEditTextValue.getEmailID(), getEditTextValue.getFromLocation(),
                         getEditTextValue.getToLocation(), getEditTextValue.getPassword(), getEditTextValue.getGender()))
-                   registerRequest(context,getEditTextValue);
+                    registerRequest(context, getEditTextValue);
             }
         };
     }
 
     /**
      * Handle the Registration API of user
-     * @param mContext Context of an activity
+     *
+     * @param mContext             Context of an activity
      * @param userRegistrationInfo Get the model of UserRegistration
      */
-    private void registerRequest(Context mContext,UserRegistrationInfo userRegistrationInfo)
-    {
-        Context ctx=mContext;
-        Log.e("ctx",ctx+"");
-        SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,"");
-        SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE,"");
+    private void registerRequest(Context mContext, UserRegistrationInfo userRegistrationInfo) {
+        Context ctx = mContext;
+        Log.e("ctx", ctx + "");
+        /**
+         * Store the device token and access token empty value to shared preference
+         */
+        SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE, "");
+        SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE, "");
+
         /**
          * Get the device token from the share preference
          */
-
-        String deviceToken= SharedDataUtils.getStringPreference(Constants.DEVICE_TOKEN,"");
+        String deviceToken = SharedDataUtils.getStringPreference(Constants.DEVICE_TOKEN, null);
         BusProvider.getInstance().register(this);
         HashMap<String, String> registerParams = new HashMap<>();
         registerParams.put(Constants.Register.USER_NAME, userRegistrationInfo.getUserName());
-        registerParams.put(Constants.Register.USER_EMAIL,userRegistrationInfo.getEmailID());
-        registerParams.put(Constants.Register.USER_MOBILE_NUMBER,userRegistrationInfo.getMobileNumber());
-        registerParams.put(Constants.Register.USER_GENDER,userRegistrationInfo.getGender());
-        registerParams.put(Constants.Register.USER_FROM_LOCATION,userRegistrationInfo.getFromLocation());
-        registerParams.put(Constants.Register.USER_TO_LOCATION,userRegistrationInfo.getToLocation());
+        registerParams.put(Constants.Register.USER_EMAIL, userRegistrationInfo.getEmailID());
+        registerParams.put(Constants.Register.USER_MOBILE_NUMBER, userRegistrationInfo.getMobileNumber());
+        registerParams.put(Constants.Register.USER_GENDER, userRegistrationInfo.getGender());
+        registerParams.put(Constants.Register.USER_FROM_LOCATION, userRegistrationInfo.getFromLocation());
+        registerParams.put(Constants.Register.USER_TO_LOCATION, userRegistrationInfo.getToLocation());
         registerParams.put(Constants.Register.USER_REG_PD, userRegistrationInfo.getPassword());
         registerParams.put(Constants.DEVICE_TOKEN, deviceToken);
         new RestClient(ctx).getInstance().get().doRegister(registerParams).enqueue(new RestCallback<UserRegistrationResponse>());
@@ -152,13 +155,10 @@ public class UserRegistrationController {
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password) || TextUtils.isEmpty(mobileNumber)) {
             validationStatus = false;
             Toast.makeText(context, R.string.validation_failure_message, Toast.LENGTH_SHORT).show();
-        }
-        else if(mobileNumber.length() < 10 || mobileNumber.length() > 10)
-        {
+        } else if (mobileNumber.length() < 10 || mobileNumber.length() > 10) {
             validationStatus = false;
             Toast.makeText(context, R.string.phone_number_failure_message, Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty(gender)) {
+        } else if (TextUtils.isEmpty(gender)) {
             validationStatus = false;
             Toast.makeText(context, "Please select Gender", Toast.LENGTH_SHORT).show();
         } else if (!isTextValid(fromLocation, toLocation, password)) {
@@ -218,7 +218,7 @@ public class UserRegistrationController {
     }
 
     /**
-     * Handle the api response details
+     * Handle the  registration api response details
      *
      * @param result Api response
      */
@@ -227,22 +227,26 @@ public class UserRegistrationController {
         BusProvider.getInstance().unregister(this);
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
-                CustomUtils.showToast(context,result.getMessage());
-                Log.i("device_token",result.getUserToken());
-                UserRegistrationInfo regResponse=result.registerAPIResponse;
-                SharedDataUtils.storeStringPreferences(Constants.USER_REG_EMAIL,regResponse.getEmailID());
-                SharedDataUtils.storeStringPreferences(Constants.REG_USER_ID,regResponse.getId());
+                CustomUtils.showToast(context, result.getMessage());
+                Log.i("device_token", result.getUserToken());
+                UserRegistrationInfo regResponse = result.registerAPIResponse;
+
+                /**
+                 * Store the email and user id in shared preference
+                 */
+                SharedDataUtils.storeStringPreferences(Constants.USER_REG_EMAIL, regResponse.getEmailID());
+                SharedDataUtils.storeStringPreferences(Constants.REG_USER_ID, regResponse.getId());
 
                 /**
                  * Store the Access token and device token to shared preference
                  */
-                SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,regResponse.getDeviceToken());
-                SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE,result.getUserToken());
+                SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE, regResponse.getDeviceToken());
+                SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE, result.getUserToken());
 
                 /**
                  * It will navigate to the company registration activity
                  */
-                context.startActivity(new Intent(context,CompanyRegistrationActivity.class));
+                context.startActivity(new Intent(context, CompanyRegistrationActivity.class));
                 ((Activity) context).finish();
             } else {
                 CustomUtils.showToast(context, result.getMessage());

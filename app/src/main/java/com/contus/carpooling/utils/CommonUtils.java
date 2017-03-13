@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.login.viewmodel
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -27,13 +26,12 @@ public class CommonUtils {
     /**
      * Method that is used to check whether internet is connected during login
      *
-     * @param context       Instance of the activity
+     * @param context Instance of the activity
      * @return Boolean      Return true/false based on option method result
      */
     public static boolean isNetAndLogin(Context context) {
 
-        if(Constants.CHECK_INTERNET==2000)
-        {
+        if (Constants.CHECK_INTERNET == 2000) {
             return checkInternet(context);
         }
         return true;
@@ -58,7 +56,7 @@ public class CommonUtils {
     /**
      * Used to Check the Network Connectivity.
      *
-     * @param context   Instance of an activity
+     * @param context Instance of an activity
      * @return Boolean  return true if network available
      */
     public static boolean isNetConnected(Context context) {
@@ -81,8 +79,8 @@ public class CommonUtils {
     /**
      * Check the response from api
      *
-     * @param error     Error response
-     * @param success   Success response value
+     * @param error   Error response
+     * @param success Success response value
      * @return Boolean  Return true if response is success
      */
     public static boolean checkResponse(boolean error, Integer success) {
@@ -92,21 +90,17 @@ public class CommonUtils {
     /**
      * Method that is used to check whether the response from server is success
      *
-     * @param success    Success response value
+     * @param success Success response value
      * @return Boolean  Return true if response is success
      */
     public static boolean isSuccess(Integer success) {
         return success == Constants.SUCCESS_VALUE;
     }
 
-
-
-
     /**
      * Return empty string if null.
      *
      * @param stringValue the string value
-     *
      * @return String Empty string if null
      */
     public static String returnEmptyStringIfNull(String stringValue) {

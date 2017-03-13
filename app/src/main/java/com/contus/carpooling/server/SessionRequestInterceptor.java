@@ -1,6 +1,5 @@
 /**
  * @category Car Pooling
- * @package com.contus.carpooling.server
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -27,8 +26,8 @@ public class SessionRequestInterceptor implements okhttp3.Interceptor {
         /**
          * Get the device token and access token value by using share preference
          */
-        String deviceToken = SharedDataUtils.getStringPreference(Constants.ACCESS_TOKEN_HEADER_VALUE, "");
-        String accessToken = SharedDataUtils.getStringPreference(Constants.DEVICE_TOKEN_HEADER_VALUE, "");
+        String deviceToken = SharedDataUtils.getStringPreference(Constants.ACCESS_TOKEN_HEADER_VALUE, null);
+        String accessToken = SharedDataUtils.getStringPreference(Constants.DEVICE_TOKEN_HEADER_VALUE, null);
         builder.addHeader(Constants.REQUEST_TYPE_HEADER, "mobile");
         builder.addHeader(Constants.ACCESS_TOKEN_HEADER, deviceToken);
         builder.addHeader(Constants.DEVICE_TOKEN_HEADER, accessToken);

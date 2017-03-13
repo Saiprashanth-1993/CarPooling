@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.activity
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -54,10 +53,14 @@ public class UserRegistrationActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // Check that the result was from the autocomplete widget.
+        /**
+         * Check that the result was from the autocomplete widget
+         */
         if (requestCode == REQUEST_CODE_USER_FROM_LOCATION) {
             if (resultCode == RESULT_OK) {
-                // Get the user's selected place from the Intent.
+                /**
+                 *Get the user's selected place from the Intent
+                 */
                 Place place = PlaceAutocomplete.getPlace(this, data);
                 Log.i("place_details", "Place Selected: " + place.getName());
                 registrationInfo.setFromLocation(place.getName().toString());
@@ -67,7 +70,9 @@ public class UserRegistrationActivity extends AppCompatActivity {
             }
         } else if (requestCode == REQUEST_CODE_USER_TO_LOCATION) {
             if (resultCode == RESULT_OK) {
-                // Get the user's selected place from the Intent.
+                /**
+                 * Get the user's selected place from the Intent
+                 */
                 Place place = PlaceAutocomplete.getPlace(this, data);
                 Log.i("place_details", "Place Selected: " + place.getName());
                 registrationInfo.setToLocation(place.getName().toString());

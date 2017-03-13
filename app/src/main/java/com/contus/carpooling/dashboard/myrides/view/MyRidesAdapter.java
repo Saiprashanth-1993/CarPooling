@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.dashboard.myrides.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -89,6 +88,9 @@ public class MyRidesAdapter extends RecyclerView.Adapter<MyRidesAdapter.MyRidesV
         private MyRidesViewHolder(AdapterMyRidesBinding itemView) {
             super(itemView.getRoot());
             this.myRidesBinding = itemView;
+            /**
+             * Set into data Dashboard controller
+             */
             itemView.setEditRideOnClick(new DashboardController());
         }
     }

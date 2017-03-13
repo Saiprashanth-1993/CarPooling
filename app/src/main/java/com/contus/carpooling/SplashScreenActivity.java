@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -21,7 +20,6 @@ import com.contus.carpooling.login.view.LoginActivity;
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
  */
-
 public class SplashScreenActivity extends AppCompatActivity {
     /**
      * Used to handle the runnable thread.

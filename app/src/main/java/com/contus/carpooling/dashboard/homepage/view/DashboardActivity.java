@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.dashboard.homepage.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -78,16 +77,19 @@ public class DashboardActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        /**
+         * Inflate the menu; this adds items to the action bar if it is present
+         */
         getMenuInflater().inflate(R.menu.menu_dashboard, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        /**
+         *Handle action bar item clicks here. The action bar will automatically handle clicks on the Home/Up button,
+         * so long as you specify a parent activity in AndroidManifest.xml
+         */
         int id = item.getItemId();
         if (id == R.id.action_notification) {
             startActivity(new Intent(this, NotificationActivity.class));
@@ -99,7 +101,9 @@ public class DashboardActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Handle navigation view item clicks here.
+        /**
+         *Handle navigation view item clicks here
+         */
         displaySelectedScreen(item.getItemId());
         return true;
     }
@@ -112,6 +116,7 @@ public class DashboardActivity extends AppCompatActivity
     private void displaySelectedScreen(int itemId) {
         Fragment fragment = null;
         String fragmentName = null;
+
         if (itemId == R.id.nav_rides) {
             activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_dashboard);
             activityDashboardBinding.addNewRide.show();
@@ -133,12 +138,14 @@ public class DashboardActivity extends AppCompatActivity
             startActivity(logoutIntent);
         }
 
+
         if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.addOnBackStackChangedListener(this);
             fragmentManager.beginTransaction().add(R.id.container, fragment)
                     .addToBackStack(fragmentName).commit();
         }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }
@@ -150,7 +157,9 @@ public class DashboardActivity extends AppCompatActivity
         } else if (getFragmentName().equals(Constants.NAME_NAVIGATION_DASHBOARD)) {
             finish();
         } else {
-            // Let super handle the back press
+            /**
+             *Let super handle the back press
+             */
             super.onBackPressed();
         }
     }

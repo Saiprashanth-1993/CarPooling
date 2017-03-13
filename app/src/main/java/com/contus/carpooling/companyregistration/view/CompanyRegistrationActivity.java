@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.companyregistration.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -77,7 +76,9 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // Check that the result was from the autocomplete widget.
+        /**
+         *  Check that the result was from the autocomplete widget.
+         */
         if (requestCode == REQUEST_CODE_COMPANY_LOCATION) {
             if (resultCode == RESULT_OK) {
                 // Get the user's selected place from the Intent.
@@ -92,7 +93,7 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
     }
 
     /**
-     * ApiRequest for user login details to the server
+     * ApiRequest for company registration details to the server
      */
     private void companyListRequest(Context mContext) {
         BusProvider.getInstance().register(this);
@@ -112,7 +113,7 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
     }
 
     /**
-     * Handle the api response details
+     * Handle the api response details for company registration
      *
      * @param result Api response
      */
@@ -143,13 +144,13 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // handle toolbar arrow click action
+        /**
+         *handle toolbar arrow click action
+         */
         if (item.getItemId() == android.R.id.home) {
             finish();
         }
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }

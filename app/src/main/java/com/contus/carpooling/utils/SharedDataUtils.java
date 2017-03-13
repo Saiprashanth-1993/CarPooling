@@ -1,3 +1,8 @@
+/**
+ * @category CarPooling
+ * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @license http://www.apache.org/licenses/LICENSE-2.0
+ */
 package com.contus.carpooling.utils;
 
 import android.content.SharedPreferences;
@@ -9,7 +14,7 @@ import android.support.multidex.MultiDexApplication;
  * This class used to get, set and clear the preference values.
  *
  * @author Contus Team <developers@contus.in>
- * @version 3.5
+ * @version 1.0
  */
 public class SharedDataUtils extends MultiDexApplication {
 
@@ -18,14 +23,6 @@ public class SharedDataUtils extends MultiDexApplication {
      * SharedPreference instance
      */
     private static SharedPreferences preferences;
-
-
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        setPreferences(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
-    }
 
     /**
      * Initialising preference
@@ -106,7 +103,6 @@ public class SharedDataUtils extends MultiDexApplication {
         editor.apply();
     }
 
-
     /**
      * This is the method used to clear the whole preference
      */
@@ -116,5 +112,9 @@ public class SharedDataUtils extends MultiDexApplication {
         editor.apply();
     }
 
-
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        setPreferences(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
+    }
 }

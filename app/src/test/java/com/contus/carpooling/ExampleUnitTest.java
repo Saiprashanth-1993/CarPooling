@@ -1,3 +1,8 @@
+/**
+ * @category CarPooling
+ * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @license http://www.apache.org/licenses/LICENSE-2.0
+ */
 package com.contus.carpooling;
 
 import org.junit.Test;

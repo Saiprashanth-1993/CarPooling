@@ -1,6 +1,5 @@
 /**
  * @category Car Pooling
- * @package com.contus.carpooling.server
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -13,7 +12,7 @@ import com.squareup.otto.Bus;
  * This is the Helper class that is used to communicate between activity and fragments.
  *
  * @author Contus Team <developers@contus.in>
- * @version 2.3
+ * @version 1.0
  */
 public final class BusProvider {
 

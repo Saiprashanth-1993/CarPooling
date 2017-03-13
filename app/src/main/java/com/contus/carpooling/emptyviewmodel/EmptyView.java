@@ -1,6 +1,5 @@
 /**
  * @category Car Pooling
- * @package com.contus.carpooling.login.model
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -12,7 +11,7 @@ import android.databinding.Bindable;
 import com.contus.carpooling.BR;
 
 /**
- * EmptyView model for if ridesList and rides offered data is empty set the boolean value to isEmtpyView
+ * EmptyView model for if ridesList and rides offered data is empty set the boolean value to isEmptyView
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
@@ -20,7 +19,7 @@ import com.contus.carpooling.BR;
 public class EmptyView extends BaseObservable {
 
     /**
-     * isEmptyView list check if it true or false by using get Ride Offered list
+     *The isEmptyView list check if it true or false by using get Ride Offered list
      */
     boolean isemptyview = false;
 

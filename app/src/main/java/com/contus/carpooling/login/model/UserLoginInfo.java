@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.login.model
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -14,7 +13,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Model class is used to get and store the username and password details.
+ * Model class is used to get and store the login details from the response.
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -58,9 +57,9 @@ public class UserLoginInfo extends BaseObservable {
     private String email;
 
     /**
-     * Username
+     * Username of the user
      */
-    @SerializedName(Constants.Login.USERNAME)
+    @SerializedName(Constants.Login.USER_NAME)
     @Expose
     private String username;
 
@@ -121,7 +120,7 @@ public class UserLoginInfo extends BaseObservable {
     private String companyCategoryId;
 
     /**
-     * company location of the user
+     * Company location of the user
      */
     @SerializedName(Constants.Login.COMPANY_LOCATION)
     @Expose
@@ -149,11 +148,6 @@ public class UserLoginInfo extends BaseObservable {
     private String employeeId;
 
     /**
-     * The isActive
-     */
-
-
-    /**
      * Gets {@see #password}.
      *
      * @return {@link #password}
@@ -163,46 +157,58 @@ public class UserLoginInfo extends BaseObservable {
         return password;
     }
 
+    /**
+     * Sets {@link #password}
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
     /**
-     * Gets {@see #password}.
+     * Gets {@see #id}.
      *
-     * @return {@link #password}
+     * @return {@link #id}
      */
     public String getId() {
         return id;
     }
 
+    /**
+     * Sets {@link #id}
+     */
     public void setId(String id) {
         this.id = id;
     }
 
     /**
-     * Gets {@see #password}.
+     * Gets {@see #userRoleId}.
      *
-     * @return {@link #password}
+     * @return {@link #userRoleId}
      */
     public String getUserRoleId() {
         return userRoleId;
     }
 
+    /**
+     * Sets {@link #userRoleId}
+     */
     public void setUserRoleId(String userRoleId) {
         this.userRoleId = userRoleId;
     }
 
 
     /**
-     * Gets {@see #password}.
+     * Gets {@see #name}.
      *
-     * @return {@link #password}
+     * @return {@link #name}
      */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets {@link #name}
+     */
     public void setName(String name) {
         this.name = name;
     }
@@ -217,6 +223,9 @@ public class UserLoginInfo extends BaseObservable {
         return email;
     }
 
+    /**
+     * Sets {@link #email}
+     */
     public void setEmail(String email) {
         this.email = email;
     }
@@ -230,162 +239,201 @@ public class UserLoginInfo extends BaseObservable {
         return username;
     }
 
+    /**
+     * Sets {@link #username}
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
     /**
-     * Gets {@see #password}.
+     * Gets {@see #mobile}.
      *
-     * @return {@link #password}
+     * @return {@link #mobile}
      */
     public String getMobile() {
         return mobile;
     }
 
+    /**
+     * Sets {@link #mobile}
+     */
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
 
     /**
-     * Gets {@see #password}.
+     * Gets {@see #gender}.
      *
-     * @return {@link #password}
+     * @return {@link #gender}
      */
     public String getGender() {
         return gender;
     }
 
+    /**
+     * Sets {@link #gender}
+     */
     public void setGender(String gender) {
         this.gender = gender;
     }
 
     /**
-     * Gets {@see #password}.
+     * Gets {@see #fromLocation}.
      *
-     * @return {@link #password}
+     * @return {@link #fromLocation}
      */
     public String getFromLocation() {
         return fromLocation;
     }
 
+    /**
+     * Sets {@link #fromLocation}
+     */
     public void setFromLocation(String fromLocation) {
         this.fromLocation = fromLocation;
     }
 
     /**
-     * Gets {@see #password}.
+     * Gets {@see #toLocation}.
      *
-     * @return {@link #password}
+     * @return {@link #toLocation}
      */
     public String getToLocation() {
         return toLocation;
     }
 
+    /**
+     * Sets {@link #toLocation}
+     */
     public void setToLocation(String toLocation) {
         this.toLocation = toLocation;
     }
 
     /**
-     * Gets {@see #password}.
+     * Gets {@see #age}.
      *
-     * @return {@link #password}
+     * @return {@link #age}
      */
     public String getAge() {
         return age;
     }
 
+    /**
+     * Sets {@link #age}
+     */
     public void setAge(String age) {
         this.age = age;
     }
 
     /**
-     * Gets {@see #password}.
+     * Gets {@see #profileImage}.
      *
-     * @return {@link #password}
+     * @return {@link #profileImage}
      */
     public String getProfileImage() {
         return profileImage;
     }
 
+    /**
+     * Sets {@link #profileImage}
+     */
     public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
     }
 
     /**
-     * Gets {@see #password}.
+     * Gets {@see #companyId}.
      *
-     * @return {@link #password}
+     * @return {@link #companyId}
      */
     public String getCompanyId() {
         return companyId;
     }
 
+    /**
+     * Sets {@link #companyId}
+     */
     public void setCompanyId(String companyId) {
         this.companyId = companyId;
     }
 
     /**
-     * Gets {@see #password}.
+     * Gets {@see #companyCategoryId}.
      *
-     * @return {@link #password}
+     * @return {@link #companyCategoryId}
      */
     public String getCompanyCategoryId() {
         return companyCategoryId;
     }
 
+    /**
+     * Sets {@link #companyCategoryId}
+     */
     public void setCompanyCategoryId(String companyCategoryId) {
         this.companyCategoryId = companyCategoryId;
     }
 
     /**
-     * Gets {@see #password}.
+     * Gets {@see #companyLocation}.
      *
-     * @return {@link #password}
+     * @return {@link #companyLocation}
      */
     public String getCompanyLocation() {
         return companyLocation;
     }
 
+    /**
+     * Sets {@link #companyLocation}
+     */
     public void setCompanyLocation(String companyLocation) {
         this.companyLocation = companyLocation;
     }
 
     /**
-     * Gets {@see #password}.
+     * Gets {@see #deviceType}.
      *
-     * @return {@link #password}
+     * @return {@link #deviceType}
      */
     public String getDeviceType() {
         return deviceType;
     }
 
+    /**
+     * Sets {@link #deviceType}
+     */
     public void setDeviceType(String deviceType) {
         this.deviceType = deviceType;
     }
 
     /**
-     * Gets {@see #password}.
+     * Gets {@see #deviceToken}.
      *
-     * @return {@link #password}
+     * @return {@link #deviceToken}
      */
     public String getDeviceToken() {
         return deviceToken;
     }
 
+    /**
+     * Sets {@link #deviceToken}
+     */
     public void setDeviceToken(String deviceToken) {
         this.deviceToken = deviceToken;
     }
 
     /**
-     * Gets {@see #password}.
+     * Gets {@see #employeeId}.
      *
-     * @return {@link #password}
+     * @return {@link #employeeId}
      */
     public String getEmployeeId() {
         return employeeId;
     }
 
+    /**
+     * Sets {@link #employeeId}
+     */
     public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }

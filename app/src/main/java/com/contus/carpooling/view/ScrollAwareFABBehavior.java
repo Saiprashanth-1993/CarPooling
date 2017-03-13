@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.views
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -22,45 +21,28 @@ import android.view.animation.LinearInterpolator;
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
-
 public class ScrollAwareFABBehavior extends CoordinatorLayout.Behavior<FloatingActionButton> {
-    private static final String TAG = "ScrollingFABBehavior";
     Handler mHandler;
 
     public ScrollAwareFABBehavior(Context context, AttributeSet attrs) {
         super();
     }
 
-    @Override
-    public void onStopNestedScroll(CoordinatorLayout coordinatorLayout, final FloatingActionButton child, View target) {
-        super.onStopNestedScroll(coordinatorLayout, child, target);
-
-   /*     if (mHandler == null)
-            mHandler = new Handler();
-
-
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                child.animate().translationY(0).setInterpolator(new LinearInterpolator()).start();
-                Log.d("FabAnim", "startHandler()");
-            }
-        }, 1000);*/
-
-    }
 
     @Override
     public void onNestedScroll(CoordinatorLayout coordinatorLayout, FloatingActionButton child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
 
-        //child -> Floating Action Button
+        /**
+         * child -> Floating Action Button
+         */
         if (dyConsumed > 0) {
-            Log.d("Scrolling", "Up");
+            Log.d("Scrolling1", "Up");
             CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) child.getLayoutParams();
-            int fab_bottomMargin = layoutParams.bottomMargin;
-            child.animate().translationY(child.getHeight() + fab_bottomMargin).setInterpolator(new LinearInterpolator()).start();
+            int fabBottomMargin = layoutParams.bottomMargin;
+            child.animate().translationY(child.getHeight() + fabBottomMargin).setInterpolator(new LinearInterpolator()).start();
         } else if (dyConsumed < 0) {
-            Log.d("Scrolling", "down");
+            Log.d("Scrolling2", "down");
             child.animate().translationY(0).setInterpolator(new LinearInterpolator()).start();
         }
     }
@@ -69,7 +51,7 @@ public class ScrollAwareFABBehavior extends CoordinatorLayout.Behavior<FloatingA
     public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, FloatingActionButton child, View directTargetChild, View target, int nestedScrollAxes) {
         if (mHandler != null) {
             mHandler.removeMessages(0);
-            Log.d("Scrolling", "stopHandler()");
+            Log.d("Scrolling3", "stopHandler()");
         }
         return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL;
     }

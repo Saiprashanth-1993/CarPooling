@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.employeedetails.viewmodel
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -40,7 +39,7 @@ public class BottomSheetController {
     private BottomDialogFragment bottomDialogFragment;
 
     /**
-     * set the permission access
+     * Set the permission access
      */
     private String[] permissions = new String[]
             {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
@@ -77,7 +76,7 @@ public class BottomSheetController {
 
 
     /**
-     * Check the permission for higer version device for camera and gallery
+     * Check the permission for higher version device for camera and gallery
      *
      * @param employeeDetailActivity Get the activity
      * @param code                   Get the code using this permission for call back
@@ -102,11 +101,11 @@ public class BottomSheetController {
 
 
     /**
-     * OnClick listner of the image view.
+     * OnClick listener of the image view.
      *
-     * @return OnClickListner of the image view to call the gallery intent.
+     * @return OnClickListener of the image view to call the gallery intent.
      */
-    public View.OnClickListener imageGalleryelectionOnclick() {
+    public View.OnClickListener imageGallerySelectionOnclick() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,6 +1,5 @@
 /**
  * @category Car Pooling
- * @package com.contus.carpooling.server
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -21,10 +20,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * This class is the helper class to handle the server request and response .In this class we are using okhttp client for server request and GSON for parsing the data .
+ * This class is the helper class to handle the server request and response. In this class we are using okhttp client for server request and GSON for parsing the data .
  *
  * @author Contus Team<developers@contus.in>
- * @version 2.3
+ * @version 1.0
  */
 public class RestClient {
 
@@ -109,5 +108,4 @@ public class RestClient {
     public API get() {
         return api;
     }
-
 }

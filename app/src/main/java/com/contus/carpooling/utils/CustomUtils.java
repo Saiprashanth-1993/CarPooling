@@ -1,9 +1,8 @@
-/*
- * @category ContusFly
+/**
+ * @category CarPooling
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
-
 package com.contus.carpooling.utils;
 
 import android.content.Context;
@@ -16,7 +15,6 @@ import android.widget.Toast;
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
  */
-
 public class CustomUtils {
 
     private CustomUtils() {
@@ -27,7 +25,7 @@ public class CustomUtils {
      * Show the toast message
      *
      * @param context Instance of the activity
-     * @param message    Message to show in toast
+     * @param message Message to show in toast
      */
     public static void showToast(Context context, String message) {
         Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
