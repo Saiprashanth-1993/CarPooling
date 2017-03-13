@@ -36,5 +36,6 @@
     <string name="start_time">start_time</string>
     <string name="end_time">end_time</string>
     <string name="phone_number_failure_message">Please enter valid 10 digit phone number</string>
+    <string name="change_ride">Update ride</string>
 </resources>
 

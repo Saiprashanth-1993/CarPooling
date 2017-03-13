@@ -6,11 +6,14 @@
  */
 package com.contus.carpooling.addnewride.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.text.TextUtilsCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +23,10 @@ import android.widget.ArrayAdapter;
 import com.contus.carpooling.R;
 import com.contus.carpooling.addnewride.model.Ride;
 import com.contus.carpooling.addnewride.viewmodel.NewRideController;
+import com.contus.carpooling.dashboard.myrides.model.MyRides;
 import com.contus.carpooling.databinding.ActivityAddNewRideBinding;
+import com.contus.carpooling.server.BusProvider;
+import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.utils.Constants;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
@@ -52,13 +58,41 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         ride = new Ride();
+        NewRideController controller = new NewRideController();
         addNewRideBinding.setNewRideData(ride);
-        addNewRideBinding.setClickController(new NewRideController());
+        addNewRideBinding.setClickController(controller);
+
         if (bundle.getBoolean(Constants.CLICK_RIDE)) {
             addNewRideBinding.toolbarTitle.setText(R.string.title_edit_ride);
+            addNewRideBinding.btnAddRide.setText(R.string.change_ride);
+            MyRides myRides = bundle.getParcelable("parceble");
+            ride.setFromRide(myRides.getArrivalPoint());
+            ride.setToRide(myRides.getDeparturePoint());
+            ride.setStartTime(myRides.getArrivalTime());
+            ride.setEndTime(myRides.getDepartureTime());
+            controller.radioCostBtnOnClick(ride, myRides.getCost());
+            controller.radioBtnOnClick(ride, myRides.getGender());
+
+            if (!TextUtils.equals(myRides.getCost(), "Free")) {
+//                addNewRideBinding.
+            }
+
+            ride.setGender(myRides.getGender());
+            ride.setType(myRides.getType());
+
+//            if (TextUtils.equals())
+
+            ride.setSeats(myRides.getSeats());
+//            addNewRideBinding.spSeats.
+            if (myRides.getIsEveryWeeks() > 0) {
+                addNewRideBinding.everyWeek.setChecked(true);
+            } else addNewRideBinding.everyWeek.setChecked(false);
+            ride.setType(myRides.getVehicleType());
+            getRideData(getApplicationContext());
         } else {
             addNewRideBinding.toolbarTitle.setText(R.string.add_new_ride);
         }
+
         ArrayAdapter<String> seatAvailableAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.list_seat_available));
         addNewRideBinding.spSeats.setAdapter(seatAvailableAdapter);
@@ -120,5 +154,10 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
                 Log.e("error", "Error: Status = " + status.toString());
             }
         }
+    }
+
+    private void getRideData(Context mContext) {
+//        BusProvider.getInstance().register(this);
+//        new RestClient(mContext).getInstance().get().editRide()
     }
 }

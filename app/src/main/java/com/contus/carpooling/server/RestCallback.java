@@ -45,7 +45,7 @@ public class RestCallback<T> implements Callback<T> {
                 }
             }
             else {
-                BusProvider.getInstance().post("Something went wrong");
+                BusProvider.getInstance().post(response.message() + " " + response.code());
                 Log.e("TAG", "onResponse: res" + response.code());
             }
         }
@@ -53,7 +53,7 @@ public class RestCallback<T> implements Callback<T> {
 
     @Override
     public void onFailure(Call<T> call, Throwable t) {
-        BusProvider.getInstance().post("Something went wrong.");
+        BusProvider.getInstance().post(t.getMessage());
         Log.e("TAG", "onFailure: " + t.getMessage());
     }
 }

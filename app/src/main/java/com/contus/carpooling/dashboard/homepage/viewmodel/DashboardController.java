@@ -17,8 +17,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.contus.carpooling.R;
+import com.contus.carpooling.addnewride.model.Ride;
 import com.contus.carpooling.addnewride.view.RegisterNewRidesActivity;
 import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
+import com.contus.carpooling.dashboard.myrides.model.MyRides;
 import com.contus.carpooling.databinding.CustomDelayDialogBinding;
 import com.contus.carpooling.offeredrideinfo.view.OfferedRidesInformationActivity;
 import com.contus.carpooling.utils.Constants;
@@ -64,13 +66,14 @@ public class DashboardController {
      *
      * @return OnClickListener of the recycler view on edit ride text view.
      */
-    public View.OnClickListener rideEditOnClick() {
+    public View.OnClickListener rideEditOnClick(final MyRides myRide) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
                 Intent editRideIntent = new Intent(context, RegisterNewRidesActivity.class);
                 editRideIntent.putExtra(Constants.CLICK_RIDE, true);
+                editRideIntent.putExtra("parceble", myRide);
                 context.startActivity(editRideIntent);
             }
         };
@@ -86,8 +89,8 @@ public class DashboardController {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                Intent editRideIntent = new Intent(context, OfferedRidesInformationActivity.class);
-                context.startActivity(editRideIntent);
+                Intent offeredRidesInformationIntent = new Intent(context, OfferedRidesInformationActivity.class);
+                context.startActivity(offeredRidesInformationIntent);
             }
         };
     }

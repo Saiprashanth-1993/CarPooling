@@ -9,6 +9,8 @@ package com.contus.carpooling.dashboard.myrides.model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -16,13 +18,15 @@ import com.contus.carpooling.BR;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * MyRides model class store all the details of ride list into the myrides
  *
  * @author Contus Team <developers@contus.in>
  * @version 2.3
  */
-public class MyRides extends BaseObservable {
+public class MyRides extends BaseObservable implements Parcelable {
 
     /**
      * Get the id of rides
@@ -141,6 +145,7 @@ public class MyRides extends BaseObservable {
      * Returns the arrivalPoint {@link #arrivalPoint}
      */
     @Bindable
+    @NotNull
     public String getArrivalPoint() {
         return arrivalPoint;
     }
@@ -299,7 +304,7 @@ public class MyRides extends BaseObservable {
 //    @Bindable
     public String getCost() {
         if (TextUtils.equals("0", cost)) return "Free";
-        return "$ " + cost;
+        return cost;
     }
 
     /**
@@ -311,4 +316,53 @@ public class MyRides extends BaseObservable {
         this.cost = cost;
         notifyPropertyChanged(BR.cost);
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
+        dest.writeString(this.departurePoint);
+        dest.writeString(this.arrivalPoint);
+        dest.writeString(this.departureTime);
+        dest.writeString(this.arrivalTime);
+        dest.writeString(this.gender);
+        dest.writeString(this.seats);
+        dest.writeString(this.vehicleType);
+        dest.writeValue(this.isEveryWeeks);
+        dest.writeString(this.type);
+        dest.writeString(this.cost);
+    }
+
+    public MyRides() {
+    }
+
+    protected MyRides(Parcel in) {
+        this.id = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.departurePoint = in.readString();
+        this.arrivalPoint = in.readString();
+        this.departureTime = in.readString();
+        this.arrivalTime = in.readString();
+        this.gender = in.readString();
+        this.seats = in.readString();
+        this.vehicleType = in.readString();
+        this.isEveryWeeks = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.type = in.readString();
+        this.cost = in.readString();
+    }
+
+    public static final Parcelable.Creator<MyRides> CREATOR = new Parcelable.Creator<MyRides>() {
+        @Override
+        public MyRides createFromParcel(Parcel source) {
+            return new MyRides(source);
+        }
+
+        @Override
+        public MyRides[] newArray(int size) {
+            return new MyRides[size];
+        }
+    };
 }

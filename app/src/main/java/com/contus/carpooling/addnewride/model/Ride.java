@@ -8,6 +8,8 @@ package com.contus.carpooling.addnewride.model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.contus.carpooling.BR;
 import com.contus.carpooling.utils.Constants;
@@ -19,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
-public class Ride extends BaseObservable {
+public class Ride extends BaseObservable implements Parcelable {
 
     /**
      * Source place of the ride.
@@ -272,4 +274,53 @@ public class Ride extends BaseObservable {
         this.type = type;
         notifyPropertyChanged(BR.type);
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.fromRide);
+        dest.writeString(this.toRide);
+        dest.writeString(this.startTime);
+        dest.writeString(this.endTime);
+        dest.writeString(this.gender);
+        dest.writeString(this.daySelected);
+        dest.writeString(this.seats);
+        dest.writeValue(this.isEveryWeek);
+        dest.writeString(this.everyWeeks);
+        dest.writeString(this.cost);
+        dest.writeString(this.type);
+    }
+
+    public Ride() {
+    }
+
+    protected Ride(Parcel in) {
+        this.fromRide = in.readString();
+        this.toRide = in.readString();
+        this.startTime = in.readString();
+        this.endTime = in.readString();
+        this.gender = in.readString();
+        this.daySelected = in.readString();
+        this.seats = in.readString();
+        this.isEveryWeek = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        this.everyWeeks = in.readString();
+        this.cost = in.readString();
+        this.type = in.readString();
+    }
+
+    public static final Parcelable.Creator<Ride> CREATOR = new Parcelable.Creator<Ride>() {
+        @Override
+        public Ride createFromParcel(Parcel source) {
+            return new Ride(source);
+        }
+
+        @Override
+        public Ride[] newArray(int size) {
+            return new Ride[size];
+        }
+    };
 }
