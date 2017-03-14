@@ -23,10 +23,13 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.contus.carpooling.R;
+import com.contus.carpooling.addnewride.view.RegisterNewRidesActivity;
 import com.contus.carpooling.databinding.FragmentMyProfileBinding;
 import com.contus.carpooling.profile.model.UserProfileDetailsPOJO;
 import com.contus.carpooling.profile.model.UserProfileInfo;
@@ -67,10 +70,31 @@ public class UserProfileFragment extends Fragment {
         userProfileInfo = new UserProfileInfo();
         myProfileBinding.setUserProfile(userProfileInfo);
         myProfileRequest(mContext);
-        myProfileBinding.setViewController(new UserProfileController());
+        myProfileBinding.setViewController(new UserProfileController(getContext()));
+        ArrayAdapter<String> seatAvailableAdapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.vehicle_type));
+        myProfileBinding.tvVehicleTypeVal.setAdapter(seatAvailableAdapter);
+        myProfileBinding.tvVehicleTypeVal.setOnItemSelectedListener(new dayItemSpinner());
         setHasOptionsMenu(true);
         return myProfileBinding.getRoot();
+
     }
+
+    /**
+     * Get the position of selected item spinner
+     */
+    public class dayItemSpinner implements AdapterView.OnItemSelectedListener {
+
+        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            String selected = parent.getItemAtPosition(pos).toString();
+            userProfileInfo.setUserVehicleType(selected);
+        }
+
+        public void onNothingSelected(AdapterView parent) {
+            // Do nothing.
+        }
+    }
+
 
     /**
      * ApiRequest for Get the ride offered list from the server
@@ -106,9 +130,5 @@ public class UserProfileFragment extends Fragment {
     public void onPrepareOptionsMenu(Menu menu) {
         menu.findItem(R.id.action_notification).setVisible(false);
         super.onPrepareOptionsMenu(menu);
-    }
-
-    public MediaStore.Images.Media getContentResolver() {
-        return contentResolver;
     }
 }

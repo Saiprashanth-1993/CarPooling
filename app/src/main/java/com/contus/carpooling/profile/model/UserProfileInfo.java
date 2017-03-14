@@ -104,23 +104,6 @@ public class UserProfileInfo extends BaseObservable {
     private boolean isToEditOrSave;
 
     /**
-     * Gets {@see #imageSelectedType}.
-     *
-     * @return {@link #imageSelectedType}
-     */
-    public String getImageSelectedType() {
-        return imageSelectedType;
-    }
-
-    /**
-     * Sets {@link #imageSelectedType}.
-     */
-    public void setImageSelectedType(String imageSelectedType) {
-        this.imageSelectedType = imageSelectedType;
-    }
-
-
-    /**
      * Gets {@see #userName}.
      *
      * @return {@link #userName}

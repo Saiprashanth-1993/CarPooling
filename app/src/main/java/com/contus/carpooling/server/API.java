@@ -97,7 +97,7 @@ public interface API {
      *
      * @return {@link UserProfileInfo}
      */
-    @GET("updateprofile")
+    @POST("updateprofile")
     Call<UserProfileResponse> setProfile(@Body Map<String,String> paramerters);
 
 

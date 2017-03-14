@@ -14,7 +14,6 @@ import java.util.List;
 public class UserProfileResponse extends ErrorResponse {
 
 
-
     @SerializedName("response")
     @Expose
     public List<UserProfileDetailsPOJO> userDetails;

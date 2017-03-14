@@ -34,6 +34,11 @@ import retrofit2.Response;
 public class UserProfileController {
 
     Context context;
+
+
+    public UserProfileController(Context context){
+        this.context = context;
+    }
     /**
      * OnClick listener of profile edit button.
      *
@@ -44,11 +49,10 @@ public class UserProfileController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Context context = view.getContext();
-                if (isValid(context, userProfileInfo)) {
+
                     enableOrDisableEditText(userProfileInfo);
+
                 }
-            }
         };
     }
 
@@ -60,51 +64,58 @@ public class UserProfileController {
      */
     public void enableOrDisableEditText(UserProfileInfo profileInfo) {
         if (profileInfo.isToEditOrSave()) {
-            profileInfo.setToEditOrSave(true);
+            profileInfo.setToEditOrSave(false);
        }else {
             profileInfo.setToEditOrSave(true);
+            if(isValid(profileInfo)){
+                UpdateProfileRequest(profileInfo);
+            }
         }
     }
 
-    public View.OnClickListener profileImageViewOnClick(final String getUserImage, final UserProfileInfo userProfileInfo) {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (getUserImage.isEmpty()) {
-                    Toast.makeText(context,"set profile image",Toast.LENGTH_SHORT).show();
-                }
-                BottomDialogFragment bottomDialogFragment = new BottomDialogFragment();
-                bottomDialogFragment.show(((EmployeeDetailActivity) view.getContext()).getSupportFragmentManager(), "121");
-            }
-        };
-    }
+//    public View.OnClickListener profileImageViewOnClick(final String getUserImage, final UserProfileInfo userProfileInfo) {
+//        return new View.OnClickListener() {
+////            @Override
+////            public void onClick(View view) {
+////                if (getUserImage.isEmpty()) {
+////                    Toast.makeText(context,"set profile image",Toast.LENGTH_SHORT).show();
+////                }
+////                BottomDialogFragment bottomDialogFragment = new BottomDialogFragment();
+////                bottomDialogFragment.show(((EmployeeDetailActivity) view.getContext()).getSupportFragmentManager(), "121");
+////            }
+//        };
+//    }
 
 
-
-    private void UpdateProfileRequest(UserProfileInfo getUserProfileValues, final Context mContext) {
+    /**
+     *
+     * @param getUserProfileValues
+     */
+    private void UpdateProfileRequest(UserProfileInfo getUserProfileValues) {
         HashMap<String, String> params = new HashMap<>();
-        params.put(Constants.Login.USERNAME, LoginUtils.getPreferences(mContext,Constants.Login.USERNAME,""));
-        params.put(Constants.Profile.USERNAME, getUserProfileValues.getUserName());
-        params.put(Constants.Profile.USER_EMAIL_ID, getUserProfileValues.getUserMail());
-        params.put(Constants.Profile.TEAM_NAME, getUserProfileValues.getUserTeamName());
-        params.put(Constants.Profile.MOBILE, getUserProfileValues.getUserPhone());
-        params.put(Constants.Profile.ADDRESS, getUserProfileValues.getUserLocation());
-        params.put(Constants.Profile.USER_LOCATION, getUserProfileValues.getUserLocation());
-        params.put(Constants.Profile.VEHICLE_TYPE, getUserProfileValues.getUserVehicleType());
-        params.put(Constants.Profile.VEHICLE_NAME, getUserProfileValues.getUserVehicleName());
-        params.put(Constants.Profile.VEHICLE_NUMBER, getUserProfileValues.getUserVehicleNum());
+        params.put(Constants.UserProfile.USERNAME, LoginUtils.getPreferences(context,Constants.UserProfile.USERNAME," "));
+        params.put(Constants.UserProfile.USERNAME, getUserProfileValues.getUserName());
+        params.put(Constants.UserProfile.USER_EMAIL_ID, getUserProfileValues.getUserMail());
+        params.put(Constants.UserProfile.TEAM_NAME, getUserProfileValues.getUserTeamName());
+        params.put(Constants.UserProfile.MOBILE, getUserProfileValues.getUserPhone());
+        params.put(Constants.UserProfile.ADDRESS, getUserProfileValues.getUserLocation());
+        params.put(Constants.UserProfile.USER_LOCATION, getUserProfileValues.getUserLocation());
+        params.put(Constants.UserProfile.VEHICLE_TYPE, getUserProfileValues.getUserVehicleType());
+        params.put(Constants.UserProfile.VEHICLE_NAME, getUserProfileValues.getUserVehicleName());
+        params.put(Constants.UserProfile.VEHICLE_NUMBER, getUserProfileValues.getUserVehicleNum());
 
-        new RestClient(mContext).getInstance().get().setProfile(params).enqueue(new Callback<UserProfileResponse>() {
+        new RestClient(context).getInstance().get().setProfile(params).enqueue(new Callback<UserProfileResponse>() {
             @Override
             public void onResponse(Call<UserProfileResponse> call, Response<UserProfileResponse> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(mContext, "Profile has been updated", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
                 }
             }
 
             @Override
             public void onFailure(Call<UserProfileResponse> call, Throwable t) {
-                Toast.makeText(mContext, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -112,10 +123,9 @@ public class UserProfileController {
     /**
      * Method used to validate the edit text fields.
      *
-     * @param context Used to show the toast message.
      * @return true when the given field is not empty.
      */
-    private boolean isValid(Context context, UserProfileInfo profileInfo) {
+    private boolean isValid(UserProfileInfo profileInfo) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(profileInfo.getUserName())) {
             validationStatus = false;

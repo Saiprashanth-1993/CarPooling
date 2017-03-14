@@ -256,7 +256,7 @@
                                     android:textColor="@android:color/background_dark"
                                     android:textSize="14sp" />
 
-                                <AutoCompleteTextView
+                                <android.support.v7.widget.AppCompatSpinner
                                     android:id="@+id/tv_vehicle_type_val"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -265,8 +265,8 @@
                                     android:background="@android:drawable/screen_background_light_transparent"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                     android:singleLine="true"
-                                    android:text="@={UserProfile.userVehicleType}"
                                     android:textSize="14sp" />
+                                <!--android:text="@={UserProfile.userVehicleType}"-->
                             </RelativeLayout>
 
                             <RelativeLayout

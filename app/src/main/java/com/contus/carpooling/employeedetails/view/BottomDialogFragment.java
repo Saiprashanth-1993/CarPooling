@@ -28,7 +28,8 @@ public class BottomDialogFragment extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentBottomSheetBinding ridesOfferedBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_bottom_sheet, container, false);
+        FragmentBottomSheetBinding ridesOfferedBinding = DataBindingUtil
+                .inflate(inflater, R.layout.fragment_bottom_sheet, container, false);
         ridesOfferedBinding.setSelectionCameraOption(new BottomSheetController(getActivity(), this));
         return ridesOfferedBinding.getRoot();
     }

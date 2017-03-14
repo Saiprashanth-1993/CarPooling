@@ -3,14 +3,12 @@ package com.contus.carpooling.profile.model;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import com.contus.carpooling.BR;
+import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class UserProfileDetailsPOJO {
 
-    @SerializedName("name")
-    @Expose
-    private String name;
 
     @SerializedName("email")
     @Expose
@@ -52,10 +50,6 @@ public class UserProfileDetailsPOJO {
     @Expose
     private String vehicleNo;
 
-
-    public String getName() {
-        return name;
-    }
 
 
 

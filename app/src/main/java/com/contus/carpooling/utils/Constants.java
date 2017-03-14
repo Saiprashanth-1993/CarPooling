@@ -262,7 +262,9 @@ public class Constants {
     /**
      * Constants for profile class
      */
-    public static final class Profile {
+    public static final class UserProfile {
+
+        public static final String PROFILE_DETAILS_RESPONSE="response";
 
         /**
          * Constant value set from response
@@ -284,12 +286,12 @@ public class Constants {
         /***
          * Constant value set from response
          */
-        public static final String ADDRESS="company_location";
+        public static final String ADDRESS="from_location";
 
         /***
          * Constant value set from response
          */
-        public static final String USER_LOCATION="from_location";
+        public static final String USER_LOCATION="to_location";
         /***
          * Constant value set from response
          */
@@ -313,7 +315,7 @@ public class Constants {
         /**
          * Instantiates a new constants.
          */
-        private Profile() {
+        private UserProfile() {
             //Private constructor for prevent instance.
         }
     }
@@ -417,6 +419,17 @@ public class Constants {
         public static final String REMEMBER_TOKEN="rememberToken";
     }
 
+    /**
+     * Constant for User Profile Response
+     */
+    public static final class UserProfileResponse{
+        public static final String USER_NAME="Employee Details";
+        public static final String EMPLOYEE_ID="id";
+        public static final String USER_ID="user_id";
+        public static final String ADAHAR_CARD="aadhar_card";
+        public static final String PAN_CARD="pan_card";
+        public static final String REMEMBER_TOKEN="rememberToken";
+    }
 
     /**
      * Create the ride
