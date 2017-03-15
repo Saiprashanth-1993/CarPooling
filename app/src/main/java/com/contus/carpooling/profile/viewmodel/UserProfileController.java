@@ -10,16 +10,15 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
-import com.contus.carpooling.employeedetails.model.EmployeeInfo;
-import com.contus.carpooling.employeedetails.view.BottomDialogFragment;
-import com.contus.carpooling.employeedetails.view.EmployeeDetailActivity;
+
 import com.contus.carpooling.login.viewmodel.LoginUtils;
 import com.contus.carpooling.profile.model.UserProfileInfo;
 import com.contus.carpooling.profile.model.UserProfileResponse;
 import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.utils.Constants;
-import com.google.firebase.auth.UserProfileChangeRequest;
+
 import java.util.HashMap;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -73,22 +72,10 @@ public class UserProfileController {
         }
     }
 
-//    public View.OnClickListener profileImageViewOnClick(final String getUserImage, final UserProfileInfo userProfileInfo) {
-//        return new View.OnClickListener() {
-////            @Override
-////            public void onClick(View view) {
-////                if (getUserImage.isEmpty()) {
-////                    Toast.makeText(context,"set profile image",Toast.LENGTH_SHORT).show();
-////                }
-////                BottomDialogFragment bottomDialogFragment = new BottomDialogFragment();
-////                bottomDialogFragment.show(((EmployeeDetailActivity) view.getContext()).getSupportFragmentManager(), "121");
-////            }
-//        };
-//    }
 
 
     /**
-     *
+     *this method is used to send the response to update the profile
      * @param getUserProfileValues
      */
     private void UpdateProfileRequest(UserProfileInfo getUserProfileValues) {

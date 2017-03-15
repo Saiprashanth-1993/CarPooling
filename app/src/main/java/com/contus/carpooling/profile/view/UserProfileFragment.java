@@ -7,48 +7,29 @@
 package com.contus.carpooling.profile.view;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.databinding.DataBindingUtil;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.contus.carpooling.R;
-import com.contus.carpooling.addnewride.view.RegisterNewRidesActivity;
 import com.contus.carpooling.databinding.FragmentMyProfileBinding;
-import com.contus.carpooling.profile.model.UserProfileDetailsPOJO;
+import com.contus.carpooling.profile.model.UserProfileDetails;
 import com.contus.carpooling.profile.model.UserProfileInfo;
 import com.contus.carpooling.profile.model.UserProfileResponse;
 import com.contus.carpooling.profile.viewmodel.UserProfileController;
 import com.contus.carpooling.server.RestClient;
-import com.contus.carpooling.utils.Constants;
-import com.contus.carpooling.utils.Logger;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static android.R.attr.data;
 
 /**
  * Fragment to view the user profile information and user has the option to edit or add the profile information.
@@ -59,9 +40,7 @@ import static android.R.attr.data;
 public class UserProfileFragment extends Fragment {
 
     Context mContext;
-    private UserProfileFragment userProfileFragment;
     private UserProfileInfo userProfileInfo;
-    private MediaStore.Images.Media contentResolver;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,9 +50,9 @@ public class UserProfileFragment extends Fragment {
         myProfileBinding.setUserProfile(userProfileInfo);
         myProfileRequest(mContext);
         myProfileBinding.setViewController(new UserProfileController(getContext()));
-        ArrayAdapter<String> seatAvailableAdapter = new ArrayAdapter<>(getActivity(),
+        ArrayAdapter<String> profileAdapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.vehicle_type));
-        myProfileBinding.tvVehicleTypeVal.setAdapter(seatAvailableAdapter);
+        myProfileBinding.tvVehicleTypeVal.setAdapter(profileAdapter);
         myProfileBinding.tvVehicleTypeVal.setOnItemSelectedListener(new dayItemSpinner());
         setHasOptionsMenu(true);
         return myProfileBinding.getRoot();
@@ -81,30 +60,16 @@ public class UserProfileFragment extends Fragment {
     }
 
     /**
-     * Get the position of selected item spinner
-     */
-    public class dayItemSpinner implements AdapterView.OnItemSelectedListener {
-
-        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-            String selected = parent.getItemAtPosition(pos).toString();
-            userProfileInfo.setUserVehicleType(selected);
-        }
-
-        public void onNothingSelected(AdapterView parent) {
-            // Do nothing.
-        }
-    }
-
-
-    /**
      * ApiRequest for Get the ride offered list from the server
+     * also it displays the value in the fragment
      */
-    private void myProfileRequest(Context mContext) {
+    private void myProfileRequest(final Context mContext) {
         new RestClient(mContext).getInstance().get().getProfile().enqueue(new Callback<UserProfileResponse>() {
 
             @Override
             public void onResponse(Call<UserProfileResponse> call, Response<UserProfileResponse> response) {
-                List<UserProfileDetailsPOJO> userProfileDetailPOJOs = response.body().getResponse();
+                List<UserProfileDetails> userProfileDetailPOJOs = response.body().getResponse();
+
                 if(userProfileDetailPOJOs.get(0).getProfileImage() == null){
                     userProfileInfo.setProfileImage(String.valueOf(R.drawable.ic_person));
                 }else {
@@ -130,5 +95,20 @@ public class UserProfileFragment extends Fragment {
     public void onPrepareOptionsMenu(Menu menu) {
         menu.findItem(R.id.action_notification).setVisible(false);
         super.onPrepareOptionsMenu(menu);
+    }
+
+    /**
+     * Get the position of selected item spinner
+     */
+    public class dayItemSpinner implements AdapterView.OnItemSelectedListener {
+
+        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            String selected = parent.getItemAtPosition(pos).toString();
+            userProfileInfo.setUserVehicleType(selected);
+        }
+
+        public void onNothingSelected(AdapterView parent) {
+            // Do nothing.
+        }
     }
 }
