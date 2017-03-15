@@ -124,6 +124,21 @@ public interface API {
     @POST("changepassword")
     Call<ChangePasswordResponse> changePassword(@Body Map<String,String> paramerters);
 
+    /**
+     *
+     * @param customerId
+     * @param parameters
+     * @return
+     */
     @POST("rides/{ride_id}")
     Call<CreateRideResponse> editRide(@Path("ride_id") String customerId, @Body Map<String, String> parameters);
+
+    /**
+     *
+     * @param customerId
+     * @param parameters
+     * @return
+     */
+    @GET("deleteride/{ride_id}")
+    Call<CreateRideResponse> deleteRide(@Path("ride_id") String customerId, @Body Map<String, String> parameters);
 }

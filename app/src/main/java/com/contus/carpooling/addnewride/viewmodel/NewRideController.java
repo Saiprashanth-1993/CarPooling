@@ -155,8 +155,8 @@ public class NewRideController {
             datePickerDialog.getDatePicker().setMinDate(Calendar.getInstance().getTime().getTime());
 
         } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
-            Log.i("TAG", "showDateTimePicker: end time" +ride.getStartTime());
-            datePickerDialog.getDatePicker().setMinDate(linuxTime);
+//            Log.i("TAG", "showDateTimePicker: end time" +ride.getStartTime());
+            datePickerDialog.getDatePicker().setMinDate(linuxTime + 600000);
         }
 
         datePickerDialog.show();

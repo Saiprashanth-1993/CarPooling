@@ -6,12 +6,10 @@
  */
 package com.contus.carpooling.addnewride.view;
 
-import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.text.TextUtilsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -25,8 +23,6 @@ import com.contus.carpooling.addnewride.model.Ride;
 import com.contus.carpooling.addnewride.viewmodel.NewRideController;
 import com.contus.carpooling.dashboard.myrides.model.MyRides;
 import com.contus.carpooling.databinding.ActivityAddNewRideBinding;
-import com.contus.carpooling.server.BusProvider;
-import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.utils.Constants;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
@@ -62,6 +58,11 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
         addNewRideBinding.setNewRideData(ride);
         addNewRideBinding.setClickController(controller);
 
+        ArrayAdapter<String> seatAvailableAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.list_seat_available));
+        addNewRideBinding.spSeats.setAdapter(seatAvailableAdapter);
+        addNewRideBinding.spSeats.setOnItemSelectedListener(new dayItemSpinner());
+
         if (bundle.getBoolean(Constants.CLICK_RIDE)) {
             addNewRideBinding.toolbarTitle.setText(R.string.title_edit_ride);
             addNewRideBinding.btnAddRide.setText(R.string.change_ride);
@@ -70,36 +71,42 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
             ride.setToRide(myRides.getDeparturePoint());
             ride.setStartTime(myRides.getArrivalTime());
             ride.setEndTime(myRides.getDepartureTime());
-            controller.radioCostBtnOnClick(ride, myRides.getCost());
-            controller.radioBtnOnClick(ride, myRides.getGender());
+            ride.setCost(myRides.getCost());
+            ride.setType(myRides.getType());
 
             if (!TextUtils.equals(myRides.getCost(), "Free")) {
-//                addNewRideBinding.
+                addNewRideBinding.rdFree.setChecked(false);
+                addNewRideBinding.rdCost.setChecked(true);
+                addNewRideBinding.rdCostBox.setVisibility(View.VISIBLE);
+                ride.setCost(myRides.getCost());
+
+            } else {
+                addNewRideBinding.rdCost.setChecked(false);
+                addNewRideBinding.rdFree.setChecked(true);
             }
 
             ride.setGender(myRides.getGender());
             ride.setType(myRides.getType());
 
-//            if (TextUtils.equals())
+            int position = seatAvailableAdapter.getPosition(ride.getSeats());
+            Log.i("TAG", "onCreate: position" + position);
+            addNewRideBinding.spSeats.setSelection(5);
 
-            ride.setSeats(myRides.getSeats());
-//            addNewRideBinding.spSeats.
             if (myRides.getIsEveryWeeks() > 0) {
                 addNewRideBinding.everyWeek.setChecked(true);
             } else addNewRideBinding.everyWeek.setChecked(false);
+
             ride.setType(myRides.getVehicleType());
-            getRideData(getApplicationContext());
         } else {
             addNewRideBinding.toolbarTitle.setText(R.string.add_new_ride);
         }
-
-        ArrayAdapter<String> seatAvailableAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.list_seat_available));
-        addNewRideBinding.spSeats.setAdapter(seatAvailableAdapter);
-        addNewRideBinding.spSeats.setOnItemSelectedListener(new dayItemSpinner());
-
     }
 
+    /**
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle toolbar arrow click action
@@ -154,10 +161,5 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
                 Log.e("error", "Error: Status = " + status.toString());
             }
         }
-    }
-
-    private void getRideData(Context mContext) {
-//        BusProvider.getInstance().register(this);
-//        new RestClient(mContext).getInstance().get().editRide()
     }
 }
