@@ -50,7 +50,7 @@ public class UserProfileFragment extends Fragment {
         userProfileInfo = new UserProfileInfo();
         myProfileBinding.setUserProfile(userProfileInfo);
         myProfileRequest(mContext);
-        myProfileBinding.setViewController(new UserProfileController(getContext()));
+        myProfileBinding.setViewController(new UserProfileController(getContext(),this));
         ArrayAdapter<String> profileAdapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.vehicle_type));
         myProfileBinding.tvVehicleTypeVal.setAdapter(profileAdapter);

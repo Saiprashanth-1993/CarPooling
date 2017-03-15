@@ -14,8 +14,10 @@ import android.widget.Toast;
 import com.contus.carpooling.login.viewmodel.LoginUtils;
 import com.contus.carpooling.profile.model.UserProfileInfo;
 import com.contus.carpooling.profile.model.UserProfileResponse;
+import com.contus.carpooling.profile.view.UserProfileFragment;
 import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.utils.Constants;
+import com.esafirm.imagepicker.features.ImagePicker;
 
 import java.util.HashMap;
 
@@ -32,10 +34,13 @@ import retrofit2.Response;
  */
 public class UserProfileController {
 
+    private static final int REQUEST_CODE_PICKER = 1001;
     Context context;
+    UserProfileFragment userProfileFragment;
 
 
-    public UserProfileController(Context context){
+    public UserProfileController(Context context, UserProfileFragment userProfileFragment){
+        this.userProfileFragment = userProfileFragment;
         this.context = context;
     }
     /**
@@ -55,6 +60,24 @@ public class UserProfileController {
         };
     }
 
+    public View.OnClickListener profileClick(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ImagePicker.create(userProfileFragment)
+                        .returnAfterFirst(true)
+                        .folderMode(true) // folder mode (false by default)
+                        .folderTitle("Folder") // folder selection title
+                        .imageTitle("Tap to select") // image selection title
+                        .single() // single mode
+                        .limit(1) // max images can be selected (99 by default)
+                        .showCamera(true) // show camera or not (true by default)
+                        .imageDirectory("Camera") // directory name for captured image  ("Camera" folder by default)
+                        .start(REQUEST_CODE_PICKER);
+            }
+        };
+    }
 
     /**
      * Check whether the edit button is clicked or not.
