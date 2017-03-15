@@ -6,6 +6,7 @@
  */
 package com.contus.carpooling.offeredrideinfo.view.view;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +15,6 @@ import android.view.MenuItem;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.databinding.ActivityRideInfoBinding;
-import com.contus.carpooling.emptyviewmodel.EmptyView;
 import com.contus.carpooling.offeredrideinfo.view.viewmodel.OfferedRidesInformationController;
 
 /**
@@ -26,10 +26,27 @@ import com.contus.carpooling.offeredrideinfo.view.viewmodel.OfferedRidesInformat
 
 public class OfferedRidesInformationActivity extends AppCompatActivity {
 
+    /**
+     * Context of an activity
+     */
+    Context context;
+
+    /**
+     * send the param by using fromLocation
+     */
+    String fromLocation;
+
+    /**
+     * send the param by using toLocatin
+     */
+    String toLocation;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityRideInfoBinding rideInfoBinding = DataBindingUtil.setContentView(this, R.layout.activity_ride_info);
+        context = getApplicationContext();
         rideInfoBinding.setItemClick(new OfferedRidesInformationController());
         setSupportActionBar(rideInfoBinding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -40,6 +57,7 @@ public class OfferedRidesInformationActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         // handle toolbar arrow click action
         if (item.getItemId() == android.R.id.home) {
             finish();

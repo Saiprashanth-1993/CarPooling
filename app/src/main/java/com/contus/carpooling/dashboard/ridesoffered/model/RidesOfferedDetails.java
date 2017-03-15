@@ -10,18 +10,14 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 
-import org.apache.commons.lang3.text.WordUtils;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import org.apache.commons.lang3.text.WordUtils;
+
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Formatter;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -44,9 +40,12 @@ public class RidesOfferedDetails extends BaseObservable {
     /**
      * The name
      */
-    @SerializedName("name")
-    @Expose
     private String name;
+
+    /**
+     * The email
+     */
+    private String email;
 
     /**
      * The creatorId
@@ -54,6 +53,11 @@ public class RidesOfferedDetails extends BaseObservable {
     @SerializedName("creator_id")
     @Expose
     private Integer creatorId;
+
+    /**
+     * The profileImage
+     */
+    private String profileImage;
 
     /**
      * The departurePoint
@@ -76,6 +80,9 @@ public class RidesOfferedDetails extends BaseObservable {
     @Expose
     private String departureTime;
 
+    /**
+     * The departureDate from departureTime
+     */
     private String departureDate;
 
     /**
@@ -142,10 +149,21 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     private String rupeeFormat;
 
+    /**
+     * The rideDays
+     */
+    private String rideDays;
+
+    /**
+     * The userInfoList
+     */
     @SerializedName("user")
     @Expose
     private List<User> user = null;
 
+    /**
+     * The ridePreferenceList
+     */
     @SerializedName("ride_preference")
     @Expose
     private List<RidePreference> ridePreference = null;
@@ -341,8 +359,6 @@ public class RidesOfferedDetails extends BaseObservable {
         this.isEveryWeeks = isEveryWeeks;
     }
 
-
-
     /**
      * Gets {@see #cost}
      * <p>
@@ -368,9 +384,7 @@ public class RidesOfferedDetails extends BaseObservable {
      * Returns the type {@link #type}
      */
     public String getType() {
-
         return WordUtils.capitalizeFully(type);
-
     }
 
 
@@ -405,9 +419,7 @@ public class RidesOfferedDetails extends BaseObservable {
             dateForm.append(dateWithsec.substring(0, dateWithsec.length()-6));
             dateForm.append(dateWithsec.substring(dateWithsec.length()-3,dateWithsec.length()));
             return dateForm.toString();
-
         }
-
     }
 
     /**
@@ -442,7 +454,8 @@ public class RidesOfferedDetails extends BaseObservable {
             dateForm.append(dateWithsec.substring(0, dateWithsec.length()-6));
             dateForm.append(dateWithsec.substring(dateWithsec.length()-3,dateWithsec.length()));
             return dateForm.toString();
-        } }
+        }
+    }
 
     /**
      * Sets {@see #arrivalDate}
@@ -461,11 +474,10 @@ public class RidesOfferedDetails extends BaseObservable {
     public String getName() {
 
         if(genderPreference.trim().equals("male")){
-           return name+" (M)";
+            return user.get(0).getUsername() + " (M)";
         }else {
-            return name+" (F)";
+            return user.get(0).getUsername() + " (F)";
         }
-
     }
 
     /**
@@ -483,13 +495,11 @@ public class RidesOfferedDetails extends BaseObservable {
      * Returns the costValue
      */
     public int getCostVisibility() {
-
         if(Integer.parseInt(cost)>0){
             return View.VISIBLE;
         }else {
             return View.INVISIBLE;
         }
-
     }
 
     /**
@@ -507,7 +517,6 @@ public class RidesOfferedDetails extends BaseObservable {
      * Returns the costValue
      */
     public String getRupeeFormat() {
-
         return "₹ "+cost;
     }
 
@@ -520,21 +529,99 @@ public class RidesOfferedDetails extends BaseObservable {
         this.rupeeFormat = rupeeFormat;
     }
 
-
+    /**
+     * Gets {@see #user}
+     * Returns the user
+     */
     public List<User> getUser() {
         return user;
     }
 
+    /**
+     * Sets {@see #user}
+     *
+     * @param user(@link #user}
+     */
     public void setUser(List<User> user) {
         this.user = user;
     }
 
+    /**
+     * Gets {@see #ridePreference}
+     * Returns the user
+     */
     public List<RidePreference> getRidePreference() {
         return ridePreference;
     }
 
+    /**
+     * Sets {@see #ridePreference}
+     *
+     * @param ridePreference(@link #ridePreference}
+     */
     public void setRidePreference(List<RidePreference> ridePreference) {
         this.ridePreference = ridePreference;
     }
 
+    /**
+     * Gets {@see #email}
+     * Returns the email
+     */
+    public String getEmail() {
+        return user.get(0).getEmail();
+    }
+
+    /**
+     * Sets {@see #email}
+     *
+     * @param email(@link #email}
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Gets {@see #profileImage}
+     * Returns the profileImage
+     */
+    public String getProfileImage() {
+        if (user.get(0).getProfileImage() != null) {
+            return (String) user.get(0).getProfileImage();
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Sets {@see #profileImage}
+     *
+     * @param profileImage(@link #profileImage}
+     */
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
+
+    /**
+     * Gets {@see #rideDays}
+     * Returns the rideDays
+     */
+    public String getRideDays(String day) {
+
+        int numOfDays;
+
+        for (numOfDays = 0; numOfDays < ridePreference.size(); numOfDays++) {
+
+
+        }
+        return rideDays;
+    }
+
+    /**
+     * Sets {@see #rideDays}
+     *
+     * @param rideDays(@link #rideDays}
+     */
+    public void setRideDays(String rideDays) {
+        this.rideDays = rideDays;
+    }
 }

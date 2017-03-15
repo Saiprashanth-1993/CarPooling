@@ -79,7 +79,7 @@ public class DashboardController {
     /**
      * OnClick listener in list items.
      *
-     * @return OnClickListener of the recycler view on item.
+     * @return OnClickListener of the recycler view on item book button.
      */
     public View.OnClickListener itemOnClick() {
         return new View.OnClickListener() {
@@ -93,7 +93,7 @@ public class DashboardController {
     }
 
     /**
-     * OnClick listener in list items.
+     * OnClick listener to book ride
      *
      * @return OnClickListener of the recycler view on item.
      */
@@ -104,6 +104,7 @@ public class DashboardController {
                 Context context = view.getContext();
 
                 Toast.makeText(context,"Booked",Toast.LENGTH_SHORT).show();
+
                 /**
                  * implement book method from rides offered items
                  */

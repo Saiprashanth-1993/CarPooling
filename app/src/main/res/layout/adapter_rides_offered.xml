@@ -38,8 +38,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="3"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:weightSum="3">
 
                     <ImageView
                         android:id="@+id/iv_user_icon"
@@ -67,7 +67,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:text="name"
+                            android:text="@={rideOfferedDetails.name}"
                             android:textSize="14sp" />
 
                         <LinearLayout
@@ -103,10 +103,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:gravity="center"
+                        android:layout_alignParentTop="true"
                         android:layout_weight="0.6"
-                        android:orientation="vertical"
-                        android:layout_alignParentTop="true">
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="100dp"
@@ -125,11 +125,9 @@
                                 android:paddingLeft="5dp"
                                 android:text="@={rideOfferedDetails.rupeeFormat}"
                                 android:textColor="@android:color/white"
-                                android:visibility="@{rideOfferedDetails.costVisibility}"
-                                android:textSize="12sp" />
-                            <!--android:visibility="@={rideOfferedDetails.costValue}"-->
+                                android:textSize="12sp"
+                                android:visibility="@{rideOfferedDetails.costVisibility}" />
 
-                            <!--android:visibility="@{(rideOfferedDetails.)? View.VISIBLE : View.GONE}"-->
                             <TextView
                                 android:layout_width="40dp"
                                 android:layout_height="wrap_content"
@@ -137,9 +135,9 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/button_rounded_corner_share"
                                 android:gravity="center"
+                                android:onClick="@{itemClick.bookOnclick()}"
                                 android:padding="5dp"
                                 android:text="Book"
-                                android:onClick="@{itemClick.bookOnclick()}"
                                 android:textColor="@android:color/white"
                                 android:textSize="12sp" />
 
