@@ -55,6 +55,7 @@ public class UserProfileController {
         };
     }
 
+
     /**
      * Check whether the edit button is clicked or not.
      * when it true, the user can edit the profile details.

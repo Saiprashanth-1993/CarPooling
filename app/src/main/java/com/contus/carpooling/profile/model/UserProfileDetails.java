@@ -3,6 +3,12 @@ package com.contus.carpooling.profile.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Model class is used to get and store the user profile details
+ *
+ * @author Contus Team <developers@contus.in>
+ * @version 1.0
+ */
 public class UserProfileDetails {
 
 

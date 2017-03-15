@@ -9,6 +9,7 @@ package com.contus.carpooling.profile.view;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -53,7 +54,7 @@ public class UserProfileFragment extends Fragment {
         ArrayAdapter<String> profileAdapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.vehicle_type));
         myProfileBinding.tvVehicleTypeVal.setAdapter(profileAdapter);
-        myProfileBinding.tvVehicleTypeVal.setOnItemSelectedListener(new dayItemSpinner());
+        myProfileBinding.tvVehicleTypeVal.setOnItemSelectedListener(new VehicleTypeSpinner());
         setHasOptionsMenu(true);
         return myProfileBinding.getRoot();
 
@@ -69,7 +70,6 @@ public class UserProfileFragment extends Fragment {
             @Override
             public void onResponse(Call<UserProfileResponse> call, Response<UserProfileResponse> response) {
                 List<UserProfileDetails> userProfileDetailPOJOs = response.body().getResponse();
-
                 if(userProfileDetailPOJOs.get(0).getProfileImage() == null){
                     userProfileInfo.setProfileImage(String.valueOf(R.drawable.ic_person));
                 }else {
@@ -86,6 +86,8 @@ public class UserProfileFragment extends Fragment {
             @Override
             public void onFailure(Call<UserProfileResponse> call, Throwable t) {
 
+                Snackbar.make(getView(), "check net connection", Snackbar.LENGTH_LONG).show();
+                //CustomUtils.showToast(getActivity(),"check net connection");
             }
         });
 
@@ -100,7 +102,7 @@ public class UserProfileFragment extends Fragment {
     /**
      * Get the position of selected item spinner
      */
-    public class dayItemSpinner implements AdapterView.OnItemSelectedListener {
+    public class VehicleTypeSpinner implements AdapterView.OnItemSelectedListener {
 
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             String selected = parent.getItemAtPosition(pos).toString();
