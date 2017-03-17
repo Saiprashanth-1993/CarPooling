@@ -1,5 +1,6 @@
 /**
  * @category CarPooling
+ * @package com.contus.carpooling.dashboard.ridesoffered.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -31,6 +32,8 @@ import com.squareup.otto.Subscribe;
 
 import java.util.HashMap;
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Fragment to display the ride offer details in the dashboard.
@@ -81,8 +84,17 @@ public class RidesOfferedFragment extends Fragment {
     private void myRideOfferedRequest(Context mContext) {
         BusProvider.getInstance().register(this);
         HashMap<String, String> ridesOfferedParams = new HashMap<>();
-        fromLocation = SharedDataUtils.getStringPreference(Constants.Login.FROM_LOCATION, null);
-        toLocation = SharedDataUtils.getStringPreference(Constants.Login.TO_LOCATION, null);
+        /*
+         * object for sharedDateUtils to store and retrieve
+         **/
+        SharedDataUtils sharedPref = new SharedDataUtils(context);
+
+        /*
+         * get the from and to location from shared preferences
+         **/
+        fromLocation = sharedPref.getStringPreferences(Constants.Login.FROM_LOCATION, null);
+        toLocation = sharedPref.getStringPreferences(Constants.Login.To_LOCATION, null);
+
         ridesOfferedParams.put(Constants.RidesOffered.DEPARTURE_POINT, toLocation);
         ridesOfferedParams.put(Constants.RidesOffered.ARRIVAL_POINT, fromLocation);
         new RestClient(mContext).getInstance().get().getRidesOfferedList(ridesOfferedParams).enqueue(new RestCallback<RideOfferedResponse>());
@@ -101,7 +113,7 @@ public class RidesOfferedFragment extends Fragment {
     }
 
     /**
-     * Handle the api response details for rides offered
+     * Handle the api response details
      *
      * @param result Api response
      */

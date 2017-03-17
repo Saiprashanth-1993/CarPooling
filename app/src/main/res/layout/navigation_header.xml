@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="model"
+            type="com.contus.carpooling.dashboard.homepage.model.UserProfile" />
+    </data>
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="180dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
@@ -21,7 +29,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="39dp"
-        android:src="@drawable/ic_navigation_header_profile" />
+        android:src="@drawable/ic_person" />
 
     <TextView
         android:id="@+id/text_navigation_header_username"
@@ -33,7 +41,7 @@
         android:layout_marginTop="8dp"
         android:layout_toEndOf="@+id/image_navigation_header_profile"
         android:layout_toRightOf="@+id/image_navigation_header_profile"
-        android:text="Username"
+        android:text="@{model.username}"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
@@ -45,7 +53,7 @@
         android:layout_alignLeft="@+id/text_navigation_header_username"
         android:layout_alignStart="@+id/text_navigation_header_username"
         android:layout_below="@+id/text_navigation_header_username"
-        android:text="Android developer"
+        android:text="@{model.position}"
         android:textColor="@android:color/white"
         android:textSize="12sp" />
 
@@ -62,15 +70,15 @@
             android:layout_width="10dp"
             android:layout_height="10dp"
             android:src="@drawable/ic_location_white" />
-
         <TextView
             android:id="@+id/text_navigation_header_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="4dp"
-            android:text="Guindy"
+            android:text="@{model.location}"
             android:textColor="@android:color/black"
             android:textSize="12sp" />
     </LinearLayout>
 </RelativeLayout>
+</layout>

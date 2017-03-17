@@ -8,4 +8,5 @@
     <color name="colorLine">#dfdfdf</color>
     <color name="colorBackground">#e4e4e4</color>
     <color name="textViewColor">#333333</color>
+    <color name="white">#fff</color>
 </resources>

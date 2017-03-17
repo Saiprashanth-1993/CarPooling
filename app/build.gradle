@@ -43,11 +43,12 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    compile 'com.android.support:multidex:1.0.0'
 
     // FireBase
     apply plugin: 'com.google.gms.google-services'
 
     compile 'com.google.firebase:firebase-messaging:9.0.1'
 
-    compile 'com.android.support:multidex:1.0.0'
+
 }

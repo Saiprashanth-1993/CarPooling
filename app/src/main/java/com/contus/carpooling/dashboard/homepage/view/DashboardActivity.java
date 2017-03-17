@@ -1,5 +1,6 @@
 /**
  * @category CarPooling
+ * @package com.contus.carpooling.dashboard.homepage.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -22,14 +23,17 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 
 import com.contus.carpooling.R;
+import com.contus.carpooling.dashboard.homepage.model.UserProfile;
 import com.contus.carpooling.dashboard.homepage.viewmodel.DashboardController;
 import com.contus.carpooling.dashboard.homepage.viewmodel.ViewPageListener;
 import com.contus.carpooling.databinding.ActivityDashboardBinding;
+import com.contus.carpooling.databinding.NavigationHeaderBinding;
 import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.notification.view.NotificationActivity;
 import com.contus.carpooling.profile.view.UserProfileFragment;
 import com.contus.carpooling.settings.view.SettingsFragment;
 import com.contus.carpooling.utils.Constants;
+import com.contus.carpooling.utils.SharedDataUtils;
 
 /**
  * Activity to display the ride offer details, my rides and navigation controller.
@@ -51,6 +55,21 @@ public class DashboardActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         activityDashboardBinding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard);
         activityDashboardBinding.setOnClickController(new DashboardController());
+        UserProfile userProfile=new UserProfile();
+        NavigationHeaderBinding drawerHeaderBinding = DataBindingUtil.bind(activityDashboardBinding.navigationView.getHeaderView(0));
+        drawerHeaderBinding.setModel(userProfile);
+
+        /*
+         * object for sharedDateUtils to store and retrieve
+         **/
+        SharedDataUtils sharedPref = new SharedDataUtils(this);
+        /**
+         * Getting user date from stored procedure and sets in navigation drawer
+         */
+        userProfile.setUsername(sharedPref.getStringPreferences(Constants.Login.USERNAME,"Employee Name"));
+        userProfile.setPosition(sharedPref.getStringPreferences(Constants.Login.COMPANY_CATEGORY_ID,"Category"));
+        userProfile.setLocation(sharedPref.getStringPreferences(Constants.Login.COMPANY_LOCATION,"Company Location"));
+
         setSupportActionBar(activityDashboardBinding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -72,24 +91,21 @@ public class DashboardActivity extends AppCompatActivity
                 }
             }
         });
-        displaySelectedScreen(R.id.nav_rides);
+        displaySelectedScreen(R.id.nav_home);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        /**
-         * Inflate the menu; this adds items to the action bar if it is present
-         */
+        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_dashboard, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        /**
-         *Handle action bar item clicks here. The action bar will automatically handle clicks on the Home/Up button,
-         * so long as you specify a parent activity in AndroidManifest.xml
-         */
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_notification) {
             startActivity(new Intent(this, NotificationActivity.class));
@@ -101,9 +117,7 @@ public class DashboardActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        /**
-         *Handle navigation view item clicks here
-         */
+        // Handle navigation view item clicks here.
         displaySelectedScreen(item.getItemId());
         return true;
     }
@@ -116,12 +130,12 @@ public class DashboardActivity extends AppCompatActivity
     private void displaySelectedScreen(int itemId) {
         Fragment fragment = null;
         String fragmentName = null;
-
-        if (itemId == R.id.nav_rides) {
+        if (itemId == R.id.nav_home) {
             activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_dashboard);
             activityDashboardBinding.addNewRide.show();
             fragment = new HomePageFragment();
             fragmentName = Constants.NAME_NAVIGATION_DASHBOARD;
+        } else if (itemId == R.id.nav_rides) {
         } else if (itemId == R.id.nav_profile) {
             activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_my_profile);
             activityDashboardBinding.addNewRide.hide();
@@ -135,9 +149,17 @@ public class DashboardActivity extends AppCompatActivity
         } else if (itemId == R.id.nav_logout) {
             Intent logoutIntent = new Intent(getApplicationContext(), LoginActivity.class);
             logoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            /*
+             * object for sharedDateUtils to store and retrieve
+             **/
+            SharedDataUtils sharedPref = new SharedDataUtils(this);
+            /**
+             * clear the logged in shared preference
+             */
+            sharedPref.clearPreferences(Constants.IS_Logged);
+
             startActivity(logoutIntent);
         }
-
 
         if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
@@ -145,7 +167,6 @@ public class DashboardActivity extends AppCompatActivity
             fragmentManager.beginTransaction().add(R.id.container, fragment)
                     .addToBackStack(fragmentName).commit();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }
@@ -157,9 +178,7 @@ public class DashboardActivity extends AppCompatActivity
         } else if (getFragmentName().equals(Constants.NAME_NAVIGATION_DASHBOARD)) {
             finish();
         } else {
-            /**
-             *Let super handle the back press
-             */
+            // Let super handle the back press
             super.onBackPressed();
         }
     }

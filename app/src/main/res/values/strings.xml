@@ -36,5 +36,31 @@
     <string name="start_time">start_time</string>
     <string name="end_time">end_time</string>
     <string name="phone_number_failure_message">Please enter valid 10 digit phone number</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="login">Login</string>
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="enter_your_company_name">Enter your company name</string>
+    <string name="already_have_an_account">Already have an account ?</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="mobile">Mobile</string>
+    <string name="enter_your_mobile_number">Enter your mobile number</string>
+    <string name="email">Email</string>
+    <string name="enter_your_email_id">Enter your email id</string>
+    <string name="gender_preference">Gender Preference</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="from">From</string>
+    <string name="from_location">From location</string>
+    <string name="to">To</string>
+    <string name="to_location">To location</string>
+    <string name="next">Next</string>
+    <string name="sign_in">Sign in</string>
+    <string name="no_rides_available">No Rides Available</string>
 </resources>
 

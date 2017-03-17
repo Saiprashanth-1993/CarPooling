@@ -14,7 +14,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
     <application
         android:name="com.contus.carpooling.utils.SharedDataUtils"
         android:allowBackup="true"
@@ -25,19 +24,21 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_place_api_key" />
-
+        
+        
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".login.view.LoginActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden">
+        </activity>
         <activity
             android:name=".companyregistration.view.CompanyRegistrationActivity"
             android:windowSoftInputMode="stateHidden" />
