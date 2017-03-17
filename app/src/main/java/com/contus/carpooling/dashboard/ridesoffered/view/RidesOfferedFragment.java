@@ -42,6 +42,7 @@ import static android.content.ContentValues.TAG;
  * @version 1.0
  */
 public class RidesOfferedFragment extends Fragment {
+
     /**
      * Context of an activity
      */
@@ -98,7 +99,6 @@ public class RidesOfferedFragment extends Fragment {
         ridesOfferedParams.put(Constants.RidesOffered.DEPARTURE_POINT, toLocation);
         ridesOfferedParams.put(Constants.RidesOffered.ARRIVAL_POINT, fromLocation);
         new RestClient(mContext).getInstance().get().getRidesOfferedList(ridesOfferedParams).enqueue(new RestCallback<RideOfferedResponse>());
-
     }
 
     /**
@@ -119,6 +119,7 @@ public class RidesOfferedFragment extends Fragment {
      */
     @Subscribe
     public void myListDataReceived(RideOfferedResponse result) {
+
         BusProvider.getInstance().unregister(context);
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {

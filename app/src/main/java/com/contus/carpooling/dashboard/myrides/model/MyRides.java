@@ -8,6 +8,7 @@ package com.contus.carpooling.dashboard.myrides.model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.util.Log;
 
 import com.contus.carpooling.BR;
 import com.google.gson.annotations.Expose;

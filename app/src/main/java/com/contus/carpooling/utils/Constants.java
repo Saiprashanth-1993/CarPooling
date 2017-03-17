@@ -295,7 +295,7 @@ public class Constants {
         /**
          * Constant value USER_NAME for post the name and set the error
          */
-        public static final String USER_NAME = "name";
+        public static final String USER_NAME = "username";
 
         /**
          * constant value USER_EMAIL for post the email and set the error

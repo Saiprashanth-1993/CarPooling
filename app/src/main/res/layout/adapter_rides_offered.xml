@@ -11,6 +11,7 @@
         <variable
             name="rideOfferedDetails"
             type="com.contus.carpooling.dashboard.ridesoffered.model.RidesOfferedDetails" />
+
     </data>
 
     <LinearLayout
@@ -34,10 +35,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:weightSum="3">
 
                     <ImageView
                         android:id="@+id/iv_user_icon"
@@ -46,6 +48,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
+                        android:layout_weight="0.6"
                         android:src="@drawable/ic_person" />
 
                     <LinearLayout
@@ -56,14 +59,15 @@
                         android:layout_toLeftOf="@+id/ll_right_layout"
                         android:layout_toRightOf="@id/iv_user_icon"
                         android:layout_toStartOf="@+id/ll_right_layout"
+                        android:layout_weight="2"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tv_offerer_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-
-                            android:text="Rajesh Kumar (M)"
+                            android:text="@={rideOfferedDetails.name}"
                             android:textSize="14sp" />
 
                         <LinearLayout
@@ -99,37 +103,44 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_weight="0.6"
                         android:gravity="center"
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:weightSum="2">
 
                             <TextView
-                                android:layout_width="60dp"
+                                android:id="@+id/tv_offered_cost"
+                                android:layout_width="40dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="2dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/rounded_corner_blue_boarder"
                                 android:gravity="center"
                                 android:padding="5dp"
-                                android:text="@={rideOfferedDetails.cost}"
+                                android:paddingLeft="5dp"
+                                android:text="@={rideOfferedDetails.rupeeFormat}"
                                 android:textColor="@android:color/white"
-                                android:textSize="12sp" />
+                                android:textSize="12sp"
+                                android:visibility="@{rideOfferedDetails.costVisibility}" />
 
                             <TextView
-                                android:layout_width="60dp"
+                                android:layout_width="40dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="2dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/button_rounded_corner_share"
                                 android:gravity="center"
+                                android:onClick="@{itemClick.bookOnclick()}"
                                 android:padding="5dp"
-                                android:text="Share"
+                                android:text="Book"
                                 android:textColor="@android:color/white"
                                 android:textSize="12sp" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -144,13 +155,14 @@
                                 android:src="@drawable/ic_available_seat" />
 
                             <TextView
+                                android:id="@+id/tv_available_seats"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@={rideOfferedDetails.cost}"
+                                android:text="@={rideOfferedDetails.seats}"
                                 android:textSize="12sp" />
                         </LinearLayout>
                     </LinearLayout>
-                </RelativeLayout>
+                </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -171,12 +183,14 @@
                         android:padding="15dp">
 
                         <TextView
+                            android:id="@+id/tv_arrival_date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@={rideOfferedDetails.arrivalTime}"
+                            android:text="@={rideOfferedDetails.arrivalDate}"
                             android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/tv_arrival_place"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
@@ -186,11 +200,6 @@
                             android:textColor="@color/colorHighLightBlue"
                             android:textSize="18sp" />
 
-                        <!--<TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10: 30 AM"
-                            android:textSize="12sp" />-->
                     </LinearLayout>
 
                     <ImageView
@@ -209,12 +218,14 @@
                         android:padding="15dp">
 
                         <TextView
+                            android:id="@+id/tv_departure_date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@={rideOfferedDetails.departureTime}"
+                            android:text="@={rideOfferedDetails.departureDate}"
                             android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/tv_departure_place"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
@@ -224,11 +235,6 @@
                             android:textColor="@color/colorHighLightBlue"
                             android:textSize="18sp" />
 
-                        <!--<TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10: 30 AM"
-                            android:textSize="12sp" />-->
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

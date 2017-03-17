@@ -7,9 +7,19 @@ package com.contus.carpooling.dashboard.ridesoffered.model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.view.View;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import org.apache.commons.lang3.text.WordUtils;
+
+import java.util.Calendar;
+import java.util.Formatter;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 /**
  * Model class to display and store the rides offered details.
@@ -27,11 +37,26 @@ public class RidesOfferedDetails extends BaseObservable {
     private Integer id;
 
     /**
+     * The name
+     */
+    private String name;
+
+    /**
+     * The email
+     */
+    private String email;
+
+    /**
      * The creatorId
      */
     @SerializedName("creator_id")
     @Expose
     private Integer creatorId;
+
+    /**
+     * The profileImage
+     */
+    private String profileImage;
 
     /**
      * The departurePoint
@@ -55,11 +80,21 @@ public class RidesOfferedDetails extends BaseObservable {
     private String departureTime;
 
     /**
+     * The departureDate from departureTime
+     */
+    private String departureDate;
+
+    /**
      * The arrivalTime
      */
     @SerializedName("arrival_time")
     @Expose
     private String arrivalTime;
+
+    /**
+     * The arrivaldate from arrivaltime
+     */
+    private String arrivalDate;
 
     /**
      * The genderPreference
@@ -103,6 +138,34 @@ public class RidesOfferedDetails extends BaseObservable {
     @Expose
     private String cost;
 
+    /**
+     * The costVisibility
+     */
+    private int costVisibility;
+
+    /**
+     * The cost in ₹
+     */
+    private String rupeeFormat;
+
+    /**
+     * The rideDays
+     */
+    private String rideDays;
+
+    /**
+     * The userInfoList
+     */
+    @SerializedName("user")
+    @Expose
+    private List<User> user = null;
+
+    /**
+     * The ridePreferenceList
+     */
+    @SerializedName("ride_preference")
+    @Expose
+    private List<RidePreference> ridePreference = null;
 
     /**
      * Gets {@see #creatorId}
@@ -167,7 +230,8 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     @Bindable
     public String getDepartureTime() {
-        return departureTime;
+        String[] splited = departureTime.split("\\s+");
+        return splited[1];
     }
 
     /**
@@ -179,9 +243,16 @@ public class RidesOfferedDetails extends BaseObservable {
         this.departureTime = departureTime;
     }
 
+    /**
+     * Gets {@see #arrivalTime}
+     * <p>
+     * Returns the arrivalTime {@link #arrivalTime}
+     */
     @Bindable
     public String getArrivalTime() {
-        return arrivalTime;
+
+        String[] splited = arrivalTime.split("\\s+");
+        return splited[1];
     }
 
     /**
@@ -219,7 +290,8 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     @Bindable
     public String getSeats() {
-        return seats;
+        String seat=seats+" Seats Available";
+        return seat;
     }
 
     /**
@@ -269,13 +341,33 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #type}
+     * Gets {@see #cost}
      * <p>
+     * Returns the cost {@link #cost}
+     */
+    @Bindable
+    public String getCost() {
+        return cost.trim();
+    }
+
+    /**
+     * Sets {@see #cost}
+     *
+     * @param cost (@link #cost}
+     */
+    public void setCost(String cost) {
+        this.cost = cost;
+    }
+
+    /**
+     * Gets {@see #type}
+     * <p> Capital first letter using wordUtils
      * Returns the type {@link #type}
      */
     public String getType() {
-        return type;
+        return WordUtils.capitalizeFully(type);
     }
+
 
     /**
      * Sets {@see #type}
@@ -287,22 +379,231 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #cost}
+     * Gets {@see #arrivalDate} from arrivalTime
      * <p>
-     * Returns the cost {@link #cost}
+     * Returns the arrivalDate
      */
-    @Bindable
-    public String getCost() {
-        return cost;
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public String getArrivalDate() {
+        String[] fullDate = arrivalTime.split("\\s+");
+        String[] dateSpliter = fullDate[0].split("-");
+        String[] timeSpliter = fullDate[1].split(":");
+
+        try (Formatter fmt = new Formatter()) {
+            Calendar cal = new GregorianCalendar(Integer.parseInt(dateSpliter[0]),
+                    Integer.parseInt(dateSpliter[1]),
+                    Integer.parseInt(dateSpliter[2]),
+                    Integer.parseInt(timeSpliter[0]),
+                    Integer.parseInt(timeSpliter[1]));
+            String dateWithsec=""+fmt.format("%td %tB %tr", cal, cal ,cal);
+            StringBuilder dateForm = new StringBuilder();
+            dateForm.append(dateWithsec.substring(0, dateWithsec.length()-6));
+            dateForm.append(dateWithsec.substring(dateWithsec.length()-3,dateWithsec.length()));
+            return dateForm.toString();
+        }
     }
 
     /**
-     * Sets {@see #cost}
+     * Sets {@see #arrivalDate}
      *
-     * @param cost (@link #cost}
+     * @param arrivalDate(@link #arrivalDate}
      */
-    public void setCost(String cost) {
-        this.cost = cost;
+    public void setArrivalDate(String arrivalDate) {
+        this.arrivalDate = arrivalDate;
+    }
+
+    /**
+     * Gets {@see #departureDate}  from departureTime
+     * <p>
+     * Returns the departureDate
+     */
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public String getDepartureDate() {
+        String[] fullDate = departureTime.split("\\s+");
+        String[] dateSpliter = fullDate[0].split("-");
+        String[] timeSpliter = fullDate[1].split(":");
+
+        try (Formatter fmt = new Formatter()) {
+            Calendar cal = new GregorianCalendar(Integer.parseInt(dateSpliter[0]),
+                    Integer.parseInt(dateSpliter[1]),
+                    Integer.parseInt(dateSpliter[2]),
+                    Integer.parseInt(timeSpliter[0]),
+                    Integer.parseInt(timeSpliter[1]));
+
+            String dateWithsec=""+fmt.format("%td %tB %tr", cal, cal ,cal);
+            StringBuilder dateForm = new StringBuilder();
+            dateForm.append(dateWithsec.substring(0, dateWithsec.length()-6));
+            dateForm.append(dateWithsec.substring(dateWithsec.length()-3,dateWithsec.length()));
+            return dateForm.toString();
+        }
+    }
+
+    /**
+     * Sets {@see #arrivalDate}
+     *
+     * @param departureDate(@link #arrivalDate}
+     */
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    /**
+     * Gets {@see #name}
+     * <p>
+     * Returns the name
+     */
+    public String getName() {
+
+        if(genderPreference.trim().equals("male")){
+            return user.get(0).getUsername() + " (M)";
+        }else {
+            return user.get(0).getUsername() + " (F)";
+        }
+    }
+
+    /**
+     * Sets {@see #name}
+     *
+     * @param name(@link #name}
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Gets {@see #costValue} from cost
+     * <p>
+     * Returns the costValue
+     */
+    public int getCostVisibility() {
+        if(Integer.parseInt(cost)>0){
+            return View.VISIBLE;
+        }else {
+            return View.INVISIBLE;
+        }
+    }
+
+    /**
+     * Sets {@see #costVisibility}
+     *
+     * @param costVisibility(@link #costVisibility}
+     */
+    public void setCostVisibility(int costVisibility) {
+        this.costVisibility = costVisibility;
+    }
+
+    /**
+     * Gets {@see #rupeeFormat} from cost
+     * <p>
+     * Returns the costValue
+     */
+    public String getRupeeFormat() {
+        return "₹ "+cost;
+    }
+
+    /**
+     * Sets {@see #rupeeformate}
+     *
+     * @param rupeeFormat(@link #rupeeFormat}
+     */
+    public void setRupeeFormat(String rupeeFormat) {
+        this.rupeeFormat = rupeeFormat;
+    }
+
+    /**
+     * Gets {@see #user}
+     * Returns the user
+     */
+    public List<User> getUser() {
+        return user;
+    }
+
+    /**
+     * Sets {@see #user}
+     *
+     * @param user(@link #user}
+     */
+    public void setUser(List<User> user) {
+        this.user = user;
+    }
+
+    /**
+     * Gets {@see #ridePreference}
+     * Returns the user
+     */
+    public List<RidePreference> getRidePreference() {
+        return ridePreference;
+    }
+
+    /**
+     * Sets {@see #ridePreference}
+     *
+     * @param ridePreference(@link #ridePreference}
+     */
+    public void setRidePreference(List<RidePreference> ridePreference) {
+        this.ridePreference = ridePreference;
+    }
+
+    /**
+     * Gets {@see #email}
+     * Returns the email
+     */
+    public String getEmail() {
+        return user.get(0).getEmail();
+    }
+
+    /**
+     * Sets {@see #email}
+     *
+     * @param email(@link #email}
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Gets {@see #profileImage}
+     * Returns the profileImage
+     */
+    public String getProfileImage() {
+        if (user.get(0).getProfileImage() != null) {
+            return (String) user.get(0).getProfileImage();
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Sets {@see #profileImage}
+     *
+     * @param profileImage(@link #profileImage}
+     */
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
+
+    /**
+     * Gets {@see #rideDays}
+     * Returns the rideDays
+     */
+    public String getRideDays(String day) {
+
+        int numOfDays;
+
+        for (numOfDays = 0; numOfDays < ridePreference.size(); numOfDays++) {
+
+
+        }
+        return rideDays;
+    }
+
+    /**
+     * Sets {@see #rideDays}
+     *
+     * @param rideDays(@link #rideDays}
+     */
+    public void setRideDays(String rideDays) {
+        this.rideDays = rideDays;
     }
 
 

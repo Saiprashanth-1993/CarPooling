@@ -3,7 +3,11 @@
     xmlns:app="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
-    <data />
+    <data >
+        <variable
+            name="itemClick"
+            type="com.contus.carpooling.offeredrideinfo.view.viewmodel.OfferedRidesInformationController" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -150,6 +154,7 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/cv_ride_info"
                     android:layout_below="@+id/cv_profile_info"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
@@ -391,6 +396,29 @@
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cv_ride_info"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    card_view:cardBackgroundColor="@android:color/white"
+                    card_view:cardCornerRadius="25dp"
+                    card_view:cardElevation="0dp">
+
+                    <Button
+                        android:id="@+id/button4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_rounded_corner_border"
+                        android:text="Book"
+                        android:textAllCaps="false"
+                        android:onClick="@{itemClick.bookOnclick}"
+                        android:textColor="@android:color/white" />
+
                 </android.support.v7.widget.CardView>
             </RelativeLayout>
         </ScrollView>
