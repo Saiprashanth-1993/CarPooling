@@ -149,33 +149,7 @@ public class User extends BaseObservable {
     @Expose
     private String rememberToken;
 
-    /**
-     * The isActive
-     */
-    @SerializedName("is_active")
-    @Expose
-    private Integer isActive;
 
-    /**
-     * The createdAt
-     */
-    @SerializedName("created_at")
-    @Expose
-    private String createdAt;
-
-    /**
-     * The updatedAt
-     */
-    @SerializedName("updated_at")
-    @Expose
-    private String updatedAt;
-
-    /**
-     * The deletedAt
-     */
-    @SerializedName("deleted_at")
-    @Expose
-    private Object deletedAt;
 
     /**
      * Gets {@see #id}
@@ -312,6 +286,16 @@ public class User extends BaseObservable {
         return gender;
     }
 
+    public String getFromLocation() {
+        return fromLocation;
+    }
+
+    /**
+     * Sets {@see #fromLocation}
+     *
+     * @param fromLocation(@link #fromLocation}
+     */
+
     /**
      * Sets {@see #gender}
      *
@@ -326,24 +310,8 @@ public class User extends BaseObservable {
      * <p>
      * Returns the fromLocation {@link #fromLocation}
      */
-    public String getFromLocation() {
-        return fromLocation;
-    }
 
-    /**
-     * Sets {@see #fromLocation}
-     *
-     * @param fromLocation(@link #fromLocation}
-     */
-    public void setFromLocation(String fromLocation) {
-        this.fromLocation = fromLocation;
-    }
 
-    /**
-     * Gets {@see #toLocation}
-     * <p>
-     * Returns the toLocation {@link #toLocation}
-     */
     public String getToLocation() {
         return toLocation;
     }
@@ -356,6 +324,16 @@ public class User extends BaseObservable {
     public void setToLocation(String toLocation) {
         this.toLocation = toLocation;
     }
+
+    /**
+     * Gets {@see #toLocation}
+     * <p>
+     * Returns the toLocation {@link #toLocation}
+     */
+    public void setFromLocation(String fromLocation) {
+        this.fromLocation = fromLocation;
+    }
+
 
     /**
      * Gets {@see #age}
@@ -517,78 +495,6 @@ public class User extends BaseObservable {
      */
     public void setRememberToken(String rememberToken) {
         this.rememberToken = rememberToken;
-    }
-
-    /**
-     * Gets {@see #isActive}
-     * <p>
-     * Returns the fromLocation {@link #isActive}
-     */
-    public Integer getIsActive() {
-        return isActive;
-    }
-
-    /**
-     * Sets {@see #isActive}
-     *
-     * @param isActive(@link #isActive}
-     */
-    public void setIsActive(Integer isActive) {
-        this.isActive = isActive;
-    }
-
-    /**
-     * Gets {@see #createdAt}
-     * <p>
-     * Returns the createdAt {@link #createdAt}
-     */
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    /**
-     * Sets {@see #createdAt}
-     *
-     * @param createdAt(@link #createdAt}
-     */
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    /**
-     * Gets {@see #updatedAt}
-     * <p>
-     * Returns the updatedAt {@link #updatedAt}
-     */
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    /**
-     * Sets {@see #updatedAt}
-     *
-     * @param updatedAt(@link #updatedAt}
-     */
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    /**
-     * Gets {@see #deletedAt}
-     * <p>
-     * Returns the deletedAt {@link #deletedAt}
-     */
-    public Object getDeletedAt() {
-        return deletedAt;
-    }
-
-    /**
-     * Sets {@see #deletedAt}
-     *
-     * @param deletedAt(@link #deletedAt}
-     */
-    public void setDeletedAt(Object deletedAt) {
-        this.deletedAt = deletedAt;
     }
 
 }

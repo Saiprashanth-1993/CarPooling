@@ -296,6 +296,9 @@ public class Ride extends BaseObservable implements Parcelable {
     }
 
     public Ride() {
+        /**
+         *  Private constructor for prevent instance.
+         */
     }
 
     protected Ride(Parcel in) {

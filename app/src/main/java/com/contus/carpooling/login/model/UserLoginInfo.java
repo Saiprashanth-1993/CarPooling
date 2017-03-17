@@ -255,12 +255,6 @@ public class UserLoginInfo extends BaseObservable {
         return mobile;
     }
 
-    /**
-     * Sets {@link #mobile}
-     */
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
 
     /**
      * Gets {@see #gender}.
@@ -279,13 +273,13 @@ public class UserLoginInfo extends BaseObservable {
     }
 
     /**
-     * Gets {@see #fromLocation}.
-     *
-     * @return {@link #fromLocation}
+     * Sets {@link #mobile}
      */
-    public String getFromLocation() {
-        return fromLocation;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
+
+
 
     /**
      * Sets {@link #fromLocation}
@@ -302,6 +296,16 @@ public class UserLoginInfo extends BaseObservable {
     public String getToLocation() {
         return toLocation;
     }
+
+    /**
+     * Gets {@see #fromLocation}.
+     *
+     * @return {@link #fromLocation}
+     */
+    public String getFromLocation() {
+        return fromLocation;
+    }
+
 
     /**
      * Sets {@link #toLocation}

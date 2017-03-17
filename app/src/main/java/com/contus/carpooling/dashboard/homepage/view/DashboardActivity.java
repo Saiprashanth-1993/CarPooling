@@ -59,16 +59,12 @@ public class DashboardActivity extends AppCompatActivity
         NavigationHeaderBinding drawerHeaderBinding = DataBindingUtil.bind(activityDashboardBinding.navigationView.getHeaderView(0));
         drawerHeaderBinding.setModel(userProfile);
 
-        /*
-         * object for sharedDateUtils to store and retrieve
-         **/
-        SharedDataUtils sharedPref = new SharedDataUtils(this);
         /**
          * Getting user date from stored procedure and sets in navigation drawer
          */
-        userProfile.setUsername(sharedPref.getStringPreferences(Constants.Login.USERNAME,"Employee Name"));
-        userProfile.setPosition(sharedPref.getStringPreferences(Constants.Login.COMPANY_CATEGORY_ID,"Category"));
-        userProfile.setLocation(sharedPref.getStringPreferences(Constants.Login.COMPANY_LOCATION,"Company Location"));
+        userProfile.setUsername(SharedDataUtils.getStringPreference(Constants.Login.USER_NAME,"Employee Name"));
+        userProfile.setPosition(SharedDataUtils.getStringPreference(Constants.Login.COMPANY_CATEGORY_ID,"Category"));
+        userProfile.setLocation(SharedDataUtils.getStringPreference(Constants.Login.COMPANY_LOCATION,"Company Location"));
 
         setSupportActionBar(activityDashboardBinding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -127,7 +123,7 @@ public class DashboardActivity extends AppCompatActivity
      *
      * @param itemId Selected  id.
      */
-    private void displaySelectedScreen(int itemId) {
+    public void displaySelectedScreen(int itemId) {
         Fragment fragment = null;
         String fragmentName = null;
         if (itemId == R.id.nav_home) {
@@ -135,8 +131,7 @@ public class DashboardActivity extends AppCompatActivity
             activityDashboardBinding.addNewRide.show();
             fragment = new HomePageFragment();
             fragmentName = Constants.NAME_NAVIGATION_DASHBOARD;
-        } else if (itemId == R.id.nav_rides) {
-        } else if (itemId == R.id.nav_profile) {
+        }  else if (itemId == R.id.nav_profile) {
             activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_my_profile);
             activityDashboardBinding.addNewRide.hide();
             fragment = new UserProfileFragment();
@@ -149,14 +144,11 @@ public class DashboardActivity extends AppCompatActivity
         } else if (itemId == R.id.nav_logout) {
             Intent logoutIntent = new Intent(getApplicationContext(), LoginActivity.class);
             logoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            /*
-             * object for sharedDateUtils to store and retrieve
-             **/
-            SharedDataUtils sharedPref = new SharedDataUtils(this);
+
             /**
              * clear the logged in shared preference
              */
-            sharedPref.clearPreferences(Constants.IS_Logged);
+            SharedDataUtils.clearPreferences();
 
             startActivity(logoutIntent);
         }

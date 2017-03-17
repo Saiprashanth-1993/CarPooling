@@ -29,10 +29,7 @@ public class UserProfileInfo extends BaseObservable {
     @Expose
     private String profileImage;
 
-    /**
-     * Image selected type as front.
-     */
-    private String imageSelectedType;
+
 
     /**
      * Username of the user.

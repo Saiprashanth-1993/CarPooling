@@ -71,6 +71,14 @@ public class MyRides extends BaseObservable implements Parcelable {
     private String gender;
 
     /**
+     * The type
+     */
+    @SerializedName("type")
+    @Expose
+    private String type;
+
+
+    /**
      * The seats
      */
     @SerializedName("seats")
@@ -84,19 +92,6 @@ public class MyRides extends BaseObservable implements Parcelable {
     @Expose
     private String vehicleType;
 
-    /**
-     * The deapture time
-     */
-    @SerializedName("is_every_weeks")
-    @Expose
-    private Integer isEveryWeeks;
-
-    /**
-     * The type
-     */
-    @SerializedName("type")
-    @Expose
-    private String type;
 
     /**
      * The cost
@@ -104,6 +99,15 @@ public class MyRides extends BaseObservable implements Parcelable {
     @SerializedName("cost")
     @Expose
     private String cost;
+
+
+    /**
+     * The deapture time
+     */
+    @SerializedName("is_every_weeks")
+    @Expose
+    private Integer isEveryWeeks;
+
 
 
     /**
@@ -303,7 +307,8 @@ public class MyRides extends BaseObservable implements Parcelable {
      */
 //    @Bindable
     public String getCost() {
-        if (TextUtils.equals("0", cost)) return "Free";
+        if (TextUtils.equals("0", cost))
+            return "Free";
         return cost;
     }
 
@@ -338,6 +343,9 @@ public class MyRides extends BaseObservable implements Parcelable {
     }
 
     public MyRides() {
+        /**
+         *  Private constructor for prevent instance.
+         */
     }
 
     protected MyRides(Parcel in) {

@@ -8,24 +8,16 @@ package com.contus.carpooling.changepassword.viewmodel;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.contus.carpooling.changepassword.model.ChangePasswordModel;
 import com.contus.carpooling.changepassword.model.ChangePasswordResponse;
-import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
-import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
-import com.contus.carpooling.server.BusProvider;
-import com.contus.carpooling.server.RestCallback;
+
 import com.contus.carpooling.server.RestClient;
-import com.contus.carpooling.settings.view.SettingsFragment;
-import com.contus.carpooling.utils.CommonUtils;
+
 import com.contus.carpooling.utils.Constants;
-import com.contus.carpooling.utils.CustomUtils;
-import com.squareup.otto.Subscribe;
 
 import java.util.HashMap;
 
@@ -57,7 +49,7 @@ public class ChangePasswordController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Context context = view.getContext();
+                context = view.getContext();
                 if (isValid(context, getchangePasswordValues.getCurrentPassword(), getchangePasswordValues.getNewPassword(), getchangePasswordValues.getConfirmPassword()))
                     changePasswordRequest(getchangePasswordValues,context);
             }
@@ -73,7 +65,7 @@ public class ChangePasswordController {
      * @param confirmPassword Validate the confirm password edit text.
      * @return true if the validation success.
      */
-    private boolean isValid(Context context, String currentPassword, String newPassword, String confirmPassword) {
+    public boolean isValid(Context context, String currentPassword, String newPassword, String confirmPassword) {
         boolean validStatus;
         if (TextUtils.isEmpty(currentPassword)) {
             validStatus = false;

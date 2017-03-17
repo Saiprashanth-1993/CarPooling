@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.contus.carpooling.R;
-import com.contus.carpooling.addnewride.model.Ride;
 import com.contus.carpooling.addnewride.view.RegisterNewRidesActivity;
 import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
 import com.contus.carpooling.dashboard.myrides.model.MyRides;
@@ -182,8 +181,5 @@ public class DashboardController {
         };
     }
 
-    public boolean type(String type){
 
-        return true;
-    }
 }
