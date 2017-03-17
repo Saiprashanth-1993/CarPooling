@@ -162,6 +162,12 @@ public class LoginController implements ApiService.OnTaskCompleted {
                 UserLoginInfo userResult = result.login;
 
                 /**
+                 * saving user logged_in state in shared preference
+                 */
+                SharedDataUtils.storeBooleanPreferences(Constants.IS_Logged,true);
+
+
+                /**
                  * Login id and email id stored into share preference
                  */
                 SharedDataUtils.storeStringPreferences(Constants.Login.LOGIN_ID, userResult.getId());
