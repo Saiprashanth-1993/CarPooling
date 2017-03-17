@@ -9,6 +9,8 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.contus.carpooling.BR;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Model class is used to get and store the user profile details.
@@ -18,49 +20,81 @@ import com.contus.carpooling.BR;
  */
 public class UserProfileInfo extends BaseObservable {
 
+
+
     /**
      * Username of the user.
      */
+    @SerializedName("profile_image")
+    @Expose
+    private String profileImage;
+
+    /**
+     * Image selected type as front.
+     */
+    private String imageSelectedType;
+
+    /**
+     * Username of the user.
+     */
+    @SerializedName("username")
+    @Expose
     private String userName;
 
     /**
      * Team name of the user.
      */
+    @SerializedName("company_category_id")
+    @Expose
     private String userTeamName;
 
     /**
      * Mail id of the user.
      */
+//    @SerializedName("email")
+//    @Expose
     private String userMail;
 
     /**
      * Get the phone number of the user.
      */
+    @SerializedName("mobile")
+    @Expose
     private String userPhone;
 
     /**
      * Address of the user.
      */
+    @SerializedName("from_location")
+    @Expose
     private String userAddress;
 
     /**
      * Location of the user.
      */
+    @SerializedName("to_location")
+    @Expose
     private String userLocation;
 
     /**
      * Vehicle type of the user.
      */
+    @SerializedName("vehicle_type")
+    @Expose
     private String userVehicleType;
 
     /**
      * Vehicle name of the user.
      */
+    @SerializedName("vehicle_name")
+    @Expose
     private String userVehicleName;
 
     /**
      * Vehicle number of the user.
      */
+    @SerializedName("vehicle_no")
+    @Expose
     private String userVehicleNum;
 
     /**
@@ -93,7 +127,7 @@ public class UserProfileInfo extends BaseObservable {
      */
     @Bindable
     public String getUserTeamName() {
-        return userTeamName;
+        return String.valueOf(userTeamName);
     }
 
     /**
@@ -102,6 +136,16 @@ public class UserProfileInfo extends BaseObservable {
     public void setUserTeamName(String userTeamName) {
         this.userTeamName = userTeamName;
         notifyPropertyChanged(BR.userTeamName);
+    }
+
+    @Bindable
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+        notifyPropertyChanged(BR.profileImage);
     }
 
     /**
@@ -147,7 +191,7 @@ public class UserProfileInfo extends BaseObservable {
      */
     @Bindable
     public String getUserPhone() {
-        return userPhone;
+        return String.valueOf(userPhone);
     }
 
     /**

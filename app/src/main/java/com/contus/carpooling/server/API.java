@@ -13,6 +13,8 @@ import com.contus.carpooling.dashboard.myrides.model.MyRidesResponse;
 import com.contus.carpooling.dashboard.ridesoffered.model.RideOfferedResponse;
 import com.contus.carpooling.employeedetails.model.EmployeeDetailsResponse;
 import com.contus.carpooling.login.model.UserLoginResponse;
+import com.contus.carpooling.profile.model.UserProfileInfo;
+import com.contus.carpooling.profile.model.UserProfileResponse;
 import com.contus.carpooling.userregistration.model.UserRegistrationResponse;
 
 import java.util.Map;
@@ -85,6 +87,23 @@ public interface API {
     /**
      * Authenticate the user with their login credentials
      *
+     * @return {@link UserProfileInfo}
+     */
+    @GET("getprofile")
+    Call<UserProfileResponse> getProfile();
+
+    /**
+     * Authenticate the user with their login credentials
+     *
+     * @return {@link UserProfileInfo}
+     */
+    @POST("updateprofile")
+    Call<UserProfileResponse> setProfile(@Body Map<String,String> paramerters);
+
+
+    /**
+     * Authenticate the user with their login credentials
+     *
      * @return {@link UserLoginResponse}
      */
     @POST("ridelist")
@@ -114,8 +133,5 @@ public interface API {
      */
     @POST("displayrides")
     Call<RideOfferedResponse> getRidesOfferedList(@Body Map<String,String> paramerters);
-
-
-
 
 }

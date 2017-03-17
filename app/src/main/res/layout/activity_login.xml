@@ -42,7 +42,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
-                android:text="@string/email"
+                android:text="Username"
                 android:textAllCaps="true"
                 android:textColor="@color/textViewColor"
                 android:textSize="12sp" />
@@ -68,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
-                    android:hint="@string/enter_your_email"
+                    android:hint="Enter your name"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:paddingLeft="5dp"
@@ -87,7 +87,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
-                android:text="@string/password"
+                android:text="Password"
                 android:textAllCaps="true"
                 android:textColor="@color/textViewColor"
                 android:textSize="12sp" />
@@ -114,10 +114,10 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:fontFamily="sans-serif"
-                    android:hint="@string/enter_your_password"
+                    android:hint="Enter your password"
                     android:inputType="textPassword"
                     android:paddingLeft="5dp"
-                    android:maxLines="1"
+                    android:singleLine="true"
                     android:text="@={UserDetails.password}"
                     android:textColorHint="@color/colorEditTextHint"
                     android:textSize="14sp" />
@@ -133,7 +133,7 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"
                 android:gravity="end"
-                android:text="@string/forgot_password"
+                android:text="Forgot password?"
                 android:textColor="@color/colorHighLightBlue"
                 android:textSize="16sp" />
 
@@ -147,7 +147,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button_rounded_corner_border"
                 android:onClick="@{ViewController.btnLoginClick(UserDetails)}"
-                android:text="@string/login"
+                android:text="Login"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
@@ -164,7 +164,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/dont_have_an_account"
+                    android:text="Don't have an account?"
                     android:textSize="16sp" />
 
                 <android.support.v7.widget.AppCompatTextView
@@ -172,7 +172,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="@{ViewController.btnSignInOnClick}"
-                    android:text="@string/sign_up"
+                    android:text=" Sign up"
                     android:textColor="@color/colorHighLightBlue"
                     android:textSize="16sp" />
             </LinearLayout>

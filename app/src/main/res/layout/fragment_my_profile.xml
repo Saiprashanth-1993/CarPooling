@@ -53,6 +53,8 @@
                             android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
                             android:layout_gravity="center"
+                            android:enabled="@{UserProfile.isToEditOrSave? true: false}"
+                            android:onClick="@{ViewController.profileClick()}"
                             android:src="@drawable/ic_person" />
 
                         <android.support.v7.widget.AppCompatEditText
@@ -211,7 +213,7 @@
                                     android:layout_toRightOf="@+id/iv_loc_icon"
                                     android:background="@android:color/transparent"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
-                                    android:singleLine="true"
+                                    android:maxLines="1"
                                     android:text="@={UserProfile.userLocation}"
                                     android:textSize="14sp" />
                             </RelativeLayout>
@@ -256,7 +258,7 @@
                                     android:textColor="@android:color/background_dark"
                                     android:textSize="14sp" />
 
-                                <android.support.v7.widget.AppCompatEditText
+                                <android.support.v7.widget.AppCompatSpinner
                                     android:id="@+id/tv_vehicle_type_val"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -265,8 +267,9 @@
                                     android:background="@android:drawable/screen_background_light_transparent"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                     android:singleLine="true"
-                                    android:text="@={UserProfile.userVehicleType}"
-                                    android:textSize="14sp" />
+                                    android:textSize="14sp"
+                                    />
+                                <!--android:text="@={UserProfile.userVehicleType}"-->
                             </RelativeLayout>
 
                             <RelativeLayout

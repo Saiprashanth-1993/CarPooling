@@ -44,7 +44,7 @@ public class CompanyRegistrationInfo extends BaseObservable {
      * @return {@link #companyName}
      */
     @Bindable
-    public String getCompanyName() {
+    public String  getCompanyName() {
         return companyName;
     }
 

@@ -48,7 +48,7 @@ public class ErrorResponse {
      * 
      * Returns the error {@link #error}
      */
-    public boolean getError() {
+    public Boolean getError() {
         return error;
     }
 

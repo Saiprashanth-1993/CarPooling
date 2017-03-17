@@ -30,6 +30,10 @@
         <item>8</item>
         <item>9</item>
     </string-array>
+    <string-array name="vehicle_type">
+        <item>2 Wheeler</item>
+        <item>4 Wheeler</item>
+    </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="txt_delay">DELAY</string>

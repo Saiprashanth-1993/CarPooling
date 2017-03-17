@@ -475,6 +475,67 @@ public class Constants {
         }
     }
 
+    /**
+     * Constants for profile class
+     */
+    public static final class UserProfile {
+
+        public static final String PROFILE_DETAILS_RESPONSE="response";
+
+        /**
+         * Constant value set from response
+         */
+        public static final String USERNAME="username";
+        /***
+         * Constant value set from response
+         */
+        public static final String TEAM_NAME="company_category_id";
+        /**
+         * Constant value set from response
+         */
+        public static final String USER_EMAIL_ID="email";
+        /**
+         * Constant value set from response
+         */
+        public static final String MOBILE="mobile";
+
+        /***
+         * Constant value set from response
+         */
+        public static final String ADDRESS="from_location";
+
+        /***
+         * Constant value set from response
+         */
+        public static final String USER_LOCATION="to_location";
+        /***
+         * Constant value set from response
+         */
+        public static final String PROFILE_IMAGE="profile_image";
+
+        /***
+         * Constant value set from response
+         */
+        public static final String VEHICLE_TYPE="to_location";
+
+        /***
+         * Constant value set from response
+         */
+        public static final String VEHICLE_NAME="to_location";
+
+        /***
+         * Constant value set from response
+         */
+        public static final String VEHICLE_NUMBER="to_location";
+
+        /**
+         * Instantiates a new constants.
+         */
+        private UserProfile() {
+            //Private constructor for prevent instance.
+        }
+    }
+
 
     /**
      * Create the ride
