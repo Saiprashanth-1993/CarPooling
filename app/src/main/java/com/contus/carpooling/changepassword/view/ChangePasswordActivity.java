@@ -1,19 +1,30 @@
 /**
  * @category CarPooling
+ * @package com.contus.carpooling.changepassword.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.changepassword.view;
 
 import android.databinding.DataBindingUtil;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.changepassword.model.ChangePasswordModel;
+import com.contus.carpooling.changepassword.model.ChangePasswordResponse;
 import com.contus.carpooling.changepassword.viewmodel.ChangePasswordController;
+import com.contus.carpooling.dashboard.myrides.model.MyRides;
+import com.contus.carpooling.dashboard.myrides.view.MyRidesAdapter;
 import com.contus.carpooling.databinding.ActivityChangePasswordBinding;
+import com.contus.carpooling.server.BusProvider;
+import com.contus.carpooling.utils.CommonUtils;
+import com.contus.carpooling.utils.CustomUtils;
+import com.squareup.otto.Subscribe;
+
+import java.util.List;
 
 /**
  * Activity to change the password.
@@ -37,9 +48,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        /**
-         *  handle toolbar arrow click action
-         */
+        // handle toolbar arrow click action
         if (item.getItemId() == android.R.id.home) {
             finish();
         }

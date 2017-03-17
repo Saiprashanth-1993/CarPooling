@@ -1,5 +1,6 @@
 /**
  * @category CarPooling
+ * @package com.contus.carpooling.changepassword.viewmodel
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -7,6 +8,7 @@ package com.contus.carpooling.changepassword.viewmodel;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -14,9 +16,12 @@ import android.widget.Toast;
 
 import com.contus.carpooling.changepassword.model.ChangePasswordModel;
 import com.contus.carpooling.changepassword.model.ChangePasswordResponse;
+import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
+import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
 import com.contus.carpooling.server.BusProvider;
 import com.contus.carpooling.server.RestCallback;
 import com.contus.carpooling.server.RestClient;
+import com.contus.carpooling.settings.view.SettingsFragment;
 import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.CustomUtils;
@@ -25,8 +30,8 @@ import com.squareup.otto.Subscribe;
 import java.util.HashMap;
 
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.PUT;
 
 /**
  * Controller of the ChangePassword class.
@@ -36,14 +41,12 @@ import retrofit2.http.PUT;
  * @version 1.0
  */
 public class ChangePasswordController {
-
-    private Context context;
+    Context context;
     private Activity activity;
 
-    public ChangePasswordController(Activity activity) {
-        this.activity = activity;
+    public ChangePasswordController(Activity activity){
+        this.activity=activity;
     }
-
     /**
      * OnClick handler of the change password button.
      *
@@ -54,9 +57,9 @@ public class ChangePasswordController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context = view.getContext();
+                Context context = view.getContext();
                 if (isValid(context, getchangePasswordValues.getCurrentPassword(), getchangePasswordValues.getNewPassword(), getchangePasswordValues.getConfirmPassword()))
-                    changePasswordRequest(getchangePasswordValues, context);
+                    changePasswordRequest(getchangePasswordValues,context);
             }
         };
     }
@@ -81,6 +84,12 @@ public class ChangePasswordController {
         } else if (TextUtils.isEmpty(confirmPassword)) {
             validStatus = false;
             Toast.makeText(context, "Please enter the confirm password", Toast.LENGTH_SHORT).show();
+        } else if(newPassword.length()<6){
+            validStatus=false;
+            Toast.makeText(context, "New password should be minimum of 6 character!", Toast.LENGTH_SHORT).show();
+        }else if(confirmPassword.length()<6){
+            validStatus=false;
+            Toast.makeText(context, "Confirm password should be minimum of 6 character!", Toast.LENGTH_SHORT).show();
         } else if (!newPassword.equals(confirmPassword)) {
             validStatus = false;
             Toast.makeText(context, "Password does not match", Toast.LENGTH_SHORT).show();
@@ -90,35 +99,31 @@ public class ChangePasswordController {
         return validStatus;
     }
 
+
     /**
      *
      * @param getchangePasswordValues
      */
-    private void changePasswordRequest(ChangePasswordModel getchangePasswordValues, Context mContext) {
+    private void changePasswordRequest(ChangePasswordModel getchangePasswordValues, final Context mContext) {
         HashMap<String, String> params = new HashMap<>();
-        params.put("password", getchangePasswordValues.getCurrentPassword());
-        params.put("new_password", getchangePasswordValues.getNewPassword());
-        params.put("confirm_password", getchangePasswordValues.getConfirmPassword());
-        new RestClient(mContext).getInstance().get().changePassword(params).enqueue(new RestCallback<ChangePasswordResponse>());
-    }
-
-    @Subscribe
-    public void onBusCallBack(ChangePasswordResponse result) {
-        BusProvider.getInstance().unregister(context);
-        if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
-            if (CommonUtils.isSuccess(result.getSuccess())) {
-                Toast.makeText(context, result.getMessage(), Toast.LENGTH_SHORT).show();
-                activity.onBackPressed();
-            } else {
-                CustomUtils.showToast(context, result.getMessage());
-                Log.e("Error Message",result.getMessage());
+        params.put(Constants.ChangePassword.PASSWORD, getchangePasswordValues.getCurrentPassword());
+        params.put(Constants.ChangePassword.NEW_PASSWORD, getchangePasswordValues.getNewPassword());
+        params.put(Constants.ChangePassword.CONFORM_PASSWORD, getchangePasswordValues.getConfirmPassword());
+        new RestClient(mContext).getInstance().get().changePassword(params).enqueue(new Callback<ChangePasswordResponse>() {
+            @Override
+            public void onResponse(Call<ChangePasswordResponse> call, Response<ChangePasswordResponse> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(mContext, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    if (!TextUtils.equals("Password is invalid", response.body().getMessage())) {
+                        activity.onBackPressed();
+                    }
+                }
             }
-        }
-    }
 
-    @Subscribe
-    public void onBusCallBack(String errorMessage) {
-        BusProvider.getInstance().unregister(context);
-        CustomUtils.showToast(context, errorMessage);
+            @Override
+            public void onFailure(Call<ChangePasswordResponse> call, Throwable t) {
+                Toast.makeText(mContext, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

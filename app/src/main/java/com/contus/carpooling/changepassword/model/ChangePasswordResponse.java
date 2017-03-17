@@ -1,17 +1,22 @@
 package com.contus.carpooling.changepassword.model;
 
 import com.contus.carpooling.login.model.ErrorResponse;
-import com.contus.carpooling.userregistration.model.UserRegistrationInfo;
 import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.SerializedName;
 
 /**
+ * The model class to get the password change information from the response
  *
+ * @author Contus Team <developers@contus.in>
+ * @version 2.3
  */
+
 public class ChangePasswordResponse extends ErrorResponse {
+
     /**
-     * Get the response from the API set into model
+     * The changepassword response set into model.
      */
-    @SerializedName(Constants.ChangePassword.ON_CLICK_CONTROLLER)
-    public ChangePasswordInfo changePasswordAPIResponse;
+    @SerializedName(Constants.ChangePassword.RESPONSE)
+    public ChangePasswordInfo password;
+
 }

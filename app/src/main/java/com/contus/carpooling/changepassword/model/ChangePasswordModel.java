@@ -5,6 +5,7 @@
  */
 package com.contus.carpooling.changepassword.model;
 
+import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
@@ -30,6 +31,9 @@ public class ChangePasswordModel extends BaseObservable {
      * Confirm password of the user.
      */
     private String confirmPassword;
+
+
+
 
     /**
      * Gets {@see #currentPassword}.
