@@ -675,4 +675,21 @@ public class Constants {
              */
         }
     }
+
+    /**
+     * Change Password constants
+     */
+    public static final class ChangePassword{
+
+        public static final String ERROR = "error";
+        public static final String STATUS_CODE = "statuscode";
+        public static final String MESSAGE = "message";
+        public static final String RESPONSE = "response";
+
+        public static final String ON_CLICK_CONTROLLER = "onClickController";
+        public static final String OLD_PASSWORD ="departure_point";
+        public static final String  NEW_PASSWORD ="arrival_point";
+        public static final String CONFIRM_PASSWORD = "";
+    }
+
 }

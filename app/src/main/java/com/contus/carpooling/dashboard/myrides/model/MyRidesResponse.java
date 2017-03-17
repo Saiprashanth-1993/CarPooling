@@ -44,4 +44,5 @@ public class MyRidesResponse extends ErrorResponse {
     public void setData(List<MyRides> data) {
         this.data = data;
     }
+
 }

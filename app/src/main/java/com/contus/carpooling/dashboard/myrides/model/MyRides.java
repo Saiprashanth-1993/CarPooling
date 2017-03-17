@@ -1,5 +1,6 @@
 /**
  * @category Car Pooling
+ * @package com.contus.carpooling.login.model
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -8,11 +9,16 @@ package com.contus.carpooling.dashboard.myrides.model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.util.Log;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 import com.contus.carpooling.BR;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+
 
 /**
  * MyRides model class store all the details of ride list into the myrides
@@ -20,7 +26,7 @@ import com.google.gson.annotations.SerializedName;
  * @author Contus Team <developers@contus.in>
  * @version 2.3
  */
-public class MyRides extends BaseObservable {
+public class MyRides extends BaseObservable implements Parcelable {
 
     /**
      * Get the id of rides
@@ -30,12 +36,18 @@ public class MyRides extends BaseObservable {
     private Integer id;
 
     /**
+     * Get the departurePoint
+     */
+    @SerializedName("departure_point")
+    @Expose
+    private String departurePoint;
+
+    /**
      * The arrivalPoint
      */
     @SerializedName("arrival_point")
     @Expose
     private String arrivalPoint;
-
 
     /**
      * The departureTime
@@ -45,12 +57,11 @@ public class MyRides extends BaseObservable {
     private String departureTime;
 
     /**
-     * Get the departurePoint
+     * The arrivalTime
      */
-    @SerializedName("departure_point")
+    @SerializedName("arrival_time")
     @Expose
-    private String departurePoint;
-
+    private String arrivalTime;
 
     /**
      * The gender
@@ -59,22 +70,6 @@ public class MyRides extends BaseObservable {
     @Expose
     private String gender;
 
-
-    /**
-     * The arrivalTime
-     */
-    @SerializedName("arrival_time")
-    @Expose
-    private String arrivalTime;
-
-    /**
-     * The vehicleType
-     */
-    @SerializedName("vehicle_type")
-    @Expose
-    private String vehicleType;
-
-
     /**
      * The seats
      */
@@ -82,6 +77,12 @@ public class MyRides extends BaseObservable {
     @Expose
     private String seats;
 
+    /**
+     * The vehicleType
+     */
+    @SerializedName("vehicle_type")
+    @Expose
+    private String vehicleType;
 
     /**
      * The deapture time
@@ -144,6 +145,7 @@ public class MyRides extends BaseObservable {
      * Returns the arrivalPoint {@link #arrivalPoint}
      */
     @Bindable
+    @NonNull
     public String getArrivalPoint() {
         return arrivalPoint;
     }
@@ -280,7 +282,7 @@ public class MyRides extends BaseObservable {
      */
     @Bindable
     public String getType() {
-        return cost;
+        return type;
     }
 
     /**
@@ -299,8 +301,9 @@ public class MyRides extends BaseObservable {
      * <p>
      * Returns the error {@link #cost}
      */
-    @Bindable
+//    @Bindable
     public String getCost() {
+        if (TextUtils.equals("0", cost)) return "Free";
         return cost;
     }
 
@@ -313,4 +316,53 @@ public class MyRides extends BaseObservable {
         this.cost = cost;
         notifyPropertyChanged(BR.cost);
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
+        dest.writeString(this.departurePoint);
+        dest.writeString(this.arrivalPoint);
+        dest.writeString(this.departureTime);
+        dest.writeString(this.arrivalTime);
+        dest.writeString(this.gender);
+        dest.writeString(this.seats);
+        dest.writeString(this.vehicleType);
+        dest.writeValue(this.isEveryWeeks);
+        dest.writeString(this.type);
+        dest.writeString(this.cost);
+    }
+
+    public MyRides() {
+    }
+
+    protected MyRides(Parcel in) {
+        this.id = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.departurePoint = in.readString();
+        this.arrivalPoint = in.readString();
+        this.departureTime = in.readString();
+        this.arrivalTime = in.readString();
+        this.gender = in.readString();
+        this.seats = in.readString();
+        this.vehicleType = in.readString();
+        this.isEveryWeeks = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.type = in.readString();
+        this.cost = in.readString();
+    }
+
+    public static final Parcelable.Creator<MyRides> CREATOR = new Parcelable.Creator<MyRides>() {
+        @Override
+        public MyRides createFromParcel(Parcel source) {
+            return new MyRides(source);
+        }
+
+        @Override
+        public MyRides[] newArray(int size) {
+            return new MyRides[size];
+        }
+    };
 }

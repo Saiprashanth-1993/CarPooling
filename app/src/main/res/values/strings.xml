@@ -66,5 +66,6 @@
     <string name="next">Next</string>
     <string name="sign_in">Sign in</string>
     <string name="no_rides_available">No Rides Available</string>
+    <string name="change_ride">Update ride</string>
 </resources>
 

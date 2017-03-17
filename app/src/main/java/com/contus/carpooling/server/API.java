@@ -7,14 +7,13 @@
 package com.contus.carpooling.server;
 
 import com.contus.carpooling.addnewride.model.CreateRideResponse;
+import com.contus.carpooling.changepassword.model.ChangePasswordResponse;
 import com.contus.carpooling.companyregistration.model.CompanyListResponse;
 import com.contus.carpooling.companyregistration.model.CompanyRegistrationResponse;
 import com.contus.carpooling.dashboard.myrides.model.MyRidesResponse;
 import com.contus.carpooling.dashboard.ridesoffered.model.RideOfferedResponse;
 import com.contus.carpooling.employeedetails.model.EmployeeDetailsResponse;
 import com.contus.carpooling.login.model.UserLoginResponse;
-import com.contus.carpooling.profile.model.UserProfileInfo;
-import com.contus.carpooling.profile.model.UserProfileResponse;
 import com.contus.carpooling.userregistration.model.UserRegistrationResponse;
 
 import java.util.Map;
@@ -81,25 +80,8 @@ public interface API {
      * @param customerId The user id
      * @return {@link UserLoginResponse}
      */
-    @GET("profile{user_id}")
+    @GET("profile/{user_id}")
     Call<UserLoginResponse> getProfile(@Path("user_id") String customerId);
-
-    /**
-     * Authenticate the user with their login credentials
-     *
-     * @return {@link UserProfileInfo}
-     */
-    @GET("getprofile")
-    Call<UserProfileResponse> getProfile();
-
-    /**
-     * Authenticate the user with their login credentials
-     *
-     * @return {@link UserProfileInfo}
-     */
-    @POST("updateprofile")
-    Call<UserProfileResponse> setProfile(@Body Map<String,String> paramerters);
-
 
     /**
      * Authenticate the user with their login credentials
@@ -134,4 +116,29 @@ public interface API {
     @POST("displayrides")
     Call<RideOfferedResponse> getRidesOfferedList(@Body Map<String,String> paramerters);
 
+    /**
+     * Changes user password
+     *
+     * @return {@link UserLoginResponse}
+     */
+    @POST("changepassword")
+    Call<ChangePasswordResponse> changePassword(@Body Map<String,String> paramerters);
+
+    /**
+     *
+     * @param customerId
+     * @param parameters
+     * @return
+     */
+    @POST("rides/{ride_id}")
+    Call<CreateRideResponse> editRide(@Path("ride_id") String customerId, @Body Map<String, String> parameters);
+
+    /**
+     *
+     * @param customerId
+     * @param parameters
+     * @return
+     */
+    @GET("deleteride/{ride_id}")
+    Call<CreateRideResponse> deleteRide(@Path("ride_id") String customerId, @Body Map<String, String> parameters);
 }

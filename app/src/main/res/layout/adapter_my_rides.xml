@@ -130,7 +130,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/rounded_corner_my_ride_edit"
-                        android:onClick="@{editRideOnClick.rideEditOnClick()}"
+                        android:onClick="@{editRideOnClick.rideEditOnClick(myRides)}"
                         android:paddingBottom="10dp"
                         android:paddingLeft="25dp"
                         android:paddingRight="25dp"
@@ -263,7 +263,7 @@
                             android:layout_height="wrap_content"
                             android:text="@={myRides.cost}"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="12sp" />
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -271,7 +271,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
+                        android:gravity="end"
                         android:onClick="@{editRideOnClick.showDelayDialog()}">
 
                         <TextView

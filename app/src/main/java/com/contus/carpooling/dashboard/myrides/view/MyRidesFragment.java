@@ -73,7 +73,6 @@ public class MyRidesFragment extends Fragment {
     private void myRideListRequest(Context mContext) {
         BusProvider.getInstance().register(this);
         new RestClient(mContext).getInstance().get().getMyRideList().enqueue(new RestCallback<MyRidesResponse>());
-
     }
 
     /**
@@ -97,6 +96,7 @@ public class MyRidesFragment extends Fragment {
         BusProvider.getInstance().unregister(activity);
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
+                Log.i("TAG", "myListDataReceived: ListDataSize " + result.getData().size());
                 List<MyRides> myRides = result.getData();
 
                 MyRidesAdapter myRidesAdapter = new MyRidesAdapter(activity, myRides);

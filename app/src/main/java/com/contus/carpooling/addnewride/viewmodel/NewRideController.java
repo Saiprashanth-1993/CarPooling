@@ -1,5 +1,6 @@
 /**
  * @category CarPooling
+ * @package com.contus.carpooling.addnewride.viewmodel
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.contus.carpooling.R;
 import com.contus.carpooling.addnewride.model.CreateRideResponse;
 import com.contus.carpooling.addnewride.model.Ride;
+import com.contus.carpooling.addnewride.view.RegisterNewRidesActivity;
 import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
 import com.contus.carpooling.server.BusProvider;
 import com.contus.carpooling.server.RestCallback;
@@ -27,9 +29,16 @@ import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.CustomUtils;
+import com.contus.carpooling.utils.Logger;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.squareup.otto.Subscribe;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import static android.content.ContentValues.TAG;
@@ -46,17 +55,27 @@ public class NewRideController {
     /**
      * set the date and time to model
      */
-    private String dateAndTime;
+    String dateAndTime;
+
+    /**
+     * Date in linux time
+     */
+    long linuxTime;
+
+    /**
+     * model class
+     */
+    Ride newRide;
 
     /**
      * Context of an activity
      */
-    private Context context;
+    Context context;
 
     /**
      * create the date
      */
-    private Calendar date;
+    Calendar date;
 
     /**
      * Selected day from the week list.
@@ -68,17 +87,20 @@ public class NewRideController {
      */
     private String dateAndTimeMode;
 
-
     /**
      * OnClick listener of time edit box.
-     * @param clickMode  Used to get end time click or start time click option.
-     * @param newRide Used to get the new ride details.
+     *
+     * @param clickMode Used to get end time click or start time click option.
+     * @param clickMode Used to get the new ride details.
      * @return OnClickListener of the edit text.
      */
     public View.OnClickListener btnTimeDialog(final String clickMode, final Ride newRide) {
         return new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                Calendar mCurrentTime = Calendar.getInstance();
+                int hour = mCurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mCurrentTime.get(Calendar.MINUTE);
                 dateAndTimeMode = clickMode;
                 context = view.getContext();
                 showDateTimePicker(newRide);
@@ -87,45 +109,66 @@ public class NewRideController {
     }
 
     /**
-     * Display the time and date by using native picker
-     * @param ride Used to get the model name
+     *
+     * @param ride
      */
-    private void showDateTimePicker(final Ride ride) {
+    public void showDateTimePicker(final Ride ride) {
         final Calendar currentDate = Calendar.getInstance();
         date = Calendar.getInstance();
-        new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            public void onDateSet(DatePicker view, int year, int monthOfYear, final int dayOfMonth) {
                 date.set(year, monthOfYear, dayOfMonth);
-                timePicker(ride,currentDate);
-                dateAndTime = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
-            }
-        }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
-    }
+                linuxTime = date.getTimeInMillis();
 
-    /**
-     * Set the time to model by using time picker
-     */
-    private void timePicker(final Ride ride, Calendar currentDate)
-    {
-        new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                date.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                date.set(Calendar.MINUTE, minute);
-                Log.v(TAG, "The choosen one " + date.getTime());
+                new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        date.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        date.set(Calendar.MINUTE, minute);
+                        Log.v(TAG, "The choosen one " + date.getTime());
 
-                dateAndTime = dateAndTime + " " + hourOfDay + ":" + minute;
-                if (dateAndTimeMode.equals(context.getString(R.string.start_time))) {
-                    ride.setStartTime(dateAndTime);
-                } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
-                    ride.setEndTime(dateAndTime);
+                        dateAndTime = dateAndTime + " " + hourOfDay + ":" + minute;
+                        if (dateAndTimeMode.equals(context.getString(R.string.start_time))) {
+                            ride.setStartTime(dateAndTime);
+                            Log.i("TAG", "onTimeSet: " + dateAndTime);
+                        } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
+                            ride.setEndTime(dateAndTime);
+                        }
+
+                    }
+                }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
+
+                if (ride.getStartTime() != null) {
+                    linuxTime = convertToLong(ride.getStartTime());
                 }
 
+                dateAndTime = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
             }
-        }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
+        }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE));
+
+        if (dateAndTimeMode.equals(context.getString(R.string.start_time))) {
+            datePickerDialog.getDatePicker().setMinDate(Calendar.getInstance().getTime().getTime());
+
+        } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
+//            Log.i("TAG", "showDateTimePicker: end time" +ride.getStartTime());
+            datePickerDialog.getDatePicker().setMinDate(linuxTime + 600000);
+        }
+
+        datePickerDialog.show();
     }
 
+    private long convertToLong(String date) {
+        Date startDate = null;
+        try {
+            startDate = new SimpleDateFormat("yyyy-mm-dd HH:mm").parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        assert startDate != null;
+        return startDate.getTime();
+    }
 
     /**
      * OnClick listener of button day click.
@@ -143,12 +186,13 @@ public class NewRideController {
                     newRide.setDaySelected(String.valueOf(daySelection));
                 } else {
                     daySelection = daySelection + daySelected;
-                    newRide.setDaySelected(daySelection.substring(0, daySelection.length() - 1));
+                    daySelection.substring(0, daySelection.length() - 1);
                 }
+                newRide.setDaySelected(daySelection);
             }
+
         };
     }
-
 
     /**
      * OnClick listener of add new ride button click.
@@ -168,7 +212,6 @@ public class NewRideController {
         };
     }
 
-
     /**
      * Handle the CreateRide API of user
      *
@@ -176,8 +219,6 @@ public class NewRideController {
      * @param rideInfo Get the model of rideInfo
      */
     private void rideRequest(Context mContext, Ride rideInfo) {
-        Context ctx = mContext;
-        Log.e("ctx", ctx + "");
         BusProvider.getInstance().register(this);
         HashMap<String, String> createRideParams = new HashMap<>();
         createRideParams.put(Constants.CreateRide.ARRIVAL_POINT, rideInfo.getFromRide());
@@ -192,7 +233,7 @@ public class NewRideController {
         createRideParams.put(Constants.CreateRide.TYPE, rideInfo.getType());
         createRideParams.put(Constants.CreateRide.COST, rideInfo.getCost());
         createRideParams.put(Constants.CreateRide.IS_ACTIVE, "1");
-        new RestClient(ctx).getInstance().get().doCreateRide(createRideParams).enqueue(new RestCallback<CreateRideResponse>());
+        new RestClient(mContext).getInstance().get().doCreateRide(createRideParams).enqueue(new RestCallback<CreateRideResponse>());
     }
 
     /**
@@ -217,8 +258,7 @@ public class NewRideController {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 CustomUtils.showToast(context, result.getMessage());
-                Ride rideResponse = result.rideResponse;
-                Log.e("RideResponse", String.valueOf(rideResponse));
+                Ride regResponse = result.rideResponse;
                 context.startActivity(new Intent(context, DashboardActivity.class));
                 ((Activity) context).finish();
             } else {
@@ -309,5 +349,27 @@ public class NewRideController {
             Toast.makeText(context, "Please select seat", Toast.LENGTH_SHORT).show();
         }
         return validationStatus;
+    }
+
+    /**
+     * OnClick listener to get the location from google place api.
+     *
+     * @param requestCode ApiRequest code of the google place api intent
+     * @return OnClickListener of the registration button.
+     */
+    public View.OnClickListener getLocationOnClick(final int requestCode) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                            .build((RegisterNewRidesActivity) view.getContext());
+                    ((RegisterNewRidesActivity) view.getContext()).startActivityForResult(intent, requestCode);
+
+                } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+                    Logger.logErrorThrowable(Constants.EXCEPTION_MESSAGE, e);
+                }
+            }
+        };
     }
 }
