@@ -25,6 +25,7 @@ public class ChangePasswordModel extends BaseObservable {
      * New password of the user.
      */
     private String newPassword;
+
     /**
      * Confirm password of the user.
      */
