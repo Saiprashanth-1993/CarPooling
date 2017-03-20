@@ -50,34 +50,34 @@ public class RidesOfferedDetails extends BaseObservable {
 
 
     /**
-     * The departurePoint
+     * The departurePoints
      */
     @SerializedName("departure_point")
     @Expose
-    private String departurePoint;
+    private String departurePoints;
 
     /**
-     * The arrivalPoint
+     * The arrivalPoints
      */
     @SerializedName("arrival_point")
     @Expose
-    private String arrivalPoint;
+    private String arrivalPoints;
 
     /**
-     * The departureTime
+     * The departureTimes
      */
     @SerializedName("departure_time")
     @Expose
-    private String departureTime;
+    private String departureTimes;
 
 
 
     /**
-     * The arrivalTime
+     * The arrivalTimes
      */
     @SerializedName("arrival_time")
     @Expose
-    private String arrivalTime;
+    private String arrivalTimes;
 
 
 
@@ -178,82 +178,82 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #departurePoint}
+     * Gets {@see #departurePoints}
      * <p>
-     * Returns the departurePoint {@link #departurePoint}
+     * Returns the departurePoints {@link #departurePoints}
      */
     @Bindable
-    public String getDeparturePoint() {
-        return departurePoint;
+    public String getDeparturePoints() {
+        return departurePoints;
     }
 
     /**
-     * Sets {@see #departurePoint}
+     * Sets {@see #departurePoints}
      *
-     * @param departurePoint (@link #departurePoint}
+     * @param departurePoints (@link #departurePoints}
      */
-    public void setDeparturePoint(String departurePoint) {
-        this.departurePoint = departurePoint;
+    public void setDeparturePoints(String departurePoints) {
+        this.departurePoints = departurePoints;
     }
 
     /**
-     * Gets {@see #arrivalPoint}
+     * Gets {@see #arrivalPoints}
      * <p>
-     * Returns the arrivalPoint {@link #arrivalPoint}
+     * Returns the arrivalPoints {@link #arrivalPoints}
      */
     @Bindable
-    public String getArrivalPoint() {
-        return arrivalPoint;
+    public String getArrivalPoints() {
+        return arrivalPoints;
     }
 
     /**
-     * Sets {@see #arrivalPoint}
+     * Sets {@see #arrivalPoints}
      *
-     * @param arrivalPoint (@link #arrivalPoint}
+     * @param arrivalPoints (@link #arrivalPoints}
      */
-    public void setArrivalPoint(String arrivalPoint) {
-        this.arrivalPoint = arrivalPoint;
+    public void setArrivalPoints(String arrivalPoints) {
+        this.arrivalPoints = arrivalPoints;
     }
 
     /**
-     * Gets {@see #departureTime}
+     * Gets {@see #departureTimes}
      * <p>
-     * Returns the departureTime {@link #departureTime}
+     * Returns the departureTimes {@link #departureTimes}
      */
     @Bindable
-    public String getDepartureTime() {
-        String[] splited = departureTime.split("\\s+");
+    public String getDepartureTimes() {
+        String[] splited = departureTimes.split("\\s+");
         return splited[1];
     }
 
     /**
-     * Sets {@see #departureTime}
+     * Sets {@see #departureTimes}
      *
-     * @param departureTime (@link #departureTime}
+     * @param departureTimes (@link #departureTimes}
      */
-    public void setDepartureTime(String departureTime) {
-        this.departureTime = departureTime;
+    public void setDepartureTimes(String departureTimes) {
+        this.departureTimes = departureTimes;
     }
 
     /**
-     * Gets {@see #arrivalTime}
+     * Gets {@see #arrivalTimes}
      * <p>
-     * Returns the arrivalTime {@link #arrivalTime}
+     * Returns the arrivalTimes {@link #arrivalTimes}
      */
     @Bindable
-    public String getArrivalTime() {
+    public String getArrivalTimes() {
 
-        String[] splited = arrivalTime.split("\\s+");
+        String[] splited = arrivalTimes.split("\\s+");
         return splited[1];
     }
 
     /**
-     * Sets {@see #arrivalTime}
+     * Sets {@see #arrivalTimes}
      *
-     * @param arrivalTime (@link #arrivalTime}
+     * @param arrivalTimes (@link #arrivalTimes}
      */
-    public void setArrivalTime(String arrivalTime) {
-        this.arrivalTime = arrivalTime;
+    public void setArrivalTimes(String arrivalTimes) {
+        this.arrivalTimes = arrivalTimes;
     }
 
     /**
@@ -370,13 +370,13 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #arrivalDate} from arrivalTime
+     * Gets {@see #arrivalDate} from arrivalTimes
      * <p>
      * Returns the arrivalDate
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public String getArrivalDate() {
-        String[] fullDate = arrivalTime.split("\\s+");
+        String[] fullDate = arrivalTimes.split("\\s+");
         String[] dateSpliter = fullDate[0].split("-");
         String[] timeSpliter = fullDate[1].split(":");
 
@@ -397,13 +397,13 @@ public class RidesOfferedDetails extends BaseObservable {
 
 
     /**
-     * Gets {@see #departureDate}  from departureTime
+     * Gets {@see #departureDate}  from departureTimes
      * <p>
      * Returns the departureDate
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public String getDepartureDate() {
-        String[] fullDate = departureTime.split("\\s+");
+        String[] fullDate = departureTimes.split("\\s+");
         String[] dateSpliter = fullDate[0].split("-");
         String[] timeSpliter = fullDate[1].split(":");
 
@@ -432,7 +432,7 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     public String getName() {
 
-        if(genderPreference.trim().equals("male")){
+        if(("male").equals(genderPreference.trim())){
 
             return user.get(0).getUsername()+ " (M)";
         }else {

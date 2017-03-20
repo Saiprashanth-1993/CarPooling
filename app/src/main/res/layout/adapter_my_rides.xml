@@ -68,7 +68,7 @@
                        <!-- <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@={myRides.arrivalTime}"
+                            android:text="@={myRides.arrivalTimes}"
                             android:textSize="12sp" />-->
                     </LinearLayout>
 
@@ -93,7 +93,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@={myRides.departureTime}"
+                            android:text="@={myRides.departureTimes}"
                             android:textSize="12sp" />
 
                         <TextView
@@ -109,7 +109,7 @@
                        <!-- <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@={myRides.departureTime}"
+                            android:text="@={myRides.departureTimes}"
                             android:textSize="12sp" />-->
                     </LinearLayout>
 

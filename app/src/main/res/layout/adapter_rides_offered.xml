@@ -195,7 +195,7 @@
                             android:ellipsize="end"
                             android:gravity="center"
                             android:maxLines="2"
-                            android:text="@={rideOfferedDetails.arrivalPoint}"
+                            android:text="@={rideOfferedDetails.arrivalPoints}"
                             android:textColor="@color/colorHighLightBlue"
                             android:textSize="18sp" />
 
@@ -230,7 +230,7 @@
                             android:ellipsize="end"
                             android:gravity="center"
                             android:maxLines="2"
-                            android:text="@={rideOfferedDetails.departurePoint}"
+                            android:text="@={rideOfferedDetails.departurePoints}"
                             android:textColor="@color/colorHighLightBlue"
                             android:textSize="18sp" />
 

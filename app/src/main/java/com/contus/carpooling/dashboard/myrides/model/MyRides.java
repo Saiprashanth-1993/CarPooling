@@ -42,6 +42,13 @@ public class MyRides extends BaseObservable implements Parcelable {
     };
 
     /**
+     * The departureTime
+     */
+    @SerializedName("departure_time")
+    @Expose
+    private String departureTime;
+
+    /**
      * Get the id of rides
      */
     @SerializedName("id")
@@ -56,25 +63,20 @@ public class MyRides extends BaseObservable implements Parcelable {
     private String departurePoint;
 
     /**
+     * The type
+     */
+    @SerializedName("type")
+    @Expose
+    private String type;
+    /**
      * The arrivalPoint
      */
     @SerializedName("arrival_point")
     @Expose
     private String arrivalPoint;
 
-    /**
-     * The departureTime
-     */
-    @SerializedName("departure_time")
-    @Expose
-    private String departureTime;
 
-    /**
-     * The type
-     */
-    @SerializedName("type")
-    @Expose
-    private String type;
+
 
     /**
      * The gender
