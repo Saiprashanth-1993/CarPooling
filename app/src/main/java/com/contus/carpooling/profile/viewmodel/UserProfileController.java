@@ -117,7 +117,6 @@ public class UserProfileController {
             public void onResponse(Call<UserProfileResponse> call, Response<UserProfileResponse> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
                 }
             }
 

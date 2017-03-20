@@ -40,26 +40,17 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*
-         * object for sharedDateUtils to store and retrieve
-         **/
-        final SharedDataUtils sharedPref = new SharedDataUtils(this);
 
         /**
          * saving user logged_in state in shared preference
          */
-        final Boolean login=sharedPref.getBooleanPreferences(Constants.IS_Logged,false);
+        final Boolean login=SharedDataUtils.getBooleanPreference(Constants.IS_Logged,false);
 
         threadHandler = new Handler();
         mRunnable = new Runnable() {
             @Override
             public void run() {
                 if(login){
-                    /**
-                     * Get the access token and device token from shared preference
-                     */
-                    Constants.REG_ACCESS_TOKEN_PREF= sharedPref.getStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE,null);
-                    Constants.REG_TOKEN_PREF= sharedPref.getStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,null);
                     startActivity(new Intent(SplashScreenActivity.this, DashboardActivity.class));
                 }
                 else{

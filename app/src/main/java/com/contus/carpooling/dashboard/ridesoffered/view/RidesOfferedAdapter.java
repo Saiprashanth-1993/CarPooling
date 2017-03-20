@@ -66,9 +66,7 @@ public class RidesOfferedAdapter extends RecyclerView.Adapter<RidesOfferedAdapte
 
     @Override
     public RidesOfferedAdapter.RidesOfferedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        AdapterRidesOfferedBinding ridesOfferedAdapterBinding = DataBindingUtil.inflate(
-                LayoutInflater.from(parent.getContext()),
-                R.layout.adapter_rides_offered, parent, false);
+        AdapterRidesOfferedBinding ridesOfferedAdapterBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.adapter_rides_offered, parent, false);
         return new RidesOfferedAdapter.RidesOfferedViewHolder(ridesOfferedAdapterBinding);
     }
 

@@ -14,6 +14,7 @@ import com.contus.carpooling.dashboard.myrides.model.MyRidesResponse;
 import com.contus.carpooling.dashboard.ridesoffered.model.RideOfferedResponse;
 import com.contus.carpooling.employeedetails.model.EmployeeDetailsResponse;
 import com.contus.carpooling.login.model.UserLoginResponse;
+import com.contus.carpooling.profile.model.UserProfileResponse;
 import com.contus.carpooling.userregistration.model.UserRegistrationResponse;
 
 import java.util.Map;
@@ -77,11 +78,19 @@ public interface API {
     /**
      * Authenticate the user with their login credentials
      *
-     * @param customerId The user id
-     * @return {@link UserLoginResponse}
+     * @return {@link UserProfileResponse}
      */
-    @GET("profile/{user_id}")
-    Call<UserLoginResponse> getProfile(@Path("user_id") String customerId);
+    @GET("getprofile")
+    Call<UserProfileResponse> getProfile();
+
+    /**
+     * Authenticate the user with their login credentials
+     *
+     * @return {@link UserProfileResponse}
+     */
+    @POST("updateprofile")
+    Call<UserProfileResponse> setProfile(@Body Map<String,String> paramerters);
+
 
     /**
      * Authenticate the user with their login credentials

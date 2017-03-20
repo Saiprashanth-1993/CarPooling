@@ -121,6 +121,12 @@ public class Constants {
     public static final String EMPTY_SEAT = "0";
 
     /**
+     * The Constant isLogged, to check user loged or not
+     */
+    public static final String IS_Logged="islogged";
+
+
+    /**
      * The Constant used to check the internet.
      */
     public static final int CHECK_INTERNET = 2000;
@@ -676,7 +682,6 @@ public class Constants {
         }
     }
 
-
     /**
      * Constants for password change
      *
@@ -725,5 +730,4 @@ public class Constants {
 
 
     }
-
 }

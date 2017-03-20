@@ -62,10 +62,6 @@ public class NewRideController {
      */
     long linuxTime;
 
-    /**
-     * model class
-     */
-    Ride newRide;
 
     /**
      * Context of an activity
@@ -76,6 +72,11 @@ public class NewRideController {
      * create the date
      */
     Calendar date;
+
+    /**
+     * Get the startDate
+     */
+    Date startDate;
 
     /**
      * Selected day from the week list.
@@ -98,9 +99,6 @@ public class NewRideController {
         return new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                Calendar mCurrentTime = Calendar.getInstance();
-                int hour = mCurrentTime.get(Calendar.HOUR_OF_DAY);
-                int minute = mCurrentTime.get(Calendar.MINUTE);
                 dateAndTimeMode = clickMode;
                 context = view.getContext();
                 showDateTimePicker(newRide);
@@ -121,25 +119,7 @@ public class NewRideController {
             public void onDateSet(DatePicker view, int year, int monthOfYear, final int dayOfMonth) {
                 date.set(year, monthOfYear, dayOfMonth);
                 linuxTime = date.getTimeInMillis();
-
-                new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        date.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                        date.set(Calendar.MINUTE, minute);
-                        Log.v(TAG, "The choosen one " + date.getTime());
-
-                        dateAndTime = dateAndTime + " " + hourOfDay + ":" + minute;
-                        if (dateAndTimeMode.equals(context.getString(R.string.start_time))) {
-                            ride.setStartTime(dateAndTime);
-                            Log.i("TAG", "onTimeSet: " + dateAndTime);
-                        } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
-                            ride.setEndTime(dateAndTime);
-                        }
-
-                    }
-                }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
-
+                dateAndTime(ride,currentDate);
                 if (ride.getStartTime() != null) {
                     linuxTime = convertToLong(ride.getStartTime());
                 }
@@ -152,22 +132,54 @@ public class NewRideController {
             datePickerDialog.getDatePicker().setMinDate(Calendar.getInstance().getTime().getTime());
 
         } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
-//            Log.i("TAG", "showDateTimePicker: end time" +ride.getStartTime());
             datePickerDialog.getDatePicker().setMinDate(linuxTime + 600000);
         }
 
         datePickerDialog.show();
     }
 
-    private long convertToLong(String date) {
-        Date startDate = null;
+
+    /**
+     * Date converted to long
+     * @param date Get the date
+     * @return The start date and time
+     */
+    public long convertToLong(String date) {
         try {
             startDate = new SimpleDateFormat("yyyy-mm-dd HH:mm").parse(date);
         } catch (ParseException e) {
-            e.printStackTrace();
+            Log.e("Exception", String.valueOf(e));
         }
         assert startDate != null;
         return startDate.getTime();
+    }
+
+    /**
+     * Display the date and time by using time picker
+     * @param ride Get the ride model for set the date and time
+     * @param currentDate Get the current date
+     */
+    public void  dateAndTime(final Ride ride, Calendar currentDate)
+    {
+        new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                date.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                date.set(Calendar.MINUTE, minute);
+                Log.v(TAG, "The choosen one " + date.getTime());
+
+                dateAndTime = dateAndTime + " " + hourOfDay + ":" + minute;
+                if (dateAndTimeMode.equals(context.getString(R.string.start_time))) {
+                    ride.setStartTime(dateAndTime);
+                    Log.i("TAG", "onTimeSet: " + dateAndTime);
+                } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
+                    ride.setEndTime(dateAndTime);
+                }
+
+            }
+        }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
+
+
     }
 
     /**
@@ -186,9 +198,9 @@ public class NewRideController {
                     newRide.setDaySelected(String.valueOf(daySelection));
                 } else {
                     daySelection = daySelection + daySelected;
-                    daySelection.substring(0, daySelection.length() - 1);
+                    newRide.setDaySelected(daySelection.substring(0, daySelection.length() - 1));
                 }
-                newRide.setDaySelected(daySelection);
+
             }
 
         };
@@ -258,7 +270,8 @@ public class NewRideController {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 CustomUtils.showToast(context, result.getMessage());
-                Ride regResponse = result.rideResponse;
+                Ride createRideResponse = result.rideResponse;
+                Log.e("createRideResponse", String.valueOf(createRideResponse));
                 context.startActivity(new Intent(context, DashboardActivity.class));
                 ((Activity) context).finish();
             } else {
