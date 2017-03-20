@@ -124,6 +124,10 @@ public class UserProfileFragment extends Fragment {
             userProfileInfo.setUserVehicleType(selected);
         }
 
+        /**
+         *
+         * @param parent
+         */
         public void onNothingSelected(AdapterView parent) {
             // Do nothing.
         }

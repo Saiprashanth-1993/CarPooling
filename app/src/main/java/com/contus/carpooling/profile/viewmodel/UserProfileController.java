@@ -64,7 +64,7 @@ public class UserProfileController {
     }
 
     /**
-     *
+     *user
      * @return
      */
     public View.OnClickListener profileClick(){
@@ -162,6 +162,11 @@ public class UserProfileController {
         return validationStatus;
     }
 
+    /**
+     * 
+     * @param userProfileInfo
+     * @return
+     */
     public boolean userProfileValid(UserProfileInfo userProfileInfo)
     {
         boolean validationStatus = true;

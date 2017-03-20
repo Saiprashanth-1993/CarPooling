@@ -82,7 +82,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
         HashMap<String, String> loginParams = new HashMap<>();
         String loginDeviceToken = SharedDataUtils.getStringPreference(Constants.DEVICE_TOKEN, null);
         loginParams.put(Constants.EMAIL_ID, userLoginInfo.getEmail());
-        loginParams.put(Constants.PWD, userLoginInfo.getPassword());
+        loginParams.put(Constants.PD, userLoginInfo.getPassword());
         loginParams.put(Constants.DEVICE_TOKEN, loginDeviceToken);
         new RestClient(mContext).getInstance().get().doLogin(loginParams).enqueue(new RestCallback<UserLoginResponse>(){
             @Override

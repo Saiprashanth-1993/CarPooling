@@ -34,6 +34,10 @@ public class ChangePasswordController {
 
     private Activity activity;
 
+    /**
+     *constructor of the activity
+     * @param activity of the profile
+     */
     public ChangePasswordController(Activity activity){
         this.activity=activity;
     }
@@ -91,14 +95,14 @@ public class ChangePasswordController {
 
 
     /**
-     *
+     * change the request
      * @param getchangePasswordValues
      */
     private void changePasswordRequest(ChangePasswordModel getchangePasswordValues, final Context mContext) {
         HashMap<String, String> params = new HashMap<>();
-        params.put(Constants.PWD, getchangePasswordValues.getCurrentPassword());
-        params.put(Constants.ChangePassword.NEW_PWD, getchangePasswordValues.getNewPassword());
-        params.put(Constants.ChangePassword.CONFORM_PASSWORD, getchangePasswordValues.getConfirmPassword());
+        params.put(Constants.PD, getchangePasswordValues.getCurrentPassword());
+        params.put(Constants.ChangePassword.INFO, getchangePasswordValues.getNewPassword());
+        params.put(Constants.ChangePassword.CONFIRM_INFO, getchangePasswordValues.getConfirmPassword());
         new RestClient(mContext).getInstance().get().changePassword(params).enqueue(new Callback<ChangePasswordResponse>() {
             @Override
             public void onResponse(Call<ChangePasswordResponse> call, Response<ChangePasswordResponse> response) {

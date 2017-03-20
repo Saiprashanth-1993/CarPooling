@@ -95,7 +95,7 @@ public class UserRegistrationController {
         registerParams.put(Constants.Register.USER_GENDER, userRegistrationInfo.getGender());
         registerParams.put(Constants.FROM_LOCATION, userRegistrationInfo.getFromLocation());
         registerParams.put(Constants.TO_LOCATION, userRegistrationInfo.getToLocation());
-        registerParams.put(Constants.PWD, userRegistrationInfo.getPassword());
+        registerParams.put(Constants.PD, userRegistrationInfo.getPassword());
         registerParams.put(Constants.DEVICE_TOKEN, deviceToken);
         new RestClient(ctx).getInstance().get().doRegister(registerParams).enqueue(new RestCallback<UserRegistrationResponse>());
     }

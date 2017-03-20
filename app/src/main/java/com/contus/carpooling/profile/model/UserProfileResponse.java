@@ -19,8 +19,8 @@ public class UserProfileResponse extends ErrorResponse {
     public List<UserProfileDetails> userDetails;
 
     /**
-     *
-     * @return
+     *list of the profile
+     * @return the profile
      */
     public List<UserProfileDetails> getResponse() {
         return userDetails;

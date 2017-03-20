@@ -37,10 +37,6 @@ public class RidesOfferedDetails extends BaseObservable {
     @Expose
     private Integer id;
 
-    /**
-     * The name
-     */
-    private String name;
 
 
 
@@ -51,10 +47,7 @@ public class RidesOfferedDetails extends BaseObservable {
     @Expose
     private Integer creatorId;
 
-    /**
-     * The profileImage
-     */
-    private String profileImage;
+
 
     /**
      * The departurePoint
@@ -77,10 +70,7 @@ public class RidesOfferedDetails extends BaseObservable {
     @Expose
     private String departureTime;
 
-    /**
-     * The departureDate from departureTime
-     */
-    private String departureDate;
+
 
     /**
      * The arrivalTime
@@ -89,10 +79,7 @@ public class RidesOfferedDetails extends BaseObservable {
     @Expose
     private String arrivalTime;
 
-    /**
-     * The arrivaldate from arrivaltime
-     */
-    private String arrivalDate;
+
 
     /**
      * The genderPreference
@@ -136,15 +123,9 @@ public class RidesOfferedDetails extends BaseObservable {
     @Expose
     private String cost;
 
-    /**
-     * The costVisibility
-     */
-    private int costVisibility;
 
-    /**
-     * The cost in ₹
-     */
-    private String rupeeFormat;
+
+
 
     /**
      * The userInfoList
@@ -301,8 +282,7 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     @Bindable
     public String getSeats() {
-        String seat=seats+" Seats Available";
-        return seat;
+        return seats+" Seats Available";
     }
 
     /**
@@ -407,21 +387,14 @@ public class RidesOfferedDetails extends BaseObservable {
                     Integer.parseInt(timeSpliter[0]),
                     Integer.parseInt(timeSpliter[1]));
             String dateWithsec=""+fmt.format("%td %tB %tr", cal, cal ,cal);
-            StringBuilder dateForm = new StringBuilder();
-            dateForm.append(dateWithsec.substring(0, dateWithsec.length()-6));
-            dateForm.append(dateWithsec.substring(dateWithsec.length()-3,dateWithsec.length()));
-            return dateForm.toString();
+            StringBuilder arrivalDate = new StringBuilder();
+            arrivalDate.append(dateWithsec.substring(0, dateWithsec.length()-6));
+            arrivalDate.append(dateWithsec.substring(dateWithsec.length()-3,dateWithsec.length()));
+            return arrivalDate.toString();
         }
     }
 
-    /**
-     * Sets {@see #arrivalDate}
-     *
-     * @param arrivalDate(@link #arrivalDate}
-     */
-    public void setArrivalDate(String arrivalDate) {
-        this.arrivalDate = arrivalDate;
-    }
+
 
     /**
      * Gets {@see #departureDate}  from departureTime
@@ -446,17 +419,11 @@ public class RidesOfferedDetails extends BaseObservable {
             dateForm.append(dateWithsec.substring(0, dateWithsec.length()-6));
             dateForm.append(dateWithsec.substring(dateWithsec.length()-3,dateWithsec.length()));
             return dateForm.toString();
+
         }
     }
 
-    /**
-     * Sets {@see #arrivalDate}
-     *
-     * @param departureDate(@link #arrivalDate}
-     */
-    public void setDepartureDate(String departureDate) {
-        this.departureDate = departureDate;
-    }
+
 
     /**
      * Gets {@see #name}
@@ -473,14 +440,7 @@ public class RidesOfferedDetails extends BaseObservable {
         }
     }
 
-    /**
-     * Sets {@see #name}
-     *
-     * @param name(@link #name}
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
+
 
     /**
      * Gets {@see #costValue} from cost
@@ -495,14 +455,7 @@ public class RidesOfferedDetails extends BaseObservable {
         }
     }
 
-    /**
-     * Sets {@see #costVisibility}
-     *
-     * @param costVisibility(@link #costVisibility}
-     */
-    public void setCostVisibility(int costVisibility) {
-        this.costVisibility = costVisibility;
-    }
+
 
     /**
      * Gets {@see #rupeeFormat} from cost
@@ -513,14 +466,7 @@ public class RidesOfferedDetails extends BaseObservable {
         return cost;
     }
 
-    /**
-     * Sets {@see #rupeeformate}
-     *
-     * @param rupeeFormat(@link #rupeeFormat}
-     */
-    public void setRupeeFormat(String rupeeFormat) {
-        this.rupeeFormat = rupeeFormat;
-    }
+
 
     /**
      * Gets {@see #user}
@@ -557,25 +503,7 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
 
-    /**
-     * Gets {@see #profileImage}
-     * Returns the profileImage
-     */
-    public String getProfileImage() {
-        if (user.get(0).getProfileImage() != null) {
-            return (String) user.get(0).getProfileImage();
-        } else {
-            return null;
-        }
-    }
 
-    /**
-     * Sets {@see #profileImage}
-     *
-     * @param profileImage(@link #profileImage}
-     */
-    public void setProfileImage(String profileImage) {
-        this.profileImage = profileImage;
-    }
+
 
 }

@@ -174,7 +174,7 @@ public class Constants {
     /**
      * constant value  USER_REG_PD set from response
      */
-    public static final String PWD = "password";
+    public static final String PD = "password";
 
     /**
      * Constant USER_NAME value set from response
@@ -691,12 +691,12 @@ public class Constants {
         /**
          * Constant value for new password
          */
-        public static final String NEW_PWD ="new_password";
+        public static final String INFO ="new_password";
 
         /**
          * Constant value for conform password
          */
-        public static final String CONFORM_PASSWORD="confirm_password";
+        public static final String CONFIRM_INFO ="confirm_password";
 
         private ChangePassword() {
             /**

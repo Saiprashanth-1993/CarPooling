@@ -122,6 +122,10 @@ public class MyRides extends BaseObservable implements Parcelable {
     @Expose
     private Integer isEveryWeeks;
 
+    /**
+     *ride constructor
+     * @param in the in
+     */
     public MyRides(Parcel in) {
         this.id = (Integer) in.readValue(Integer.class.getClassLoader());
         this.departurePoint = in.readString();

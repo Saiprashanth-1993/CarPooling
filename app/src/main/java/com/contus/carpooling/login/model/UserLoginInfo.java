@@ -45,7 +45,7 @@ public class UserLoginInfo extends BaseObservable {
     /**
      * Name of the user
      */
-    @SerializedName(Constants.PWD)
+    @SerializedName(Constants.PD)
     @Expose
     private String password;
 

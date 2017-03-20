@@ -60,7 +60,7 @@ public class UserRegistrationInfo extends BaseObservable {
     /**
      * Password of the user.
      */
-    @SerializedName(Constants.PWD)
+    @SerializedName(Constants.PD)
     private String password;
 
     /**

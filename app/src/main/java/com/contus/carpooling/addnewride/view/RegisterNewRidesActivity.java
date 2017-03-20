@@ -121,11 +121,22 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
      */
     public class DAYITEM implements AdapterView.OnItemSelectedListener {
 
+        /**
+         *
+         * @param parent
+         * @param view
+         * @param pos
+         * @param id
+         */
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             String selected = parent.getItemAtPosition(pos).toString();
             ride.setSeats(selected);
         }
 
+        /**
+         *
+         * @param parent
+         */
         public void onNothingSelected(AdapterView parent) {
             // Do nothing.
         }
