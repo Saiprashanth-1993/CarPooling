@@ -676,20 +676,54 @@ public class Constants {
         }
     }
 
+
     /**
-     * Change Password constants
+     * Constants for password change
+     *
      */
-    public static final class ChangePassword{
+    public static final class ChangePassword {
 
-        public static final String ERROR = "error";
-        public static final String STATUS_CODE = "statuscode";
-        public static final String MESSAGE = "message";
-        public static final String RESPONSE = "response";
+        /**
+         * Constant value for response
+         */
+        public static final String RESPONSE="response";
 
-        public static final String ON_CLICK_CONTROLLER = "onClickController";
-        public static final String OLD_PASSWORD ="departure_point";
-        public static final String  NEW_PASSWORD ="arrival_point";
-        public static final String CONFIRM_PASSWORD = "";
+        /**
+         * Constant value for status
+         */
+        public static final String STATUS="status";
+
+        /**
+         * Constant value for value
+         */
+        public static final String VALUE="value";
+
+        /**
+         * Constant value for message
+         */
+        public static final String MESSAGE="message";
+
+        /**
+         * Constants value for code
+         */
+        public static final String CODE="code";
+
+        /**
+         * Constant value for passsword
+         */
+        public static final String PASSWORD="password";
+
+        /**
+         * Constant value for new password
+         */
+        public static final String NEW_PASSWORD="new_password";
+
+        /**
+         * Constant value for conform password
+         */
+        public static final String CONFORM_PASSWORD="confirm_password";
+
+
     }
 
 }
