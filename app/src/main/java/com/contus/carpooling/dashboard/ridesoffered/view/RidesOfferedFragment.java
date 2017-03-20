@@ -33,8 +33,6 @@ import com.squareup.otto.Subscribe;
 import java.util.HashMap;
 import java.util.List;
 
-import static android.content.ContentValues.TAG;
-
 /**
  * Fragment to display the ride offer details in the dashboard.
  *
@@ -91,8 +89,8 @@ public class RidesOfferedFragment extends Fragment {
         /*
          * get the from and to location from shared preferences
          **/
-        fromLocation = SharedDataUtils.getStringPreference(Constants.Login.FROM_LOCATION, null);
-        toLocation = SharedDataUtils.getStringPreference(Constants.Login.TO_LOCATION, null);
+        fromLocation = SharedDataUtils.getStringPreference(Constants.FROM_LOCATION, null);
+        toLocation = SharedDataUtils.getStringPreference(Constants.TO_LOCATION, null);
 
         ridesOfferedParams.put(Constants.RidesOffered.DEPARTURE_POINT, toLocation);
         ridesOfferedParams.put(Constants.RidesOffered.ARRIVAL_POINT, fromLocation);

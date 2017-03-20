@@ -92,9 +92,10 @@ public class NewRideController {
      * OnClick listener of time edit box.
      *
      * @param clickMode Used to get end time click or start time click option.
-     * @param clickMode Used to get the new ride details.
+     * @param newRide Used to get the new ride details.
      * @return OnClickListener of the edit text.
      */
+   
     public View.OnClickListener btnTimeDialog(final String clickMode, final Ride newRide) {
         return new View.OnClickListener() {
             @Override

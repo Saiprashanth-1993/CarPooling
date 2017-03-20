@@ -59,9 +59,10 @@ public class DashboardController {
         };
     }
 
+
     /**
      * OnClick listener in edit ride text view.
-     *
+     * @param myRide
      * @return OnClickListener of the recycler view on edit ride text view.
      */
     public View.OnClickListener rideEditOnClick(final MyRides myRide) {

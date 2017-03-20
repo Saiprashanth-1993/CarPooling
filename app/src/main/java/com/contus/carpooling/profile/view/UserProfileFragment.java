@@ -68,20 +68,9 @@ public class UserProfileFragment extends Fragment {
 
             @Override
             public void onResponse(Call<UserProfileResponse> call, Response<UserProfileResponse> response) {
-                List<UserProfileDetails> userProfileDetailPOJOs = response.body().getResponse();
-                if(userProfileDetailPOJOs.get(0).getProfileImage() == null){
-                    userProfileInfo.setProfileImage(String.valueOf(R.drawable.ic_person));
-                }else {
-                userProfileInfo.setProfileImage(userProfileDetailPOJOs.get(0).getProfileImage());
-                }
-                userProfileInfo.setUserName(userProfileDetailPOJOs.get(0).getUsername());
-                userProfileInfo.setUserTeamName(userProfileDetailPOJOs.get(0).getCompanyCategoryId());
-                userProfileInfo.setUserMail(userProfileDetailPOJOs.get(0).getEmail());
-                userProfileInfo.setUserPhone(userProfileDetailPOJOs.get(0).getMobile());
-                userProfileInfo.setUserAddress(userProfileDetailPOJOs.get(0).getFromLocation());
-                userProfileInfo.setUserLocation(userProfileDetailPOJOs.get(0).getCompanyLocation());
+                List<UserProfileDetails> userProfileDetail = response.body().getResponse();
+                setUserProfile(userProfileDetail);
             }
-
             @Override
             public void onFailure(Call<UserProfileResponse> call, Throwable t) {
 
@@ -89,6 +78,26 @@ public class UserProfileFragment extends Fragment {
             }
         });
 
+    }
+
+
+    /**
+     * Set the user profile
+     * @param userProfileDetail
+     */
+    public void setUserProfile(List<UserProfileDetails> userProfileDetail)
+    {
+        if(userProfileDetail.get(0).getProfileImage() == null){
+            userProfileInfo.setProfileImage(String.valueOf(R.drawable.ic_person));
+        }else {
+            userProfileInfo.setProfileImage(userProfileDetail.get(0).getProfileImage());
+        }
+        userProfileInfo.setUserName(userProfileDetail.get(0).getUsername());
+        userProfileInfo.setUserTeamName(userProfileDetail.get(0).getCompanyCategoryId());
+        userProfileInfo.setUserMail(userProfileDetail.get(0).getEmail());
+        userProfileInfo.setUserPhone(userProfileDetail.get(0).getMobile());
+        userProfileInfo.setUserAddress(userProfileDetail.get(0).getFromLocation());
+        userProfileInfo.setUserLocation(userProfileDetail.get(0).getCompanyLocation());
     }
 
     @Override
@@ -102,6 +111,14 @@ public class UserProfileFragment extends Fragment {
      */
     public class VehicleTypeSpinner implements AdapterView.OnItemSelectedListener {
 
+
+        /**
+         *
+         * @param parent
+         * @param view
+         * @param pos
+         * @param id
+         */
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             String selected = parent.getItemAtPosition(pos).toString();
             userProfileInfo.setUserVehicleType(selected);

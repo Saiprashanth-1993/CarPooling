@@ -80,6 +80,11 @@ public class Constants {
     public static final String CLICK_BACK_IMAGE_VIEW = "back_image";
 
     /**
+     * Constant value set from response
+     */
+    public static final String EMAIL_ID="email";
+
+    /**
      * Camera intent request code.
      */
     public static final int CAMERA_SELECTION = 1000;
@@ -123,7 +128,7 @@ public class Constants {
     /**
      * The Constant isLogged, to check user loged or not
      */
-    public static final String IS_Logged="islogged";
+    public static final String IS_LOGGED ="islogged";
 
 
     /**
@@ -167,9 +172,41 @@ public class Constants {
     public static final String REG_USER_ID = "id";
 
     /**
-     * Constant USER_EMAIL_ID value set from response
+     * constant value  USER_REG_PD set from response
      */
-    public static final String USER_EMAIL_ID = "email";
+    public static final String PWD = "password";
+
+    /**
+     * Constant USER_NAME value set from response
+     */
+    public static final String USER_NAME = "username";
+
+    /**
+     * Constant value set from response
+     */
+    public static final String MOBILE="mobile";
+
+    /***
+     * Constant FROM_LOCATION value set from response
+     */
+    public static final String FROM_LOCATION = "from_location";
+    /***
+     * Constant TO_LOCATION value set from response
+     */
+    public static final String TO_LOCATION = "to_location";
+
+    /***
+     * Constant COMPANY_CATEGORY_ID value set from response
+     */
+    public static final String COMPANY_CATEGORY_ID = "company_category_id";
+
+    /**
+     * Constant value for response
+     */
+    public static final String RESPONSE="response";
+
+
+
 
 
     /**
@@ -189,10 +226,6 @@ public class Constants {
          */
         public static final String ADMIN_USER = "adminusers";
 
-        /**
-         * Constant USER_PD value set from response
-         */
-        public static final String USER_PD = "password";
 
         /**
          * Constant LOGIN_ID value set from response
@@ -208,18 +241,6 @@ public class Constants {
          * Constant LOGIN_NAME value set from response
          */
         public static final String LOGIN_NAME = "name";
-
-
-        /**
-         * Constant USER_NAME value set from response
-         */
-        public static final String USER_NAME = "username";
-
-        /**
-         * Constant MOBILE value set from response
-         */
-        public static final String MOBILE = "mobile";
-
 
         /***
          * Constant GENDER value set from response
@@ -251,10 +272,6 @@ public class Constants {
          */
         public static final String COMPANY_ID = "company_id";
 
-        /***
-         * Constant COMPANY_CATEGORY_ID value set from response
-         */
-        public static final String COMPANY_CATEGORY_ID = "company_category_id";
 
         /***
          * Constant COMPANY_LOCATION value set from response
@@ -274,6 +291,8 @@ public class Constants {
          * Store the emailId for preference
          */
         public static final String USER_EMAIL_ID = "userEmailId";
+
+        /***
 
         /**
          * Instantiates a new constants.
@@ -298,40 +317,16 @@ public class Constants {
          */
         public static final String ID = "id";
 
-        /**
-         * Constant value USER_NAME for post the name and set the error
-         */
-        public static final String USER_NAME = "username";
 
-        /**
-         * constant value USER_EMAIL for post the email and set the error
-         */
-        public static final String USER_EMAIL = "email";
 
-        /**
-         * constant value USER_MOBILE_NUMBER for register the userMobileNumber
-         */
-        public static final String USER_MOBILE_NUMBER = "mobile";
 
         /**
          * constant value USER_GENDER set from response
          */
         public static final String USER_GENDER = "gender";
 
-        /**
-         * Constant value USER_FROM_LOCATION set from response
-         */
-        public static final String USER_FROM_LOCATION = "from_location";
 
-        /**
-         * constant value USER_TO_LOCATION set from response
-         */
-        public static final String USER_TO_LOCATION = "to_location";
 
-        /**
-         * constant value  USER_REG_PD set from response
-         */
-        public static final String USER_REG_PD = "password";
 
         /**
          * Instantiates a new constants.
@@ -399,19 +394,9 @@ public class Constants {
         public static final String COMPANY_REGISTRATION_NAME = "name";
 
         /**
-         * Constant value for COMPANY_CATEGORY_ID the CATEGORY_NAME
-         */
-        public static final String COMPANY_CATEGORY_ID = "company_category_id";
-
-        /**
          * Constant value for COMPANY_LOCATION the CATEGORY_NAME
          */
         public static final String COMPANY_LOCATION = "company_location";
-
-        /**
-         * After complete for COMPANY_DETAILS get the response form server
-         */
-        public static final String COMPANY_DETAILS = "response";
 
         /**
          * Constant value for CompanyRegistration the COMPANY_DETAILS_ID
@@ -486,16 +471,12 @@ public class Constants {
      */
     public static final class UserProfile {
 
-        public static final String PROFILE_DETAILS_RESPONSE="response";
 
         /**
          * Constant value set from response
          */
         public static final String USERNAME="username";
-        /***
-         * Constant value set from response
-         */
-        public static final String TEAM_NAME="company_category_id";
+
         /**
          * Constant value set from response
          */
@@ -505,15 +486,7 @@ public class Constants {
          */
         public static final String MOBILE="mobile";
 
-        /***
-         * Constant value set from response
-         */
-        public static final String ADDRESS="from_location";
 
-        /***
-         * Constant value set from response
-         */
-        public static final String USER_LOCATION="to_location";
         /***
          * Constant value set from response
          */
@@ -522,17 +495,17 @@ public class Constants {
         /***
          * Constant value set from response
          */
-        public static final String VEHICLE_TYPE="to_location";
+        public static final String VEHICLE_TYPE="vehicle_type";
 
         /***
          * Constant value set from response
          */
-        public static final String VEHICLE_NAME="to_location";
+        public static final String VEHICLE_NAME="vehicle_name";
 
         /***
          * Constant value set from response
          */
-        public static final String VEHICLE_NUMBER="to_location";
+        public static final String VEHICLE_NUMBER="vehicle_number";
 
         /**
          * Instantiates a new constants.
@@ -713,21 +686,22 @@ public class Constants {
          */
         public static final String CODE="code";
 
-        /**
-         * Constant value for passsword
-         */
-        public static final String PASSWORD="password";
+
 
         /**
          * Constant value for new password
          */
-        public static final String NEW_PASSWORD="new_password";
+        public static final String NEW_PWD ="new_password";
 
         /**
          * Constant value for conform password
          */
         public static final String CONFORM_PASSWORD="confirm_password";
 
-
+        private ChangePassword() {
+            /**
+             *  Private constructor for prevent instance.
+             */
+        }
     }
 }

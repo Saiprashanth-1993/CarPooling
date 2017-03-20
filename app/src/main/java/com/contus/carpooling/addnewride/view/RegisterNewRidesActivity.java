@@ -61,7 +61,7 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
         ArrayAdapter<String> seatAvailableAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.list_seat_available));
         addNewRideBinding.spSeats.setAdapter(seatAvailableAdapter);
-        addNewRideBinding.spSeats.setOnItemSelectedListener(new dayItemSpinner());
+        addNewRideBinding.spSeats.setOnItemSelectedListener(new DAYITEM());
 
         if (bundle.getBoolean(Constants.CLICK_RIDE)) {
             addNewRideBinding.toolbarTitle.setText(R.string.title_edit_ride);
@@ -119,7 +119,7 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
     /**
      * Get the position of selected item spinner
      */
-    public class dayItemSpinner implements AdapterView.OnItemSelectedListener {
+    public class DAYITEM implements AdapterView.OnItemSelectedListener {
 
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             String selected = parent.getItemAtPosition(pos).toString();

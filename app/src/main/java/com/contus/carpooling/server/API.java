@@ -46,13 +46,19 @@ public interface API {
     Call<UserLoginResponse> doLogin(@Body Map<String, String> parameters);
 
     /**
-     * Authenticate the user with their register Credentials
+     * Authenticate the user with their login credentials
+     *
+     * @param paramerters Parameter required for user login
+     * @return {@link UserLoginResponse}
      */
     @POST("registration")
     Call<UserRegistrationResponse> doRegister(@Body Map<String,String> paramerters);
 
+
     /**
-     * Authenticate the Company Registration with their register credentials
+     *Authenticate the Company Registration with their register credentials
+     * @param paramerters
+     * @return
      */
     @POST("companyregistration")
     Call<CompanyRegistrationResponse> doCompanyRegistration(@Body Map<String,String> paramerters);
@@ -60,14 +66,17 @@ public interface API {
 
     /**
      * Authenticate the Create Ride  with their register credentials
+     * @param paramerters
+     * @return
      */
     @POST("rides")
     Call<CreateRideResponse> doCreateRide(@Body Map<String,String> paramerters);
 
 
     /**
-     * Method used to register the employee details
-     *
+     *  Method used to register the employee details
+     * @param frontImage
+     * @param backImage
      * @return Updated profile response
      */
     @Multipart
@@ -83,10 +92,11 @@ public interface API {
     @GET("getprofile")
     Call<UserProfileResponse> getProfile();
 
+
     /**
      * Authenticate the user with their login credentials
-     *
-     * @return {@link UserProfileResponse}
+     * @param paramerters
+     * @return
      */
     @POST("updateprofile")
     Call<UserProfileResponse> setProfile(@Body Map<String,String> paramerters);
@@ -117,18 +127,20 @@ public interface API {
     @GET("ridelist")
     Call<MyRidesResponse> getMyRideList();
 
+
     /**
      * Get the ride  offered list
-     *
-     * @return {@link UserLoginResponse}
+     * @param paramerters
+     * @return
      */
     @POST("displayrides")
     Call<RideOfferedResponse> getRidesOfferedList(@Body Map<String,String> paramerters);
 
+
     /**
-     * Changes user password
-     *
-     * @return {@link UserLoginResponse}
+     *Changes user password
+     * @param paramerters
+     * @return
      */
     @POST("changepassword")
     Call<ChangePasswordResponse> changePassword(@Body Map<String,String> paramerters);

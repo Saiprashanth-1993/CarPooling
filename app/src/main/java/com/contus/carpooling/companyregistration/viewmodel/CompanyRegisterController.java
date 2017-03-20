@@ -94,7 +94,7 @@ public class CompanyRegisterController {
         BusProvider.getInstance().register(this);
         HashMap<String, String> companyRegistrationParams = new HashMap<>();
         companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_REGISTRATION_NAME, companyRegistrationInfo.getCompanyName());
-        companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_CATEGORY_ID, categoryId);
+        companyRegistrationParams.put(Constants.COMPANY_CATEGORY_ID, categoryId);
         companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_LOCATION, companyRegistrationInfo.getLocation());
         new RestClient(ctx).getInstance().get().doCompanyRegistration(companyRegistrationParams).enqueue(new RestCallback<CompanyRegistrationResponse>());
     }

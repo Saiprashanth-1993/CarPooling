@@ -30,37 +30,37 @@ public class UserRegistrationInfo extends BaseObservable {
     /**
      * Name of the user.
      */
-    @SerializedName(Constants.Register.USER_NAME)
+    @SerializedName(Constants.USER_NAME)
     private String userName;
 
     /**
      * Mobile number of the user.
      */
-    @SerializedName(Constants.Register.USER_MOBILE_NUMBER)
+    @SerializedName(Constants.MOBILE)
     private String mobileNumber;
 
     /**
      * Email id number of the user.
      */
-    @SerializedName(Constants.Register.USER_EMAIL)
+    @SerializedName(Constants.EMAIL_ID)
     private String emailID;
 
     /**
      * From location of the user.
      */
-    @SerializedName(Constants.Register.USER_FROM_LOCATION)
+    @SerializedName(Constants.FROM_LOCATION)
     private String fromLocation;
 
     /**
      * To location of the user.
      */
-    @SerializedName(Constants.Register.USER_TO_LOCATION)
+    @SerializedName(Constants.TO_LOCATION)
     private String toLocation;
 
     /**
      * Password of the user.
      */
-    @SerializedName(Constants.Register.USER_REG_PD)
+    @SerializedName(Constants.PWD)
     private String password;
 
     /**

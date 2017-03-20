@@ -5,7 +5,6 @@
  */
 package com.contus.carpooling.changepassword.model;
 
-import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 

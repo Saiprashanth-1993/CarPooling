@@ -22,6 +22,6 @@ public class CompanyRegistrationResponse extends ErrorResponse {
     /**
      * Store the response details into company details
      */
-    @SerializedName(Constants.CompanyRegistration.COMPANY_DETAILS)
+    @SerializedName(Constants.RESPONSE)
    public CompanyDetails comRegResponse;
 }

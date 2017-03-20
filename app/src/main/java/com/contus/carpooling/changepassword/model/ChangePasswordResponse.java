@@ -16,7 +16,7 @@ public class ChangePasswordResponse extends ErrorResponse {
     /**
      * The changepassword response set into model.
      */
-    @SerializedName(Constants.ChangePassword.RESPONSE)
+    @SerializedName(Constants.RESPONSE)
     public ChangePasswordInfo password;
 
 }

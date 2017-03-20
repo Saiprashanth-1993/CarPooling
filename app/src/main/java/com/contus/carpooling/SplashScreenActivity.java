@@ -8,11 +8,8 @@ package com.contus.carpooling;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.UserDictionary;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 
 import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
 import com.contus.carpooling.login.view.LoginActivity;
@@ -44,7 +41,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         /**
          * saving user logged_in state in shared preference
          */
-        final Boolean login=SharedDataUtils.getBooleanPreference(Constants.IS_Logged,false);
+        final Boolean login=SharedDataUtils.getBooleanPreference(Constants.IS_LOGGED,false);
 
         threadHandler = new Handler();
         mRunnable = new Runnable() {

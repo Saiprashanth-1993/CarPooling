@@ -5,13 +5,11 @@
  */
 package com.contus.carpooling.login.view;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.contus.carpooling.R;
-import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
 import com.contus.carpooling.databinding.ActivityLoginBinding;
 import com.contus.carpooling.login.model.UserLoginInfo;
 import com.contus.carpooling.login.viewmodel.LoginController;

@@ -67,7 +67,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:text="@={rideOfferedDetails.name}"
                             android:textSize="14sp" />
 
                         <LinearLayout

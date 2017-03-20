@@ -8,7 +8,6 @@ package com.contus.carpooling.dashboard.ridesoffered.view;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 

@@ -62,8 +62,8 @@ public class DashboardActivity extends AppCompatActivity
         /**
          * Getting user date from stored procedure and sets in navigation drawer
          */
-        userProfile.setUsername(SharedDataUtils.getStringPreference(Constants.Login.USER_NAME,"Employee Name"));
-        userProfile.setPosition(SharedDataUtils.getStringPreference(Constants.Login.COMPANY_CATEGORY_ID,"Category"));
+        userProfile.setUsername(SharedDataUtils.getStringPreference(Constants.USER_NAME,"Employee Name"));
+        userProfile.setPosition(SharedDataUtils.getStringPreference(Constants.COMPANY_CATEGORY_ID,"Category"));
         userProfile.setLocation(SharedDataUtils.getStringPreference(Constants.Login.COMPANY_LOCATION,"Company Location"));
 
         setSupportActionBar(activityDashboardBinding.toolbar);

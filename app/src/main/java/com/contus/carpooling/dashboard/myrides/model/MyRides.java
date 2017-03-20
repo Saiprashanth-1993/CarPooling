@@ -28,6 +28,19 @@ import com.google.gson.annotations.SerializedName;
  */
 public class MyRides extends BaseObservable implements Parcelable {
 
+
+    public static final Parcelable.Creator<MyRides> CREATOR = new Parcelable.Creator<MyRides>() {
+        @Override
+        public MyRides createFromParcel(Parcel source) {
+            return new MyRides(source);
+        }
+
+        @Override
+        public MyRides[] newArray(int size) {
+            return new MyRides[size];
+        }
+    };
+
     /**
      * Get the id of rides
      */
@@ -57,11 +70,11 @@ public class MyRides extends BaseObservable implements Parcelable {
     private String departureTime;
 
     /**
-     * The arrivalTime
+     * The type
      */
-    @SerializedName("arrival_time")
+    @SerializedName("type")
     @Expose
-    private String arrivalTime;
+    private String type;
 
     /**
      * The gender
@@ -70,13 +83,14 @@ public class MyRides extends BaseObservable implements Parcelable {
     @Expose
     private String gender;
 
-    /**
-     * The type
-     */
-    @SerializedName("type")
-    @Expose
-    private String type;
 
+
+    /**
+     * The arrivalTime
+     */
+    @SerializedName("arrival_time")
+    @Expose
+    private String arrivalTime;
 
     /**
      * The seats
@@ -108,6 +122,19 @@ public class MyRides extends BaseObservable implements Parcelable {
     @Expose
     private Integer isEveryWeeks;
 
+    public MyRides(Parcel in) {
+        this.id = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.departurePoint = in.readString();
+        this.arrivalPoint = in.readString();
+        this.departureTime = in.readString();
+        this.arrivalTime = in.readString();
+        this.gender = in.readString();
+        this.seats = in.readString();
+        this.vehicleType = in.readString();
+        this.isEveryWeeks = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.type = in.readString();
+        this.cost = in.readString();
+    }
 
 
     /**
@@ -127,6 +154,7 @@ public class MyRides extends BaseObservable implements Parcelable {
     public void setId(Integer id) {
         this.id = id;
     }
+
 
     /**
      * Gets {@see #departurePoint}
@@ -342,35 +370,7 @@ public class MyRides extends BaseObservable implements Parcelable {
         dest.writeString(this.cost);
     }
 
-    public MyRides() {
-        /**
-         *  Private constructor for prevent instance.
-         */
-    }
 
-    protected MyRides(Parcel in) {
-        this.id = (Integer) in.readValue(Integer.class.getClassLoader());
-        this.departurePoint = in.readString();
-        this.arrivalPoint = in.readString();
-        this.departureTime = in.readString();
-        this.arrivalTime = in.readString();
-        this.gender = in.readString();
-        this.seats = in.readString();
-        this.vehicleType = in.readString();
-        this.isEveryWeeks = (Integer) in.readValue(Integer.class.getClassLoader());
-        this.type = in.readString();
-        this.cost = in.readString();
-    }
 
-    public static final Parcelable.Creator<MyRides> CREATOR = new Parcelable.Creator<MyRides>() {
-        @Override
-        public MyRides createFromParcel(Parcel source) {
-            return new MyRides(source);
-        }
 
-        @Override
-        public MyRides[] newArray(int size) {
-            return new MyRides[size];
-        }
-    };
 }

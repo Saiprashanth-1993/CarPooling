@@ -29,7 +29,7 @@ public class CompanyRegistrationInfo extends BaseObservable {
     /**
      * Category details of the company.
      */
-    @SerializedName(Constants.CompanyRegistration.COMPANY_CATEGORY_ID)
+    @SerializedName(Constants.COMPANY_CATEGORY_ID)
     private String category;
 
     /**

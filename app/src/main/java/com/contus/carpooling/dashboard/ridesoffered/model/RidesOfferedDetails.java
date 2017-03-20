@@ -1,5 +1,6 @@
 /**
  * @category CarPooling
+ * @package com.contus.carpooling.dashboard.ridesoffered.model
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -36,6 +37,10 @@ public class RidesOfferedDetails extends BaseObservable {
     @Expose
     private Integer id;
 
+    /**
+     * The name
+     */
+    private String name;
 
 
 
@@ -46,6 +51,10 @@ public class RidesOfferedDetails extends BaseObservable {
     @Expose
     private Integer creatorId;
 
+    /**
+     * The profileImage
+     */
+    private String profileImage;
 
     /**
      * The departurePoint
@@ -68,7 +77,10 @@ public class RidesOfferedDetails extends BaseObservable {
     @Expose
     private String departureTime;
 
-
+    /**
+     * The departureDate from departureTime
+     */
+    private String departureDate;
 
     /**
      * The arrivalTime
@@ -77,6 +89,10 @@ public class RidesOfferedDetails extends BaseObservable {
     @Expose
     private String arrivalTime;
 
+    /**
+     * The arrivaldate from arrivaltime
+     */
+    private String arrivalDate;
 
     /**
      * The genderPreference
@@ -85,7 +101,12 @@ public class RidesOfferedDetails extends BaseObservable {
     @Expose
     private String genderPreference;
 
-
+    /**
+     * The seats
+     */
+    @SerializedName("seats")
+    @Expose
+    private String seats;
 
     /**
      * The vehicleType
@@ -95,13 +116,11 @@ public class RidesOfferedDetails extends BaseObservable {
     private String vehicleType;
 
     /**
-     * The seats
+     * The isEveryWeeks
      */
-    @SerializedName("seats")
+    @SerializedName("is_every_weeks")
     @Expose
-    private String seats;
-
-
+    private Integer isEveryWeeks;
 
     /**
      * The type
@@ -111,24 +130,21 @@ public class RidesOfferedDetails extends BaseObservable {
     private String type;
 
     /**
-     * The isEveryWeeks
-     */
-    @SerializedName("is_every_weeks")
-    @Expose
-    private Integer isEveryWeeks;
-
-
-
-
-
-    /**
      * The cost
      */
     @SerializedName("cost")
     @Expose
     private String cost;
 
+    /**
+     * The costVisibility
+     */
+    private int costVisibility;
 
+    /**
+     * The cost in ₹
+     */
+    private String rupeeFormat;
 
     /**
      * The userInfoList
@@ -143,6 +159,24 @@ public class RidesOfferedDetails extends BaseObservable {
     @SerializedName("ride_preference")
     @Expose
     private List<RidePreference> ridePreference = null;
+
+    /**
+     * Gets {@see #id}
+     * <p>
+     * Returns the id {@link #id}
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * Sets {@see #id}
+     *
+     * @param id (@link #id}
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     /**
      * Gets {@see #creatorId}
@@ -267,7 +301,8 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     @Bindable
     public String getSeats() {
-        return seats+" Seats Available";
+        String seat=seats+" Seats Available";
+        return seat;
     }
 
     /**
@@ -379,7 +414,14 @@ public class RidesOfferedDetails extends BaseObservable {
         }
     }
 
-
+    /**
+     * Sets {@see #arrivalDate}
+     *
+     * @param arrivalDate(@link #arrivalDate}
+     */
+    public void setArrivalDate(String arrivalDate) {
+        this.arrivalDate = arrivalDate;
+    }
 
     /**
      * Gets {@see #departureDate}  from departureTime
@@ -407,6 +449,14 @@ public class RidesOfferedDetails extends BaseObservable {
         }
     }
 
+    /**
+     * Sets {@see #arrivalDate}
+     *
+     * @param departureDate(@link #arrivalDate}
+     */
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = departureDate;
+    }
 
     /**
      * Gets {@see #name}
@@ -415,16 +465,22 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     public String getName() {
 
-        if(("male").equals(genderPreference.trim())){
-            return user.get(0).getUsername() + " (M)";
+        if(genderPreference.trim().equals("male")){
+
+            return user.get(0).getUsername()+ " (M)";
         }else {
             return user.get(0).getUsername() + " (F)";
         }
-
-
     }
 
-
+    /**
+     * Sets {@see #name}
+     *
+     * @param name(@link #name}
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * Gets {@see #costValue} from cost
@@ -439,6 +495,14 @@ public class RidesOfferedDetails extends BaseObservable {
         }
     }
 
+    /**
+     * Sets {@see #costVisibility}
+     *
+     * @param costVisibility(@link #costVisibility}
+     */
+    public void setCostVisibility(int costVisibility) {
+        this.costVisibility = costVisibility;
+    }
 
     /**
      * Gets {@see #rupeeFormat} from cost
@@ -446,9 +510,17 @@ public class RidesOfferedDetails extends BaseObservable {
      * Returns the costValue
      */
     public String getRupeeFormat() {
-        return "₹ "+cost;
+        return cost;
     }
 
+    /**
+     * Sets {@see #rupeeformate}
+     *
+     * @param rupeeFormat(@link #rupeeFormat}
+     */
+    public void setRupeeFormat(String rupeeFormat) {
+        this.rupeeFormat = rupeeFormat;
+    }
 
     /**
      * Gets {@see #user}
@@ -484,32 +556,26 @@ public class RidesOfferedDetails extends BaseObservable {
         this.ridePreference = ridePreference;
     }
 
-    /**
-     * Gets {@see #email}
-     * Returns the email
-     */
-    public String getEmail() {
-        return user.get(0).getEmail();
-    }
-
-
-
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #id}
+     * Gets {@see #profileImage}
+     * Returns the profileImage
      */
-    public Integer getId() {
-        return id;
+    public String getProfileImage() {
+        if (user.get(0).getProfileImage() != null) {
+            return (String) user.get(0).getProfileImage();
+        } else {
+            return null;
+        }
     }
 
     /**
-     * Sets {@see #id}
+     * Sets {@see #profileImage}
      *
-     * @param id (@link #id}
+     * @param profileImage(@link #profileImage}
      */
-    public void setId(Integer id) {
-        this.id = id;
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
+
 }

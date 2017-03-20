@@ -18,7 +18,10 @@ public class UserProfileResponse extends ErrorResponse {
     @Expose
     public List<UserProfileDetails> userDetails;
 
-
+    /**
+     *
+     * @return
+     */
     public List<UserProfileDetails> getResponse() {
         return userDetails;
     }

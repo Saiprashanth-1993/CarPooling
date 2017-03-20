@@ -45,28 +45,28 @@ public class UserLoginInfo extends BaseObservable {
     /**
      * Name of the user
      */
-    @SerializedName(Constants.Login.USER_PD)
+    @SerializedName(Constants.PWD)
     @Expose
     private String password;
 
     /**
      * Email  of the user
      */
-    @SerializedName(Constants.USER_EMAIL_ID)
+    @SerializedName(Constants.EMAIL_ID)
     @Expose
     private String email;
 
     /**
      * Username of the user
      */
-    @SerializedName(Constants.Login.USER_NAME)
+    @SerializedName(Constants.USER_NAME)
     @Expose
     private String username;
 
     /**
      * Mobile Number of the User
      */
-    @SerializedName(Constants.Login.MOBILE)
+    @SerializedName(Constants.MOBILE)
     @Expose
     private String mobile;
 
@@ -80,14 +80,14 @@ public class UserLoginInfo extends BaseObservable {
     /**
      * From location of the user
      */
-    @SerializedName(Constants.Login.FROM_LOCATION)
+    @SerializedName(Constants.FROM_LOCATION)
     @Expose
     private String fromLocation;
 
     /**
      * To location of the user
      */
-    @SerializedName(Constants.Login.TO_LOCATION)
+    @SerializedName(Constants.TO_LOCATION)
     @Expose
     private String toLocation;
 
@@ -115,7 +115,7 @@ public class UserLoginInfo extends BaseObservable {
     /**
      * Company category id of the user
      */
-    @SerializedName(Constants.Login.COMPANY_CATEGORY_ID)
+    @SerializedName(Constants.COMPANY_CATEGORY_ID)
     @Expose
     private String companyCategoryId;
 

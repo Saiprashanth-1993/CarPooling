@@ -81,8 +81,8 @@ public class LoginController implements ApiService.OnTaskCompleted {
 
         HashMap<String, String> loginParams = new HashMap<>();
         String loginDeviceToken = SharedDataUtils.getStringPreference(Constants.DEVICE_TOKEN, null);
-        loginParams.put(Constants.USER_EMAIL_ID, userLoginInfo.getEmail());
-        loginParams.put(Constants.Login.USER_PD, userLoginInfo.getPassword());
+        loginParams.put(Constants.EMAIL_ID, userLoginInfo.getEmail());
+        loginParams.put(Constants.PWD, userLoginInfo.getPassword());
         loginParams.put(Constants.DEVICE_TOKEN, loginDeviceToken);
         new RestClient(mContext).getInstance().get().doLogin(loginParams).enqueue(new RestCallback<UserLoginResponse>(){
             @Override
@@ -93,10 +93,6 @@ public class LoginController implements ApiService.OnTaskCompleted {
 
             }
 
-            @Override
-            public void onFailure(Call<UserLoginResponse> call, Throwable t) {
-                super.onFailure(call, t);
-            }
         });
 
     }
@@ -164,7 +160,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
                 /**
                  * saving user logged_in state in shared preference
                  */
-                SharedDataUtils.storeBooleanPreferences(Constants.IS_Logged,true);
+                SharedDataUtils.storeBooleanPreferences(Constants.IS_LOGGED,true);
 
 
                 /**
@@ -182,8 +178,8 @@ public class LoginController implements ApiService.OnTaskCompleted {
                 /**
                  * store the from location and to location to shared preference
                  */
-                SharedDataUtils.storeStringPreferences(Constants.Login.FROM_LOCATION, userResult.getFromLocation());
-                SharedDataUtils.storeStringPreferences(Constants.Login.TO_LOCATION, userResult.getToLocation());
+                SharedDataUtils.storeStringPreferences(Constants.FROM_LOCATION, userResult.getFromLocation());
+                SharedDataUtils.storeStringPreferences(Constants.TO_LOCATION, userResult.getToLocation());
 
                 /**
                  * It will navigate to dashboard Activity

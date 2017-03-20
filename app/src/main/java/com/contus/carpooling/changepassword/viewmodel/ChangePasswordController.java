@@ -8,24 +8,14 @@ package com.contus.carpooling.changepassword.viewmodel;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.contus.carpooling.changepassword.model.ChangePasswordModel;
 import com.contus.carpooling.changepassword.model.ChangePasswordResponse;
-import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
-import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
-import com.contus.carpooling.server.BusProvider;
-import com.contus.carpooling.server.RestCallback;
 import com.contus.carpooling.server.RestClient;
-import com.contus.carpooling.settings.view.SettingsFragment;
-import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
-import com.contus.carpooling.utils.CustomUtils;
-import com.squareup.otto.Subscribe;
 
 import java.util.HashMap;
 
@@ -41,7 +31,7 @@ import retrofit2.Response;
  * @version 1.0
  */
 public class ChangePasswordController {
-    Context context;
+
     private Activity activity;
 
     public ChangePasswordController(Activity activity){
@@ -73,7 +63,7 @@ public class ChangePasswordController {
      * @param confirmPassword Validate the confirm password edit text.
      * @return true if the validation success.
      */
-    private boolean isValid(Context context, String currentPassword, String newPassword, String confirmPassword) {
+    public boolean isValid(Context context, String currentPassword, String newPassword, String confirmPassword) {
         boolean validStatus;
         if (TextUtils.isEmpty(currentPassword)) {
             validStatus = false;
@@ -106,8 +96,8 @@ public class ChangePasswordController {
      */
     private void changePasswordRequest(ChangePasswordModel getchangePasswordValues, final Context mContext) {
         HashMap<String, String> params = new HashMap<>();
-        params.put(Constants.ChangePassword.PASSWORD, getchangePasswordValues.getCurrentPassword());
-        params.put(Constants.ChangePassword.NEW_PASSWORD, getchangePasswordValues.getNewPassword());
+        params.put(Constants.PWD, getchangePasswordValues.getCurrentPassword());
+        params.put(Constants.ChangePassword.NEW_PWD, getchangePasswordValues.getNewPassword());
         params.put(Constants.ChangePassword.CONFORM_PASSWORD, getchangePasswordValues.getConfirmPassword());
         new RestClient(mContext).getInstance().get().changePassword(params).enqueue(new Callback<ChangePasswordResponse>() {
             @Override

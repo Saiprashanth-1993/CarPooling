@@ -89,13 +89,13 @@ public class UserRegistrationController {
         String deviceToken = SharedDataUtils.getStringPreference(Constants.DEVICE_TOKEN, null);
         BusProvider.getInstance().register(this);
         HashMap<String, String> registerParams = new HashMap<>();
-        registerParams.put(Constants.Register.USER_NAME, userRegistrationInfo.getUserName());
-        registerParams.put(Constants.Register.USER_EMAIL, userRegistrationInfo.getEmailID());
-        registerParams.put(Constants.Register.USER_MOBILE_NUMBER, userRegistrationInfo.getMobileNumber());
+        registerParams.put(Constants.USER_NAME, userRegistrationInfo.getUserName());
+        registerParams.put(Constants.EMAIL_ID, userRegistrationInfo.getEmailID());
+        registerParams.put(Constants.MOBILE, userRegistrationInfo.getMobileNumber());
         registerParams.put(Constants.Register.USER_GENDER, userRegistrationInfo.getGender());
-        registerParams.put(Constants.Register.USER_FROM_LOCATION, userRegistrationInfo.getFromLocation());
-        registerParams.put(Constants.Register.USER_TO_LOCATION, userRegistrationInfo.getToLocation());
-        registerParams.put(Constants.Register.USER_REG_PD, userRegistrationInfo.getPassword());
+        registerParams.put(Constants.FROM_LOCATION, userRegistrationInfo.getFromLocation());
+        registerParams.put(Constants.TO_LOCATION, userRegistrationInfo.getToLocation());
+        registerParams.put(Constants.PWD, userRegistrationInfo.getPassword());
         registerParams.put(Constants.DEVICE_TOKEN, deviceToken);
         new RestClient(ctx).getInstance().get().doRegister(registerParams).enqueue(new RestCallback<UserRegistrationResponse>());
     }

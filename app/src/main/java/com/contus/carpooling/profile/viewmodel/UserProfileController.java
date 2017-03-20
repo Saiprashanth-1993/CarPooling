@@ -37,6 +37,11 @@ public class UserProfileController {
     UserProfileFragment userProfileFragment;
 
 
+    /**
+     * Constructor of userPro
+     * @param context
+     * @param userProfileFragment
+     */
     public UserProfileController(Context context, UserProfileFragment userProfileFragment){
         this.userProfileFragment = userProfileFragment;
         this.context = context;
@@ -58,6 +63,10 @@ public class UserProfileController {
         };
     }
 
+    /**
+     *
+     * @return
+     */
     public View.OnClickListener profileClick(){
         return new View.OnClickListener() {
             @Override
@@ -89,7 +98,7 @@ public class UserProfileController {
        }else {
             profileInfo.setToEditOrSave(true);
             if(isValid(profileInfo)){
-                UpdateProfileRequest(profileInfo);
+                updateProfileRequest(profileInfo);
             }
         }
     }
@@ -100,14 +109,14 @@ public class UserProfileController {
      *this method is used to send the response to update the profile
      * @param getUserProfileValues
      */
-    private void UpdateProfileRequest(UserProfileInfo getUserProfileValues) {
+    private void updateProfileRequest(UserProfileInfo getUserProfileValues) {
         HashMap<String, String> params = new HashMap<>();
         params.put(Constants.UserProfile.USERNAME, getUserProfileValues.getUserName());
         params.put(Constants.UserProfile.USER_EMAIL_ID, getUserProfileValues.getUserMail());
-        params.put(Constants.UserProfile.TEAM_NAME, getUserProfileValues.getUserTeamName());
+        params.put(Constants.COMPANY_CATEGORY_ID, getUserProfileValues.getUserTeamName());
         params.put(Constants.UserProfile.MOBILE, getUserProfileValues.getUserPhone());
-        params.put(Constants.UserProfile.ADDRESS, getUserProfileValues.getUserLocation());
-        params.put(Constants.UserProfile.USER_LOCATION, getUserProfileValues.getUserLocation());
+        params.put(Constants.FROM_LOCATION, getUserProfileValues.getUserLocation());
+        params.put(Constants.TO_LOCATION, getUserProfileValues.getUserLocation());
         params.put(Constants.UserProfile.VEHICLE_TYPE, getUserProfileValues.getUserVehicleType());
         params.put(Constants.UserProfile.VEHICLE_NAME, getUserProfileValues.getUserVehicleName());
         params.put(Constants.UserProfile.VEHICLE_NUMBER, getUserProfileValues.getUserVehicleNum());
@@ -146,22 +155,32 @@ public class UserProfileController {
         } else if (TextUtils.isEmpty(profileInfo.getUserMail())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user mail", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(profileInfo.getUserPhone())) {
+        } else
+        {
+            userProfileValid(profileInfo);
+        }
+        return validationStatus;
+    }
+
+    public boolean userProfileValid(UserProfileInfo userProfileInfo)
+    {
+        boolean validationStatus = true;
+        if (TextUtils.isEmpty(userProfileInfo.getUserPhone())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user phone number", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(profileInfo.getUserAddress())) {
+        } else if (TextUtils.isEmpty(userProfileInfo.getUserAddress())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user address", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(profileInfo.getUserLocation())) {
+        } else if (TextUtils.isEmpty(userProfileInfo.getUserLocation())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user location", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(profileInfo.getUserVehicleType())) {
+        } else if (TextUtils.isEmpty(userProfileInfo.getUserVehicleType())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user vehicle type", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(profileInfo.getUserVehicleName())) {
+        } else if (TextUtils.isEmpty(userProfileInfo.getUserVehicleName())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user vehicle name", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(profileInfo.getUserVehicleNum())) {
+        } else if (TextUtils.isEmpty(userProfileInfo.getUserVehicleNum())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user vehicle number", Toast.LENGTH_SHORT).show();
         }
