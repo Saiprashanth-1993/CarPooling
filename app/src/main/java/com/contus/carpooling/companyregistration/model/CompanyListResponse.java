@@ -10,7 +10,7 @@ import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * CompanyListResponse for get the response from companyList server
+ * This class for get the details of  category and company list from the API response
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -18,7 +18,7 @@ import com.google.gson.annotations.SerializedName;
 public class CompanyListResponse extends ErrorResponse {
 
     /**
-     * Get the response of companyList server set into the companyList
+     * Get the details of companyList which is used to set into model class
      */
     @SerializedName(Constants.CompanyList.COMPANY_DATA)
     public CompanyList companyList;

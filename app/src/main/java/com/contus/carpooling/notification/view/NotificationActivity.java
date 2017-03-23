@@ -14,7 +14,7 @@ import com.contus.carpooling.R;
 import com.contus.carpooling.databinding.ActivityNotificationBinding;
 
 /**
- * Activity used to display list of notification details.
+ * This is the class for display the notification which can list of details from the API
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -36,7 +36,7 @@ public class NotificationActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         /**
-         * handle toolbar arrow click action
+         * Handle toolbar arrow click action
          */
         if (item.getItemId() == android.R.id.home) {
             finish();

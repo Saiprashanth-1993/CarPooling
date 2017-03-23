@@ -9,7 +9,7 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 /**
- * Model class is used to get and store the change password details.
+ * Model class for set the fields to UI layout
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -17,22 +17,19 @@ import android.databinding.Bindable;
 public class ChangePasswordModel extends BaseObservable {
 
     /**
-     * Current password of the user.
+     * Current password of the user
      */
     private String currentPassword;
 
     /**
-     * New password of the user.
+     * New password of the user
      */
     private String newPassword;
 
     /**
-     * Confirm password of the user.
+     * Confirm password of the user
      */
     private String confirmPassword;
-
-
-
 
     /**
      * Gets {@see #currentPassword}.
@@ -42,6 +39,13 @@ public class ChangePasswordModel extends BaseObservable {
     @Bindable
     public String getCurrentPassword() {
         return currentPassword;
+    }
+
+    /**
+     * Sets {@link #currentPassword}.
+     */
+    public void setCurrentPassword(String currentPassword) {
+        this.currentPassword = currentPassword;
     }
 
     /**
@@ -55,6 +59,13 @@ public class ChangePasswordModel extends BaseObservable {
     }
 
     /**
+     * Sets {@link #newPassword}.
+     */
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    /**
      * Gets {@see #confirmPassword}.
      *
      * @return {@link #confirmPassword}
@@ -62,20 +73,6 @@ public class ChangePasswordModel extends BaseObservable {
     @Bindable
     public String getConfirmPassword() {
         return confirmPassword;
-    }
-
-    /**
-     * Sets {@link #currentPassword}.
-     */
-    public void setCurrentPassword(String currentPassword) {
-        this.currentPassword = currentPassword;
-    }
-
-    /**
-     * Sets {@link #newPassword}.
-     */
-    public void setNewPassword(String newPassword) {
-        this.newPassword = newPassword;
     }
 
     /**

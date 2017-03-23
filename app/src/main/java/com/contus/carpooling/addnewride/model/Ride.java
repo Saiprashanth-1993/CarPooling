@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.addnewride.model
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -16,13 +15,16 @@ import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Model class is used to get and store the ride details.
+ * Model class for store and get the my rides details from api response
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
 public class Ride extends BaseObservable implements Parcelable {
 
+    /**
+     * Parsing the ride details
+     */
     public static final Parcelable.Creator<Ride> CREATOR = new Parcelable.Creator<Ride>() {
         @Override
         public Ride createFromParcel(Parcel source) {
@@ -34,6 +36,7 @@ public class Ride extends BaseObservable implements Parcelable {
             return new Ride[size];
         }
     };
+
     /**
      * Source place of the ride.
      */
@@ -82,25 +85,37 @@ public class Ride extends BaseObservable implements Parcelable {
     private Boolean isEveryWeek = false;
 
     /**
-     * set the weak 1 or 0
+     * Set the weeks 1 or 0
      */
     @SerializedName(Constants.CreateRide.IS_EVERY_WEEEKS)
-    private String everyWeeks="0";
+    private String everyWeeks = "0";
+
     /**
      * Cost of the ride.
      */
     @SerializedName(Constants.CreateRide.COST)
-    private String cost="0";
+    private String cost = "0";
 
+    /**
+     * Type of cost
+     */
     @SerializedName(Constants.CreateRide.TYPE)
     private String type;
 
+    /**
+     * Ride constructor for directly invoke the method to  activity
+     */
     public Ride() {
         /**
          *  Private constructor for prevent instance.
          */
     }
 
+    /**
+     * Ride constructor for directly invoke the method to  activity
+     *
+     * @param in Get the parsing details of ride
+     */
     protected Ride(Parcel in) {
         this.fromRide = in.readString();
         this.toRide = in.readString();
@@ -325,8 +340,4 @@ public class Ride extends BaseObservable implements Parcelable {
         dest.writeString(this.cost);
         dest.writeString(this.type);
     }
-
-
-
-
 }

@@ -13,7 +13,6 @@ package com.contus.carpooling.utils;
  */
 public class Constants {
 
-
     /**
      * Constants API base URL
      */
@@ -51,7 +50,7 @@ public class Constants {
     public static final String ACCESS_TOKEN_HEADER_VALUE = "acesssToken";
 
     /**
-     * The constats for Shared Preference
+     * The constants for Shared Preference
      */
     public static final String DEVICE_TOKEN_PREF = "deviceTokenPref";
 
@@ -71,52 +70,52 @@ public class Constants {
     public static final int REQUEST_CODE_USER_TO_LOCATION = 3;
 
     /**
-     * OnClick item selection type of image view.
+     * Constants for item selection type of image view.
      */
     public static final String CLICK_FRONT_IMAGE_VIEW = "front_image";
     /**
-     * OnClick item selection type of image view.
+     * Constants for item selection type of image view.
      */
     public static final String CLICK_BACK_IMAGE_VIEW = "back_image";
 
     /**
-     * Constant value set from response
+     * Constant for value set from response
      */
-    public static final String EMAIL_ID="email";
+    public static final String EMAIL_ID = "email";
 
     /**
-     * Camera intent request code.
+     * Constants for Camera intent request code.
      */
     public static final int CAMERA_SELECTION = 1000;
 
     /**
-     * Gallery intent request code.
+     * Constants for gallery intent request code.
      */
     public static final int GALLERY_SELECTION = 1001;
 
     /**
-     * Catch error message.
+     * Constants for catch error message.
      */
     public static final String EXCEPTION_MESSAGE = "exception";
 
     /**
-     * Check whether click on edit ride or create ride.
+     * Constants for check whether click on edit ride or create ride.
      */
     public static final String CLICK_RIDE = "intent_ride";
 
     /**
-     * Check whether click on edit ride or create ride.
+     * Constants for check whether click on edit ride or create ride.
      */
     public static final String NAME_NAVIGATION_DASHBOARD = "dashboard";
 
     /**
-     * Check whether click on edit ride or create ride.
+     * Constants for check whether click on edit ride or create ride.
      */
 
     public static final String NAME_NAVIGATION_MY_PROFILE = "my_profile";
 
     /**
-     * Check whether click on edit ride or create ride.
+     * Constants for check whether click on edit ride or create ride.
      */
     public static final String NAME_NAVIGATION_SETTINGS = "settings";
 
@@ -128,7 +127,7 @@ public class Constants {
     /**
      * The Constant isLogged, to check user loged or not
      */
-    public static final String IS_LOGGED ="islogged";
+    public static final String IS_LOGGED = "islogged";
 
 
     /**
@@ -184,12 +183,13 @@ public class Constants {
     /**
      * Constant value set from response
      */
-    public static final String MOBILE="mobile";
+    public static final String MOBILE = "mobile";
 
     /***
      * Constant FROM_LOCATION value set from response
      */
     public static final String FROM_LOCATION = "from_location";
+
     /***
      * Constant TO_LOCATION value set from response
      */
@@ -203,17 +203,16 @@ public class Constants {
     /**
      * Constant value for response
      */
-    public static final String RESPONSE="response";
-
-
-
+    public static final String RESPONSE = "response";
 
 
     /**
      * Instantiates a new constants.
      */
     private Constants() {
-        //Private constructor for prevent instance.
+        /**
+         * Private constructor for prevent instance.
+         */
     }
 
     /**
@@ -222,7 +221,7 @@ public class Constants {
     public static final class Login {
 
         /**
-         * Constant  ADMIN_USER for get the Login API response and store intp adminUser model
+         * Constant for get the Login API response and store into adminUser model
          */
         public static final String ADMIN_USER = "adminusers";
 
@@ -272,7 +271,6 @@ public class Constants {
          */
         public static final String COMPANY_ID = "company_id";
 
-
         /***
          * Constant COMPANY_LOCATION value set from response
          */
@@ -291,8 +289,6 @@ public class Constants {
          * Store the emailId for preference
          */
         public static final String USER_EMAIL_ID = "userEmailId";
-
-        /***
 
         /**
          * Instantiates a new constants.
@@ -317,16 +313,10 @@ public class Constants {
          */
         public static final String ID = "id";
 
-
-
-
         /**
-         * constant value USER_GENDER set from response
+         * Constant value USER_GENDER set from response
          */
         public static final String USER_GENDER = "gender";
-
-
-
 
         /**
          * Instantiates a new constants.
@@ -385,16 +375,16 @@ public class Constants {
     }
 
     /**
-     * Constatn for company company registration
+     * Constants for company company registration
      */
     public static final class CompanyRegistration {
         /**
-         * Constant value for CompanyRegistration the COMPANY_REGISTRATION_NAME
+         * Constant value for COMPANY_REGISTRATION_NAME
          */
         public static final String COMPANY_REGISTRATION_NAME = "name";
 
         /**
-         * Constant value for COMPANY_LOCATION the CATEGORY_NAME
+         * Constant value for the CATEGORY_NAME
          */
         public static final String COMPANY_LOCATION = "company_location";
 
@@ -457,7 +447,6 @@ public class Constants {
          */
         public static final String REMEMBER_TOKEN = "rememberToken";
 
-
         /**
          * Instantiates a new constants.
          */
@@ -473,39 +462,40 @@ public class Constants {
 
 
         /**
-         * Constant value set from response
+         * Constant value set for response
          */
-        public static final String USERNAME="username";
+        public static final String USERNAME = "username";
 
         /**
-         * Constant value set from response
+         * Constant value set for response
          */
-        public static final String USER_EMAIL_ID="email";
+        public static final String USER_EMAIL_ID = "email";
+
         /**
-         * Constant value set from response
+         * Constant value set for response
          */
-        public static final String MOBILE="mobile";
+        public static final String MOBILE = "mobile";
 
 
         /***
-         * Constant value set from response
+         * Constant value set for response
          */
-        public static final String PROFILE_IMAGE="profile_image";
+        public static final String PROFILE_IMAGE = "profile_image";
 
         /***
-         * Constant value set from response
+         * Constant value set for response
          */
-        public static final String VEHICLE_TYPE="vehicle_type";
+        public static final String VEHICLE_TYPE = "vehicle_type";
 
         /***
-         * Constant value set from response
+         * Constant value set for response
          */
-        public static final String VEHICLE_NAME="vehicle_name";
+        public static final String VEHICLE_NAME = "vehicle_name";
 
         /***
-         * Constant value set from response
+         * Constant value set for response
          */
-        public static final String VEHICLE_NUMBER="vehicle_number";
+        public static final String VEHICLE_NUMBER = "vehicle_number";
 
         /**
          * Instantiates a new constants.
@@ -563,8 +553,8 @@ public class Constants {
         /**
          * Constant value set for response
          */
-
         public static final String VEHICLE_TYPE = "vehicle_type";
+
         /**
          * Constant value set for response
          */
@@ -657,46 +647,43 @@ public class Constants {
 
     /**
      * Constants for password change
-     *
      */
     public static final class ChangePassword {
 
         /**
          * Constant value for response
          */
-        public static final String RESPONSE="response";
+        public static final String RESPONSE = "response";
 
         /**
          * Constant value for status
          */
-        public static final String STATUS="status";
+        public static final String STATUS = "status";
 
         /**
          * Constant value for value
          */
-        public static final String VALUE="value";
+        public static final String VALUE = "value";
 
         /**
          * Constant value for message
          */
-        public static final String MESSAGE="message";
+        public static final String MESSAGE = "message";
 
         /**
          * Constants value for code
          */
-        public static final String CODE="code";
-
-
+        public static final String CODE = "code";
 
         /**
          * Constant value for new password
          */
-        public static final String INFO ="new_password";
+        public static final String INFO = "new_password";
 
         /**
          * Constant value for conform password
          */
-        public static final String CONFIRM_INFO ="confirm_password";
+        public static final String CONFIRM_INFO = "confirm_password";
 
         private ChangePassword() {
             /**

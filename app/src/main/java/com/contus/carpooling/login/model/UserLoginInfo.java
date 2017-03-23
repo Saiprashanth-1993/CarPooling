@@ -13,7 +13,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Model class is used to get and store the login details from the response.
+ * Model class is for get and store the login details from the API response.
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -43,7 +43,7 @@ public class UserLoginInfo extends BaseObservable {
 
 
     /**
-     * Name of the user
+     * Password of the user
      */
     @SerializedName(Constants.PD)
     @Expose
@@ -255,6 +255,12 @@ public class UserLoginInfo extends BaseObservable {
         return mobile;
     }
 
+    /**
+     * Sets {@link #mobile}
+     */
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
     /**
      * Gets {@see #gender}.
@@ -273,28 +279,19 @@ public class UserLoginInfo extends BaseObservable {
     }
 
     /**
-     * Sets {@link #mobile}
-     */
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-
-
-    /**
-     * Sets {@link #fromLocation}
-     */
-    public void setFromLocation(String fromLocation) {
-        this.fromLocation = fromLocation;
-    }
-
-    /**
      * Gets {@see #toLocation}.
      *
      * @return {@link #toLocation}
      */
     public String getToLocation() {
         return toLocation;
+    }
+
+    /**
+     * Sets {@link #toLocation}
+     */
+    public void setToLocation(String toLocation) {
+        this.toLocation = toLocation;
     }
 
     /**
@@ -306,12 +303,11 @@ public class UserLoginInfo extends BaseObservable {
         return fromLocation;
     }
 
-
     /**
-     * Sets {@link #toLocation}
+     * Sets {@link #fromLocation}
      */
-    public void setToLocation(String toLocation) {
-        this.toLocation = toLocation;
+    public void setFromLocation(String fromLocation) {
+        this.fromLocation = fromLocation;
     }
 
     /**

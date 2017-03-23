@@ -33,7 +33,7 @@ import com.squareup.otto.Subscribe;
 import static com.contus.carpooling.utils.Constants.REQUEST_CODE_COMPANY_LOCATION;
 
 /**
- * Activity to register as a new company for the application.
+ * Activity for register the company details by using which can display the category and company name in pop up overview
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
@@ -150,7 +150,6 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

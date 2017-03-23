@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  * Controller of the Bottom sheet fragment
- * XML view controller
+ * XML view controller for trigger all the event click listener to do perform the action
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -57,9 +57,9 @@ public class BottomSheetController {
     }
 
     /**
-     * OnClick listner of the image view.
+     * Trigger the even listener for to do action perform for camera selection
      *
-     * @return OnClickListner of the image view to call the camera intent.
+     * @return The view of the listener
      */
     public View.OnClickListener imageCameraSelectionOnclick() {
         return new View.OnClickListener() {
@@ -80,7 +80,7 @@ public class BottomSheetController {
      *
      * @param employeeDetailActivity Get the activity
      * @param code                   Get the code using this permission for call back
-     * @return The value
+     * @return The boolean value
      */
     private boolean checkPermissions(Activity employeeDetailActivity, int code) {
         int result;
@@ -101,7 +101,7 @@ public class BottomSheetController {
 
 
     /**
-     * OnClick listener of the image view.
+     * Trigger the even listener to do action perform for gallery selection
      *
      * @return OnClickListener of the image view to call the gallery intent.
      */

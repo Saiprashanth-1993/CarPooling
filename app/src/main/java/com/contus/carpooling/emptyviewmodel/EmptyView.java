@@ -11,7 +11,7 @@ import android.databinding.Bindable;
 import com.contus.carpooling.BR;
 
 /**
- * EmptyView model for if ridesList and rides offered data is empty set the boolean value to isEmptyView
+ * EmptyView model for if ridesList and rides offered data is empty set the boolean value to display the empty view
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
@@ -19,7 +19,7 @@ import com.contus.carpooling.BR;
 public class EmptyView extends BaseObservable {
 
     /**
-     *The isEmptyView list check if it true or false by using get Ride Offered list
+     * The isEmptyView list check if it true or false by using get Ride Offered list
      */
     boolean isemptyview = false;
 

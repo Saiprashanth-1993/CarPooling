@@ -10,16 +10,16 @@ import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * The model class to get the user register information from the response
+ * The model class for get the information of user registration from the response
  *
  * @author Contus Team <developers@contus.in>
  * @version 2.3
  */
 public class UserRegistrationResponse extends ErrorResponse {
 
-   /**
-    * Get the response from the API set into model
-    */
-   @SerializedName(Constants.Register.USER_DETAILS)
-   public UserRegistrationInfo registerAPIResponse;
+    /**
+     * Get the response from the API set into model
+     */
+    @SerializedName(Constants.Register.USER_DETAILS)
+    public UserRegistrationInfo registerAPIResponse;
 }

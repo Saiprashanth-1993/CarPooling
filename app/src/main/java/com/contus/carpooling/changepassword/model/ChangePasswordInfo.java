@@ -1,3 +1,8 @@
+/**
+ * @category CarPooling
+ * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @license http://www.apache.org/licenses/LICENSE-2.0
+ */
 package com.contus.carpooling.changepassword.model;
 
 import android.databinding.BaseObservable;
@@ -5,34 +10,35 @@ import android.databinding.BaseObservable;
 import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.SerializedName;
 
+
 /**
- * This class will maintain and retrieve the status of corresponding status, value, message and code.
+ * This class will maintain and retrieve the response from then API
+ *
+ * @author ContusTeam <developers@contus.in>
+ * @version 1.0
  */
-
-
 public class ChangePasswordInfo extends BaseObservable {
 
-
     /**
-     *The status
+     * The status of response
      */
     @SerializedName(Constants.ChangePassword.STATUS)
     public String status;
 
     /**
-     * The value
+     * Get the value of change password
      */
     @SerializedName(Constants.ChangePassword.VALUE)
     public String value;
 
     /**
-     * The message
+     * The message of response
      */
     @SerializedName(Constants.ChangePassword.MESSAGE)
     public String message;
 
     /**
-     * The code
+     * The code of response
      */
     @SerializedName(Constants.ChangePassword.CODE)
     public String code;
@@ -47,6 +53,7 @@ public class ChangePasswordInfo extends BaseObservable {
 
     /**
      * Sets {@see #status}
+     *
      * @param status (@link #status}
      */
     public void setStatus(String status) {
@@ -63,6 +70,7 @@ public class ChangePasswordInfo extends BaseObservable {
 
     /**
      * Sets {@see #value}
+     *
      * @param value (@link #value}
      */
     public void setValue(String value) {
@@ -79,6 +87,7 @@ public class ChangePasswordInfo extends BaseObservable {
 
     /**
      * Sets {@see #mesage}
+     *
      * @param message (@link #message}
      */
     public void setMessage(String message) {
@@ -89,15 +98,16 @@ public class ChangePasswordInfo extends BaseObservable {
      * Gets {@see #code}
      * Returns the code {@link #code}
      */
-    public String getCode(){
+    public String getCode() {
         return code;
     }
 
     /**
      * Sets {@see #code}
+     *
      * @param code (@link #code}
      */
-    public void setCode(String code){
-        this.code=code;
+    public void setCode(String code) {
+        this.code = code;
     }
 }

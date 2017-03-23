@@ -11,8 +11,8 @@ package com.contus.carpooling.dashboard.homepage.viewmodel;
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
-
 public interface ViewPageListener {
+    
     /**
      * Method used to visible the fab button when scrolling the tab.
      */

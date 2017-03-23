@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Fragment used as home page to display the ride offered and my rides details.
+ * Fragment for home page to display the ride offered details and my rides details which is used to display the details from the API
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -53,7 +53,7 @@ public class HomePageFragment extends Fragment implements ViewPager.OnPageChange
     }
 
     /**
-     * Set up the Ride offers and My rides fragments in the tab
+     * Set up the Ride offers and My Rides fragments in the tab
      */
     private void setTabs() {
         String[] mTitle = new String[]{"Rides offered", "My Rides"};
@@ -80,12 +80,12 @@ public class HomePageFragment extends Fragment implements ViewPager.OnPageChange
         List<Fragment> fragmentList = new ArrayList<>();
 
         /**
-         The fragment contacts which contains the ride offer list.
+         *The fragment contacts which contains the ride offer list.
          */
         RidesOfferedFragment ridesOfferedFragment = new RidesOfferedFragment();
 
         /**
-         The fragment contacts which contains the ride offer list.
+         *The fragment contacts which contains the ride offer list.
          */
         MyRidesFragment myRidesFragment = new MyRidesFragment();
         fragmentList.add(ridesOfferedFragment);

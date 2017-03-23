@@ -17,20 +17,20 @@ import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.SharedDataUtils;
 
 /**
- * Show the splash image of the app and  if user not logged then they will be redirected to
- * company registration screen else they will be redirected to menu_dashboard.
+ * Show the splash image of the app and if user not logged then they will be redirected to
+ * registration screen else they will be redirected to menu_dashboard.
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
  */
 public class SplashScreenActivity extends AppCompatActivity {
     /**
-     * Used to handle the runnable thread.
+     * Handler for handle the runnable thread.
      */
     private Handler threadHandler;
 
     /**
-     * Runnable thread.
+     * Runnable thread
      */
     private Runnable mRunnable;
 
@@ -39,18 +39,20 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         /**
-         * saving user logged_in state in shared preference
+         * Save the user logged in state in shared preference
          */
-        final Boolean login=SharedDataUtils.getBooleanPreference(Constants.IS_LOGGED,false);
+        final Boolean login = SharedDataUtils.getBooleanPreference(Constants.IS_LOGGED, false);
 
         threadHandler = new Handler();
         mRunnable = new Runnable() {
             @Override
             public void run() {
-                if(login){
+                /**
+                 * Check if user have logged in otherwise will navigate to the registration activity
+                 */
+                if (login) {
                     startActivity(new Intent(SplashScreenActivity.this, DashboardActivity.class));
-                }
-                else{
+                } else {
                     Intent loginActivity = new Intent(SplashScreenActivity.this, LoginActivity.class);
                     startActivity(loginActivity);
                     finish();
@@ -66,6 +68,7 @@ public class SplashScreenActivity extends AppCompatActivity {
          *Splash screen timer.
          */
         int splashTimeOut = 2000;
+
         /**
          * Resume the handler to run the thread when application reopen.
          */

@@ -18,7 +18,7 @@ import com.contus.carpooling.databinding.FragmentSettingsBinding;
 import com.contus.carpooling.settings.viewmodel.SettingsController;
 
 /**
- * Activity used as settings to control the notification, change password and about details.
+ * This is the fragment for display the list of menus change password,notification ect..
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0

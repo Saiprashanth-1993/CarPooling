@@ -13,7 +13,7 @@ import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Model class is used to get and store the user registration details.
+ * Model class is for get and store the user registration details from the API response
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -22,7 +22,7 @@ public class UserRegistrationInfo extends BaseObservable {
 
 
     /**
-     * Unique user ID
+     * Id of the user
      */
     @SerializedName(Constants.Register.ID)
     private String id;
@@ -69,10 +69,8 @@ public class UserRegistrationInfo extends BaseObservable {
     @SerializedName(Constants.Register.USER_GENDER)
     private String gender;
 
-
-
     /**
-     *Device token of the device.
+     * Device token of the device.
      */
     @SerializedName(Constants.DEVICE_TOKEN)
     private String deviceToken;
@@ -89,6 +87,14 @@ public class UserRegistrationInfo extends BaseObservable {
     }
 
     /**
+     * Sets {@link #userName}.
+     */
+    public void setUserName(String userName) {
+        this.userName = userName;
+        notifyPropertyChanged(BR.userName);
+    }
+
+    /**
      * Gets {@see #mobileNumber}.
      *
      * @return {@link #mobileNumber}
@@ -96,6 +102,14 @@ public class UserRegistrationInfo extends BaseObservable {
     @Bindable
     public String getMobileNumber() {
         return mobileNumber;
+    }
+
+    /**
+     * Sets {@link #mobileNumber}.
+     */
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+        notifyPropertyChanged(BR.mobileNumber);
     }
 
     /**
@@ -109,6 +123,14 @@ public class UserRegistrationInfo extends BaseObservable {
     }
 
     /**
+     * Sets {@link #emailID}.
+     */
+    public void setEmailID(String emailID) {
+        this.emailID = emailID;
+        notifyPropertyChanged(BR.emailID);
+    }
+
+    /**
      * Gets {@see #fromLocation}.
      *
      * @return {@link #fromLocation}
@@ -116,6 +138,14 @@ public class UserRegistrationInfo extends BaseObservable {
     @Bindable
     public String getFromLocation() {
         return fromLocation;
+    }
+
+    /**
+     * Sets {@link #fromLocation}.
+     */
+    public void setFromLocation(String fromLocation) {
+        this.fromLocation = fromLocation;
+        notifyPropertyChanged(BR.fromLocation);
     }
 
     /**
@@ -129,6 +159,14 @@ public class UserRegistrationInfo extends BaseObservable {
     }
 
     /**
+     * Sets {@link #toLocation}.
+     */
+    public void setToLocation(String toLocation) {
+        this.toLocation = toLocation;
+        notifyPropertyChanged(BR.toLocation);
+    }
+
+    /**
      * Gets {@see #password}.
      *
      * @return {@link #password}
@@ -139,12 +177,27 @@ public class UserRegistrationInfo extends BaseObservable {
     }
 
     /**
+     * Sets {@link #password}.
+     */
+    public void setPassword(String password) {
+        this.password = password;
+        notifyPropertyChanged(BR.password);
+    }
+
+    /**
      * Gets {@see #gender}.
      *
      * @return {@link #gender}
      */
     public String getGender() {
         return gender;
+    }
+
+    /**
+     * Sets {@link #gender}.
+     */
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     /**
@@ -158,16 +211,6 @@ public class UserRegistrationInfo extends BaseObservable {
     }
 
     /**
-     * Gets {@see #deviceToken}.
-     *
-     * @return {@link #deviceToken}
-     */
-    public String getDeviceToken() {
-        return deviceToken;
-    }
-
-
-    /**
      * Sets {@link #id}.
      */
     public void setId(String id) {
@@ -175,58 +218,12 @@ public class UserRegistrationInfo extends BaseObservable {
     }
 
     /**
-     * Sets {@link #userName}.
+     * Gets {@see #deviceToken}.
+     *
+     * @return {@link #deviceToken}
      */
-    public void setUserName(String userName) {
-        this.userName = userName;
-        notifyPropertyChanged(BR.userName);
-    }
-
-    /**
-     * Sets {@link #mobileNumber}.
-     */
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
-        notifyPropertyChanged(BR.mobileNumber);
-    }
-
-    /**
-     * Sets {@link #emailID}.
-     */
-    public void setEmailID(String emailID) {
-        this.emailID = emailID;
-        notifyPropertyChanged(BR.emailID);
-    }
-
-    /**
-     * Sets {@link #fromLocation}.
-     */
-    public void setFromLocation(String fromLocation) {
-        this.fromLocation = fromLocation;
-        notifyPropertyChanged(BR.fromLocation);
-    }
-
-    /**
-     * Sets {@link #toLocation}.
-     */
-    public void setToLocation(String toLocation) {
-        this.toLocation = toLocation;
-        notifyPropertyChanged(BR.toLocation);
-    }
-
-    /**
-     * Sets {@link #password}.
-     */
-    public void setPassword(String password) {
-        this.password = password;
-        notifyPropertyChanged(BR.password);
-    }
-
-    /**
-     * Sets {@link #gender}.
-     */
-    public void setGender(String gender) {
-        this.gender = gender;
+    public String getDeviceToken() {
+        return deviceToken;
     }
 
     /**

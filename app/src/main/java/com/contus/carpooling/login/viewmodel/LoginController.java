@@ -34,12 +34,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-import retrofit2.Call;
-import retrofit2.Response;
-
 /**
  * Controller of the LoginActivity class
- * XML view controller
+ * XML view controller trigger all the event listener to do perform the action
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -51,10 +48,10 @@ public class LoginController implements ApiService.OnTaskCompleted {
     Context context;
 
     /**
-     * OnClick listener of login button.
+     * Trigger the action listener for login button.
      *
-     * @param userLoginInfo Used to get the login details.
-     * @return OnClickListener of the login button.
+     * @param userLoginInfo Get the login details.
+     * @return The view of login button listener
      */
     public View.OnClickListener btnLoginClick(final UserLoginInfo userLoginInfo) {
         return new View.OnClickListener() {
@@ -84,23 +81,14 @@ public class LoginController implements ApiService.OnTaskCompleted {
         loginParams.put(Constants.EMAIL_ID, userLoginInfo.getEmail());
         loginParams.put(Constants.PD, userLoginInfo.getPassword());
         loginParams.put(Constants.DEVICE_TOKEN, loginDeviceToken);
-        new RestClient(mContext).getInstance().get().doLogin(loginParams).enqueue(new RestCallback<UserLoginResponse>(){
-            @Override
-            public void onResponse(Call<UserLoginResponse> call, Response<UserLoginResponse> response) {
-                super.onResponse(call, response);
-
-                Log.e("test",response.body().getUserToken());
-
-            }
-
+        new RestClient(mContext).getInstance().get().doLogin(loginParams).enqueue(new RestCallback<UserLoginResponse>() {
         });
-
     }
 
     /**
-     * OnClick listener of category edit text.
+     * Trigger the even listener for navigate to the another activity
      *
-     * @return OnClickListener of the login button.
+     * @return The view of the login sign in button
      */
     public View.OnClickListener btnSignInOnClick() {
         return new View.OnClickListener() {
@@ -112,12 +100,12 @@ public class LoginController implements ApiService.OnTaskCompleted {
     }
 
     /**
-     * Method used to validate the username and password.
+     * Method for validate the username and password.
      *
      * @param context   Used to show the toast message.
      * @param userEmail Validate the userEmail.
      * @param password  Validate the password.
-     * @return true when the given field is not empty.
+     * @return True when the given field is not empty.
      */
     public boolean isValid(Context context, String userEmail, String password) {
         boolean validationStatus = true;
@@ -160,7 +148,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
                 /**
                  * saving user logged_in state in shared preference
                  */
-                SharedDataUtils.storeBooleanPreferences(Constants.IS_LOGGED,true);
+                SharedDataUtils.storeBooleanPreferences(Constants.IS_LOGGED, true);
 
 
                 /**

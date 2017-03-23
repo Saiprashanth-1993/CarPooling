@@ -20,7 +20,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * This class is the helper class to handle the server request and response. In this class we are using okhttp client for server request and GSON for parsing the data .
+ * This class is the helper class to handle the server request and response. In this class we are using OkHttpClient client for server request and GSON for parsing the data .
  *
  * @author Contus Team<developers@contus.in>
  * @version 1.0

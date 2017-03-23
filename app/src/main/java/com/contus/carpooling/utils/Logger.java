@@ -23,7 +23,7 @@ public class Logger {
     private static String tag = "Car Pooling:::";
 
     /**
-     * Default Constructor
+     * Default Constructor which can invoke the method directly to activity
      */
     private Logger() {
     }
@@ -53,7 +53,6 @@ public class Logger {
      *
      * @param message Exception raised by the logger
      */
-
     public static void logInfo(String message) {
         Log.i(tag, message);
     }

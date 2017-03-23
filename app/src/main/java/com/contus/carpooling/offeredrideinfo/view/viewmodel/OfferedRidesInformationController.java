@@ -1,3 +1,8 @@
+/**
+ * @category CarPooling
+ * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @license http://www.apache.org/licenses/LICENSE-2.0
+ */
 package com.contus.carpooling.offeredrideinfo.view.viewmodel;
 
 import android.content.Context;
@@ -6,7 +11,7 @@ import android.widget.Toast;
 
 /**
  * Controller of the OfferedRidesInformation activity and my rides fragment class
- * XML view controller
+ * XML view controller trigger all the even listener to do perform the action
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -14,9 +19,9 @@ import android.widget.Toast;
 public class OfferedRidesInformationController {
 
         /**
-         * OnClick listener in OfferedRidesInfo
+         * Trigger the event listener to do perform the action for OfferedRidesInfo
          *
-         * @return OnClickListener of the recycler view on item book button.
+         * @return The view of listener bookOnClick
          */
         public View.OnClickListener bookOnclick() {
             return new View.OnClickListener() {

@@ -42,7 +42,7 @@ import static com.contus.carpooling.utils.Constants.REQUEST_CODE_COMPANY_LOCATIO
 
 /**
  * Controller of the CompanyRegistrationActivity class.
- * XML view controller
+ * XML view controller trigger the listener to do perform the action
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -55,7 +55,7 @@ public class CompanyRegisterController {
     private CompanyList list;
 
     /**
-     * To get the category id
+     * To get the category id of company
      */
     private String categoryId;
 
@@ -65,10 +65,10 @@ public class CompanyRegisterController {
     private Context context;
 
     /**
-     * OnClick handler of the Company registration button.
+     * Trigger the listener to do perform the action for company registration
      *
-     * @param getEditTextValue Used to get the company registration details.
-     * @return OnClickListener of the company registration button.
+     * @param getEditTextValue Get the edit text value
+     * @return The edit text value
      */
     public View.OnClickListener btnCompanyRegistrationClick(final CompanyRegistrationInfo getEditTextValue) {
         return new View.OnClickListener() {
@@ -80,7 +80,6 @@ public class CompanyRegisterController {
             }
         };
     }
-
 
     /**
      * Handle the CompanyRegistration API of user
@@ -102,7 +101,7 @@ public class CompanyRegisterController {
     /**
      * Handle the api error response
      *
-     * @param errorMessage the error message
+     * @param errorMessage The error message
      */
     @Subscribe
     public void companyResponseReceived(String errorMessage) {
@@ -111,7 +110,7 @@ public class CompanyRegisterController {
     }
 
     /**
-     * Handle the api response details
+     * Handle the api response details for company registration
      *
      * @param result Api response
      */
@@ -132,10 +131,10 @@ public class CompanyRegisterController {
     }
 
     /**
-     * OnClick handler to show the category dialog list.
+     * Trigger the listener to do perform the action for show the category dialog list.
      *
-     * @param companyCategory store the company category from dialog.
-     * @return OnClickListener of the category edit text.
+     * @param companyCategory Get the category list from the model
+     * @return The details of company registration info model
      */
     public View.OnClickListener categoryListOnClick(final CompanyRegistrationInfo companyCategory) {
         return new View.OnClickListener() {
@@ -147,9 +146,9 @@ public class CompanyRegisterController {
     }
 
     /**
-     * OnClick handler to show the google place api.
+     * Trigger the listener to do perform the action for show the google place api.
      *
-     * @return OnClickListener of the location edit text.
+     * @return The view of the listener
      */
     public View.OnClickListener getLocationOnClick() {
         return new View.OnClickListener() {
@@ -168,13 +167,13 @@ public class CompanyRegisterController {
     }
 
     /**
-     * Method used to validate the company registration details.
+     * Method used to validate the company registration details whether fields are empty or not.
      *
-     * @param context  Used to show the toast message.
-     * @param userName Validate the username.
-     * @param password Validate the password.
-     * @param location Validate the location.
-     * @return true when the given field is not empty.
+     * @param context  Context of an activity
+     * @param userName Get the field of user name
+     * @param password Get the field of password
+     * @param location Get the field of  location
+     * @return True when the given field is not empty.
      */
     public boolean isValid(Context context, String userName, String password, String location) {
         boolean validationStatus = true;
@@ -186,11 +185,11 @@ public class CompanyRegisterController {
     }
 
     /**
-     * Method used to show the alert dialog with category list.
-     * And to store the value in model class.
+     * Method used to show the popup view which is display the category list
+     * And to store the values to model class.
      *
      * @param view            To get the instance of the source activity.
-     * @param companyCategory To set the category details in model.
+     * @param companyCategory To set the category details to model.
      */
     private void categoryList(View view, final CompanyRegistrationInfo companyCategory) {
         if (list != null) {
@@ -230,9 +229,9 @@ public class CompanyRegisterController {
 
 
     /**
-     * OnClick listener of redirect to login page.
+     * Trigger the event for redirect to login page.
      *
-     * @return OnClickListener of the sign in button.
+     * @return The view of listener
      */
     public View.OnClickListener btnSignInOnClick() {
         return new View.OnClickListener() {
@@ -246,7 +245,7 @@ public class CompanyRegisterController {
     }
 
     /**
-     * companyRegistrationController which can invoke the method directly to activity for get the Sector list
+     * CompanyRegistrationController which can invoke the method directly to activity for get the Sector list
      *
      * @param list Get the list items from CompanyList model
      */

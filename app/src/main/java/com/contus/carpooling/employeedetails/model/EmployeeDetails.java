@@ -11,7 +11,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Model class is used to get and store the employee details
+ * Model class is for get and store the employee details from API response
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -33,7 +33,7 @@ public class EmployeeDetails {
     private Integer userId;
 
     /**
-     * The adahar Card of the user
+     * The aadhar Card of the user
      */
     @SerializedName(Constants.EmployeeResponse.ADAHAR_CARD)
     @Expose

@@ -10,12 +10,12 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Category model class to set the category list to category
+ * Category model class for get the list of category from API response
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
  */
-public  class Category {
+public class Category {
 
     /**
      * Name of the category
@@ -25,7 +25,7 @@ public  class Category {
     private String name;
 
     /**
-     * The id
+     * The id of the category
      */
     @SerializedName(Constants.CompanyList.CATEGORY_ID)
     @Expose

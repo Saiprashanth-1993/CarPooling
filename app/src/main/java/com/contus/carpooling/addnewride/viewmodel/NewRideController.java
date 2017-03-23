@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.addnewride.viewmodel
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -44,7 +43,7 @@ import java.util.HashMap;
 import static android.content.ContentValues.TAG;
 
 /**
- * Controller of the New ride class
+ * Controller of the New ride class for trigger the event listener to do perform the actions
  * XML view controller
  *
  * @author Contus Team <developers@contus.in>
@@ -53,7 +52,7 @@ import static android.content.ContentValues.TAG;
 public class NewRideController {
 
     /**
-     * set the date and time to model
+     * Get the date and time
      */
     String dateAndTime;
 
@@ -69,7 +68,7 @@ public class NewRideController {
     Context context;
 
     /**
-     * create the date
+     * Display the date by using calendar
      */
     Calendar date;
 
@@ -79,7 +78,7 @@ public class NewRideController {
     Date startDate;
 
     /**
-     * Selected day from the week list.
+     * Selected a day from the week list.
      */
     private String daySelection = "";
 
@@ -89,13 +88,13 @@ public class NewRideController {
     private String dateAndTimeMode;
 
     /**
-     * OnClick listener of time edit box.
+     * Trigger the event click listener to do perform the action
      *
-     * @param clickMode Used to get end time click or start time click option.
-     * @param newRide Used to get the new ride details.
-     * @return OnClickListener of the edit text.
+     * @param clickMode Get end time click or start time click option.
+     * @param newRide   Get the new ride details.
+     * @return The click mode and ride details
      */
-   
+
     public View.OnClickListener btnTimeDialog(final String clickMode, final Ride newRide) {
         return new View.OnClickListener() {
             @Override
@@ -108,8 +107,9 @@ public class NewRideController {
     }
 
     /**
+     * Display the time and date by using  date and time picker
      *
-     * @param ride
+     * @param ride Get the details of ride model
      */
     public void showDateTimePicker(final Ride ride) {
         final Calendar currentDate = Calendar.getInstance();
@@ -120,7 +120,7 @@ public class NewRideController {
             public void onDateSet(DatePicker view, int year, int monthOfYear, final int dayOfMonth) {
                 date.set(year, monthOfYear, dayOfMonth);
                 linuxTime = date.getTimeInMillis();
-                dateAndTime(ride,currentDate);
+                dateAndTime(ride, currentDate);
                 if (ride.getStartTime() != null) {
                     linuxTime = convertToLong(ride.getStartTime());
                 }
@@ -142,6 +142,7 @@ public class NewRideController {
 
     /**
      * Date converted to long
+     *
      * @param date Get the date
      * @return The start date and time
      */
@@ -157,11 +158,11 @@ public class NewRideController {
 
     /**
      * Display the date and time by using time picker
-     * @param ride Get the ride model for set the date and time
+     *
+     * @param ride        Get the ride model for set the date and time
      * @param currentDate Get the current date
      */
-    public void  dateAndTime(final Ride ride, Calendar currentDate)
-    {
+    public void dateAndTime(final Ride ride, Calendar currentDate) {
         new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -184,11 +185,11 @@ public class NewRideController {
     }
 
     /**
-     * OnClick listener of button day click.
+     * Trigger the even click listener to do perform action of date and time.
      *
-     * @param daySelected Used to get the selected day.
-     * @param newRide     Used to get the new ride details.
-     * @return OnClickListener of the edit text.
+     * @param daySelected Get the selected day.
+     * @param newRide     Get the new ride details.
+     * @return The data selected
      */
     public View.OnClickListener btnDayOnClick(final String daySelected, final Ride newRide) {
         return new View.OnClickListener() {
@@ -208,10 +209,10 @@ public class NewRideController {
     }
 
     /**
-     * OnClick listener of add new ride button click.
+     * Trigger the even click listener to do perform action for add the new rides
      *
-     * @param newRide Used to get the new ride details.
-     * @return OnClickListener of the edit text.
+     * @param newRide Get the ride  model details.
+     * @return The details of ride model
      */
     public View.OnClickListener btnAddNewRideOnClick(final Ride newRide) {
         return new View.OnClickListener() {
@@ -229,7 +230,7 @@ public class NewRideController {
      * Handle the CreateRide API of user
      *
      * @param mContext Context of an activity
-     * @param rideInfo Get the model of rideInfo
+     * @param rideInfo Get the model of ride
      */
     private void rideRequest(Context mContext, Ride rideInfo) {
         BusProvider.getInstance().register(this);
@@ -261,9 +262,9 @@ public class NewRideController {
     }
 
     /**
-     * Handle the api response details
+     * Handle the create ride api response details once completed the creation of ride
      *
-     * @param result Api response
+     * @param result The API response
      */
     @Subscribe
     public void createRideDataReceived(CreateRideResponse result) {
@@ -282,11 +283,12 @@ public class NewRideController {
     }
 
     /**
-     * OnClick listener of user radio button to select the gender type.
+     * Trigger the click listener to do perform the action for
+     * user radio button to select the gender type.
      *
-     * @param ride   Used to get the new ride details.
-     * @param gender Used to get gender type.
-     * @return OnClickListener of the radio button.
+     * @param ride   Get the new ride details.
+     * @param gender Get the type of gender
+     * @return The gender of radio button
      */
     public View.OnClickListener radioBtnOnClick(final Ride ride, final String gender) {
         return new View.OnClickListener() {
@@ -298,11 +300,11 @@ public class NewRideController {
     }
 
     /**
-     * OnClick listener of user radio button to select the cost type.
+     * Triggered the click listener for user radio button to select the cost type.
      *
-     * @param newRide  Used to get the new ride details.
-     * @param costType Used to get gender type.
-     * @return OnClickListener of the radio button.
+     * @param newRide  Get the new ride details.
+     * @param costType Get the type of cost
+     * @return The cost type
      */
     public View.OnClickListener radioCostBtnOnClick(final Ride newRide, final String costType) {
         return new View.OnClickListener() {
@@ -314,10 +316,10 @@ public class NewRideController {
     }
 
     /**
-     * OnClick listener of checkbox button click.
+     * Triggered the click listener to do perform the action for check box
      *
-     * @param rideObj Used to get the new ride details.
-     * @return OnClickListener of the checkbox.
+     * @param rideObj Get the new ride details.
+     * @return The Ride models
      */
     public View.OnClickListener cbBtnOnClick(final Ride rideObj) {
         return new View.OnClickListener() {
@@ -333,10 +335,10 @@ public class NewRideController {
     }
 
     /**
-     * Method used to validate the ride information fields.
+     * Method  for validate the whether fields are empty or not
      *
-     * @param context Used to show the toast message.
-     * @return true when the given field is not empty.
+     * @param context Context of an activity
+     * @return The true when the given field is not empty.
      */
     private boolean isValid(Context context, Ride profileInfo) {
         boolean validationStatus = true;
@@ -366,10 +368,10 @@ public class NewRideController {
     }
 
     /**
-     * OnClick listener to get the location from google place api.
+     * Event click listener to get the location from google place api.
      *
      * @param requestCode ApiRequest code of the google place api intent
-     * @return OnClickListener of the registration button.
+     * @return The call back request code
      */
     public View.OnClickListener getLocationOnClick(final int requestCode) {
         return new View.OnClickListener() {

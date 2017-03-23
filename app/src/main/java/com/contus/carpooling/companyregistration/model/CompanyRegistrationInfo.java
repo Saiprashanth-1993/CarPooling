@@ -13,7 +13,7 @@ import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * CompanyRegistrationInfo model class is used to get and store the company name, category and location details.
+ * This is the model class is for get and store the company name, category and location details.
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -44,7 +44,7 @@ public class CompanyRegistrationInfo extends BaseObservable {
      * @return {@link #companyName}
      */
     @Bindable
-    public String  getCompanyName() {
+    public String getCompanyName() {
         return companyName;
     }
 

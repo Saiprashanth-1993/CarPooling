@@ -45,7 +45,7 @@ public class ErrorResponse {
 
     /**
      * Gets {@see #error}
-     * 
+     * <p>
      * Returns the error {@link #error}
      */
     public Boolean getError() {
@@ -80,7 +80,7 @@ public class ErrorResponse {
 
     /**
      * Gets {@see #message}
-     *
+     * <p>
      * Returns the message {@link #message}
      */
     public String getMessage() {
@@ -98,7 +98,7 @@ public class ErrorResponse {
 
     /**
      * Gets {@see #userToken}
-     *
+     * <p>
      * Returns the userToken {@link #userToken}
      */
     public String getUserToken() {

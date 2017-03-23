@@ -14,8 +14,7 @@ import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
 /**
- * This class is used to call all api from this class Do in background will called in async task
- * execute Listener will used for the call back
+ * This class is used for call all the api and execute Listener will used for the call back
  *
  * @author ContusTeam <developers@contus.in>
  * @version 2.3
@@ -23,7 +22,7 @@ import com.squareup.okhttp.Response;
 public class ApiService extends AsyncTask<String, Void, String> {
 
     /**
-     * ApiService context
+     * Get the context of an activity
      */
     Context context;
 

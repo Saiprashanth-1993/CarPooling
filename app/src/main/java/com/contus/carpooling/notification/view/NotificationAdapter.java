@@ -14,7 +14,7 @@ import com.contus.carpooling.R;
 import com.contus.carpooling.databinding.AdapterNotificationBinding;
 
 /**
- * Adapter class to display the notification list.
+ * Adapter class for display the notification list.
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0

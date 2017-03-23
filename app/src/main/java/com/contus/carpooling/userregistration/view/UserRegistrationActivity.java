@@ -24,8 +24,8 @@ import static com.contus.carpooling.utils.Constants.REQUEST_CODE_USER_FROM_LOCAT
 import static com.contus.carpooling.utils.Constants.REQUEST_CODE_USER_TO_LOCATION;
 
 /**
- * User registration will be called after completing the company registration.
- * User have to pass this screen else they will be moved here after splash if not registered already.
+ * User registration to create the user details to store the information into API.While loading the splash screen will check user have logged in or not
+ * otherwise will navigate to this activity
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
@@ -54,7 +54,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         /**
-         * Check that the result was from the autocomplete widget
+         * Check if the result was from the autocomplete widget
          */
         if (requestCode == REQUEST_CODE_USER_FROM_LOCATION) {
             if (resultCode == RESULT_OK) {

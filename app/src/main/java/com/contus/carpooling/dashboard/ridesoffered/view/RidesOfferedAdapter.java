@@ -24,7 +24,6 @@ import java.util.List;
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
-
 public class RidesOfferedAdapter extends RecyclerView.Adapter<RidesOfferedAdapter.RidesOfferedViewHolder> {
 
     /**

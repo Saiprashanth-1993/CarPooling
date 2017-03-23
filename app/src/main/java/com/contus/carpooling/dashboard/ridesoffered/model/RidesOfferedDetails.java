@@ -23,7 +23,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
- * Model class to display and store the rides offered details.
+ * Model class for display and store the rides offered details.
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
@@ -31,14 +31,11 @@ import java.util.List;
 public class RidesOfferedDetails extends BaseObservable {
 
     /**
-     * The id
+     * The id of vehicle
      */
     @SerializedName("id")
     @Expose
     private Integer id;
-
-
-
 
     /**
      * The creatorId
@@ -47,49 +44,43 @@ public class RidesOfferedDetails extends BaseObservable {
     @Expose
     private Integer creatorId;
 
-
-
     /**
-     * The departurePoints
+     * The departurePoints of user
      */
     @SerializedName("departure_point")
     @Expose
     private String departurePoints;
 
     /**
-     * The arrivalPoints
+     * The arrivalPoints of user
      */
     @SerializedName("arrival_point")
     @Expose
     private String arrivalPoints;
 
     /**
-     * The departureTimes
+     * The departureTimes of user
      */
     @SerializedName("departure_time")
     @Expose
     private String departureTimes;
 
-
-
     /**
-     * The arrivalTimes
+     * The arrivalTimes of user
      */
     @SerializedName("arrival_time")
     @Expose
     private String arrivalTimes;
 
-
-
     /**
-     * The genderPreference
+     * The genderPreference of user
      */
     @SerializedName("gender_preference")
     @Expose
     private String genderPreference;
 
     /**
-     * The seats
+     * The available of seats
      */
     @SerializedName("seats")
     @Expose
@@ -110,7 +101,7 @@ public class RidesOfferedDetails extends BaseObservable {
     private Integer isEveryWeeks;
 
     /**
-     * The type
+     * The type of cost
      */
     @SerializedName("type")
     @Expose
@@ -122,10 +113,6 @@ public class RidesOfferedDetails extends BaseObservable {
     @SerializedName("cost")
     @Expose
     private String cost;
-
-
-
-
 
     /**
      * The userInfoList
@@ -282,7 +269,7 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     @Bindable
     public String getSeats() {
-        return seats+" Seats Available";
+        return seats + " Seats Available";
     }
 
     /**
@@ -359,7 +346,6 @@ public class RidesOfferedDetails extends BaseObservable {
         return WordUtils.capitalizeFully(type);
     }
 
-
     /**
      * Sets {@see #type}
      *
@@ -386,15 +372,13 @@ public class RidesOfferedDetails extends BaseObservable {
                     Integer.parseInt(dateSpliter[2]),
                     Integer.parseInt(timeSpliter[0]),
                     Integer.parseInt(timeSpliter[1]));
-            String dateWithsec=""+fmt.format("%td %tB %tr", cal, cal ,cal);
+            String dateWithsec = "" + fmt.format("%td %tB %tr", cal, cal, cal);
             StringBuilder arrivalDate = new StringBuilder();
-            arrivalDate.append(dateWithsec.substring(0, dateWithsec.length()-6));
-            arrivalDate.append(dateWithsec.substring(dateWithsec.length()-3,dateWithsec.length()));
+            arrivalDate.append(dateWithsec.substring(0, dateWithsec.length() - 6));
+            arrivalDate.append(dateWithsec.substring(dateWithsec.length() - 3, dateWithsec.length()));
             return arrivalDate.toString();
         }
     }
-
-
 
     /**
      * Gets {@see #departureDate}  from departureTimes
@@ -414,16 +398,14 @@ public class RidesOfferedDetails extends BaseObservable {
                     Integer.parseInt(timeSpliter[0]),
                     Integer.parseInt(timeSpliter[1]));
 
-            String dateWithsec=""+fmt.format("%td %tB %tr", cal, cal ,cal);
+            String dateWithsec = "" + fmt.format("%td %tB %tr", cal, cal, cal);
             StringBuilder dateForm = new StringBuilder();
-            dateForm.append(dateWithsec.substring(0, dateWithsec.length()-6));
-            dateForm.append(dateWithsec.substring(dateWithsec.length()-3,dateWithsec.length()));
+            dateForm.append(dateWithsec.substring(0, dateWithsec.length() - 6));
+            dateForm.append(dateWithsec.substring(dateWithsec.length() - 3, dateWithsec.length()));
             return dateForm.toString();
 
         }
     }
-
-
 
     /**
      * Gets {@see #name}
@@ -432,15 +414,13 @@ public class RidesOfferedDetails extends BaseObservable {
      */
     public String getName() {
 
-        if(("male").equals(genderPreference.trim())){
+        if (("male").equals(genderPreference.trim())) {
 
-            return user.get(0).getUsername()+ " (M)";
-        }else {
+            return user.get(0).getUsername() + " (M)";
+        } else {
             return user.get(0).getUsername() + " (F)";
         }
     }
-
-
 
     /**
      * Gets {@see #costValue} from cost
@@ -448,14 +428,12 @@ public class RidesOfferedDetails extends BaseObservable {
      * Returns the costValue
      */
     public int getCostVisibility() {
-        if(Integer.parseInt(cost)>0){
+        if (Integer.parseInt(cost) > 0) {
             return View.VISIBLE;
-        }else {
+        } else {
             return View.INVISIBLE;
         }
     }
-
-
 
     /**
      * Gets {@see #rupeeFormat} from cost
@@ -465,8 +443,6 @@ public class RidesOfferedDetails extends BaseObservable {
     public String getRupeeFormat() {
         return cost;
     }
-
-
 
     /**
      * Gets {@see #user}
@@ -501,9 +477,4 @@ public class RidesOfferedDetails extends BaseObservable {
     public void setRidePreference(List<RidePreference> ridePreference) {
         this.ridePreference = ridePreference;
     }
-
-
-
-
-
 }

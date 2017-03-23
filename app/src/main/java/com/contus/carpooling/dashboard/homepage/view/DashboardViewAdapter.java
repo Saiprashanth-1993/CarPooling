@@ -12,7 +12,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import java.util.List;
 
 /**
- * The class that contains the list of fragments and list of title. We can use the fragments using
+ * The class for contains the list of fragments and list of title. We can use the fragments using
  * view pager from here.
  *
  * @author ContusTeam <developers@contus.in>
@@ -33,7 +33,7 @@ public class DashboardViewAdapter extends FragmentStatePagerAdapter {
     /**
      * Instantiates a new adapter dashboard view.
      *
-     * @param fm the Instance of the FragmentManager.
+     * @param fm The instance of the FragmentManager.
      */
     public DashboardViewAdapter(FragmentManager fm) {
         super(fm);

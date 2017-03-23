@@ -11,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
 
 
 /**
- * CompanyDetails model class to get the API response store into CompanyDetails
+ * Model class for get the details of company registration from the API response
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
@@ -19,14 +19,14 @@ import com.google.gson.annotations.SerializedName;
 public class CompanyDetails {
 
     /**
-     * The id
+     * The id of company details
      */
     @SerializedName(Constants.CompanyRegistration.COMPANY_DETAILS_ID)
     @Expose
     private Integer id;
 
     /**
-     * The Company name
+     * Name of the company
      */
     @SerializedName(Constants.CompanyRegistration.COMPANY_NAME)
     @Expose
@@ -38,7 +38,6 @@ public class CompanyDetails {
     @SerializedName(Constants.CompanyRegistration.SLUG)
     @Expose
     private String slug;
-
 
     /**
      * Gets {@see #id}

@@ -12,7 +12,7 @@ import com.contus.carpooling.changepassword.view.ChangePasswordActivity;
 
 /**
  * OnClick listener of the view.
- * XML view controller
+ * XML view controller for trigger all the even action
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -20,9 +20,9 @@ import com.contus.carpooling.changepassword.view.ChangePasswordActivity;
 public class SettingsController {
 
     /**
-     * OnClick listener of change password settings.
+     * Trigger the event action for change password settings
      *
-     * @return OnClickListener of the settings page.
+     * @return The view of setting listener
      */
     public View.OnClickListener changePasswordOnClick() {
         return new View.OnClickListener() {

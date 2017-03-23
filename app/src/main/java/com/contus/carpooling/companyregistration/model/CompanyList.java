@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * CompanyList model class to get the Company details from API response store into CompanyList
+ * This is the model class for get the list of company category and sector list which can display in the popup list
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
@@ -27,7 +27,7 @@ public class CompanyList {
     private List<CompanyListInfo> company = null;
 
     /**
-     * The name of categoryList
+     * Get the category list;
      */
     @SerializedName(Constants.CompanyList.CATEGORY)
     @Expose
@@ -35,7 +35,7 @@ public class CompanyList {
 
     /**
      * Gets {@see #company}
-     *
+     * <p>
      * Returns the company {@link #company}
      */
     public List<CompanyListInfo> getCompany() {

@@ -5,14 +5,12 @@
  */
 package com.contus.carpooling.companyregistration.model;
 
-
 import com.contus.carpooling.login.model.ErrorResponse;
 import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * CompanyRegistrationResponse for after get the response form company registration
- * server store into the company response
+ * This class for get the response about the company registration
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -20,8 +18,8 @@ import com.google.gson.annotations.SerializedName;
 public class CompanyRegistrationResponse extends ErrorResponse {
 
     /**
-     * Store the response details into company details
+     * Get the details of company registration from the response of API
      */
     @SerializedName(Constants.RESPONSE)
-   public CompanyDetails comRegResponse;
+    public CompanyDetails comRegResponse;
 }

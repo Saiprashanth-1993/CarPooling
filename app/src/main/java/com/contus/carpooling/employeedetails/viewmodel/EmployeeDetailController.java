@@ -33,7 +33,7 @@ import okhttp3.RequestBody;
 
 /**
  * Controller of the employee details class
- * XML view controller
+ * XML view controller for all the listener to do perform the action
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -46,17 +46,16 @@ public class EmployeeDetailController {
     private Context context;
 
     /**
-     * OnClick listener of image view.
+     * Trigger the event listener for select the camera or gallery
      *
      * @param employeeInfo         Set employee information.
      * @param getSelectedImageType Selected image from id card from image or backside image button.
-     * @return OnClickListener of the image view for show the bottom sheet dialog.
+     * @return The view of listener image view for show the bottom sheet dialog.
      */
     public View.OnClickListener imageViewOnClick(final String getSelectedImageType, final EmployeeInfo employeeInfo) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (getSelectedImageType.equals(Constants.CLICK_FRONT_IMAGE_VIEW)) {
                     employeeInfo.setImageSelectedType(Constants.CLICK_FRONT_IMAGE_VIEW);
                 } else {
@@ -69,10 +68,10 @@ public class EmployeeDetailController {
     }
 
     /**
-     * OnClick listener of submit button to save employee details.
+     * Trigger the event listener to do action perform for submit the button to save employee details.
      *
-     * @param employeeInfo model class to store and fetch the value.
-     * @return OnClickListener of button.
+     * @param employeeInfo Get the details of EmployeeInfo model
+     * @return The view of listener
      */
     public View.OnClickListener saveEmployeeDetails(final EmployeeInfo employeeInfo) {
         return new View.OnClickListener() {
@@ -115,7 +114,7 @@ public class EmployeeDetailController {
     /**
      * Handle the api error response
      *
-     * @param errorMessage the error message
+     * @param errorMessage Get the error message
      */
     @Subscribe
     public void dataReceived(String errorMessage) {

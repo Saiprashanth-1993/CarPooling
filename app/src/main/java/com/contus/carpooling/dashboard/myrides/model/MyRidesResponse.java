@@ -13,7 +13,7 @@ import java.util.List;
 
 
 /**
- * List all the ride response
+ * This is the class for list all the ride response from the  API
  *
  * @author Contus Team <developers@contus.in>
  * @version 2.3
@@ -21,7 +21,7 @@ import java.util.List;
 public class MyRidesResponse extends ErrorResponse {
 
     /**
-     * Get the ride list form the server store into the data
+     * Get the ride list form the server store into the MyRides model
      */
     @SerializedName("data")
     @Expose

@@ -1,147 +1,179 @@
+/**
+ * @category Car Pooling
+ * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @license http://www.apache.org/licenses/LICENSE-2.0
+ */
 package com.contus.carpooling.profile.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Model class is used to get and store the user profile details
+ * Model class for Get and store the details of user profile from the API
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
 public class UserProfileDetails {
 
-
     /**
-     * get the email form reponse
+     * Email of user
      */
     @SerializedName("email")
     @Expose
     private String email;
 
     /**
-     * get the username form reponse
+     * Get the username
      */
     @SerializedName("username")
     @Expose
     private Object username;
 
     /**
-     * get the mobile form reponse
+     * Get the mobile number
      */
     @SerializedName("mobile")
     @Expose
     private String mobile;
 
     /**
-     * get the from_location reponse
+     * Get the from location
      */
     @SerializedName("from_location")
     @Expose
     private String fromLocation;
 
     /**
-     * get the profileimage form reponse
+     * Get the profile image
      */
     @SerializedName("profile_image")
     @Expose
     private String profileImage;
 
     /**
-     * get the team name form reponse
+     * Get the company category id
      */
     @SerializedName("company_category_id")
     @Expose
     private Integer companyCategoryId;
 
     /**
-     * get the to_location form reponse
+     * Get the location
      */
     @SerializedName("to_location")
     @Expose
     private String companyLocation;
 
     /**
-     * get the vehicle_type form reponse
+     * Get the vehicle type
      */
     @SerializedName("vehicle_type")
     @Expose
     private String vehicleType;
 
     /**
-     * get the vehicle_name form reponse
+     * Get the vehicle name
      */
     @SerializedName("vehicle_name")
     @Expose
     private String vehicleName;
 
     /**
-     * get the vehicle_no form reponse
+     * Get the vehicle number
      */
     @SerializedName("vehicle_no")
     @Expose
     private String vehicleNo;
 
 
-
-
+    /**
+     * Gets {@see #id}
+     * <p>
+     * Returns the id {@link #email}
+     */
     public String getEmail() {
         return email;
     }
 
-
-
+    /**
+     * Gets {@see #id}
+     * <p>
+     * Returns the id {@link #username}
+     */
     public String getUsername() {
         return (String) username;
     }
 
-
+    /**
+     * Gets {@see #id}
+     * <p>
+     * Returns the id {@link #mobile}
+     */
     public String getMobile() {
         return String.valueOf(mobile);
     }
 
-
-
+    /**
+     * Gets {@see #id}
+     * <p>
+     * Returns the id {@link #fromLocation}
+     */
     public String getFromLocation() {
         return fromLocation;
     }
 
-
-
+    /**
+     * Gets {@see #id}
+     * <p>
+     * Returns the id {@link #profileImage}
+     */
     public String getProfileImage() {
         return profileImage;
     }
 
-
-
+    /**
+     * Gets {@see #id}
+     * <p>
+     * Returns the id {@link #companyCategoryId}
+     */
     public String getCompanyCategoryId() {
         return String.valueOf(companyCategoryId);
     }
 
-
-
+    /**
+     * Gets {@see #id}
+     * <p>
+     * Returns the id {@link #companyLocation}
+     */
     public String getCompanyLocation() {
         return companyLocation;
     }
 
-
-
+    /**
+     * Gets {@see #id}
+     * <p>
+     * Returns the id {@link #vehicleType}
+     */
     public String getVehicleType() {
         return vehicleType;
     }
 
-
-
+    /**
+     * Gets {@see #id}
+     * <p>
+     * Returns the id {@link #vehicleName}
+     */
     public String getVehicleName() {
         return vehicleName;
     }
 
-
-
+    /**
+     * Gets {@see #id}
+     * <p>
+     * Returns the id {@link #vehicleNo}
+     */
     public String getVehicleNo() {
         return vehicleNo;
     }
-
-
-
 }

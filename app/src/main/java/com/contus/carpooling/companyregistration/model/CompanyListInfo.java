@@ -12,7 +12,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Model class is used to get and store the company category id, name and status
+ * This is Model class is for get and store the company category id, name and status which can be set into UI layout
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0

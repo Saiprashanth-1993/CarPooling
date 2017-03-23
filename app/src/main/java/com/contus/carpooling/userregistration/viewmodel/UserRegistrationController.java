@@ -37,7 +37,7 @@ import java.util.HashMap;
 
 /**
  * OnClick listener of the view.
- * XML view controller
+ * XML view controller for  trigger the all the even listener to do perform all the action
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -50,10 +50,10 @@ public class UserRegistrationController {
     private Context context;
 
     /**
-     * OnClick listener of user registration button.
+     * Trigger the  event action for user registration button.
      *
-     * @param getEditTextValue Used to get the registration details.
-     * @return OnClickListener of the registration button.
+     * @param getEditTextValue Get the registration details
+     * @return the view of registration button
      */
     public View.OnClickListener btnRegistrationOnClick(final UserRegistrationInfo getEditTextValue) {
         return new View.OnClickListener() {
@@ -77,6 +77,7 @@ public class UserRegistrationController {
     private void registerRequest(Context mContext, UserRegistrationInfo userRegistrationInfo) {
         Context ctx = mContext;
         Log.e("ctx", ctx + "");
+
         /**
          * Store the device token and access token empty value to shared preference
          */
@@ -101,10 +102,10 @@ public class UserRegistrationController {
     }
 
     /**
-     * OnClick listener to get the location from google place api.
+     * Trigger the even listener for get the location from google place api.
      *
      * @param requestCode ApiRequest code of the google place api intent
-     * @return OnClickListener of the registration button.
+     * @return The view of location click listener
      */
     public View.OnClickListener getLocationOnClick(final int requestCode) {
         return new View.OnClickListener() {
@@ -124,11 +125,11 @@ public class UserRegistrationController {
 
 
     /**
-     * OnClick listener of user radio button.
+     * Trigger the even listener for  radio button.
      *
      * @param getEditTextValue Used to get the registration details.
      * @param gender           Used to get gender type.
-     * @return OnClickListener of the radio button.
+     * @return the view of the radio button.
      */
     public View.OnClickListener radioBtnOnClick(final UserRegistrationInfo getEditTextValue, final String gender) {
         return new View.OnClickListener() {
@@ -140,7 +141,7 @@ public class UserRegistrationController {
     }
 
     /**
-     * Method used to validate the edit text values.
+     * Method used to validate the edit text values whether field are empty or not
      *
      * @param userName     Validate the username.
      * @param mobileNumber validate the mobile number.
@@ -148,7 +149,7 @@ public class UserRegistrationController {
      * @param fromLocation Validate the from location.
      * @param toLocation   validate the to location.
      * @param password     Validate the password.
-     * @return true when the given field is not empty.
+     * @return True when the given field is not empty.
      */
     private boolean isValid(String userName, String mobileNumber, String emailId, String fromLocation, String toLocation, String password, String gender) {
         boolean validationStatus = true;
@@ -179,7 +180,7 @@ public class UserRegistrationController {
      * @param fromLocation Validate the from location.
      * @param toLocation   validate the to location.
      * @param password     Validate the password.
-     * @return true when the given field is not empty.
+     * @return True when the given field is not empty.
      */
     private boolean isTextValid(String fromLocation, String toLocation, String password) {
         boolean validationStatus = true;
@@ -191,7 +192,7 @@ public class UserRegistrationController {
     }
 
     /**
-     * OnClick listener of redirect to login page.
+     * Trigger the event listener for redirect to login page.
      *
      * @return OnClickListener of the sign in button.
      */

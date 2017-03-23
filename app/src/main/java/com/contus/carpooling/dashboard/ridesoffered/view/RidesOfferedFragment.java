@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.dashboard.ridesoffered.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -34,7 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Fragment to display the ride offer details in the dashboard.
+ * Fragment to display the ride offered details in the dashboard which can get the details from the model by using API
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
@@ -52,17 +51,17 @@ public class RidesOfferedFragment extends Fragment {
     FragmentRidesOfferedBinding ridesOfferedBinding;
 
     /**
-     * send the param by using fromLocation
+     * Get the from location
      */
     String fromLocation;
 
     /**
-     * send the param by using toLocatin
+     * Get the to location
      */
     String toLocation;
 
     /**
-     * set the emptyView if there is not item from the data
+     * Set the emptyView if there is no item from the response of API
      */
     EmptyView emptyView;
 
@@ -84,9 +83,7 @@ public class RidesOfferedFragment extends Fragment {
         BusProvider.getInstance().register(this);
         HashMap<String, String> ridesOfferedParams = new HashMap<>();
 
-
-
-        /*
+        /**
          * get the from and to location from shared preferences
          **/
         fromLocation = SharedDataUtils.getStringPreference(Constants.FROM_LOCATION, null);
@@ -109,7 +106,7 @@ public class RidesOfferedFragment extends Fragment {
     }
 
     /**
-     * Handle the api response details
+     * Handle the api response details for ride offered list
      *
      * @param result Api response
      */

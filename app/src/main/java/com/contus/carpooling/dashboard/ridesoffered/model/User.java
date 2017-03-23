@@ -1,15 +1,17 @@
+/**
+ * @category CarPooling
+ * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @license http://www.apache.org/licenses/LICENSE-2.0
+ */
 package com.contus.carpooling.dashboard.ridesoffered.model;
 
-/**
- * Created by user on 13/3/17.
- */
 import android.databinding.BaseObservable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Model class to display and store the User details.
+ * Model class for display and store the User details
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
@@ -17,14 +19,14 @@ import com.google.gson.annotations.SerializedName;
 public class User extends BaseObservable {
 
     /**
-     * The id
+     * The id of user
      */
     @SerializedName("id")
     @Expose
     private Integer id;
 
     /**
-     * The userRoleId
+     * The userRoleId of user
      */
     @SerializedName("user_role_id")
     @Expose

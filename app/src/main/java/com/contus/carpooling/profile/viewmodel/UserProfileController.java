@@ -25,7 +25,7 @@ import retrofit2.Response;
 
 /**
  * Controller of the UserProfileFragment class
- * XML view controller
+ * XML view controller trigger all the even listener to do perform the action
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -38,36 +38,39 @@ public class UserProfileController {
 
 
     /**
-     * Constructor of userPro
-     * @param context
-     * @param userProfileFragment
+     * Constructor of User Profile Controller which can invoke the method directly to activity
+     *
+     * @param context             Context of an activity
+     * @param userProfileFragment Get the view of fragment
      */
-    public UserProfileController(Context context, UserProfileFragment userProfileFragment){
+    public UserProfileController(Context context, UserProfileFragment userProfileFragment) {
         this.userProfileFragment = userProfileFragment;
         this.context = context;
     }
+
     /**
-     * OnClick listener of profile edit button.
+     * Trigger the event listener action for  profile edit button.
      *
-     * @param userProfileInfo Used to edit the profile details.
-     * @return OnClickListener of the profile edit button.
+     * @param userProfileInfo Get the model of user profile info
+     * @return The view of listener
      */
     public View.OnClickListener btnProfileEditClick(final UserProfileInfo userProfileInfo) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                    enableOrDisableEditText(userProfileInfo);
+                enableOrDisableEditText(userProfileInfo);
 
-                }
+            }
         };
     }
 
     /**
-     *user
-     * @return
+     * Trigger the even listener to perform the action for set the profile image
+     *
+     * @return The view of listener
      */
-    public View.OnClickListener profileClick(){
+    public View.OnClickListener profileClick() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,24 +93,24 @@ public class UserProfileController {
      * Check whether the edit button is clicked or not.
      * when it true, the user can edit the profile details.
      *
-     * @param profileInfo values from the edit text.
+     * @param profileInfo Get the values from the edit text.
      */
     public void enableOrDisableEditText(UserProfileInfo profileInfo) {
         if (profileInfo.isToEditOrSave()) {
             profileInfo.setToEditOrSave(false);
-       }else {
+        } else {
             profileInfo.setToEditOrSave(true);
-            if(isValid(profileInfo)){
+            if (isValid(profileInfo)) {
                 updateProfileRequest(profileInfo);
             }
         }
     }
 
 
-
     /**
-     *this method is used to send the response to update the profile
-     * @param getUserProfileValues
+     * This method is used to send the response to update the profile
+     *
+     * @param getUserProfileValues Get the model of user profile info
      */
     private void updateProfileRequest(UserProfileInfo getUserProfileValues) {
         HashMap<String, String> params = new HashMap<>();
@@ -139,36 +142,35 @@ public class UserProfileController {
     /**
      * Method used to validate the edit text fields.
      *
-     * @return true when the given field is not empty.
+     * @return True when the given field is not empty.
      */
     private boolean isValid(UserProfileInfo profileInfo) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(profileInfo.getUserName())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user name", Toast.LENGTH_SHORT).show();
-        }else if (TextUtils.isEmpty(profileInfo.getProfileImage())) {
+        } else if (TextUtils.isEmpty(profileInfo.getProfileImage())) {
             validationStatus = false;
             Toast.makeText(context, "Please update profile image", Toast.LENGTH_SHORT).show();
-        }else if (TextUtils.isEmpty(profileInfo.getUserTeamName())) {
+        } else if (TextUtils.isEmpty(profileInfo.getUserTeamName())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user team name", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(profileInfo.getUserMail())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user mail", Toast.LENGTH_SHORT).show();
-        } else
-        {
+        } else {
             userProfileValid(profileInfo);
         }
         return validationStatus;
     }
 
     /**
-     * 
-     * @param userProfileInfo
-     * @return
+     * Continue the validation check whether field are empty or not
+     *
+     * @param userProfileInfo Get the the model of user profile info
+     * @return The model of user profile info
      */
-    public boolean userProfileValid(UserProfileInfo userProfileInfo)
-    {
+    public boolean userProfileValid(UserProfileInfo userProfileInfo) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(userProfileInfo.getUserPhone())) {
             validationStatus = false;

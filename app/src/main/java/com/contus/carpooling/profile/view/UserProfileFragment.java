@@ -39,7 +39,14 @@ import retrofit2.Response;
  */
 public class UserProfileFragment extends Fragment {
 
+    /**
+     * Get the context of an activity
+     */
     Context mContext;
+
+    /**
+     * Get the details of User Profile Info model
+     */
     private UserProfileInfo userProfileInfo;
 
     @Override
@@ -49,7 +56,7 @@ public class UserProfileFragment extends Fragment {
         userProfileInfo = new UserProfileInfo();
         myProfileBinding.setUserProfile(userProfileInfo);
         myProfileRequest(mContext);
-        myProfileBinding.setViewController(new UserProfileController(getContext(),this));
+        myProfileBinding.setViewController(new UserProfileController(getContext(), this));
         ArrayAdapter<String> profileAdapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.vehicle_type));
         myProfileBinding.tvVehicleTypeVal.setAdapter(profileAdapter);
@@ -71,6 +78,7 @@ public class UserProfileFragment extends Fragment {
                 List<UserProfileDetails> userProfileDetail = response.body().getResponse();
                 setUserProfile(userProfileDetail);
             }
+
             @Override
             public void onFailure(Call<UserProfileResponse> call, Throwable t) {
 
@@ -83,13 +91,13 @@ public class UserProfileFragment extends Fragment {
 
     /**
      * Set the user profile
-     * @param userProfileDetail
+     *
+     * @param userProfileDetail Get the user profile model fields
      */
-    public void setUserProfile(List<UserProfileDetails> userProfileDetail)
-    {
-        if(userProfileDetail.get(0).getProfileImage() == null){
+    public void setUserProfile(List<UserProfileDetails> userProfileDetail) {
+        if (userProfileDetail.get(0).getProfileImage() == null) {
             userProfileInfo.setProfileImage(String.valueOf(R.drawable.ic_person));
-        }else {
+        } else {
             userProfileInfo.setProfileImage(userProfileDetail.get(0).getProfileImage());
         }
         userProfileInfo.setUserName(userProfileDetail.get(0).getUsername());
@@ -113,11 +121,12 @@ public class UserProfileFragment extends Fragment {
 
 
         /**
+         * Selected item of  the vehicle type
          *
-         * @param parent
-         * @param view
-         * @param pos
-         * @param id
+         * @param parent Parent of spinner view
+         * @param view   View of the listener
+         * @param pos    Position of an item
+         * @param id     Get the id of an item
          */
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             String selected = parent.getItemAtPosition(pos).toString();
@@ -125,11 +134,14 @@ public class UserProfileFragment extends Fragment {
         }
 
         /**
+         * This is for interface call back
          *
-         * @param parent
+         * @param parent Parent of the adapterviewl
          */
         public void onNothingSelected(AdapterView parent) {
-            // Do nothing.
+            /**
+             *Do nothing.
+             */
         }
     }
 }

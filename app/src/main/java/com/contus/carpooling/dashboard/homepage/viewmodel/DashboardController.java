@@ -25,7 +25,7 @@ import com.contus.carpooling.utils.Constants;
 
 /**
  * Controller of the dashboard activity and my rides fragment class
- * XML view controller
+ * XML view controller for trigger the even listener to do perform the action
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -43,9 +43,9 @@ public class DashboardController {
     private String selectedDeleyTime;
 
     /**
-     * OnClick listener of floating action button.
+     * Trigger the event listener for floating action button.
      *
-     * @return OnClickListener of the floating action button.
+     * @return The view of the listener
      */
     public View.OnClickListener fabBtnOnClick() {
         return new View.OnClickListener() {
@@ -61,9 +61,10 @@ public class DashboardController {
 
 
     /**
-     * OnClick listener in edit ride text view.
-     * @param myRide
-     * @return OnClickListener of the recycler view on edit ride text view.
+     * Trigger the event listener for edit ride text view.
+     *
+     * @param myRide Get the details of My Rides model
+     * @return The view of listener
      */
     public View.OnClickListener rideEditOnClick(final MyRides myRide) {
         return new View.OnClickListener() {
@@ -79,9 +80,9 @@ public class DashboardController {
     }
 
     /**
-     * OnClick listener in list items.
+     * Trigger the listener for item click event to do perform the action will navigate to another activity
      *
-     * @return OnClickListener of the recycler view on item book button.
+     * @return The view of the recycler view on item book button.
      */
     public View.OnClickListener itemOnClick() {
         return new View.OnClickListener() {
@@ -95,29 +96,29 @@ public class DashboardController {
     }
 
     /**
-     * OnClick listener to book ride
+     * Trigger the listener for book ride
      *
-     * @return OnClickListener of the recycler view on item.
+     * @return The view of the recycler view on item.
      */
     public View.OnClickListener bookOnclick() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-
-                Toast.makeText(context,"Booked",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Booked", Toast.LENGTH_SHORT).show();
 
                 /**
-                 * implement book method from rides offered items
+                 * Implement book method from rides offered items
                  */
 
             }
         };
     }
+
     /**
-     * OnClick listener in Text view to show the delay dialog.
+     * Trigger the listener for text view to show the delay dialog.
      *
-     * @return OnClickListener of the recycler view on item.
+     * @return Return the view of the recycler view on item.
      */
     public View.OnClickListener showDelayDialog() {
         return new View.OnClickListener() {
@@ -135,10 +136,10 @@ public class DashboardController {
     }
 
     /**
-     * OnClick listener in radio button to select the delay option.
+     * Trigger the event listener for radio button to select the delay option.
      *
-     * @param getSelectedItem selected delay time.
-     * @return OnClickListener of the radio button.
+     * @param getSelectedItem Get the item which is selected the date and time
+     * @return The view of listener
      */
     public View.OnClickListener delaySelectedItemOnClick(final String getSelectedItem) {
         return new View.OnClickListener() {
@@ -150,9 +151,9 @@ public class DashboardController {
     }
 
     /**
-     * OnClick listener in apply button to select the delay option.
+     * Trigger the event for apply button to select the delay option.
      *
-     * @return OnClickListener of the button.
+     * @return The view of the listener button
      */
     public View.OnClickListener delayDialogApplyOnClick() {
         return new View.OnClickListener() {
@@ -169,9 +170,9 @@ public class DashboardController {
     }
 
     /**
-     * OnClick listener in cancel button to cancel the delay option.
+     * Trigger the event for cancel button to cancel the delay option.
      *
-     * @return OnClickListener of the button.
+     * @return The view of the button.
      */
     public View.OnClickListener delayDialogCancelOnClick() {
         return new View.OnClickListener() {
@@ -181,6 +182,4 @@ public class DashboardController {
             }
         };
     }
-
-
 }

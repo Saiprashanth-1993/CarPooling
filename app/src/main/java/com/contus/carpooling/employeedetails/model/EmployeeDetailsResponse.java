@@ -12,7 +12,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Model class is used for get the response from the server store into the EmployeeDetailsResponse
+ * Model class is for get the details of employee details response from the API server
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0

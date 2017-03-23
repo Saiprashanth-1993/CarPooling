@@ -31,7 +31,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Activity to upload the employee details.
+ * Activity for register the employee details to store into API server
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
@@ -64,7 +64,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         /**
-         * handle toolbar arrow click action
+         * Handle toolbar arrow click action
          */
         if (item.getItemId() == android.R.id.home) {
             finish();

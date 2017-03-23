@@ -14,35 +14,25 @@ import com.google.gson.annotations.SerializedName;
 public class RidePreference extends BaseObservable {
 
     /**
-     * The id
+     * The id of user
      */
     @SerializedName("id")
     @Expose
     private Integer id;
 
     /**
-     * The ride_id
+     * The ride_id of user
      */
     @SerializedName("ride_id")
     @Expose
     private Integer rideId;
 
     /**
-     * The day
+     * The day  which user have selected
      */
     @SerializedName("day")
     @Expose
     private String day;
-
-
-    /**
-     * Sets {@see #id}
-     *
-     * @param id (@link #id}
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     /**
      * Gets {@see #rideId}
@@ -53,6 +43,14 @@ public class RidePreference extends BaseObservable {
         return rideId;
     }
 
+    /**
+     * Sets {@see #rideId}
+     *
+     * @param rideId (@link #rideId}
+     */
+    public void setRideId(Integer rideId) {
+        this.rideId = rideId;
+    }
 
     /**
      * Gets {@see #id}
@@ -63,14 +61,13 @@ public class RidePreference extends BaseObservable {
         return id;
     }
 
-
     /**
-     * Sets {@see #rideId}
+     * Sets {@see #id}
      *
-     * @param rideId (@link #rideId}
+     * @param id (@link #id}
      */
-    public void setRideId(Integer rideId) {
-        this.rideId = rideId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     /**
@@ -90,5 +87,4 @@ public class RidePreference extends BaseObservable {
     public void setDay(String day) {
         this.day = day;
     }
-
 }

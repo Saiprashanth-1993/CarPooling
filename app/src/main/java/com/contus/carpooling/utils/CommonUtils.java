@@ -16,18 +16,22 @@ import com.contus.carpooling.R;
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
  */
-
 public class CommonUtils {
 
+    /**
+     * Constructor of the common utils which can directly invoke the class to all the activity
+     */
     private CommonUtils() {
-        // Default constructor.
+        /**
+         * Default constructor.
+         */
     }
 
     /**
-     * Method that is used to check whether internet is connected during login
+     * Method for used to check whether internet is connected during login
      *
      * @param context Instance of the activity
-     * @return Boolean      Return true/false based on option method result
+     * @return Boolean  Return true/false based on option method result
      */
     public static boolean isNetAndLogin(Context context) {
 
@@ -39,7 +43,7 @@ public class CommonUtils {
 
 
     /**
-     * Method that is used to check internet
+     * Method for check the internet to device if connected other  display the toast message
      *
      * @param context Context of an activity
      */
@@ -54,10 +58,10 @@ public class CommonUtils {
 
 
     /**
-     * Used to Check the Network Connectivity.
+     * Method for Check the Network Connectivity.
      *
      * @param context Instance of an activity
-     * @return Boolean  return true if network available
+     * @return The Boolean value true if network available
      */
     public static boolean isNetConnected(Context context) {
         ConnectivityManager conMgr = (ConnectivityManager) context
@@ -81,7 +85,7 @@ public class CommonUtils {
      *
      * @param error   Error response
      * @param success Success response value
-     * @return Boolean  Return true if response is success
+     * @return Boolean  return true if response is success
      */
     public static boolean checkResponse(boolean error, Integer success) {
         return !(error && success != Constants.SUCCESS_VALUE);
@@ -91,7 +95,7 @@ public class CommonUtils {
      * Method that is used to check whether the response from server is success
      *
      * @param success Success response value
-     * @return Boolean  Return true if response is success
+     * @return Boolean  return true if response is success
      */
     public static boolean isSuccess(Integer success) {
         return success == Constants.SUCCESS_VALUE;
@@ -100,7 +104,7 @@ public class CommonUtils {
     /**
      * Return empty string if null.
      *
-     * @param stringValue the string value
+     * @param stringValue Get the string value
      * @return String Empty string if null
      */
     public static String returnEmptyStringIfNull(String stringValue) {

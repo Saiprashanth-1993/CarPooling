@@ -10,7 +10,7 @@ import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Get the response after create the ride
+ * Get the response after create the ride 
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -18,7 +18,7 @@ import com.google.gson.annotations.SerializedName;
 public class CreateRideResponse extends ErrorResponse {
 
     /**
-     * Get the response of create ride store into the create ride response
+     * Get the details of my ride list from response
      */
     @SerializedName(Constants.CreateRide.CREATE_RIDE_RESPONSE)
     public Ride rideResponse;

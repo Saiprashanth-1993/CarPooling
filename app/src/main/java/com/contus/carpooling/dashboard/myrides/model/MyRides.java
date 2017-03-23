@@ -18,8 +18,6 @@ import com.contus.carpooling.BR;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-
-
 /**
  * MyRides model class store all the details of ride list into the myrides
  *
@@ -28,7 +26,9 @@ import com.google.gson.annotations.SerializedName;
  */
 public class MyRides extends BaseObservable implements Parcelable {
 
-
+    /**
+     * Declare the static final for parcelable the details of my rides
+     */
     public static final Parcelable.Creator<MyRides> CREATOR = new Parcelable.Creator<MyRides>() {
         @Override
         public MyRides createFromParcel(Parcel source) {
@@ -42,7 +42,7 @@ public class MyRides extends BaseObservable implements Parcelable {
     };
 
     /**
-     * The departureTime
+     * Get the source time of user location
      */
     @SerializedName("departure_time")
     @Expose
@@ -68,6 +68,7 @@ public class MyRides extends BaseObservable implements Parcelable {
     @SerializedName("type")
     @Expose
     private String type;
+
     /**
      * The arrivalPoint
      */
@@ -75,17 +76,12 @@ public class MyRides extends BaseObservable implements Parcelable {
     @Expose
     private String arrivalPoint;
 
-
-
-
     /**
      * The gender
      */
     @SerializedName("gender")
     @Expose
     private String gender;
-
-
 
     /**
      * The arrivalTime
@@ -108,14 +104,12 @@ public class MyRides extends BaseObservable implements Parcelable {
     @Expose
     private String vehicleType;
 
-
     /**
      * The cost
      */
     @SerializedName("cost")
     @Expose
     private String cost;
-
 
     /**
      * The deapture time
@@ -125,8 +119,9 @@ public class MyRides extends BaseObservable implements Parcelable {
     private Integer isEveryWeeks;
 
     /**
-     *ride constructor
-     * @param in the in
+     * Constructor of MyRides which can invoke the method directly to activity
+     *
+     * @param in Get the values in
      */
     public MyRides(Parcel in) {
         this.id = (Integer) in.readValue(Integer.class.getClassLoader());
@@ -339,7 +334,7 @@ public class MyRides extends BaseObservable implements Parcelable {
      * <p>
      * Returns the error {@link #cost}
      */
-//    @Bindable
+    @Bindable
     public String getCost() {
         if (TextUtils.equals("0", cost))
             return "Free";
@@ -375,8 +370,4 @@ public class MyRides extends BaseObservable implements Parcelable {
         dest.writeString(this.type);
         dest.writeString(this.cost);
     }
-
-
-
-
 }

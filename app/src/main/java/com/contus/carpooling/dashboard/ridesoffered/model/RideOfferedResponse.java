@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * This class will maintain and retrieve the status of corresponding response, success code and message.
+ * This is the class for get the details of ride offered details from API response
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0

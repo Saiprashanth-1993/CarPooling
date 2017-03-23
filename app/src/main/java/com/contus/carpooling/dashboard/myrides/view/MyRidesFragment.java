@@ -53,7 +53,7 @@ public class MyRidesFragment extends Fragment {
     FragmentMyRidesBinding ridesOfferedBinding;
 
     /**
-     * set the emptyView if there is not item from the data
+     * Set the emptyView if there is no item display from the response
      */
     EmptyView emptyView;
 
@@ -68,7 +68,7 @@ public class MyRidesFragment extends Fragment {
     }
 
     /**
-     * ApiRequest for list the ride List by using getRideList API
+     * ApiRequest for list the ride list by using getRideList API
      */
     private void myRideListRequest(Context mContext) {
         BusProvider.getInstance().register(this);
@@ -87,7 +87,7 @@ public class MyRidesFragment extends Fragment {
     }
 
     /**
-     * Handle the api response details
+     * Handle the api response details for my rides
      *
      * @param result Api response
      */

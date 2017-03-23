@@ -5,7 +5,7 @@ import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * The model class to get the password change information from the response
+ * The model class for get the response of change password
  *
  * @author Contus Team <developers@contus.in>
  * @version 2.3
@@ -14,7 +14,7 @@ import com.google.gson.annotations.SerializedName;
 public class ChangePasswordResponse extends ErrorResponse {
 
     /**
-     * The changepassword response set into model.
+     * The change password response set into model.
      */
     @SerializedName(Constants.RESPONSE)
     public ChangePasswordInfo password;

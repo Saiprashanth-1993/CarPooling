@@ -13,23 +13,18 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Model class is used to get and store the user profile details.
- *
+ * Model class is for get the details of user profile
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
 public class UserProfileInfo extends BaseObservable {
 
-
-
     /**
-     * Username of the user.
+     * Profile Image of the user.
      */
     @SerializedName("profile_image")
     @Expose
     private String profileImage;
-
-
 
     /**
      * Username of the user.
@@ -48,8 +43,6 @@ public class UserProfileInfo extends BaseObservable {
     /**
      * Mail id of the user.
      */
-//    @SerializedName("email")
-//    @Expose
     private String userMail;
 
     /**
@@ -135,6 +128,11 @@ public class UserProfileInfo extends BaseObservable {
         notifyPropertyChanged(BR.userTeamName);
     }
 
+    /**
+     * Gets {@see #profileImage}.
+     *
+     * @return {@link #profileImage}
+     */
     @Bindable
     public String getProfileImage() {
         return profileImage;

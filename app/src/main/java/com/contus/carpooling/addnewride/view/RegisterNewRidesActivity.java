@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.addnewride.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -32,7 +31,7 @@ import static com.contus.carpooling.utils.Constants.REQUEST_CODE_USER_FROM_LOCAT
 import static com.contus.carpooling.utils.Constants.REQUEST_CODE_USER_TO_LOCATION;
 
 /**
- * Activity used to register the new ride or edit ride details.
+ * RegisterNewRidesActivity for create and edit details of user rides
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -40,15 +39,25 @@ import static com.contus.carpooling.utils.Constants.REQUEST_CODE_USER_TO_LOCATIO
 public class RegisterNewRidesActivity extends AppCompatActivity {
 
     /**
-     * Get the model class
+     * Get the ride model class
      */
     Ride ride;
+
+    /**
+     * Binding the add New Ride to interact  with the UI layout
+     */
+    ActivityAddNewRideBinding addNewRideBinding;
+
+    /**
+     * Get the available seat for user
+     */
+    ArrayAdapter<String> seatAvailableAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityAddNewRideBinding addNewRideBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_new_ride);
-        Bundle bundle = getIntent().getExtras();
+        addNewRideBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_new_ride);
+
         setSupportActionBar(addNewRideBinding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -58,14 +67,26 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
         addNewRideBinding.setNewRideData(ride);
         addNewRideBinding.setClickController(controller);
 
-        ArrayAdapter<String> seatAvailableAdapter = new ArrayAdapter<>(this,
+
+        seatAvailableAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.list_seat_available));
         addNewRideBinding.spSeats.setAdapter(seatAvailableAdapter);
         addNewRideBinding.spSeats.setOnItemSelectedListener(new DAYITEM());
+        parsingRide();
+    }
 
+    /**
+     * Parsing the my ride details
+     */
+    public void parsingRide() {
+        Bundle bundle = getIntent().getExtras();
         if (bundle.getBoolean(Constants.CLICK_RIDE)) {
             addNewRideBinding.toolbarTitle.setText(R.string.title_edit_ride);
             addNewRideBinding.btnAddRide.setText(R.string.change_ride);
+
+            /**
+             * Set the list of rides from the details of my rides
+             */
             MyRides myRides = bundle.getParcelable("parceble");
             ride.setFromRide(myRides.getArrivalPoint());
             ride.setToRide(myRides.getDeparturePoint());
@@ -102,11 +123,7 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     *
-     * @param item
-     * @return
-     */
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle toolbar arrow click action
@@ -116,44 +133,16 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Get the position of selected item spinner
-     */
-    public class DAYITEM implements AdapterView.OnItemSelectedListener {
-
-        /**
-         *
-         * @param parent
-         * @param view
-         * @param pos
-         * @param id
-         */
-        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-            String selected = parent.getItemAtPosition(pos).toString();
-            ride.setSeats(selected);
-        }
-
-        /**
-         *
-         * @param parent
-         */
-        public void onNothingSelected(AdapterView parent) {
-            // Do nothing.
-        }
-    }
-
-    /**
-     * gets user entred location data from another activity
-     * @param requestCode request code to identify different requests
-     * @param resultCode result code to identify different results
-     * @param data intent data sent from started activity to provide more information
-     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // Check that the result was from the autocomplete widget.
+        /**
+         *Check that the result was from the autocomplete widget.
+         */
         if (requestCode == REQUEST_CODE_USER_FROM_LOCATION) {
             if (resultCode == RESULT_OK) {
-                // Get the user's selected place from the Intent.
+                /**
+                 * Get the user's selected place from the Intent.
+                 */
                 Place place = PlaceAutocomplete.getPlace(this, data);
                 Log.i("place_details", "Place Selected: " + place.getName());
                 ride.setFromRide(place.getName().toString());
@@ -163,7 +152,9 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
             }
         } else if (requestCode == REQUEST_CODE_USER_TO_LOCATION) {
             if (resultCode == RESULT_OK) {
-                // Get the user's selected place from the Intent.
+                /**
+                 * Get the user's selected place from the Intent.
+                 */
                 Place place = PlaceAutocomplete.getPlace(this, data);
                 Log.i("place_details", "Place Selected: " + place.getName());
                 ride.setToRide(place.getName().toString());
@@ -171,6 +162,34 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
                 Status status = PlaceAutocomplete.getStatus(this, data);
                 Log.e("error", "Error: Status = " + status.toString());
             }
+        }
+    }
+
+    /**
+     * Get the position of selected item spinner
+     */
+    public class DAYITEM implements AdapterView.OnItemSelectedListener {
+
+        /**
+         * Display the available of seat selected item of spinner
+         *
+         * @param parent Parent of the adapter view
+         * @param view   Get the position of an view
+         * @param pos    Get the position of an item
+         * @param id     Get the id of an item
+         */
+        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            String selected = parent.getItemAtPosition(pos).toString();
+            ride.setSeats(selected);
+        }
+
+        /**
+         * It is an interface callback for spinner
+         *
+         * @param parent
+         */
+        public void onNothingSelected(AdapterView parent) {
+            // Do nothing.
         }
     }
 }

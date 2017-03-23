@@ -1,6 +1,5 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.offeredrideinfo.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
@@ -18,7 +17,7 @@ import com.contus.carpooling.databinding.ActivityRideInfoBinding;
 import com.contus.carpooling.offeredrideinfo.view.viewmodel.OfferedRidesInformationController;
 
 /**
- * Activity used to show the rides information.
+ * Activity for show the rides information which used to display the details from API response
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -30,17 +29,6 @@ public class OfferedRidesInformationActivity extends AppCompatActivity {
      * Context of an activity
      */
     Context context;
-
-    /**
-     * send the param by using fromLocation
-     */
-    String fromLocation;
-
-    /**
-     * send the param by using toLocatin
-     */
-    String toLocation;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,7 +50,6 @@ public class OfferedRidesInformationActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

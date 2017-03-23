@@ -14,7 +14,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
 /**
- * MyFirebaseInstanceIDService to get the Token id from device for push notification
+ * This is class for get the Token id from device for push notification
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
@@ -42,6 +42,6 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
         /**
          * Store the device token into shared preference
          */
-        SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN,token);
+        SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN, token);
     }
 }
