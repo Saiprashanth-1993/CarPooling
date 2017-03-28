@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
@@ -84,7 +83,7 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // Get the user's selected place from the Intent.
                 Place place = PlaceAutocomplete.getPlace(this, data);
-                Log.i("place_details", "Place Selected: " + place.getName());
+                Logger.logInfo("place_details", "Place Selected: " + place.getName());
                 registrationInfo.setLocation(place.getName().toString());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(this, data);

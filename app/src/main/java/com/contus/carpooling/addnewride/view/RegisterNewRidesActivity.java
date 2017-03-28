@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,6 +22,7 @@ import com.contus.carpooling.addnewride.viewmodel.NewRideController;
 import com.contus.carpooling.dashboard.myrides.model.MyRides;
 import com.contus.carpooling.databinding.ActivityAddNewRideBinding;
 import com.contus.carpooling.utils.Constants;
+import com.contus.carpooling.utils.Logger;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
@@ -110,7 +110,7 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
             ride.setType(myRides.getType());
 
             int position = seatAvailableAdapter.getPosition(ride.getSeats());
-            Log.i("TAG", "onCreate: position" + position);
+            Logger.logInfo("TAG", "onCreate: position" + position);
             addNewRideBinding.spSeats.setSelection(5);
 
             if (myRides.getIsEveryWeeks() > 0) {
@@ -144,11 +144,11 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
                  * Get the user's selected place from the Intent.
                  */
                 Place place = PlaceAutocomplete.getPlace(this, data);
-                Log.i("place_details", "Place Selected: " + place.getName());
+                Logger.logInfo("place_details", "Place Selected: " + place.getName());
                 ride.setFromRide(place.getName().toString());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status result = PlaceAutocomplete.getStatus(this, data);
-                Log.e("error", "Error: Status = " + result.toString());
+                Logger.logInfo("error", "Error: Status = " + result.toString());
             }
         } else if (requestCode == REQUEST_CODE_USER_TO_LOCATION) {
             if (resultCode == RESULT_OK) {
@@ -156,11 +156,11 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
                  * Get the user's selected place from the Intent.
                  */
                 Place place = PlaceAutocomplete.getPlace(this, data);
-                Log.i("place_details", "Place Selected: " + place.getName());
+                Logger.logInfo("place_details", "Place Selected: " + place.getName());
                 ride.setToRide(place.getName().toString());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(this, data);
-                Log.e("error", "Error: Status = " + status.toString());
+                Logger.logInfo("error", "Error: Status = " + status.toString());
             }
         }
     }
@@ -187,7 +187,6 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
          * It is an interface callback for spinner
          *
          * @param parent Get the adapter view parent
-         *
          */
         public void onNothingSelected(AdapterView parent) {
             // Do nothing.

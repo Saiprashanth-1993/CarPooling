@@ -9,7 +9,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 
@@ -75,7 +74,7 @@ public class UserRegistrationController {
      */
     private void registerRequest(Context mContext, UserRegistrationInfo userRegistrationInfo) {
         Context ctx = mContext;
-        Log.e("ctx", ctx + "");
+        Logger.logInfo("ctx", ctx + "");
 
         /**
          * Store the device token and access token empty value to shared preference
@@ -229,7 +228,7 @@ public class UserRegistrationController {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 CustomUtils.showToast(context, result.getMessage());
-                Log.i("device_token", result.getUserToken());
+                Logger.logInfo("device_token", result.getUserToken());
                 UserRegistrationInfo regResponse = result.registerAPIResponse;
 
                 /**

@@ -11,7 +11,6 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -77,7 +76,7 @@ public class NewRideController {
     Date startDate;
 
     /**
-     * Set the is every weeks
+     * Set the IsEveryWeeks
      */
     String disable = "0";
 
@@ -159,7 +158,7 @@ public class NewRideController {
         try {
             startDate = new SimpleDateFormat("yyyy-mm-dd HH:mm").parse(date);
         } catch (ParseException e) {
-            Log.e("Exception", String.valueOf(e));
+            Logger.logInfo("Exception", String.valueOf(e));
         }
         assert startDate != null;
         return startDate.getTime();
@@ -177,12 +176,11 @@ public class NewRideController {
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 date.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 date.set(Calendar.MINUTE, minute);
-                Log.v(TAG, "The choosen one " + date.getTime());
-
+                Logger.logInfo(TAG, "The choosen one " + date.getTime());
                 dateAndTime = dateAndTime + " " + hourOfDay + ":" + minute;
                 if (dateAndTimeMode.equals(context.getString(R.string.start_time))) {
                     ride.setStartTime(dateAndTime);
-                    Log.i("TAG", "onTimeSet: " + dateAndTime);
+                    Logger.logInfo("TAG", "onTimeSet: " + dateAndTime);
                 } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
                     ride.setEndTime(dateAndTime);
                 }
@@ -277,7 +275,7 @@ public class NewRideController {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 CustomUtils.showToast(context, result.getMessage());
                 List<Ride> createRideResponse = result.getRideDetails();
-                Log.e("createRideResponse", String.valueOf(createRideResponse));
+                Logger.logInfo("createRideResponse", String.valueOf(createRideResponse));
                 context.startActivity(new Intent(context, DashboardActivity.class));
                 ((Activity) context).finish();
             } else {
@@ -321,17 +319,17 @@ public class NewRideController {
     /**
      * Triggered the click listener to do perform the action for check box
      *
-     * @param rideObj Get the new ride details.
+     * @param ride Get the new ride details.
      * @return View.OnClickListener OnClickListener the details of ride model
      */
-    public View.OnClickListener cbBtnOnClick(final Ride rideObj) {
+    public View.OnClickListener cbBtnOnClick(final Ride ride) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (rideObj.getIsEveryWeek()) {
-                    rideObj.setEveryWeeks(disable);
+                if (ride.getIsEveryWeek()) {
+                    ride.setEveryWeeks(disable);
                 } else {
-                    rideObj.setEveryWeeks(enable);
+                    ride.setEveryWeeks(enable);
                 }
             }
         };

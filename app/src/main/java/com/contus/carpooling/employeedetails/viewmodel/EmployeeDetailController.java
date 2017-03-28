@@ -9,7 +9,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 
 import com.contus.carpooling.R;
@@ -101,7 +100,7 @@ public class EmployeeDetailController {
      */
     private void registerRequest(Context mContext, EmployeeInfo employeeInfo) {
         Context ctx = mContext;
-        Log.e("ctx", ctx + "");
+        Logger.logInfo("ctx", ctx + "");
         BusProvider.getInstance().register(this);
         RequestBody frontImage = RequestBody.create(MediaType.parse("image/*"), employeeInfo.getFrontImage());
         MultipartBody.Part frontImageMultipart = MultipartBody.Part.createFormData

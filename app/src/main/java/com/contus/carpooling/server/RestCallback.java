@@ -5,9 +5,8 @@
  */
 package com.contus.carpooling.server;
 
-import android.util.Log;
-
 import com.contus.carpooling.login.model.ErrorResponse;
+import com.contus.carpooling.utils.Logger;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -43,7 +42,7 @@ public class RestCallback<T> implements Callback<T> {
                     error = gson.fromJson(response.errorBody().string(), ErrorResponse.class);
                     BusProvider.getInstance().post(error.getMessage());
                 } catch (IOException e) {
-                    Log.e("Exception", String.valueOf(e));
+                    Logger.logInfo("Exception", String.valueOf(e));
                 }
             } else {
                 BusProvider.getInstance().post("Something went wrong");

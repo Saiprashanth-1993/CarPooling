@@ -16,7 +16,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.contus.carpooling.R;
@@ -112,7 +111,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         if (employeeInfo.getImageSelectedType().equals(Constants.CLICK_FRONT_IMAGE_VIEW)) {
             Bitmap scaled = Bitmap.createScaledBitmap(selectImage, 512, nh, true);
             employeeInfo.setFrontSideSelected(true);
-            Log.d("file_path", imageFile + "");
+            Logger.logInfo("file_path", imageFile + "");
             employeeInfo.setFrontImage(imageFile);
             employeeDetailBinding.uploadImageFront.setImageBitmap(scaled);
         } else {

@@ -9,13 +9,13 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.databinding.ActivityUserRegistrationBinding;
 import com.contus.carpooling.userregistration.model.UserRegistrationInfo;
 import com.contus.carpooling.userregistration.viewmodel.UserRegistrationController;
+import com.contus.carpooling.utils.Logger;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
@@ -62,11 +62,11 @@ public class UserRegistrationActivity extends AppCompatActivity {
                  *Get the user's selected place from the Intent
                  */
                 Place place = PlaceAutocomplete.getPlace(this, data);
-                Log.i("place_details", "Place Selected: " + place.getName());
+                Logger.logInfo("place_details", "Place Selected: " + place.getName());
                 registrationInfo.setFromLocation(place.getName().toString());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status result = PlaceAutocomplete.getStatus(this, data);
-                Log.e("error", "Error: Status = " + result.toString());
+                Logger.logInfo("error", "Error: Status = " + result.toString());
             }
         } else if (requestCode == REQUEST_CODE_USER_TO_LOCATION) {
             if (resultCode == RESULT_OK) {
@@ -74,11 +74,11 @@ public class UserRegistrationActivity extends AppCompatActivity {
                  * Get the user's selected place from the Intent
                  */
                 Place place = PlaceAutocomplete.getPlace(this, data);
-                Log.i("place_details", "Place Selected: " + place.getName());
+                Logger.logInfo("place_details", "Place Selected: " + place.getName());
                 registrationInfo.setToLocation(place.getName().toString());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(this, data);
-                Log.e("error", "Error: Status = " + status.toString());
+                Logger.logInfo("error", "Error: Status = " + status.toString());
             }
         }
     }

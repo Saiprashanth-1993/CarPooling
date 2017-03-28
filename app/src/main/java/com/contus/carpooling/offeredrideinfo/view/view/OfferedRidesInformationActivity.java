@@ -17,7 +17,7 @@ import com.contus.carpooling.databinding.ActivityRideInfoBinding;
 import com.contus.carpooling.offeredrideinfo.view.viewmodel.OfferedRidesInformationController;
 
 /**
- * Activity for show the rides information which used to display the details from API response
+ * Activity for show the rides information which is used to display the details from API response
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0

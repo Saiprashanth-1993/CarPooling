@@ -11,7 +11,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -88,7 +87,7 @@ public class CompanyRegisterController {
      */
     private void companyRegistrationRequest(Context mContext, CompanyRegistrationInfo companyRegistrationInfo) {
         Context ctx = mContext;
-        Log.e("ctx", ctx + "");
+        Logger.logInfo("ctx", ctx + "");
         BusProvider.getInstance().register(this);
         HashMap<String, String> companyRegistrationParams = new HashMap<>();
         companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_REGISTRATION_NAME, companyRegistrationInfo.getCompanyName());
