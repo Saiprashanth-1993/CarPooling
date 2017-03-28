@@ -103,7 +103,7 @@ public class BottomSheetController {
     /**
      * Trigger the even listener to do action perform for gallery selection
      *
-     * @return OnClickListener of the image view to call the gallery intent.
+     * @return View.OnClickListener OnClickListener of the image view to call the gallery intent.
      */
     public View.OnClickListener imageGallerySelectionOnclick() {
         return new View.OnClickListener() {

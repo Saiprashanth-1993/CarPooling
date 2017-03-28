@@ -82,9 +82,9 @@ public class EmployeeDetailController {
                 if (TextUtils.isEmpty(employeeInfo.getIdCardNumber())) {
                     Logger.showShortMessage(view.getContext(), R.string.id_card);
                 } else if (!employeeInfo.isFrontSideSelected()) {
-                    Logger.showShortMessage(view.getContext(),R.string.front_side);
+                    Logger.showShortMessage(view.getContext(), R.string.front_side);
                 } else if (!employeeInfo.isBackSideSelected()) {
-                    Logger.showShortMessage(view.getContext(),R.string.back_side);
+                    Logger.showShortMessage(view.getContext(), R.string.back_side);
                 } else {
                     registerRequest(context, employeeInfo);
 
@@ -118,7 +118,7 @@ public class EmployeeDetailController {
      * @param errorMessage Get the error message
      */
     @Subscribe
-    public void dataReceived(String errorMessage) {
+    public void employeeResponseReceived(String errorMessage) {
         BusProvider.getInstance().unregister(this);
         CustomUtils.showToast(context, errorMessage);
     }
@@ -129,7 +129,7 @@ public class EmployeeDetailController {
      * @param result Api response
      */
     @Subscribe
-    public void dataReceived(EmployeeDetailsResponse result) {
+    public void employeeResponseReceived(EmployeeDetailsResponse result) {
         BusProvider.getInstance().unregister(this);
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {

@@ -34,7 +34,7 @@ public class RestCallback<T> implements Callback<T> {
             BusProvider.getInstance().post(response.body());
         } else {
             /**
-             * Get the error response message by using this code
+             * Get the error response message by using this status code
              */
             if (response.code() == 422) {
                 Gson gson = new GsonBuilder().create();

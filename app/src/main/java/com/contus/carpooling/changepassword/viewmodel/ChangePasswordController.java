@@ -85,10 +85,10 @@ public class ChangePasswordController {
             Logger.showShortMessage(context, R.string.confirm_password);
         } else if (newPassword.length() < 6) {
             validStatus = false;
-            Logger.showShortMessage(context, R.string.new_min_password);
+            Logger.showShortMessage(context, R.string.new_password_length);
         } else if (confirmPassword.length() < 6) {
             validStatus = false;
-            Logger.showShortMessage(context, R.string.confirm_min_password);
+            Logger.showShortMessage(context, R.string.confirm_password_length);
         } else if (!newPassword.equals(confirmPassword)) {
             validStatus = false;
             Logger.showShortMessage(context, R.string.password_match);

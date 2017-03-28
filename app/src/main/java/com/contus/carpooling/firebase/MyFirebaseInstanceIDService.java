@@ -13,7 +13,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
 /**
- * This is class for get the Token id from device for push notification
+ * This is class for get the token id from device for push notification
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0

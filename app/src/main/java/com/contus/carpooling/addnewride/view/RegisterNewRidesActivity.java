@@ -71,7 +71,7 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
         seatAvailableAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.list_seat_available));
         addNewRideBinding.spSeats.setAdapter(seatAvailableAdapter);
-        addNewRideBinding.spSeats.setOnItemSelectedListener(new DAYITEM());
+        addNewRideBinding.spSeats.setOnItemSelectedListener(new SELECTEDSEATS());
         parsingRide();
     }
 
@@ -166,9 +166,9 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
     }
 
     /**
-     * Get the position of selected item spinner
+     * Get the position of selected number of seats in spinner
      */
-    public class DAYITEM implements AdapterView.OnItemSelectedListener {
+    public class SELECTEDSEATS implements AdapterView.OnItemSelectedListener {
 
         /**
          * Display the available of seat selected item of spinner

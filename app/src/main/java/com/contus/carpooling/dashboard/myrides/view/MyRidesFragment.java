@@ -78,10 +78,10 @@ public class MyRidesFragment extends Fragment {
     /**
      * Handle the api error response
      *
-     * @param errorMessage the error message
+     * @param errorMessage Get the error message
      */
     @Subscribe
-    public void myListDataReceived(String errorMessage) {
+    public void myRideListResponseReceived(String errorMessage) {
         BusProvider.getInstance().unregister(activity);
         CustomUtils.showToast(activity, errorMessage);
     }
@@ -92,7 +92,7 @@ public class MyRidesFragment extends Fragment {
      * @param result Get the Api response
      */
     @Subscribe
-    public void myListDataReceived(MyRidesResponse result) {
+    public void myRideListResponseReceived(MyRidesResponse result) {
         BusProvider.getInstance().unregister(activity);
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {

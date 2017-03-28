@@ -153,7 +153,7 @@ public class NewRideController {
      * Date converted to long
      *
      * @param date Get the date
-     * @return Start Date from the current system date
+     * @return long Start Date from the current system date
      */
     public long convertToLong(String date) {
         try {
@@ -195,7 +195,7 @@ public class NewRideController {
      *
      * @param daySelected Get the selected day.
      * @param newRide     Get the new ride details.
-     * @return The View.OnClickListener OnClickListener of the day selection
+     * @return  View.OnClickListener OnClickListener of the day selection
      */
     public View.OnClickListener btnDayOnClick(final String daySelected, final Ride newRide) {
         return new View.OnClickListener() {

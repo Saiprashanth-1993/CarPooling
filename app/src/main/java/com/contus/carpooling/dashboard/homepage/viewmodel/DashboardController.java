@@ -40,7 +40,7 @@ public class DashboardController {
     /**
      * Selected delay time from the dialog box.
      */
-    private String selectedDeleyTime;
+    private String selectedDelayTime;
 
     /**
      * Trigger the event listener for floating action button.
@@ -138,13 +138,13 @@ public class DashboardController {
      * Trigger the event listener for radio button to select the delay option.
      *
      * @param getSelectedItem Get the item which is selected the date and time
-     * @return View.OnClickListener the listener of selected item onclick
+     * @return View.OnClickListener the listener of dealy selected item onclick
      */
     public View.OnClickListener delaySelectedItemOnClick(final String getSelectedItem) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedDeleyTime = getSelectedItem;
+                selectedDelayTime = getSelectedItem;
             }
         };
     }
@@ -158,8 +158,8 @@ public class DashboardController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!TextUtils.isEmpty(selectedDeleyTime)) {
-                    Logger.showToastMessage(view.getContext(), selectedDeleyTime + " has been set");
+                if (!TextUtils.isEmpty(selectedDelayTime)) {
+                    Logger.showToastMessage(view.getContext(), selectedDelayTime + " has been set");
                     alert.cancel();
                 } else {
                     Logger.showShortMessage(view.getContext(), R.string.delay_time);

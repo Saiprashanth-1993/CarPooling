@@ -33,77 +33,77 @@ public class User extends BaseObservable {
     private Object userRoleId;
 
     /**
-     * The name
+     * The name of user
      */
     @SerializedName("name")
     @Expose
     private String name;
 
     /**
-     * The email
+     * The email of user
      */
     @SerializedName("email")
     @Expose
     private String email;
 
     /**
-     * The username
+     * The username which user has registered
      */
     @SerializedName("username")
     @Expose
     private String username;
 
     /**
-     * The password
+     * The password of which user has registered
      */
     @SerializedName("password")
     @Expose
     private String password;
 
     /**
-     * The mobile
+     * The mobile of the user
      */
     @SerializedName("mobile")
     @Expose
     private Integer mobile;
 
     /**
-     * The gender
+     * The gender of the which user has been register
      */
     @SerializedName("gender")
     @Expose
     private String gender;
 
     /**
-     * The fromLocation
+     * The fromLocation of user source
      */
     @SerializedName("from_location")
     @Expose
     private String fromLocation;
 
     /**
-     * The toLocation
+     * The toLocation of usr destination
      */
     @SerializedName("to_location")
     @Expose
     private String toLocation;
 
     /**
-     * The age
+     * The age of the user
      */
     @SerializedName("age")
     @Expose
     private Object age;
 
     /**
-     * The profileImage
+     * The profileImage which user can update
      */
     @SerializedName("profile_image")
     @Expose
     private Object profileImage;
 
     /**
-     * The companyId
+     * The companyId of user
      */
     @SerializedName("company_id")
     @Expose
@@ -124,21 +124,21 @@ public class User extends BaseObservable {
     private Object companyLocation;
 
     /**
-     * The deviceType
+     * The deviceType of mobile
      */
     @SerializedName("device_type")
     @Expose
     private Object deviceType;
 
     /**
-     * The deviceToken
+     * The deviceToken which can retrieved from the mobile
      */
     @SerializedName("device_token")
     @Expose
     private String deviceToken;
 
     /**
-     * The employeeId
+     * The employeeId of user who has registered
      */
     @SerializedName("employee_id")
     @Expose
@@ -150,7 +150,6 @@ public class User extends BaseObservable {
     @SerializedName("remember_token")
     @Expose
     private String rememberToken;
-
 
 
     /**
@@ -288,8 +287,13 @@ public class User extends BaseObservable {
         return gender;
     }
 
-    public String getFromLocation() {
-        return fromLocation;
+    /**
+     * Sets {@see #gender}
+     *
+     * @param gender(@link #gender}
+     */
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     /**
@@ -298,13 +302,17 @@ public class User extends BaseObservable {
      * @param fromLocation(@link #fromLocation}
      */
 
+    public String getFromLocation() {
+        return fromLocation;
+    }
+
     /**
-     * Sets {@see #gender}
-     *
-     * @param gender(@link #gender}
+     * Gets {@see #toLocation}
+     * <p>
+     * Returns the toLocation {@link #toLocation}
      */
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setFromLocation(String fromLocation) {
+        this.fromLocation = fromLocation;
     }
 
     /**
@@ -326,16 +334,6 @@ public class User extends BaseObservable {
     public void setToLocation(String toLocation) {
         this.toLocation = toLocation;
     }
-
-    /**
-     * Gets {@see #toLocation}
-     * <p>
-     * Returns the toLocation {@link #toLocation}
-     */
-    public void setFromLocation(String fromLocation) {
-        this.fromLocation = fromLocation;
-    }
-
 
     /**
      * Gets {@see #age}

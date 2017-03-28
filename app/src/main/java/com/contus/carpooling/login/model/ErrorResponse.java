@@ -30,7 +30,7 @@ public class ErrorResponse {
     public int success;
 
     /**
-     * The Message.
+     * The Message from response
      */
     @SerializedName(Constants.ApiRequest.MESSAGE)
     public String message;

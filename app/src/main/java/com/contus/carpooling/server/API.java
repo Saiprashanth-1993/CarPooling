@@ -47,7 +47,7 @@ public interface API {
     /**
      * Authenticate the user with their register credentials
      *
-     * @param paramerters Parameter required for user login
+     * @param paramerters Parameter required for user registration
      * @return {@link UserRegistrationResponse}
      */
     @POST("registration")
@@ -57,7 +57,7 @@ public interface API {
     /**
      * Authenticate the Company Registration with their  register credentials
      *
-     * @param paramerters
+     * @param paramerters Parameter required for Company registration
      * @return {@link CompanyRegistrationResponse}
      */
     @POST("companyregistration")
@@ -67,7 +67,7 @@ public interface API {
     /**
      * Authenticate the Create Ride  with user register credentials
      *
-     * @param paramerters
+     * @param paramerters Parameter required for create ride
      * @return {@link CreateRideResponse}
      */
     @POST("rides")

@@ -19,6 +19,6 @@ public class UserLoginResponse extends ErrorResponse {
     /**
      * The Login response set into model
      */
-    @SerializedName(Constants.Login.ADMIN_USER)
+    @SerializedName(Constants.Login.LOGIN_USER)
     public UserLoginInfo login;
 }

@@ -49,7 +49,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
      * Trigger the action listener for login button.
      *
      * @param userLoginInfo Get the login details.
-     * @return The view of login button listener
+     * @return View.OnClickListener  OnClickListener of the login button listener
      */
     public View.OnClickListener btnLoginClick(final UserLoginInfo userLoginInfo) {
         return new View.OnClickListener() {
@@ -129,7 +129,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
      * @param errorMessage the error message
      */
     @Subscribe
-    public void dataReceived(String errorMessage) {
+    public void loginResponseReceived(String errorMessage) {
         BusProvider.getInstance().unregister(this);
         CustomUtils.showToast(context, errorMessage);
     }
@@ -140,7 +140,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
      * @param result Api response
      */
     @Subscribe
-    public void dataReceived(UserLoginResponse result) {
+    public void loginResponseReceived(UserLoginResponse result) {
         BusProvider.getInstance().unregister(this);
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {

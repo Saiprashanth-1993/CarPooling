@@ -78,8 +78,8 @@
     <string name="current_password">Please enter the current password</string>
     <string name="confirm_password">Please enter the confirm password</string>
     <string name="new_password">Please enter the new password</string>
-    <string name="confirm_min_password">Confirm password should be minimum of 6 character!</string>
-    <string name="new_min_password">New password should be minimum of 6 character!</string>
+    <string name="confirm_password_length">Confirm password should be minimum of 6 character!</string>
+    <string name="new_password_length">New password should be minimum of 6 character!</string>
     <string name="password_match">Password does not match</string>
 
     <!--Company Registration-->

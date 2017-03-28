@@ -105,10 +105,10 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
     /**
      * Handle the api error response
      *
-     * @param errorMessage the error message
+     * @param errorMessage Get the error message
      */
     @Subscribe
-    public void CompanyDataReceived(String errorMessage) {
+    public void CompanyResponseReceived(String errorMessage) {
         BusProvider.getInstance().unregister(context);
         CustomUtils.showToast(this, errorMessage);
     }
@@ -119,7 +119,7 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
      * @param result Api response
      */
     @Subscribe
-    public void CompanyDataReceived(CompanyListResponse result) {
+    public void CompanyResponseReceived(CompanyListResponse result) {
         BusProvider.getInstance().unregister(context);
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {

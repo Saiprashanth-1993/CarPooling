@@ -358,7 +358,7 @@ public class RidesOfferedDetails extends BaseObservable {
     /**
      * Gets {@see #arrivalDate} from arrivalTimes
      * <p>
-     * Returns the arrivalDate
+     * Returns the arrivalTimes {@link #arrivalTimes}
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public String getArrivalDate() {
@@ -446,6 +446,7 @@ public class RidesOfferedDetails extends BaseObservable {
 
     /**
      * Gets {@see #user}
+     * <p>
      * Returns the user
      */
     public List<User> getUser() {
@@ -463,7 +464,8 @@ public class RidesOfferedDetails extends BaseObservable {
 
     /**
      * Gets {@see #ridePreference}
-     * Returns the user
+     * <p>
+     * Returns the ridePreference
      */
     public List<RidePreference> getRidePreference() {
         return ridePreference;

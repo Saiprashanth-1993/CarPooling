@@ -223,65 +223,65 @@ public class Constants {
         /**
          * Constant for get the Login API response and store into adminUser model
          */
-        public static final String ADMIN_USER = "adminusers";
+        public static final String LOGIN_USER = "adminusers";
 
 
         /**
-         * Constant LOGIN_ID value set from response
+         * Constant LOGIN_ID value set for response
          */
         public static final String LOGIN_ID = "id";
 
         /**
-         * Constant  USER_ROLE_ID value set from response
+         * Constant  USER_ROLE_ID value set for response
          */
         public static final String USER_ROLE_ID = "userRoleId";
 
         /**
-         * Constant LOGIN_NAME value set from response
+         * Constant LOGIN_NAME value set for response
          */
         public static final String LOGIN_NAME = "name";
 
         /***
-         * Constant GENDER value set from response
+         * Constant GENDER value set for response
          */
         public static final String GENDER = "gender";
 
         /***
-         * Constant FROM_LOCATION value set from response
+         * Constant FROM_LOCATION value set for response
          */
         public static final String FROM_LOCATION = "from_location";
 
         /***
-         * Constant TO_LOCATION value set from response
+         * Constant TO_LOCATION value set for response
          */
         public static final String TO_LOCATION = "to_location";
 
         /***
-         * Constant AGE value set from response
+         * Constant AGE value set for response
          */
         public static final String AGE = "age";
 
         /***
-         * Constant PROFILE_IMAGE value set from response
+         * Constant PROFILE_IMAGE value set for response
          */
         public static final String PROFILE_IMAGE = "profile_image";
 
         /***
-         * Constant COMPANY_ID value set from response
+         * Constant COMPANY_ID value set for response
          */
         public static final String COMPANY_ID = "company_id";
 
         /***
-         * Constant COMPANY_LOCATION value set from response
+         * Constant COMPANY_LOCATION value set for response
          */
         public static final String COMPANY_LOCATION = "company_location";
         /***
-         * Constant DEVICE_TYPE value set from response
+         * Constant DEVICE_TYPE value set for response
          */
         public static final String DEVICE_TYPE = "device_type";
 
         /***
-         * Constant EMPLOYEE_ID value set from response
+         * Constant EMPLOYEE_ID value set for response
          */
         public static final String EMPLOYEE_ID = "employee_id";
 
@@ -314,7 +314,7 @@ public class Constants {
         public static final String ID = "id";
 
         /**
-         * Constant value USER_GENDER set from response
+         * Constant value USER_GENDER set for response
          */
         public static final String USER_GENDER = "gender";
 
@@ -332,37 +332,37 @@ public class Constants {
     public static final class CompanyList {
 
         /**
-         * Constant value for CompanyList the COMPANY_DATA set from response
+         * Constant value for CompanyList the COMPANY_DATA set for response
          */
         public static final String COMPANY_DATA = "data";
 
         /**
-         * Constant value for CompanyList the COMPANY set from response
+         * Constant value for CompanyList the COMPANY set for response
          */
         public static final String COMPANY = "company";
 
         /**
-         * Constant value for CompanyList the CATEGORY set from response
+         * Constant value for CompanyList the CATEGORY set for response
          */
         public static final String CATEGORY = "sector";
 
         /**
-         * Constant value for CompanyList the COMPANY_NAME_ID set from response
+         * Constant value for CompanyList the COMPANY_NAME_ID set for response
          */
         public static final String COMPANY_NAME_ID = "id";
 
         /**
-         * Constant value for CompanyList the COMPANY_NAME set from response
+         * Constant value for CompanyList the COMPANY_NAME set for response
          */
         public static final String COMPANY_NAME = "name";
 
         /**
-         * Constant value for CompanyList the CATEGORY_ID set from response
+         * Constant value for CompanyList the CATEGORY_ID set for response
          */
         public static final String CATEGORY_ID = "id";
 
         /**
-         * Constant value for CompanyList the CATEGORY_NAME set from response
+         * Constant value for CompanyList the CATEGORY_NAME set for response
          */
         public static final String CATEGORY_NAME = "name";
 
@@ -418,32 +418,32 @@ public class Constants {
     public static final class EmployeeResponse {
 
         /**
-         * Constant value set for response
+         * Constant EMPLOYEE_DETAILS_RESPONSE set for response
          */
         public static final String EMPLOYEE_DETAILS_RESPONSE = "Employee Details";
 
         /**
-         * Constant value set for response
+         * Constant EMPLOYEE_ID set for response
          */
         public static final String EMPLOYEE_ID = "id";
 
         /**
-         * Constant value set for response
+         * Constant USER_ID set for response
          */
         public static final String USER_ID = "user_id";
 
         /**
-         * Constant value set for response
+         * Constant ADAHAR_CARD set for response
          */
         public static final String ADAHAR_CARD = "aadhar_card";
 
         /**
-         * Constant value set for response
+         * Constant PAN_CARD set for response
          */
         public static final String PAN_CARD = "pan_card";
 
         /**
-         * Constant value set for response
+         * Constant REMEMBER_TOKEN set for response
          */
         public static final String REMEMBER_TOKEN = "rememberToken";
 
