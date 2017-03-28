@@ -59,11 +59,11 @@ public class Logger {
 
     }
 
-
     /**
      * Method to log the information
      *
-     * @param message Exception raised by the logger
+     * @param tag     Message title to show
+     * @param message Message to show
      */
     public static void logInfo(String tag, String message) {
         Log.i(tag, message);

@@ -148,6 +148,7 @@ public class UserRegistrationController {
      * @param fromLocation Validate the from location.
      * @param toLocation   validate the to location.
      * @param password     Validate the password.
+     * @param gender     Validate the gender.
      * @return validationStatus has been True when the given field is not empty.
      */
     public boolean isValid(String userName, String mobileNumber, String emailId, String fromLocation, String toLocation, String password, String gender) {
