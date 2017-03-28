@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.profile.viewmodel;
@@ -10,11 +10,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
+import com.contus.carpooling.R;
 import com.contus.carpooling.profile.model.UserProfileInfo;
 import com.contus.carpooling.profile.model.UserProfileResponse;
 import com.contus.carpooling.profile.view.UserProfileFragment;
 import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.utils.Constants;
+import com.contus.carpooling.utils.Logger;
 import com.esafirm.imagepicker.features.ImagePicker;
 
 import java.util.HashMap;
@@ -52,7 +54,7 @@ public class UserProfileController {
      * Trigger the event listener action for  profile edit button.
      *
      * @param userProfileInfo Get the model of user profile info
-     * @return The view of listener
+     * @return View.OnClickListener OnClickListener of the profile edit click button
      */
     public View.OnClickListener btnProfileEditClick(final UserProfileInfo userProfileInfo) {
         return new View.OnClickListener() {
@@ -68,7 +70,7 @@ public class UserProfileController {
     /**
      * Trigger the even listener to perform the action for set the profile image
      *
-     * @return The view of listener
+     * @return View.OnClickListener of image profile click button
      */
     public View.OnClickListener profileClick() {
         return new View.OnClickListener() {
@@ -90,8 +92,7 @@ public class UserProfileController {
     }
 
     /**
-     * Check whether the edit button is clicked or not.
-     * when it true, the user can edit the profile details.
+     * Check whether the edit button is clicked or not, when it true, the user can edit the profile details.
      *
      * @param profileInfo Get the values from the edit text.
      */
@@ -142,22 +143,22 @@ public class UserProfileController {
     /**
      * Method used to validate the edit text fields.
      *
-     * @return True when the given field is not empty.
+     * @return validationStatus have been true when the given field is not empty.
      */
     private boolean isValid(UserProfileInfo profileInfo) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(profileInfo.getUserName())) {
             validationStatus = false;
-            Toast.makeText(context, "Please enter user name", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.user_name);
         } else if (TextUtils.isEmpty(profileInfo.getProfileImage())) {
             validationStatus = false;
-            Toast.makeText(context, "Please update profile image", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.profile_image);
         } else if (TextUtils.isEmpty(profileInfo.getUserTeamName())) {
             validationStatus = false;
-            Toast.makeText(context, "Please enter user team name", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.team_name);
         } else if (TextUtils.isEmpty(profileInfo.getUserMail())) {
             validationStatus = false;
-            Toast.makeText(context, "Please enter user mail", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.user_mail);
         } else {
             userProfileValid(profileInfo);
         }
@@ -168,28 +169,28 @@ public class UserProfileController {
      * Continue the validation check whether field are empty or not
      *
      * @param userProfileInfo Get the the model of user profile info
-     * @return The model of user profile info
+     * @return validationStatus have been true when the given field is not empty.
      */
     public boolean userProfileValid(UserProfileInfo userProfileInfo) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(userProfileInfo.getUserPhone())) {
             validationStatus = false;
-            Toast.makeText(context, "Please enter user phone number", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.user_phone);
         } else if (TextUtils.isEmpty(userProfileInfo.getUserAddress())) {
             validationStatus = false;
-            Toast.makeText(context, "Please enter user address", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.user_address);
         } else if (TextUtils.isEmpty(userProfileInfo.getUserLocation())) {
             validationStatus = false;
-            Toast.makeText(context, "Please enter user location", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.user_location);
         } else if (TextUtils.isEmpty(userProfileInfo.getUserVehicleType())) {
             validationStatus = false;
-            Toast.makeText(context, "Please enter user vehicle type", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.user_vehicle_type);
         } else if (TextUtils.isEmpty(userProfileInfo.getUserVehicleName())) {
             validationStatus = false;
-            Toast.makeText(context, "Please enter user vehicle name", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.user_vehicle_name);
         } else if (TextUtils.isEmpty(userProfileInfo.getUserVehicleNum())) {
             validationStatus = false;
-            Toast.makeText(context, "Please enter user vehicle number", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.user_vehicle_number);
         }
         return validationStatus;
     }

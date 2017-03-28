@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.dashboard.ridesoffered.view;
@@ -56,7 +56,7 @@ public class RidesOfferedAdapter extends RecyclerView.Adapter<RidesOfferedAdapte
      * Get the list of ride details
      *
      * @param position Get the position of an item
-     * @return The position of item
+     * @return RidesOfferedAdapter the position of an item
      */
     public RidesOfferedDetails getItem(int position) {
         return rideOfferedList.get(position);

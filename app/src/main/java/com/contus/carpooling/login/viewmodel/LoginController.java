@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.login.viewmodel;
@@ -9,10 +9,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Toast;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
@@ -67,6 +65,9 @@ public class LoginController implements ApiService.OnTaskCompleted {
 
     /**
      * ApiRequest for user login details to the server
+     *
+     * @param mContext      Context of an activity
+     * @param userLoginInfo Get the details of user login info model
      */
     private void loginRequest(Context mContext, UserLoginInfo userLoginInfo) {
         BusProvider.getInstance().register(this);
@@ -88,7 +89,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
     /**
      * Trigger the even listener for navigate to the another activity
      *
-     * @return The view of the login sign in button
+     * @return View.OnClickListener OnClickListener of the login sign in button
      */
     public View.OnClickListener btnSignInOnClick() {
         return new View.OnClickListener() {
@@ -105,19 +106,19 @@ public class LoginController implements ApiService.OnTaskCompleted {
      * @param context   Used to show the toast message.
      * @param userEmail Validate the userEmail.
      * @param password  Validate the password.
-     * @return True when the given field is not empty.
+     * @return validationStatus value has true when the given field is not empty.
      */
     public boolean isValid(Context context, String userEmail, String password) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(userEmail) || TextUtils.isEmpty(password)) {
             validationStatus = false;
-            Toast.makeText(context, "Please make sure username and password field should not be empty", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.validation_email);
         } else if (!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
             validationStatus = false;
-            Toast.makeText(context, R.string.validation_failure_email, Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.validation_failure_email);
         } else if (password.length() < 6) {
             validationStatus = false;
-            Toast.makeText(context, R.string.validation_failure_mobile_length, Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.validation_failure_mobile_length);
         }
         return validationStatus;
     }
@@ -177,7 +178,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
                 ((Activity) context).finish();
             } else {
                 CustomUtils.showToast(context, result.getMessage());
-                Log.e("Error Message", result.getMessage());
+                Logger.logInfo("Error Message", result.getMessage());
             }
         }
     }

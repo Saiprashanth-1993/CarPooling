@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.utils;
@@ -61,7 +61,7 @@ public class CommonUtils {
      * Method for Check the Network Connectivity.
      *
      * @param context Instance of an activity
-     * @return The Boolean value true if network available
+     * @return Boolean value true if network available
      */
     public static boolean isNetConnected(Context context) {
         ConnectivityManager conMgr = (ConnectivityManager) context
@@ -85,7 +85,7 @@ public class CommonUtils {
      *
      * @param error   Error response
      * @param success Success response value
-     * @return Boolean  return true if response is success
+     * @return Boolean return true if response is success
      */
     public static boolean checkResponse(boolean error, Integer success) {
         return !(error && success != Constants.SUCCESS_VALUE);
@@ -105,7 +105,7 @@ public class CommonUtils {
      * Return empty string if null.
      *
      * @param stringValue Get the string value
-     * @return String Empty string if null
+     * @return stringValue the Empty string if null
      */
     public static String returnEmptyStringIfNull(String stringValue) {
         return stringValue == null ? "" : stringValue.trim();

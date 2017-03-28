@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.dashboard.homepage.view;
@@ -59,7 +59,7 @@ public class DashboardActivity extends AppCompatActivity
         drawerHeaderBinding.setModel(userProfile);
 
         /**
-         * Get the user date from stored procedure and sets in navigation drawer
+         * Get the user data from stored procedure and sets in navigation drawer
          */
         userProfile.setUsername(SharedDataUtils.getStringPreference(Constants.USER_NAME, "Employee Name"));
         userProfile.setPosition(SharedDataUtils.getStringPreference(Constants.COMPANY_CATEGORY_ID, "Category"));
@@ -201,7 +201,7 @@ public class DashboardActivity extends AppCompatActivity
     /**
      * Method for get the fragment transaction name to identify the fragment
      *
-     * @return The fragment name
+     * @return fm FragmentManager the name
      */
     private String getFragmentName() {
         FragmentManager fm = getSupportFragmentManager();

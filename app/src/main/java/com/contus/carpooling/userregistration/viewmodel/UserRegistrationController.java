@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.userregistration.viewmodel;
@@ -12,7 +12,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Toast;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.companyregistration.view.CompanyRegistrationActivity;
@@ -53,7 +52,7 @@ public class UserRegistrationController {
      * Trigger the  event action for user registration button.
      *
      * @param getEditTextValue Get the registration details
-     * @return the view of registration button
+     * @return View.OnClickListener OnClickListener of the registration button
      */
     public View.OnClickListener btnRegistrationOnClick(final UserRegistrationInfo getEditTextValue) {
         return new View.OnClickListener() {
@@ -105,7 +104,7 @@ public class UserRegistrationController {
      * Trigger the even listener for get the location from google place api.
      *
      * @param requestCode ApiRequest code of the google place api intent
-     * @return The view of location click listener
+     * @return View.OnClickListener OnClickListener of the location request from google place api
      */
     public View.OnClickListener getLocationOnClick(final int requestCode) {
         return new View.OnClickListener() {
@@ -129,7 +128,7 @@ public class UserRegistrationController {
      *
      * @param getEditTextValue Used to get the registration details.
      * @param gender           Used to get gender type.
-     * @return the view of the radio button.
+     * @return View.OnClickListener OnClickListener  of the radio button.
      */
     public View.OnClickListener radioBtnOnClick(final UserRegistrationInfo getEditTextValue, final String gender) {
         return new View.OnClickListener() {
@@ -149,27 +148,27 @@ public class UserRegistrationController {
      * @param fromLocation Validate the from location.
      * @param toLocation   validate the to location.
      * @param password     Validate the password.
-     * @return True when the given field is not empty.
+     * @return validationStatus has been True when the given field is not empty.
      */
-    private boolean isValid(String userName, String mobileNumber, String emailId, String fromLocation, String toLocation, String password, String gender) {
+    public boolean isValid(String userName, String mobileNumber, String emailId, String fromLocation, String toLocation, String password, String gender) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password) || TextUtils.isEmpty(mobileNumber)) {
             validationStatus = false;
-            Toast.makeText(context, R.string.validation_failure_message, Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.validation_failure_message);
         } else if (mobileNumber.length() < 10 || mobileNumber.length() > 10) {
             validationStatus = false;
-            Toast.makeText(context, R.string.phone_number_failure_message, Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.phone_number_failure_message);
         } else if (TextUtils.isEmpty(gender)) {
             validationStatus = false;
-            Toast.makeText(context, "Please select Gender", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.validation_failure_gender);
         } else if (!isTextValid(fromLocation, toLocation, password)) {
             validationStatus = false;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(emailId).matches()) {
             validationStatus = false;
-            Toast.makeText(context, R.string.validation_failure_email, Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.validation_failure_email);
         } else if (password.length() < 6) {
             validationStatus = false;
-            Toast.makeText(context, R.string.validation_failure_mobile_length, Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.validation_failure_mobile_length);
         }
         return validationStatus;
     }
@@ -180,12 +179,12 @@ public class UserRegistrationController {
      * @param fromLocation Validate the from location.
      * @param toLocation   validate the to location.
      * @param password     Validate the password.
-     * @return True when the given field is not empty.
+     * @return validationStatus has been True when the given field is not empty.
      */
     private boolean isTextValid(String fromLocation, String toLocation, String password) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(fromLocation) || TextUtils.isEmpty(toLocation) || TextUtils.isEmpty(password)) {
-            Toast.makeText(context, R.string.validation_failure_message, Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.validation_failure_message);
             validationStatus = false;
         }
         return validationStatus;
@@ -194,7 +193,7 @@ public class UserRegistrationController {
     /**
      * Trigger the event listener for redirect to login page.
      *
-     * @return OnClickListener of the sign in button.
+     * @return View.OnClickListener OnClickListener of the sign in button.
      */
     public View.OnClickListener btnSignInOnClick() {
         return new View.OnClickListener() {
@@ -210,7 +209,7 @@ public class UserRegistrationController {
     /**
      * Handle the api error response
      *
-     * @param errorMessage the error message
+     * @param errorMessage Get the error message
      */
     @Subscribe
     public void dataReceived(String errorMessage) {

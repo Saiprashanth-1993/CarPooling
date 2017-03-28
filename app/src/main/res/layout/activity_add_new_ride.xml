@@ -366,12 +366,12 @@
                                         android:layout_height="35dp"
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
-                                        android:background='@{NewRideData.daySelected.contains("Sunday")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
-                                        android:onClick='@{clickController.btnDayOnClick("Sunday,",NewRideData)}'
+                                        android:background='@{NewRideData.daySelected.contains("0")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
+                                        android:onClick='@{clickController.btnDayOnClick("0,",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="SUN"
-                                        android:textColor='@{NewRideData.daySelected.contains("Sunday")? @android:color/white: @android:color/black}'
+                                        android:textColor='@{NewRideData.daySelected.contains("0")? @android:color/white: @android:color/black}'
                                         android:textSize="10sp" />
 
                                     <Button
@@ -379,12 +379,12 @@
                                         android:layout_height="35dp"
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
-                                        android:background='@{NewRideData.daySelected.contains("Monday")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
-                                        android:onClick='@{clickController.btnDayOnClick("Monday,",NewRideData)}'
+                                        android:background='@{NewRideData.daySelected.contains("1")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
+                                        android:onClick='@{clickController.btnDayOnClick("1,",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="MON"
-                                        android:textColor='@{NewRideData.daySelected.contains("Monday")? @android:color/white: @android:color/black}'
+                                        android:textColor='@{NewRideData.daySelected.contains("1")? @android:color/white: @android:color/black}'
                                         android:textSize="10sp" />
 
                                     <Button
@@ -392,12 +392,12 @@
                                         android:layout_height="35dp"
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
-                                        android:background='@{NewRideData.daySelected.contains("Tuesday")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
-                                        android:onClick='@{clickController.btnDayOnClick("Tuesday,",NewRideData)}'
+                                        android:background='@{NewRideData.daySelected.contains("2")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
+                                        android:onClick='@{clickController.btnDayOnClick("2,",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="TUE"
-                                        android:textColor='@{NewRideData.daySelected.contains("Tuesday")? @android:color/white: @android:color/black}'
+                                        android:textColor='@{NewRideData.daySelected.contains("2")? @android:color/white: @android:color/black}'
                                         android:textSize="10sp" />
 
                                     <Button
@@ -405,12 +405,12 @@
                                         android:layout_height="35dp"
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
-                                        android:background='@{NewRideData.daySelected.contains("Wednesday")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
-                                        android:onClick='@{clickController.btnDayOnClick("Wednesday,",NewRideData)}'
+                                        android:background='@{NewRideData.daySelected.contains("3")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
+                                        android:onClick='@{clickController.btnDayOnClick("3,",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="WED"
-                                        android:textColor='@{NewRideData.daySelected.contains("Wednesday")? @android:color/white: @android:color/black}'
+                                        android:textColor='@{NewRideData.daySelected.contains("3")? @android:color/white: @android:color/black}'
                                         android:textSize="10sp" />
 
                                     <Button
@@ -418,13 +418,13 @@
                                         android:layout_height="35dp"
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
-                                        android:background='@{NewRideData.daySelected.contains("Thursday")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
-                                        android:onClick='@{clickController.btnDayOnClick("Thursday,",NewRideData)}'
+                                        android:background='@{NewRideData.daySelected.contains("4")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
+                                        android:onClick='@{clickController.btnDayOnClick("4,",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="THU"
 
-                                        android:textColor='@{NewRideData.daySelected.contains("Thursday")? @android:color/white: @android:color/black}'
+                                        android:textColor='@{NewRideData.daySelected.contains("4")? @android:color/white: @android:color/black}'
                                         android:textSize="10sp" />
 
                                     <Button
@@ -432,12 +432,12 @@
                                         android:layout_height="35dp"
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
-                                        android:background='@{NewRideData.daySelected.contains("Friday")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
-                                        android:onClick='@{clickController.btnDayOnClick("Friday,",NewRideData)}'
+                                        android:background='@{NewRideData.daySelected.contains("5")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
+                                        android:onClick='@{clickController.btnDayOnClick("5,",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="FRI"
-                                        android:textColor='@{NewRideData.daySelected.contains("Friday")? @android:color/white: @android:color/black}'
+                                        android:textColor='@{NewRideData.daySelected.contains("5")? @android:color/white: @android:color/black}'
                                         android:textSize="10sp" />
 
                                     <Button
@@ -445,12 +445,12 @@
                                         android:layout_height="35dp"
                                         android:layout_margin="2dp"
                                         android:layout_weight="1"
-                                        android:background='@{NewRideData.daySelected.contains("Saturday")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
-                                        android:onClick='@{clickController.btnDayOnClick("Saturday",NewRideData)}'
+                                        android:background='@{NewRideData.daySelected.contains("6")? @drawable/circle_text_view_selected: @drawable/circle_text_view}'
+                                        android:onClick='@{clickController.btnDayOnClick("6,",NewRideData)}'
                                         android:paddingLeft="5dp"
                                         android:paddingRight="5dp"
                                         android:text="SAT"
-                                        android:textColor='@{NewRideData.daySelected.contains("Saturday,")? @android:color/white: @android:color/black}'
+                                        android:textColor='@{NewRideData.daySelected.contains("6")? @android:color/white: @android:color/black}'
                                         android:textSize="10sp" />
                                 </LinearLayout>
                             </LinearLayout>

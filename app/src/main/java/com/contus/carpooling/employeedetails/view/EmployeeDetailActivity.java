@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.employeedetails.view;
@@ -85,7 +85,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             int nh = (int) (capturedImage.getHeight() * (512.0 / capturedImage.getWidth()));
             imageUploadCallBack(finalFile, nh, capturedImage);
 
-        } else if (requestCode == Constants.GALLERY_SELECTION && data.getExtras().get("data") != null) {
+        } else if (requestCode == Constants.GALLERY_SELECTION && !TextUtils.isEmpty(String.valueOf(data))) {
             try {
                 /**
                  *  CALL this method to get the actual path from the gallery set into image view
@@ -150,7 +150,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
                 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             gallerySelection();
         } else {
-            Log.e("Already permitted1", "gallery");
+            Logger.logInfo("Already permitted1", "gallery");
             gallerySelection();
         }
     }
@@ -166,7 +166,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
                 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             cameraSelection();
         } else {
-            Log.e("Already permitted2", "camera");
+            Logger.logInfo("Already permitted2", "camera");
             cameraSelection();
         }
     }
@@ -192,7 +192,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
      * Convert the data image url to file path
      *
      * @param contentURI Get the URI path
-     * @return The cursor
+     * @return Cursor of the actual file path of image
      */
     private String getRealPathFromURI(Uri contentURI) {
         Cursor cursor = getContentResolver().query(contentURI, null, null, null, null);
@@ -211,7 +211,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
      *
      * @param inContext Get the context of an activity
      * @param inImage   Get the bitmap image
-     * @return The URI path
+     * @return Uri of the image path
      */
     public Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();

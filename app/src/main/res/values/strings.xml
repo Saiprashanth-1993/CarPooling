@@ -10,6 +10,7 @@
     <string name="action_settings">Settings</string>
     <string name="validation_failure_message">Please make sure that all fields are not empty</string>
     <string name="validation_failure_email">Please make sure email id is valid</string>
+    <string name="validation_failure_gender">Please select Gender</string>
     <string name="validation_failure_mobile_length">Please make sure password should have max of 6 character</string>
     <string name="google_place_api_key">AIzaSyDXmb6C3WoD2KvgnJTnFKEI-YFSakbxlsY</string>
     <string name="title_edit_ride">Edit Ride</string>
@@ -67,5 +68,51 @@
     <string name="sign_in">Sign in</string>
     <string name="no_rides_available">No Rides Available</string>
     <string name="change_ride">Update ride</string>
+
+
+    <!--Login-->
+    <string name="validation_email">Please make sure username and password field should not be empty</string>
+    <string name="validation_password">Please make sure username and password field should not be empty</string>
+
+    <!--Change Password-->
+    <string name="current_password">Please enter the current password</string>
+    <string name="confirm_password">Please enter the confirm password</string>
+    <string name="new_password">Please enter the new password</string>
+    <string name="confirm_min_password">Confirm password should be minimum of 6 character!</string>
+    <string name="new_min_password">New password should be minimum of 6 character!</string>
+    <string name="password_match">Password does not match</string>
+
+    <!--Company Registration-->
+    <string name="company_fields_validation">Please make sure that all field should not be empty</string>
+
+    <!--Dashboard -->
+    <string name="booked">Booked</string>
+    <string name="delay_time">Please select delay time</string>
+
+    <!--New ride-->
+    <string name="from_ride_validation">Please enter the From ride</string>
+    <string name="to_ride_validation">Please enter the To ride</string>
+    <string name="start_time_validation">Please enter start time</string>
+    <string name="to_time_validation">Please enter end time</string>
+    <string name="gender_validation">Please select gender</string>
+    <string name="select_day_validation">Please select day</string>
+    <string name="seat_validation">Please select seat</string>
+
+    <!--Employee details-->
+    <string name="id_card">Please enter your id card number</string>
+    <string name="front_side">Please select the front side image of id card</string>
+    <string name="back_side">Please select the back side image of id card</string>
+
+    <!--User register profile-->
+    <string name="user_name">Please enter user name</string>
+    <string name="profile_image">Please update profile image</string>
+    <string name="team_name">Please enter user team name</string>
+    <string name="user_mail">Please enter user mail</string>
+    <string name="user_phone">Please enter user phone number</string>
+    <string name="user_address">Please enter user address</string>
+    <string name="user_location">Please enter user location</string>
+    <string name="user_vehicle_name">Please enter user vehicle name</string>
+    <string name="user_vehicle_type">Please enter user vehicle type</string>
+    <string name="user_vehicle_number">Please enter user vehicle number</string>
 </resources>
 

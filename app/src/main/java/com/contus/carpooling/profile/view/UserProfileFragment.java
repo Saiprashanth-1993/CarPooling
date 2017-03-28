@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.profile.view;
@@ -67,8 +67,9 @@ public class UserProfileFragment extends Fragment {
     }
 
     /**
-     * ApiRequest for Get the ride offered list from the server
-     * also it displays the value in the fragment
+     * ApiRequest for Get the ride offered list from the server also it displays the value in the fragment
+     *
+     * @param mContext Get the context of an activity
      */
     private void myProfileRequest(final Context mContext) {
         new RestClient(mContext).getInstance().get().getProfile().enqueue(new Callback<UserProfileResponse>() {
@@ -136,7 +137,7 @@ public class UserProfileFragment extends Fragment {
         /**
          * This is for interface call back
          *
-         * @param parent Parent of the adapterviewl
+         * @param parent Parent of the adapterView
          */
         public void onNothingSelected(AdapterView parent) {
             /**

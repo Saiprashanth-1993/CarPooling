@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.addnewride.model;
@@ -12,7 +12,10 @@ import android.os.Parcelable;
 
 import com.contus.carpooling.BR;
 import com.contus.carpooling.utils.Constants;
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 /**
  * Model class for store and get the my rides details from api response
@@ -101,6 +104,34 @@ public class Ride extends BaseObservable implements Parcelable {
      */
     @SerializedName(Constants.CreateRide.TYPE)
     private String type;
+
+    /**
+     * Id of vehicle
+     */
+    @SerializedName("id")
+    @Expose
+    private Integer id;
+
+    /**
+     * The creatorId of user
+     */
+    @SerializedName("creator_id")
+    @Expose
+    private Integer creatorId;
+
+    /**
+     * Type of vehicle
+     */
+    @SerializedName("vehicle_type")
+    @Expose
+    private String vehicleType;
+
+    /**
+     * Ride preference for get the days
+     */
+    @SerializedName("ride_preference")
+    @Expose
+    private List<DaysPreference> ridePreference = null;
 
     /**
      * Ride constructor for directly invoke the method to  activity
@@ -319,6 +350,70 @@ public class Ride extends BaseObservable implements Parcelable {
     public void setType(String type) {
         this.type = type;
         notifyPropertyChanged(BR.type);
+    }
+
+    /**
+     * Gets {@see #id}
+     *
+     * @return {@link #id}
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * Sets {@link #type}
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * Gets {@see #creatorId}
+     *
+     * @return {@link #creatorId}
+     */
+    public Integer getCreatorId() {
+        return creatorId;
+    }
+
+    /**
+     * Sets {@link #type}
+     */
+    public void setCreatorId(Integer creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    /**
+     * Gets {@see #vehicleType}
+     *
+     * @return {@link #vehicleType}
+     */
+    public String getVehicleType() {
+        return vehicleType;
+    }
+
+    /**
+     * Sets {@link #type}
+     */
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
+    }
+
+    /**
+     * Gets {@see #ridePreference}
+     *
+     * @return {@link #ridePreference}
+     */
+    public List<DaysPreference> getRidePreference() {
+        return ridePreference;
+    }
+
+    /**
+     * Sets {@link #ridePreference}
+     */
+    public void setRidePreference(List<DaysPreference> ridePreference) {
+        this.ridePreference = ridePreference;
     }
 
     @Override

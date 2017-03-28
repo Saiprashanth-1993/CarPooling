@@ -1,7 +1,7 @@
 /**
  * @category CarPooling
  * @package com.contus.carpooling.dashboard.ridesoffered.model
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.dashboard.ridesoffered.model;

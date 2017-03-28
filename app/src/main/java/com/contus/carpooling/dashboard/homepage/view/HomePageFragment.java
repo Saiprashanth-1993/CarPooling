@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.dashboard.homepage.view;
@@ -70,7 +70,7 @@ public class HomePageFragment extends Fragment implements ViewPager.OnPageChange
      * Get the fragment list to display the view pager tabs. Recent chat and contacts fragment will
      * be return from this.
      *
-     * @return List of the fragments for the viewpager
+     * @return FragmentList of the fragment for the viewpager
      */
     private List<Fragment> getFragmentList() {
 

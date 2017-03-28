@@ -1,7 +1,6 @@
 /**
  * @category CarPooling
- * @package com.contus.carpooling.changepassword.viewmodel
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.changepassword.viewmodel;
@@ -10,12 +9,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Toast;
 
+import com.contus.carpooling.R;
 import com.contus.carpooling.changepassword.model.ChangePasswordModel;
 import com.contus.carpooling.changepassword.model.ChangePasswordResponse;
 import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.utils.Constants;
+import com.contus.carpooling.utils.Logger;
 
 import java.util.HashMap;
 
@@ -32,20 +32,25 @@ import retrofit2.Response;
  */
 public class ChangePasswordController {
 
+    /**
+     * Context of an activity
+     */
     private Activity activity;
 
     /**
-     *constructor of the activity
+     * constructor of the activity
+     *
      * @param activity of the profile
      */
-    public ChangePasswordController(Activity activity){
-        this.activity=activity;
+    public ChangePasswordController(Activity activity) {
+        this.activity = activity;
     }
+
     /**
      * OnClick handler of the change password button.
      *
      * @param getchangePasswordValues Used to get the change password details.
-     * @return OnClickListener of the change password button.
+     * @return View.OnClickListener OnClickListener of the change password button.
      */
     public View.OnClickListener btnChangePasswordOnClick(final ChangePasswordModel getchangePasswordValues) {
         return new View.OnClickListener() {
@@ -53,7 +58,7 @@ public class ChangePasswordController {
             public void onClick(View view) {
                 Context context = view.getContext();
                 if (isValid(context, getchangePasswordValues.getCurrentPassword(), getchangePasswordValues.getNewPassword(), getchangePasswordValues.getConfirmPassword()))
-                    changePasswordRequest(getchangePasswordValues,context);
+                    changePasswordRequest(getchangePasswordValues, context);
             }
         };
     }
@@ -65,28 +70,28 @@ public class ChangePasswordController {
      * @param currentPassword Validate the current password edit text.
      * @param newPassword     Validate the new password edit text.
      * @param confirmPassword Validate the confirm password edit text.
-     * @return true if the validation success.
+     * @return ValidStatus value has given true if the validation success.
      */
     public boolean isValid(Context context, String currentPassword, String newPassword, String confirmPassword) {
         boolean validStatus;
         if (TextUtils.isEmpty(currentPassword)) {
             validStatus = false;
-            Toast.makeText(context, "Please enter the current password", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.current_password);
         } else if (TextUtils.isEmpty(newPassword)) {
             validStatus = false;
-            Toast.makeText(context, "Please enter the new password", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.new_password);
         } else if (TextUtils.isEmpty(confirmPassword)) {
             validStatus = false;
-            Toast.makeText(context, "Please enter the confirm password", Toast.LENGTH_SHORT).show();
-        } else if(newPassword.length()<6){
-            validStatus=false;
-            Toast.makeText(context, "New password should be minimum of 6 character!", Toast.LENGTH_SHORT).show();
-        }else if(confirmPassword.length()<6){
-            validStatus=false;
-            Toast.makeText(context, "Confirm password should be minimum of 6 character!", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.confirm_password);
+        } else if (newPassword.length() < 6) {
+            validStatus = false;
+            Logger.showShortMessage(context, R.string.new_min_password);
+        } else if (confirmPassword.length() < 6) {
+            validStatus = false;
+            Logger.showShortMessage(context, R.string.confirm_min_password);
         } else if (!newPassword.equals(confirmPassword)) {
             validStatus = false;
-            Toast.makeText(context, "Password does not match", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.password_match);
         } else {
             validStatus = true;
         }
@@ -95,8 +100,9 @@ public class ChangePasswordController {
 
 
     /**
-     * change the request
-     * @param getchangePasswordValues
+     * Handle the API for change password request
+     *
+     * @param getchangePasswordValues Get the model of change password model
      */
     private void changePasswordRequest(ChangePasswordModel getchangePasswordValues, final Context mContext) {
         HashMap<String, String> params = new HashMap<>();
@@ -107,7 +113,7 @@ public class ChangePasswordController {
             @Override
             public void onResponse(Call<ChangePasswordResponse> call, Response<ChangePasswordResponse> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(mContext, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Logger.showToastMessage(mContext, response.body().getMessage());
                     if (!TextUtils.equals("Password is invalid", response.body().getMessage())) {
                         activity.onBackPressed();
                     }
@@ -116,7 +122,7 @@ public class ChangePasswordController {
 
             @Override
             public void onFailure(Call<ChangePasswordResponse> call, Throwable t) {
-                Toast.makeText(mContext, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Logger.showToastMessage(mContext, t.getMessage());
             }
         });
     }

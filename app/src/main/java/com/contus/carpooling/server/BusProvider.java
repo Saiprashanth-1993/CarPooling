@@ -1,6 +1,6 @@
 /**
  * @category Car Pooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 
@@ -56,7 +56,7 @@ public final class BusProvider {
     /**
      * Get the status of the bus whether it is registered or not
      *
-     * @return The boolean value to check whether the bus is registered or not
+     * @return isRegistered boolean value to check whether the bus is registered or not
      */
     public static boolean isRegistered() {
         return isRegistered;

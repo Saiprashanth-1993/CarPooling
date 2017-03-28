@@ -1,6 +1,6 @@
 /**
  * @category Car Pooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.server;
@@ -94,7 +94,7 @@ public class RestClient {
     /**
      * Returns a new instance of this rest client.
      *
-     * @return rest client
+     * @return rest client of the instance
      */
     public RestClient getInstance() {
         return restClient;
@@ -103,7 +103,7 @@ public class RestClient {
     /**
      * Returns the api interface.
      *
-     * @return api
+     * @return api of get request
      */
     public API get() {
         return api;

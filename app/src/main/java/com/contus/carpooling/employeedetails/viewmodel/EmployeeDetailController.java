@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.employeedetails.viewmodel;
@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
+import com.contus.carpooling.R;
 import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
 import com.contus.carpooling.employeedetails.model.EmployeeDetails;
 import com.contus.carpooling.employeedetails.model.EmployeeDetailsResponse;
@@ -50,7 +51,7 @@ public class EmployeeDetailController {
      *
      * @param employeeInfo         Set employee information.
      * @param getSelectedImageType Selected image from id card from image or backside image button.
-     * @return The view of listener image view for show the bottom sheet dialog.
+     * @return The View.OnClickListener of listener image view for show the bottom sheet dialog.
      */
     public View.OnClickListener imageViewOnClick(final String getSelectedImageType, final EmployeeInfo employeeInfo) {
         return new View.OnClickListener() {
@@ -71,7 +72,7 @@ public class EmployeeDetailController {
      * Trigger the event listener to do action perform for submit the button to save employee details.
      *
      * @param employeeInfo Get the details of EmployeeInfo model
-     * @return The view of listener
+     * @return View.OnClickListener OnClickListener of the save employee details button
      */
     public View.OnClickListener saveEmployeeDetails(final EmployeeInfo employeeInfo) {
         return new View.OnClickListener() {
@@ -79,11 +80,11 @@ public class EmployeeDetailController {
             public void onClick(View view) {
                 context = view.getContext();
                 if (TextUtils.isEmpty(employeeInfo.getIdCardNumber())) {
-                    Logger.showShortMessage(view.getContext(), "Please enter your id card number");
+                    Logger.showShortMessage(view.getContext(), R.string.id_card);
                 } else if (!employeeInfo.isFrontSideSelected()) {
-                    Logger.showShortMessage(view.getContext(), "Please select the front side image of id card");
+                    Logger.showShortMessage(view.getContext(),R.string.front_side);
                 } else if (!employeeInfo.isBackSideSelected()) {
-                    Logger.showShortMessage(view.getContext(), "Please select the back side image of id card");
+                    Logger.showShortMessage(view.getContext(),R.string.back_side);
                 } else {
                     registerRequest(context, employeeInfo);
 
@@ -134,7 +135,7 @@ public class EmployeeDetailController {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 CustomUtils.showToast(context, result.getMessage());
                 EmployeeDetails employeeResponse = result.employeeDetails;
-                Log.i("Employee Response", String.valueOf(employeeResponse));
+                Logger.logInfo("Employee Response", String.valueOf(employeeResponse));
                 context.startActivity(new Intent(context, DashboardActivity.class));
                 ((Activity) context).finish();
             } else {

@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.dashboard.myrides.view;
@@ -10,7 +10,6 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +24,7 @@ import com.contus.carpooling.server.RestCallback;
 import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.CustomUtils;
+import com.contus.carpooling.utils.Logger;
 import com.squareup.otto.Subscribe;
 
 import java.util.List;
@@ -89,14 +89,14 @@ public class MyRidesFragment extends Fragment {
     /**
      * Handle the api response details for my rides
      *
-     * @param result Api response
+     * @param result Get the Api response
      */
     @Subscribe
     public void myListDataReceived(MyRidesResponse result) {
         BusProvider.getInstance().unregister(activity);
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
-                Log.i("TAG", "myListDataReceived: ListDataSize " + result.getData().size());
+                Logger.logInfo("TAG", "myListDataReceived: ListDataSize " + result.getData().size());
                 List<MyRides> myRides = result.getData();
 
                 MyRidesAdapter myRidesAdapter = new MyRidesAdapter(activity, myRides);
@@ -108,7 +108,7 @@ public class MyRidesFragment extends Fragment {
                 ridesOfferedBinding.myRides.setAdapter(myRidesAdapter);
             } else {
                 CustomUtils.showToast(activity, "Invalid login");
-                Log.e("Error Message", result.getMessage());
+                Logger.logInfo("Error Message", result.getMessage());
             }
         }
     }

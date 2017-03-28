@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.utils;
@@ -49,21 +49,43 @@ public class Logger {
     }
 
     /**
+     * Used to track the throwable logs.
+     *
+     * @param msg The String reference indicates message to be logged.
+     * @param th  Catch the throwable errors.
+     */
+    public static void logMessageThrowable(Throwable th, String msg) {
+        Log.e(tag, msg, th);
+
+    }
+
+
+    /**
      * Method to log the information
      *
      * @param message Exception raised by the logger
      */
-    public static void logInfo(String message) {
+    public static void logInfo(String tag, String message) {
         Log.i(tag, message);
     }
 
     /**
      * Method to display the Toast message
      *
-     * @param context Context
+     * @param context Context of an activity
      * @param message Message to show
      */
-    public static void showShortMessage(Context context, String message) {
+    public static void showShortMessage(Context context, int message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Method to display the Toast message
+     *
+     * @param context Context of an activity
+     * @param message Message to show
+     */
+    public static void showToastMessage(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 }

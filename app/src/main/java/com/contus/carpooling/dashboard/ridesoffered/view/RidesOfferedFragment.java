@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.dashboard.ridesoffered.view;
@@ -10,7 +10,6 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +25,7 @@ import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.CustomUtils;
+import com.contus.carpooling.utils.Logger;
 import com.contus.carpooling.utils.SharedDataUtils;
 import com.squareup.otto.Subscribe;
 
@@ -84,7 +84,7 @@ public class RidesOfferedFragment extends Fragment {
         HashMap<String, String> ridesOfferedParams = new HashMap<>();
 
         /**
-         * get the from and to location from shared preferences
+         * Get the from and to location from shared preferences
          **/
         fromLocation = SharedDataUtils.getStringPreference(Constants.FROM_LOCATION, null);
         toLocation = SharedDataUtils.getStringPreference(Constants.TO_LOCATION, null);
@@ -97,7 +97,7 @@ public class RidesOfferedFragment extends Fragment {
     /**
      * Handle the api error response
      *
-     * @param errorMessage the error message
+     * @param errorMessage Get the error message
      */
     @Subscribe
     public void myRideOfferedRequest(String errorMessage) {
@@ -126,7 +126,7 @@ public class RidesOfferedFragment extends Fragment {
                 ridesOfferedBinding.offeredRides.setAdapter(ridesOfferedAdapter);
             } else {
                 CustomUtils.showToast(context, "Invalid login");
-                Log.e("Error Message", result.getMessage());
+                Logger.logInfo("Error Message", result.getMessage());
             }
         }
     }

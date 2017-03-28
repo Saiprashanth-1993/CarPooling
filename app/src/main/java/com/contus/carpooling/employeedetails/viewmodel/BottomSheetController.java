@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.employeedetails.viewmodel;
@@ -48,8 +48,8 @@ public class BottomSheetController {
     /**
      * Instance of the container activity
      *
-     * @param employeeDetailActivity instance of the activity.
-     * @param bottomDialogFragment   instance of the fragment.
+     * @param employeeDetailActivity Instance of the activity.
+     * @param bottomDialogFragment   Instance of the fragment.
      */
     public BottomSheetController(Activity employeeDetailActivity, BottomDialogFragment bottomDialogFragment) {
         this.employeeDetailActivity = employeeDetailActivity;
@@ -59,7 +59,7 @@ public class BottomSheetController {
     /**
      * Trigger the even listener for to do action perform for camera selection
      *
-     * @return The view of the listener
+     * @return View.OnClickListener OnClickListener of the camera selection button
      */
     public View.OnClickListener imageCameraSelectionOnclick() {
         return new View.OnClickListener() {
@@ -80,7 +80,7 @@ public class BottomSheetController {
      *
      * @param employeeDetailActivity Get the activity
      * @param code                   Get the code using this permission for call back
-     * @return The boolean value
+     * @return Boolean value true or false
      */
     private boolean checkPermissions(Activity employeeDetailActivity, int code) {
         int result;

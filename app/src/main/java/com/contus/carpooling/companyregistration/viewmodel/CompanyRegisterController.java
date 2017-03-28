@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.companyregistration.viewmodel;
@@ -14,7 +14,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.companyregistration.model.CompanyDetails;
@@ -68,7 +67,7 @@ public class CompanyRegisterController {
      * Trigger the listener to do perform the action for company registration
      *
      * @param getEditTextValue Get the edit text value
-     * @return The edit text value
+     * @return View.OnClickListener OnClickListener of the edit text value details
      */
     public View.OnClickListener btnCompanyRegistrationClick(final CompanyRegistrationInfo getEditTextValue) {
         return new View.OnClickListener() {
@@ -101,7 +100,7 @@ public class CompanyRegisterController {
     /**
      * Handle the api error response
      *
-     * @param errorMessage The error message
+     * @param errorMessage Get the error message
      */
     @Subscribe
     public void companyResponseReceived(String errorMessage) {
@@ -112,7 +111,7 @@ public class CompanyRegisterController {
     /**
      * Handle the api response details for company registration
      *
-     * @param result Api response
+     * @param result Get the Api response
      */
     @Subscribe
     public void companyResponseReceived(CompanyRegistrationResponse result) {
@@ -121,7 +120,7 @@ public class CompanyRegisterController {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 CustomUtils.showToast(context, result.getMessage());
                 CompanyDetails companyResponse = result.comRegResponse;
-                Log.e("ComRegResponse", String.valueOf(companyResponse));
+                Logger.logInfo("ComRegResponse", String.valueOf(companyResponse));
                 context.startActivity(new Intent(context, EmployeeDetailActivity.class));
                 ((Activity) context).finish();
             } else {
@@ -134,7 +133,7 @@ public class CompanyRegisterController {
      * Trigger the listener to do perform the action for show the category dialog list.
      *
      * @param companyCategory Get the category list from the model
-     * @return The details of company registration info model
+     * @return View.OnClickListener OnClickListener the details of company registration info model
      */
     public View.OnClickListener categoryListOnClick(final CompanyRegistrationInfo companyCategory) {
         return new View.OnClickListener() {
@@ -148,7 +147,7 @@ public class CompanyRegisterController {
     /**
      * Trigger the listener to do perform the action for show the google place api.
      *
-     * @return The view of the listener
+     * @return View.OnClickListener OnClickListener the view of the location button
      */
     public View.OnClickListener getLocationOnClick() {
         return new View.OnClickListener() {
@@ -173,13 +172,13 @@ public class CompanyRegisterController {
      * @param userName Get the field of user name
      * @param password Get the field of password
      * @param location Get the field of  location
-     * @return True when the given field is not empty.
+     * @return validationStatus if value has given true when the field is not empty.
      */
     public boolean isValid(Context context, String userName, String password, String location) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password) || TextUtils.isEmpty(location)) {
             validationStatus = false;
-            Toast.makeText(context, "Please make sure that all field should not be empty", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.company_fields_validation);
         }
         return validationStatus;
     }
@@ -231,7 +230,7 @@ public class CompanyRegisterController {
     /**
      * Trigger the event for redirect to login page.
      *
-     * @return The view of listener
+     * @return View.OnClickListener  OnClickListener of the sign in button
      */
     public View.OnClickListener btnSignInOnClick() {
         return new View.OnClickListener() {

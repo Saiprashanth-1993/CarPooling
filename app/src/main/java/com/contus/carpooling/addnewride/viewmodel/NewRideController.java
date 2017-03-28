@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.addnewride.viewmodel;
@@ -15,7 +15,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.addnewride.model.CreateRideResponse;
@@ -39,6 +38,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
@@ -61,7 +61,6 @@ public class NewRideController {
      */
     long linuxTime;
 
-
     /**
      * Context of an activity
      */
@@ -76,6 +75,16 @@ public class NewRideController {
      * Get the startDate
      */
     Date startDate;
+
+    /**
+     * Set the is every weeks
+     */
+    String disable = "0";
+
+    /**
+     * Set the IsEveryWeeks
+     */
+    String enable = "1";
 
     /**
      * Selected a day from the week list.
@@ -144,7 +153,7 @@ public class NewRideController {
      * Date converted to long
      *
      * @param date Get the date
-     * @return The start date and time
+     * @return Start Date from the current system date
      */
     public long convertToLong(String date) {
         try {
@@ -177,11 +186,8 @@ public class NewRideController {
                 } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
                     ride.setEndTime(dateAndTime);
                 }
-
             }
         }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
-
-
     }
 
     /**
@@ -189,7 +195,7 @@ public class NewRideController {
      *
      * @param daySelected Get the selected day.
      * @param newRide     Get the new ride details.
-     * @return The data selected
+     * @return The View.OnClickListener OnClickListener of the day selection
      */
     public View.OnClickListener btnDayOnClick(final String daySelected, final Ride newRide) {
         return new View.OnClickListener() {
@@ -202,9 +208,7 @@ public class NewRideController {
                     daySelection = daySelection + daySelected;
                     newRide.setDaySelected(daySelection.substring(0, daySelection.length() - 1));
                 }
-
             }
-
         };
     }
 
@@ -212,7 +216,7 @@ public class NewRideController {
      * Trigger the even click listener to do perform action for add the new rides
      *
      * @param newRide Get the ride  model details.
-     * @return The details of ride model
+     * @return View.OnClickListener OnClickListener details of ride model
      */
     public View.OnClickListener btnAddNewRideOnClick(final Ride newRide) {
         return new View.OnClickListener() {
@@ -242,7 +246,7 @@ public class NewRideController {
         createRideParams.put(Constants.CreateRide.GENDER_PREFERENCE, rideInfo.getGender());
         createRideParams.put(Constants.CreateRide.DAYS_PREFERENCE, rideInfo.getDaySelected());
         createRideParams.put(Constants.CreateRide.SEATS, rideInfo.getSeats());
-        createRideParams.put(Constants.CreateRide.VEHICLE_TYPE, "dummy");
+        createRideParams.put(Constants.CreateRide.VEHICLE_TYPE, "bike");
         createRideParams.put(Constants.CreateRide.IS_EVERY_WEEEKS, rideInfo.getEveryWeeks());
         createRideParams.put(Constants.CreateRide.TYPE, rideInfo.getType());
         createRideParams.put(Constants.CreateRide.COST, rideInfo.getCost());
@@ -264,7 +268,7 @@ public class NewRideController {
     /**
      * Handle the create ride api response details once completed the creation of ride
      *
-     * @param result The API response
+     * @param result result Response details and message from API
      */
     @Subscribe
     public void createRideDataReceived(CreateRideResponse result) {
@@ -272,7 +276,7 @@ public class NewRideController {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 CustomUtils.showToast(context, result.getMessage());
-                Ride createRideResponse = result.rideResponse;
+                List<Ride> createRideResponse = result.getRideDetails();
                 Log.e("createRideResponse", String.valueOf(createRideResponse));
                 context.startActivity(new Intent(context, DashboardActivity.class));
                 ((Activity) context).finish();
@@ -283,12 +287,11 @@ public class NewRideController {
     }
 
     /**
-     * Trigger the click listener to do perform the action for
-     * user radio button to select the gender type.
+     * Trigger the click listener to do perform the action for user radio button to select the gender type.
      *
      * @param ride   Get the new ride details.
      * @param gender Get the type of gender
-     * @return The gender of radio button
+     * @return View.OnClickListener OnClickListener gender of radio button
      */
     public View.OnClickListener radioBtnOnClick(final Ride ride, final String gender) {
         return new View.OnClickListener() {
@@ -304,7 +307,7 @@ public class NewRideController {
      *
      * @param newRide  Get the new ride details.
      * @param costType Get the type of cost
-     * @return The cost type
+     * @return View.OnClickListener OnClickListener response of cost type and set into ride model
      */
     public View.OnClickListener radioCostBtnOnClick(final Ride newRide, final String costType) {
         return new View.OnClickListener() {
@@ -319,16 +322,16 @@ public class NewRideController {
      * Triggered the click listener to do perform the action for check box
      *
      * @param rideObj Get the new ride details.
-     * @return The Ride models
+     * @return View.OnClickListener OnClickListener the details of ride model
      */
     public View.OnClickListener cbBtnOnClick(final Ride rideObj) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (rideObj.getIsEveryWeek()) {
-                    rideObj.setEveryWeeks("0");
+                    rideObj.setEveryWeeks(disable);
                 } else {
-                    rideObj.setEveryWeeks("1");
+                    rideObj.setEveryWeeks(enable);
                 }
             }
         };
@@ -338,31 +341,31 @@ public class NewRideController {
      * Method  for validate the whether fields are empty or not
      *
      * @param context Context of an activity
-     * @return The true when the given field is not empty.
+     * @return Validation Status value true when the given field is not empty.
      */
     private boolean isValid(Context context, Ride profileInfo) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(profileInfo.getFromRide())) {
             validationStatus = false;
-            Toast.makeText(context, "Please enter the From ride", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.from_ride_validation);
         } else if (TextUtils.isEmpty(profileInfo.getToRide())) {
             validationStatus = false;
-            Toast.makeText(context, "Please enter the To ride", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.to_ride_validation);
         } else if (TextUtils.isEmpty(profileInfo.getStartTime())) {
             validationStatus = false;
-            Toast.makeText(context, "Please enter start time", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.start_time_validation);
         } else if (TextUtils.isEmpty(profileInfo.getEndTime())) {
             validationStatus = false;
-            Toast.makeText(context, "Please enter end time", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.to_time_validation);
         } else if (TextUtils.isEmpty(profileInfo.getGender())) {
             validationStatus = false;
-            Toast.makeText(context, "Please select gender", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.gender_validation);
         } else if (TextUtils.isEmpty(profileInfo.getDaySelected())) {
             validationStatus = false;
-            Toast.makeText(context, "Please select day", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.select_day_validation);
         } else if (profileInfo.getSeats().equals(Constants.EMPTY_SEAT)) {
             validationStatus = false;
-            Toast.makeText(context, "Please select seat", Toast.LENGTH_SHORT).show();
+            Logger.showShortMessage(context, R.string.seat_validation);
         }
         return validationStatus;
     }
@@ -371,7 +374,7 @@ public class NewRideController {
      * Event click listener to get the location from google place api.
      *
      * @param requestCode ApiRequest code of the google place api intent
-     * @return The call back request code
+     * @return View.OnClickListener OnclickListener of call back request code
      */
     public View.OnClickListener getLocationOnClick(final int requestCode) {
         return new View.OnClickListener() {

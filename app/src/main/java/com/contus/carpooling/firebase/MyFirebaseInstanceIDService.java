@@ -1,14 +1,13 @@
 /**
  * @category Car Pooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.firebase;
 
 
-import android.util.Log;
-
 import com.contus.carpooling.utils.Constants;
+import com.contus.carpooling.utils.Logger;
 import com.contus.carpooling.utils.SharedDataUtils;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
@@ -26,8 +25,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     @Override
     public void onTokenRefresh() {
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Log.d(TAG, "Refreshed token: " + refreshedToken);
-
+        Logger.logInfo(TAG, "Refreshed token: " + refreshedToken);
         sendRegistrationToServer(refreshedToken);
     }
 
@@ -37,8 +35,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
      * @param token Get the device token
      */
     private void sendRegistrationToServer(String token) {
-        Log.d("Registration id", token);
-
+        Logger.logInfo("Registration id", token);
         /**
          * Store the device token into shared preference
          */

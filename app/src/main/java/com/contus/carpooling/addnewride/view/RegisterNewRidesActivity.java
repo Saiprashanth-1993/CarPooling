@@ -1,6 +1,6 @@
 /**
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 package com.contus.carpooling.addnewride.view;
@@ -186,7 +186,8 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
         /**
          * It is an interface callback for spinner
          *
-         * @param parent
+         * @param parent Get the adapter view parent
+         *
          */
         public void onNothingSelected(AdapterView parent) {
             // Do nothing.
