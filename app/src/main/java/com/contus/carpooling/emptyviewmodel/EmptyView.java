@@ -24,9 +24,9 @@ public class EmptyView extends BaseObservable {
     boolean isemptyview = false;
 
     /**
-     * Gets {@see #isemptyview}
-     * <p>
-     * Returns the isemptyview {@link #isemptyview}
+     * Gets {@see #isemptyview}.
+     *
+     * @return {@link #isemptyview}
      */
     @Bindable
     public boolean isIsemptyview() {

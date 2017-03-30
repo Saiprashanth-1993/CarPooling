@@ -129,9 +129,9 @@ public class RidesOfferedDetails extends BaseObservable {
     private List<RidePreference> ridePreference = null;
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #id}
+     * Gets {@see #id}.
+     *
+     * @return {@link #id}
      */
     public Integer getId() {
         return id;
@@ -147,9 +147,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #creatorId}
-     * <p>
-     * Returns the creatorId {@link #creatorId}
+     * Gets {@see #creatorId}.
+     *
+     * @return {@link #creatorId}
      */
     public Integer getCreatorId() {
         return creatorId;
@@ -165,9 +165,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #departurePoints}
-     * <p>
-     * Returns the departurePoints {@link #departurePoints}
+     * Gets {@see #departurePoints}.
+     *
+     * @return {@link #departurePoints}
      */
     @Bindable
     public String getDeparturePoints() {
@@ -184,9 +184,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #arrivalPoints}
-     * <p>
-     * Returns the arrivalPoints {@link #arrivalPoints}
+     * Gets {@see #arrivalPoints}.
+     *
+     * @return {@link #arrivalPoints}
      */
     @Bindable
     public String getArrivalPoints() {
@@ -203,9 +203,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #departureTimes}
-     * <p>
-     * Returns the departureTimes {@link #departureTimes}
+     * Gets {@see #departureTimes}.
+     *
+     * @return {@link #departureTimes}
      */
     @Bindable
     public String getDepartureTimes() {
@@ -223,9 +223,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #arrivalTimes}
-     * <p>
-     * Returns the arrivalTimes {@link #arrivalTimes}
+     * Gets {@see #arrivalPoints}.
+     *
+     * @return {@link #arrivalPoints}
      */
     @Bindable
     public String getArrivalTimes() {
@@ -244,9 +244,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #genderPreference}
-     * <p>
-     * Returns the genderPreference {@link #genderPreference}
+     * Gets {@see #genderPreference}.
+     *
+     * @return {@link #genderPreference}
      */
     @Bindable
     public String getGenderPreference() {
@@ -263,9 +263,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #seats}
-     * <p>
-     * Returns the seats {@link #seats}
+     * Gets {@see #seats}.
+     *
+     * @return {@link #seats}
      */
     @Bindable
     public String getSeats() {
@@ -282,9 +282,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #vehicleType}
-     * <p>
-     * Returns the vehicleType {@link #vehicleType}
+     * Gets {@see #vehicleType}.
+     *
+     * @return {@link #vehicleType}
      */
     @Bindable
     public String getVehicleType() {
@@ -301,9 +301,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #isEveryWeeks}
-     * <p>
-     * Returns the isEveryWeeks {@link #isEveryWeeks}
+     * Gets {@see #isEveryWeeks}.
+     *
+     * @return {@link #isEveryWeeks}
      */
     public Integer getIsEveryWeeks() {
         return isEveryWeeks;
@@ -319,9 +319,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #cost}
-     * <p>
-     * Returns the cost {@link #cost}
+     * Gets {@see #cost}.
+     *
+     * @return {@link #cost}
      */
     @Bindable
     public String getCost() {
@@ -338,9 +338,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #type}
-     * <p> Capital first letter using wordUtils
-     * Returns the type {@link #type}
+     * Gets {@see #type}.
+     *
+     * @return {@link #type}
      */
     public String getType() {
         return WordUtils.capitalizeFully(type);
@@ -356,9 +356,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #arrivalDate} from arrivalTimes
-     * <p>
-     * Returns the arrivalTimes {@link #arrivalTimes}
+     * Gets {@see #arrivalTimes}.
+     *
+     * @return {@link #arrivalTimes}
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public String getArrivalDate() {
@@ -381,9 +381,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #departureDate}  from departureTimes
-     * <p>
-     * Returns the departureDate
+     * Gets {@see #departureTimes}.
+     *
+     * @return {@link #departureTimes}
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public String getDepartureDate() {
@@ -408,9 +408,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #name}
-     * <p>
-     * Returns the name
+     * Gets {@see #genderPreference}.
+     *
+     * @return {@link #genderPreference}
      */
     public String getName() {
 
@@ -423,9 +423,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #costValue} from cost
-     * <p>
-     * Returns the costValue
+     * Gets {@see #cost}.
+     *
+     * @return {@link #cost}
      */
     public int getCostVisibility() {
         if (Integer.parseInt(cost) > 0) {
@@ -436,18 +436,18 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #rupeeFormat} from cost
-     * <p>
-     * Returns the costValue
+     * Gets {@see #cost}.
+     *
+     * @return {@link #cost}
      */
     public String getRupeeFormat() {
         return cost;
     }
 
     /**
-     * Gets {@see #user}
-     * <p>
-     * Returns the user
+     * Gets {@see #user}.
+     *
+     * @return {@link #user}
      */
     public List<User> getUser() {
         return user;
@@ -463,9 +463,9 @@ public class RidesOfferedDetails extends BaseObservable {
     }
 
     /**
-     * Gets {@see #ridePreference}
-     * <p>
-     * Returns the ridePreference
+     * Gets {@see #ridePreference}.
+     *
+     * @return {@link #ridePreference}
      */
     public List<RidePreference> getRidePreference() {
         return ridePreference;

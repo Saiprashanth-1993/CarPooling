@@ -41,8 +41,8 @@ public class CompanyDetails {
 
     /**
      * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #id}
+     *
+     * @return {@link #id}
      */
     public Integer getId() {
         return id;
@@ -59,8 +59,8 @@ public class CompanyDetails {
 
     /**
      * Gets {@see #name}
-     * <p>
-     * Returns the name {@link #name}
+     *
+     * @return {@link #name}
      */
     public String getName() {
         return name;
@@ -77,8 +77,8 @@ public class CompanyDetails {
 
     /**
      * Gets {@see #slug}
-     * <p>
-     * Returns the slug {@link #slug}
+     *
+     * @return {@link #slug}
      */
     public String getSlug() {
         return slug;

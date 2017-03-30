@@ -33,8 +33,8 @@ public class Category {
 
     /**
      * Gets {@see #name}
-     * <p>
-     * Returns the name {@link #name}
+     *
+     * @return {@link #name}
      */
     public String getName() {
         return name;
@@ -51,8 +51,8 @@ public class Category {
 
     /**
      * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #id}
+     *
+     * @return {@link #id}
      */
     public Integer getId() {
         return id;

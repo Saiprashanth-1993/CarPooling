@@ -45,8 +45,8 @@ public class ChangePasswordInfo extends BaseObservable {
 
     /**
      * Gets {@see #status}
-     * <p>
-     * Returns the status {@link #status}
+     *
+     * @return {@link #status}
      */
     public String getStatus() {
         return status;
@@ -63,8 +63,8 @@ public class ChangePasswordInfo extends BaseObservable {
 
     /**
      * Gets {@see #value}
-     * <p>
-     * Returns the value {@link #value}
+     *
+     * @return {@link #value}
      */
     public String getValue() {
         return value;
@@ -81,8 +81,8 @@ public class ChangePasswordInfo extends BaseObservable {
 
     /**
      * Gets {@see #message}
-     * <p>
-     * Returns the message {@link #message}
+     *
+     * @return {@link #message}
      */
     public String getMessage() {
         return message;
@@ -99,8 +99,8 @@ public class ChangePasswordInfo extends BaseObservable {
 
     /**
      * Gets {@see #code}
-     * <p>
-     * Returns the code {@link #code}
+     *
+     * @return {@link #code}
      */
     public String getCode() {
         return code;

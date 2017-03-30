@@ -138,9 +138,9 @@ public class MyRides extends BaseObservable implements Parcelable {
 
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #id}
+     * Gets {@see #id}.
+     *
+     * @return {@link #id}
      */
     public Integer getId() {
         return id;
@@ -157,9 +157,9 @@ public class MyRides extends BaseObservable implements Parcelable {
 
 
     /**
-     * Gets {@see #departurePoint}
-     * <p>
-     * Returns the departurePoint {@link #departurePoint}
+     * Gets {@see #departurePoint}.
+     *
+     * @return {@link #departurePoint}
      */
     @Bindable
     public String getDeparturePoint() {
@@ -172,9 +172,9 @@ public class MyRides extends BaseObservable implements Parcelable {
     }
 
     /**
-     * Gets {@see #arrivalPoint}
-     * <p>
-     * Returns the arrivalPoint {@link #arrivalPoint}
+     * Gets {@see #arrivalPoint}.
+     *
+     * @return {@link #arrivalPoint}
      */
     @Bindable
     @NonNull
@@ -193,9 +193,9 @@ public class MyRides extends BaseObservable implements Parcelable {
     }
 
     /**
-     * Gets {@see #departureTime}
-     * <p>
-     * Returns the departureTime {@link #departureTime}
+     * Gets {@see #departureTime}.
+     *
+     * @return {@link #departureTime}
      */
     @Bindable
     public String getDepartureTime() {
@@ -208,9 +208,9 @@ public class MyRides extends BaseObservable implements Parcelable {
     }
 
     /**
-     * Gets {@see #arrivalTime}
-     * <p>
-     * Returns the arrivalTime {@link #arrivalTime}
+     * Gets {@see #arrivalTime}.
+     *
+     * @return {@link #arrivalTime}
      */
     @Bindable
     public String getArrivalTime() {
@@ -228,9 +228,9 @@ public class MyRides extends BaseObservable implements Parcelable {
     }
 
     /**
-     * Gets {@see #gender}
-     * <p>
-     * Returns the gender {@link #gender}
+     * Gets {@see #gender}.
+     *
+     * @return {@link #gender}
      */
     @Bindable
     public String getGender() {
@@ -248,9 +248,9 @@ public class MyRides extends BaseObservable implements Parcelable {
     }
 
     /**
-     * Gets {@see #seats}
-     * <p>
-     * Returns the seats {@link #seats}
+     * Gets {@see #seats}.
+     *
+     * @return {@link #seats}
      */
     @Bindable
     public String getSeats() {
@@ -268,9 +268,9 @@ public class MyRides extends BaseObservable implements Parcelable {
     }
 
     /**
-     * Gets {@see #vehicleType}
-     * <p>
-     * Returns the vehicleType {@link #vehicleType}
+     * Gets {@see #vehicleType}.
+     *
+     * @return {@link #vehicleType}
      */
     @Bindable
     public String getVehicleType() {
@@ -288,9 +288,9 @@ public class MyRides extends BaseObservable implements Parcelable {
     }
 
     /**
-     * Gets {@see #isEveryWeeks}
-     * <p>
-     * Returns the isEveryWeeks {@link #isEveryWeeks}
+     * Gets {@see #isEveryWeeks}.
+     *
+     * @return {@link #isEveryWeeks}
      */
     @Bindable
     public Integer getIsEveryWeeks() {
@@ -308,9 +308,9 @@ public class MyRides extends BaseObservable implements Parcelable {
     }
 
     /**
-     * Gets {@see #cost}
-     * <p>
-     * Returns the cost {@link #cost}
+     * Gets {@see #type}.
+     *
+     * @return {@link #type}
      */
     @Bindable
     public String getType() {
@@ -329,9 +329,9 @@ public class MyRides extends BaseObservable implements Parcelable {
     }
 
     /**
-     * Gets {@see #cost}
-     * <p>
-     * Returns the error {@link #cost}
+     * Gets {@see #cost}.
+     *
+     * @return {@link #cost}
      */
     @Bindable
     public String getCost() {

@@ -151,7 +151,6 @@ public class LoginController implements ApiService.OnTaskCompleted {
                  */
                 SharedDataUtils.storeBooleanPreferences(Constants.IS_LOGGED, true);
 
-
                 /**
                  * Login id and email id stored into share preference
                  */

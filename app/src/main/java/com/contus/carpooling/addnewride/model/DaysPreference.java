@@ -41,8 +41,8 @@ public class DaysPreference extends BaseObservable {
 
     /**
      * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #id}
+     *
+     * @return {@link #id}
      */
     public Integer getId() {
         return id;
@@ -59,8 +59,8 @@ public class DaysPreference extends BaseObservable {
 
     /**
      * Gets {@see #rideId}
-     * <p>
-     * Returns the rideId {@link #rideId}
+     *
+     * @return {@link #rideId}
      */
     public Integer getRideId() {
         return rideId;
@@ -77,8 +77,8 @@ public class DaysPreference extends BaseObservable {
 
     /**
      * Gets {@see #day}
-     * <p>
-     * Returns the day {@link #day}
+     *
+     * @return {@link #day}
      */
     public String getDay() {
         return day;

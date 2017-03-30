@@ -35,8 +35,8 @@ public class CompanyList {
 
     /**
      * Gets {@see #company}
-     * <p>
-     * Returns the company {@link #company}
+     *
+     * @return {@link #company}
      */
     public List<CompanyListInfo> getCompany() {
         return company;
@@ -53,8 +53,8 @@ public class CompanyList {
 
     /**
      * Gets {@see #sector}
-     * <p>
-     * Returns the sector {@link #sector}
+     *
+     * @return {@link #sector}
      */
     public List<Category> getSector() {
         return sector;

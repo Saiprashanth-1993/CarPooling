@@ -255,7 +255,7 @@ public class NewRideController {
     /**
      * Handle the api error response
      *
-     * @param errorMessage the error message
+     * @param errorMessage Get the error message
      */
     @Subscribe
     public void createRideDataReceived(String errorMessage) {

@@ -12,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
+import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.SharedDataUtils;
 
@@ -52,7 +53,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 if (login) {
                     startActivity(new Intent(SplashScreenActivity.this, DashboardActivity.class));
                 } else {
-                    Intent loginActivity = new Intent(SplashScreenActivity.this, DashboardActivity.class);
+                    Intent loginActivity = new Intent(SplashScreenActivity.this, LoginActivity.class);
                     startActivity(loginActivity);
                     finish();
                 }

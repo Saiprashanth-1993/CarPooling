@@ -88,90 +88,90 @@ public class UserProfileDetails {
 
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #email}
+     * Gets {@see #email}.
+     *
+     * @return {@link #email}
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #username}
+     * Gets {@see #employeeId}.
+     *
+     * @return {@link #username}
      */
     public String getUsername() {
         return (String) username;
     }
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #mobile}
+     * Gets {@see #mobile}.
+     *
+     * @return {@link #mobile}
      */
     public String getMobile() {
         return String.valueOf(mobile);
     }
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #fromLocation}
+     * Gets {@see #fromLocation}.
+     *
+     * @return {@link #fromLocation}
      */
     public String getFromLocation() {
         return fromLocation;
     }
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #profileImage}
+     * Gets {@see #employeeId}.
+     *
+     * @return {@link #profileImage}
      */
     public String getProfileImage() {
         return profileImage;
     }
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #companyCategoryId}
+     * Gets {@see #companyCategoryId}.
+     *
+     * @return {@link #companyCategoryId}
      */
     public String getCompanyCategoryId() {
         return String.valueOf(companyCategoryId);
     }
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #companyLocation}
+     * Gets {@see #companyLocation}.
+     *
+     * @return {@link #companyLocation}
      */
     public String getCompanyLocation() {
         return companyLocation;
     }
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #vehicleType}
+     * Gets {@see #vehicleType}.
+     *
+     * @return {@link #vehicleType}
      */
     public String getVehicleType() {
         return vehicleType;
     }
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #vehicleName}
+     * Gets {@see #vehicleName}.
+     *
+     * @return {@link #vehicleName}
      */
     public String getVehicleName() {
         return vehicleName;
     }
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #vehicleNo}
+     * Gets {@see #vehicleNo}.
+     *
+     * @return {@link #vehicleNo}
      */
     public String getVehicleNo() {
         return vehicleNo;

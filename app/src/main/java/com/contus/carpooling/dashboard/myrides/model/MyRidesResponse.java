@@ -28,9 +28,9 @@ public class MyRidesResponse extends ErrorResponse {
     private List<MyRides> data = null;
 
     /**
-     * Gets {@see #data}
-     * <p>
-     * Returns the data {@link #data}
+     * Gets {@see #data}.
+     *
+     * @return {@link #data}
      */
     public List<MyRides> getData() {
         return data;

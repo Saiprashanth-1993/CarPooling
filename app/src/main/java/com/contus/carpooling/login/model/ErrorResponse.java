@@ -44,9 +44,9 @@ public class ErrorResponse {
 
 
     /**
-     * Gets {@see #error}
-     * <p>
-     * Returns the error {@link #error}
+     * Gets {@see #error}.
+     *
+     * @return {@link #error}
      */
     public Boolean getError() {
         return error;
@@ -62,8 +62,9 @@ public class ErrorResponse {
     }
 
     /**
-     * Gets {@see #success}
-     * Returns the success {@link #success}
+     * Gets {@see #success}.
+     *
+     * @return {@link #success}
      */
     public int getSuccess() {
         return success;
@@ -79,9 +80,9 @@ public class ErrorResponse {
     }
 
     /**
-     * Gets {@see #message}
-     * <p>
-     * Returns the message {@link #message}
+     * Gets {@see #message}.
+     *
+     * @return {@link #message}
      */
     public String getMessage() {
         return message;
@@ -97,9 +98,9 @@ public class ErrorResponse {
     }
 
     /**
-     * Gets {@see #userToken}
-     * <p>
-     * Returns the userToken {@link #userToken}
+     * Gets {@see #userToken}.
+     *
+     * @return {@link #userToken}
      */
     public String getUserToken() {
         return userToken;

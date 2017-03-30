@@ -153,9 +153,9 @@ public class User extends BaseObservable {
 
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #id}
+     * Gets {@see #id}.
+     *
+     * @return {@link #id}
      */
     public Integer getId() {
         return id;
@@ -171,9 +171,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #userRoleId}
-     * <p>
-     * Returns the userRoleId {@link #userRoleId}
+     * Gets {@see #userRoleId}.
+     *
+     * @return {@link #userRoleId}
      */
     public Object getUserRoleId() {
         return userRoleId;
@@ -189,9 +189,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #name}
-     * <p>
-     * Returns the name {@link #name}
+     * Gets {@see #name}.
+     *
+     * @return {@link #name}
      */
     public String getName() {
         return name;
@@ -207,9 +207,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #email}
-     * <p>
-     * Returns the email {@link #email}
+     * Gets {@see #email}.
+     *
+     * @return {@link #email}
      */
     public String getEmail() {
         return email;
@@ -225,9 +225,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #username}
-     * <p>
-     * Returns the username {@link #username}
+     * Gets {@see #username}.
+     *
+     * @return {@link #username}
      */
     public String getUsername() {
         return username;
@@ -243,9 +243,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #password}
-     * <p>
-     * Returns the username {@link #password}
+     * Gets {@see #password}.
+     *
+     * @return {@link #password}
      */
     public String getPassword() {
         return password;
@@ -261,9 +261,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #mobile}
-     * <p>
-     * Returns the mobile {@link #mobile}
+     * Gets {@see #mobile}.
+     *
+     * @return {@link #mobile}
      */
     public Integer getMobile() {
         return mobile;
@@ -279,9 +279,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #gender}
-     * <p>
-     * Returns the gender {@link #gender}
+     * Gets {@see #gender}.
+     *
+     * @return {@link #gender}
      */
     public String getGender() {
         return gender;
@@ -297,31 +297,28 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Sets {@see #fromLocation}
+     * Gets {@see #fromLocation}.
      *
-     * @param fromLocation(@link #fromLocation}
+     * @return {@link #fromLocation}
      */
-
     public String getFromLocation() {
         return fromLocation;
     }
 
     /**
-     * Gets {@see #toLocation}
-     * <p>
-     * Returns the toLocation {@link #toLocation}
+     * Gets {@see #fromLocation}.
+     *
+     * @return {@link #fromLocation}
      */
     public void setFromLocation(String fromLocation) {
         this.fromLocation = fromLocation;
     }
 
     /**
-     * Gets {@see #fromLocation}
-     * <p>
-     * Returns the fromLocation {@link #fromLocation}
+     * Gets {@see #toLocation}.
+     *
+     * @return {@link #toLocation}
      */
-
-
     public String getToLocation() {
         return toLocation;
     }
@@ -336,9 +333,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #age}
-     * <p>
-     * Returns the age {@link #age}
+     * Gets {@see #age}.
+     *
+     * @return {@link #age}
      */
     public Object getAge() {
         return age;
@@ -354,9 +351,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #profileImage}
-     * <p>
-     * Returns the profileImage {@link #profileImage}
+     * Gets {@see #profileImage}.
+     *
+     * @return {@link #profileImage}
      */
     public Object getProfileImage() {
         return profileImage;
@@ -372,9 +369,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #companyId}
-     * <p>
-     * Returns the companyId {@link #companyId}
+     * Gets {@see #companyId}.
+     *
+     * @return {@link #companyId}
      */
     public Object getCompanyId() {
         return companyId;
@@ -390,9 +387,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #companyCategoryId}
-     * <p>
-     * Returns the companyCategoryId {@link #companyCategoryId}
+     * Gets {@see #companyCategoryId}.
+     *
+     * @return {@link #companyCategoryId}
      */
     public Object getCompanyCategoryId() {
         return companyCategoryId;
@@ -408,9 +405,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #companyLocation}
-     * <p>
-     * Returns the companyLocation {@link #companyLocation}
+     * Gets {@see #companyLocation}.
+     *
+     * @return {@link #companyLocation}
      */
     public Object getCompanyLocation() {
         return companyLocation;
@@ -426,9 +423,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #deviceType}
-     * <p>
-     * Returns the deviceType {@link #deviceType}
+     * Gets {@see #deviceType}.
+     *
+     * @return {@link #deviceType}
      */
     public Object getDeviceType() {
         return deviceType;
@@ -444,9 +441,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #deviceToken}
-     * <p>
-     * Returns the deviceToken {@link #deviceToken}
+     * Gets {@see #deviceToken}.
+     *
+     * @return {@link #deviceToken}
      */
     public String getDeviceToken() {
         return deviceToken;
@@ -462,9 +459,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #employeeId}
-     * <p>
-     * Returns the employeeId {@link #employeeId}
+     * Gets {@see #employeeId}.
+     *
+     * @return {@link #employeeId}
      */
     public Object getEmployeeId() {
         return employeeId;
@@ -480,9 +477,9 @@ public class User extends BaseObservable {
     }
 
     /**
-     * Gets {@see #rememberToken}
-     * <p>
-     * Returns the rememberToken {@link #rememberToken}
+     * Gets {@see #rememberToken}.
+     *
+     * @return {@link #rememberToken}
      */
     public String getRememberToken() {
         return rememberToken;

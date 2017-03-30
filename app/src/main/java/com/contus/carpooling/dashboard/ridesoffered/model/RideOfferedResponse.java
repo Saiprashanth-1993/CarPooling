@@ -28,9 +28,9 @@ public class RideOfferedResponse extends ErrorResponse {
     private List<RidesOfferedDetails> rideDetails = null;
 
     /**
-     * Gets {@see #rideDetails}
-     * <p>
-     * Returns the rideDetails {@link #rideDetails}
+     * Gets {@see #rideDetails}.
+     *
+     * @return {@link #rideDetails}
      */
     public List<RidesOfferedDetails> getRideDetails() {
         return rideDetails;

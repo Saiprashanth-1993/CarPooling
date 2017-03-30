@@ -55,9 +55,9 @@ public class EmployeeDetails {
 
 
     /**
-     * Gets {@see #id}
-     * <p>
-     * Returns the id {@link #id}
+     * Gets {@see #id}.
+     *
+     * @return {@link #id}
      */
     public Integer getId() {
         return id;
@@ -73,9 +73,9 @@ public class EmployeeDetails {
     }
 
     /**
-     * Gets {@see #userId}
-     * <p>
-     * Returns the userId {@link #userId}
+     * Gets {@see #userId}.
+     *
+     * @return {@link #userId}
      */
     public Integer getUserId() {
         return userId;
@@ -91,9 +91,9 @@ public class EmployeeDetails {
     }
 
     /**
-     * Gets {@see #aadharCard}
-     * <p>
-     * Returns the aadharCard {@link #aadharCard}
+     * Gets {@see #aadharCard}.
+     *
+     * @return {@link #aadharCard}
      */
     public String getAadharCard() {
         return aadharCard;
@@ -109,9 +109,9 @@ public class EmployeeDetails {
     }
 
     /**
-     * Gets {@see #panCard}
-     * <p>
-     * Returns the panCard {@link #panCard}
+     * Gets {@see #panCard}.
+     *
+     * @return {@link #panCard}
      */
     public String getPanCard() {
         return panCard;
@@ -128,9 +128,9 @@ public class EmployeeDetails {
     }
 
     /**
-     * Gets {@see #rememberToken}
-     * <p>
-     * Returns the rememberToken {@link #rememberToken}
+     * Gets {@see #rememberToken}.
+     *
+     * @return {@link #rememberToken}
      */
     public String getRememberToken() {
         return rememberToken;
