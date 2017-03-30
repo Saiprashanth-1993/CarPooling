@@ -24,8 +24,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Controller of the ChangePassword class.
- * XML view controller
+ * Controller of the CompanyRegistrationActivity class.
+ * XML view controller trigger all the click listener to do perform the action
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -57,7 +57,8 @@ public class ChangePasswordController {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                if (isValid(context, getchangePasswordValues.getCurrentPassword(), getchangePasswordValues.getNewPassword(), getchangePasswordValues.getConfirmPassword()))
+                if (isValid(context, getchangePasswordValues.getCurrentPassword(), getchangePasswordValues.getNewPassword(),
+                        getchangePasswordValues.getConfirmPassword()))
                     changePasswordRequest(getchangePasswordValues, context);
             }
         };
@@ -114,7 +115,7 @@ public class ChangePasswordController {
             public void onResponse(Call<ChangePasswordResponse> call, Response<ChangePasswordResponse> response) {
                 if (response.isSuccessful()) {
                     Logger.showToastMessage(mContext, response.body().getMessage());
-                    if (!TextUtils.equals("Password is invalid", response.body().getMessage())) {
+                    if (!TextUtils.equals(mContext.getResources().getString(R.string.invalid_password), response.body().getMessage())) {
                         activity.onBackPressed();
                     }
                 }

@@ -81,6 +81,7 @@
     <string name="confirm_password_length">Confirm password should be minimum of 6 character!</string>
     <string name="new_password_length">New password should be minimum of 6 character!</string>
     <string name="password_match">Password does not match</string>
+    <string name="invalid_password">Password is invalid</string>
 
     <!--Company Registration-->
     <string name="company_fields_validation">Please make sure that all field should not be empty</string>

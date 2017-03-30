@@ -39,8 +39,7 @@ import java.util.HashMap;
 import static com.contus.carpooling.utils.Constants.REQUEST_CODE_COMPANY_LOCATION;
 
 /**
- * Controller of the CompanyRegistrationActivity class.
- * XML view controller trigger the listener to do perform the action
+ * Controller of the CompanyRegistrationActivity class. XML view controller trigger the listener to do perform the action
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
