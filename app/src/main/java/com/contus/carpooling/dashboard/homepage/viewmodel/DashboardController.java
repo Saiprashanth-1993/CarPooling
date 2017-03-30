@@ -159,7 +159,7 @@ public class DashboardController {
             @Override
             public void onClick(View view) {
                 if (!TextUtils.isEmpty(selectedDelayTime)) {
-                    Logger.showToastMessage(view.getContext(), selectedDelayTime + " has been set");
+                    Logger.showToastMessage(view.getContext(), selectedDelayTime + R.string.delay_time_set);
                     alert.cancel();
                 } else {
                     Logger.showShortMessage(view.getContext(), R.string.delay_time);
