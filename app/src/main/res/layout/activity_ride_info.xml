@@ -6,7 +6,7 @@
     <data >
         <variable
             name="itemClick"
-            type="com.contus.carpooling.offeredrideinfo.view.viewmodel.OfferedRidesInformationController" />
+            type="com.contus.carpooling.offeredrideinfo.viewmodel.OfferedRidesInformationController" />
     </data>
 
     <LinearLayout

@@ -3,7 +3,7 @@
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
-package com.contus.carpooling.offeredrideinfo.view.view;
+package com.contus.carpooling.offeredrideinfo.view;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -14,7 +14,8 @@ import android.view.MenuItem;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.databinding.ActivityRideInfoBinding;
-import com.contus.carpooling.offeredrideinfo.view.viewmodel.OfferedRidesInformationController;
+import com.contus.carpooling.offeredrideinfo.viewmodel.OfferedRidesInformationController;
+
 
 /**
  * Activity for show the rides information which is used to display the details from API response

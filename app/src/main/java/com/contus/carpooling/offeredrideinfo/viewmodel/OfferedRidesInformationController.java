@@ -3,7 +3,7 @@
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
-package com.contus.carpooling.offeredrideinfo.view.viewmodel;
+package com.contus.carpooling.offeredrideinfo.viewmodel;
 
 import android.content.Context;
 import android.view.View;
