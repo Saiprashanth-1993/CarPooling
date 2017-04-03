@@ -31,7 +31,7 @@ import retrofit2.http.Path;
  * Handle the request api with annotations, methods and parameter.
  *
  * @author Contus Team <developers@contus.in>
- * @version 2.3
+ * @version 1.0
  */
 public interface API {
 

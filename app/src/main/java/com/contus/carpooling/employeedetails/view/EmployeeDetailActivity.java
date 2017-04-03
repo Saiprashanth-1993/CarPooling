@@ -120,7 +120,6 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             employeeInfo.setBackImage(imageFile);
             employeeDetailBinding.uploadImageBack.setImageBitmap(scaled);
         }
-
     }
 
     @Override

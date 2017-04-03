@@ -17,7 +17,7 @@ import com.squareup.okhttp.Response;
  * This class is used for call all the api and execute Listener will used for the call back
  *
  * @author ContusTeam <developers@contus.in>
- * @version 2.3
+ * @version 1.0
  */
 public class ApiService extends AsyncTask<String, Void, String> {
 

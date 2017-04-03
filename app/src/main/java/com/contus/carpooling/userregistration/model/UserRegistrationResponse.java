@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
  * The model class for get the information of user registration from the response
  *
  * @author Contus Team <developers@contus.in>
- * @version 2.3
+ * @version 1.0
  */
 public class UserRegistrationResponse extends ErrorResponse {
 

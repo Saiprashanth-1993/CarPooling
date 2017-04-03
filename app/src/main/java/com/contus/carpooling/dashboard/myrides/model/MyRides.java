@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
  * MyRides model class store all the details of ride list into the myrides
  *
  * @author Contus Team <developers@contus.in>
- * @version 2.3
+ * @version 1.0
  */
 public class MyRides extends BaseObservable implements Parcelable {
 

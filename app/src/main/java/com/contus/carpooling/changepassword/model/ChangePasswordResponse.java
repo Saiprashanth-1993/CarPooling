@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
  * The model class for get the response of change password
  *
  * @author Contus Team <developers@contus.in>
- * @version 2.3
+ * @version 1.0
  */
 public class ChangePasswordResponse extends ErrorResponse {
 

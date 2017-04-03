@@ -16,7 +16,7 @@ import java.util.List;
  * This is the class for list all the ride response from the  API
  *
  * @author Contus Team <developers@contus.in>
- * @version 2.3
+ * @version 1.0
  */
 public class MyRidesResponse extends ErrorResponse {
 
