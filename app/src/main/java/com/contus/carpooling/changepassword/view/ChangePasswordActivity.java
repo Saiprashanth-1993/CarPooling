@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.changepassword.view;
 
 import android.databinding.DataBindingUtil;
@@ -26,7 +27,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityChangePasswordBinding changePasswordBinding = DataBindingUtil.setContentView(this, R.layout.activity_change_password);
+        ActivityChangePasswordBinding changePasswordBinding = DataBindingUtil
+                        .setContentView(this, R.layout.activity_change_password);
         setSupportActionBar(changePasswordBinding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
