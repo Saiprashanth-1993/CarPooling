@@ -193,7 +193,7 @@ public class NewRideController {
      *
      * @param daySelected Get the selected day.
      * @param newRide     Get the new ride details.
-     * @return  View.OnClickListener OnClickListener of the day selection
+     * @return View.OnClickListener OnClickListener of the day selection
      */
     public View.OnClickListener btnDayOnClick(final String daySelected, final Ride newRide) {
         return new View.OnClickListener() {
@@ -249,7 +249,8 @@ public class NewRideController {
         createRideParams.put(Constants.CreateRide.TYPE, rideInfo.getType());
         createRideParams.put(Constants.CreateRide.COST, rideInfo.getCost());
         createRideParams.put(Constants.CreateRide.IS_ACTIVE, "1");
-        new RestClient(mContext).getInstance().get().doCreateRide(createRideParams).enqueue(new RestCallback<CreateRideResponse>());
+        new RestClient(mContext).getInstance().get().doCreateRide(createRideParams)
+                .enqueue(new RestCallback<CreateRideResponse>());
     }
 
     /**
