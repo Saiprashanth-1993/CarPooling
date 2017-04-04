@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="selectionCameraOption"
+            type="com.contus.carpooling.employeedetails.viewmodel.BottomSheetController" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="@android:color/white"
+        card_view:cardCornerRadius="@dimen/card_radius_size"
+        card_view:cardElevation="@dimen/zero_size">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/small_size">
+
+            <LinearLayout
+                android:layout_width="@dimen/zero_size"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{selectionCameraOption.imageCameraSelectionOnclick()}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/extra_large_size"
+                    android:layout_height="@dimen/extra_large_size"
+                    android:src="@drawable/ic_camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/camera"
+                    android:textColor="@color/colorHighLightBlue"
+                    android:textSize="@dimen/gallery_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/zero_size"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{selectionCameraOption.imageGallerySelectionOnclick()}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/extra_large_size"
+                    android:layout_height="@dimen/extra_large_size"
+                    android:src="@drawable/ic_gallery" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gallery"
+                    android:textColor="@color/colorHighLightBlue"
+                    android:textSize="@dimen/gallery_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</layout>

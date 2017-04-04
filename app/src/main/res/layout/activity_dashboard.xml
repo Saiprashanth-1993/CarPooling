@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="onClickController"
+            type="com.contus.carpooling.dashboard.homepage.viewmodel.DashboardController" />
+    </data>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/coordinator_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            tools:context="com.contus.carpooling.dashboard.homepage.view.DashboardActivity">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                    <TextView
+                        android:id="@+id/tool_bar_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/dashboard_header"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/text_head" />
+                </android.support.v7.widget.Toolbar>
+
+                <FrameLayout
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+            </LinearLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/add_new_ride"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:layout_margin="@dimen/small_size"
+                android:clickable="true"
+                android:onClick="@{onClickController.fabBtnOnClick()}"
+                android:src="@drawable/ic_action_add"
+                app:backgroundTint="@color/colorSecondaryColor"
+                app:fabSize="normal"
+                app:layout_behavior="com.contus.carpooling.view.ScrollAwareFABBehavior" />
+
+        </android.support.design.widget.CoordinatorLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/navigation_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@android:color/white"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/navigation_header"
+            app:itemIconTint="@color/colorPrimary"
+            app:itemTextColor="@color/color_dark_gray"
+            app:menu="@menu/activity_dashboard_drawer"
+            app:theme="@style/NavigationDrawerSelected" />
+    </android.support.v4.widget.DrawerLayout>
+</layout>

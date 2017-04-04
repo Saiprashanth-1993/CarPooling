@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#40c9c2</color>
+    <color name="colorPrimaryDark">#1eafa8</color>
+    <color name="colorHighLightBlue">#4f6d8d</color>
+    <color name="colorSecondaryColor">#ff816c</color>
+    <color name="colorEditTextHint">#d4d4d4</color>
+    <color name="colorLine">#dfdfdf</color>
+    <color name="colorBackground">#e4e4e4</color>
+    <color name="textViewColor">#333333</color>
+    <color name="white">#fff</color>
+    <color name="light_hash">#dbdbdb</color>
+    <color name="white_smoke">#F5F5F5</color>
+    <color name="color_dark_gray">#4b4b4b</color>
+
+</resources>

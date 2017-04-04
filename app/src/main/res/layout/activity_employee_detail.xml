@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="employeeInfo"
+            type="com.contus.carpooling.employeedetails.model.EmployeeInfo" />
+
+        <import
+            alias="constants"
+            type="com.contus.carpooling.utils.Constants" />
+
+        <variable
+            name="onClickController"
+            type="com.contus.carpooling.employeedetails.viewmodel.EmployeeDetailController" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/employee_header"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_head" />
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
+        <RelativeLayout
+            android:id="@+id/parent_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/padding_size">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_employee_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_logo_icon"
+                android:paddingLeft="@dimen/small_size"
+                android:text="@string/id_card_number"
+                android:textAllCaps="true"
+                android:textColor="@color/colorHighLightBlue"
+                android:textSize="@dimen/text_primary" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_employee_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_employee_code"
+                android:layout_marginLeft="@dimen/small_size"
+                android:background="@drawable/edit_text_line_border"
+                android:hint="@string/id_number"
+                android:paddingTop="@dimen/x_small_size"
+                android:singleLine="true"
+                android:text="@={employeeInfo.idCardNumber}"
+                android:textColorHint="@color/colorEditTextHint"
+                android:textSize="14sp" />
+
+            <RelativeLayout
+                android:id="@+id/parent_upload_front"
+
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_employee_code"
+                android:layout_marginTop="@dimen/padding_size"
+                android:paddingLeft="@dimen/small_size">
+
+                <ImageView
+                    android:id="@+id/upload_image_front"
+                    android:layout_width="@dimen/xs_large_size"
+                    android:layout_height="@dimen/extra_large_size"
+                    android:onClick='@{onClickController.imageViewOnClick(constants.CLICK_FRONT_IMAGE_VIEW,employeeInfo)}'
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_image_upload_front" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/upload_image_front_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/upload_image_front"
+                    android:paddingLeft="@dimen/small_size"
+                    android:text="@string/id_front_pic"
+                    android:textColor="@color/colorHighLightBlue"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/parent_upload_back"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/parent_upload_front"
+                android:layout_marginTop="@dimen/padding_size"
+                android:paddingLeft="@dimen/small_size">
+
+                <ImageView
+                    android:id="@+id/upload_image_back"
+                    android:layout_width="@dimen/xs_large_size"
+                    android:layout_height="@dimen/extra_large_size"
+                    android:onClick='@{onClickController.imageViewOnClick(constants.CLICK_BACK_IMAGE_VIEW,employeeInfo)}'
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_image_upload_back" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/upload_image_back_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/upload_image_back"
+                    android:paddingLeft="@dimen/small_size"
+                    android:text="@string/id_back_pic"
+                    android:textColor="@color/colorHighLightBlue"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/parent_upload_back"
+                android:layout_marginLeft="@dimen/small_size"
+                android:layout_marginRight="@dimen/small_size"
+                android:layout_marginTop="@dimen/padding_size"
+                android:background="@drawable/button_rounded_corner_border"
+                android:onClick="@{onClickController.saveEmployeeDetails(employeeInfo)}"
+                android:text="@string/submit"
+
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/img_margin_bottom"
+            android:layout_marginTop="@dimen/xs_small_size"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_footer" />
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="editRideOnClick"
+            type="com.contus.carpooling.dashboard.homepage.viewmodel.DashboardController" />
+        <variable
+            name="myRides"
+            type="com.contus.carpooling.dashboard.myrides.model.MyRides" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/x_small_size"
+        android:paddingRight="@dimen/x_small_size"
+        android:paddingTop="@dimen/small_size">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@android:color/white"
+            card_view:cardCornerRadius="@dimen/card_radius_size"
+            card_view:cardElevation="@dimen/zero_size">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/medium_size"
+                        android:paddingRight="@dimen/medium_size"
+                        android:paddingTop="@dimen/medium_size">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@={myRides.arrivalTime}"
+                            android:textSize="@dimen/text_medium" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:text="@={myRides.arrivalPoint}"
+                            android:textColor="@color/colorHighLightBlue"
+                            android:textSize="@dimen/text_head" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_medium" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="@dimen/xs_medium_size"
+                        android:layout_height="@dimen/xs_medium_size"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/card_margin"
+                        android:src="@drawable/ic_arrow"
+                        android:tint="@color/colorHighLightBlue" />
+
+                    <LinearLayout
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/medium_size"
+                        android:paddingRight="@dimen/medium_size"
+                        android:paddingTop="@dimen/medium_size">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:text="@={myRides.departurePoint}"
+                            android:textColor="@color/colorHighLightBlue"
+                            android:textSize="@dimen/text_head" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_medium" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_view_size"
+                        android:layout_centerVertical="true"
+                        android:background="@color/colorHighLightBlue" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/rounded_corner_my_ride_edit"
+                        android:onClick="@{editRideOnClick.rideEditOnClick(myRides)}"
+                        android:paddingBottom="@dimen/small_size"
+                        android:paddingLeft="@dimen/xs_medium_size"
+                        android:paddingRight="@dimen/xs_medium_size"
+                        android:paddingTop="@dimen/small_size"
+                        android:text="@string/rides_edit"
+                        android:textSize="@dimen/text_extra_large" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_size">
+
+                    <Button
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="@dimen/large_size"
+                        android:layout_margin="@dimen/xs_small_size"
+                        android:layout_weight="1"
+                        android:background="@drawable/circle_text_view"
+                        android:paddingLeft="@dimen/x_small_size"
+                        android:paddingRight="@dimen/x_small_size"
+                        android:text="@string/sun"
+                        android:textSize="@dimen/small_size_sp" />
+
+                    <Button
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="@dimen/large_size"
+                        android:layout_margin="@dimen/xs_small_size"
+                        android:layout_weight="1"
+                        android:background="@drawable/circle_text_view_selected"
+                        android:paddingLeft="@dimen/x_small_size"
+                        android:paddingRight="@dimen/x_small_size"
+                        android:text="@string/mon"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/small_size_sp" />
+
+                    <Button
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="@dimen/large_size"
+                        android:layout_margin="@dimen/xs_small_size"
+                        android:layout_weight="1"
+                        android:background="@drawable/circle_text_view_selected"
+                        android:paddingLeft="@dimen/x_small_size"
+                        android:paddingRight="@dimen/x_small_size"
+                        android:text="@string/tue"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/small_size_sp" />
+
+                    <Button
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="@dimen/large_size"
+                        android:layout_margin="@dimen/xs_small_size"
+                        android:layout_weight="1"
+                        android:background="@drawable/circle_text_view"
+                        android:paddingLeft="@dimen/x_small_size"
+                        android:paddingRight="@dimen/x_small_size"
+                        android:text="@string/wed"
+                        android:textSize="@dimen/small_size_sp" />
+
+                    <Button
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="@dimen/large_size"
+                        android:layout_margin="@dimen/xs_small_size"
+                        android:layout_weight="1"
+                        android:background="@drawable/circle_text_view"
+                        android:paddingLeft="@dimen/x_small_size"
+                        android:paddingRight="@dimen/x_small_size"
+                        android:text="@string/thu"
+                        android:textSize="@dimen/small_size_sp" />
+
+                    <Button
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="@dimen/large_size"
+                        android:layout_margin="@dimen/xs_small_size"
+                        android:layout_weight="1"
+                        android:background="@drawable/circle_text_view_selected"
+                        android:paddingLeft="@dimen/x_small_size"
+                        android:paddingRight="@dimen/x_small_size"
+                        android:text="@string/fri"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/small_size_sp" />
+
+                    <Button
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="@dimen/large_size"
+                        android:layout_margin="@dimen/xs_small_size"
+                        android:layout_weight="1"
+                        android:background="@drawable/circle_text_view"
+                        android:paddingLeft="@dimen/x_small_size"
+                        android:paddingRight="@dimen/x_small_size"
+                        android:text="@string/sat"
+                        android:textSize="@dimen/small_size_sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/small_size"
+                    android:layout_marginTop="@dimen/small_size"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="@dimen/image_width"
+                            android:layout_height="@dimen/image_height"
+                            android:src="@drawable/ic_available_seat" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@={myRides.seats}"
+                            android:textSize="@dimen/text_medium" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@={myRides.cost}"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/text_primary" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:onClick="@{editRideOnClick.showDelayDialog()}">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_corner_blue_boarder"
+                            android:paddingBottom="@dimen/x_small_size"
+                            android:paddingLeft="@dimen/medium_size"
+                            android:paddingRight="@dimen/medium_size"
+                            android:paddingTop="@dimen/x_small_size"
+                            android:text="@string/rides_delay"
+                            android:textColor="@android:color/white" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <com.zcw.togglebutton.ToggleButton
+                            android:layout_width="@dimen/toggle_width"
+                            android:layout_height="@dimen/toggle_height"
+                            app:tbBorderWidth="@dimen/xs_small_size"
+                            app:tbOffBorderColor="@android:color/darker_gray"
+                            app:tbOffColor="@android:color/darker_gray"
+                            app:tbOnColor="@color/colorPrimary"
+                            app:tbSpotColor="@android:color/white" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</layout>

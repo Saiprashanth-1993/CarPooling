@@ -1,0 +1,223 @@
+<resources>
+
+    <string name="app_name">Carpooling</string>
+    <string name="base_url">192.168.3.42:8000/api/</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="validation_failure_message">Please make sure that all fields are not empty</string>
+    <string name="validation_failure_email">Please make sure email id is valid</string>
+    <string name="validation_failure_gender">Please select Gender</string>
+    <string name="validation_failure_mobile_length">Please make sure password should have max of 6 character</string>
+    <string name="google_place_api_key">AIzaSyDXmb6C3WoD2KvgnJTnFKEI-YFSakbxlsY</string>
+    <string name="title_edit_ride">Edit Ride</string>
+    <string name="add_new_ride">New Ride</string>
+    <string name="toolbar_name_dashboard">Dashboard</string>
+    <string name="toolbar_name_my_profile">My Profile</string>
+    <string name="toolbar_name_settings">Settings</string>
+    <string name="no_internet">Internet Connection Not Available</string>
+    <string name="delay_time_set">has been set</string>
+    <string-array name="list_seat_available">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    <string-array name="vehicle_type">
+        <item>2 Wheeler</item>
+        <item>4 Wheeler</item>
+    </string-array>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_delay">DELAY</string>
+    <string name="start_time">start_time</string>
+    <string name="end_time">end_time</string>
+    <string name="phone_number_failure_message">Please enter valid 10 digit phone number</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="user_login">Login</string>
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="enter_your_company_name">Enter your company name</string>
+    <string name="already_have_an_account">Already have an account ?</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="mobile">Mobile</string>
+    <string name="enter_your_mobile_number">Enter your mobile number</string>
+    <string name="email">Email</string>
+    <string name="enter_your_email_id">Enter your email id</string>
+    <string name="gender_preference">Gender Preference</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="from">From</string>
+    <string name="from_location">From location</string>
+    <string name="to">To</string>
+    <string name="to_location">To location</string>
+    <string name="next">Next</string>
+    <string name="sign_in">Sign in</string>
+    <string name="no_rides_available">No Rides Available</string>
+    <string name="change_ride">Update ride</string>
+
+
+    <!--Login-->
+    <string name="validation_email">Please make sure username and password field should not be empty</string>
+    <string name="validation_password">Please make sure username and password field should not be empty</string>
+    <string name="username_header">Username</string>
+    <string name="username_text">Enter your name</string>
+    <string name="user_pass_head">Password</string>
+    <string name="user_pass_text">Enter your password</string>
+    <string name="forgot_pass">Forgot password?</string>
+    <string name="user_sign_up"> Sign up</string>
+
+    <!--Change Password-->
+    <string name="current_password">Please enter the current password</string>
+    <string name="confirm_password">Please enter the confirm password</string>
+    <string name="new_password">Please enter the new password</string>
+    <string name="confirm_password_length">Confirm password should be minimum of 6 character!</string>
+    <string name="new_password_length">New password should be minimum of 6 character!</string>
+    <string name="password_match">Password does not match</string>
+    <string name="invalid_password">Password is invalid</string>
+
+    <string name="change_pass_header">Change Password</string>
+    <string name="old_pass_header">Old Password</string>
+    <string name="new_pass_header">New Password</string>
+    <string name="confirm_pass_header">Confirm Password</string>
+    <string name="change_enter_password">Enter you old password</string>
+    <string name="change_new_password">Enter your new password</string>
+    <string name="change_confirm_password">Enter your Confirm password</string>
+
+    <!--Company Registration-->
+    <string name="company_fields_validation">Please make sure that all field should not be empty</string>
+    <string name="company_header">Company Name</string>
+    <string name="category_header">Category</string>
+    <string name="select_category">Select category</string>
+    <string name="location_header">Location</string>
+    <string name="location_text">Enter your location</string>
+    <string name="company_next">Next</string>
+    <string name="company_sign_in">Sign in</string>
+    <string name="logo_icon">logo icon</string>
+
+
+    <!--Ride Offered-->
+    <string name="rides_delay">Delay</string>
+    <string name="rides_edit">Edit</string>
+    <string name="sun">SUN</string>
+    <string name="mon">MON</string>
+    <string name="tue">TUE</string>
+    <string name="wed">WED</string>
+    <string name="thu">THU</string>
+    <string name="fri">FRI</string>
+    <string name="sat">SAT</string>
+    <!--Dashboard -->
+    <string name="booked">Booked</string>
+    <string name="delay_time">Please select delay time</string>
+    <string name="dashboard_header">Dashboard</string>
+
+    <!--Fragment bottom display-->
+    <string name="camera">Using Camera</string>
+    <string name="gallery">Select From Gallery</string>
+
+    <!--Notification-->
+    <string name="notification">Notification</string>
+    <string name="accepted">Accepted</string>
+    <string name="rating">(120 ratings)</string>
+    <string name="header_notification">Car Pooling</string>
+
+    <!--New ride-->
+    <string name="from_ride_validation">Please enter the From ride</string>
+    <string name="to_ride_validation">Please enter the To ride</string>
+    <string name="start_time_validation">Please enter start time</string>
+    <string name="to_time_validation">Please enter end time</string>
+    <string name="gender_validation">Please select gender</string>
+    <string name="select_day_validation">Please select day</string>
+    <string name="seat_validation">Please select seat</string>
+
+    <!--Employee details-->
+    <string name="id_card">Please enter your id card number</string>
+    <string name="front_side">Please select the front side image of id card</string>
+    <string name="back_side">Please select the back side image of id card</string>
+    <string name="employee_header">Employee Details</string>
+    <string name="id_card_number">ID CARD NUMBER</string>
+    <string name="id_number">Enter your id number</string>
+    <string name="id_front_pic">Upload Your Identity Card Front Picture</string>
+    <string name="id_back_pic">Upload Your Identity Card Back Picture</string>
+    <string name="submit">Submit</string>
+
+    <!--User register profile-->
+    <string name="user_name">Please enter user name</string>
+    <string name="profile_image">Please update profile image</string>
+    <string name="team_name">Please enter user team name</string>
+    <string name="user_mail">Please enter user mail</string>
+    <string name="user_phone">Please enter user phone number</string>
+    <string name="user_address">Please enter user address</string>
+    <string name="user_location">Please enter user location</string>
+    <string name="user_vehicle_name">Please enter user vehicle name</string>
+    <string name="user_vehicle_type">Please enter user vehicle type</string>
+    <string name="user_vehicle_number">Please enter user vehicle number</string>
+
+    <!--Offered Rides View-->
+    <string name="rides_information">Rides Information</string>
+    <string name="rides_name_text">Bhuvan Nesan</string>
+    <string name="rides_web_team">Web Team</string>
+    <string name="rides_personal_info">Personal Information</string>
+    <string name="rides_user_mail">rajesh@contus.in</string>
+    <string name="gender_male">Male</string>
+    <string name="date">16 DEC</string>
+    <string name="rides_from_location">Tambaram</string>
+    <string name="rides_to_location">Guindy</string>
+    <string name="time">"10: 30 AM</string>
+    <string name="seats">3 seats available</string>
+    <string name="rupees">$ 2500</string>
+    <string name="book">Book</string>
+
+    <!--My Profile-->
+    <string name="vehicle_des">Vehicle Description</string>
+    <string name="vehicle_name">Vehicle Name</string>
+    <string name="vehicle_no">Vehicle No.</string>
+
+    <!--Navigation drawer-->
+    <string name="change_pass">Change Password</string>
+    <string name="notifi">Notification</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+
+    <!--Create ride-->
+    <string name="create_rides_header">New Ride</string>
+    <string name="ride_from_header">From</string>
+    <string name="ride_from_hint">Enter your from ride</string>
+    <string name="ride_to_header">To</string>
+    <string name="ride_to_hint">Enter your to ride</string>
+    <string name="start_time_head">Start time</string>
+    <string name="start_time_hint">Enter start time</string>
+    <string name="end_time_head">End time</string>
+    <string name="end_time_hint">Enter end time</string>
+    <string name="gender_preference_head">Gender Preference</string>
+    <string name="radio_btn_male">Male</string>
+    <string name="radio_btn_female">Female</string>
+    <string name="days_preference_head">Days Preference</string>
+    <string name="seat_head">Seats</string>
+    <string name="is_every_week_head">Every week</string>
+    <string name="cost_head">Cost</string>
+    <string name="radio_btn_free">Free</string>
+    <string name="radio_btn_cost">Cost</string>
+    <string name="rupees_sign">$</string>
+    <string name="price_hint">price</string>
+    <string name="add_ride_txt">Add Ride</string>
+
+    <!--User Registration-->
+    <string name="reg_header">User Registration</string>
+
+</resources>
+
