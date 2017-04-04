@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.dashboard.ridesoffered.view;
 
 import android.content.Context;
@@ -37,8 +38,8 @@ public class RidesOfferedAdapter extends RecyclerView.Adapter<RidesOfferedAdapte
     Context context;
 
     /**
-     * RidesOfferedAdapter constructor for which can invoke the method directly to activity for store the list into model
-     *
+     * RidesOfferedAdapter constructor for which can invoke the method directly to activity
+     * for store the list into model
      * @param context         Context of an activity
      * @param rideOfferedList Get the list from response store into rideOfferedList
      */
@@ -64,7 +65,8 @@ public class RidesOfferedAdapter extends RecyclerView.Adapter<RidesOfferedAdapte
 
     @Override
     public RidesOfferedAdapter.RidesOfferedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        AdapterRidesOfferedBinding ridesOfferedAdapterBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.adapter_rides_offered, parent, false);
+        AdapterRidesOfferedBinding ridesOfferedAdapterBinding = DataBindingUtil.inflate
+                (LayoutInflater.from(parent.getContext()), R.layout.adapter_rides_offered, parent, false);
         return new RidesOfferedAdapter.RidesOfferedViewHolder(ridesOfferedAdapterBinding);
     }
 

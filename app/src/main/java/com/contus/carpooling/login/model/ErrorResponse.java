@@ -1,13 +1,13 @@
-/**
- * @category Car Pooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.login.model;
 
 import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.SerializedName;
-
 
 /**
  * This class will maintain and retrieve the status of corresponding response, success code and message.

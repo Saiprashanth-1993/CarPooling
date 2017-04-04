@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.addnewride.view;
 
 import android.content.Intent;
@@ -122,7 +123,6 @@ public class RegisterNewRidesActivity extends AppCompatActivity {
             addNewRideBinding.toolbarTitle.setText(R.string.add_new_ride);
         }
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

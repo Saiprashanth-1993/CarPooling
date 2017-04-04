@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.login.viewmodel;
 
 import android.app.Activity;
@@ -82,7 +83,8 @@ public class LoginController implements ApiService.OnTaskCompleted {
         loginParams.put(Constants.EMAIL_ID, userLoginInfo.getEmail());
         loginParams.put(Constants.PD, userLoginInfo.getPassword());
         loginParams.put(Constants.DEVICE_TOKEN, loginDeviceToken);
-        new RestClient(mContext).getInstance().get().doLogin(loginParams).enqueue(new RestCallback<UserLoginResponse>() {
+        new RestClient(mContext).getInstance().get().doLogin(loginParams)
+                .enqueue(new RestCallback<UserLoginResponse>() {
         });
     }
 
@@ -160,7 +162,8 @@ public class LoginController implements ApiService.OnTaskCompleted {
                 /**
                  * Store the device and access token to shared preference
                  */
-                SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE, userResult.getDeviceToken());
+                SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,
+                        userResult.getDeviceToken());
                 SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE, result.getUserToken());
 
                 /**
@@ -181,7 +184,6 @@ public class LoginController implements ApiService.OnTaskCompleted {
             }
         }
     }
-
 
     @Override
     public void onApiResponse(String response) {

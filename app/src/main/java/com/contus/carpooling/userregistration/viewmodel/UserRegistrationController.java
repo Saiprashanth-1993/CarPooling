@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.userregistration.viewmodel;
 
 import android.app.Activity;
@@ -96,7 +97,8 @@ public class UserRegistrationController {
         registerParams.put(Constants.TO_LOCATION, userRegistrationInfo.getToLocation());
         registerParams.put(Constants.PD, userRegistrationInfo.getPassword());
         registerParams.put(Constants.DEVICE_TOKEN, deviceToken);
-        new RestClient(ctx).getInstance().get().doRegister(registerParams).enqueue(new RestCallback<UserRegistrationResponse>());
+        new RestClient(ctx).getInstance().get().doRegister(registerParams)
+                .enqueue(new RestCallback<UserRegistrationResponse>());
     }
 
     /**
@@ -150,7 +152,8 @@ public class UserRegistrationController {
      * @param gender     Validate the gender.
      * @return validationStatus has been True when the given field is not empty.
      */
-    public boolean isValid(String userName, String mobileNumber, String emailId, String fromLocation, String toLocation, String password, String gender) {
+    public boolean isValid(String userName, String mobileNumber, String emailId,
+                           String fromLocation, String toLocation, String password, String gender) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password) || TextUtils.isEmpty(mobileNumber)) {
             validationStatus = false;
@@ -240,7 +243,8 @@ public class UserRegistrationController {
                 /**
                  * Store the Access token and device token to shared preference
                  */
-                SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE, regResponse.getDeviceToken());
+                SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,
+                        regResponse.getDeviceToken());
                 SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE, result.getUserToken());
 
                 /**

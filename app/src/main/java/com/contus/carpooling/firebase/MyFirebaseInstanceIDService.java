@@ -1,10 +1,10 @@
-/**
- * @category Car Pooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
-package com.contus.carpooling.firebase;
 
+package com.contus.carpooling.firebase;
 
 import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.Logger;

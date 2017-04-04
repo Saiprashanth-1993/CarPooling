@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.utils;
 
 import android.content.Context;
@@ -85,7 +86,6 @@ public class ApiService extends AsyncTask<String, Void, String> {
         }
         return null;
     }
-
 
     @Override
     protected void onPostExecute(String s) {

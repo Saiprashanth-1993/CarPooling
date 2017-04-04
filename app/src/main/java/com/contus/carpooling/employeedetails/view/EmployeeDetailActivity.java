@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.employeedetails.view;
 
 import android.content.Context;
@@ -50,7 +51,8 @@ public class EmployeeDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        employeeDetailBinding = DataBindingUtil.setContentView(EmployeeDetailActivity.this, R.layout.activity_employee_detail);
+        employeeDetailBinding = DataBindingUtil.setContentView
+                (this, R.layout.activity_employee_detail);
         setSupportActionBar(employeeDetailBinding.toolbar);
         employeeInfo = new EmployeeInfo();
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -89,7 +91,8 @@ public class EmployeeDetailActivity extends AppCompatActivity {
                 /**
                  *  CALL this method to get the actual path from the gallery set into image view
                  */
-                Bitmap selectImage = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
+                Bitmap selectImage = MediaStore.Images.Media.getBitmap
+                        (getApplicationContext().getContentResolver(), data.getData());
                 int nh = (int) (selectImage.getHeight() * (512.0 / selectImage.getWidth()));
                 Uri selectedImageURI = data.getData();
                 File imageFile = new File(getRealPathFromURI(selectedImageURI));

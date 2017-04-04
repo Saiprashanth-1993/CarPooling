@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.employeedetails.viewmodel;
 
 import android.app.Activity;
@@ -62,7 +63,8 @@ public class EmployeeDetailController {
                     employeeInfo.setImageSelectedType(Constants.CLICK_BACK_IMAGE_VIEW);
                 }
                 BottomDialogFragment bottomDialogFragment = new BottomDialogFragment();
-                bottomDialogFragment.show(((EmployeeDetailActivity) view.getContext()).getSupportFragmentManager(), "121");
+                bottomDialogFragment.show(((EmployeeDetailActivity) view.getContext())
+                        .getSupportFragmentManager(), "121");
             }
         };
     }
@@ -108,7 +110,8 @@ public class EmployeeDetailController {
         RequestBody backImage = RequestBody.create(MediaType.parse("image/*"), employeeInfo.getBackImage());
         MultipartBody.Part backImageMultipart = MultipartBody.Part.createFormData
                 (Constants.EmployeeResponse.PAN_CARD, employeeInfo.getBackImage().getName(), backImage);
-        new RestClient(ctx).getInstance().get().doEmployeeRegistration(frontImageMultipart, backImageMultipart).enqueue(new RestCallback<EmployeeDetailsResponse>());
+        new RestClient(ctx).getInstance().get().doEmployeeRegistration
+                (frontImageMultipart, backImageMultipart).enqueue(new RestCallback<EmployeeDetailsResponse>());
     }
 
     /**

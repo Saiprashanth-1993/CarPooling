@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.notification.view;
 
 import android.databinding.DataBindingUtil;
@@ -24,7 +25,8 @@ public class NotificationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityNotificationBinding notificationBinding = DataBindingUtil.setContentView(NotificationActivity.this, R.layout.activity_notification);
+        ActivityNotificationBinding notificationBinding = DataBindingUtil.setContentView
+                (this, R.layout.activity_notification);
         setSupportActionBar(notificationBinding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

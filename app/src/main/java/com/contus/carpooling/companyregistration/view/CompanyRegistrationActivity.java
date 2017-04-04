@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.companyregistration.view;
 
 import android.content.Context;
@@ -68,7 +69,7 @@ public class CompanyRegistrationActivity extends AppCompatActivity {
         companyRegistrationBinding.setCompanyDetails(registrationInfo);
         companyRegistrationController = new CompanyRegisterController();
         companyRegistrationBinding.setViewController(companyRegistrationController);
-        context = CompanyRegistrationActivity.this;
+        context = this;
         companyListRequest(context);
 
     }

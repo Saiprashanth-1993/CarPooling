@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.companyregistration.viewmodel;
 
 import android.app.Activity;
@@ -39,7 +40,8 @@ import java.util.HashMap;
 import static com.contus.carpooling.utils.Constants.REQUEST_CODE_COMPANY_LOCATION;
 
 /**
- * Controller of the CompanyRegistrationActivity class. XML view controller trigger the listener to do perform the action
+ * Controller of the CompanyRegistrationActivity class.
+ * XML view controller trigger the listener to do perform the action
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -72,7 +74,8 @@ public class CompanyRegisterController {
             @Override
             public void onClick(View view) {
                 context = view.getContext();
-                if (isValid(context, getEditTextValue.getCompanyName(), getEditTextValue.getCategory(), getEditTextValue.getLocation()))
+                if (isValid(context, getEditTextValue.getCompanyName(),
+                        getEditTextValue.getCategory(), getEditTextValue.getLocation()))
                     companyRegistrationRequest(context, getEditTextValue);
             }
         };
@@ -89,10 +92,13 @@ public class CompanyRegisterController {
         Logger.logInfo("ctx", ctx + "");
         BusProvider.getInstance().register(this);
         HashMap<String, String> companyRegistrationParams = new HashMap<>();
-        companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_REGISTRATION_NAME, companyRegistrationInfo.getCompanyName());
+        companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_REGISTRATION_NAME,
+                companyRegistrationInfo.getCompanyName());
         companyRegistrationParams.put(Constants.COMPANY_CATEGORY_ID, categoryId);
-        companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_LOCATION, companyRegistrationInfo.getLocation());
-        new RestClient(ctx).getInstance().get().doCompanyRegistration(companyRegistrationParams).enqueue(new RestCallback<CompanyRegistrationResponse>());
+        companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_LOCATION,
+                companyRegistrationInfo.getLocation());
+        new RestClient(ctx).getInstance().get().doCompanyRegistration(companyRegistrationParams)
+                .enqueue(new RestCallback<CompanyRegistrationResponse>());
     }
 
     /**
@@ -154,7 +160,8 @@ public class CompanyRegisterController {
                 try {
                     Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
                             .build((CompanyRegistrationActivity) view.getContext());
-                    ((CompanyRegistrationActivity) view.getContext()).startActivityForResult(intent, REQUEST_CODE_COMPANY_LOCATION);
+                    ((CompanyRegistrationActivity) view.getContext())
+                            .startActivityForResult(intent, REQUEST_CODE_COMPANY_LOCATION);
 
                 } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
                     Logger.logErrorThrowable(Constants.EXCEPTION_MESSAGE, e);

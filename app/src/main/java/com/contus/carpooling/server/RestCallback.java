@@ -1,8 +1,9 @@
-/**
- * @category contus
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.server;
 
 import com.contus.carpooling.login.model.ErrorResponse;
@@ -25,7 +26,6 @@ import retrofit2.Response;
  * @version 1.0
  */
 public class RestCallback<T> implements Callback<T> {
-
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {

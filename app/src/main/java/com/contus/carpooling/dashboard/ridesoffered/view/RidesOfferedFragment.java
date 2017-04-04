@@ -3,6 +3,7 @@
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
+
 package com.contus.carpooling.dashboard.ridesoffered.view;
 
 import android.app.Activity;
@@ -91,7 +92,8 @@ public class RidesOfferedFragment extends Fragment {
 
         ridesOfferedParams.put(Constants.RidesOffered.DEPARTURE_POINT, toLocation);
         ridesOfferedParams.put(Constants.RidesOffered.ARRIVAL_POINT, fromLocation);
-        new RestClient(mContext).getInstance().get().getRidesOfferedList(ridesOfferedParams).enqueue(new RestCallback<RideOfferedResponse>());
+        new RestClient(mContext).getInstance().get().getRidesOfferedList(ridesOfferedParams)
+                .enqueue(new RestCallback<RideOfferedResponse>());
     }
 
     /**

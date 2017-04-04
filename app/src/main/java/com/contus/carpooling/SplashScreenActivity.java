@@ -1,7 +1,7 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
 
 package com.contus.carpooling;
@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-
 import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
 import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.utils.Constants;

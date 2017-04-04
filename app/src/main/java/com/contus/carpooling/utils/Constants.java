@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.utils;
 
 /**
@@ -41,7 +42,6 @@ public class Constants {
     /**
      * Constants for DEVICE_TOKEN_HEADER_VALUE
      */
-
     public static final String DEVICE_TOKEN_HEADER_VALUE = "deviceToken";
 
     /**
@@ -73,6 +73,7 @@ public class Constants {
      * Constants for item selection type of image view.
      */
     public static final String CLICK_FRONT_IMAGE_VIEW = "front_image";
+
     /**
      * Constants for item selection type of image view.
      */
@@ -111,7 +112,6 @@ public class Constants {
     /**
      * Constants for check whether click on edit ride or create ride.
      */
-
     public static final String NAME_NAVIGATION_MY_PROFILE = "my_profile";
 
     /**
@@ -128,7 +128,6 @@ public class Constants {
      * The Constant isLogged, to check user loged or not
      */
     public static final String IS_LOGGED = "islogged";
-
 
     /**
      * The Constant used to check the internet.
@@ -205,7 +204,6 @@ public class Constants {
      */
     public static final String RESPONSE = "response";
 
-
     /**
      * Instantiates a new constants.
      */
@@ -225,7 +223,6 @@ public class Constants {
          */
         public static final String LOGIN_USER = "adminusers";
 
-
         /**
          * Constant LOGIN_ID value set for response
          */
@@ -241,46 +238,46 @@ public class Constants {
          */
         public static final String LOGIN_NAME = "name";
 
-        /***
+        /**
          * Constant GENDER value set for response
          */
         public static final String GENDER = "gender";
 
-        /***
+        /**
          * Constant FROM_LOCATION value set for response
          */
         public static final String FROM_LOCATION = "from_location";
 
-        /***
+        /**
          * Constant TO_LOCATION value set for response
          */
         public static final String TO_LOCATION = "to_location";
 
-        /***
+        /**
          * Constant AGE value set for response
          */
         public static final String AGE = "age";
 
-        /***
+        /**
          * Constant PROFILE_IMAGE value set for response
          */
         public static final String PROFILE_IMAGE = "profile_image";
 
-        /***
+        /**
          * Constant COMPANY_ID value set for response
          */
         public static final String COMPANY_ID = "company_id";
 
-        /***
+        /**
          * Constant COMPANY_LOCATION value set for response
          */
         public static final String COMPANY_LOCATION = "company_location";
-        /***
+        /**
          * Constant DEVICE_TYPE value set for response
          */
         public static final String DEVICE_TYPE = "device_type";
 
-        /***
+        /**
          * Constant EMPLOYEE_ID value set for response
          */
         public static final String EMPLOYEE_ID = "employee_id";

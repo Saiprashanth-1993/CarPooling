@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.dashboard.homepage.viewmodel;
 
 import android.app.Activity;
@@ -124,7 +125,8 @@ public class DashboardController {
             @Override
             public void onClick(View view) {
                 final Activity activity = (DashboardActivity) view.getContext();
-                CustomDelayDialogBinding customDelayDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(view.getContext()), R.layout.custom_delay_dialog, null, false);
+                CustomDelayDialogBinding customDelayDialogBinding = DataBindingUtil.inflate
+                        (LayoutInflater.from(view.getContext()), R.layout.custom_delay_dialog, null, false);
                 AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                 builder.setView(customDelayDialogBinding.getRoot());
                 customDelayDialogBinding.setClickControl(DashboardController.this);

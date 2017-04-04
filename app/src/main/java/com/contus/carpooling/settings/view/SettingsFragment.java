@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.settings.view;
 
 import android.databinding.DataBindingUtil;
@@ -28,7 +29,8 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentSettingsBinding settingsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_settings, container, false);
+        FragmentSettingsBinding settingsBinding = DataBindingUtil.inflate
+                (inflater, R.layout.fragment_settings, container, false);
         settingsBinding.setOnClickController(new SettingsController());
         setHasOptionsMenu(true);
         return settingsBinding.getRoot();

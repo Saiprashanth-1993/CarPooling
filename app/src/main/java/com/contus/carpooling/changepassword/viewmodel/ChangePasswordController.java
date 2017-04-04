@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.changepassword.viewmodel;
 
 import android.app.Activity;
@@ -57,7 +58,8 @@ public class ChangePasswordController {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                if (isValid(context, getchangePasswordValues.getCurrentPassword(), getchangePasswordValues.getNewPassword(),
+                if (isValid(context, getchangePasswordValues.getCurrentPassword(),
+                        getchangePasswordValues.getNewPassword(),
                         getchangePasswordValues.getConfirmPassword()))
                     changePasswordRequest(getchangePasswordValues, context);
             }
@@ -110,12 +112,14 @@ public class ChangePasswordController {
         params.put(Constants.PD, getchangePasswordValues.getCurrentPassword());
         params.put(Constants.ChangePassword.INFO, getchangePasswordValues.getNewPassword());
         params.put(Constants.ChangePassword.CONFIRM_INFO, getchangePasswordValues.getConfirmPassword());
-        new RestClient(mContext).getInstance().get().changePassword(params).enqueue(new Callback<ChangePasswordResponse>() {
+        new RestClient(mContext).getInstance().get().changePassword(params)
+                .enqueue(new Callback<ChangePasswordResponse>() {
             @Override
             public void onResponse(Call<ChangePasswordResponse> call, Response<ChangePasswordResponse> response) {
                 if (response.isSuccessful()) {
                     Logger.showToastMessage(mContext, response.body().getMessage());
-                    if (!TextUtils.equals(mContext.getResources().getString(R.string.invalid_password), response.body().getMessage())) {
+                    if (!TextUtils.equals(mContext.getResources().getString(R.string.invalid_password),
+                            response.body().getMessage())) {
                         activity.onBackPressed();
                     }
                 }

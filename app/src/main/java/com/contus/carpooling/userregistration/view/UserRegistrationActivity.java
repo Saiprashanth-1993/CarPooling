@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.userregistration.view;
 
 import android.content.Intent;
@@ -24,7 +25,8 @@ import static com.contus.carpooling.utils.Constants.REQUEST_CODE_USER_FROM_LOCAT
 import static com.contus.carpooling.utils.Constants.REQUEST_CODE_USER_TO_LOCATION;
 
 /**
- * User registration to create the user details to store the information into API.While loading the splash screen will check user have logged in or not
+ * User registration to create the user details to store the information into API.
+ * While loading the splash screen will check user have logged in or not
  * otherwise will navigate to this activity
  *
  * @author ContusTeam <developers@contus.in>
@@ -40,7 +42,8 @@ public class UserRegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityUserRegistrationBinding userRegistrationBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_registration);
+        ActivityUserRegistrationBinding userRegistrationBinding = DataBindingUtil.setContentView
+                (this, R.layout.activity_user_registration);
         setSupportActionBar(userRegistrationBinding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);

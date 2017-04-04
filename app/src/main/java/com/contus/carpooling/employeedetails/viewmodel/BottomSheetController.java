@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.employeedetails.viewmodel;
 
 import android.Manifest;
@@ -41,9 +42,9 @@ public class BottomSheetController {
     /**
      * Set the permission access
      */
-    private String[] permissions = new String[]
-            {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
-
+    private String[] permissions = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION};
 
     /**
      * Instance of the container activity
@@ -93,7 +94,8 @@ public class BottomSheetController {
             bottomDialogFragment.dismiss();
         }
         if (!listPermissionsNeeded.isEmpty()) {
-            ActivityCompat.requestPermissions(employeeDetailActivity, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), code);
+            ActivityCompat.requestPermissions(employeeDetailActivity,
+                    listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), code);
             return false;
         }
         return true;
@@ -110,9 +112,11 @@ public class BottomSheetController {
             @Override
             public void onClick(View view) {
                 if (checkPermissions(employeeDetailActivity, 2000)) {
-                    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    Intent intent = new Intent
+                            (Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     intent.setType("image/*");
-                    employeeDetailActivity.startActivityForResult(Intent.createChooser(intent, "Select Picture"), Constants.GALLERY_SELECTION);
+                    employeeDetailActivity.startActivityForResult
+                            (Intent.createChooser(intent, "Select Picture"), Constants.GALLERY_SELECTION);
                     bottomDialogFragment.dismiss();
                 }
             }

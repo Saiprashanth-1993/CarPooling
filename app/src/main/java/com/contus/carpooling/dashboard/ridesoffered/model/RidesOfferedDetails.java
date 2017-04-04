@@ -1,9 +1,9 @@
-/**
- * @category CarPooling
- * @package com.contus.carpooling.dashboard.ridesoffered.model
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.dashboard.ridesoffered.model;
 
 import android.databinding.BaseObservable;

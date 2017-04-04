@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.offeredrideinfo.viewmodel;
 
 import android.content.Context;
@@ -20,13 +21,13 @@ import com.contus.carpooling.utils.Logger;
  */
 public class OfferedRidesInformationController {
 
-        /**
-         * Trigger the event listener to do perform the action for OfferedRidesInfo
-         *
-         * @return View.OnClickListener OnClickListener of the bookOnClick button
-         */
-        public View.OnClickListener bookOnclick() {
-            return new View.OnClickListener() {
+    /**
+     * Trigger the event listener to do perform the action for OfferedRidesInfo
+     *
+     * @return View.OnClickListener OnClickListener of the bookOnClick button
+     */
+    public View.OnClickListener bookOnclick() {
+        return new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 

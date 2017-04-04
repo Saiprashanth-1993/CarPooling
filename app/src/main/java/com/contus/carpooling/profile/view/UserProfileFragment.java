@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.profile.view;
 
 import android.content.Context;
@@ -52,7 +53,8 @@ public class UserProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentMyProfileBinding myProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_profile, container, false);
+        FragmentMyProfileBinding myProfileBinding = DataBindingUtil.inflate
+                (inflater, R.layout.fragment_my_profile, container, false);
         userProfileInfo = new UserProfileInfo();
         myProfileBinding.setUserProfile(userProfileInfo);
         myProfileRequest(mContext);

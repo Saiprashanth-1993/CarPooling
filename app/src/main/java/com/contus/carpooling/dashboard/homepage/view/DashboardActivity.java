@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.dashboard.homepage.view;
 
 import android.content.Intent;
@@ -35,7 +36,8 @@ import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.SharedDataUtils;
 
 /**
- * Activity to display the ride offer details, my rides and navigation controller which is used to display the details from the API
+ * Activity to display the ride offer details, my rides and navigation controller
+ * which is used to display the details from the API
  *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
@@ -55,7 +57,8 @@ public class DashboardActivity extends AppCompatActivity
         activityDashboardBinding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard);
         activityDashboardBinding.setOnClickController(new DashboardController());
         UserProfile userProfile = new UserProfile();
-        NavigationHeaderBinding drawerHeaderBinding = DataBindingUtil.bind(activityDashboardBinding.navigationView.getHeaderView(0));
+        NavigationHeaderBinding drawerHeaderBinding = DataBindingUtil
+                .bind(activityDashboardBinding.navigationView.getHeaderView(0));
         drawerHeaderBinding.setModel(userProfile);
 
         /**
@@ -63,12 +66,14 @@ public class DashboardActivity extends AppCompatActivity
          */
         userProfile.setUsername(SharedDataUtils.getStringPreference(Constants.USER_NAME, "Employee Name"));
         userProfile.setPosition(SharedDataUtils.getStringPreference(Constants.COMPANY_CATEGORY_ID, "Category"));
-        userProfile.setLocation(SharedDataUtils.getStringPreference(Constants.Login.COMPANY_LOCATION, "Company Location"));
+        userProfile.setLocation(SharedDataUtils.getStringPreference
+                (Constants.Login.COMPANY_LOCATION, "Company Location"));
 
         setSupportActionBar(activityDashboardBinding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, activityDashboardBinding.drawerLayout, activityDashboardBinding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, activityDashboardBinding.drawerLayout, activityDashboardBinding.toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         activityDashboardBinding.drawerLayout.addDrawerListener(toggle);
         activityDashboardBinding.navigationView.setNavigationItemSelectedListener(this);
 
@@ -106,7 +111,9 @@ public class DashboardActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         /**
-         *Handle action bar item clicks here. The action bar will automatically handle clicks on the Home/Up button, so longas you specify a parent activity in AndroidManifest.xml.
+         *Handle action bar item clicks here.
+         * The action bar will automatically handle clicks on the Home/Up button,
+         * so longas you specify a parent activity in AndroidManifest.xml.
          */
         int id = item.getItemId();
         if (id == R.id.action_notification) {

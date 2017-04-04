@@ -96,7 +96,7 @@
     <string name="confirm_pass_header">Confirm Password</string>
     <string name="change_enter_password">Enter you old password</string>
     <string name="change_new_password">Enter your new password</string>
-    <string name="change_confirm_password">Enter your Cofirm password</string>
+    <string name="change_confirm_password">Enter your Confirm password</string>
 
     <!--Company Registration-->
     <string name="company_fields_validation">Please make sure that all field should not be empty</string>
@@ -133,7 +133,7 @@
     <string name="notification">Notification</string>
     <string name="accepted">Accepted</string>
     <string name="rating">(120 ratings)</string>
-    <string name="header_notification">Car polling</string>
+    <string name="header_notification">Car Pooling</string>
 
     <!--New ride-->
     <string name="from_ride_validation">Please enter the From ride</string>
@@ -175,7 +175,7 @@
     <string name="rides_user_mail">rajesh@contus.in</string>
     <string name="gender_male">Male</string>
     <string name="date">16 DEC</string>
-    <string name="rides_from_location">Thambaram</string>
+    <string name="rides_from_location">Tambaram</string>
     <string name="rides_to_location">Guindy</string>
     <string name="time">"10: 30 AM</string>
     <string name="seats">3 seats available</string>

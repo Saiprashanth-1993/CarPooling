@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
+/*
+ * @category CarPooling.
  * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0.1
  */
+
 package com.contus.carpooling.dashboard.homepage.view;
 
 import android.databinding.DataBindingUtil;
@@ -25,7 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Fragment for home page to display the ride offered details and my rides details which is used to display the details from the API
+ * Fragment for home page to display the ride offered details and my rides details
+ * which is used to display the details from the API
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
