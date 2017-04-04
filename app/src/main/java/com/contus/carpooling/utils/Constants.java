@@ -272,6 +272,7 @@ public class Constants {
          * Constant COMPANY_LOCATION value set for response
          */
         public static final String COMPANY_LOCATION = "company_location";
+
         /**
          * Constant DEVICE_TYPE value set for response
          */
