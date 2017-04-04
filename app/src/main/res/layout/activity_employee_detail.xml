@@ -39,9 +39,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Employee Details"
+                    android:text="@string/employee_header"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp" />
+                    android:textSize="@dimen/text_head" />
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
 
@@ -50,28 +50,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_margin="20dp">
+            android:layout_margin="@dimen/padding_size">
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/tv_employee_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/iv_logo_icon"
-                android:paddingLeft="10dp"
-                android:text="ID CARD NUMBER"
+                android:paddingLeft="@dimen/small_size"
+                android:text="@string/id_card_number"
                 android:textAllCaps="true"
                 android:textColor="@color/colorHighLightBlue"
-                android:textSize="14sp" />
+                android:textSize="@dimen/text_primary" />
 
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/et_employee_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_employee_code"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="@dimen/small_size"
                 android:background="@drawable/edit_text_line_border"
-                android:hint="Enter your id number"
-                android:paddingTop="5dp"
+                android:hint="@string/id_number"
+                android:paddingTop="@dimen/x_small_size"
                 android:singleLine="true"
                 android:text="@={employeeInfo.idCardNumber}"
                 android:textColorHint="@color/colorEditTextHint"
@@ -84,13 +84,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/et_employee_code"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="10dp">
+                android:layout_marginTop="@dimen/padding_size"
+                android:paddingLeft="@dimen/small_size">
 
                 <ImageView
                     android:id="@+id/upload_image_front"
-                    android:layout_width="65dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/xs_large_size"
+                    android:layout_height="@dimen/extra_large_size"
                     android:onClick='@{onClickController.imageViewOnClick(constants.CLICK_FRONT_IMAGE_VIEW,employeeInfo)}'
                     android:scaleType="fitXY"
                     android:src="@drawable/ic_image_upload_front" />
@@ -103,8 +103,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/upload_image_front"
-                    android:paddingLeft="10dp"
-                    android:text="Upload Your Identity Card Front Picture"
+                    android:paddingLeft="@dimen/small_size"
+                    android:text="@string/id_front_pic"
                     android:textColor="@color/colorHighLightBlue"
                     android:textSize="14sp" />
 
@@ -116,13 +116,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/parent_upload_front"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="10dp">
+                android:layout_marginTop="@dimen/padding_size"
+                android:paddingLeft="@dimen/small_size">
 
                 <ImageView
                     android:id="@+id/upload_image_back"
-                    android:layout_width="65dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/xs_large_size"
+                    android:layout_height="@dimen/extra_large_size"
                     android:onClick='@{onClickController.imageViewOnClick(constants.CLICK_BACK_IMAGE_VIEW,employeeInfo)}'
                     android:scaleType="fitXY"
                     android:src="@drawable/ic_image_upload_back" />
@@ -135,8 +135,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/upload_image_back"
-                    android:paddingLeft="10dp"
-                    android:text="Upload Your Identity Card Back Picture"
+                    android:paddingLeft="@dimen/small_size"
+                    android:text="@string/id_back_pic"
                     android:textColor="@color/colorHighLightBlue"
                     android:textSize="14sp" />
             </RelativeLayout>
@@ -146,12 +146,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/parent_upload_back"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginLeft="@dimen/small_size"
+                android:layout_marginRight="@dimen/small_size"
+                android:layout_marginTop="@dimen/padding_size"
                 android:background="@drawable/button_rounded_corner_border"
                 android:onClick="@{onClickController.saveEmployeeDetails(employeeInfo)}"
-                android:text="Submit"
+                android:text="@string/submit"
 
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
@@ -161,8 +161,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="3dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginBottom="@dimen/img_margin_bottom"
+            android:layout_marginTop="@dimen/xs_small_size"
             android:adjustViewBounds="true"
             android:src="@drawable/ic_footer" />
     </RelativeLayout>

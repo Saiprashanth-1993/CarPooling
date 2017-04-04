@@ -4,15 +4,12 @@
     xmlns:card_view="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="UserProfile"
             type="com.contus.carpooling.profile.model.UserProfileInfo" />
-
         <variable
             name="ViewController"
             type="com.contus.carpooling.profile.viewmodel.UserProfileController" />
-
     </data>
 
     <LinearLayout
@@ -24,8 +21,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="5dp">
+            android:layout_marginBottom="@dimen/profile_relative_bottom"
+            android:layout_marginTop="@dimen/profile_relative_top">
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -43,12 +40,12 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="10dp">
+                        android:padding="@dimen/small_size">
 
                         <ImageView
                             android:id="@+id/iv_profile_icon"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
+                            android:layout_width="@dimen/img_size"
+                            android:layout_height="@dimen/img_size"
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
@@ -63,11 +60,11 @@
                             android:layout_height="wrap_content"
                             android:background="@color/colorBackground"
                             android:enabled="@{UserProfile.isToEditOrSave? true: false}"
-                            android:padding="3dp"
+                            android:padding="@dimen/profile_text_size"
                             android:text="@={UserProfile.userName}"
                             android:textAlignment="center"
                             android:textColor="@color/colorHighLightBlue"
-                            android:textSize="20sp" />
+                            android:textSize="@dimen/text_height" />
 
                         <android.support.v7.widget.AppCompatEditText
                             android:id="@+id/tv_profile_team_name"
@@ -78,7 +75,7 @@
                             android:text="@={UserProfile.userTeamName}"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
-                            android:textSize="14sp" />
+                            android:textSize="@dimen/x_medium_size" />
                     </LinearLayout>
 
                     <android.support.design.widget.FloatingActionButton
@@ -87,8 +84,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@id/ll_profile"
                         android:layout_alignParentRight="true"
-                        android:layout_marginBottom="-30dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="@dimen/float_bottom_size"
+                        android:layout_marginRight="@dimen/text_height"
                         android:onClick="@{ViewController.btnProfileEditClick(UserProfile)}"
                         android:src="@{UserProfile.toEditOrSave ? @drawable/ic_action_tick : @drawable/ic_action_edit}"
                         app:backgroundTint="@color/colorSecondaryColor" />
@@ -98,10 +95,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/ll_profile"
-                        android:layout_marginBottom="7dp"
-                        android:layout_marginLeft="7dp"
-                        android:layout_marginRight="7dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="@dimen/card_margin"
+                        android:layout_marginLeft="@dimen/card_margin"
+                        android:layout_marginRight="@dimen/card_margin"
+                        android:layout_marginTop="@dimen/small_size"
                         card_view:cardBackgroundColor="@android:color/white"
                         card_view:cardElevation="0dp">
 
@@ -109,57 +106,57 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:padding="10dp">
+                            android:padding="@dimen/small_size">
 
                             <android.support.v7.widget.AppCompatTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:text="Personal Information"
+                                android:padding="@dimen/x_small_size"
+                                android:text="@string/rides_personal_info"
                                 android:textColor="@color/colorHighLightBlue"
                                 android:textSize="@dimen/text_extra_large" />
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp">
+                                android:layout_marginTop="@dimen/small_size">
 
                                 <ImageView
                                     android:id="@+id/iv_mail_icon"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="@dimen/image_width"
+                                    android:layout_height="@dimen/image_height"
                                     android:src="@drawable/ic_profile_mail" />
 
                                 <android.support.v7.widget.AppCompatEditText
                                     android:id="@+id/tv_mail"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginLeft="@dimen/small_size"
                                     android:layout_toRightOf="@+id/iv_mail_icon"
                                     android:background="@android:drawable/screen_background_light_transparent"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                     android:inputType="textEmailAddress"
                                     android:maxLines="2"
                                     android:text="@={UserProfile.userMail}"
-                                    android:textSize="14sp" />
+                                    android:textSize="@dimen/x_medium_size" />
                             </RelativeLayout>
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp">
+                                android:layout_marginTop="@dimen/medium_size">
 
                                 <ImageView
                                     android:id="@+id/iv_ph_icon"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="@dimen/image_width"
+                                    android:layout_height="@dimen/image_height"
                                     android:src="@drawable/ic_profile_mobile" />
 
                                 <android.support.v7.widget.AppCompatEditText
                                     android:id="@+id/tv_phone"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginLeft="@dimen/text_size"
                                     android:layout_toRightOf="@+id/iv_ph_icon"
                                     android:background="@android:drawable/screen_background_light_transparent"
                                     android:ellipsize="end"
@@ -168,54 +165,54 @@
                                     android:inputType="number"
                                     android:maxLines="2"
                                     android:text="@={UserProfile.userPhone}"
-                                    android:textSize="14sp" />
+                                    android:textSize="@dimen/x_medium_size" />
                             </RelativeLayout>
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp">
+                                android:layout_marginTop="@dimen/medium_size">
 
                                 <ImageView
                                     android:id="@+id/iv_addr_icon"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="@dimen/image_width"
+                                    android:layout_height="@dimen/image_height"
                                     android:src="@drawable/ic_profile_office" />
 
                                 <android.support.v7.widget.AppCompatEditText
                                     android:id="@+id/tv_addr"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginLeft="@dimen/small_size"
                                     android:layout_toRightOf="@+id/iv_addr_icon"
                                     android:background="@android:drawable/screen_background_light_transparent"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                     android:text="@={UserProfile.userAddress}"
-                                    android:textSize="14sp" />
+                                    android:textSize="@dimen/x_medium_size" />
                             </RelativeLayout>
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp">
+                                android:layout_marginTop="@dimen/medium_size">
 
                                 <ImageView
                                     android:id="@+id/iv_loc_icon"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="@dimen/image_width"
+                                    android:layout_height="@dimen/image_height"
                                     android:src="@drawable/ic_profile_map" />
 
                                 <android.support.v7.widget.AppCompatEditText
                                     android:id="@+id/tv_location"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginLeft="@dimen/small_size"
                                     android:layout_toRightOf="@+id/iv_loc_icon"
                                     android:background="@android:color/transparent"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                     android:maxLines="1"
                                     android:text="@={UserProfile.userLocation}"
-                                    android:textSize="14sp" />
+                                    android:textSize="@dimen/x_medium_size" />
                             </RelativeLayout>
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
@@ -224,8 +221,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/cv_profile_info"
-                        android:layout_marginLeft="7dp"
-                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="@dimen/card_margin"
+                        android:layout_marginRight="@dimen/card_margin"
                         card_view:cardBackgroundColor="@android:color/white"
                         card_view:cardElevation="0dp">
 
@@ -233,13 +230,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:padding="10dp">
+                            android:padding="@dimen/small_size">
 
                             <android.support.v7.widget.AppCompatTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:text="Vehicle Description"
+                                android:padding="@dimen/x_small_size"
+                                android:text="@string/vehicle_des"
                                 android:textColor="@color/colorHighLightBlue"
                                 android:textSize="@dimen/text_extra_large" />
 
@@ -247,52 +244,51 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:padding="5dp">
+                                android:padding="@dimen/x_small_size">
 
                                 <android.support.v7.widget.AppCompatTextView
                                     android:id="@+id/tv_vehicle_type_txt"
-                                    android:layout_width="100dp"
+                                    android:layout_width="@dimen/img_size"
                                     android:layout_height="wrap_content"
                                     android:maxLines="1"
-                                    android:text="Vehicle Type"
+                                    android:text="@string/vehicle_des"
                                     android:textColor="@android:color/background_dark"
-                                    android:textSize="14sp" />
+                                    android:textSize="@dimen/x_medium_size" />
 
                                 <android.support.v7.widget.AppCompatSpinner
                                     android:id="@+id/tv_vehicle_type_val"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="25dp"
+                                    android:layout_marginLeft="@dimen/profile_text_left"
                                     android:layout_toRightOf="@+id/tv_vehicle_type_txt"
                                     android:background="@android:drawable/screen_background_light_transparent"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                     android:singleLine="true"
-                                    android:textSize="14sp"
+                                    android:textSize="@dimen/x_medium_size"
                                     />
-                                <!--android:text="@={UserProfile.userVehicleType}"-->
                             </RelativeLayout>
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:padding="5dp">
+                                android:padding="@dimen/x_small_size">
 
                                 <android.support.v7.widget.AppCompatTextView
                                     android:id="@+id/tv_vehicle_name_txt"
-                                    android:layout_width="100dp"
+                                    android:layout_width="@dimen/img_size"
                                     android:layout_height="wrap_content"
                                     android:ellipsize="end"
                                     android:maxLines="1"
-                                    android:text="Vehicle Name"
+                                    android:text="@string/vehicle_name"
                                     android:textColor="@android:color/background_dark"
-                                    android:textSize="14sp" />
+                                    android:textSize="@dimen/x_medium_size" />
 
                                 <android.support.v7.widget.AppCompatEditText
                                     android:id="@+id/tv_vehicle_name_val"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="25dp"
+                                    android:layout_marginLeft="@dimen/xs_medium_size"
                                     android:layout_toRightOf="@+id/tv_vehicle_name_txt"
                                     android:background="@android:drawable/screen_background_light_transparent"
                                     android:ellipsize="end"
@@ -300,36 +296,36 @@
                                     android:maxLines="1"
                                     android:singleLine="true"
                                     android:text="@={UserProfile.userVehicleName}"
-                                    android:textSize="14sp" />
+                                    android:textSize="@dimen/x_medium_size" />
                             </RelativeLayout>
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:padding="5dp">
+                                android:padding="@dimen/x_small_size">
 
                                 <android.support.v7.widget.AppCompatTextView
                                     android:id="@+id/tv_vehicle_num_txt"
-                                    android:layout_width="100dp"
+                                    android:layout_width="@dimen/img_size"
                                     android:layout_height="wrap_content"
                                     android:maxLines="1"
-                                    android:text="Vehicle No."
+                                    android:text="@string/vehicle_no"
                                     android:textColor="@android:color/background_dark"
-                                    android:textSize="14sp" />
+                                    android:textSize="@dimen/x_medium_size" />
 
                                 <android.support.v7.widget.AppCompatEditText
                                     android:id="@+id/tv_vehicle_num_val"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="25dp"
+                                    android:layout_marginLeft="@dimen/profile_text_left"
                                     android:layout_toRightOf="@+id/tv_vehicle_num_txt"
                                     android:background="@android:drawable/screen_background_light_transparent"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                     android:maxLines="1"
                                     android:singleLine="true"
                                     android:text="@={UserProfile.userVehicleNum}"
-                                    android:textSize="14sp" />
+                                    android:textSize="@dimen/x_medium_size" />
                             </RelativeLayout>
                         </LinearLayout>
                     </android.support.v7.widget.CardView>

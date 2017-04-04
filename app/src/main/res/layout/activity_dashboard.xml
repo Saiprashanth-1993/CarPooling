@@ -42,9 +42,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Dashboard"
+                        android:text="@string/dashboard_header"
                         android:textColor="@android:color/white"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/text_head" />
                 </android.support.v7.widget.Toolbar>
 
                 <FrameLayout
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|bottom"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/small_size"
                 android:clickable="true"
                 android:onClick="@{onClickController.fabBtnOnClick()}"
                 android:src="@drawable/ic_action_add"
@@ -79,7 +79,7 @@
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/navigation_header"
             app:itemIconTint="@color/colorPrimary"
-            app:itemTextColor="#4b4b4b"
+            app:itemTextColor="@color/color_dark_gray"
             app:menu="@menu/activity_dashboard_drawer"
             app:theme="@style/NavigationDrawerSelected" />
     </android.support.v4.widget.DrawerLayout>

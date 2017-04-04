@@ -19,7 +19,7 @@ import com.contus.carpooling.addnewride.view.RegisterNewRidesActivity;
 import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
 import com.contus.carpooling.dashboard.myrides.model.MyRides;
 import com.contus.carpooling.databinding.CustomDelayDialogBinding;
-import com.contus.carpooling.offeredrideinfo.view.view.OfferedRidesInformationActivity;
+import com.contus.carpooling.offeredrideinfo.view.OfferedRidesInformationActivity;
 import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.Logger;
 

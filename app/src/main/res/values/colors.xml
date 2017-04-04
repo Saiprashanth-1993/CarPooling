@@ -9,4 +9,8 @@
     <color name="colorBackground">#e4e4e4</color>
     <color name="textViewColor">#333333</color>
     <color name="white">#fff</color>
+    <color name="light_hash">#dbdbdb</color>
+    <color name="white_smoke">#F5F5F5</color>
+    <color name="color_dark_gray">#4b4b4b</color>
+
 </resources>

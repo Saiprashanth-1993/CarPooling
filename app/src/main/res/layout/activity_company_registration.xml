@@ -26,15 +26,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingTop="20dp">
+                android:paddingTop="@dimen/padding_top">
 
                 <ImageView
                     android:id="@+id/iv_logo_icon"
-                    android:layout_width="170dp"
-                    android:layout_height="160dp"
+                    android:layout_width="@dimen/img_extra_large"
+                    android:layout_height="@dimen/img_extra_large_height"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="10dp"
-                    android:contentDescription="logo icon"
+                    android:layout_marginBottom="@dimen/small_size"
+                    android:contentDescription="@string/logo_icon"
                     android:scaleType="fitXY"
                     android:src="@drawable/ic_logo" />
 
@@ -43,29 +43,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/iv_logo_icon"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:text="Company Name"
+                    android:layout_marginBottom="@dimen/x_small_size"
+                    android:layout_marginLeft="@dimen/extra_medium_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
+                    android:text="@string/company_header"
                     android:textAllCaps="true"
                     android:textColor="@color/textViewColor"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/text_medium" />
 
                 <LinearLayout
                     android:id="@+id/ll_parent_company_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_company_name"
-                    android:layout_marginLeft="48dp"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="@dimen/xs_extra_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
                     android:background="@drawable/edit_text_line_border"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingBottom="5dp">
+                    android:paddingBottom="@dimen/x_small_size">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/image_width"
+                        android:layout_height="@dimen/image_height"
                         android:src="@drawable/ic_company" />
 
                     <AutoCompleteTextView
@@ -78,11 +78,11 @@
                         android:hint="@string/enter_your_company_name"
                         android:popupBackground="@drawable/custom_autocomplete_background"
                         android:imeOptions="actionDone"
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="@dimen/x_small_size"
                         android:maxLines="1"
                         android:text="@={CompanyDetails.companyName}"
                         android:textColorHint="@color/colorEditTextHint"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/text_primary" />
 
                 </LinearLayout>
 
@@ -91,14 +91,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ll_parent_company_name"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Category"
+                    android:layout_marginBottom="@dimen/x_small_size"
+                    android:layout_marginLeft="@dimen/extra_medium_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
+                    android:layout_marginTop="@dimen/text_height"
+                    android:text="@string/category_header"
                     android:textAllCaps="true"
                     android:textColor="@color/textViewColor"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/text_medium" />
 
                 <RelativeLayout
                     android:id="@+id/rl_category_parent"
@@ -106,15 +106,15 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_category"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="48dp"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="@dimen/xs_extra_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
                     android:background="@drawable/edit_text_line_border"
-                    android:paddingBottom="5dp">
+                    android:paddingBottom="@dimen/x_small_size">
 
                     <ImageView
                         android:id="@+id/image_category"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/image_width"
+                        android:layout_height="@dimen/image_height"
                         android:src="@drawable/ic_department" />
 
 
@@ -126,17 +126,17 @@
                         android:layout_toRightOf="@+id/image_category"
                         android:background="@android:color/transparent"
                         android:focusable="false"
-                        android:hint="Select category"
-                        android:paddingLeft="5dp"
+                        android:hint="@string/select_category"
+                        android:paddingLeft="@dimen/x_small_size"
                         android:onClick="@{ViewController.categoryListOnClick(CompanyDetails)}"
                         android:text="@={CompanyDetails.category}"
                         android:textColorHint="@color/colorEditTextHint"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/text_primary" />
 
                     <ImageView
                         android:id="@+id/ic_drop_down"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="@dimen/medium_size"
+                        android:layout_height="@dimen/medium_size"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentTop="true"
@@ -148,30 +148,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/rl_category_parent"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Location"
+                    android:layout_marginBottom="@dimen/x_small_size"
+                    android:layout_marginLeft="@dimen/extra_medium_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
+                    android:layout_marginTop="@dimen/text_height"
+                    android:text="@string/location_header"
                     android:textAllCaps="true"
                     android:textColor="@color/textViewColor"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/text_medium" />
 
                 <LinearLayout
                     android:id="@+id/ll_location_parent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_location"
-                    android:layout_marginLeft="48dp"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="@dimen/xs_extra_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
                     android:background="@drawable/edit_text_line_border"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingBottom="5dp">
+                    android:paddingBottom="@dimen/x_small_size">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/image_width"
+                        android:layout_height="@dimen/image_height"
                         android:clickable="false"
                         android:focusable="false"
                         android:src="@drawable/ic_location" />
@@ -182,13 +182,13 @@
                         android:background="@android:color/transparent"
                         android:filterTouchesWhenObscured="false"
                         android:focusable="false"
-                        android:hint="Enter your location"
+                        android:hint="@string/location_text"
                         android:onClick="@{ViewController.getLocationOnClick}"
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="@dimen/x_small_size"
                         android:singleLine="true"
                         android:text="@={CompanyDetails.location}"
                         android:textColorHint="@color/colorEditTextHint"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/text_primary" />
                 </LinearLayout>
 
 
@@ -197,22 +197,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ll_location_parent"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="@dimen/extra_medium_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
+                    android:layout_marginTop="@dimen/toggle_height"
                     android:background="@drawable/button_rounded_corner_border"
                     android:onClick="@{ViewController.btnCompanyRegistrationClick(CompanyDetails)}"
-                    android:text="Next"
+                    android:text="@string/company_next"
                     android:textColor="@android:color/white"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/text_extra_large" />
 
                 <LinearLayout
                     android:id="@+id/ll_parent_signin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/btn_submit"
-                    android:layout_marginBottom="100dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="@dimen/xl_size"
+                    android:layout_marginTop="@dimen/text_height"
                     android:gravity="center">
 
                     <android.support.v7.widget.AppCompatTextView
@@ -220,24 +220,24 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/already_have_an_account"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/text_extra_large" />
 
                     <android.support.v7.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:onClick="@{ViewController.btnSignInOnClick()}"
-                        android:text=" Sign in"
+                        android:text="@string/company_sign_in"
                         android:textColor="@color/colorHighLightBlue"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/text_extra_large" />
                 </LinearLayout>
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="@dimen/img_xs_size"
+                    android:layout_marginTop="@dimen/xs_small_size"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_footer" />
             </RelativeLayout>

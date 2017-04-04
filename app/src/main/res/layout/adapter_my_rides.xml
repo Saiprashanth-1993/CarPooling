@@ -17,16 +17,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="10dp">
+        android:paddingLeft="@dimen/x_small_size"
+        android:paddingRight="@dimen/x_small_size"
+        android:paddingTop="@dimen/small_size">
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             card_view:cardBackgroundColor="@android:color/white"
-            card_view:cardCornerRadius="4dp"
-            card_view:cardElevation="0dp">
+            card_view:cardCornerRadius="@dimen/card_radius_size"
+            card_view:cardElevation="@dimen/zero_size">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,20 +40,20 @@
 
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/zero_size"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="15dp">
+                        android:paddingLeft="@dimen/medium_size"
+                        android:paddingRight="@dimen/medium_size"
+                        android:paddingTop="@dimen/medium_size">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@={myRides.arrivalTime}"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/text_medium" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -63,42 +63,31 @@
                             android:maxLines="2"
                             android:text="@={myRides.arrivalPoint}"
                             android:textColor="@color/colorHighLightBlue"
-                            android:textSize="18sp" />
+                            android:textSize="@dimen/text_head" />
 
-                       <!-- <TextView
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@={myRides.arrivalTimes}"
-                            android:textSize="12sp" />-->
+                            android:textSize="@dimen/text_medium" />
                     </LinearLayout>
 
                     <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="@dimen/xs_medium_size"
+                        android:layout_height="@dimen/xs_medium_size"
                         android:layout_gravity="center"
-                        android:layout_marginTop="7dp"
+                        android:layout_marginTop="@dimen/card_margin"
                         android:src="@drawable/ic_arrow"
                         android:tint="@color/colorHighLightBlue" />
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/zero_size"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="15dp">
-
-                       <!-- <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@={myRides.departureTimes}"
-                            android:textSize="12sp" /> -->
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12sp" />
+                        android:paddingLeft="@dimen/medium_size"
+                        android:paddingRight="@dimen/medium_size"
+                        android:paddingTop="@dimen/medium_size">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -108,13 +97,12 @@
                             android:maxLines="2"
                             android:text="@={myRides.departurePoint}"
                             android:textColor="@color/colorHighLightBlue"
-                            android:textSize="18sp" />
+                            android:textSize="@dimen/text_head" />
 
-                       <!-- <TextView
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@={myRides.departureTimes}"
-                            android:textSize="12sp" />-->
+                            android:textSize="@dimen/text_medium" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -125,7 +113,7 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="@dimen/text_view_size"
                         android:layout_centerVertical="true"
                         android:background="@color/colorHighLightBlue" />
 
@@ -135,105 +123,105 @@
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/rounded_corner_my_ride_edit"
                         android:onClick="@{editRideOnClick.rideEditOnClick(myRides)}"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="25dp"
-                        android:paddingRight="25dp"
-                        android:paddingTop="10dp"
-                        android:text="Edit"
-                        android:textSize="16sp" />
+                        android:paddingBottom="@dimen/small_size"
+                        android:paddingLeft="@dimen/xs_medium_size"
+                        android:paddingRight="@dimen/xs_medium_size"
+                        android:paddingTop="@dimen/small_size"
+                        android:text="@string/rides_edit"
+                        android:textSize="@dimen/text_extra_large" />
                 </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="@dimen/small_size">
 
                     <Button
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_margin="2dp"
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="@dimen/large_size"
+                        android:layout_margin="@dimen/xs_small_size"
                         android:layout_weight="1"
                         android:background="@drawable/circle_text_view"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:text="SUN"
-                        android:textSize="10sp" />
+                        android:paddingLeft="@dimen/x_small_size"
+                        android:paddingRight="@dimen/x_small_size"
+                        android:text="@string/sun"
+                        android:textSize="@dimen/small_size_sp" />
 
                     <Button
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_margin="2dp"
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="@dimen/large_size"
+                        android:layout_margin="@dimen/xs_small_size"
                         android:layout_weight="1"
                         android:background="@drawable/circle_text_view_selected"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:text="MON"
+                        android:paddingLeft="@dimen/x_small_size"
+                        android:paddingRight="@dimen/x_small_size"
+                        android:text="@string/mon"
                         android:textColor="@android:color/white"
-                        android:textSize="10sp" />
+                        android:textSize="@dimen/small_size_sp" />
 
                     <Button
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_margin="2dp"
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="@dimen/large_size"
+                        android:layout_margin="@dimen/xs_small_size"
                         android:layout_weight="1"
                         android:background="@drawable/circle_text_view_selected"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:text="TUE"
+                        android:paddingLeft="@dimen/x_small_size"
+                        android:paddingRight="@dimen/x_small_size"
+                        android:text="@string/tue"
                         android:textColor="@android:color/white"
-                        android:textSize="10sp" />
+                        android:textSize="@dimen/small_size_sp" />
 
                     <Button
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_margin="2dp"
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="@dimen/large_size"
+                        android:layout_margin="@dimen/xs_small_size"
                         android:layout_weight="1"
                         android:background="@drawable/circle_text_view"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:text="WED"
-                        android:textSize="10sp" />
+                        android:paddingLeft="@dimen/x_small_size"
+                        android:paddingRight="@dimen/x_small_size"
+                        android:text="@string/wed"
+                        android:textSize="@dimen/small_size_sp" />
 
                     <Button
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_margin="2dp"
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="@dimen/large_size"
+                        android:layout_margin="@dimen/xs_small_size"
                         android:layout_weight="1"
                         android:background="@drawable/circle_text_view"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:text="THU"
-                        android:textSize="10sp" />
+                        android:paddingLeft="@dimen/x_small_size"
+                        android:paddingRight="@dimen/x_small_size"
+                        android:text="@string/thu"
+                        android:textSize="@dimen/small_size_sp" />
 
                     <Button
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_margin="2dp"
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="@dimen/large_size"
+                        android:layout_margin="@dimen/xs_small_size"
                         android:layout_weight="1"
                         android:background="@drawable/circle_text_view_selected"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:text="FRI"
+                        android:paddingLeft="@dimen/x_small_size"
+                        android:paddingRight="@dimen/x_small_size"
+                        android:text="@string/fri"
                         android:textColor="@android:color/white"
-                        android:textSize="10sp" />
+                        android:textSize="@dimen/small_size_sp" />
 
                     <Button
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_margin="2dp"
+                        android:layout_width="@dimen/zero_size"
+                        android:layout_height="@dimen/large_size"
+                        android:layout_margin="@dimen/xs_small_size"
                         android:layout_weight="1"
                         android:background="@drawable/circle_text_view"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:text="SAT"
-                        android:textSize="10sp" />
+                        android:paddingLeft="@dimen/x_small_size"
+                        android:paddingRight="@dimen/x_small_size"
+                        android:text="@string/sat"
+                        android:textSize="@dimen/small_size_sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="@dimen/small_size"
+                    android:layout_marginTop="@dimen/small_size"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -244,15 +232,15 @@
                         android:gravity="center">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="@dimen/image_width"
+                            android:layout_height="@dimen/image_height"
                             android:src="@drawable/ic_available_seat" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@={myRides.seats}"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/text_medium" />
 
                     </LinearLayout>
 
@@ -267,7 +255,7 @@
                             android:layout_height="wrap_content"
                             android:text="@={myRides.cost}"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
+                            android:textSize="@dimen/text_primary" />
 
                     </LinearLayout>
 
@@ -282,11 +270,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/rounded_corner_blue_boarder"
-                            android:paddingBottom="5dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:paddingTop="5dp"
-                            android:text="Delay"
+                            android:paddingBottom="@dimen/x_small_size"
+                            android:paddingLeft="@dimen/medium_size"
+                            android:paddingRight="@dimen/medium_size"
+                            android:paddingTop="@dimen/x_small_size"
+                            android:text="@string/rides_delay"
                             android:textColor="@android:color/white" />
 
                     </LinearLayout>
@@ -298,9 +286,9 @@
                         android:gravity="center">
 
                         <com.zcw.togglebutton.ToggleButton
-                            android:layout_width="54dp"
-                            android:layout_height="30dp"
-                            app:tbBorderWidth="2dp"
+                            android:layout_width="@dimen/toggle_width"
+                            android:layout_height="@dimen/toggle_height"
+                            app:tbBorderWidth="@dimen/xs_small_size"
                             app:tbOffBorderColor="@android:color/darker_gray"
                             app:tbOffColor="@android:color/darker_gray"
                             app:tbOnColor="@color/colorPrimary"

@@ -35,9 +35,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="User Registration"
+                    android:text="@string/reg_header"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp" />
+                    android:textSize="@dimen/text_head" />
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
 
@@ -50,41 +50,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingTop="20dp">
+                android:paddingTop="@dimen/padding_size">
 
                 <ImageView
-                    android:layout_width="170dp"
-                    android:layout_height="160dp"
+                    android:layout_width="@dimen/img_extra_large"
+                    android:layout_height="@dimen/img_extra_large_height"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="10dp"
-                    android:contentDescription="logo icon"
+                    android:layout_marginBottom="@dimen/small_size"
+                    android:contentDescription="@string/logo_icon"
                     android:scaleType="fitXY"
                     android:src="@drawable/ic_logo" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="@dimen/x_small_size"
+                    android:layout_marginLeft="@dimen/extra_medium_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
                     android:text="@string/name"
                     android:textAllCaps="true"
                     android:textColor="@color/textViewColor"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/text_medium" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="48dp"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="@dimen/xs_extra_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
                     android:background="@drawable/edit_text_line_border"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingBottom="5dp">
+                    android:paddingBottom="@dimen/x_small_size">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/image_width"
+                        android:layout_height="@dimen/image_height"
                         android:src="@drawable/ic_user" />
 
                     <android.support.v7.widget.AppCompatEditText
@@ -92,40 +92,40 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:hint="@string/enter_your_name"
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="@dimen/x_small_size"
                         android:inputType="textCapWords|textCapSentences"
                         android:maxLines="1"
                         android:text="@={UserDetails.userName}"
                         android:textColorHint="@color/colorEditTextHint"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/text_primary" />
 
                 </LinearLayout>
 
                 <android.support.v7.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="@dimen/x_small_size"
+                    android:layout_marginLeft="@dimen/extra_medium_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
+                    android:layout_marginTop="@dimen/padding_size"
                     android:text="@string/mobile"
                     android:textAllCaps="true"
                     android:textColor="@color/textViewColor"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/text_medium" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="48dp"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="@dimen/xs_extra_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
                     android:background="@drawable/edit_text_line_border"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingBottom="5dp">
+                    android:paddingBottom="@dimen/x_small_size">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/image_width"
+                        android:layout_height="@dimen/image_height"
                         android:src="@drawable/ic_mobile" />
 
                     <android.support.v7.widget.AppCompatEditText
@@ -134,39 +134,39 @@
                         android:background="@android:color/transparent"
                         android:hint="@string/enter_your_mobile_number"
                         android:inputType="number"
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="@dimen/x_small_size"
                         android:maxLength="10"
                         android:maxLines="1"
                         android:text="@={UserDetails.mobileNumber}"
                         android:textColorHint="@color/colorEditTextHint"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/text_primary" />
                 </LinearLayout>
 
                 <android.support.v7.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="@dimen/x_small_size"
+                    android:layout_marginLeft="@dimen/extra_medium_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
+                    android:layout_marginTop="@dimen/padding_size"
                     android:text="@string/email"
                     android:textAllCaps="true"
                     android:textColor="@color/textViewColor"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/text_medium" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="48dp"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="@dimen/xs_extra_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
                     android:background="@drawable/edit_text_line_border"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingBottom="5dp">
+                    android:paddingBottom="@dimen/x_small_size">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/image_width"
+                        android:layout_height="@dimen/image_height"
                         android:src="@drawable/ic_mail" />
 
                     <android.support.v7.widget.AppCompatEditText
@@ -175,20 +175,20 @@
                         android:background="@android:color/transparent"
                         android:hint="@string/enter_your_email_id"
                         android:inputType="textEmailAddress"
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="@dimen/x_small_size"
                         android:maxLines="1"
                         android:text="@={UserDetails.emailID}"
                         android:textColorHint="@color/colorEditTextHint"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/text_primary" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="@dimen/x_small_size"
+                    android:layout_marginLeft="@dimen/extra_medium_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
+                    android:layout_marginTop="@dimen/padding_size"
                     android:orientation="vertical">
 
                     <android.support.v7.widget.AppCompatTextView
@@ -197,7 +197,7 @@
                         android:text="@string/gender_preference"
                         android:textAllCaps="true"
                         android:textColor="@color/textViewColor"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/text_medium" />
 
                     <RadioGroup
                         android:layout_width="wrap_content"
@@ -211,18 +211,18 @@
                             android:onClick='@{ViewController.radioBtnOnClick(UserDetails,"Male")}'
                             android:text="@string/male"
                             android:textColor="@android:color/darker_gray"
-                            android:textSize="14sp"
+                            android:textSize="@dimen/text_primary"
                             android:theme="@style/RadioButton" />
 
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
+                            android:layout_marginLeft="@dimen/padding_size"
                             android:layout_weight="1"
                             android:onClick='@{ViewController.radioBtnOnClick(UserDetails,"Female")}'
                             android:text="@string/female"
                             android:textColor="@android:color/darker_gray"
-                            android:textSize="14sp"
+                            android:textSize="@dimen/text_primary"
                             android:theme="@style/RadioButton" />
                     </RadioGroup>
 
@@ -231,28 +231,28 @@
                 <android.support.v7.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="@dimen/x_small_size"
+                    android:layout_marginLeft="@dimen/extra_medium_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
+                    android:layout_marginTop="@dimen/small_size"
                     android:text="@string/from"
                     android:textAllCaps="true"
                     android:textColor="@color/textViewColor"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/text_medium" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="48dp"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="@dimen/xs_extra_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
                     android:background="@drawable/edit_text_line_border"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingBottom="5dp">
+                    android:paddingBottom="@dimen/x_small_size">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/image_width"
+                        android:layout_height="@dimen/image_height"
                         android:src="@drawable/ic_location" />
 
                     <android.support.v7.widget.AppCompatEditText
@@ -263,38 +263,38 @@
                         android:hint="@string/from_location"
                         android:inputType="text"
                         android:onClick="@{ViewController.getLocationOnClick(2)}"
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="@dimen/x_small_size"
                         android:maxLines="1"
                         android:text="@={UserDetails.fromLocation}"
                         android:textColorHint="@color/colorEditTextHint"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/text_primary" />
                 </LinearLayout>
 
                 <android.support.v7.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="@dimen/x_small_size"
+                    android:layout_marginLeft="@dimen/extra_medium_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
+                    android:layout_marginTop="@dimen/padding_size"
                     android:text="@string/to"
                     android:textAllCaps="true"
                     android:textColor="@color/textViewColor"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/text_medium" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="48dp"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="@dimen/xs_extra_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
                     android:background="@drawable/edit_text_line_border"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingBottom="5dp">
+                    android:paddingBottom="@dimen/x_small_size">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/image_width"
+                        android:layout_height="@dimen/image_height"
                         android:src="@drawable/ic_location" />
 
                     <android.support.v7.widget.AppCompatEditText
@@ -305,38 +305,38 @@
                         android:hint="@string/to_location"
                         android:inputType="text"
                         android:onClick="@{ViewController.getLocationOnClick(3)}"
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="@dimen/x_small_size"
                         android:maxLines="1"
                         android:text="@={UserDetails.toLocation}"
                         android:textColorHint="@color/colorEditTextHint"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/text_primary" />
                 </LinearLayout>
 
                 <android.support.v7.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="@dimen/x_small_size"
+                    android:layout_marginLeft="@dimen/extra_medium_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
+                    android:layout_marginTop="@dimen/padding_size"
                     android:text="@string/password"
                     android:textAllCaps="true"
                     android:textColor="@color/textViewColor"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/text_medium" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="48dp"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="@dimen/xs_extra_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
                     android:background="@drawable/edit_text_line_border"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingBottom="5dp">
+                    android:paddingBottom="@dimen/x_small_size">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/image_width"
+                        android:layout_height="@dimen/image_height"
                         android:src="@drawable/ic_password" />
 
                     <android.support.v7.widget.AppCompatEditText
@@ -346,31 +346,31 @@
                         android:fontFamily="sans-serif"
                         android:hint="@string/enter_your_password"
                         android:inputType="textPassword"
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="@dimen/x_small_size"
                         android:maxLines="1"
                         android:text="@={UserDetails.password}"
                         android:textColorHint="@color/colorEditTextHint"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/text_primary" />
                 </LinearLayout>
 
                 <android.support.v7.widget.AppCompatButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="@dimen/extra_medium_size"
+                    android:layout_marginRight="@dimen/extra_medium_size"
+                    android:layout_marginTop="@dimen/padding_size"
                     android:background="@drawable/button_rounded_corner_border"
                     android:onClick="@{ViewController.btnRegistrationOnClick(UserDetails)}"
                     android:text="@string/next"
                     android:textColor="@android:color/white"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/text_extra_large" />
                 <LinearLayout
                     android:id="@+id/ll_sign_up_parent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/btn_login"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="@dimen/small_size"
+                    android:layout_marginTop="@dimen/padding_size"
                     android:gravity="center">
 
                     <android.support.v7.widget.AppCompatTextView
@@ -378,7 +378,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/dont_have_an_account"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/text_extra_large" />
 
                     <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/btn_sign_in"
@@ -387,14 +387,14 @@
                         android:onClick="@{ViewController.btnSignInOnClick()}"
                         android:text="@string/sign_in"
                         android:textColor="@color/colorHighLightBlue"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/text_extra_large" />
                 </LinearLayout>
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="@dimen/img_xs_size"
+                    android:layout_marginTop="@dimen/xs_small_size"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_footer" />
             </LinearLayout>
