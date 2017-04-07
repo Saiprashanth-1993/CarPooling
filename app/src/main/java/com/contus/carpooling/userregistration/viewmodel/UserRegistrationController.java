@@ -10,7 +10,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 
@@ -124,7 +123,6 @@ public class UserRegistrationController {
         };
     }
 
-
     /**
      * Trigger the even listener for  radio button.
      *
@@ -150,7 +148,7 @@ public class UserRegistrationController {
      * @param fromLocation Validate the from location.
      * @param toLocation   validate the to location.
      * @param password     Validate the password.
-     * @param gender     Validate the gender.
+     * @param gender       Validate the gender.
      * @return validationStatus has been True when the given field is not empty.
      */
     public boolean isValid(String userName, String mobileNumber, String emailId,

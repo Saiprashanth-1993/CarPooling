@@ -6,10 +6,7 @@
 
 package com.contus.carpooling.server;
 
-import android.util.Log;
-
 import com.contus.carpooling.utils.Constants;
-import com.contus.carpooling.utils.Logger;
 import com.contus.carpooling.utils.SharedDataUtils;
 
 import java.io.IOException;
