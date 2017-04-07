@@ -104,7 +104,6 @@ public class DashboardActivity extends AppCompatActivity
         activityDashboardBinding.navigationView.setNavigationItemSelectedListener(this);
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
         toggle.setDrawerIndicatorEnabled(false);
         toggle.setHomeAsUpIndicator(R.drawable.ic_menu_hamburger);
         toggle.setToolbarNavigationClickListener(new View.OnClickListener() {

@@ -199,18 +199,6 @@ public class UserProfileController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                 ImagePicker.create(userProfileFragment)
-//                        .returnAfterFirst(true)
-//                        .folderMode(true) // folder mode (false by default)
-//                        .folderTitle("Folder") // folder selection title
-//                        .imageTitle("Tap to select") // image selection title
-//                        .single() // single mode
-//                        .limit(1) // max images can be selected (99 by default)
-//                        .showCamera(true) // show camera or not (true by default)
-//                            .imageDirectory("Camera") // directory name for captured image  ("Camera" folder by default)
-//                            .start(Constants.GALLERY_SELECTION);
-//                    }
-//            };
                 userProfileFragment.selectImage();
             }
         };
@@ -240,12 +228,12 @@ public class UserProfileController {
      */
     private void updateProfileRequest(final UserProfileInfo getUserProfileValues) {
 
-
+/*
         HashMap<String , String> params = new HashMap<>();
         fromLat = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LAT,"");
         fromLong = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LONG,"");
         toLat = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LAT,"");
-        toLong = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LONG,"");
+        toLong = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LONG,"");*/
 
 
 
@@ -285,7 +273,7 @@ public class UserProfileController {
         fromLong=SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LONG,null);toLat=SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LAT,null);
         toLong=SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LONG,null);*/
 
-        final Context ctx = context;
+       /* final Context ctx = context;
         BusProvider.getInstance().register(this);
         RequestBody name = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserName());
         RequestBody userMail = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserMail());
@@ -298,15 +286,15 @@ public class UserProfileController {
         RequestBody vehicleNum = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserVehicleNum());
         RequestBody vehicleName = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserVehicleName());
         RequestBody vehicleType = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserVehicleType());
-        /*params.put(Constants.UserProfile.VEHICLE_TYPE,getUserProfileValues.getUserVehicleType());
+        *//*params.put(Constants.UserProfile.VEHICLE_TYPE,getUserProfileValues.getUserVehicleType());
         params.put(Constants.UserProfile.VEHICLE_NUMBER,getUserProfileValues.getUserVehicleNum());
-        params.put(UserProfile.VEHICLE_NAME,getUserProfileValues.getUserVehicleName());*/
+        params.put(UserProfile.VEHICLE_NAME,getUserProfileValues.getUserVehicleName());*//*
 
         File file = getUserProfileValues.getProfileImage();
 
         MultipartBody.Part part;
         if (file!=null && file.getAbsolutePath() != null) {
-            RequestBody requestBody = RequestBody.create(MediaType.parse("image*//*"), file);
+            RequestBody requestBody = RequestBody.create(MediaType.parse("image*//**//*"), file);
             part = MultipartBody.Part.createFormData(Login.PROFILE_IMAGE, file.getName(), requestBody);
         } else {
             part = null;
@@ -331,7 +319,7 @@ public class UserProfileController {
                         progressDialog.dismiss();
                         Toast.makeText(ctx, t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                });
+                });*/
     }
 
     public File getAlbumStorageDir(String albumName) {

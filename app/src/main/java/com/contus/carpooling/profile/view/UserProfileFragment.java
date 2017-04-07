@@ -227,11 +227,11 @@ public class UserProfileFragment extends Fragment {
                 /*
                  * Store the longitude and latitude from location
                  */
-                    SharedDataUtils.storeStringPreferences(Constants.UserProfile.USER_FROM_LAT,
+         /*           SharedDataUtils.storeStringPreferences(Constants.UserProfile.USER_FROM_LAT,
                             String.valueOf(place.getLatLng().latitude));
                     SharedDataUtils.storeStringPreferences(Constants.UserProfile.USER_FROM_LONG,
                             String.valueOf(place.getLatLng().longitude));
-
+*/
                 }
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status result = PlaceAutocomplete.getStatus(getActivity(), data);
@@ -248,10 +248,10 @@ public class UserProfileFragment extends Fragment {
                 /*
                  * Store the longitude and latitude from location
                  */
-                SharedDataUtils.storeStringPreferences(Constants.UserProfile.
+            /*    SharedDataUtils.storeStringPreferences(Constants.UserProfile.
                         USER_TO_LAT, String.valueOf(place.getLatLng().latitude));
                 SharedDataUtils.storeStringPreferences(Constants.UserProfile.
-                        USER_TO_LONG, String.valueOf(place.getLatLng().longitude));
+                        USER_TO_LONG, String.valueOf(place.getLatLng().longitude));*/
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(getActivity(), data);
                 Log.e("error", "Error: Status = " + status.toString());

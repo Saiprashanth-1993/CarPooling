@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 
@@ -231,7 +232,6 @@ public class UserRegistrationController {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 CustomUtils.showToast(context, result.getMessage());
-                Logger.logInfo("device_token", result.getUserToken());
                 UserRegistrationInfo regResponse = result.registerAPIResponse;
 
                 /**

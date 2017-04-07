@@ -6,7 +6,10 @@
 
 package com.contus.carpooling.server;
 
+import android.util.Log;
+
 import com.contus.carpooling.utils.Constants;
+import com.contus.carpooling.utils.Logger;
 import com.contus.carpooling.utils.SharedDataUtils;
 
 import java.io.IOException;
@@ -27,11 +30,12 @@ public class SessionRequestInterceptor implements okhttp3.Interceptor {
         /**
          * Get the device token and access token value by using share preference
          */
-        String deviceToken = SharedDataUtils.getStringPreference(Constants.ACCESS_TOKEN_HEADER_VALUE, null);
-        String accessToken = SharedDataUtils.getStringPreference(Constants.DEVICE_TOKEN_HEADER_VALUE, null);
+        String accessToken = SharedDataUtils.getStringPreference(Constants.ACCESS_TOKEN_HEADER_VALUE, null);
+        String deviceToken = SharedDataUtils.getStringPreference(Constants.DEVICE_TOKEN_HEADER_VALUE, null);
+
         builder.addHeader(Constants.REQUEST_TYPE_HEADER, "mobile");
-        builder.addHeader(Constants.ACCESS_TOKEN_HEADER, deviceToken);
-        builder.addHeader(Constants.DEVICE_TOKEN_HEADER, accessToken);
+        builder.addHeader(Constants.ACCESS_TOKEN_HEADER, accessToken);
+        builder.addHeader(Constants.DEVICE_TOKEN_HEADER, deviceToken);
         return chain.proceed(builder.build());
     }
 }
