@@ -127,16 +127,16 @@ public class NewRideController {
         DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, final int dayOfMonth) {
-                date.set(year, monthOfYear, dayOfMonth);
+                date.set(dayOfMonth, monthOfYear, year);
                 linuxTime = date.getTimeInMillis();
                 dateAndTime(ride, currentDate);
                 if (ride.getStartTime() != null) {
                     linuxTime = convertToLong(ride.getStartTime());
                 }
 
-                dateAndTime = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                dateAndTime = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
             }
-        }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE));
+        }, currentDate.get(Calendar.DATE), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.YEAR));
 
         if (dateAndTimeMode.equals(context.getString(R.string.start_time))) {
             datePickerDialog.getDatePicker().setMinDate(Calendar.getInstance().getTime().getTime());

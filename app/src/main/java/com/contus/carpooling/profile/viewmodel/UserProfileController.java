@@ -199,18 +199,6 @@ public class UserProfileController {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                 ImagePicker.create(userProfileFragment)
-//                        .returnAfterFirst(true)
-//                        .folderMode(true) // folder mode (false by default)
-//                        .folderTitle("Folder") // folder selection title
-//                        .imageTitle("Tap to select") // image selection title
-//                        .single() // single mode
-//                        .limit(1) // max images can be selected (99 by default)
-//                        .showCamera(true) // show camera or not (true by default)
-//                            .imageDirectory("Camera") // directory name for captured image  ("Camera" folder by default)
-//                            .start(Constants.GALLERY_SELECTION);
-//                    }
-//            };
                 userProfileFragment.selectImage();
             }
         };

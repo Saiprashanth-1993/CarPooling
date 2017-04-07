@@ -206,6 +206,7 @@
     <string name="gender_preference_head">Gender Preference</string>
     <string name="radio_btn_male">Male</string>
     <string name="radio_btn_female">Female</string>
+    <string name="radio_btn_any">Any</string>
     <string name="days_preference_head">Days Preference</string>
     <string name="seat_head">Seats</string>
     <string name="is_every_week_head">Every week</string>

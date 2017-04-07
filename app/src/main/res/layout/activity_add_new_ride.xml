@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
     <data>
 
-        <import type="android.view.View" />
+        <import type="android.view.View"/>
+
         <variable
             name="NewRideData"
-            type="com.contus.carpooling.addnewride.model.Ride" />
+            type="com.contus.carpooling.addnewride.model.Ride"/>
 
         <variable
             name="clickController"
-            type="com.contus.carpooling.addnewride.viewmodel.NewRideController" />
+            type="com.contus.carpooling.addnewride.viewmodel.NewRideController"/>
     </data>
 
     <LinearLayout
@@ -40,7 +41,7 @@
                     android:layout_gravity="center"
                     android:text="@string/create_rides_header"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_head" />
+                    android:textSize="@dimen/text_head"/>
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
 
@@ -59,9 +60,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x_small_size"
                     android:layout_marginLeft="@dimen/x_small_size"
-                    android:orientation="vertical"
                     android:layout_marginRight="@dimen/x_small_size"
-                    android:layout_marginTop="@dimen/x_small_size">
+                    android:layout_marginTop="@dimen/x_small_size"
+                    android:orientation="vertical">
 
                     <android.support.v7.widget.CardView
                         android:layout_width="match_parent"
@@ -91,7 +92,7 @@
                                     android:text="@string/ride_from_header"
                                     android:textAllCaps="true"
                                     android:textColor="@color/colorHighLightBlue"
-                                    android:textSize="@dimen/text_medium" />
+                                    android:textSize="@dimen/text_medium"/>
 
                                 <LinearLayout
                                     android:id="@+id/ll_ride_from_parent"
@@ -107,7 +108,7 @@
                                         android:layout_width="@dimen/image_width"
                                         android:layout_height="@dimen/image_height"
                                         android:src="@drawable/ic_location"
-                                        android:tint="@color/colorHighLightBlue" />
+                                        android:tint="@color/colorHighLightBlue"/>
 
                                     <android.support.v7.widget.AppCompatTextView
                                         android:layout_width="match_parent"
@@ -115,11 +116,11 @@
                                         android:background="@android:color/transparent"
                                         android:hint="@string/ride_from_hint"
                                         android:maxLines="1"
+                                        android:onClick="@{clickController.getLocationOnClick(2)}"
                                         android:paddingLeft="@dimen/x_small_size"
                                         android:text="@={NewRideData.fromRide}"
-                                        android:onClick="@{clickController.getLocationOnClick(2)}"
                                         android:textColorHint="@color/colorEditTextHint"
-                                        android:textSize="@dimen/x_medium_size" />
+                                        android:textSize="@dimen/x_medium_size"/>
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -142,7 +143,7 @@
                                     android:text="@string/ride_to_header"
                                     android:textAllCaps="true"
                                     android:textColor="@color/colorHighLightBlue"
-                                    android:textSize="@dimen/text_medium" />
+                                    android:textSize="@dimen/text_medium"/>
 
                                 <LinearLayout
                                     android:id="@+id/ll_ride_to_parent"
@@ -157,7 +158,7 @@
                                     <ImageView
                                         android:layout_width="@dimen/image_width"
                                         android:layout_height="@dimen/image_height"
-                                        android:src="@drawable/ic_location" />
+                                        android:src="@drawable/ic_location"/>
 
                                     <android.support.v7.widget.AppCompatTextView
                                         android:layout_width="match_parent"
@@ -165,11 +166,11 @@
                                         android:background="@android:color/transparent"
                                         android:hint="@string/ride_to_hint"
                                         android:maxLines="1"
+                                        android:onClick="@{clickController.getLocationOnClick(3)}"
                                         android:paddingLeft="@dimen/x_small_size"
                                         android:text="@={NewRideData.toRide}"
-                                        android:onClick="@{clickController.getLocationOnClick(3)}"
                                         android:textColorHint="@color/colorEditTextHint"
-                                        android:textSize="@dimen/x_medium_size" />
+                                        android:textSize="@dimen/x_medium_size"/>
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -202,7 +203,7 @@
                                         android:text="@string/start_time_head"
                                         android:textAllCaps="true"
                                         android:textColor="@color/colorHighLightBlue"
-                                        android:textSize="@dimen/text_medium" />
+                                        android:textSize="@dimen/text_medium"/>
 
                                     <LinearLayout
                                         android:id="@+id/ll_start_time_parent"
@@ -218,7 +219,7 @@
                                         <ImageView
                                             android:layout_width="@dimen/image_width"
                                             android:layout_height="@dimen/image_height"
-                                            android:src="@drawable/ic_time" />
+                                            android:src="@drawable/ic_time"/>
 
                                         <android.support.v7.widget.AppCompatEditText
                                             android:id="@+id/get_date"
@@ -232,7 +233,7 @@
                                             android:paddingLeft="@dimen/x_small_size"
                                             android:text="@={NewRideData.startTime}"
                                             android:textColorHint="@color/colorEditTextHint"
-                                            android:textSize="@dimen/text_extra_large" />
+                                            android:textSize="@dimen/text_extra_large"/>
 
                                     </LinearLayout>
                                 </LinearLayout>
@@ -253,7 +254,7 @@
                                         android:text="@string/end_time_head"
                                         android:textAllCaps="true"
                                         android:textColor="@color/colorHighLightBlue"
-                                        android:textSize="@dimen/text_medium" />
+                                        android:textSize="@dimen/text_medium"/>
 
                                     <LinearLayout
                                         android:id="@+id/ll_end_time_parent"
@@ -269,7 +270,7 @@
                                         <ImageView
                                             android:layout_width="@dimen/image_width"
                                             android:layout_height="@dimen/image_height"
-                                            android:src="@drawable/ic_time" />
+                                            android:src="@drawable/ic_time"/>
 
                                         <android.support.v7.widget.AppCompatEditText
                                             android:layout_width="match_parent"
@@ -282,7 +283,7 @@
                                             android:paddingLeft="@dimen/x_small_size"
                                             android:text="@={NewRideData.endTime}"
                                             android:textColorHint="@color/colorEditTextHint"
-                                            android:textSize="@dimen/text_extra_large" />
+                                            android:textSize="@dimen/text_extra_large"/>
 
                                     </LinearLayout>
                                 </LinearLayout>
@@ -306,7 +307,7 @@
                                     android:text="@string/gender_preference_head"
                                     android:textAllCaps="true"
                                     android:textColor="@color/colorHighLightBlue"
-                                    android:textSize="@dimen/text_medium" />
+                                    android:textSize="@dimen/text_medium"/>
 
                                 <RadioGroup
                                     android:layout_width="match_parent"
@@ -316,24 +317,37 @@
                                     <RadioButton
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:checked='@{NewRideData.gender.equals("Male")? true:false}'
                                         android:onClick='@{clickController.radioBtnOnClick(NewRideData,"Male")}'
                                         android:text="@string/radio_btn_male"
                                         android:textColor="@android:color/darker_gray"
                                         android:textSize="@dimen/x_medium_size"
-                                        android:checked='@{NewRideData.gender.equals("Male")? true:true}'
-                                        android:theme="@style/RadioButton" />
+                                        android:theme="@style/RadioButton"/>
 
                                     <RadioButton
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="@dimen/padding_size"
+                                        android:checked='@{NewRideData.gender.equals("Female")? true:false}'
                                         android:onClick='@{clickController.radioBtnOnClick(NewRideData,"Female")}'
                                         android:text="@string/radio_btn_female"
                                         android:textColor="@android:color/darker_gray"
                                         android:textSize="@dimen/x_medium_size"
-                                        android:checked='@{NewRideData.gender.equals("Female")? true:false}'
-                                        android:theme="@style/RadioButton" />
+                                        android:theme="@style/RadioButton"/>
+
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="@dimen/padding_size"
+                                        android:checked='@{NewRideData.gender.equals("Any")? true:false}'
+                                        android:onClick='@{clickController.radioBtnOnClick(NewRideData,"Any")}'
+                                        android:text="@string/radio_btn_any"
+                                        android:textColor="@android:color/darker_gray"
+                                        android:textSize="@dimen/x_medium_size"
+                                        android:theme="@style/RadioButton"/>
+
                                 </RadioGroup>
+
                             </LinearLayout>
 
                             <LinearLayout
@@ -355,7 +369,7 @@
                                     android:text="@string/days_preference_head"
                                     android:textAllCaps="true"
                                     android:textColor="@color/colorHighLightBlue"
-                                    android:textSize="@dimen/text_medium" />
+                                    android:textSize="@dimen/text_medium"/>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -372,7 +386,7 @@
                                         android:paddingRight="@dimen/x_small_size"
                                         android:text="@string/sun"
                                         android:textColor='@{NewRideData.daySelected.contains("0")? @android:color/white: @android:color/black}'
-                                        android:textSize="@dimen/small_size_sp" />
+                                        android:textSize="@dimen/small_size_sp"/>
 
                                     <Button
                                         android:layout_width="@dimen/zero_size"
@@ -385,7 +399,7 @@
                                         android:paddingRight="@dimen/x_small_size"
                                         android:text="@string/mon"
                                         android:textColor='@{NewRideData.daySelected.contains("1")? @android:color/white: @android:color/black}'
-                                        android:textSize="@dimen/small_size_sp" />
+                                        android:textSize="@dimen/small_size_sp"/>
 
                                     <Button
                                         android:layout_width="@dimen/zero_size"
@@ -398,7 +412,7 @@
                                         android:paddingRight="@dimen/x_small_size"
                                         android:text="@string/tue"
                                         android:textColor='@{NewRideData.daySelected.contains("2")? @android:color/white: @android:color/black}'
-                                        android:textSize="@dimen/small_size_sp" />
+                                        android:textSize="@dimen/small_size_sp"/>
 
                                     <Button
                                         android:layout_width="@dimen/zero_size"
@@ -411,7 +425,7 @@
                                         android:paddingRight="@dimen/x_small_size"
                                         android:text="@string/wed"
                                         android:textColor='@{NewRideData.daySelected.contains("3")? @android:color/white: @android:color/black}'
-                                        android:textSize="@dimen/small_size_sp" />
+                                        android:textSize="@dimen/small_size_sp"/>
 
                                     <Button
                                         android:layout_width="@dimen/zero_size"
@@ -425,7 +439,7 @@
                                         android:text="@string/thu"
 
                                         android:textColor='@{NewRideData.daySelected.contains("4")? @android:color/white: @android:color/black}'
-                                        android:textSize="@dimen/small_size_sp" />
+                                        android:textSize="@dimen/small_size_sp"/>
 
                                     <Button
                                         android:layout_width="@dimen/zero_size"
@@ -438,7 +452,7 @@
                                         android:paddingRight="@dimen/x_small_size"
                                         android:text="@string/fri"
                                         android:textColor='@{NewRideData.daySelected.contains("5")? @android:color/white: @android:color/black}'
-                                        android:textSize="@dimen/small_size_sp" />
+                                        android:textSize="@dimen/small_size_sp"/>
 
                                     <Button
                                         android:layout_width="@dimen/zero_size"
@@ -451,7 +465,7 @@
                                         android:paddingRight="@dimen/x_small_size"
                                         android:text="@string/sat"
                                         android:textColor='@{NewRideData.daySelected.contains("6")? @android:color/white: @android:color/black}'
-                                        android:textSize="@dimen/small_size_sp" />
+                                        android:textSize="@dimen/small_size_sp"/>
                                 </LinearLayout>
                             </LinearLayout>
 
@@ -471,7 +485,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center|right"
                                     android:text="@string/seat_head"
-                                    android:textSize="@dimen/x_medium_size" />
+                                    android:textSize="@dimen/x_medium_size"/>
 
                                 <android.support.v7.widget.AppCompatSpinner
                                     android:id="@+id/sp_seats"
@@ -480,7 +494,7 @@
                                     android:layout_marginLeft="@dimen/small_size"
                                     android:layout_toRightOf="@+id/tv_seats"
                                     android:background="@drawable/ic_drop_down_background"
-                                    android:spinnerMode="dropdown" />
+                                    android:spinnerMode="dropdown"/>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -493,14 +507,14 @@
                                         android:layout_height="match_parent"
                                         android:gravity="center_vertical"
                                         android:text="@string/is_every_week_head"
-                                        android:textSize="@dimen/x_medium_size" />
+                                        android:textSize="@dimen/x_medium_size"/>
 
                                     <android.support.v7.widget.AppCompatCheckBox
                                         android:id="@+id/every_week"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:buttonTint="@color/colorPrimary"
-                                        android:onClick='@{clickController.cbBtnOnClick(NewRideData)}' />
+                                        android:onClick='@{clickController.cbBtnOnClick(NewRideData)}'/>
                                 </LinearLayout>
                             </LinearLayout>
 
@@ -521,7 +535,7 @@
                                     android:text="@string/cost_head"
                                     android:textAllCaps="true"
                                     android:textColor="@color/colorHighLightBlue"
-                                    android:textSize="@dimen/text_medium" />
+                                    android:textSize="@dimen/text_medium"/>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -542,7 +556,7 @@
                                             android:layout_weight="1"
                                             android:buttonTint="@color/colorPrimary"
                                             android:onClick='@{clickController.radioCostBtnOnClick(NewRideData,"Free")}'
-                                            android:text="@string/radio_btn_free" />
+                                            android:text="@string/radio_btn_free"/>
 
                                         <RadioButton
                                             android:id="@+id/rd_cost"
@@ -551,7 +565,7 @@
                                             android:layout_weight="1"
                                             android:buttonTint="@color/colorPrimary"
                                             android:onClick='@{clickController.radioCostBtnOnClick(NewRideData,"Cost")}'
-                                            android:text="@string/radio_btn_cost" />
+                                            android:text="@string/radio_btn_cost"/>
 
                                         <LinearLayout
                                             android:id="@+id/rd_cost_box"
@@ -567,7 +581,7 @@
                                                 android:padding="@dimen/x_small_size"
                                                 android:text="@string/rupees_sign"
                                                 android:textAllCaps="true"
-                                                android:textSize="@dimen/rupees_text_size" />
+                                                android:textSize="@dimen/rupees_text_size"/>
 
                                             <android.support.v7.widget.AppCompatEditText
                                                 android:layout_width="wrap_content"
@@ -583,7 +597,7 @@
                                                 android:paddingTop="@dimen/x_small_size"
                                                 android:text="@={NewRideData.cost}"
                                                 android:textColorHint="@color/colorEditTextHint"
-                                                android:textSize="@dimen/price_text_size" />
+                                                android:textSize="@dimen/price_text_size"/>
                                         </LinearLayout>
 
                                     </RadioGroup>
@@ -605,7 +619,7 @@
                                 android:onClick="@{clickController.btnAddNewRideOnClick(NewRideData)}"
                                 android:text="@string/add_ride_txt"
                                 android:textColor="@android:color/white"
-                                android:textSize="@dimen/text_extra_large" />
+                                android:textSize="@dimen/text_extra_large"/>
                         </RelativeLayout>
                     </android.support.v7.widget.CardView>
                 </LinearLayout>
