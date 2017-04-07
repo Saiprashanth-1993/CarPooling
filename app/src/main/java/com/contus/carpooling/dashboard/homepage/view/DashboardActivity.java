@@ -79,7 +79,6 @@ public class DashboardActivity extends AppCompatActivity
 
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
         toggle.setDrawerIndicatorEnabled(false);
         toggle.setHomeAsUpIndicator(R.drawable.ic_menu_hamburger);
 
@@ -96,7 +95,11 @@ public class DashboardActivity extends AppCompatActivity
                 }
             }
         });
-        displaySelectedScreen(R.id.nav_home);
+
+        /**
+         * Select the first menu from navigation view by default
+         */
+        onNavigationItemSelected(activityDashboardBinding.navigationView.getMenu().getItem(0));
     }
 
     @Override
@@ -128,6 +131,7 @@ public class DashboardActivity extends AppCompatActivity
         /**
          *Handle navigation view item clicks here
          */
+        item.setChecked(true);
         displaySelectedScreen(item.getItemId());
         return true;
     }
@@ -160,7 +164,7 @@ public class DashboardActivity extends AppCompatActivity
             logoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
             /**
-             * clear the logged in shared preference
+             * Clear the logged in shared preference
              */
             SharedDataUtils.clearPreferences();
 
