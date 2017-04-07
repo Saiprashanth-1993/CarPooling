@@ -190,12 +190,14 @@
                                     android:id="@+id/tv_addr"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="@dimen/small_size"
+                                    android:layout_marginLeft="10dp"
+                                    android:focusable="false"
+                                    android:onClick="@{ViewController.getLocationOnClick(2)}"
                                     android:layout_toRightOf="@+id/iv_addr_icon"
                                     android:background="@android:drawable/screen_background_light_transparent"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
                                     android:text="@={UserProfile.userAddress}"
-                                    android:textSize="@dimen/x_medium_size" />
+                                    android:textSize="14dp" />
                             </RelativeLayout>
 
                             <RelativeLayout
@@ -214,6 +216,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="@dimen/small_size"
+                                    android:focusable="false"
+                                    android:onClick="@{ViewController.getLocationOnClick(3)}"
                                     android:layout_toRightOf="@+id/iv_loc_icon"
                                     android:background="@android:color/transparent"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
@@ -255,23 +259,27 @@
 
                                 <android.support.v7.widget.AppCompatTextView
                                     android:id="@+id/tv_vehicle_type_txt"
-                                    android:layout_width="@dimen/img_size"
+                                    android:layout_width="100dp"
                                     android:layout_height="wrap_content"
                                     android:maxLines="1"
-                                    android:text="@string/vehicle_des"
+                                    android:text="Vehicle Type"
                                     android:textColor="@android:color/background_dark"
-                                    android:textSize="@dimen/x_medium_size" />
-
-                                <android.support.v7.widget.AppCompatSpinner
+                                    android:textSize="14sp" />
+                                <android.support.v7.widget.AppCompatEditText
                                     android:id="@+id/tv_vehicle_type_val"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="@dimen/profile_text_left"
+                                    android:enabled="@{UserProfile.isToEditOrSave? true: false}"
+                                    android:layout_marginLeft="25dp"
                                     android:layout_toRightOf="@+id/tv_vehicle_type_txt"
                                     android:background="@android:drawable/screen_background_light_transparent"
-                                    android:enabled="@{UserProfile.isToEditOrSave? true: false}"
+                                    android:ellipsize="end"
+                                    android:focusable="false"
+                                    android:text="@{UserProfile.userVehicleType}"
+                                    android:onClick="@{ViewController.getVehicleList(UserProfile)}"
+                                    android:maxLines="1"
                                     android:singleLine="true"
-                                    android:textSize="@dimen/x_medium_size" />
+                                    android:textSize="14sp" />
                             </RelativeLayout>
 
                             <RelativeLayout
