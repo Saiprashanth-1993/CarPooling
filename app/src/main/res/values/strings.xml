@@ -218,6 +218,7 @@
 
     <!--User Registration-->
     <string name="reg_header">User Registration</string>
+    <string name="delay">DELAY</string>
 
 </resources>
 

@@ -31,7 +31,7 @@ public class UserRegistrationInfo extends BaseObservable {
     /**
      * Name of the user.
      */
-    @SerializedName(Constants.USER_NAME)
+    @SerializedName(Constants.Register.USER_NAME)
     private String userName;
 
     /**

@@ -54,7 +54,7 @@ public class CommonUtils {
         } else {
             showNoIternet(context);
             return false;
-        }
+         }
     }
 
 

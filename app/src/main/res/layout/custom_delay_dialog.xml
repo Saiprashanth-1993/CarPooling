@@ -20,7 +20,7 @@
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:padding="10dp"
-            android:text="DELAY"
+            android:text="@string/delay"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
 

@@ -302,6 +302,11 @@ public class Constants {
     public static final class Register {
 
         /**
+         * Constant value for Registration name param
+         */
+        public static final String USER_NAME = "name";
+
+        /**
          * Get the USER_DETAILS response from API after register the user details
          */
         public static final String USER_DETAILS = "UserDetails";
