@@ -12,6 +12,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -127,42 +128,27 @@ public class NewRideController {
         DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, final int dayOfMonth) {
-                date.set(dayOfMonth, monthOfYear, year);
+                date.set(year, monthOfYear, dayOfMonth);
                 linuxTime = date.getTimeInMillis();
                 dateAndTime(ride, currentDate);
+
                 if (ride.getStartTime() != null) {
                     linuxTime = convertToLong(ride.getStartTime());
                 }
 
-                dateAndTime = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+                dateAndTime = year + "/" + (monthOfYear + 1) + "/" + dayOfMonth;
             }
-        }, currentDate.get(Calendar.DATE), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.YEAR));
+        }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE));
 
         if (dateAndTimeMode.equals(context.getString(R.string.start_time))) {
             datePickerDialog.getDatePicker().setMinDate(Calendar.getInstance().getTime().getTime());
 
         } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
-            datePickerDialog.getDatePicker().setMinDate(linuxTime + 600000);
+            Log.i("TAG", "showDateTimePicker: end time" + ride.getStartTime());
+            datePickerDialog.getDatePicker().setMinDate(linuxTime);
         }
 
         datePickerDialog.show();
-    }
-
-
-    /**
-     * Date converted to long
-     *
-     * @param date Get the date
-     * @return long Start Date from the current system date
-     */
-    public long convertToLong(String date) {
-        try {
-            startDate = new SimpleDateFormat("yyyy-mm-dd HH:mm").parse(date);
-        } catch (ParseException e) {
-            Logger.logInfo("Exception", String.valueOf(e));
-        }
-        assert startDate != null;
-        return startDate.getTime();
     }
 
     /**
@@ -177,16 +163,29 @@ public class NewRideController {
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 date.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 date.set(Calendar.MINUTE, minute);
-                Logger.logInfo(TAG, "The choosen one " + date.getTime());
+                Log.v(TAG, "The choosen one " + date.getTime());
+
                 dateAndTime = dateAndTime + " " + hourOfDay + ":" + minute;
                 if (dateAndTimeMode.equals(context.getString(R.string.start_time))) {
                     ride.setStartTime(dateAndTime);
-                    Logger.logInfo("TAG", "onTimeSet: " + dateAndTime);
+                    Log.i("TAG", "onTimeSet: " + dateAndTime);
                 } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
                     ride.setEndTime(dateAndTime);
                 }
+
             }
         }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
+    }
+
+    private long convertToLong(String date) {
+        Date startDate = null;
+        try {
+            startDate = new SimpleDateFormat("yyyy/mm/dd HH:mm").parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        assert startDate != null;
+        return startDate.getTime();
     }
 
     /**
@@ -227,6 +226,39 @@ public class NewRideController {
                 }
             }
         };
+    }
+
+    /**
+     * Method  for validate the whether fields are empty or not
+     *
+     * @param context Context of an activity
+     * @return Validation Status value true when the given field is not empty.
+     */
+    private boolean isValid(Context context, Ride profileInfo) {
+        boolean validationStatus = true;
+        if (TextUtils.isEmpty(profileInfo.getFromRide())) {
+            validationStatus = false;
+            Logger.showShortMessage(context, R.string.from_ride_validation);
+        } else if (TextUtils.isEmpty(profileInfo.getToRide())) {
+            validationStatus = false;
+            Logger.showShortMessage(context, R.string.to_ride_validation);
+        } else if (TextUtils.isEmpty(profileInfo.getStartTime())) {
+            validationStatus = false;
+            Logger.showShortMessage(context, R.string.start_time_validation);
+        } else if (TextUtils.isEmpty(profileInfo.getEndTime())) {
+            validationStatus = false;
+            Logger.showShortMessage(context, R.string.to_time_validation);
+        } else if (TextUtils.isEmpty(profileInfo.getGender())) {
+            validationStatus = false;
+            Logger.showShortMessage(context, R.string.gender_validation);
+        } else if (TextUtils.isEmpty(profileInfo.getDaySelected())) {
+            validationStatus = false;
+            Logger.showShortMessage(context, R.string.select_day_validation);
+        } else if (profileInfo.getSeats().equals(Constants.EMPTY_SEAT)) {
+            validationStatus = false;
+            Logger.showShortMessage(context, R.string.seat_validation);
+        }
+        return validationStatus;
     }
 
     /**
@@ -335,39 +367,6 @@ public class NewRideController {
                 }
             }
         };
-    }
-
-    /**
-     * Method  for validate the whether fields are empty or not
-     *
-     * @param context Context of an activity
-     * @return Validation Status value true when the given field is not empty.
-     */
-    private boolean isValid(Context context, Ride profileInfo) {
-        boolean validationStatus = true;
-        if (TextUtils.isEmpty(profileInfo.getFromRide())) {
-            validationStatus = false;
-            Logger.showShortMessage(context, R.string.from_ride_validation);
-        } else if (TextUtils.isEmpty(profileInfo.getToRide())) {
-            validationStatus = false;
-            Logger.showShortMessage(context, R.string.to_ride_validation);
-        } else if (TextUtils.isEmpty(profileInfo.getStartTime())) {
-            validationStatus = false;
-            Logger.showShortMessage(context, R.string.start_time_validation);
-        } else if (TextUtils.isEmpty(profileInfo.getEndTime())) {
-            validationStatus = false;
-            Logger.showShortMessage(context, R.string.to_time_validation);
-        } else if (TextUtils.isEmpty(profileInfo.getGender())) {
-            validationStatus = false;
-            Logger.showShortMessage(context, R.string.gender_validation);
-        } else if (TextUtils.isEmpty(profileInfo.getDaySelected())) {
-            validationStatus = false;
-            Logger.showShortMessage(context, R.string.select_day_validation);
-        } else if (profileInfo.getSeats().equals(Constants.EMPTY_SEAT)) {
-            validationStatus = false;
-            Logger.showShortMessage(context, R.string.seat_validation);
-        }
-        return validationStatus;
     }
 
     /**
