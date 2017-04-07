@@ -1,8 +1,9 @@
-/**
- * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+/*
+ * @category CarPooling.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
+
 package com.contus.carpooling.utils;
 
 /**
@@ -12,13 +13,6 @@ package com.contus.carpooling.utils;
  * @version 1.0
  */
 public class Constants {
-
-    public static String regTokenPref = "";
-
-    /**
-     *
-     */
-    public static String regAccessTokenPref = "";
 
     /**
      * Constants API base URL
@@ -46,9 +40,13 @@ public class Constants {
     public static final String DEVICE_TOKEN_HEADER = "X-DEVICE-TOKEN";
 
     /**
+     *
+     */
+    public static final String TEXT_TYPE = "text/plain";
+
+    /**
      * Constants for DEVICE_TOKEN_HEADER_VALUE
      */
-
     public static final String DEVICE_TOKEN_HEADER_VALUE = "deviceToken";
 
     /**
@@ -57,12 +55,7 @@ public class Constants {
     public static final String ACCESS_TOKEN_HEADER_VALUE = "acesssToken";
 
     /**
-     *
-     */
-    public static final String TEXT_TYPE="text/plain";
-
-    /**
-     * The constats for Shared Preference
+     * The constants for Shared Preference
      */
     public static final String DEVICE_TOKEN_PREF = "deviceTokenPref";
 
@@ -82,52 +75,52 @@ public class Constants {
     public static final int REQUEST_CODE_USER_TO_LOCATION = 3;
 
     /**
-     * OnClick item selection type of image view.
+     * Constants for item selection type of image view.
      */
     public static final String CLICK_FRONT_IMAGE_VIEW = "front_image";
+
     /**
-     * OnClick item selection type of image view.
+     * Constants for item selection type of image view.
      */
     public static final String CLICK_BACK_IMAGE_VIEW = "back_image";
 
     /**
-     * Constant value set from response
+     * Constant for value set from response
      */
-    public static final String EMAIL_ID="email";
+    public static final String EMAIL_ID = "email";
 
     /**
-     * Camera intent request code.
+     * Constants for Camera intent request code.
      */
     public static final int CAMERA_SELECTION = 1000;
 
     /**
-     * Gallery intent request code.
+     * Constants for gallery intent request code.
      */
     public static final int GALLERY_SELECTION = 1001;
 
     /**
-     * Catch error message.
+     * Constants for catch error message.
      */
     public static final String EXCEPTION_MESSAGE = "exception";
 
     /**
-     * Check whether click on edit ride or create ride.
+     * Constants for check whether click on edit ride or create ride.
      */
     public static final String CLICK_RIDE = "intent_ride";
 
     /**
-     * Check whether click on edit ride or create ride.
+     * Constants for check whether click on edit ride or create ride.
      */
     public static final String NAME_NAVIGATION_DASHBOARD = "dashboard";
 
     /**
-     * Check whether click on edit ride or create ride.
+     * Constants for check whether click on edit ride or create ride.
      */
-
     public static final String NAME_NAVIGATION_MY_PROFILE = "my_profile";
 
     /**
-     * Check whether click on edit ride or create ride.
+     * Constants for check whether click on edit ride or create ride.
      */
     public static final String NAME_NAVIGATION_SETTINGS = "settings";
 
@@ -139,8 +132,7 @@ public class Constants {
     /**
      * The Constant isLogged, to check user loged or not
      */
-    public static final String IS_LOGGED ="islogged";
-
+    public static final String IS_LOGGED = "islogged";
 
     /**
      * The Constant used to check the internet.
@@ -190,12 +182,12 @@ public class Constants {
     /**
      * Constant USER_NAME value set from response
      */
-    public static final String USER_NAME = "name";
+    public static final String USER_NAME = "username";
 
     /**
      * Constant value set from response
      */
-    public static final String MOBILE="mobile";
+    public static final String MOBILE = "mobile";
 
     /***
      * Constant FROM_LOCATION value set from response
@@ -210,22 +202,20 @@ public class Constants {
     /***
      * Constant COMPANY_CATEGORY_ID value set from response
      */
-    public static final String COMPANY_CATEGORY_ID = "company_id";
+    public static final String COMPANY_CATEGORY_ID = "company_category_id";
 
     /**
      * Constant value for response
      */
-    public static final String RESPONSE="response";
-
-
-
-
+    public static final String RESPONSE = "response";
 
     /**
      * Instantiates a new constants.
      */
     private Constants() {
-        //Private constructor for prevent instance.
+        /**
+         * Private constructor for prevent instance.
+         */
     }
 
     /**
@@ -234,68 +224,67 @@ public class Constants {
     public static final class Login {
 
         /**
-         * Constant  ADMIN_USER for get the Login API response and store intp adminUser model
+         * Constant for get the Login API response and store into adminUser model
          */
-        public static final String ADMIN_USER = "adminusers";
-
+        public static final String LOGIN_USER = "adminusers";
 
         /**
-         * Constant LOGIN_ID value set from response
+         * Constant LOGIN_ID value set for response
          */
         public static final String LOGIN_ID = "id";
 
         /**
-         * Constant  USER_ROLE_ID value set from response
+         * Constant  USER_ROLE_ID value set for response
          */
         public static final String USER_ROLE_ID = "userRoleId";
 
         /**
-         * Constant LOGIN_NAME value set from response
+         * Constant LOGIN_NAME value set for response
          */
         public static final String LOGIN_NAME = "name";
 
-        /***
-         * Constant GENDER value set from response
+        /**
+         * Constant GENDER value set for response
          */
         public static final String GENDER = "gender";
 
-        /***
-         * Constant FROM_LOCATION value set from response
+        /**
+         * Constant FROM_LOCATION value set for response
          */
         public static final String FROM_LOCATION = "from_location";
 
-        /***
-         * Constant TO_LOCATION value set from response
+        /**
+         * Constant TO_LOCATION value set for response
          */
         public static final String TO_LOCATION = "to_location";
 
-        /***
-         * Constant AGE value set from response
+        /**
+         * Constant AGE value set for response
          */
         public static final String AGE = "age";
 
-        /***
-         * Constant PROFILE_IMAGE value set from response
+        /**
+         * Constant PROFILE_IMAGE value set for response
          */
         public static final String PROFILE_IMAGE = "profile_image";
 
-        /***
-         * Constant COMPANY_ID value set from response
+        /**
+         * Constant COMPANY_ID value set for response
          */
-        public transient static final String COMPANY_ID = "company_id";
+        public static final String COMPANY_ID = "company_id";
 
-
-        /***
-         * Constant COMPANY_LOCATION value set from response
+        /**
+         * Constant COMPANY_LOCATION value set for response
          */
         public static final String COMPANY_LOCATION = "company_location";
-        /***
-         * Constant DEVICE_TYPE value set from response
+
+        /**
+         * Constant DEVICE_TYPE value set for response
          */
         public static final String DEVICE_TYPE = "device_type";
 
-        /***
-         * Constant EMPLOYEE_ID value set from response
+        /**
+         * Constant EMPLOYEE_ID value set for response
          */
         public static final String EMPLOYEE_ID = "employee_id";
 
@@ -304,9 +293,7 @@ public class Constants {
          */
         public static final String USER_EMAIL_ID = "userEmailId";
 
-        /***
-
-         /**
+        /**
          * Instantiates a new constants.
          */
         private Login() {
@@ -320,11 +307,6 @@ public class Constants {
     public static final class Register {
 
         /**
-         * Constant value for Registration name param
-         */
-        public static final String USER_NAME = "name";
-
-        /**
          * Get the USER_DETAILS response from API after register the user details
          */
         public static final String USER_DETAILS = "UserDetails";
@@ -335,9 +317,14 @@ public class Constants {
         public static final String ID = "id";
 
         /**
-         * constant value USER_GENDER set from response
+         * Constant value USER_GENDER set for response
          */
         public static final String USER_GENDER = "gender";
+
+        /**
+         * Constant param name for username
+         */
+        public static final String USER_NAME = "name" ;
 
         /**
          * Instantiates a new constants.
@@ -353,37 +340,37 @@ public class Constants {
     public static final class CompanyList {
 
         /**
-         * Constant value for CompanyList the COMPANY_DATA set from response
+         * Constant value for CompanyList the COMPANY_DATA set for response
          */
         public static final String COMPANY_DATA = "data";
 
         /**
-         * Constant value for CompanyList the COMPANY set from response
+         * Constant value for CompanyList the COMPANY set for response
          */
         public static final String COMPANY = "company";
 
         /**
-         * Constant value for CompanyList the CATEGORY set from response
+         * Constant value for CompanyList the CATEGORY set for response
          */
         public static final String CATEGORY = "sector";
 
         /**
-         * Constant value for CompanyList the COMPANY_NAME_ID set from response
+         * Constant value for CompanyList the COMPANY_NAME_ID set for response
          */
         public static final String COMPANY_NAME_ID = "id";
 
         /**
-         * Constant value for CompanyList the COMPANY_NAME set from response
+         * Constant value for CompanyList the COMPANY_NAME set for response
          */
         public static final String COMPANY_NAME = "name";
 
         /**
-         * Constant value for CompanyList the CATEGORY_ID set from response
+         * Constant value for CompanyList the CATEGORY_ID set for response
          */
         public static final String CATEGORY_ID = "id";
 
         /**
-         * Constant value for CompanyList the CATEGORY_NAME set from response
+         * Constant value for CompanyList the CATEGORY_NAME set for response
          */
         public static final String CATEGORY_NAME = "name";
 
@@ -396,16 +383,16 @@ public class Constants {
     }
 
     /**
-     * Constatn for company company registration
+     * Constants for company company registration
      */
     public static final class CompanyRegistration {
         /**
-         * Constant value for CompanyRegistration the COMPANY_REGISTRATION_NAME
+         * Constant value for COMPANY_REGISTRATION_NAME
          */
         public static final String COMPANY_REGISTRATION_NAME = "name";
 
         /**
-         * Constant value for COMPANY_LOCATION the CATEGORY_NAME
+         * Constant value for the CATEGORY_NAME
          */
         public static final String COMPANY_LOCATION = "company_location";
 
@@ -439,35 +426,34 @@ public class Constants {
     public static final class EmployeeResponse {
 
         /**
-         * Constant value set for response
+         * Constant EMPLOYEE_DETAILS_RESPONSE set for response
          */
         public static final String EMPLOYEE_DETAILS_RESPONSE = "Employee Details";
 
         /**
-         * Constant value set for response
+         * Constant EMPLOYEE_ID set for response
          */
         public static final String EMPLOYEE_ID = "id";
 
         /**
-         * Constant value set for response
+         * Constant USER_ID set for response
          */
         public static final String USER_ID = "user_id";
 
         /**
-         * Constant value set for response
+         * Constant ADAHAR_CARD set for response
          */
         public static final String ADAHAR_CARD = "aadhar_card";
 
         /**
-         * Constant value set for response
+         * Constant PAN_CARD set for response
          */
         public static final String PAN_CARD = "pan_card";
 
         /**
-         * Constant value set for response
+         * Constant REMEMBER_TOKEN set for response
          */
         public static final String REMEMBER_TOKEN = "rememberToken";
-
 
         /**
          * Instantiates a new constants.
@@ -522,41 +508,41 @@ public class Constants {
          */
         public static final String TO_LONG = "res_longitude";
 
+        /**
+         * Constant value set for response
+         */
+        public static final String USERNAME = "name";
 
         /**
-         * Constant value set from response
+         * Constant value set for response
          */
-        public static final String USERNAME="name";
+        public static final String USER_EMAIL_ID = "email";
 
         /**
-         * Constant value set from response
+         * Constant value set for response
          */
-        public static final String USER_EMAIL_ID="email";
-        /**
-         * Constant value set from response
-         */
-        public static final String MOBILE="mobile";
+        public static final String MOBILE = "mobile";
 
 
         /***
-         * Constant value set from response
+         * Constant value set for response
          */
-        public static final String PROFILE_IMAGE="profile_image";
+        public static final String PROFILE_IMAGE = "profile_image";
 
         /***
-         * Constant value set from response
+         * Constant value set for response
          */
-        public static final String VEHICLE_TYPE="vehicle_type";
+        public static final String VEHICLE_TYPE = "vehicle_type";
 
         /***
-         * Constant value set from response
+         * Constant value set for response
          */
-        public static final String VEHICLE_NAME="vehicle_name";
+        public static final String VEHICLE_NAME = "vehicle_name";
 
         /***
-         * Constant value set from response
+         * Constant value set for response
          */
-        public static final String VEHICLE_NUMBER="vehicle_no";
+        public static final String VEHICLE_NUMBER = "vehicle_number";
 
         /**
          * Instantiates a new constants.
@@ -614,8 +600,8 @@ public class Constants {
         /**
          * Constant value set for response
          */
-
         public static final String VEHICLE_TYPE = "vehicle_type";
+
         /**
          * Constant value set for response
          */
@@ -708,48 +694,44 @@ public class Constants {
 
     /**
      * Constants for password change
-     *
      */
     public static final class ChangePassword {
 
         /**
          * Constant value for response
          */
-        public static final String RESPONSE="response";
+        public static final String RESPONSE = "response";
 
         /**
          * Constant value for status
          */
-        public static final String STATUS="status";
+        public static final String STATUS = "status";
 
         /**
          * Constant value for value
          */
-        public static final String VALUE="value";
+        public static final String VALUE = "value";
 
         /**
          * Constant value for message
          */
-        public static final String MESSAGE="message";
+        public static final String MESSAGE = "message";
 
         /**
          * Constants value for code
          */
-        public static final String CODE="code";
+        public static final String CODE = "code";
 
         /**
          * Constant value for new password
          */
-        public static final String INFO ="new_password";
+        public static final String INFO = "new_password";
 
         /**
          * Constant value for conform password
          */
-        public static final String CONFIRM_INFO ="confirm_password";
+        public static final String CONFIRM_INFO = "confirm_password";
 
-        /**
-         * Initialize the new constants
-         */
         private ChangePassword() {
             /**
              *  Private constructor for prevent instance.

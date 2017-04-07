@@ -137,13 +137,13 @@ public class UserProfileFragment extends Fragment {
         userProfileInfo.setUserTeamName(String.valueOf(userProfileDetail.get(0).getCompanyId()));
         userProfileInfo.setUserMail(userProfileDetail.get(0).getEmail());
         userProfileInfo.setUserPhone(userProfileDetail.get(0).getMobile());
-        userProfileInfo.setUserAddress(fromAddresses.get(0).getAddressLine(0) + ","
+       /* userProfileInfo.setUserAddress(fromAddresses.get(0).getAddressLine(0) + ","
                 + fromAddresses.get(0).getAddressLine(1)
                 + "," + fromAddresses.get(0).getAddressLine(2) + "," + fromAddresses.get(0).getAddressLine(3));
         userProfileInfo.setUserLocation(toAddresses.get(0).getAddressLine(0) + ","
                 + toAddresses.get(0).getAddressLine(1)
                 + "," + toAddresses.get(0).getAddressLine(2) + "," + toAddresses.get(0)
-                .getAddressLine(3));
+                .getAddressLine(3));*/
         userProfileInfo.setUserVehicleType(userProfileDetail.get(0).getVehicleType());
         Log.i("TAG", "set vehicle: " + userProfileDetail.get(0).getVehicleType());
         userProfileInfo.setUserVehicleName(userProfileDetail.get(0).getVehicleName());
