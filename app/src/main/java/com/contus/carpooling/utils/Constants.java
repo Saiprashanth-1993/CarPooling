@@ -52,7 +52,7 @@ public class Constants {
     /**
      * Constants for ACCESS_TOKEN_HEADER_VALUE
      */
-    public static final String ACCESS_TOKEN_HEADER_VALUE = "acesssToken";
+    public static final String ACCESS_TOKEN_HEADER_VALUE = "accessToken";
 
     /**
      * The constants for Shared Preference

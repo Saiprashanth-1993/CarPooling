@@ -123,7 +123,6 @@ public class UserRegistrationController {
         };
     }
 
-
     /**
      * Trigger the even listener for  radio button.
      *
@@ -149,7 +148,7 @@ public class UserRegistrationController {
      * @param fromLocation Validate the from location.
      * @param toLocation   validate the to location.
      * @param password     Validate the password.
-     * @param gender     Validate the gender.
+     * @param gender       Validate the gender.
      * @return validationStatus has been True when the given field is not empty.
      */
     public boolean isValid(String userName, String mobileNumber, String emailId,
@@ -231,7 +230,6 @@ public class UserRegistrationController {
         if (CommonUtils.checkResponse(result.getError(), result.getSuccess())) {
             if (CommonUtils.isSuccess(result.getSuccess())) {
                 CustomUtils.showToast(context, result.getMessage());
-                Logger.logInfo("device_token", result.getUserToken());
                 UserRegistrationInfo regResponse = result.registerAPIResponse;
 
                 /**
