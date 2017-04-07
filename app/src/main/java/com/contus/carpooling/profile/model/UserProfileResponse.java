@@ -1,9 +1,3 @@
-/*
- * @category CarPooling.
- * @copyright Copyright (C) 2017 Contus. All rights reserved.
- * @license http://www.apache.org/licenses/LICENSE-2.0
- */
-
 package com.contus.carpooling.profile.model;
 
 import com.contus.carpooling.login.model.ErrorResponse;
@@ -13,28 +7,35 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * This is the class for get the details about the user profile
- *
  * @author ContusTeam <developers@contus.in>
  * @version 1.0
  */
+
 public class UserProfileResponse extends ErrorResponse {
 
     /**
      * Response for userDetails
      */
-    @SerializedName("response")
+    @SerializedName("user")
     @Expose
     public List<UserProfileDetails> userDetails;
 
+    public List<UserProfileDetails> getUserDetails() {
+        return userDetails;
+    }
+
+    public void setUserDetails(List<UserProfileDetails> userDetails) {
+        this.userDetails = userDetails;
+    }
+
     /**
-     * Gets {@see #userDetails}.
-     *
-     * @return {@link #userDetails}
+     *list of the profile
+     * @return the profile
      */
     public List<UserProfileDetails> getResponse() {
         return userDetails;
     }
+
 }
 
 

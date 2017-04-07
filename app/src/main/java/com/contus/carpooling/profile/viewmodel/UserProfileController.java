@@ -1,137 +1,277 @@
-/*
- * @category CarPooling.
- * @copyright Copyright (C) 2017 Contus. All rights reserved.
+/**
+ * @category CarPooling
+ * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
-
 package com.contus.carpooling.profile.viewmodel;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Environment;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.profile.model.UserProfileInfo;
 import com.contus.carpooling.profile.model.UserProfileResponse;
 import com.contus.carpooling.profile.view.UserProfileFragment;
+import com.contus.carpooling.server.BusProvider;
+import com.contus.carpooling.server.RestCallback;
 import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.Logger;
-import com.esafirm.imagepicker.features.ImagePicker;
+import com.contus.carpooling.utils.SharedDataUtils;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
+import java.io.File;
 import java.util.HashMap;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.contus.carpooling.utils.Constants.*;
 
 /**
  * Controller of the UserProfileFragment class
- * XML view controller trigger all the even listener to do perform the action
+ * XML view controller
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
  */
 public class UserProfileController {
 
-    private static final int REQUEST_CODE_PICKER = 1001;
-
     Context context;
 
     UserProfileFragment userProfileFragment;
 
+    ProgressDialog progressDialog;
+
     /**
-     * Constructor of User Profile Controller which can invoke the method directly to activity
+     * Get the from latitude from shared preference
+     */
+    String fromLat;
+
+    /**
+     * Get the from longitude from shared preference
+     */
+    String fromLong;
+
+    /**
+     * Get the to latitude from shared preference
+     */
+    String  toLat;
+
+    /**
+     * Get the to longitude from shared preference
+     */
+    String  toLong;
+
+    /**
+     * Constructor of userPro
      *
-     * @param context             Context of an activity
-     * @param userProfileFragment Get the view of fragment
+     * @param context
+     * @param userProfileFragment
      */
     public UserProfileController(Context context, UserProfileFragment userProfileFragment) {
         this.userProfileFragment = userProfileFragment;
         this.context = context;
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Updating profile");
+        progressDialog.setCanceledOnTouchOutside(false);
+    }
+
+
+    /**
+     * OnClick listener to get the location from google place api.
+     *
+     * @param requestCode ApiRequest code of the google place api intent
+     * @return OnClickListener of the registration button.
+     */
+    public View.OnClickListener getLocationOnClick(final int requestCode) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+
+                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                            .build(userProfileFragment.getActivity());
+                    (userProfileFragment).startActivityForResult(intent, requestCode);
+
+                } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+                    Logger.logErrorThrowable(EXCEPTION_MESSAGE, e);
+                }
+            }
+        };
     }
 
     /**
-     * Trigger the event listener action for  profile edit button.
+     * OnClick listener of profile edit button.
      *
-     * @param userProfileInfo Get the model of user profile info
-     * @return View.OnClickListener OnClickListener of the profile edit click button
+     * @param userProfileInfo Used to edit the profile details.
+     * @return OnClickListener of the profile edit button.
      */
     public View.OnClickListener btnProfileEditClick(final UserProfileInfo userProfileInfo) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 enableOrDisableEditText(userProfileInfo);
-
             }
         };
     }
 
+
     /**
-     * Trigger the even listener to perform the action for set the profile image
+     * OnClick listener to get the vehicle list
      *
-     * @return View.OnClickListener of image profile click button
+     * @param userProfileInfo ApiRequest code of the google place api intent
+     * @return OnClickListener of the vehicle list button.
      */
-    public View.OnClickListener profileClick() {
+    public View.OnClickListener getVehicleList(final UserProfileInfo userProfileInfo) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vehicleList(view, userProfileInfo);
+            }
+        };
+    }
 
-                ImagePicker.create(userProfileFragment)
-                        .returnAfterFirst(true)
-                        .folderMode(true) // folder mode (false by default)
-                        .folderTitle("Folder") // folder selection title
-                        .imageTitle("Tap to select") // image selection title
-                        .single() // single mode
-                        .limit(1) // max images can be selected (99 by default)
-                        .showCamera(true) // show camera or not (true by default)
-                        .imageDirectory("Camera") // directory name for captured image  ("Camera" folder by default)
-                        .start(REQUEST_CODE_PICKER);
+    private void vehicleList(View view, final UserProfileInfo userProfileInfo) {
+
+        /*
+         * Get the country list from the model
+         */
+
+        final String[] vehicleList = {"2 wheeler", "4 wheeler" , "None"};
+
+        for (int i = 0; i < vehicleList.length; i++) {
+            /*String list = vehicleList[i];*/
+        }
+        Activity activity = (userProfileFragment.getActivity());
+
+        /*
+         * InputMethodManager used to disable the soft keyboard when the category is clicked
+         */
+        View visibleView = activity.getCurrentFocus();
+        if (visibleView != null) {
+            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(visibleView.getWindowToken(), 0);
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        View customTitleView = activity.getLayoutInflater().inflate(R.layout.vehicle_type_custom_dialogue, null);
+        builder.setCustomTitle(customTitleView);
+        builder.setItems(vehicleList, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                userProfileInfo.setUserVehicleType(vehicleList[item]);
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+
+    }
+
+    private void showFileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        userProfileFragment.startActivityForResult(Intent.createChooser(intent, "Select Picture"),
+                GALLERY_SELECTION);
+    }
+
+    /**
+     * user
+     *
+     * @return
+     */
+    public View.OnClickListener profileOnclick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                 ImagePicker.create(userProfileFragment)
+//                        .returnAfterFirst(true)
+//                        .folderMode(true) // folder mode (false by default)
+//                        .folderTitle("Folder") // folder selection title
+//                        .imageTitle("Tap to select") // image selection title
+//                        .single() // single mode
+//                        .limit(1) // max images can be selected (99 by default)
+//                        .showCamera(true) // show camera or not (true by default)
+//                            .imageDirectory("Camera") // directory name for captured image  ("Camera" folder by default)
+//                            .start(Constants.GALLERY_SELECTION);
+//                    }
+//            };
+                userProfileFragment.selectImage();
             }
         };
     }
 
     /**
-     * Check whether the edit button is clicked or not, when it true, the user can edit the profile details.
+     * Check whether the edit button is clicked or not.
+     * when it true, the user can edit the profile details.
      *
-     * @param profileInfo Get the values from the edit text.
+     * @param profileInfo values from the edit text.
      */
-    public void enableOrDisableEditText(UserProfileInfo profileInfo) {
+    private void enableOrDisableEditText(UserProfileInfo profileInfo) {
         if (profileInfo.isToEditOrSave()) {
-            profileInfo.setToEditOrSave(false);
+            if (isValid(profileInfo) && userProfileValid(profileInfo)) {
+                updateProfileRequest(profileInfo);
+                profileInfo.setToEditOrSave(false);
+            }
         } else {
             profileInfo.setToEditOrSave(true);
-            if (isValid(profileInfo)) {
-                updateProfileRequest(profileInfo);
-            }
         }
     }
 
-
     /**
-     * This method is used to send the response to update the profile
+     * this method is used to send the response to update the profile
      *
-     * @param getUserProfileValues Get the model of user profile info
+     * @param getUserProfileValues
      */
-    private void updateProfileRequest(UserProfileInfo getUserProfileValues) {
-        HashMap<String, String> params = new HashMap<>();
+    private void updateProfileRequest(final UserProfileInfo getUserProfileValues) {
+
+
+        HashMap<String , String> params = new HashMap<>();
+        fromLat = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LAT,"");
+        fromLong = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LONG,"");
+        toLat = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LAT,"");
+        toLong = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LONG,"");
+
+
+
+        /*
         params.put(Constants.UserProfile.USERNAME, getUserProfileValues.getUserName());
         params.put(Constants.UserProfile.USER_EMAIL_ID, getUserProfileValues.getUserMail());
-        params.put(Constants.COMPANY_CATEGORY_ID, getUserProfileValues.getUserTeamName());
+        params.put(Constants.Login.COMPANY_ID, getUserProfileValues.getUserTeamName());
         params.put(Constants.UserProfile.MOBILE, getUserProfileValues.getUserPhone());
-        params.put(Constants.FROM_LOCATION, getUserProfileValues.getUserLocation());
+        params.put(Constants.FROM_LOCATION, getUserProfileValues.getUserAddress());
         params.put(Constants.TO_LOCATION, getUserProfileValues.getUserLocation());
-        params.put(Constants.UserProfile.VEHICLE_TYPE, getUserProfileValues.getUserVehicleType());
-        params.put(Constants.UserProfile.VEHICLE_NAME, getUserProfileValues.getUserVehicleName());
         params.put(Constants.UserProfile.VEHICLE_NUMBER, getUserProfileValues.getUserVehicleNum());
-
-        new RestClient(context).getInstance().get().setProfile(params).enqueue(new Callback<UserProfileResponse>() {
+        params.put(Constants.UserProfile.VEHICLE_NAME, getUserProfileValues.getUserVehicleName());
+        params.put(Constants.UserProfile.VEHICLE_TYPE, getUserProfileValues.getUserVehicleType());
+        params.put(Constants.UserProfile.PROFILE_IMAGE, userProfileFragment.getStringImage());
+        BusProvider.getInstance().register(this);
+        new RestClient(context).getInstance().get().setProfile(params).enqueue(
+                new RestCallback<UserProfileResponse>() {
             @Override
             public void onResponse(Call<UserProfileResponse> call, Response<UserProfileResponse> response) {
                 if (response.isSuccessful()) {
+                    if (userProfileFragment.profileUpdateListener != null) {
+                        userProfileFragment.profileUpdateListener.onProfileUpdate();
+                    }
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                    //userProfileFragment.setUserProfile(userProfileDetail);
                 }
             }
 
@@ -139,61 +279,131 @@ public class UserProfileController {
             public void onFailure(Call<UserProfileResponse> call, Throwable t) {
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
+/*
+        fromLat= SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LAT,null);
+        fromLong=SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LONG,null);toLat=SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LAT,null);
+        toLong=SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LONG,null);*/
+
+        final Context ctx = context;
+        BusProvider.getInstance().register(this);
+        RequestBody name = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserName());
+        RequestBody userMail = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserMail());
+        RequestBody userID = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserTeamName());
+        RequestBody userPhone = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserPhone());
+        RequestBody fromLati = RequestBody.create(MediaType.parse(Constants.TEXT_TYPE), fromLat);
+        RequestBody fromLongi = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE),fromLong);
+        RequestBody toLati = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE),toLat);
+        RequestBody toLongi = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE),toLong);
+        RequestBody vehicleNum = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserVehicleNum());
+        RequestBody vehicleName = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserVehicleName());
+        RequestBody vehicleType = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserVehicleType());
+        /*params.put(Constants.UserProfile.VEHICLE_TYPE,getUserProfileValues.getUserVehicleType());
+        params.put(Constants.UserProfile.VEHICLE_NUMBER,getUserProfileValues.getUserVehicleNum());
+        params.put(UserProfile.VEHICLE_NAME,getUserProfileValues.getUserVehicleName());*/
+
+        File file = getUserProfileValues.getProfileImage();
+
+        MultipartBody.Part part;
+        if (file!=null && file.getAbsolutePath() != null) {
+            RequestBody requestBody = RequestBody.create(MediaType.parse("image*//*"), file);
+            part = MultipartBody.Part.createFormData(Login.PROFILE_IMAGE, file.getName(), requestBody);
+        } else {
+            part = null;
+        }
+        Log.i("TAG", "updateProfileRequest: " + part);
+        progressDialog.show();
+
+        new RestClient(ctx).getInstance().get().updateProfileDetails(part, name,
+                userMail, userID, userPhone, fromLati, fromLongi, toLati, toLongi, vehicleNum,vehicleName,vehicleType )
+                .enqueue(new RestCallback<UserProfileResponse>() {
+                    @Override
+                    public void onResponse(Call<UserProfileResponse> call, Response<UserProfileResponse> response) {
+                        BusProvider.getInstance().unregister(this);
+                        Log.i("TAG", "onResponse: " + response.message());
+                        userProfileFragment.profileUpdateListener.onProfileUpdate();
+                        progressDialog.dismiss();
+                        Toast.makeText(ctx, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserProfileResponse> call, Throwable t) {
+                        progressDialog.dismiss();
+                        Toast.makeText(ctx, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
+
+    public File getAlbumStorageDir(String albumName) {
+        // Get the directory for the user's public pictures directory.
+        File file = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES), albumName);
+        if (!file.mkdirs()) {
+            Log.e("TAG", "Directory not created");
+        }
+        Log.e("TAG", file.getAbsolutePath());
+        return file;
+    }
+
+    /* Checks if external storage is available for read and write */
+    public boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
+    }
+
 
     /**
      * Method used to validate the edit text fields.
      *
-     * @return validationStatus have been true when the given field is not empty.
+     * @return true when the given field is not empty.
      */
     private boolean isValid(UserProfileInfo profileInfo) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(profileInfo.getUserName())) {
             validationStatus = false;
-            Logger.showShortMessage(context, R.string.user_name);
-        } else if (TextUtils.isEmpty(profileInfo.getProfileImage())) {
+            Toast.makeText(context, "Please enter user name", Toast.LENGTH_SHORT).show();
+        }/* else if (profileInfo.getProfileImage() ==null) {
             validationStatus = false;
-            Logger.showShortMessage(context, R.string.profile_image);
-        } else if (TextUtils.isEmpty(profileInfo.getUserTeamName())) {
+            Toast.makeText(context, "Please choose profile picture", Toast.LENGTH_SHORT).show();
+        } */ else if (TextUtils.isEmpty(profileInfo.getUserTeamName())) {
             validationStatus = false;
-            Logger.showShortMessage(context, R.string.team_name);
+            Toast.makeText(context, "Please enter user team name", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(profileInfo.getUserMail())) {
             validationStatus = false;
-            Logger.showShortMessage(context, R.string.user_mail);
-        } else {
-            userProfileValid(profileInfo);
+            Toast.makeText(context, "Please enter user mail", Toast.LENGTH_SHORT).show();
         }
         return validationStatus;
     }
 
     /**
-     * Continue the validation check whether field are empty or not
-     *
-     * @param userProfileInfo Get the the model of user profile info
-     * @return validationStatus have been true when the given field is not empty.
+     * @param userProfileInfo
+     * @return
      */
-    public boolean userProfileValid(UserProfileInfo userProfileInfo) {
+    private boolean userProfileValid(UserProfileInfo userProfileInfo) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(userProfileInfo.getUserPhone())) {
             validationStatus = false;
-            Logger.showShortMessage(context, R.string.user_phone);
+            Toast.makeText(context, "Please enter user phone number", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(userProfileInfo.getUserAddress())) {
             validationStatus = false;
-            Logger.showShortMessage(context, R.string.user_address);
+            Toast.makeText(context, "Please enter user address", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(userProfileInfo.getUserLocation())) {
             validationStatus = false;
-            Logger.showShortMessage(context, R.string.user_location);
+            Toast.makeText(context, "Please enter user location", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(userProfileInfo.getUserVehicleType())) {
             validationStatus = false;
-            Logger.showShortMessage(context, R.string.user_vehicle_type);
+            Toast.makeText(context, "Please enter user vehicle type", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(userProfileInfo.getUserVehicleName())) {
             validationStatus = false;
-            Logger.showShortMessage(context, R.string.user_vehicle_name);
+            Toast.makeText(context, "Please enter user vehicle name", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(userProfileInfo.getUserVehicleNum())) {
             validationStatus = false;
-            Logger.showShortMessage(context, R.string.user_vehicle_number);
+            Toast.makeText(context, "Please enter user vehicle number", Toast.LENGTH_SHORT).show();
         }
+
         return validationStatus;
     }
 }

@@ -16,10 +16,12 @@ import com.contus.carpooling.employeedetails.model.EmployeeDetailsResponse;
 import com.contus.carpooling.login.model.UserLoginResponse;
 import com.contus.carpooling.profile.model.UserProfileResponse;
 import com.contus.carpooling.userregistration.model.UserRegistrationResponse;
+import com.contus.carpooling.utils.Constants;
 
 import java.util.Map;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -171,4 +173,14 @@ public interface API {
      */
     @GET("deleteride/{ride_id}")
     Call<CreateRideResponse> deleteRide(@Path("ride_id") String customerId, @Body Map<String, String> parameters);
+
+    @Multipart
+    @POST("updateprofile")
+    Call<UserProfileResponse> updateProfileDetails(@Part MultipartBody.Part image, @Part(Constants.UserProfile.USERNAME)
+            RequestBody name, @Part(Constants.UserProfile.USER_EMAIL_ID) RequestBody email, @Part(Constants.Login.COMPANY_ID) RequestBody companyId,
+                                                   @Part(Constants.UserProfile.MOBILE) RequestBody mobile, @Part(Constants.UserProfile.FROM_LAT) RequestBody fromLat,
+                                                   @Part(Constants.UserProfile.FROM_LONG) RequestBody fromLong, @Part(Constants.UserProfile.TO_LAT) RequestBody toLat,
+                                                   @Part(Constants.UserProfile.TO_LONG) RequestBody toLong, @Part(Constants.UserProfile.VEHICLE_NUMBER) RequestBody vehicleNum,
+                                                   @Part(Constants.UserProfile.VEHICLE_NAME) RequestBody vehicleName, @Part(Constants.UserProfile.VEHICLE_TYPE) RequestBody vehicleType);
+
 }

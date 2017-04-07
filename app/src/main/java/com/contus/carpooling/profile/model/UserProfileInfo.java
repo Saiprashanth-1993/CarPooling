@@ -1,20 +1,22 @@
-/*
- * @category CarPooling.
- * @copyright Copyright (C) 2017 Contus. All rights reserved.
+/**
+ * @category CarPooling
+ * @copyright Copyright (C) 2016 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
-
 package com.contus.carpooling.profile.model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.contus.carpooling.BR;
+import com.contus.carpooling.utils.Constants;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.File;
+
 /**
- * Model class is for get the details of user profile
+ * Model class is used to get and store the user profile details.
  *
  * @author Contus Team <developers@contus.in>
  * @version 1.0
@@ -22,29 +24,60 @@ import com.google.gson.annotations.SerializedName;
 public class UserProfileInfo extends BaseObservable {
 
     /**
-     * Profile Image of the user.
+     * Username of the user.
      */
     @SerializedName("profile_image")
     @Expose
-    private String profileImage;
+    private File profileImage;
+
+    /**
+     *
+     */
+    @SerializedName("org_lattitude")
+    @Expose
+    private String fromLat;
+
+    /**
+     *
+     */
+    @SerializedName("org_longitude")
+    @Expose
+    private String fromLong;
+
+    /**
+     *
+     */
+    @SerializedName("res_lattitude")
+    @Expose
+    private String toLat;
+
+    /**
+     *
+     */
+    @SerializedName("res_longitude")
+    @Expose
+    private String toLong;
+
 
     /**
      * Username of the user.
      */
-    @SerializedName("username")
+    @SerializedName("name")
     @Expose
     private String userName;
 
     /**
      * Team name of the user.
      */
-    @SerializedName("company_category_id")
+    @SerializedName("company_id")
     @Expose
     private String userTeamName;
 
     /**
      * Mail id of the user.
      */
+    @SerializedName("email")
+    @Expose
     private String userMail;
 
     /**
@@ -82,7 +115,7 @@ public class UserProfileInfo extends BaseObservable {
     @Expose
     private String userVehicleName;
 
-    /**
+    /**getUserVehicleNum
      * Vehicle number of the user.
      */
     @SerializedName("vehicle_no")
@@ -93,6 +126,7 @@ public class UserProfileInfo extends BaseObservable {
      * Check to edit or save the user details.
      */
     private boolean isToEditOrSave;
+    private String file;
 
     /**
      * Gets {@see #userName}.
@@ -130,17 +164,12 @@ public class UserProfileInfo extends BaseObservable {
         notifyPropertyChanged(BR.userTeamName);
     }
 
-    /**
-     * Gets {@see #profileImage}.
-     *
-     * @return {@link #profileImage}
-     */
     @Bindable
-    public String getProfileImage() {
+    public File getProfileImage() {
         return profileImage;
     }
 
-    public void setProfileImage(String profileImage) {
+    public void setProfileImage(File profileImage) {
         this.profileImage = profileImage;
         notifyPropertyChanged(BR.profileImage);
     }
@@ -197,6 +226,7 @@ public class UserProfileInfo extends BaseObservable {
     public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
         notifyPropertyChanged(BR.userPhone);
+
     }
 
     /**
