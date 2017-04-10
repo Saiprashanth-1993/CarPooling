@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
@@ -197,7 +198,7 @@ public class DashboardActivity extends AppCompatActivity
         if (activityDashboardBinding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             activityDashboardBinding.drawerLayout.closeDrawer(GravityCompat.START);
         } else if (getFragmentName().equals(Constants.NAME_NAVIGATION_DASHBOARD)) {
-            finish();
+            ActivityCompat.finishAffinity(this);
         } else {
             // Let super handle the back press
             super.onBackPressed();
