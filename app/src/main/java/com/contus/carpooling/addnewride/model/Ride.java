@@ -134,6 +134,8 @@ public class Ride extends BaseObservable implements Parcelable {
     @Expose
     private List<DaysPreference> ridePreference = null;
 
+    private boolean afterClick = false;
+
     /**
      * Ride constructor for directly invoke the method to  activity
      */
@@ -160,6 +162,16 @@ public class Ride extends BaseObservable implements Parcelable {
         this.everyWeeks = in.readString();
         this.cost = in.readString();
         this.type = in.readString();
+    }
+
+    @Bindable
+    public boolean isAfterClick() {
+        return afterClick;
+    }
+
+    public void setAfterClick(boolean afterClick) {
+        this.afterClick = afterClick;
+        notifyPropertyChanged(BR.afterClick);
     }
 
     /**

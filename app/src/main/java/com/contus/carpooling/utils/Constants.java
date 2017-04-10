@@ -24,6 +24,7 @@ public class Constants {
      */
     public static final String DEVICE_TOKEN = "device_token";
 
+
     /**
      * Header type need to use that
      */
