@@ -317,7 +317,7 @@ public class UserProfileController {
                     @Override
                     public void onFailure(Call<UserProfileResponse> call, Throwable t) {
                         progressDialog.dismiss();
-                        Toast.makeText(ctx, t.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
                     }
                 });*/
     }

@@ -11,6 +11,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,8 @@ import com.contus.carpooling.addnewride.model.CreateRideResponse;
 import com.contus.carpooling.addnewride.model.Ride;
 import com.contus.carpooling.addnewride.view.RegisterNewRidesActivity;
 import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
+import com.contus.carpooling.databinding.ActivityAddNewRideBinding;
+import com.contus.carpooling.profile.model.UserProfileInfo;
 import com.contus.carpooling.server.BusProvider;
 import com.contus.carpooling.server.RestCallback;
 import com.contus.carpooling.server.RestClient;
@@ -87,6 +90,8 @@ public class NewRideController {
      */
     String enable = "1";
 
+    boolean isclick=false;
+
     /**
      * Selected a day from the week list.
      */
@@ -97,6 +102,8 @@ public class NewRideController {
      */
     private String dateAndTimeMode;
 
+
+    ActivityAddNewRideBinding addNewRideBinding;
     /**
      * Trigger the event click listener to do perform the action
      *
@@ -109,6 +116,7 @@ public class NewRideController {
         return new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                isclick=true;
                 dateAndTimeMode = clickMode;
                 context = view.getContext();
                 showDateTimePicker(newRide);
@@ -116,36 +124,70 @@ public class NewRideController {
         };
     }
 
+    public View.OnClickListener btnEndTimeDialog(final String clickMode, final Ride newRide) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                if (isclick==true) {
+                    dateAndTimeMode = clickMode;
+                    context = view.getContext();
+                    showDateTimePicker(newRide);
+                }
+            }
+        };
+    }
+
+
+
+    private void enableOrDisableEditText(Ride ride) {
+        if (ride.isAfterClick()) {
+                ride.setAfterClick(true);
+            }
+        }
+
     /**
      * Display the time and date by using  date and time picker
      *
      * @param ride Get the details of ride model
      */
     public void showDateTimePicker(final Ride ride) {
+
         final Calendar currentDate = Calendar.getInstance();
+        final SimpleDateFormat simpledateformat = new SimpleDateFormat("EEE");
         date = Calendar.getInstance();
+        final int dayOfWeek = date.get(Calendar.DAY_OF_WEEK);
+        int style;
+        if (Build.VERSION.SDK_INT >= 21) {
+            style = R.style.DialogTheme;
+        } else {
+            style = R.style.DialogThemePreLollipop;
+        }
+        DatePickerDialog datePickerDialog = new DatePickerDialog(context, style, new DatePickerDialog
+                        .OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, final int dayOfMonth) {
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, final int dayOfMonth) {
-                date.set(year, monthOfYear, dayOfMonth);
-                linuxTime = date.getTimeInMillis();
-                dateAndTime(ride, currentDate);
+                        String dayOfWeeks = simpledateformat.format(dayOfWeek);
+                        date.set(year, monthOfYear, dayOfMonth);
+                        linuxTime = date.getTimeInMillis();
+                        dateAndTime(ride, currentDate);
 
-                if (ride.getStartTime() != null) {
-                    linuxTime = convertToLong(ride.getStartTime());
-                }
+                        if (ride.getStartTime() != null) {
+                            linuxTime = convertToLong(ride.getStartTime());
+                        }
 
-                dateAndTime = year + "/" + (monthOfYear + 1) + "/" + dayOfMonth;
-            }
-        }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE));
+                        dateAndTime =dayOfWeeks+"-"+dayOfMonth + "/" + (monthOfYear+1)+"/"+year;
+                        //dateAndTime = year + "/" + (monthOfYear + 1) + "/" + dayOfMonth;
+                    }
+                }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DAY_OF_MONTH));
 
         if (dateAndTimeMode.equals(context.getString(R.string.start_time))) {
             datePickerDialog.getDatePicker().setMinDate(Calendar.getInstance().getTime().getTime());
 
         } else if (dateAndTimeMode.equals(context.getString(R.string.end_time))) {
             Log.i("TAG", "showDateTimePicker: end time" + ride.getStartTime());
-            datePickerDialog.getDatePicker().setMinDate(linuxTime);
+            datePickerDialog.getDatePicker().setMinDate(linuxTime+100000);
+            datePickerDialog.getDatePicker().setMaxDate(linuxTime+900000000);
         }
 
         datePickerDialog.show();
@@ -158,7 +200,13 @@ public class NewRideController {
      * @param currentDate Get the current date
      */
     public void dateAndTime(final Ride ride, Calendar currentDate) {
-        new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
+        int style;
+        if (Build.VERSION.SDK_INT >= 21) {
+            style = R.style.DialogTheme;
+        } else {
+            style = R.style.DialogThemePreLollipop;
+        }
+        new TimePickerDialog(context,style, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 date.set(Calendar.HOUR_OF_DAY, hourOfDay);
@@ -180,7 +228,7 @@ public class NewRideController {
     private long convertToLong(String date) {
         Date startDate = null;
         try {
-            startDate = new SimpleDateFormat("yyyy/mm/dd HH:mm").parse(date);
+            startDate = new SimpleDateFormat("EEE").parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }

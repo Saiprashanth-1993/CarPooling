@@ -44,6 +44,18 @@
         </item>
     </style>
 
+    <style name="DialogThemePreLollipop" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="DialogBuilderTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">@color/ef_grey</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/ef_colorAccent</item>
+    </style>
+
     <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/colorPrimaryDark</item>
         <item name="colorControlNormal">@color/colorPrimaryDark</item>

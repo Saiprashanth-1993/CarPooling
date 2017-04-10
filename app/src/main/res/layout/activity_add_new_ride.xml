@@ -228,12 +228,12 @@
                                             android:background="@android:color/transparent"
                                             android:focusable="false"
                                             android:hint="@string/start_time_hint"
-                                            android:maxLines="1"
+                                            android:maxLines="2"
                                             android:onClick='@{clickController.btnTimeDialog("start_time",NewRideData)}'
                                             android:paddingLeft="@dimen/x_small_size"
                                             android:text="@={NewRideData.startTime}"
                                             android:textColorHint="@color/colorEditTextHint"
-                                            android:textSize="@dimen/text_extra_large"/>
+                                            android:textSize="@dimen/text_large"/>
 
                                     </LinearLayout>
                                 </LinearLayout>
@@ -278,12 +278,12 @@
                                             android:background="@android:color/transparent"
                                             android:focusable="false"
                                             android:hint="@string/end_time_hint"
-                                            android:maxLines="1"
-                                            android:onClick='@{clickController.btnTimeDialog("end_time",NewRideData)}'
+                                            android:maxLines="2"
+                                            android:onClick='@{clickController.btnEndTimeDialog("end_time",NewRideData)}'
                                             android:paddingLeft="@dimen/x_small_size"
                                             android:text="@={NewRideData.endTime}"
                                             android:textColorHint="@color/colorEditTextHint"
-                                            android:textSize="@dimen/text_extra_large"/>
+                                            android:textSize="@dimen/text_large"/>
 
                                     </LinearLayout>
                                 </LinearLayout>
