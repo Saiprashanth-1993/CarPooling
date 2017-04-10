@@ -542,7 +542,7 @@ public class Constants {
         /***
          * Constant value set for response
          */
-        public static final String VEHICLE_NUMBER = "vehicle_number";
+        public static final String VEHICLE_NUMBER = "vehicle_no";
 
         /**
          * Instantiates a new constants.

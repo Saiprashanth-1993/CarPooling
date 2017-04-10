@@ -80,7 +80,7 @@ public class UserRegistrationController {
         /**
          * Store the device token and access token empty value to shared preference
          */
-        SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE, "");
+        SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE, "1111");
         SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE, "");
 
         /**

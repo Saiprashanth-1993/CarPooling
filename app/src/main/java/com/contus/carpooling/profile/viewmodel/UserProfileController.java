@@ -88,7 +88,7 @@ public class UserProfileController {
         this.userProfileFragment = userProfileFragment;
         this.context = context;
         progressDialog = new ProgressDialog(context);
-        progressDialog.setMessage("Updating profile");
+        progressDialog.setMessage("Updating profile . . .");
         progressDialog.setCanceledOnTouchOutside(false);
     }
 
@@ -228,52 +228,13 @@ public class UserProfileController {
      */
     private void updateProfileRequest(final UserProfileInfo getUserProfileValues) {
 
-/*
-        HashMap<String , String> params = new HashMap<>();
-        fromLat = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LAT,"");
-        fromLong = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LONG,"");
-        toLat = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LAT,"");
-        toLong = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LONG,"");*/
 
-
-
-        /*
-        params.put(Constants.UserProfile.USERNAME, getUserProfileValues.getUserName());
-        params.put(Constants.UserProfile.USER_EMAIL_ID, getUserProfileValues.getUserMail());
-        params.put(Constants.Login.COMPANY_ID, getUserProfileValues.getUserTeamName());
-        params.put(Constants.UserProfile.MOBILE, getUserProfileValues.getUserPhone());
-        params.put(Constants.FROM_LOCATION, getUserProfileValues.getUserAddress());
-        params.put(Constants.TO_LOCATION, getUserProfileValues.getUserLocation());
-        params.put(Constants.UserProfile.VEHICLE_NUMBER, getUserProfileValues.getUserVehicleNum());
-        params.put(Constants.UserProfile.VEHICLE_NAME, getUserProfileValues.getUserVehicleName());
-        params.put(Constants.UserProfile.VEHICLE_TYPE, getUserProfileValues.getUserVehicleType());
-        params.put(Constants.UserProfile.PROFILE_IMAGE, userProfileFragment.getStringImage());
-        BusProvider.getInstance().register(this);
-        new RestClient(context).getInstance().get().setProfile(params).enqueue(
-                new RestCallback<UserProfileResponse>() {
-            @Override
-            public void onResponse(Call<UserProfileResponse> call, Response<UserProfileResponse> response) {
-                if (response.isSuccessful()) {
-                    if (userProfileFragment.profileUpdateListener != null) {
-                        userProfileFragment.profileUpdateListener.onProfileUpdate();
-                    }
-                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
-                    //userProfileFragment.setUserProfile(userProfileDetail);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<UserProfileResponse> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });*/
-/*
         fromLat= SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LAT,null);
-        fromLong=SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LONG,null);toLat=SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LAT,null);
-        toLong=SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LONG,null);*/
+        fromLong=SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LONG,null);
+        toLat=SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LAT,null);
+        toLong=SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LONG,null);
 
-       /* final Context ctx = context;
+        final Context ctx = context;
         BusProvider.getInstance().register(this);
         RequestBody name = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserName());
         RequestBody userMail = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserMail());
@@ -286,15 +247,12 @@ public class UserProfileController {
         RequestBody vehicleNum = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserVehicleNum());
         RequestBody vehicleName = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserVehicleName());
         RequestBody vehicleType = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserVehicleType());
-        *//*params.put(Constants.UserProfile.VEHICLE_TYPE,getUserProfileValues.getUserVehicleType());
-        params.put(Constants.UserProfile.VEHICLE_NUMBER,getUserProfileValues.getUserVehicleNum());
-        params.put(UserProfile.VEHICLE_NAME,getUserProfileValues.getUserVehicleName());*//*
 
-        File file = getUserProfileValues.getProfileImage();
+        File file = getUserProfileValues.getProfileImage().getAbsoluteFile();
 
         MultipartBody.Part part;
         if (file!=null && file.getAbsolutePath() != null) {
-            RequestBody requestBody = RequestBody.create(MediaType.parse("image*//**//*"), file);
+            RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
             part = MultipartBody.Part.createFormData(Login.PROFILE_IMAGE, file.getName(), requestBody);
         } else {
             part = null;
@@ -302,16 +260,16 @@ public class UserProfileController {
         Log.i("TAG", "updateProfileRequest: " + part);
         progressDialog.show();
 
-        new RestClient(ctx).getInstance().get().updateProfileDetails(part, name,
-                userMail, userID, userPhone, fromLati, fromLongi, toLati, toLongi, vehicleNum,vehicleName,vehicleType )
+        new RestClient(ctx).getInstance().get().updateProfileDetails(userMail, name,userPhone, part, userID,
+                vehicleType, vehicleNum,vehicleName,
+                fromLati, fromLongi, toLati, toLongi)
                 .enqueue(new RestCallback<UserProfileResponse>() {
                     @Override
                     public void onResponse(Call<UserProfileResponse> call, Response<UserProfileResponse> response) {
                         BusProvider.getInstance().unregister(this);
                         Log.i("TAG", "onResponse: " + response.message());
-                        userProfileFragment.profileUpdateListener.onProfileUpdate();
+             //           userProfileFragment.profileUpdateListener.onProfileUpdate();
                         progressDialog.dismiss();
-                        Toast.makeText(ctx, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -319,7 +277,7 @@ public class UserProfileController {
                         progressDialog.dismiss();
                         Toast.makeText(ctx, t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                });*/
+                });
     }
 
     public File getAlbumStorageDir(String albumName) {
@@ -353,10 +311,7 @@ public class UserProfileController {
         if (TextUtils.isEmpty(profileInfo.getUserName())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user name", Toast.LENGTH_SHORT).show();
-        }/* else if (profileInfo.getProfileImage() ==null) {
-            validationStatus = false;
-            Toast.makeText(context, "Please choose profile picture", Toast.LENGTH_SHORT).show();
-        } */ else if (TextUtils.isEmpty(profileInfo.getUserTeamName())) {
+        } else if (TextUtils.isEmpty(profileInfo.getUserTeamName())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user team name", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(profileInfo.getUserMail())) {

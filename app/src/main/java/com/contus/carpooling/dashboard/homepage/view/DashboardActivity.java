@@ -85,7 +85,7 @@ public class DashboardActivity extends AppCompatActivity
         navigationHeaderBinding.setModel(userProfile);
         context = activityDashboardBinding.container.getContext();
         userProfileInfo = new UserProfileInfo();
-//        activityDashboardBinding.navigationView.
+
 
 
         /**

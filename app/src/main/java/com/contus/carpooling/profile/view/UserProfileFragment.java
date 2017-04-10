@@ -59,6 +59,7 @@ import retrofit2.Response;
 import static android.app.Activity.RESULT_OK;
 import static com.contus.carpooling.utils.Constants.REQUEST_CODE_USER_FROM_LOCATION;
 import static com.contus.carpooling.utils.Constants.REQUEST_CODE_USER_TO_LOCATION;
+import static java.util.Locale.getDefault;
 
 /**
  * Fragment to view the user profile information and user has the option to edit or add the profile information.
@@ -129,21 +130,60 @@ public class UserProfileFragment extends Fragment {
      * @param userProfileDetail
      */
     public void setUserProfile(List<UserProfileDetails> userProfileDetail) {
+
         if (userProfileDetail == null) {
             return;
         }
-      
+        geocoder = new Geocoder(getActivity(), getDefault());
+        if (userProfileDetail.get(0).getType().equalsIgnoreCase("source")) {
+            try {
+                Double lat = Double.parseDouble(userProfileDetail.get(0).getLatitude());
+                Double lang = Double.parseDouble(userProfileDetail.get(0).getLongitude());
+
+                try {
+                    fromAddresses = geocoder.getFromLocation(lat, lang, 1);
+                } catch (IOException e) {
+                    Logger.logErrorThrowable("mContext", e);
+                }
+                if (fromAddresses != null) {
+                    Address froAdd = fromAddresses.get(0);
+                    StringBuilder stringBuilder = new StringBuilder();
+                    for (int i = 1; i < froAdd.getMaxAddressLineIndex(); i++) {
+                        stringBuilder.append(froAdd.getAddressLine(i));
+
+
+                        Log.i("TAG", "set address:" + stringBuilder.toString());
+                    }
+                }
+            } catch (NumberFormatException e) {
+                Logger.logErrorThrowable("mcontext", e);
+            }
+        }
+        if (userProfileDetail.get(1).getType().equalsIgnoreCase("destination")) {
+            try {
+                Double lat = Double.parseDouble(userProfileDetail.get(1).getLatitude());
+                Double lang = Double.parseDouble(userProfileDetail.get(1).getLongitude());
+                try {
+                    toAddresses = geocoder.getFromLocation(lat, lang, 1);
+                } catch (IOException e) {
+                    Logger.logErrorThrowable("mContext", e);
+                }
+            } catch (NumberFormatException e) {
+                Logger.logErrorThrowable("mContext", e);
+            }
+        }
+
         userProfileInfo.setUserName(userProfileDetail.get(0).getName());
         userProfileInfo.setUserTeamName(String.valueOf(userProfileDetail.get(0).getCompanyId()));
         userProfileInfo.setUserMail(userProfileDetail.get(0).getEmail());
         userProfileInfo.setUserPhone(userProfileDetail.get(0).getMobile());
-       /* userProfileInfo.setUserAddress(fromAddresses.get(0).getAddressLine(0) + ","
+
+        userProfileInfo.setUserAddress(fromAddresses.get(0).getAddressLine(0) + ","
                 + fromAddresses.get(0).getAddressLine(1)
-                + "," + fromAddresses.get(0).getAddressLine(2) + "," + fromAddresses.get(0).getAddressLine(3));
+                + "," + fromAddresses.get(0).getAddressLine(2));
         userProfileInfo.setUserLocation(toAddresses.get(0).getAddressLine(0) + ","
                 + toAddresses.get(0).getAddressLine(1)
-                + "," + toAddresses.get(0).getAddressLine(2) + "," + toAddresses.get(0)
-                .getAddressLine(3));*/
+                + "," + toAddresses.get(0).getAddressLine(2));
         userProfileInfo.setUserVehicleType(userProfileDetail.get(0).getVehicleType());
         Log.i("TAG", "set vehicle: " + userProfileDetail.get(0).getVehicleType());
         userProfileInfo.setUserVehicleName(userProfileDetail.get(0).getVehicleName());
@@ -227,11 +267,10 @@ public class UserProfileFragment extends Fragment {
                 /*
                  * Store the longitude and latitude from location
                  */
-         /*           SharedDataUtils.storeStringPreferences(Constants.UserProfile.USER_FROM_LAT,
+                    SharedDataUtils.storeStringPreferences(Constants.UserProfile.USER_FROM_LAT,
                             String.valueOf(place.getLatLng().latitude));
                     SharedDataUtils.storeStringPreferences(Constants.UserProfile.USER_FROM_LONG,
                             String.valueOf(place.getLatLng().longitude));
-*/
                 }
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status result = PlaceAutocomplete.getStatus(getActivity(), data);
@@ -248,10 +287,10 @@ public class UserProfileFragment extends Fragment {
                 /*
                  * Store the longitude and latitude from location
                  */
-            /*    SharedDataUtils.storeStringPreferences(Constants.UserProfile.
+                SharedDataUtils.storeStringPreferences(Constants.UserProfile.
                         USER_TO_LAT, String.valueOf(place.getLatLng().latitude));
                 SharedDataUtils.storeStringPreferences(Constants.UserProfile.
-                        USER_TO_LONG, String.valueOf(place.getLatLng().longitude));*/
+                        USER_TO_LONG, String.valueOf(place.getLatLng().longitude));
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(getActivity(), data);
                 Log.e("error", "Error: Status = " + status.toString());
@@ -396,6 +435,10 @@ public class UserProfileFragment extends Fragment {
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
+    }
+
+    public String getStringImage() {
+        return mCurrentPhotoPath;
     }
 
     public interface ProfileUpdateListener {

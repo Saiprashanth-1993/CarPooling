@@ -141,7 +141,7 @@
                                     android:layout_marginLeft="@dimen/small_size"
                                     android:layout_toRightOf="@+id/iv_mail_icon"
                                     android:background="@android:drawable/screen_background_light_transparent"
-                                    android:enabled="@{UserProfile.isToEditOrSave? true: false}"
+                                    android:enabled="false"
                                     android:inputType="textEmailAddress"
                                     android:maxLines="2"
                                     android:text="@={UserProfile.userMail}"
@@ -221,7 +221,6 @@
                                     android:layout_toRightOf="@+id/iv_loc_icon"
                                     android:background="@android:color/transparent"
                                     android:enabled="@{UserProfile.isToEditOrSave? true: false}"
-                                    android:maxLines="1"
                                     android:text="@={UserProfile.userLocation}"
                                     android:textSize="@dimen/x_medium_size" />
                             </RelativeLayout>
