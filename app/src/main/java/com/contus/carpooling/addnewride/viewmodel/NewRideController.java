@@ -138,13 +138,6 @@ public class NewRideController {
     }
 
 
-
-    private void enableOrDisableEditText(Ride ride) {
-        if (ride.isAfterClick()) {
-                ride.setAfterClick(true);
-            }
-        }
-
     /**
      * Display the time and date by using  date and time picker
      *
