@@ -100,16 +100,6 @@ public interface API {
 
 
     /**
-     * Authenticate the user profile if user have change anything to update
-     *
-     * @param paramerters Parameter required for set the profile
-     * @return {@link UserProfileResponse}
-     */
-    @POST("updateprofile")
-    Call<UserProfileResponse> setProfile(@Body Map<String, String> paramerters);
-
-
-    /**
      * Authenticate to get the ride list
      *
      * @return {@link UserLoginResponse}

@@ -11,18 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0aa59bfa-9e7f-4dc8-b696-520c4f6d8073" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/dashboard/homepage/view/DashboardActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/dashboard/homepage/view/DashboardActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/login/viewmodel/LoginController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/login/viewmodel/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/profile/view/UserProfileFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/profile/view/UserProfileFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/profile/viewmodel/UserProfileController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/profile/viewmodel/UserProfileController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/utils/Constants.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/utils/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_employee_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_employee_detail.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_profile.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_profile.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/navigation_header.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/navigation_header.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/server/API.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/server/API.java" />
     </list>
     <ignored path="p105-carpooling-and.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,25 +84,45 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EmployeeInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/employeedetails/model/EmployeeInfo.java">
+      <file leaf-file-name="DashboardActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/dashboard/homepage/view/DashboardActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+            <state relative-caret-position="1275">
+              <caret line="124" column="7" selection-start-line="124" selection-start-column="7" selection-end-line="124" selection-end-column="7" />
+              <folding>
+                <element signature="e#9851#9852#0" expanded="true" />
+                <element signature="e#9882#9883#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EmployeeDetailActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/employeedetails/view/EmployeeDetailActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-840">
+              <caret line="54" column="48" selection-start-line="54" selection-start-column="48" selection-end-line="54" selection-end-column="48" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DashboardActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/dashboard/homepage/view/DashboardActivity.java">
+      <file leaf-file-name="API.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/server/API.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="217" column="99" selection-start-line="217" selection-start-column="99" selection-end-line="217" selection-end-column="99" />
-              <folding>
-                <element signature="e#9851#9852#0" expanded="true" />
-                <element signature="e#9882#9883#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="188">
+              <caret line="115" column="30" selection-start-line="115" selection-start-column="30" selection-end-line="115" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CompanyRegistrationActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/companyregistration/view/CompanyRegistrationActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="100" column="61" selection-start-line="100" selection-start-column="61" selection-end-line="100" selection-end-column="61" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -133,8 +143,8 @@
       <file leaf-file-name="UserProfileFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/profile/view/UserProfileFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="203" column="38" selection-start-line="203" selection-start-column="38" selection-end-line="203" selection-end-column="38" />
+            <state relative-caret-position="188">
+              <caret line="105" column="53" selection-start-line="105" selection-start-column="53" selection-end-line="105" selection-end-column="53" />
               <folding>
                 <element signature="e#0#18432#0" expanded="true" />
               </folding>
@@ -142,7 +152,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/login/viewmodel/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="534">
@@ -155,32 +165,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_my_profile.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_my_profile.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CompanyRegistrationActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/companyregistration/view/CompanyRegistrationActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="66" column="98" selection-start-line="66" selection-start-column="98" selection-end-line="66" selection-end-column="98" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="KeerthivasanV_Contus &lt;keerthivasan.v@contus.in&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
@@ -2746,7 +2738,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/profile/model/UserProfileDetails.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/profile/model/UserProfileInfo.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/profile/model/UserProfileResponse.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/server/API.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/login/model/UserLoginResponse.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/userregistration/viewmodel/UserRegistrationController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/server/SessionRequestInterceptor.java" />
@@ -2765,6 +2756,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/profile/viewmodel/UserProfileController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/dashboard/homepage/view/DashboardActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/login/viewmodel/LoginController.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/server/API.java" />
       </list>
     </option>
   </component>
@@ -2877,6 +2869,28 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="carpooling" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="p105-carpooling-and" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="carpooling" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -3598,7 +3612,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491556315354</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Changes made in user profile and storing profile data in shared preferences">
+      <created>1491896087425</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1491896087425</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3650,7 +3671,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Profile integrated with API" />
     <MESSAGE value="changes made in profile and constant" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes made in profile and constant" />
+    <MESSAGE value="Changes made in user profile and storing profile data in shared preferences" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes made in user profile and storing profile data in shared preferences" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3743,13 +3765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/server/API.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="125" column="30" selection-start-line="125" selection-start-column="30" selection-end-line="125" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -3924,14 +3939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/employeedetails/view/EmployeeDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="54" column="48" selection-start-line="54" selection-start-column="48" selection-end-line="54" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -3978,14 +3985,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/companyregistration/view/CompanyRegistrationActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="66" column="98" selection-start-line="66" selection-start-column="98" selection-end-line="66" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_my_profile.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -4026,16 +4025,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/profile/view/UserProfileFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="203" column="38" selection-start-line="203" selection-start-column="38" selection-end-line="203" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#18432#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/dashboard/homepage/model/UserProfile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -4043,17 +4032,6 @@
           <folding>
             <element signature="e#2074#2075#0" expanded="true" />
             <element signature="e#2116#2117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/dashboard/homepage/view/DashboardActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="217" column="99" selection-start-line="217" selection-start-column="99" selection-end-line="217" selection-end-column="99" />
-          <folding>
-            <element signature="e#9851#9852#0" expanded="true" />
-            <element signature="e#9882#9883#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -4076,6 +4054,51 @@
             <element signature="e#1838#2173#0" expanded="true" />
             <element signature="e#2172#2173#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/dashboard/homepage/view/DashboardActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="124" column="7" selection-start-line="124" selection-start-column="7" selection-end-line="124" selection-end-column="7" />
+          <folding>
+            <element signature="e#9851#9852#0" expanded="true" />
+            <element signature="e#9882#9883#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/employeedetails/view/EmployeeDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-840">
+          <caret line="54" column="48" selection-start-line="54" selection-start-column="48" selection-end-line="54" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/profile/view/UserProfileFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="105" column="53" selection-start-line="105" selection-start-column="53" selection-end-line="105" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#18432#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/server/API.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="115" column="30" selection-start-line="115" selection-start-column="30" selection-end-line="115" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/companyregistration/view/CompanyRegistrationActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="100" column="61" selection-start-line="100" selection-start-column="61" selection-end-line="100" selection-end-column="61" />
+          <folding />
         </state>
       </provider>
     </entry>
