@@ -1,8 +1,9 @@
-/**
+/*
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
+
 package com.contus.carpooling.profile.view;
 
 import android.Manifest;
@@ -72,31 +73,29 @@ public class UserProfileFragment extends Fragment {
     private static final int MY_PERMISSIONS_REQUEST_GALLERY = 147;
 
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 145;
+
     public ProfileUpdateListener profileUpdateListener;
+
     /**
      * Context of an activity
      */
     Context mContext;
+
     Place place;
+
     String mCurrentPhotoPath;
+
     List<Address> toAddresses;
+
     List<Address> fromAddresses;
+
     private UserProfileInfo userProfileInfo;
+
     private FragmentMyProfileBinding myProfileBinding;
+
     private Bitmap bitmap;
+
     private Geocoder geocoder;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        myProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_profile, container, false);
-        userProfileInfo = new UserProfileInfo();
-        myProfileRequest(mContext);
-        myProfileBinding.setViewController(new UserProfileController(getContext(), this));
-        setHasOptionsMenu(true);
-        return myProfileBinding.getRoot();
-    }
 
     /**
      * ApiRequest for Get the ride offered list from the server
@@ -146,14 +145,13 @@ public class UserProfileFragment extends Fragment {
                     Logger.logErrorThrowable("mContext", e);
                 }
                 if (fromAddresses != null) {
-                    Address froAdd = fromAddresses.get(0);
-                    StringBuilder stringBuilder = new StringBuilder();
-                    for (int i = 1; i < froAdd.getMaxAddressLineIndex(); i++) {
-                        stringBuilder.append(froAdd.getAddressLine(i));
-
-
-                        Log.i("TAG", "set address:" + stringBuilder.toString());
-                    }
+                    /**
+                     * Store the user from latitude and longitude in shared preferences
+                     */
+                    SharedDataUtils.storeStringPreferences(Constants.UserProfile.USER_FROM_LAT,
+                            String.valueOf(userProfileDetail.get(0).getLatitude()));
+                    SharedDataUtils.storeStringPreferences(Constants.UserProfile.USER_FROM_LONG,
+                            String.valueOf(userProfileDetail.get(0).getLongitude()));
                 }
             } catch (NumberFormatException e) {
                 Logger.logErrorThrowable("mcontext", e);
@@ -165,6 +163,15 @@ public class UserProfileFragment extends Fragment {
                 Double lang = Double.parseDouble(userProfileDetail.get(1).getLongitude());
                 try {
                     toAddresses = geocoder.getFromLocation(lat, lang, 1);
+
+                    /**
+                     * Store the user to longitude and latitude in shared preferences
+                     */
+                    SharedDataUtils.storeStringPreferences(Constants.UserProfile.
+                            USER_TO_LAT, String.valueOf(userProfileDetail.get(1).getLatitude()));
+                    SharedDataUtils.storeStringPreferences(Constants.UserProfile.
+                            USER_TO_LONG, String.valueOf(userProfileDetail.get(1).getLongitude()));
+
                 } catch (IOException e) {
                     Logger.logErrorThrowable("mContext", e);
                 }
@@ -184,11 +191,11 @@ public class UserProfileFragment extends Fragment {
         userProfileInfo.setUserLocation(toAddresses.get(0).getAddressLine(0) + ","
                 + toAddresses.get(0).getAddressLine(1)
                 + "," + toAddresses.get(0).getAddressLine(2));
+
         userProfileInfo.setUserVehicleType(userProfileDetail.get(0).getVehicleType());
         Log.i("TAG", "set vehicle: " + userProfileDetail.get(0).getVehicleType());
         userProfileInfo.setUserVehicleName(userProfileDetail.get(0).getVehicleName());
         userProfileInfo.setUserVehicleNum(userProfileDetail.get(0).getVehicleNo());
-
 
         myProfileBinding.ivProfileIcon.setImageBitmap(null);
         Glide.with(getActivity())
@@ -197,17 +204,8 @@ public class UserProfileFragment extends Fragment {
                 .skipMemoryCache(true)
                 .into(myProfileBinding.ivProfileIcon);
 
-
         myProfileBinding.setUserProfile(userProfileInfo);
     }
-
-
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.action_notification).setVisible(false);
-        super.onPrepareOptionsMenu(menu);
-    }
-
 
     /**
      * This is image profile
@@ -252,7 +250,6 @@ public class UserProfileFragment extends Fragment {
          *  Check that the result was from the autocomplete widget.
          */
 
-
         if (requestCode == REQUEST_CODE_USER_FROM_LOCATION) {
             if (resultCode == RESULT_OK) {
                 place = PlaceAutocomplete.getPlace(getActivity(), data);
@@ -264,9 +261,9 @@ public class UserProfileFragment extends Fragment {
                     userProfileInfo.setUserAddress(place.getAddress().toString());
                     Log.i("place lang", "lat and longit Selected: " + place.getAddress());
 
-                /*
-                 * Store the longitude and latitude from location
-                 */
+                    /**
+                     * Update the longitude and latitude from location
+                     */
                     SharedDataUtils.storeStringPreferences(Constants.UserProfile.USER_FROM_LAT,
                             String.valueOf(place.getLatLng().latitude));
                     SharedDataUtils.storeStringPreferences(Constants.UserProfile.USER_FROM_LONG,
@@ -284,8 +281,8 @@ public class UserProfileFragment extends Fragment {
                 Log.i("place_details", "Place Selected: " + place.getName());
                 userProfileInfo.setUserLocation(place.getAddress().toString());
 
-                /*
-                 * Store the longitude and latitude from location
+                /**
+                 * Update the longitude and latitude from location
                  */
                 SharedDataUtils.storeStringPreferences(Constants.UserProfile.
                         USER_TO_LAT, String.valueOf(place.getLatLng().latitude));
@@ -295,61 +292,6 @@ public class UserProfileFragment extends Fragment {
                 Status status = PlaceAutocomplete.getStatus(getActivity(), data);
                 Log.e("error", "Error: Status = " + status.toString());
             }
-        }
-    }
-
-    public String getPath(Uri uri) {
-        String[] projection = {MediaStore.Images.Media.DATA};
-        Cursor cursor = getContext().getContentResolver().query(uri, projection, null, null, null);
-        cursor.moveToFirst();
-        int columnIndex = cursor.getColumnIndex(projection[0]);
-        String filePath = cursor.getString(columnIndex);
-        cursor.close();
-        return filePath;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof ProfileUpdateListener) {
-            this.profileUpdateListener = (ProfileUpdateListener) context;
-        } else {
-            throw new IllegalArgumentException(context.getClass() +
-                    " must implement " + ProfileUpdateListener.class.getSimpleName());
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        if (profileUpdateListener != null) {
-            profileUpdateListener = null;
-        }
-    }
-
-    public void isGalleryPermissionGranted() {
-        if (ContextCompat.checkSelfPermission(getActivity(),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    MY_PERMISSIONS_REQUEST_GALLERY);
-        } else {
-            navToGallery();
-        }
-    }
-
-    public void isCameraPermissionGranted() {
-        if (ContextCompat.checkSelfPermission(getActivity(),
-                Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.CAMERA},
-                    MY_PERMISSIONS_REQUEST_CAMERA);
-            isGalleryPermissionGranted();
-        } else {
-            navToCam();
         }
     }
 
@@ -376,6 +318,79 @@ public class UserProfileFragment extends Fragment {
                 }
                 return;
             }
+        }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof ProfileUpdateListener) {
+            this.profileUpdateListener = (ProfileUpdateListener) context;
+        } else {
+            throw new IllegalArgumentException(context.getClass() +
+                    " must implement " + ProfileUpdateListener.class.getSimpleName());
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        myProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_profile, container, false);
+        userProfileInfo = new UserProfileInfo();
+        myProfileRequest(mContext);
+        myProfileBinding.setViewController(new UserProfileController(getContext(), this));
+        setHasOptionsMenu(true);
+        return myProfileBinding.getRoot();
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (profileUpdateListener != null) {
+            profileUpdateListener = null;
+        }
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.action_notification).setVisible(false);
+        super.onPrepareOptionsMenu(menu);
+    }
+
+    public String getPath(Uri uri) {
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContext().getContentResolver().query(uri, projection, null, null, null);
+        cursor.moveToFirst();
+        int columnIndex = cursor.getColumnIndex(projection[0]);
+        String filePath = cursor.getString(columnIndex);
+        cursor.close();
+        return filePath;
+    }
+
+    public void isGalleryPermissionGranted() {
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    MY_PERMISSIONS_REQUEST_GALLERY);
+        } else {
+            navToGallery();
+        }
+    }
+
+    public void isCameraPermissionGranted() {
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.CAMERA},
+                    MY_PERMISSIONS_REQUEST_CAMERA);
+            isGalleryPermissionGranted();
+        } else {
+            navToCam();
         }
     }
 
@@ -442,6 +457,7 @@ public class UserProfileFragment extends Fragment {
     }
 
     public interface ProfileUpdateListener {
+
         void onProfileUpdate();
     }
 }

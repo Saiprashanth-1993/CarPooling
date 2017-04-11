@@ -79,8 +79,6 @@
 
             <RelativeLayout
                 android:id="@+id/parent_upload_front"
-
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/et_employee_code"

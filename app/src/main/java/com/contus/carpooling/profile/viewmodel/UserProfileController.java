@@ -1,8 +1,9 @@
-/**
+/*
  * @category CarPooling
- * @copyright Copyright (C) 2016 Contus. All rights reserved.
+ * @copyright Copyright (C) 2017 Contus. All rights reserved.
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
+
 package com.contus.carpooling.profile.viewmodel;
 
 import android.app.Activity;
@@ -33,7 +34,6 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
 import java.io.File;
-import java.util.HashMap;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -41,7 +41,9 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Response;
 
-import static com.contus.carpooling.utils.Constants.*;
+import static com.contus.carpooling.utils.Constants.EXCEPTION_MESSAGE;
+import static com.contus.carpooling.utils.Constants.GALLERY_SELECTION;
+import static com.contus.carpooling.utils.Constants.Login;
 
 /**
  * Controller of the UserProfileFragment class
@@ -71,12 +73,12 @@ public class UserProfileController {
     /**
      * Get the to latitude from shared preference
      */
-    String  toLat;
+    String toLat;
 
     /**
      * Get the to longitude from shared preference
      */
-    String  toLong;
+    String toLong;
 
     /**
      * Constructor of userPro
@@ -91,7 +93,6 @@ public class UserProfileController {
         progressDialog.setMessage("Updating profile . . .");
         progressDialog.setCanceledOnTouchOutside(false);
     }
-
 
     /**
      * OnClick listener to get the location from google place api.
@@ -131,7 +132,6 @@ public class UserProfileController {
         };
     }
 
-
     /**
      * OnClick listener to get the vehicle list
      *
@@ -153,7 +153,7 @@ public class UserProfileController {
          * Get the country list from the model
          */
 
-        final String[] vehicleList = {"2 wheeler", "4 wheeler" , "None"};
+        final String[] vehicleList = {"2 wheeler", "4 wheeler", "None"};
 
         for (int i = 0; i < vehicleList.length; i++) {
             /*String list = vehicleList[i];*/
@@ -175,6 +175,10 @@ public class UserProfileController {
         builder.setItems(vehicleList, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
                 userProfileInfo.setUserVehicleType(vehicleList[item]);
+                if (vehicleList[item].equalsIgnoreCase("No Vehicle")) {
+                    userProfileInfo.setUserVehicleName("");
+                    userProfileInfo.setUserVehicleNum("");
+                }
             }
         });
         AlertDialog alert = builder.create();
@@ -212,7 +216,7 @@ public class UserProfileController {
      */
     private void enableOrDisableEditText(UserProfileInfo profileInfo) {
         if (profileInfo.isToEditOrSave()) {
-            if (isValid(profileInfo) && userProfileValid(profileInfo)) {
+            if (userProfileValid(profileInfo)) {
                 updateProfileRequest(profileInfo);
                 profileInfo.setToEditOrSave(false);
             }
@@ -228,30 +232,36 @@ public class UserProfileController {
      */
     private void updateProfileRequest(final UserProfileInfo getUserProfileValues) {
 
-
-        fromLat= SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LAT,null);
-        fromLong=SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LONG,null);
-        toLat=SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LAT,null);
-        toLong=SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LONG,null);
+        fromLat = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LAT, null);
+        fromLong = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_FROM_LONG, null);
+        toLat = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LAT, null);
+        toLong = SharedDataUtils.getStringPreference(Constants.UserProfile.USER_TO_LONG, null);
 
         final Context ctx = context;
         BusProvider.getInstance().register(this);
-        RequestBody name = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserName());
-        RequestBody userMail = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserMail());
-        RequestBody userID = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserTeamName());
-        RequestBody userPhone = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserPhone());
+        RequestBody name = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues
+                .getUserName());
+        RequestBody userMail = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues
+                .getUserMail());
+        RequestBody userID = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues
+                .getUserTeamName());
+        RequestBody userPhone = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues
+                .getUserPhone());
         RequestBody fromLati = RequestBody.create(MediaType.parse(Constants.TEXT_TYPE), fromLat);
-        RequestBody fromLongi = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE),fromLong);
-        RequestBody toLati = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE),toLat);
-        RequestBody toLongi = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE),toLong);
-        RequestBody vehicleNum = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserVehicleNum());
-        RequestBody vehicleName = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserVehicleName());
-        RequestBody vehicleType = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), getUserProfileValues.getUserVehicleType());
+        RequestBody fromLongi = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), fromLong);
+        RequestBody toLati = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), toLat);
+        RequestBody toLongi = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE), toLong);
+        RequestBody vehicleNum = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE),
+                getUserProfileValues.getUserVehicleNum());
+        RequestBody vehicleName = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE),
+                getUserProfileValues.getUserVehicleName());
+        RequestBody vehicleType = RequestBody.create(okhttp3.MediaType.parse(Constants.TEXT_TYPE),
+                getUserProfileValues.getUserVehicleType());
 
-        File file = getUserProfileValues.getProfileImage().getAbsoluteFile();
+        File file = getUserProfileValues.getProfileImage();
 
         MultipartBody.Part part;
-        if (file!=null && file.getAbsolutePath() != null) {
+        if (file != null && file.getAbsolutePath() != null) {
             RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
             part = MultipartBody.Part.createFormData(Login.PROFILE_IMAGE, file.getName(), requestBody);
         } else {
@@ -260,15 +270,16 @@ public class UserProfileController {
         Log.i("TAG", "updateProfileRequest: " + part);
         progressDialog.show();
 
-        new RestClient(ctx).getInstance().get().updateProfileDetails(userMail, name,userPhone, part, userID,
-                vehicleType, vehicleNum,vehicleName,
+        new RestClient(ctx).getInstance().get().updateProfileDetails(userMail, name, userPhone, part, userID,
+                vehicleType, vehicleNum, vehicleName,
                 fromLati, fromLongi, toLati, toLongi)
                 .enqueue(new RestCallback<UserProfileResponse>() {
                     @Override
                     public void onResponse(Call<UserProfileResponse> call, Response<UserProfileResponse> response) {
                         BusProvider.getInstance().unregister(this);
                         Log.i("TAG", "onResponse: " + response.message());
-             //           userProfileFragment.profileUpdateListener.onProfileUpdate();
+                        storeUserData(response.body());
+                        userProfileFragment.profileUpdateListener.onProfileUpdate();
                         progressDialog.dismiss();
                     }
 
@@ -300,34 +311,22 @@ public class UserProfileController {
         return false;
     }
 
-
-    /**
-     * Method used to validate the edit text fields.
-     *
-     * @return true when the given field is not empty.
-     */
-    private boolean isValid(UserProfileInfo profileInfo) {
-        boolean validationStatus = true;
-        if (TextUtils.isEmpty(profileInfo.getUserName())) {
-            validationStatus = false;
-            Toast.makeText(context, "Please enter user name", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(profileInfo.getUserTeamName())) {
-            validationStatus = false;
-            Toast.makeText(context, "Please enter user team name", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(profileInfo.getUserMail())) {
-            validationStatus = false;
-            Toast.makeText(context, "Please enter user mail", Toast.LENGTH_SHORT).show();
-        }
-        return validationStatus;
-    }
-
     /**
      * @param userProfileInfo
      * @return
      */
     private boolean userProfileValid(UserProfileInfo userProfileInfo) {
         boolean validationStatus = true;
-        if (TextUtils.isEmpty(userProfileInfo.getUserPhone())) {
+        if (TextUtils.isEmpty(userProfileInfo.getUserName())) {
+            validationStatus = false;
+            Toast.makeText(context, "Please enter user name", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(userProfileInfo.getUserTeamName())) {
+            validationStatus = false;
+            Toast.makeText(context, "Please enter user team name", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(userProfileInfo.getUserMail())) {
+            validationStatus = false;
+            Toast.makeText(context, "Please enter user mail", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(userProfileInfo.getUserPhone())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user phone number", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(userProfileInfo.getUserAddress())) {
@@ -346,7 +345,20 @@ public class UserProfileController {
             validationStatus = false;
             Toast.makeText(context, "Please enter user vehicle number", Toast.LENGTH_SHORT).show();
         }
-
         return validationStatus;
+    }
+
+    /**
+     * Store the user profile details in shared preference
+     */
+    public void storeUserData(UserProfileResponse response) {
+        SharedDataUtils.storeStringPreferences(Constants.USER_NAME, response.getUserDetails().get(0).getName());
+        SharedDataUtils.storeStringPreferences(Constants.USER_WORK_CATEGORY, "");
+        SharedDataUtils.storeStringPreferences(Constants.COMPANY_CATEGORY_ID,
+                response.getUserDetails().get(0).getCompanyCategoryId());
+        SharedDataUtils.storeStringPreferences(Constants.Login.COMPANY_LOCATION,
+                response.getUserDetails().get(0).getCompanyLocation());
+        SharedDataUtils.storeStringPreferences(Constants.Login.PROFILE_IMAGE, response.getUserDetails().get(0)
+                .getProfileImage());
     }
 }
