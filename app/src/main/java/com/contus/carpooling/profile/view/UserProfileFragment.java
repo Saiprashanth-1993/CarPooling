@@ -134,7 +134,7 @@ public class UserProfileFragment extends Fragment {
             return;
         }
         geocoder = new Geocoder(getActivity(), getDefault());
-        if (userProfileDetail.get(0).getType().equalsIgnoreCase("source")) {
+        if (checkNull(userProfileDetail.get(0).getType()).equalsIgnoreCase("source")) {
             try {
                 Double lat = Double.parseDouble(userProfileDetail.get(0).getLatitude());
                 Double lang = Double.parseDouble(userProfileDetail.get(0).getLongitude());
@@ -157,7 +157,7 @@ public class UserProfileFragment extends Fragment {
                 Logger.logErrorThrowable("mcontext", e);
             }
         }
-        if (userProfileDetail.get(1).getType().equalsIgnoreCase("destination")) {
+        if (checkNull(userProfileDetail.get(1).getType()).equalsIgnoreCase("destination")) {
             try {
                 Double lat = Double.parseDouble(userProfileDetail.get(1).getLatitude());
                 Double lang = Double.parseDouble(userProfileDetail.get(1).getLongitude());
@@ -180,22 +180,28 @@ public class UserProfileFragment extends Fragment {
             }
         }
 
-        userProfileInfo.setUserName(userProfileDetail.get(0).getName());
-        userProfileInfo.setUserTeamName(String.valueOf(userProfileDetail.get(0).getCompanyId()));
-        userProfileInfo.setUserMail(userProfileDetail.get(0).getEmail());
-        userProfileInfo.setUserPhone(userProfileDetail.get(0).getMobile());
+        userProfileInfo.setUserName(checkNull(userProfileDetail.get(0).getName()));
+        userProfileInfo.setUserTeamName(checkNull(String.valueOf(userProfileDetail.get(0).getCompanyId())));
+        userProfileInfo.setUserMail(checkNull(userProfileDetail.get(0).getEmail()));
+        userProfileInfo.setUserPhone(checkNull(userProfileDetail.get(0).getMobile()));
 
-        userProfileInfo.setUserAddress(fromAddresses.get(0).getAddressLine(0) + ","
-                + fromAddresses.get(0).getAddressLine(1)
-                + "," + fromAddresses.get(0).getAddressLine(2));
-        userProfileInfo.setUserLocation(toAddresses.get(0).getAddressLine(0) + ","
-                + toAddresses.get(0).getAddressLine(1)
-                + "," + toAddresses.get(0).getAddressLine(2));
+        StringBuilder from_address = new StringBuilder();
+        from_address.append(checkNull(fromAddresses.get(0).getAddressLine(0)) + ",");
+        from_address.append(checkNull(fromAddresses.get(0).getAddressLine(1)) + ",");
+        from_address.append(checkNull(fromAddresses.get(0).getAddressLine(2)));
 
-        userProfileInfo.setUserVehicleType(userProfileDetail.get(0).getVehicleType());
-        Log.i("TAG", "set vehicle: " + userProfileDetail.get(0).getVehicleType());
-        userProfileInfo.setUserVehicleName(userProfileDetail.get(0).getVehicleName());
-        userProfileInfo.setUserVehicleNum(userProfileDetail.get(0).getVehicleNo());
+        userProfileInfo.setUserAddress(from_address.toString());
+
+        StringBuilder to_address = new StringBuilder();
+        to_address.append(checkNull(toAddresses.get(0).getAddressLine(0)) + ",");
+        to_address.append(checkNull(toAddresses.get(0).getAddressLine(1)) + ",");
+        to_address.append(checkNull(toAddresses.get(0).getAddressLine(2)));
+
+        userProfileInfo.setUserLocation(to_address.toString());
+
+        userProfileInfo.setUserVehicleType(checkNull(userProfileDetail.get(0).getVehicleType()));
+        userProfileInfo.setUserVehicleName(checkNull(userProfileDetail.get(0).getVehicleName()));
+        userProfileInfo.setUserVehicleNum(checkNull(userProfileDetail.get(0).getVehicleNo()));
 
         myProfileBinding.ivProfileIcon.setImageBitmap(null);
         Glide.with(getActivity())
@@ -205,6 +211,15 @@ public class UserProfileFragment extends Fragment {
                 .into(myProfileBinding.ivProfileIcon);
 
         myProfileBinding.setUserProfile(userProfileInfo);
+    }
+
+    /**
+     * Function is used to check null value in variables
+     *
+     * @param arg Refers String Variable
+     */
+    public String checkNull(String arg) {
+        return arg == null ? "" : arg;
     }
 
     /**
@@ -339,7 +354,7 @@ public class UserProfileFragment extends Fragment {
         myProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_profile, container, false);
         userProfileInfo = new UserProfileInfo();
         myProfileRequest(mContext);
-        myProfileBinding.setViewController(new UserProfileController(getContext(), this));
+        myProfileBinding.setViewController(new UserProfileController(getContext(), this,myProfileBinding));
         setHasOptionsMenu(true);
         return myProfileBinding.getRoot();
     }

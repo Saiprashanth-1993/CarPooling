@@ -220,6 +220,9 @@
     <!--User Registration-->
     <string name="reg_header">User Registration</string>
     <string name="delay">DELAY</string>
+    <string name="no_vehicle">No Vehicle</string>
+    <string name="four_whealer">4 wheeler</string>
+    <string name="two_whealer">2 wheeler</string>
 
 </resources>
 

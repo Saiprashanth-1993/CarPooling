@@ -20,6 +20,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.contus.carpooling.R;
+import com.contus.carpooling.databinding.FragmentMyProfileBinding;
 import com.contus.carpooling.profile.model.UserProfileInfo;
 import com.contus.carpooling.profile.model.UserProfileResponse;
 import com.contus.carpooling.profile.view.UserProfileFragment;
@@ -58,6 +59,8 @@ public class UserProfileController {
 
     UserProfileFragment userProfileFragment;
 
+    FragmentMyProfileBinding fragmentMyProfileBinding;
+
     ProgressDialog progressDialog;
 
     /**
@@ -86,8 +89,10 @@ public class UserProfileController {
      * @param context
      * @param userProfileFragment
      */
-    public UserProfileController(Context context, UserProfileFragment userProfileFragment) {
+    public UserProfileController(Context context, UserProfileFragment userProfileFragment, FragmentMyProfileBinding
+            fragmentMyProfileBinding) {
         this.userProfileFragment = userProfileFragment;
+        this.fragmentMyProfileBinding = fragmentMyProfileBinding;
         this.context = context;
         progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Updating profile . . .");
@@ -152,8 +157,10 @@ public class UserProfileController {
         /*
          * Get the country list from the model
          */
+        context = view.getContext();
 
-        final String[] vehicleList = {"2 wheeler", "4 wheeler", "None"};
+        final String[] vehicleList = {context.getString(R.string.two_whealer), context.getString(R.string
+                .four_whealer), context.getString(R.string.no_vehicle)};
 
         for (int i = 0; i < vehicleList.length; i++) {
             /*String list = vehicleList[i];*/
@@ -175,7 +182,7 @@ public class UserProfileController {
         builder.setItems(vehicleList, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
                 userProfileInfo.setUserVehicleType(vehicleList[item]);
-                if (vehicleList[item].equalsIgnoreCase("No Vehicle")) {
+                if (vehicleList[item].equalsIgnoreCase(context.getString(R.string.no_vehicle))) {
                     userProfileInfo.setUserVehicleName("");
                     userProfileInfo.setUserVehicleNum("");
                 }
@@ -320,30 +327,41 @@ public class UserProfileController {
         if (TextUtils.isEmpty(userProfileInfo.getUserName())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user name", Toast.LENGTH_SHORT).show();
+            fragmentMyProfileBinding.tvProfileName.requestFocus();
         } else if (TextUtils.isEmpty(userProfileInfo.getUserTeamName())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user team name", Toast.LENGTH_SHORT).show();
+            fragmentMyProfileBinding.tvProfileTeamName.requestFocus();
         } else if (TextUtils.isEmpty(userProfileInfo.getUserMail())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user mail", Toast.LENGTH_SHORT).show();
+            fragmentMyProfileBinding.tvMail.requestFocus();
         } else if (TextUtils.isEmpty(userProfileInfo.getUserPhone())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user phone number", Toast.LENGTH_SHORT).show();
+            fragmentMyProfileBinding.tvPhone.requestFocus();
         } else if (TextUtils.isEmpty(userProfileInfo.getUserAddress())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user address", Toast.LENGTH_SHORT).show();
+            fragmentMyProfileBinding.tvAddr.requestFocus();
         } else if (TextUtils.isEmpty(userProfileInfo.getUserLocation())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user location", Toast.LENGTH_SHORT).show();
+            fragmentMyProfileBinding.tvLocation.requestFocus();
         } else if (TextUtils.isEmpty(userProfileInfo.getUserVehicleType())) {
             validationStatus = false;
             Toast.makeText(context, "Please enter user vehicle type", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(userProfileInfo.getUserVehicleName())) {
-            validationStatus = false;
-            Toast.makeText(context, "Please enter user vehicle name", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(userProfileInfo.getUserVehicleNum())) {
-            validationStatus = false;
-            Toast.makeText(context, "Please enter user vehicle number", Toast.LENGTH_SHORT).show();
+            fragmentMyProfileBinding.tvVehicleTypeVal.requestFocus();
+        } else if (!userProfileInfo.getUserVehicleType().equalsIgnoreCase(context.getString(R.string.no_vehicle))) {
+            if (TextUtils.isEmpty(userProfileInfo.getUserVehicleName())) {
+                validationStatus = false;
+                Toast.makeText(context, "Please enter user vehicle name", Toast.LENGTH_SHORT).show();
+                fragmentMyProfileBinding.tvVehicleNameVal.requestFocus();
+            } else if (TextUtils.isEmpty(userProfileInfo.getUserVehicleNum())) {
+                validationStatus = false;
+                Toast.makeText(context, "Please enter user vehicle number", Toast.LENGTH_SHORT).show();
+                fragmentMyProfileBinding.tvVehicleNumVal.requestFocus();
+            }
         }
         return validationStatus;
     }
@@ -353,7 +371,7 @@ public class UserProfileController {
      */
     public void storeUserData(UserProfileResponse response) {
         SharedDataUtils.storeStringPreferences(Constants.USER_NAME, response.getUserDetails().get(0).getName());
-        SharedDataUtils.storeStringPreferences(Constants.USER_WORK_CATEGORY, "");
+        SharedDataUtils.storeStringPreferences(Constants.USER_WORK_CATEGORY, "Mobility");
         SharedDataUtils.storeStringPreferences(Constants.COMPANY_CATEGORY_ID,
                 response.getUserDetails().get(0).getCompanyCategoryId());
         SharedDataUtils.storeStringPreferences(Constants.Login.COMPANY_LOCATION,
