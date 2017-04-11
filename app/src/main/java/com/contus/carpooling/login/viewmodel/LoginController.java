@@ -41,6 +41,7 @@ import java.util.HashMap;
  * @version 1.0
  */
 public class LoginController implements ApiService.OnTaskCompleted {
+
     /**
      * Instance of an activity
      */
@@ -85,7 +86,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
         loginParams.put(Constants.DEVICE_TOKEN, loginDeviceToken);
         new RestClient(mContext).getInstance().get().doLogin(loginParams)
                 .enqueue(new RestCallback<UserLoginResponse>() {
-        });
+                });
     }
 
     /**
@@ -167,10 +168,20 @@ public class LoginController implements ApiService.OnTaskCompleted {
                 SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE, result.getUserToken());
 
                 /**
-                 * store the from location and to location to shared preference
+                 * Store the from location and to location to shared preference
                  */
                 SharedDataUtils.storeStringPreferences(Constants.FROM_LOCATION, userResult.getFromLocation());
                 SharedDataUtils.storeStringPreferences(Constants.TO_LOCATION, userResult.getToLocation());
+                /**
+                 * Store the user profile details in shared preference
+                 */
+                SharedDataUtils.storeStringPreferences(Constants.USER_NAME, userResult.getName());
+                SharedDataUtils.storeStringPreferences(Constants.USER_WORK_CATEGORY, "Mobility");
+                SharedDataUtils.storeStringPreferences(Constants.COMPANY_CATEGORY_ID,
+                        userResult.getCompanyCategoryId());
+                SharedDataUtils.storeStringPreferences(Constants.Login.COMPANY_LOCATION, userResult
+                        .getCompanyLocation());
+                SharedDataUtils.storeStringPreferences(Constants.Login.PROFILE_IMAGE, userResult.getProfileImage());
 
                 /**
                  * It will navigate to dashboard Activity

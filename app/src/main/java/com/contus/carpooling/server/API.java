@@ -100,16 +100,6 @@ public interface API {
 
 
     /**
-     * Authenticate the user profile if user have change anything to update
-     *
-     * @param paramerters Parameter required for set the profile
-     * @return {@link UserProfileResponse}
-     */
-    @POST("updateprofile")
-    Call<UserProfileResponse> setProfile(@Body Map<String, String> paramerters);
-
-
-    /**
      * Authenticate to get the ride list
      *
      * @return {@link UserLoginResponse}
@@ -174,13 +164,19 @@ public interface API {
     @GET("deleteride/{ride_id}")
     Call<CreateRideResponse> deleteRide(@Path("ride_id") String customerId, @Body Map<String, String> parameters);
 
-    /*@Multipart
+    @Multipart
     @POST("updateprofile")
-    Call<UserProfileResponse> updateProfileDetails(@Part MultipartBody.Part image, @Part(Constants.UserProfile.USERNAME)
-            RequestBody name, @Part(Constants.UserProfile.USER_EMAIL_ID) RequestBody email, @Part(Constants.Login.COMPANY_ID) RequestBody companyId,
-                                                   @Part(Constants.UserProfile.MOBILE) RequestBody mobile, @Part(Constants.UserProfile.FROM_LAT) RequestBody fromLat,
-                                                   @Part(Constants.UserProfile.FROM_LONG) RequestBody fromLong, @Part(Constants.UserProfile.TO_LAT) RequestBody toLat,
-                                                   @Part(Constants.UserProfile.TO_LONG) RequestBody toLong, @Part(Constants.UserProfile.VEHICLE_NUMBER) RequestBody vehicleNum,
-                                                   @Part(Constants.UserProfile.VEHICLE_NAME) RequestBody vehicleName, @Part(Constants.UserProfile.VEHICLE_TYPE) RequestBody vehicleType);*/
+    Call<UserProfileResponse> updateProfileDetails(@Part(Constants.UserProfile.USER_EMAIL_ID) RequestBody email,
+                                                   @Part(Constants.UserProfile.USERNAME) RequestBody name,
+                                                   @Part(Constants.UserProfile.MOBILE) RequestBody mobile,
+                                                   @Part MultipartBody.Part image,
+                                                   @Part(Constants.Login.COMPANY_ID) RequestBody companyId,
+                                                   @Part(Constants.UserProfile.VEHICLE_NUMBER) RequestBody vehicleNum,
+                                                   @Part(Constants.UserProfile.VEHICLE_NAME) RequestBody vehicleName,
+                                                   @Part(Constants.UserProfile.VEHICLE_TYPE) RequestBody vehicleType,
+                                                   @Part(Constants.UserProfile.FROM_LAT) RequestBody fromLat,
+                                                   @Part(Constants.UserProfile.FROM_LONG) RequestBody fromLong,
+                                                   @Part(Constants.UserProfile.TO_LAT) RequestBody toLat,
+                                                   @Part(Constants.UserProfile.TO_LONG) RequestBody toLong);
 
 }

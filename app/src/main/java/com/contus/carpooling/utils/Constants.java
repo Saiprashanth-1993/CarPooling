@@ -206,6 +206,11 @@ public class Constants {
     public static final String COMPANY_CATEGORY_ID = "company_category_id";
 
     /**
+     * Constant USER_WORK_CATEGORY value set from response
+     */
+    public static final String USER_WORK_CATEGORY = "user_work_category";
+
+    /**
      * Constant value for response
      */
     public static final String RESPONSE = "response";
@@ -543,7 +548,7 @@ public class Constants {
         /***
          * Constant value set for response
          */
-        public static final String VEHICLE_NUMBER = "vehicle_number";
+        public static final String VEHICLE_NUMBER = "vehicle_no";
 
         /**
          * Instantiates a new constants.

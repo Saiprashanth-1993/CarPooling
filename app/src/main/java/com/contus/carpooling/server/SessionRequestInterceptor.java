@@ -27,8 +27,8 @@ public class SessionRequestInterceptor implements okhttp3.Interceptor {
         /**
          * Get the device token and access token value by using share preference
          */
-        String accessToken = SharedDataUtils.getStringPreference(Constants.ACCESS_TOKEN_HEADER_VALUE, null);
-        String deviceToken = SharedDataUtils.getStringPreference(Constants.DEVICE_TOKEN_HEADER_VALUE, null);
+        String accessToken = SharedDataUtils.getStringPreference(Constants.ACCESS_TOKEN_HEADER_VALUE, "");
+        String deviceToken = SharedDataUtils.getStringPreference(Constants.DEVICE_TOKEN_HEADER_VALUE, "");
 
         builder.addHeader(Constants.REQUEST_TYPE_HEADER, "mobile");
         builder.addHeader(Constants.ACCESS_TOKEN_HEADER, accessToken);
