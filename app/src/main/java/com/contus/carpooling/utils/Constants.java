@@ -24,7 +24,6 @@ public class Constants {
      */
     public static final String DEVICE_TOKEN = "device_token";
 
-
     /**
      * Header type need to use that
      */
@@ -54,11 +53,6 @@ public class Constants {
      * Constants for ACCESS_TOKEN_HEADER_VALUE
      */
     public static final String ACCESS_TOKEN_HEADER_VALUE = "accessToken";
-
-    /**
-     * The constants for Shared Preference
-     */
-    public static final String DEVICE_TOKEN_PREF = "deviceTokenPref";
 
     /**
      * The result of google place on activity result to get company location.

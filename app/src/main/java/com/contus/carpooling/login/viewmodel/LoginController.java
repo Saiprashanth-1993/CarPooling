@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 
@@ -166,6 +167,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
                 SharedDataUtils.storeStringPreferences(Constants.DEVICE_TOKEN_HEADER_VALUE,
                         userResult.getDeviceToken());
                 SharedDataUtils.storeStringPreferences(Constants.ACCESS_TOKEN_HEADER_VALUE, result.getUserToken());
+
 
                 /**
                  * Store the from location and to location to shared preference

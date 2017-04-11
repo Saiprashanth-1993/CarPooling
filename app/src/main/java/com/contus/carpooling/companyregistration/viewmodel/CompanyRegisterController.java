@@ -30,6 +30,7 @@ import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.CustomUtils;
 import com.contus.carpooling.utils.Logger;
+import com.contus.carpooling.utils.SharedDataUtils;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
@@ -97,6 +98,7 @@ public class CompanyRegisterController {
         companyRegistrationParams.put(Constants.COMPANY_CATEGORY_ID, categoryId);
         companyRegistrationParams.put(Constants.CompanyRegistration.COMPANY_LOCATION,
                 companyRegistrationInfo.getLocation());
+        SharedDataUtils.storeStringPreferences(Constants.USER_WORK_CATEGORY, companyRegistrationInfo.getCategory());
         new RestClient(ctx).getInstance().get().doCompanyRegistration(companyRegistrationParams)
                 .enqueue(new RestCallback<CompanyRegistrationResponse>());
     }
