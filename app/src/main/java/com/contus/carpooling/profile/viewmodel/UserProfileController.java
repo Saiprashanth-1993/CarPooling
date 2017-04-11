@@ -11,7 +11,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
@@ -43,7 +42,6 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 import static com.contus.carpooling.utils.Constants.EXCEPTION_MESSAGE;
-import static com.contus.carpooling.utils.Constants.GALLERY_SELECTION;
 import static com.contus.carpooling.utils.Constants.Login;
 
 /**
@@ -193,14 +191,6 @@ public class UserProfileController {
 
     }
 
-    private void showFileChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        userProfileFragment.startActivityForResult(Intent.createChooser(intent, "Select Picture"),
-                GALLERY_SELECTION);
-    }
-
     /**
      * user
      *
@@ -298,28 +288,8 @@ public class UserProfileController {
                 });
     }
 
-    public File getAlbumStorageDir(String albumName) {
-        // Get the directory for the user's public pictures directory.
-        File file = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES), albumName);
-        if (!file.mkdirs()) {
-            Log.e("TAG", "Directory not created");
-        }
-        Log.e("TAG", file.getAbsolutePath());
-        return file;
-    }
-
-    /* Checks if external storage is available for read and write */
-    public boolean isExternalStorageWritable() {
-        String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            return true;
-        }
-        return false;
-    }
-
     /**
-     * @param userProfileInfo
+     * @param userProfileInfo Holding the profile Data to validate
      * @return
      */
     private boolean userProfileValid(UserProfileInfo userProfileInfo) {

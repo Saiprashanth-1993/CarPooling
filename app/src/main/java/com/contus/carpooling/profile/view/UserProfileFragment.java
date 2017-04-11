@@ -8,7 +8,6 @@ package com.contus.carpooling.profile.view;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -354,7 +353,7 @@ public class UserProfileFragment extends Fragment {
         myProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_profile, container, false);
         userProfileInfo = new UserProfileInfo();
         myProfileRequest(mContext);
-        myProfileBinding.setViewController(new UserProfileController(getContext(), this,myProfileBinding));
+        myProfileBinding.setViewController(new UserProfileController(getContext(), this, myProfileBinding));
         setHasOptionsMenu(true);
         return myProfileBinding.getRoot();
     }
@@ -410,25 +409,8 @@ public class UserProfileFragment extends Fragment {
     }
 
     public void selectImage() {
-
-        final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
-
-        android.app.AlertDialog.Builder builder =
-                new android.app.AlertDialog.Builder(getActivity());
-        builder.setTitle("Add Photo");
-        builder.setItems(options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-                if (options[item].equals("Take Photo")) {
-                    isCameraPermissionGranted();
-                } else if (options[item].equals("Choose from Gallery")) {
-                    isGalleryPermissionGranted();
-                } else if (options[item].equals("Cancel")) {
-                    dialog.dismiss();
-                }
-            }
-        });
-        builder.show();
+        ImagePickerFragment imagePickerFragment = ImagePickerFragment.newInstance(this);
+        imagePickerFragment.show((getActivity()).getSupportFragmentManager(), "122");
     }
 
     private void navToGallery() {
@@ -442,14 +424,13 @@ public class UserProfileFragment extends Fragment {
         File file = null;
         try {
             file = createImageFile();
+            if (file != null) {
+                Uri photoURI = FileProvider.getUriForFile(getContext(), "com.contus.carpooling.fileprovider", file);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(intent, Constants.CAMERA_SELECTION);
+            }
         } catch (IOException e) {
             Logger.logErrorThrowable("mcontext", e);
-        }
-
-        if (file != null) {
-            Uri photoURI = FileProvider.getUriForFile(getContext(), "com.contus.carpooling.fileprovider", file);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-            startActivityForResult(intent, Constants.CAMERA_SELECTION);
         }
     }
 
@@ -475,4 +456,5 @@ public class UserProfileFragment extends Fragment {
 
         void onProfileUpdate();
     }
+
 }
