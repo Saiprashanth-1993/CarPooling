@@ -77,14 +77,18 @@ public class EmployeeDetailActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Constants.CAMERA_SELECTION && !TextUtils.isEmpty(String.valueOf(data))) {
-            Bitmap capturedImage = (Bitmap) data.getExtras().get("data");
-            Uri tempUri = getImageUri(getApplicationContext(), capturedImage);
-            /**
-             * CALL this method to get the actual path from the camera set into image view
-             */
-            File finalFile = new File(getRealPathFromURI(tempUri));
-            int nh = (int) (capturedImage.getHeight() * (512.0 / capturedImage.getWidth()));
-            imageUploadCallBack(finalFile, nh, capturedImage);
+            try {
+                Bitmap capturedImage = (Bitmap) data.getExtras().get("data");
+                Uri tempUri = getImageUri(getApplicationContext(), capturedImage);
+                /**
+                 * CALL this method to get the actual path from the camera set into image view
+                 */
+                File finalFile = new File(getRealPathFromURI(tempUri));
+                int nh = (int) (capturedImage.getHeight() * (512.0 / capturedImage.getWidth()));
+                imageUploadCallBack(finalFile, nh, capturedImage);
+            } catch (Exception e) {
+                Logger.logErrorThrowable(Constants.EXCEPTION_MESSAGE, e);
+            }
 
         } else if (requestCode == Constants.GALLERY_SELECTION && !TextUtils.isEmpty(String.valueOf(data))) {
             try {
@@ -100,6 +104,21 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             } catch (IOException e) {
                 Logger.logErrorThrowable(Constants.EXCEPTION_MESSAGE, e);
             }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case 2000:
+                callBackGallery(grantResults);
+                return;
+            case 3000:
+                callBackCamera(grantResults);
+                return;
+            default:
+                break;
         }
     }
 
@@ -125,22 +144,6 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case 2000:
-                callBackGallery(grantResults);
-                return;
-            case 3000:
-                callBackCamera(grantResults);
-                return;
-            default:
-                break;
-        }
-    }
-
-
     /**
      * Call back method for gallery selection
      *
@@ -155,7 +158,6 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             gallerySelection();
         }
     }
-
 
     /**
      * Call back method for camera selection
@@ -205,7 +207,6 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             return cursor.getString(idx);
         }
     }
-
 
     /**
      * Convert the bitmap image  to URI path

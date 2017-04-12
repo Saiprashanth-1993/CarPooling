@@ -13,7 +13,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
@@ -159,10 +158,6 @@ public class UserProfileController {
 
         final String[] vehicleList = {context.getString(R.string.two_whealer), context.getString(R.string
                 .four_whealer), context.getString(R.string.no_vehicle)};
-
-        for (int i = 0; i < vehicleList.length; i++) {
-            /*String list = vehicleList[i];*/
-        }
         Activity activity = (userProfileFragment.getActivity());
 
         /*
@@ -183,6 +178,11 @@ public class UserProfileController {
                 if (vehicleList[item].equalsIgnoreCase(context.getString(R.string.no_vehicle))) {
                     userProfileInfo.setUserVehicleName("");
                     userProfileInfo.setUserVehicleNum("");
+                    fragmentMyProfileBinding.tvVehicleNameVal.setEnabled(false);
+                    fragmentMyProfileBinding.tvVehicleNumVal.setEnabled(false);
+                } else {
+                    fragmentMyProfileBinding.tvVehicleNameVal.setEnabled(true);
+                    fragmentMyProfileBinding.tvVehicleNumVal.setEnabled(true);
                 }
             }
         });
@@ -264,17 +264,15 @@ public class UserProfileController {
         } else {
             part = null;
         }
-        Log.i("TAG", "updateProfileRequest: " + part);
         progressDialog.show();
 
         new RestClient(ctx).getInstance().get().updateProfileDetails(userMail, name, userPhone, part, userID,
-                vehicleType, vehicleNum, vehicleName,
+                vehicleNum, vehicleName, vehicleType,
                 fromLati, fromLongi, toLati, toLongi)
                 .enqueue(new RestCallback<UserProfileResponse>() {
                     @Override
                     public void onResponse(Call<UserProfileResponse> call, Response<UserProfileResponse> response) {
                         BusProvider.getInstance().unregister(this);
-                        Log.i("TAG", "onResponse: " + response.message());
                         storeUserData(response.body());
                         userProfileFragment.profileUpdateListener.onProfileUpdate();
                         progressDialog.dismiss();
@@ -283,7 +281,7 @@ public class UserProfileController {
                     @Override
                     public void onFailure(Call<UserProfileResponse> call, Throwable t) {
                         progressDialog.dismiss();
-                        Toast.makeText(ctx, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }

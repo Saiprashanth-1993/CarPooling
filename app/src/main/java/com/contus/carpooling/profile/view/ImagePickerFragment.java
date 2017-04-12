@@ -25,13 +25,13 @@ import com.contus.carpooling.profile.viewmodel.ImagePickerController;
  */
 public class ImagePickerFragment extends BottomSheetDialogFragment {
 
+    private static UserProfileFragment userProfileFragment;
+
     ImagePickerController imagePickerController;
 
-    private static UserProfileFragment userProfileFragments;
-
     public static ImagePickerFragment newInstance(UserProfileFragment userProfileFragment) {
-        ImagePickerFragment imagePickerFragment=new ImagePickerFragment();
-        userProfileFragments=userProfileFragment;
+        ImagePickerFragment imagePickerFragment = new ImagePickerFragment();
+        ImagePickerFragment.userProfileFragment = userProfileFragment;
         return imagePickerFragment;
     }
 
@@ -41,7 +41,7 @@ public class ImagePickerFragment extends BottomSheetDialogFragment {
         FragmentBottomImagepickerBinding imagepickerBinding = DataBindingUtil
                 .inflate(inflater, R.layout.fragment_bottom_imagepicker, container, false);
 
-        imagePickerController = new ImagePickerController(this,userProfileFragments);
+        imagePickerController = new ImagePickerController(this, userProfileFragment);
         imagepickerBinding.setImagePicker(imagePickerController);
         return imagepickerBinding.getRoot();
     }
