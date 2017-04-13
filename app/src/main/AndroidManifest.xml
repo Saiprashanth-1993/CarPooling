@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.contus.carpooling">
+          package="com.contus.carpooling">
 
     <uses-feature
         android:name="android.hardware.camera.autofocus"
-        android:required="false" />
+        android:required="false"/>
     <uses-feature
         android:name="android.hardware.camera.any"
-        android:required="true" />
+        android:required="true"/>
 
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
-        android:name="com.contus.carpooling.utils.SharedDataUtils"
+        android:name=".utils.SharedDataUtils"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,55 +23,54 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_place_api_key" />
-        
-        
+            android:value="@string/google_place_api_key"/>
+
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/SplashScreen">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".login.view.LoginActivity"
             android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
             android:name=".companyregistration.view.CompanyRegistrationActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".userregistration.view.UserRegistrationActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".addnewride.view.RegisterNewRidesActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".dashboard.homepage.view.DashboardActivity"
-            android:label="@string/title_activity_dashboard" >
-
+            android:label="@string/title_activity_dashboard">
         </activity>
         <activity
             android:name=".employeedetails.view.EmployeeDetailActivity"
-            android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".notification.view.NotificationActivity" />
-        <activity android:name=".offeredrideinfo.view.OfferedRidesInformationActivity" />
-        <activity android:name=".changepassword.view.ChangePasswordActivity" />
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".notification.view.NotificationActivity"/>
+        <activity android:name=".offeredrideinfo.view.OfferedRidesInformationActivity"/>
+        <activity android:name=".changepassword.view.ChangePasswordActivity"/>
 
-        <service android:name="com.contus.carpooling.firebase.MyFirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>
-
-        <service
-            android:name="com.contus.carpooling.firebase.MyFirebaseInstanceIDService">
+        <service android:name=".firebase.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
+        <service android:name=".firebase.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <activity android:name=".forgotpassword.view.ForgotPasswordActivity">
+        </activity>
     </application>
 
 </manifest>

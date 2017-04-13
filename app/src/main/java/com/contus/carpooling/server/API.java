@@ -13,6 +13,7 @@ import com.contus.carpooling.companyregistration.model.CompanyRegistrationRespon
 import com.contus.carpooling.dashboard.myrides.model.MyRidesResponse;
 import com.contus.carpooling.dashboard.ridesoffered.model.RideOfferedResponse;
 import com.contus.carpooling.employeedetails.model.EmployeeDetailsResponse;
+import com.contus.carpooling.forgotpassword.model.ForgotPasswordModel;
 import com.contus.carpooling.login.model.UserLoginResponse;
 import com.contus.carpooling.profile.model.UserProfileResponse;
 import com.contus.carpooling.userregistration.model.UserRegistrationResponse;
@@ -135,6 +136,10 @@ public interface API {
      */
     @POST("changepassword")
     Call<ChangePasswordResponse> changePassword(@Body Map<String, String> paramerters);
+
+
+    @POST("forgotpassword")
+    Call<ForgotPasswordModel> forgotPassword(@Body Map<String, String> paramerters);
 
     /**
      * Authenticate the edit ride with right credentials

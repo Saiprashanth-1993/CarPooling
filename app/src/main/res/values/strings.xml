@@ -223,6 +223,9 @@
     <string name="no_vehicle">No Vehicle</string>
     <string name="four_whealer">4 wheeler</string>
     <string name="two_whealer">2 wheeler</string>
+    <string name="forgot_pass_header">Forgot Password</string>
+    <string name="forgot_your_n_password">forgot your\n\t password?</string>
+    <string name="forgot_passwd_toast">Please enter your mail_id</string>
 
 </resources>
 
