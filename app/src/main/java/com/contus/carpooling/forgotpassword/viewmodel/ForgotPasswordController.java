@@ -73,7 +73,7 @@ public class ForgotPasswordController {
      */
     private void forgotPasswordRequest(ForgotPasswordModel getforgotPasswordValues, final Context mContext) {
         HashMap<String, String> params = new HashMap<>();
-        params.put(Constants.USER_REG_EMAIL, getforgotPasswordValues.getEmailId());
+        params.put(Constants.FORGET_EMAIL, getforgotPasswordValues.getEmailId());
         new RestClient(mContext).getInstance().get().forgotPassword(params)
                 .enqueue(new Callback<ForgotPasswordModel>() {
                     @Override

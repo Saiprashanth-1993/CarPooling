@@ -17,10 +17,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0aa59bfa-9e7f-4dc8-b696-520c4f6d8073" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/addnewride/viewmodel/NewRideController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/addnewride/viewmodel/NewRideController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/model/ForgotPasswordModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/model/ForgotPasswordModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/view/ForgotPasswordActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/view/ForgotPasswordActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgot_password.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgot_password.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/utils/Constants.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/utils/Constants.java" />
     </list>
     <ignored path="p105-carpooling-and.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -109,10 +107,43 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="414">
-              <caret line="87" column="74" selection-start-line="87" selection-start-column="74" selection-end-line="87" selection-end-column="74" />
+              <caret line="87" column="59" selection-start-line="87" selection-start-column="59" selection-end-line="87" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1306#1623#0" expanded="true" />
+                <element signature="e#1622#1623#0" expanded="true" />
+                <element signature="e#1848#1876#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Callback.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.1.0/3564ebef90ac75e61ed65ab9af0f422ce92d4afa/retrofit-2.1.0-sources.jar!/retrofit2/Callback.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="43" column="7" selection-start-line="43" selection-start-column="7" selection-end-line="43" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/utils/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="169" column="43" selection-start-line="169" selection-start-column="31" selection-end-line="169" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Logger.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/utils/Logger.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="213">
+              <caret line="72" column="7" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2732,7 +2763,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/dashboard/homepage/view/DashboardActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/utils/Constants.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/userregistration/viewmodel/UserRegistrationController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/login/viewmodel/LoginController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/server/SessionRequestInterceptor.java" />
@@ -2745,18 +2775,19 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/profile/view/UserProfileFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/model/dummy.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/utils/Logger.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/server/API.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/model/ForgotPasswordInfo.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/SplashScreenActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_change_password.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/addnewride/viewmodel/NewRideController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/view/ForgotPasswordActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/model/ForgotPasswordModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_forgot_password.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/utils/Logger.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/utils/Constants.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java" />
       </list>
     </option>
   </component>
@@ -2864,6 +2895,28 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="carpooling" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="p105-carpooling-and" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="carpooling" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -3526,7 +3579,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492075608381</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Forgot password activity issue partially fixed&#10;">
+      <created>1492090283554</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1492090283554</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3580,7 +3640,8 @@
     <MESSAGE value="Bottom Fragment Changed in Update Profile" />
     <MESSAGE value="Update Profile Changes" />
     <MESSAGE value="Forgot password activity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Forgot password activity" />
+    <MESSAGE value="Forgot password activity issue partially fixed&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Forgot password activity issue partially fixed&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3593,39 +3654,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java</url>
-          <line>73</line>
-          <properties class="com.contus.carpooling.forgotpassword.viewmodel.ForgotPasswordController" method="forgotPasswordRequest" />
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java</url>
-          <line>79</line>
-          <properties method="onResponse" />
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java</url>
-          <line>61</line>
-          <properties />
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java</url>
-          <line>62</line>
-          <properties />
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java</url>
-          <line>63</line>
-          <properties />
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java</url>
-          <line>65</line>
-          <properties />
-          <option name="timeStamp" value="20" />
+          <line>86</line>
+          <properties method="onFailure" />
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java</url>
@@ -3635,39 +3666,40 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java</url>
-          <line>81</line>
+          <line>54</line>
           <properties />
-          <option name="timeStamp" value="23" />
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java</url>
           <line>75</line>
           <properties />
-          <option name="timeStamp" value="25" />
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java</url>
           <line>76</line>
           <properties />
-          <option name="timeStamp" value="26" />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java</url>
+          <line>87</line>
+          <properties />
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java</url>
+          <line>89</line>
+          <properties />
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="27" />
+      <option name="time" value="35" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_bottom_sheet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/employeedetails/view/BottomDialogFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3759,6 +3791,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#18084#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3777,6 +3813,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3791,14 +3828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3695">
           <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/utils/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="79" column="39" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3836,14 +3865,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/utils/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="164" column="35" selection-start-line="164" selection-start-column="35" selection-end-line="164" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -4070,12 +4091,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/utils/Logger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="72" column="7" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/utils/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="169" column="43" selection-start-line="169" selection-start-column="31" selection-end-line="169" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.1.0/3564ebef90ac75e61ed65ab9af0f422ce92d4afa/retrofit-2.1.0-sources.jar!/retrofit2/Callback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="43" column="7" selection-start-line="43" selection-start-column="7" selection-end-line="43" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/contus/carpooling/forgotpassword/viewmodel/ForgotPasswordController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
-          <caret line="87" column="74" selection-start-line="87" selection-start-column="74" selection-end-line="87" selection-end-column="74" />
+          <caret line="87" column="59" selection-start-line="87" selection-start-column="59" selection-end-line="87" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1306#1623#0" expanded="true" />
+            <element signature="e#1622#1623#0" expanded="true" />
+            <element signature="e#1848#1876#0" expanded="true" />
           </folding>
         </state>
       </provider>
