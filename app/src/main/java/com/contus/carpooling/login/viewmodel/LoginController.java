@@ -16,6 +16,8 @@ import android.view.View;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
+import com.contus.carpooling.databinding.ActivityForgotPasswordBinding;
+import com.contus.carpooling.forgotpassword.view.ForgotPasswordActivity;
 import com.contus.carpooling.login.model.UserLoginInfo;
 import com.contus.carpooling.login.model.UserLoginResponse;
 import com.contus.carpooling.server.BusProvider;
@@ -100,6 +102,22 @@ public class LoginController implements ApiService.OnTaskCompleted {
             @Override
             public void onClick(View view) {
                 view.getContext().startActivity(new Intent(view.getContext(), UserRegistrationActivity.class));
+            }
+        };
+    }
+
+    public View.OnClickListener tvForgotPasswordOnClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = view.getContext();
+                Intent intent = new Intent(context, ForgotPasswordActivity.class);
+                context.startActivity(intent);
+
+//                if (isValid(context, getchangePasswordValues.getCurrentPassword(),
+//                        getchangePasswordValues.getNewPassword(),
+//                        getchangePasswordValues.getConfirmPassword()))
+//                    changePasswordRequest(getchangePasswordValues, context);
             }
         };
     }

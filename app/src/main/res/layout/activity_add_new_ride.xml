@@ -279,7 +279,7 @@
                                             android:focusable="false"
                                             android:hint="@string/end_time_hint"
                                             android:maxLines="2"
-                                            android:onClick='@{clickController.btnEndTimeDialog("end_time",NewRideData)}'
+                                            android:onClick='@{clickController.btnTimeDialog("end_time",NewRideData)}'
                                             android:paddingLeft="@dimen/x_small_size"
                                             android:text="@={NewRideData.endTime}"
                                             android:textColorHint="@color/colorEditTextHint"

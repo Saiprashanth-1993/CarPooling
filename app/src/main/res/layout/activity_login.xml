@@ -133,6 +133,7 @@
                 android:layout_marginRight="@dimen/extra_medium_size"
                 android:layout_marginTop="@dimen/text_width"
                 android:gravity="end"
+                android:onClick="@{ViewController.tvForgotPasswordOnClick()}"
                 android:text="@string/forgot_password"
                 android:textColor="@color/colorHighLightBlue"
                 android:textSize="@dimen/text_extra_large" />
