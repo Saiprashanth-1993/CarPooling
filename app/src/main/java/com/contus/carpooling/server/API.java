@@ -56,7 +56,6 @@ public interface API {
     @POST("registration")
     Call<UserRegistrationResponse> doRegister(@Body Map<String, String> paramerters);
 
-
     /**
      * Authenticate the Company Registration with their  register credentials
      *
@@ -66,7 +65,6 @@ public interface API {
     @POST("companyregistration")
     Call<CompanyRegistrationResponse> doCompanyRegistration(@Body Map<String, String> paramerters);
 
-
     /**
      * Authenticate the Create Ride  with user register credentials
      *
@@ -75,7 +73,6 @@ public interface API {
      */
     @POST("rides")
     Call<CreateRideResponse> doCreateRide(@Body Map<String, String> paramerters);
-
 
     /**
      * Method for register the employee details
@@ -89,7 +86,6 @@ public interface API {
     Call<EmployeeDetailsResponse> doEmployeeRegistration(@Part MultipartBody.Part frontImage,
                                                          @Part MultipartBody.Part backImage);
 
-
     /**
      * Authenticate the user get profile what user have registered the details already in registration
      *
@@ -97,7 +93,6 @@ public interface API {
      */
     @GET("getprofile")
     Call<UserProfileResponse> getProfile();
-
 
     /**
      * Authenticate to get the ride list
@@ -115,7 +110,6 @@ public interface API {
     @GET("companysectorlist")
     Call<CompanyListResponse> getCompanyList();
 
-
     /**
      * Get the ride list
      *
@@ -123,7 +117,6 @@ public interface API {
      */
     @GET("ridelist")
     Call<MyRidesResponse> getMyRideList();
-
 
     /**
      * Get the ride  offered list
@@ -133,7 +126,6 @@ public interface API {
      */
     @POST("displayrides")
     Call<RideOfferedResponse> getRidesOfferedList(@Body Map<String, String> paramerters);
-
 
     /**
      * Authenticate the change password
