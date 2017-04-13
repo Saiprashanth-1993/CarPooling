@@ -8,24 +8,19 @@ package com.contus.carpooling.profile.view;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -50,6 +45,7 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -83,8 +79,6 @@ public class UserProfileFragment extends Fragment {
 
     Place place;
 
-    String mCurrentPhotoPath;
-
     List<Address> toAddresses;
 
     List<Address> fromAddresses;
@@ -92,8 +86,6 @@ public class UserProfileFragment extends Fragment {
     private UserProfileInfo userProfileInfo;
 
     private FragmentMyProfileBinding myProfileBinding;
-
-    private Bitmap bitmap;
 
     private Geocoder geocoder;
 
@@ -117,7 +109,6 @@ public class UserProfileFragment extends Fragment {
             public void onFailure(Call<UserProfileResponse> call, Throwable t) {
                 BusProvider.getInstance().unregister(this);
                 Log.i("TAG", "onFailure: " + t.getMessage());
-                Snackbar.make(getView(), "check net connection", Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -157,8 +148,8 @@ public class UserProfileFragment extends Fragment {
                 Logger.logErrorThrowable("mcontext", e);
             }
         }
-        if (checkNull(userProfileDetail.get(1).getType()).equalsIgnoreCase("destination")) {
-            try {
+        try {
+            if (checkNull(userProfileDetail.get(1).getType()).equalsIgnoreCase("destination")) {
                 Double lat = Double.parseDouble(userProfileDetail.get(1).getLatitude());
                 Double lang = Double.parseDouble(userProfileDetail.get(1).getLongitude());
                 try {
@@ -175,9 +166,10 @@ public class UserProfileFragment extends Fragment {
                 } catch (IOException e) {
                     Logger.logErrorThrowable("mContext", e);
                 }
-            } catch (NumberFormatException e) {
-                Logger.logErrorThrowable("mContext", e);
+
             }
+        } catch (Exception e) {
+            Logger.logErrorThrowable("mContext", e);
         }
 
         userProfileInfo.setUserName(checkNull(userProfileDetail.get(0).getName()));
@@ -229,16 +221,17 @@ public class UserProfileFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        Bitmap bitmap;
         if (requestCode == Constants.CAMERA_SELECTION) {
             if (resultCode == RESULT_OK) {
-                File file = new File(mCurrentPhotoPath);
-
                 try {
-                    Bitmap bitmap;
-                    BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-                    bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(),
-                            bitmapOptions);
+                    bitmap = (Bitmap) data.getExtras().get("data");
 
+                    Uri tempUri = getResourceImageUri(getContext(), bitmap);
+                    /**
+                     * CALL this method to get the actual path from the camera set into image view
+                     */
+                    File file = new File(getPathFromURI(tempUri));
                     myProfileBinding.ivProfileIcon.setImageBitmap(bitmap);
                     userProfileInfo.setProfileImage(file);
                 } catch (Exception e) {
@@ -313,26 +306,20 @@ public class UserProfileFragment extends Fragment {
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_CAMERA: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    navToCam();
-                } else {
-                }
-                return;
+        if (requestCode == MY_PERMISSIONS_REQUEST_CAMERA) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                navToCam();
+            } else {
             }
-
-            case MY_PERMISSIONS_REQUEST_GALLERY: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    navToGallery();
-                } else {
-                }
-                return;
+            return;
+        } else if (requestCode == MY_PERMISSIONS_REQUEST_GALLERY) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                navToGallery();
+            } else {
             }
+            return;
         }
     }
 
@@ -354,7 +341,7 @@ public class UserProfileFragment extends Fragment {
         myProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_profile, container, false);
         userProfileInfo = new UserProfileInfo();
         myProfileRequest(mContext);
-        myProfileBinding.setViewController(new UserProfileController(getContext(), this,myProfileBinding));
+        myProfileBinding.setViewController(new UserProfileController(getContext(), this, myProfileBinding));
         setHasOptionsMenu(true);
         return myProfileBinding.getRoot();
     }
@@ -410,25 +397,8 @@ public class UserProfileFragment extends Fragment {
     }
 
     public void selectImage() {
-
-        final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
-
-        android.app.AlertDialog.Builder builder =
-                new android.app.AlertDialog.Builder(getActivity());
-        builder.setTitle("Add Photo");
-        builder.setItems(options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-                if (options[item].equals("Take Photo")) {
-                    isCameraPermissionGranted();
-                } else if (options[item].equals("Choose from Gallery")) {
-                    isGalleryPermissionGranted();
-                } else if (options[item].equals("Cancel")) {
-                    dialog.dismiss();
-                }
-            }
-        });
-        builder.show();
+        ImagePickerFragment imagePickerFragment = ImagePickerFragment.newInstance(this);
+        imagePickerFragment.show((getActivity()).getSupportFragmentManager(), "122");
     }
 
     private void navToGallery() {
@@ -439,40 +409,43 @@ public class UserProfileFragment extends Fragment {
 
     private void navToCam() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File file = null;
-        try {
-            file = createImageFile();
-        } catch (IOException e) {
-            Logger.logErrorThrowable("mcontext", e);
-        }
+        startActivityForResult(intent, Constants.CAMERA_SELECTION);
+    }
 
-        if (file != null) {
-            Uri photoURI = FileProvider.getUriForFile(getContext(), "com.contus.carpooling.fileprovider", file);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-            startActivityForResult(intent, Constants.CAMERA_SELECTION);
+    /**
+     * Convert the data image url to file path
+     *
+     * @param contentURI Get the URI path
+     * @return Cursor of the actual file path of image
+     */
+    private String getPathFromURI(Uri contentURI) {
+        Cursor cursor = getContext().getContentResolver().query(contentURI, null, null, null, null);
+        if (cursor == null) { // Source is Dropbox or other similar local file path
+            return contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            return cursor.getString(idx);
         }
     }
 
-    private File createImageFile() throws IOException {
-        String imageFileName = "profilepic";
-        File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
-
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = image.getAbsolutePath();
-        return image;
-    }
-
-    public String getStringImage() {
-        return mCurrentPhotoPath;
+    /**
+     * Convert the bitmap image  to URI path
+     *
+     * @param inContext Get the context of an activity
+     * @param inImage   Get the bitmap image
+     * @return Uri of the image path
+     */
+    public Uri getResourceImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 
     public interface ProfileUpdateListener {
 
         void onProfileUpdate();
     }
+
 }
