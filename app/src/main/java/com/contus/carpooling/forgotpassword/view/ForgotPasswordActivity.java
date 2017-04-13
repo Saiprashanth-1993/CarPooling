@@ -7,6 +7,7 @@ import android.view.MenuItem;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.databinding.ActivityForgotPasswordBinding;
+import com.contus.carpooling.forgotpassword.model.ForgotPasswordModel;
 import com.contus.carpooling.forgotpassword.viewmodel.ForgotPasswordController;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
@@ -22,6 +23,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        forgotPasswordBinding.setForgotPassword(new ForgotPasswordModel());
+        forgotPasswordBinding.setOnClickController(new ForgotPasswordController(this));
     }
 
     @Override

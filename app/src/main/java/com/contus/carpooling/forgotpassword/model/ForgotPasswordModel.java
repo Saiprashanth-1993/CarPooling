@@ -7,6 +7,7 @@ package com.contus.carpooling.forgotpassword.model;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
+import com.contus.carpooling.BR;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -24,6 +25,7 @@ public class ForgotPasswordModel extends BaseObservable {
     @Expose
     private String message;
 
+
     private String emailId;
 
     @Bindable
@@ -31,7 +33,6 @@ public class ForgotPasswordModel extends BaseObservable {
         return emailId;
     }
 
-    @Bindable
     public Boolean getError() {
         return error;
     }
@@ -40,7 +41,6 @@ public class ForgotPasswordModel extends BaseObservable {
         this.error = error;
     }
 
-    @Bindable
     public Integer getStatuscode() {
         return statuscode;
     }
@@ -49,10 +49,16 @@ public class ForgotPasswordModel extends BaseObservable {
         this.statuscode = statuscode;
     }
 
-    @Bindable
     public String getMessage() {
         return message;
     }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+        notifyPropertyChanged(BR.emailId);
+    }
+
+
 
     public void setMessage(String message) {
         this.message = message;
