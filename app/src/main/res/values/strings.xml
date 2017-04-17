@@ -225,7 +225,7 @@
     <string name="two_whealer">2 wheeler</string>
     <string name="forgot_pass_header">Forgot Password</string>
     <string name="forgot_your_n_password">forgot your\n\t password?</string>
-    <string name="forgot_passwd_toast">Please enter your mail_id</string>
+    <string name="forgot_passwd_toast">Please enter your Email ID</string>
     <string name="ride_history">Ride History</string>
 
 </resources>

@@ -165,6 +165,11 @@ public class Constants {
     public static final String USER_REG_EMAIL = "userEmail";
 
     /**
+     * The Constant for forget Email Id
+     */
+    public static final String FORGET_EMAIL="email";
+
+    /**
      * The Constant UserId
      */
     public static final String REG_USER_ID = "id";

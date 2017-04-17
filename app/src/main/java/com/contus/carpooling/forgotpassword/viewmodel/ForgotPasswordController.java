@@ -9,9 +9,11 @@ package com.contus.carpooling.forgotpassword.viewmodel;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 
 import com.contus.carpooling.R;
+import com.contus.carpooling.databinding.ActivityForgotPasswordBinding;
 import com.contus.carpooling.forgotpassword.model.ForgotPasswordModel;
 import com.contus.carpooling.server.RestClient;
 import com.contus.carpooling.utils.Constants;
@@ -37,6 +39,8 @@ public class ForgotPasswordController {
      */
     Activity activity;
 
+    ActivityForgotPasswordBinding forgotPasswordBinding;
+
     /**
      * constructor of the activity
      *
@@ -51,8 +55,9 @@ public class ForgotPasswordController {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                if (isValid(context, forgotPasswordModel.getEmailId()))
-                    forgotPasswordRequest(forgotPasswordModel, context);
+                String emailId=forgotPasswordModel.getEmailId();
+                if (isValid(context, emailId) && isValidEmail(emailId))
+                    forgotPasswordRequest(emailId, activity);
             }
         };
     }
@@ -66,27 +71,37 @@ public class ForgotPasswordController {
         return validStatus;
     }
 
+    // validating email id
+    private boolean isValidEmail(String email) {
+        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            return true;
+        } else {
+            //show invalid email error
+            forgotPasswordBinding.tvForgotMail.setError("invalid");
+            return false;
+        }
+    }
+
     /*
      * Handle the API for change password request
      *
      * @param getchangePasswordValues Get the model of change password model
      */
-    private void forgotPasswordRequest(ForgotPasswordModel getforgotPasswordValues, final Context mContext) {
+    private void forgotPasswordRequest(String emailID, final Activity mContext) {
         HashMap<String, String> params = new HashMap<>();
-        params.put(Constants.USER_REG_EMAIL, getforgotPasswordValues.getEmailId());
+        params.put(Constants.FORGET_EMAIL, emailID);
         new RestClient(mContext).getInstance().get().forgotPassword(params)
                 .enqueue(new Callback<ForgotPasswordModel>() {
                     @Override
                     public void onResponse(Call<ForgotPasswordModel> call, Response<ForgotPasswordModel> response) {
-                        if (response.isSuccessful()) {
-                            Logger.showToastMessage(mContext, response.body().getMessage());
-                        }
+                        Logger.showLongToastMessage(mContext, response.body().getMessage());
                     }
 
                     @Override
                     public void onFailure(Call<ForgotPasswordModel> call, Throwable t) {
-                        Logger.showToastMessage(mContext, t.getMessage());
+                        Logger.showLongToastMessage(mContext, t.getMessage());
                     }
                 });
     }
+
 }
