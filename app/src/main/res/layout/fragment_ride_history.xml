@@ -4,6 +4,7 @@
     >
 
     <data>
+
         <variable
             name="Controller"
             type="com.contus.carpooling.ridehistory.viewmodel.RideHistoryController"/>

@@ -13,13 +13,9 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.contus.carpooling.R;
-import com.contus.carpooling.dashboard.homepage.viewmodel.DashboardController;
-import com.contus.carpooling.dashboard.myrides.model.MyRides;
-import com.contus.carpooling.databinding.AdapterMyRidesBinding;
 import com.contus.carpooling.databinding.AdapterRideHistoryBinding;
 import com.contus.carpooling.ridehistory.model.RideHistoryModel;
 import com.contus.carpooling.ridehistory.viewmodel.RideHistoryController;
-import com.contus.carpooling.utils.Logger;
 
 import java.util.List;
 
@@ -52,11 +48,6 @@ public class RideHistoryAdapter extends RecyclerView.Adapter<RideHistoryAdapter.
         this.context = context;
     }
 
-    @Override
-    public int getItemCount() {
-        return rideList.size();
-    }
-
     /**
      * Get the position of an item
      *
@@ -79,6 +70,10 @@ public class RideHistoryAdapter extends RecyclerView.Adapter<RideHistoryAdapter.
     public void onBindViewHolder(RideHistoryAdapter.RideHistoryViewHolder holder, int position) {
     }
 
+    @Override
+    public int getItemCount() {
+        return rideList.size();
+    }
 
     /**
      * The my ride list PackageViewHolder for reusable view.
