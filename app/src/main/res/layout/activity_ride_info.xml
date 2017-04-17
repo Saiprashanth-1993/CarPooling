@@ -404,6 +404,7 @@
                     android:layout_marginLeft="@dimen/x_small_size"
                     android:layout_marginRight="@dimen/x_small_size"
                     android:layout_marginTop="@dimen/x_small_size"
+                    android:visibility="gone"
                     card_view:cardBackgroundColor="@android:color/white"
                     card_view:cardCornerRadius="@dimen/xs_medium_size"
                     card_view:cardElevation="@dimen/zero_size">

@@ -36,6 +36,7 @@ import com.contus.carpooling.databinding.NavigationHeaderBinding;
 import com.contus.carpooling.login.view.LoginActivity;
 import com.contus.carpooling.notification.view.NotificationActivity;
 import com.contus.carpooling.profile.view.UserProfileFragment;
+import com.contus.carpooling.ridehistory.view.RideHistoryFragment;
 import com.contus.carpooling.settings.view.SettingsFragment;
 import com.contus.carpooling.utils.Constants;
 import com.contus.carpooling.utils.SharedDataUtils;
@@ -135,6 +136,11 @@ public class DashboardActivity extends AppCompatActivity
             activityDashboardBinding.addNewRide.show();
             fragment = new HomePageFragment();
             fragmentName = Constants.NAME_NAVIGATION_DASHBOARD;
+        } else if (itemId == R.id.nav_rides) {
+            activityDashboardBinding.toolBarTitle.setText(R.string.ride_history);
+            activityDashboardBinding.addNewRide.hide();
+            fragment = new RideHistoryFragment();
+            fragmentName = Constants.NAME_NAVIGATION_RIDE_HISTORY;
         } else if (itemId == R.id.nav_profile) {
             activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_my_profile);
             activityDashboardBinding.addNewRide.hide();
@@ -186,6 +192,9 @@ public class DashboardActivity extends AppCompatActivity
             activityDashboardBinding.addNewRide.show();
         } else if (getFragmentName().equals(Constants.NAME_NAVIGATION_MY_PROFILE)) {
             activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_my_profile);
+            activityDashboardBinding.addNewRide.hide();
+        } else if (getFragmentName().equals(Constants.NAME_NAVIGATION_RIDE_HISTORY)) {
+            activityDashboardBinding.toolBarTitle.setText(R.string.ride_history);
             activityDashboardBinding.addNewRide.hide();
         } else {
             activityDashboardBinding.toolBarTitle.setText(R.string.toolbar_name_settings);

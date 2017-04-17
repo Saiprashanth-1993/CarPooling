@@ -210,6 +210,11 @@ public class Constants {
     public static final String RESPONSE = "response";
 
     /**
+     * Constant value for ride history
+     */
+    public static final String NAME_NAVIGATION_RIDE_HISTORY = "Ride History";
+
+    /**
      * Instantiates a new constants.
      */
     private Constants() {

@@ -1,40 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="Controller"
+            type="com.contus.carpooling.ridehistory.viewmodel.RideHistoryController"/>
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
         >
 
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
 
-            <android.support.v7.widget.AppCompatEditText
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Search by Departure or Arrival Location"
-                android:textSize="@dimen/small_size"
-                android:drawableLeft="@drawable/places_ic_search"
-                android:drawablePadding="10dp"/>
-        </LinearLayout>
+                android:layout_height="wrap_content"
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-                <android.support.v7.widget.AppCompatButton
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5">
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@drawable/places_ic_search"
+                        android:drawablePadding="10dp"
+                        android:hint="Search by Departure or Arrival Location"
+                        android:textSize="@dimen/small_size"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@drawable/filter"
+                        android:drawableTint="@color/colorPrimaryDark"
+                        android:onClick="@{Controller.filterClick()}"
+                        android:text="Filter"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_ride_history"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:drawableLeft=""
-                    android:text="Filter"/>
+                    android:background="@color/colorBackground"
+                    android:orientation="vertical"
+                    app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+                </android.support.v7.widget.RecyclerView>
+
+            </LinearLayout>
 
         </LinearLayout>
-
     </LinearLayout>
-
-</LinearLayout>
+</layout>
