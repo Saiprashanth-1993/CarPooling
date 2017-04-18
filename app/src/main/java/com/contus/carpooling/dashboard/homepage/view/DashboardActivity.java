@@ -1,4 +1,4 @@
-/**
+/*
  * @category CarPooling
  * @package com.contus.carpooling.dashboard.homepage.view
  * @copyright Copyright (C) 2016 Contus. All rights reserved.
@@ -234,7 +234,8 @@ public class DashboardActivity extends AppCompatActivity
 
     @Override
     public void onViewPageListener() {
-        activityDashboardBinding.addNewRide.animate().translationY(0).setInterpolator(new LinearInterpolator()).start();
+        activityDashboardBinding.addNewRide.animate().translationY(0).setInterpolator(new LinearInterpolator())
+                .start();
     }
 
     public void updateProfile() {

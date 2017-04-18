@@ -132,7 +132,7 @@ public class NewRideController {
         }
         final Calendar currentDate = Calendar.getInstance();
         date = Calendar.getInstance();
-        DatePickerDialog datePickerDialog = new DatePickerDialog(context,style, new DatePickerDialog
+        DatePickerDialog datePickerDialog = new DatePickerDialog(context, style, new DatePickerDialog
                 .OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, final int dayOfMonth) {
