@@ -6,8 +6,11 @@
 
 package com.contus.carpooling.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.Gravity;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 /**
@@ -32,5 +35,20 @@ public class CustomUtils {
         Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
+    }
+
+    /**
+     * Use this method to hide the keyboard if it is showing
+     *
+     * @param activity current activity
+     */
+    public static void hideSoftKeyboard(Activity activity) {
+
+        View activeView = activity.getCurrentFocus();
+        if (activeView != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity
+                    .INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(activeView.getWindowToken(), 0);
+        }
     }
 }

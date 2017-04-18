@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="model"
+            type="com.contus.carpooling.ridehistory.model.RideHistoryModel"/>
+
+        <variable
             name="Controller"
             type="com.contus.carpooling.ridehistory.viewmodel.RideHistoryController"/>
     </data>
@@ -139,7 +143,7 @@
                             android:maxLines="2"
                             android:paddingLeft="0dp"
                             android:paddingRight="0dp"
-                            android:text="Tambaram"
+                            android:text="@{model.arrival}"
                             android:textColor="@color/colorHighLightBlue"
                             android:textSize="@dimen/text_primary"/>
 
@@ -183,7 +187,7 @@
                             android:ellipsize="end"
                             android:gravity="center"
                             android:maxLines="2"
-                            android:text="Guindy"
+                            android:text="@{model.depature}"
                             android:textColor="@color/colorHighLightBlue"
                             android:textSize="@dimen/text_primary"/>
 

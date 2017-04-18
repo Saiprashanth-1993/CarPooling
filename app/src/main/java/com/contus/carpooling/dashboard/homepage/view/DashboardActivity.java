@@ -8,6 +8,7 @@
 package com.contus.carpooling.dashboard.homepage.view;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -178,7 +180,25 @@ public class DashboardActivity extends AppCompatActivity
         if (activityDashboardBinding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             activityDashboardBinding.drawerLayout.closeDrawer(GravityCompat.START);
         } else if (getFragmentName().equals(Constants.NAME_NAVIGATION_DASHBOARD)) {
-            ActivityCompat.finishAffinity(this);
+
+            AlertDialog dialog = new AlertDialog.Builder(this, R.style.DialogTheme)
+                    .setTitle(R.string.app_name)
+                    .setMessage("Do you want exit the App ?").setCancelable(false)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.finishAffinity(DashboardActivity.this);
+                        }
+                    })
+                    .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create();
+
+            dialog.show();
         } else {
             // Let super handle the back press
             super.onBackPressed();

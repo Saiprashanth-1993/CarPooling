@@ -4,7 +4,7 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 
-package com.contus.carpooling.dashboard.myrides.view;
+package com.contus.carpooling.ridehistory.view;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -68,6 +68,7 @@ public class RideHistoryAdapter extends RecyclerView.Adapter<RideHistoryAdapter.
 
     @Override
     public void onBindViewHolder(RideHistoryAdapter.RideHistoryViewHolder holder, int position) {
+        holder.adapterRideHistoryBinding.setModel(getItem(position));
     }
 
     @Override
@@ -89,6 +90,7 @@ public class RideHistoryAdapter extends RecyclerView.Adapter<RideHistoryAdapter.
              * Set into data Dashboard controller
              */
             itemView.setController(new RideHistoryController());
+
         }
     }
 }

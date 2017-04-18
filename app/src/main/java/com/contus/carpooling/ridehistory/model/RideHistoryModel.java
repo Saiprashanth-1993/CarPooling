@@ -1,6 +1,7 @@
 package com.contus.carpooling.ridehistory.model;
 
 import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 
 /**
  * @author ContusTeam <developers@contus.in>
@@ -8,17 +9,30 @@ import android.databinding.BaseObservable;
  */
 public class RideHistoryModel extends BaseObservable {
 
-    private String creatorName;
+    private String Arrival;
 
-    public RideHistoryModel(String creatorName) {
-        this.creatorName = creatorName;
+    private String Depature;
+
+    @Bindable
+    public String getArrival() {
+        return Arrival;
     }
 
-    public String getCreatorName() {
-        return creatorName;
+    public void setArrival(String arrival) {
+        Arrival = arrival;
     }
 
-    public void setCreatorName(String creatorName) {
-        this.creatorName = creatorName;
+    @Bindable
+    public String getDepature() {
+        return Depature;
+    }
+
+    public void setDepature(String depature) {
+        Depature = depature;
+    }
+
+    public RideHistoryModel(String arrival, String depature) {
+        Arrival = arrival;
+        Depature = depature;
     }
 }

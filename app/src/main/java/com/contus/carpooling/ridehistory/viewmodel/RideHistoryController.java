@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 
+import com.contus.carpooling.R;
 import com.contus.carpooling.offeredrideinfo.view.OfferedRidesInformationActivity;
 
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class RideHistoryController {
                 // arraylist to keep the selected items
                 final ArrayList seletedItems = new ArrayList();
 
-                AlertDialog dialog = new AlertDialog.Builder(context)
+                AlertDialog dialog = new AlertDialog.Builder(context, R.style.DialogTheme)
                         .setTitle("Filter")
                         .setMultiChoiceItems(items, null, new DialogInterface.OnMultiChoiceClickListener() {
                             @Override
