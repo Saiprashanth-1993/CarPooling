@@ -11,6 +11,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Toast;
 
 import com.contus.carpooling.R;
 import com.contus.carpooling.databinding.ActivityForgotPasswordBinding;
@@ -39,7 +40,6 @@ public class ForgotPasswordController {
      */
     Activity activity;
 
-    ActivityForgotPasswordBinding forgotPasswordBinding;
 
     /**
      * constructor of the activity
@@ -55,7 +55,7 @@ public class ForgotPasswordController {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                String emailId=forgotPasswordModel.getEmailId();
+                String emailId = forgotPasswordModel.getEmailId();
                 if (isValid(context, emailId) && isValidEmail(emailId))
                     forgotPasswordRequest(emailId, activity);
             }
@@ -77,7 +77,7 @@ public class ForgotPasswordController {
             return true;
         } else {
             //show invalid email error
-            forgotPasswordBinding.tvForgotMail.setError("invalid");
+            Logger.showToastMessage(activity,"invalid Email ID");
             return false;
         }
     }
@@ -94,7 +94,9 @@ public class ForgotPasswordController {
                 .enqueue(new Callback<ForgotPasswordModel>() {
                     @Override
                     public void onResponse(Call<ForgotPasswordModel> call, Response<ForgotPasswordModel> response) {
-                        Logger.showLongToastMessage(mContext, response.body().getMessage());
+                        if (response.isSuccessful()) {
+                            Logger.showLongToastMessage(mContext, response.body().getMessage());
+                        }
                     }
 
                     @Override
