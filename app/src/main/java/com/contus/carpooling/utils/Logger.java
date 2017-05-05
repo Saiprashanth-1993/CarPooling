@@ -21,7 +21,7 @@ public class Logger {
     /**
      * Tag to be presented in the log
      */
-    private static String tag = "Car Pooling:::";
+    private static String tag = "Login Page:::";
 
     /**
      * Default Constructor which can invoke the method directly to activity

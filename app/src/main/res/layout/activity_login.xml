@@ -23,17 +23,6 @@
             android:orientation="vertical"
             android:paddingTop="@dimen/padding_size">
 
-            <ImageView
-                android:id="@+id/iv_logo_icon"
-                android:layout_width="@dimen/img_extra_large"
-                android:layout_height="@dimen/img_extra_large_height"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="@dimen/small_size"
-                android:contentDescription="@string/logo_icon"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_logo" />
-
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/tv_user_name"
                 android:layout_width="wrap_content"
@@ -133,7 +122,6 @@
                 android:layout_marginRight="@dimen/extra_medium_size"
                 android:layout_marginTop="@dimen/text_width"
                 android:gravity="end"
-                android:onClick="@{ViewController.tvForgotPasswordOnClick()}"
                 android:text="@string/forgot_password"
                 android:textColor="@color/colorHighLightBlue"
                 android:textSize="@dimen/text_extra_large" />
@@ -172,21 +160,10 @@
                     android:id="@+id/btn_sign_up"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="@{ViewController.btnSignInOnClick}"
                     android:text="@string/user_sign_up"
                     android:textColor="@color/colorHighLightBlue"
                     android:textSize="@dimen/text_extra_large"/>
             </LinearLayout>
-
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="@dimen/img_xs_size"
-                android:layout_marginTop="@dimen/xs_small_size"
-                android:adjustViewBounds="true"
-                android:src="@drawable/ic_footer" />
         </RelativeLayout>
     </ScrollView>
 </layout>

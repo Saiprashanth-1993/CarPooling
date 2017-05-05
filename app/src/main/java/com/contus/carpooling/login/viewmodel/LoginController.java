@@ -10,20 +10,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 
 import com.contus.carpooling.R;
-import com.contus.carpooling.dashboard.homepage.view.DashboardActivity;
-import com.contus.carpooling.databinding.ActivityForgotPasswordBinding;
-import com.contus.carpooling.forgotpassword.view.ForgotPasswordActivity;
+import com.contus.carpooling.dashboard.homepage.view.HomeActivity;
 import com.contus.carpooling.login.model.UserLoginInfo;
 import com.contus.carpooling.login.model.UserLoginResponse;
 import com.contus.carpooling.server.BusProvider;
 import com.contus.carpooling.server.RestCallback;
 import com.contus.carpooling.server.RestClient;
-import com.contus.carpooling.userregistration.view.UserRegistrationActivity;
 import com.contus.carpooling.utils.ApiService;
 import com.contus.carpooling.utils.CommonUtils;
 import com.contus.carpooling.utils.Constants;
@@ -62,7 +58,10 @@ public class LoginController implements ApiService.OnTaskCompleted {
             public void onClick(View view) {
                 context = view.getContext();
                 if (isValid(context, userLoginInfo.getEmail(), userLoginInfo.getPassword())) {
-                    loginRequest(context, userLoginInfo);
+                    //loginRequest(context, userLoginInfo);
+                    Intent intent = new Intent(context, HomeActivity.class);
+                    intent.putExtra("name", "USERNAME");
+                    context.startActivity(intent);
                 }
             }
         };
@@ -92,44 +91,6 @@ public class LoginController implements ApiService.OnTaskCompleted {
                 });
     }
 
-    /**
-     * Trigger the even listener for navigate to the another activity
-     *
-     * @return View.OnClickListener OnClickListener of the login sign in button
-     */
-    public View.OnClickListener btnSignInOnClick() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                view.getContext().startActivity(new Intent(view.getContext(), UserRegistrationActivity.class));
-            }
-        };
-    }
-
-    public View.OnClickListener tvForgotPasswordOnClick() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Context context = view.getContext();
-                Intent intent = new Intent(context, ForgotPasswordActivity.class);
-                context.startActivity(intent);
-
-//                if (isValid(context, getchangePasswordValues.getCurrentPassword(),
-//                        getchangePasswordValues.getNewPassword(),
-//                        getchangePasswordValues.getConfirmPassword()))
-//                    changePasswordRequest(getchangePasswordValues, context);
-            }
-        };
-    }
-
-    /**
-     * Method for validate the username and password.
-     *
-     * @param context   Used to show the toast message.
-     * @param userEmail Validate the userEmail.
-     * @param password  Validate the password.
-     * @return validationStatus value has true when the given field is not empty.
-     */
     public boolean isValid(Context context, String userEmail, String password) {
         boolean validationStatus = true;
         if (TextUtils.isEmpty(userEmail) || TextUtils.isEmpty(password)) {
@@ -207,7 +168,7 @@ public class LoginController implements ApiService.OnTaskCompleted {
                  * It will navigate to dashboard Activity
                  */
                 CustomUtils.showToast(context, result.message);
-                context.startActivity(new Intent(context, DashboardActivity.class));
+                context.startActivity(new Intent(context, HomeActivity.class));
                 ((Activity) context).finish();
             } else {
                 CustomUtils.showToast(context, result.getMessage());

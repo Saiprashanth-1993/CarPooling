@@ -17,7 +17,7 @@ public class Constants {
     /**
      * Constants API base URL
      */
-    public static final String BASE_URL = "http://p105.dev.contus.us/p105-carpooling-web/public/api/";
+    public static final String BASE_URL = "http_myserver/xyz/";
 
     /**
      * To get the device token from device by using fireBase
