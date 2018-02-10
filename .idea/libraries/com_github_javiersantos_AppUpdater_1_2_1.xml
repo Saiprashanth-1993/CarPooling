@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="com.github.javiersantos:AppUpdater-1.2.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/d47596f15265d1dc3f1f04d203b51e9fb70bb65e/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/d47596f15265d1dc3f1f04d203b51e9fb70bb65e/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
